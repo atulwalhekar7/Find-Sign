@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import logo from "../assets/FS Primary Lockup_Gold.png";
 
 const COLORS = {
   racingGreen: "#1B4332",
@@ -24,37 +25,26 @@ const NAV_ITEMS = [
 function Logo() {
   const color = COLORS.racingGreen;
   return (
-    <NavLink to="/" style={{ display: "flex", alignItems: "center", gap: "9px", textDecoration: "none", flexShrink: 0 }}>
-      {/* Diamond icon — thin stroke, no fill background */}
-      <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
-        <rect x="0.75" y="0.75" width="32.5" height="32.5" rx="1" stroke={color} strokeWidth="1.2" />
-        <path
-          d="M8 8.5h7.2v2.6H11v2.2h3.8v2.6H11v6.6H8V8.5zm9.5 0h7.2v2.6h-4.4v2.2H24v2.6h-3.7v6.6h-2.8V8.5z"
-          fill={color}
-        />
-      </svg>
-      <div style={{ lineHeight: 1.2 }}>
-        <span style={{
-          fontFamily: FONTS.display,
-          fontWeight: 600,
-          fontSize: "13px",
-          letterSpacing: "0.16em",
-          color,
-          display: "block",
-          textTransform: "uppercase" as const,
-        }}>Find</span>
-        <span style={{
-          fontFamily: FONTS.display,
-          fontWeight: 400,
-          fontSize: "11px",
-          letterSpacing: "0.20em",
-          color,
-          display: "block",
-          textTransform: "uppercase" as const,
-          opacity: 0.9,
-        }}>&amp; Sign</span>
-      </div>
-    </NavLink>
+    <NavLink
+  to="/"
+  style={{
+    display: "flex",
+    alignItems: "center",
+    gap: "9px",
+    textDecoration: "none",
+    flexShrink: 0,
+  }}
+>
+  <img
+    src={logo}
+    alt="Logo"
+    style={{
+      height: "34px",
+      width: "auto",
+      objectFit: "contain",
+    }}
+  />
+</NavLink>
   );
 }
 
