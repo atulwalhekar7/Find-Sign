@@ -1,7 +1,11 @@
-# TODO Steps for Fixing Import Error
+# Task Progress: Fix Syntax Errors
 
-- [x] Step 1: Update all page imports in src/App.tsx to use correct case './Pages/Filename' (uppercase P)
-- [x] Step 2: Verify no other import issues  
-- [x] Step 3: Test the application by running dev server
-- [x] Step 4: Complete task
+## TODO Steps (from approved plan)
+- [x] Step 1: Create TODO.md to track progress
+- [x] Step 2: Edit src/components/Navbar.tsx - remove unused 'color' variable
+- [x] Step 3: Edit src/components/Footer.tsx - remove invalid 'Instagram' icon import and usage
+- [ ] Step 4: Verify fixes with TypeScript check / dev server
+- [ ] Step 5: Complete task
 
+## Current Status
+Approved plan breakdown into steps. Implementing edits now.
