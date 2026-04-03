@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface ProcessStep {
   id: number;
   title: string;
   description: string;
+  image: string;
 }
 
 const steps: ProcessStep[] = [
@@ -11,137 +12,237 @@ const steps: ProcessStep[] = [
     id: 1,
     title: "Discovery Call",
     description:
-      "We start with a conversation to understand your goals, preferences, and budget — so we can align our search with exactly what you're looking for.",
+      "We align on your goals, preferences, and budget to shape the perfect property search strategy.",
+    image: "https://uc90a0272d1e1539997904c4e075.previews.dropboxusercontent.com/p/thumb/AC8qGKEiU6Fg8iijaoCGkbIPSGzYrmt82oOcAOIB8s9BZl4LUSxGJX_os27LgTisIl6ALiACKQzY6UAuyqiiPOSS54odHELRJcNnVlwyVWQGDEWv2jAP9HuFcFmXTr9Rr8FER3h1IocuqxVlyCZOqFh9umxAFQIzVQFagYrpPct7ifeadLEDqZpShWKBTpHsF5NbaRo0shctpk8DR9CIlsyDZN0LPC3-_ZFH7rN1_YVTUMfvRaK0nSnY1Ks8q19-8Qy8fqdRKZIGRerXho2DBg4hML9jsOXNNXS5aif6PRKWYI9qDizPeYOP-ta17mZXgAoQa8MzLg12IlybKFOD5l2Hqye2i37Sc5ewESpQrsPx7p1S6U76HDzf9lR6BCiRODWhj0EJFks-ZGJLOytvI9QaVuBY8qF2PAKyb7uDO8PFUw/p.jpeg",
   },
   {
     id: 2,
     title: "We Find It",
     description:
-      "Using our extensive network and market expertise, we curate properties that match your criteria — including off-market opportunities you won't find anywhere else.",
+      "We curate properties using our extensive network — including exclusive off-market opportunities.",
+    image: "https://ucc7b2884162acfa504ef8302e17.previews.dropboxusercontent.com/p/thumb/AC-IVbAC36HTCSEURrbt6HrTsA6PRrZrxQLdCsrlhy2JTS7rUiT1qX-lzk3QBlbiql_GWrdZIi9aqmn9UJq7ZzoGPa6CurJIC2lMpZQ4TiALyN55AAtTpe6idP7GrlM5ajJAX4DvagnF7sYAXxb52D1RlgGYSnx4tQgjluKDspuKCH2orvd7OOg42Ph-TU1wqBiHaRWzhCVSxq3qs6bC1N1dKSIcsRHI3oK0OmjCUOlo95PuGGBUsxJam9tee-30Qimggj8U0oGGjNsbqXudlRvHkwckWl-ek0tW4r17E53CdPswYFxAp2mAyHVCTAD_VqZRmLnjMDMuFUerknMKI6GwruDXMzChFnePBxmzONx1DQ/p.jpeg",
   },
   {
     id: 3,
     title: "We Inspect the Property",
     description:
-      "Our team conducts thorough due diligence — assessing condition, value, and potential so you can make a confident, informed decision.",
+      "Thorough due diligence on condition, value, and potential so you can decide with full confidence.",
+    image: "https://uc25af76dc81333756b0388dea63.previews.dropboxusercontent.com/p/thumb/AC_De3mK39PwHOHlJK4iaFCnIGZ2eHgLQHJzEE4RTZrxqxAKuVBNOnivC6YXkh0HdB7qe8bZ9mBOPqYKwfdPqlvGqGLQRMGZU4HbXH3pThNxkRm8bDXC7w66v9EEDrUVnOqenQnvj_diJFp6M5cEC6tgmEvegJ_p0XCPwam1xlGO9NYMasuR_lpn6loKwTM8OeF9yI4YK6VtZJNqgXQee8dfc0YPDteCxc0QNsXcUon7ngS-aWVnZX7s0llTmto0eJX7yDYAchQANyS5vSOuLnL6UKo_C_Bjxm6yF2_dmZ85AiA3wbOG7ovFhtNYI2jGYdZwTqw9fTVgEwZY0duvW3CgJa3ExjO8eC680QbBxcnKJpbQkt3qvpnP-sbjGkcprE-iMRfAoQtRdRPb61VsuQqxsmjiR0BbXEakrHLR_W2SDA/p.jpeg",
   },
   {
     id: 4,
     title: "You Sign It",
     description:
-      "We guide you seamlessly through signing — handling negotiations, paperwork, and coordination so everything goes smoothly to completion.",
+      "We handle negotiations, paperwork, and coordination — you just sign on the dotted line.",
+    image: "https://uc7d1f3c9a396cec24230c9da64e.previews.dropboxusercontent.com/p/thumb/AC81WxSR27MafKVl7vH3NjEr61FQ7_TH9xgxNP-SjjcWOYZ5Kclff2TlJXZsZhh_krxYsBEmz4H994WDu_ILOq7QNsgeN6RqvyLRgxV5hpcbJqH0D7BBsYFxVnWVoEhfks21XqzyZsdJjQ3KN8zchTJnadWf1_-ks64gospxUqe7VJ6eAY3R8FR-3lH4zZlB0A5KExu1QBL41zlRofu2Oe5Zao9xSKI-nIgIXUCWKXL4pjIVYD16rRpdH1A-1IOy6ynMNrXCg73FFD-Gmt-WpOYp6aEatrwonjEJ0mwMA2VrJ-ECuWE374WiMepPZPy7e-DHWkG_vs_UEbz6ZIHPT0odxXsU8fNZ27EHM-8XEP74Fw/p.jpeg",
   },
 ];
 
 const GREEN = "#1F5D37";
-const GOLD = "#8B6D38";
+const GOLD  = "#8B6D38";
+
+const FALLBACK_COLORS: string[] = [
+  "linear-gradient(160deg, #1F5D37 0%, #0d3520 100%)",
+  "linear-gradient(160deg, #2a6e45 0%, #133d25 100%)",
+  "linear-gradient(160deg, #8B6D38 0%, #5a4420 100%)",
+  "linear-gradient(160deg, #3a7a52 0%, #0d3520 100%)",
+];
 
 export default function OurProcess() {
-  const [openId, setOpenId] = useState<number | null>(1);
+  const [activeId, setActiveId]     = useState<number>(1);
+  const [imgVisible, setImgVisible] = useState<boolean>(true);
+  const [isPaused, setIsPaused]     = useState<boolean>(false);
 
-  const toggle = (id: number) =>
-    setOpenId((prev) => (prev === id ? null : id));
+  // Auto-advance every 2 seconds
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setActiveId((prev) => (prev === steps.length ? 1 : prev + 1));
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
+  // Fade image out then in on step change
+  useEffect(() => {
+    setImgVisible(false);
+    const t = setTimeout(() => setImgVisible(true), 300);
+    return () => clearTimeout(t);
+  }, [activeId]);
+
+  const handleStepClick = (id: number) => {
+    setActiveId(id);
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 6000);
+  };
+
+  const activeStep  = steps.find((s) => s.id === activeId)!;
+  const progressPct = ((activeId - 1) / (steps.length - 1)) * 100;
 
   return (
     <section style={s.section}>
       <div style={s.container}>
 
-        {/* Header */}
-        <div style={s.header}>
-          <p style={s.eyebrow}>How it works</p>
-          <h2 style={s.title}>Our Process</h2>
-          <p style={s.subtitle}>
-            A seamless journey from first conversation to final signature.
-          </p>
+        {/* LEFT — image */}
+        <div style={s.imageCol}>
+          <div
+            style={{
+              ...s.imageFallback,
+              background: FALLBACK_COLORS[activeId - 1],
+              transition: "background 0.5s ease",
+            }}
+          />
+          <img
+            key={activeStep.id}
+            src={activeStep.image}
+            alt={activeStep.title}
+            style={{
+              ...s.image,
+              opacity: imgVisible ? 1 : 0,
+              transition: "opacity 0.5s ease",
+            }}
+          />
+
+          {/* Overlay label */}
+          <div style={s.imageOverlay}>
+            <span style={s.overlayNum}>
+              {String(activeId).padStart(2, "0")} / {String(steps.length).padStart(2, "0")}
+            </span>
+            <span
+              style={{
+                ...s.overlayTitle,
+                opacity: imgVisible ? 1 : 0,
+                transform: imgVisible ? "translateY(0)" : "translateY(8px)",
+                transition: "opacity 0.4s ease, transform 0.4s ease",
+              }}
+            >
+              {activeStep.title}
+            </span>
+          </div>
+
+          {/* Progress bar */}
+          <div style={s.imgProgressTrack}>
+            <div
+              style={{
+                ...s.imgProgressFill,
+                width: `${((activeId - 1) / steps.length) * 100 + 100 / steps.length}%`,
+                transition: isPaused ? "none" : "width 1.8s linear",
+              }}
+            />
+          </div>
         </div>
 
-        {/* Accordion list */}
-        <div style={s.list}>
-          {steps.map((step) => {
-            const isOpen = openId === step.id;
-            return (
-              <div
-                key={step.id}
-                style={{
-                  ...s.item,
-                  border: isOpen
-                    ? `1px solid ${GREEN}`
-                    : "1px solid rgba(0,0,0,0.1)",
-                }}
-              >
-                {/* Row */}
+        {/* RIGHT — timeline */}
+        <div style={s.right}>
+          <p style={s.eyebrow}>How it works</p>
+          <h2 style={s.title}>
+            Our <em style={s.titleItalic}>Process</em>
+          </h2>
+          <p style={s.subtitle}>
+            From start to finish, we handle every detail for you.
+          </p>
+
+          <div style={s.timeline}>
+            <div style={s.lineTrack} />
+            <div
+              style={{
+                ...s.lineFill,
+                height: `calc(${progressPct}%)`,
+                transition: "height 0.5s ease",
+              }}
+            />
+
+            {steps.map((step) => {
+              const isActive = activeId === step.id;
+              const isDone   = step.id < activeId;
+
+              return (
                 <div
-                  style={s.row}
-                  onClick={() => toggle(step.id)}
+                  key={step.id}
+                  style={s.stepRow}
+                  onClick={() => handleStepClick(step.id)}
                   role="button"
-                  aria-expanded={isOpen}
                   tabIndex={0}
-                  onKeyDown={(e) =>
-                    e.key === "Enter" && toggle(step.id)
-                  }
+                  onKeyDown={(e) => e.key === "Enter" && handleStepClick(step.id)}
                 >
-                  {/* Number bubble */}
                   <div
                     style={{
-                      ...s.bubble,
-                      backgroundColor: isOpen ? GREEN : "#f0efeb",
-                      color: isOpen ? "#ffffff" : "#888",
-                      transition: "background-color 0.25s ease, color 0.25s ease",
+                      ...s.circle,
+                      backgroundColor: isActive || isDone ? GREEN : "#f0efeb",
+                      borderColor:     isActive || isDone ? GREEN : "rgba(31,93,55,0.2)",
+                      color:           isActive || isDone ? "#ffffff" : "#999",
+                      opacity:   isDone ? 0.55 : 1,
+                      transform: isActive ? "scale(1.1)" : "scale(1)",
+                      transition: "all 0.3s ease",
                     }}
                   >
-                    {step.id}
+                    {String(step.id).padStart(2, "0")}
                   </div>
 
-                  {/* Title */}
-                  <span
-                    style={{
-                      ...s.stepTitle,
-                      color: isOpen ? "#1a1a1a" : "#444",
-                      transition: "color 0.25s ease",
-                    }}
-                  >
-                    {step.title}
-                  </span>
-
-                  {/* Chevron */}
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    style={{
-                      flexShrink: 0,
-                      transition: "transform 0.3s ease",
-                      transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-                    }}
-                  >
-                    <path
-                      d="M4 6l4 4 4-4"
-                      stroke={isOpen ? GREEN : "#999"}
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <div style={s.stepInfo}>
+                    <p
+                      style={{
+                        ...s.stepTitle,
+                        color: isActive ? GREEN : "#444",
+                        transition: "color 0.25s ease",
+                      }}
+                    >
+                      {step.title}
+                    </p>
+                    <p
+                      style={{
+                        ...s.stepDesc,
+                        maxHeight: isActive ? "80px" : "0px",
+                        opacity:   isActive ? 1 : 0,
+                        marginTop: isActive ? "5px" : "0px",
+                        transition:
+                          "max-height 0.35s ease, opacity 0.3s ease, margin 0.3s ease",
+                      }}
+                    >
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
+              );
+            })}
+          </div>
 
-                {/* Body */}
-                <div
+          {/* Controls */}
+          <div style={s.controls}>
+            <button
+              style={s.pauseBtn}
+              onClick={() => setIsPaused((p) => !p)}
+              aria-label={isPaused ? "Resume autoplay" : "Pause autoplay"}
+            >
+              {isPaused ? (
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M3 2l7 4-7 4V2z" fill={GREEN} />
+                </svg>
+              ) : (
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <rect x="2" y="2" width="3" height="8" rx="1" fill={GREEN} />
+                  <rect x="7" y="2" width="3" height="8" rx="1" fill={GREEN} />
+                </svg>
+              )}
+            </button>
+
+            <div style={s.dots}>
+              {steps.map((step) => (
+                <button
+                  key={step.id}
+                  onClick={() => handleStepClick(step.id)}
                   style={{
-                    ...s.body,
-                    maxHeight: isOpen ? "160px" : "0px",
-                    opacity: isOpen ? 1 : 0,
-                    paddingBottom: isOpen ? "18px" : "0px",
-                    transition:
-                      "max-height 0.35s ease, opacity 0.3s ease, padding 0.3s ease",
+                    ...s.dot,
+                    opacity:   activeId === step.id ? 1 : 0.2,
+                    transform: activeId === step.id ? "scale(1.4)" : "scale(1)",
+                    transition: "opacity 0.25s ease, transform 0.25s ease",
                   }}
-                >
-                  <div style={s.divider} />
-                  <p style={s.bodyText}>{step.description}</p>
-                </div>
-              </div>
-            );
-          })}
+                  aria-label={`Go to step ${step.id}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          <button style={s.cta}>See more about our strategy</button>
         </div>
       </div>
     </section>
@@ -150,19 +251,84 @@ export default function OurProcess() {
 
 const s: Record<string, React.CSSProperties> = {
   section: {
-    backgroundColor: "#ffffff",
+    backgroundColor: "#faf9f6",
     borderTop: "1px solid rgba(31,93,55,0.1)",
     padding: "96px 0 112px",
     fontFamily: "'Cormorant Garamond', Georgia, serif",
   },
   container: {
-    maxWidth: "640px",
+    maxWidth: "1100px",
     margin: "0 auto",
-    padding: "0 24px",
+    padding: "0 40px",
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: "80px",
+    alignItems: "center",
   },
-  header: {
-    textAlign: "center",
-    marginBottom: "48px",
+  imageCol: {
+    position: "relative" as const,
+    borderRadius: "14px",
+    overflow: "hidden",
+    aspectRatio: "3 / 4",
+    backgroundColor: "#1a3a28",
+  },
+  imageFallback: {
+    position: "absolute" as const,
+    inset: 0,
+    zIndex: 0,
+  },
+  image: {
+    position: "absolute" as const,
+    inset: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover" as const,
+    display: "block",
+    zIndex: 1,
+  },
+  imageOverlay: {
+    position: "absolute" as const,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    zIndex: 2,
+    padding: "48px 24px 20px",
+    background: "linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%)",
+    display: "flex",
+    flexDirection: "column" as const,
+    gap: "4px",
+  },
+  overlayNum: {
+    fontFamily: "'DM Sans', sans-serif",
+    fontSize: "11px",
+    letterSpacing: "0.16em",
+    color: "rgba(255,255,255,0.6)",
+  },
+  overlayTitle: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "22px",
+    fontWeight: 500,
+    color: "#ffffff",
+    letterSpacing: "-0.01em",
+    display: "inline-block" as const,
+  },
+  imgProgressTrack: {
+    position: "absolute" as const,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: "3px",
+    backgroundColor: "rgba(255,255,255,0.2)",
+    zIndex: 3,
+  },
+  imgProgressFill: {
+    height: "100%",
+    backgroundColor: "#ffffff",
+    borderRadius: "0 2px 2px 0",
+  },
+  right: {
+    display: "flex",
+    flexDirection: "column" as const,
   },
   eyebrow: {
     fontFamily: "'DM Sans', sans-serif",
@@ -170,79 +336,139 @@ const s: Record<string, React.CSSProperties> = {
     letterSpacing: "0.2em",
     textTransform: "uppercase" as const,
     color: GOLD,
-    margin: "0 0 12px",
+    margin: "0 0 10px",
   },
   title: {
-    fontSize: "clamp(30px, 4vw, 48px)",
+    fontSize: "clamp(32px, 4vw, 52px)",
     fontWeight: 500,
-    color: GREEN,
-    margin: "0 0 12px",
+    color: "#1a1a1a",
+    margin: "0 0 10px",
     lineHeight: 1.05,
     letterSpacing: "-0.02em",
   },
+  titleItalic: {
+    fontStyle: "italic",
+    color: GREEN,
+    fontWeight: 400,
+  },
   subtitle: {
-    fontFamily: "'DM Sans', sans-serif",
-    fontSize: "15px",
-    color: "#666",
-    lineHeight: 1.65,
-    margin: 0,
-  },
-
-  /* Accordion */
-  list: {
-    display: "flex",
-    flexDirection: "column" as const,
-    gap: "10px",
-  },
-  item: {
-    borderRadius: "10px",
-    backgroundColor: "#ffffff",
-    overflow: "hidden",
-    transition: "border-color 0.25s ease",
-  },
-  row: {
-    display: "flex",
-    alignItems: "center",
-    gap: "14px",
-    padding: "16px 18px",
-    cursor: "pointer",
-    userSelect: "none" as const,
-    outline: "none",
-  },
-  bubble: {
-    width: "32px",
-    height: "32px",
-    borderRadius: "50%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: "13px",
-    fontWeight: 500,
-    flexShrink: 0,
-    fontFamily: "'DM Sans', sans-serif",
-  },
-  stepTitle: {
-    flex: 1,
-    fontSize: "16px",
-    fontWeight: 500,
-    letterSpacing: "-0.01em",
-    fontFamily: "'Cormorant Garamond', serif",
-  },
-  body: {
-    overflow: "hidden",
-    padding: "0 18px",
-  },
-  divider: {
-    height: "1px",
-    backgroundColor: "rgba(31,93,55,0.1)",
-    marginBottom: "14px",
-  },
-  bodyText: {
     fontFamily: "'DM Sans', sans-serif",
     fontSize: "14px",
     color: "#666",
+    lineHeight: 1.6,
+    margin: "0 0 36px",
+  },
+  timeline: {
+    position: "relative" as const,
+    display: "flex",
+    flexDirection: "column" as const,
+  },
+  lineTrack: {
+    position: "absolute" as const,
+    left: "19px",
+    top: "20px",
+    bottom: "20px",
+    width: "1.5px",
+    backgroundColor: "rgba(31,93,55,0.15)",
+    zIndex: 0,
+  },
+  lineFill: {
+    position: "absolute" as const,
+    left: "19px",
+    top: "20px",
+    width: "1.5px",
+    backgroundColor: GREEN,
+    zIndex: 1,
+    minHeight: "0px",
+  },
+  stepRow: {
+    position: "relative" as const,
+    zIndex: 2,
+    display: "flex",
+    alignItems: "flex-start",
+    gap: "18px",
+    padding: "14px 0",
+    cursor: "pointer",
+    outline: "none",
+  },
+  circle: {
+    width: "40px",
+    height: "40px",
+    borderRadius: "50%",
+    border: "1.5px solid",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: "11px",
+    fontWeight: 500,
+    flexShrink: 0,
+    fontFamily: "'DM Sans', sans-serif",
+    letterSpacing: "0.05em",
+    userSelect: "none" as const,
+  },
+  stepInfo: {
+    paddingTop: "8px",
+    flex: 1,
+  },
+  stepTitle: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: "18px",
+    fontWeight: 500,
+    margin: 0,
+    letterSpacing: "-0.01em",
+  },
+  stepDesc: {
+    fontFamily: "'DM Sans', sans-serif",
+    fontSize: "13px",
+    color: "#666",
     lineHeight: 1.7,
     margin: 0,
-    paddingLeft: "46px",
+    overflow: "hidden",
+  },
+  controls: {
+    display: "flex",
+    alignItems: "center",
+    gap: "14px",
+    marginTop: "24px",
+  },
+  pauseBtn: {
+    width: "30px",
+    height: "30px",
+    borderRadius: "50%",
+    border: "1px solid rgba(31,93,55,0.3)",
+    backgroundColor: "transparent",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    cursor: "pointer",
+    flexShrink: 0,
+  },
+  dots: {
+    display: "flex",
+    gap: "8px",
+    alignItems: "center",
+  },
+  dot: {
+    width: "7px",
+    height: "7px",
+    borderRadius: "50%",
+    border: "none",
+    cursor: "pointer",
+    padding: 0,
+    backgroundColor: GREEN,
+  },
+  cta: {
+    marginTop: "28px",
+    alignSelf: "flex-start" as const,
+    fontFamily: "'DM Sans', sans-serif",
+    fontSize: "11px",
+    letterSpacing: "0.14em",
+    textTransform: "uppercase" as const,
+    backgroundColor: GREEN,
+    color: "#ffffff",
+    border: "none",
+    padding: "16px 32px",
+    borderRadius: "3px",
+    cursor: "pointer",
   },
 };

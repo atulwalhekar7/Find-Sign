@@ -1,163 +1,147 @@
-import React from "react";
-// 1. UNCOMMENT THE LINE BELOW IN YOUR LOCAL PROJECT:
-// import bannerImg from "../assets/DSC06227.jpg";
-
 const COLORS = {
   racingGreen: "#1B4332",
-  aqua: "#40C9A2",
-  gold: "#A67C00", 
-  white: "#FFFFFF",
-  textGray: "#333333",
-  overlay: "rgba(0, 0, 0, 0.25)",
-};
+  aqua:        "#40C9A2",
+  white:       "#FFFFFF",
+} as const;
 
 const FONTS = {
   display: "'Cormorant Garamond', Georgia, serif",
-  body: "'DM Sans', sans-serif",
-};
+  body:    "'DM Sans', sans-serif",
+} as const;
 
-export default function App() {
-  // 2. DELETE THIS PLACEHOLDER LINE LOCALLY ONCE YOU UNCOMMENT THE IMPORT ABOVE:
-  const bannerImg = "https://uc987f1cfdf95a9a66f0a372c6c4.previews.dropboxusercontent.com/p/thumb/AC-T1Rvug3QxwoHsli6Gk7YS3Bc_9P34zpkXqAm9RZ_ovDqnRhuBGgOsYLV3S6eAWJgvatkPde0Wmvb3OEybsaGjZ44wshJmUVX4FPEgs1j7n_kNyTQnM9ahzRWVg8QiTyNAEbxcLo9a-EnUDphqPKuFwkI521LxcZUagMWxQqudv6SAqi7rKPH9G3dIFbURHXoZX7FrCT_DKbXvdTI2pD-hiTWzktHJAenqp3EaA3bmfscmbWVd6wuQCkqKBAwJG_1wzBpb0w6Bh8KmywIgfiOgSh7F7IDdNlh96IGszPYpVXNyZ9aU_Nos1g319zijuTiLm5G0GupsIqKH3y5oeVXaIl6a33SX8m-MgnjCSkaU6Q3eG_vIsuA51AqwmtoH4dg87R78FwGMYi9CHwzZKkcQD6QLb_1HybfMJ_4Clw_O1CyWpjJ6VXOAqZzEKkZo8rj3ZJduv2d5XmrAV2r6tS5H/p.jpeg?is_prewarmed=true";
-
+export default function HeroBanner() {
   return (
-    <div className="page-wrapper">
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=DM+Sans:wght@300;400;500;700&display=swap');
+    <section style={{
+      /* Full viewport — no margin, no padding, edge to edge */
+      position: "relative",
+      width: "100vw",
+      height: "100vh",
+      minHeight: "620px",
+      overflow: "hidden",
+      display: "flex",
+      alignItems: "flex-end",
+      /* Pull outside any parent padding */
+      marginLeft: "calc(-50vw + 50%)",
+    }}>
 
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
+      {/* ── Background image — warm property photo ── */}
+      <div style={{
+        position: "relative",
+        inset: 0,
+        backgroundImage: `url("https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1800&q=90")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center center",
+        animation: "kenBurns 14s ease-in-out infinite alternate",
+      }}/>
 
-        body {
-          font-family: ${FONTS.body};
-          background-color: #fff;
-          overflow-x: hidden;
-        }
+      {/* ── Subtle dark overlay — preserves warm tones of image ── */}
+      <div style={{
+        position: "absolute",
+        inset: 0,
+        background: `linear-gradient(
+          160deg,
+          rgba(0,0,0,0.04) 0%,
+          rgba(0,0,0,0.18) 50%,
+          rgba(0,0,0,0.46) 100%
+        )`,
+      }}/>
 
-        .hero-top {
-          position: relative;
-          width: 100%;
-          height: 75vh;
-          min-height: 500px;
-          display: flex;
-          align-items: center;
-          padding: 0 8%;
-          /* The variable 'bannerImg' is used here */
-          background-image: linear-gradient(${COLORS.overlay}, ${COLORS.overlay}), 
-                            url(${bannerImg});
-          background-size: cover;
-          background-position: center;
-        }
+      {/* ── Content — bottom left ── */}
+      <div style={{
+        position: "relative",
+        zIndex: 2,
+        width: "100%",
+        padding: "0 40px 68px",
+        boxSizing: "border-box" as const,
+      }}>
+        <h1 style={{
+          fontFamily: FONTS.display,
+          fontWeight: 500,
+          fontSize: "clamp(46px, 6.5vw, 82px)",
+          color: COLORS.white,
+          lineHeight: 1.06,
+          margin: "0 0 32px",
+          maxWidth: "700px",
+          letterSpacing: "-0.01em",
+        }}>
+          The advantage<br />of being first.
+        </h1>
 
-        .hero-title {
-          font-family: ${FONTS.display};
-          font-size: clamp(42px, 6vw, 84px);
-          color: ${COLORS.white};
-          line-height: 1.05;
-          font-weight: 500;
-          margin-bottom: 2rem;
-          max-width: 800px;
-        }
-
-        .watch-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 12px;
-          background: rgba(0, 0, 0, 0.3);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
-          border: 1px solid rgba(255, 255, 255, 0.4);
-          color: ${COLORS.white};
-          padding: 14px 28px;
-          font-size: 11px;
-          font-weight: 500;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          cursor: pointer;
-          border-radius: 4px;
-          transition: all 0.3s ease;
-        }
-
-        .watch-btn:hover {
-          background: rgba(255, 255, 255, 0.1);
-          border-color: ${COLORS.white};
-        }
-
-        .hero-bottom {
-          padding: 80px 8%;
-          background: #fff;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        .description {
-          font-size: clamp(16px, 2vw, 20px);
-          color: ${COLORS.textGray};
-          line-height: 1.6;
-          max-width: 900px;
-          margin-bottom: 3rem;
-          font-weight: 300;
-        }
-
-        .find-out-btn {
-          background: transparent;
-          border: 1px solid ${COLORS.aqua};
-          color: ${COLORS.racingGreen};
-          padding: 16px 36px;
-          font-size: 12px;
-          font-weight: 700;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          cursor: pointer;
-          border-radius: 4px;
-          transition: all 0.3s ease;
-          margin-bottom: 2rem;
-        }
-
-        .find-out-btn:hover {
-          background: ${COLORS.aqua};
-          color: white;
-        }
-
-        @media (max-width: 768px) {
-          .hero-top {
-            height: 60vh;
-          }
-          .hero-bottom {
-            padding: 50px 6%;
-          }
-        }
-      `}</style>
-
-      <section className="hero-top">
-        <div className="content-wrap">
-          <h1 className="hero-title">
-            The advantage<br />of being first.
-          </h1>
-          
-          <button className="watch-btn">
-            <svg width="10" height="12" viewBox="0 0 10 12" fill="none">
-              <path d="M10 6L0 12V0L10 6Z" fill="white"/>
-            </svg>
-            Watch the Brand Video
-          </button>
-        </div>
-      </section>
-
-      <section className="hero-bottom">
-        <p className="description">
-          Find & Sign is a property buyer’s advocate. We represent buyers across Western Australia, 
-          working inside process to identify opportunities early and secure the right property with clarity and control.
-        </p>
-
-        <button className="find-out-btn">
-          Find Out More
+        {/* Watch Brand Video button */}
+        <button
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "12px",
+            fontFamily: FONTS.body,
+            fontWeight: 500,
+            fontSize: "11px",
+            letterSpacing: "0.12em",
+            textTransform: "uppercase" as const,
+            color: COLORS.white,
+            /* Semi-transparent bg like original */
+            background: "rgba(30,30,30,0.45)",
+            border: "1px solid rgba(255,255,255,0.35)",
+            padding: "14px 26px",
+            borderRadius: "2px",
+            cursor: "pointer",
+            backdropFilter: "blur(8px)",
+            transition: "background 0.25s, border-color 0.25s",
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.background = "rgba(64,201,162,0.3)";
+            e.currentTarget.style.borderColor = COLORS.aqua;
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.background = "rgba(30,30,30,0.45)";
+            e.currentTarget.style.borderColor = "rgba(255,255,255,0.35)";
+          }}
+        >
+          <svg width="9" height="11" viewBox="0 0 9 11" fill="none">
+            <path d="M0 0.5L9 5.5L0 10.5V0.5Z" fill="white"/>
+          </svg>
+          Watch the Brand Video
         </button>
-      </section>
-    </div>
+      </div>
+
+      {/* ── Scroll indicator — right edge, vertical ── */}
+      <div style={{
+        position: "absolute",
+        right: "36px",
+        bottom: "44px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "8px",
+        zIndex: 2,
+      }}>
+        <div style={{
+          width: "1px",
+          height: "52px",
+          background: "rgba(255,255,255,0.22)",
+          position: "relative",
+          overflow: "hidden",
+        }}>
+          <div style={{
+            position: "absolute",
+            top: 0, left: 0,
+            width: "100%",
+            height: "45%",
+            background: "rgba(255,255,255,0.75)",
+            animation: "scrollLine 2.2s ease-in-out infinite",
+          }}/>
+        </div>
+        <span style={{
+          fontFamily: FONTS.body,
+          fontSize: "9px",
+          fontWeight: 500,
+          letterSpacing: "0.22em",
+          textTransform: "uppercase" as const,
+          color: "rgba(255,255,255,0.65)",
+          writingMode: "vertical-rl" as const,
+          transform: "rotate(180deg)",
+        }}>Scroll</span>
+      </div>
+    </section>
   );
 }
