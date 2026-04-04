@@ -23,7 +23,6 @@ const NAV_ITEMS = [
 
 /* ── Logo ── */
 function Logo() {
-  const color = COLORS.racingGreen;
   return (
     <NavLink
   to="/"
