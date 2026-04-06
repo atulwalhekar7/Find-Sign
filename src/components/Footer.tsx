@@ -1,4 +1,20 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, type ReactNode } from "react";
+
+interface SocialButtonProps {
+  icon: ReactNode;
+  label: string;
+}
+
+interface NavLinkProps {
+  children: ReactNode;
+}
+
+interface FooterColumnProps {
+  title: string;
+  links: string[];
+  delay: number;
+  inView: boolean;
+}
 
 const footerData = {
   Services: ["Buy a Home", "Sell a Property", "Rent & Lease", "Property Management", "Investment Advice", "Home Valuation"],
@@ -43,9 +59,9 @@ const socialIcons = [
   },
 ];
 
-function useInView(threshold = 0.1) {
-  const ref = useRef(null);
-  const [inView, setInView] = useState(false);
+function useInView(threshold: number = 0.1): { ref: React.RefObject<HTMLDivElement | null>; inView: boolean; } {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = useState<boolean>(false);
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setInView(true); },
@@ -57,8 +73,8 @@ function useInView(threshold = 0.1) {
   return { ref, inView };
 }
 
-function SocialButton({ icon, label }) {
-  const [hovered, setHovered] = useState(false);
+function SocialButton({ icon, label }: SocialButtonProps) {
+  const [hovered, setHovered] = useState<boolean>(false);
   return (
     <button
       title={label}
@@ -82,8 +98,8 @@ function SocialButton({ icon, label }) {
   );
 }
 
-function NavLink({ children }) {
-  const [hovered, setHovered] = useState(false);
+function NavLink({ children }: NavLinkProps) {
+  const [hovered, setHovered] = useState<boolean>(false);
   return (
     <li style={{ listStyle: "none" }}>
       <a
@@ -111,7 +127,7 @@ function NavLink({ children }) {
   );
 }
 
-function FooterColumn({ title, links, delay, inView }) {
+function FooterColumn({ title, links, delay, inView }: FooterColumnProps) {
   return (
     <div style={{
       opacity: inView ? 1 : 0,
@@ -127,15 +143,15 @@ function FooterColumn({ title, links, delay, inView }) {
         {title}
       </p>
       <ul style={{ padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 2 }}>
-        {links.map((link) => <NavLink key={link}>{link}</NavLink>)}
+        {links.map((link: string) => <NavLink key={link}>{link}</NavLink>)}
       </ul>
     </div>
   );
 }
 
 function Newsletter() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [email, setEmail] = useState<string>("");
+  const [submitted, setSubmitted] = useState<boolean>(false);
 
   const handleSubmit = () => {
     if (email) setSubmitted(true);
@@ -307,7 +323,7 @@ export default function Footer() {
           </div>
 
           {/* Link columns */}
-          {Object.entries(footerData).map(([title, links], i) => (
+          {Object.entries(footerData).map(([title, links]: [string, string[]], i: number) => (
             <FooterColumn
               key={title}
               title={title}
@@ -335,7 +351,7 @@ export default function Footer() {
             © 2026 Prestige Homes. All rights reserved.
           </span>
           <div style={{ display: "flex", gap: 20 }}>
-            {bottomLinks.map((link) => (
+            {bottomLinks.map((link: string) => (
               <a key={link} href="#" className="re-footer-bottom-link">{link}</a>
             ))}
           </div>

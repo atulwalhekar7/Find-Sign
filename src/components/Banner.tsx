@@ -1,7 +1,4 @@
-import React from "react";
 import bannerImg from "../assets/DSC06227.jpg";
-// 1. UNCOMMENT THE LINE BELOW IN YOUR LOCAL PROJECT:
-// import bannerImg from "../assets/DSC06227.jpg";
 
 const COLORS = {
   racingGreen: "#1B4332",
@@ -17,9 +14,7 @@ const FONTS = {
   body: "'DM Sans', sans-serif",
 };
 
-export default function App() {
-  // 2. DELETE THIS PLACEHOLDER LINE LOCALLY ONCE YOU UNCOMMENT THE IMPORT ABOVE:
-const bannerImgVar = bannerImg;
+export default function Banner() {
   return (
     <div className="page-wrapper">
       <style>{`
@@ -45,7 +40,6 @@ const bannerImgVar = bannerImg;
           display: flex;
           align-items: center;
           padding: 0 8%;
-          /* The variable 'bannerImg' is used here */
           background-image: linear-gradient(${COLORS.overlay}, ${COLORS.overlay}), 
                             url(${bannerImg});
           background-size: cover;
@@ -150,7 +144,7 @@ const bannerImgVar = bannerImg;
 
       <section className="hero-bottom">
         <p className="description">
-          Find & Sign is a property buyer’s advocate. We represent buyers across Western Australia, 
+          Find & Sign is a property buyer's advocate. We represent buyers across Western Australia, 
           working inside process to identify opportunities early and secure the right property with clarity and control.
         </p>
 
