@@ -4,6 +4,7 @@ import ClientOutcomes from "../components/ClientOutcomsection";
 import Reviews from "../components/Reviews";
 import FAQ from "../components/FAQ";
 import GetInTouch from "../components/GetInTouch";
+import Footer from "../components/Footer";
 
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <Reviews />
       <FAQ />
       <GetInTouch />
+      <Footer />
     </>
   );
 }

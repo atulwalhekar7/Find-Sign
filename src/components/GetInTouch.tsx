@@ -166,7 +166,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: "100px 20px",
+    padding: "60px 10px",
     fontFamily: "'DM Sans', sans-serif",
   },
   headerArea: {
