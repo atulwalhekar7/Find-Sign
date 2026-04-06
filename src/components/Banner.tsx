@@ -1,4 +1,5 @@
 import React from "react";
+import bannerImg from "../assets/DSC06227.jpg";
 // 1. UNCOMMENT THE LINE BELOW IN YOUR LOCAL PROJECT:
 // import bannerImg from "../assets/DSC06227.jpg";
 
@@ -18,8 +19,7 @@ const FONTS = {
 
 export default function App() {
   // 2. DELETE THIS PLACEHOLDER LINE LOCALLY ONCE YOU UNCOMMENT THE IMPORT ABOVE:
-  const bannerImg = "https://uc987f1cfdf95a9a66f0a372c6c4.previews.dropboxusercontent.com/p/thumb/AC-T1Rvug3QxwoHsli6Gk7YS3Bc_9P34zpkXqAm9RZ_ovDqnRhuBGgOsYLV3S6eAWJgvatkPde0Wmvb3OEybsaGjZ44wshJmUVX4FPEgs1j7n_kNyTQnM9ahzRWVg8QiTyNAEbxcLo9a-EnUDphqPKuFwkI521LxcZUagMWxQqudv6SAqi7rKPH9G3dIFbURHXoZX7FrCT_DKbXvdTI2pD-hiTWzktHJAenqp3EaA3bmfscmbWVd6wuQCkqKBAwJG_1wzBpb0w6Bh8KmywIgfiOgSh7F7IDdNlh96IGszPYpVXNyZ9aU_Nos1g319zijuTiLm5G0GupsIqKH3y5oeVXaIl6a33SX8m-MgnjCSkaU6Q3eG_vIsuA51AqwmtoH4dg87R78FwGMYi9CHwzZKkcQD6QLb_1HybfMJ_4Clw_O1CyWpjJ6VXOAqZzEKkZo8rj3ZJduv2d5XmrAV2r6tS5H/p.jpeg?is_prewarmed=true";
-
+const bannerImgVar = bannerImg;
   return (
     <div className="page-wrapper">
       <style>{`
