@@ -150,7 +150,7 @@ const Reviews: React.FC = () => {
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap');
 
         .npb-section {
-          padding: 100px 40px;
+          padding: 60px 40px;
           background: #F8F5F0;
           font-family: 'DM Sans', sans-serif;
           position: relative;
