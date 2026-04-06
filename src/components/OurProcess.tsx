@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
-
+import img1 from "../assets/DSC06081.jpg";
+import img2 from "../assets/DSC06286.jpg";
+import img3 from "../assets/DSC06218.jpg";
+import img4 from "../assets/DSC06057.jpg";
 interface ProcessStep {
   id: number;
   title: string;
@@ -13,28 +16,28 @@ const steps: ProcessStep[] = [
     title: "Discovery Call",
     description:
       "We align on your goals, preferences, and budget to shape the perfect property search strategy.",
-    image: "https://uc90a0272d1e1539997904c4e075.previews.dropboxusercontent.com/p/thumb/AC8qGKEiU6Fg8iijaoCGkbIPSGzYrmt82oOcAOIB8s9BZl4LUSxGJX_os27LgTisIl6ALiACKQzY6UAuyqiiPOSS54odHELRJcNnVlwyVWQGDEWv2jAP9HuFcFmXTr9Rr8FER3h1IocuqxVlyCZOqFh9umxAFQIzVQFagYrpPct7ifeadLEDqZpShWKBTpHsF5NbaRo0shctpk8DR9CIlsyDZN0LPC3-_ZFH7rN1_YVTUMfvRaK0nSnY1Ks8q19-8Qy8fqdRKZIGRerXho2DBg4hML9jsOXNNXS5aif6PRKWYI9qDizPeYOP-ta17mZXgAoQa8MzLg12IlybKFOD5l2Hqye2i37Sc5ewESpQrsPx7p1S6U76HDzf9lR6BCiRODWhj0EJFks-ZGJLOytvI9QaVuBY8qF2PAKyb7uDO8PFUw/p.jpeg",
+    image: img1,
   },
   {
     id: 2,
     title: "We Find It",
     description:
       "We curate properties using our extensive network — including exclusive off-market opportunities.",
-    image: "https://ucc7b2884162acfa504ef8302e17.previews.dropboxusercontent.com/p/thumb/AC-IVbAC36HTCSEURrbt6HrTsA6PRrZrxQLdCsrlhy2JTS7rUiT1qX-lzk3QBlbiql_GWrdZIi9aqmn9UJq7ZzoGPa6CurJIC2lMpZQ4TiALyN55AAtTpe6idP7GrlM5ajJAX4DvagnF7sYAXxb52D1RlgGYSnx4tQgjluKDspuKCH2orvd7OOg42Ph-TU1wqBiHaRWzhCVSxq3qs6bC1N1dKSIcsRHI3oK0OmjCUOlo95PuGGBUsxJam9tee-30Qimggj8U0oGGjNsbqXudlRvHkwckWl-ek0tW4r17E53CdPswYFxAp2mAyHVCTAD_VqZRmLnjMDMuFUerknMKI6GwruDXMzChFnePBxmzONx1DQ/p.jpeg",
+    image: img2,
   },
   {
     id: 3,
     title: "We Inspect the Property",
     description:
       "Thorough due diligence on condition, value, and potential so you can decide with full confidence.",
-    image: "https://uc25af76dc81333756b0388dea63.previews.dropboxusercontent.com/p/thumb/AC_De3mK39PwHOHlJK4iaFCnIGZ2eHgLQHJzEE4RTZrxqxAKuVBNOnivC6YXkh0HdB7qe8bZ9mBOPqYKwfdPqlvGqGLQRMGZU4HbXH3pThNxkRm8bDXC7w66v9EEDrUVnOqenQnvj_diJFp6M5cEC6tgmEvegJ_p0XCPwam1xlGO9NYMasuR_lpn6loKwTM8OeF9yI4YK6VtZJNqgXQee8dfc0YPDteCxc0QNsXcUon7ngS-aWVnZX7s0llTmto0eJX7yDYAchQANyS5vSOuLnL6UKo_C_Bjxm6yF2_dmZ85AiA3wbOG7ovFhtNYI2jGYdZwTqw9fTVgEwZY0duvW3CgJa3ExjO8eC680QbBxcnKJpbQkt3qvpnP-sbjGkcprE-iMRfAoQtRdRPb61VsuQqxsmjiR0BbXEakrHLR_W2SDA/p.jpeg",
+    image: img3,
   },
   {
     id: 4,
     title: "You Sign It",
     description:
       "We handle negotiations, paperwork, and coordination — you just sign on the dotted line.",
-    image: "https://uc7d1f3c9a396cec24230c9da64e.previews.dropboxusercontent.com/p/thumb/AC81WxSR27MafKVl7vH3NjEr61FQ7_TH9xgxNP-SjjcWOYZ5Kclff2TlJXZsZhh_krxYsBEmz4H994WDu_ILOq7QNsgeN6RqvyLRgxV5hpcbJqH0D7BBsYFxVnWVoEhfks21XqzyZsdJjQ3KN8zchTJnadWf1_-ks64gospxUqe7VJ6eAY3R8FR-3lH4zZlB0A5KExu1QBL41zlRofu2Oe5Zao9xSKI-nIgIXUCWKXL4pjIVYD16rRpdH1A-1IOy6ynMNrXCg73FFD-Gmt-WpOYp6aEatrwonjEJ0mwMA2VrJ-ECuWE374WiMepPZPy7e-DHWkG_vs_UEbz6ZIHPT0odxXsU8fNZ27EHM-8XEP74Fw/p.jpeg",
+    image: img4,
   },
 ];
 
