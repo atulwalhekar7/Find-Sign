@@ -1,477 +1,297 @@
-import { useState, useEffect } from "react";
-import img1 from "../assets/DSC06081.jpg";
-import img2 from "../assets/DSC06286.jpg";
-import img3 from "../assets/DSC06218.jpg";
-import img4 from "../assets/DSC06057.jpg";
-interface ProcessStep {
+import { useCallback, useEffect, useRef, useState } from "react";
+
+interface Step {
   id: number;
   title: string;
   description: string;
-  image: string;
 }
 
-const steps: ProcessStep[] = [
+const steps: Step[] = [
   {
     id: 1,
-    title: "Discovery Call",
+    title: "Discovery call",
     description:
-      "We align on your goals, preferences, and budget to shape the perfect property search strategy.",
-    image: img1,
+      "We define your brief, budget and timing, and establish a clear direction for where and how to buy.",
   },
   {
     id: 2,
-    title: "We Find It",
+    title: "Finding the property",
     description:
-      "We curate properties using our extensive network — including exclusive off-market opportunities.",
-    image: img2,
+      "We identify and assess opportunities early, focusing only on properties that align with your brief and timing.",
   },
   {
     id: 3,
-    title: "We Inspect the Property",
+    title: "Inspections and due diligence",
     description:
-      "Thorough due diligence on condition, value, and potential so you can decide with full confidence.",
-    image: img3,
+      "Each property is inspected and assessed in detail to identify risks and long-term suitability.",
   },
   {
     id: 4,
-    title: "You Sign It",
+    title: "Assessment and evaluation",
     description:
-      "We handle negotiations, paperwork, and coordination — you just sign on the dotted line.",
-    image: img4,
+      "We determine fair value based on current market conditions, so decisions are informed and considered.",
+  },
+  {
+    id: 5,
+    title: "Negotiation and bidding",
+    description:
+      "We represent you through negotiation or auction, managing price and terms with a clear strategy.",
+  },
+  {
+    id: 6,
+    title: "Secure, settle and sign",
+    description:
+      "Once secured, we guide the process through to settlement and connect you with trusted partners where required.",
   },
 ];
 
-const GREEN = "#1F5D37";
-const GOLD  = "#8B6D38";
-
-const FALLBACK_COLORS: string[] = [
-  "linear-gradient(160deg, #1F5D37 0%, #0d3520 100%)",
-  "linear-gradient(160deg, #2a6e45 0%, #133d25 100%)",
-  "linear-gradient(160deg, #8B6D38 0%, #5a4420 100%)",
-  "linear-gradient(160deg, #3a7a52 0%, #0d3520 100%)",
-];
+const BG = "#edecea";
+const GREEN = "#003327";
+const STEP_INTERVAL = 500;
+const BODY_DELAY = 200;
+const LOOP_PAUSE = 2800;
+const RESET_DELAY = 500;
 
 export default function OurProcess() {
-  const [activeId, setActiveId]     = useState<number>(1);
-  const [imgVisible, setImgVisible] = useState<boolean>(true);
-  const [isPaused, setIsPaused]     = useState<boolean>(false);
+  const [visibleNums, setVisibleNums] = useState<number[]>([]);
+  const [visibleBodies, setVisibleBodies] = useState<number[]>([]);
+  const [btnHovered, setBtnHovered] = useState(false);
+  const timerIds = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const isRunning = useRef(false);
 
-  // Auto-advance every 2 seconds
-  useEffect(() => {
-    if (isPaused) return;
-    const timer = setInterval(() => {
-      setActiveId((prev) => (prev === steps.length ? 1 : prev + 1));
-    }, 2000);
-    return () => clearInterval(timer);
-  }, [isPaused]);
-
-  // Fade image out then in on step change
-  useEffect(() => {
-    setImgVisible(false);
-    const t = setTimeout(() => setImgVisible(true), 300);
-    return () => clearTimeout(t);
-  }, [activeId]);
-
-  const handleStepClick = (id: number) => {
-    setActiveId(id);
-    setIsPaused(true);
-    setTimeout(() => setIsPaused(false), 6000);
+  const clearAll = () => {
+    timerIds.current.forEach(clearTimeout);
+    timerIds.current = [];
   };
 
-  const activeStep  = steps.find((s) => s.id === activeId)!;
-  const progressPct = ((activeId - 1) / (steps.length - 1)) * 100;
+  const schedule = (fn: () => void, delay: number) => {
+    const id = setTimeout(fn, delay);
+    timerIds.current.push(id);
+    return id;
+  };
+
+  const reset = () => {
+    setVisibleNums([]);
+    setVisibleBodies([]);
+  };
+
+  const runSequence = useCallback(() => {
+    isRunning.current = true;
+    reset();
+
+    steps.forEach((step, i) => {
+      // number pops in
+      schedule(() => {
+        setVisibleNums((prev) => [...prev, step.id]);
+      }, 200 + i * STEP_INTERVAL);
+
+      // body slides in after number
+      schedule(() => {
+        setVisibleBodies((prev) => [...prev, step.id]);
+
+        // after last step, loop
+        if (i === steps.length - 1) {
+          schedule(() => {
+            isRunning.current = false;
+            reset();
+            schedule(() => {
+              runSequence();
+            }, RESET_DELAY);
+          }, LOOP_PAUSE);
+        }
+      }, 200 + i * STEP_INTERVAL + BODY_DELAY);
+    });
+  }, []);
+
+  useEffect(() => {
+    // small delay so component fully mounts
+    const init = setTimeout(() => runSequence(), 300);
+    return () => {
+      clearTimeout(init);
+      clearAll();
+    };
+  }, [runSequence]);
+
+  const handleReplay = () => {
+    clearAll();
+    isRunning.current = false;
+    reset();
+    setTimeout(() => runSequence(), 150);
+  };
 
   return (
-    <section style={s.section}>
-      <div style={s.container}>
+    <div style={{ background: BG, minHeight: "100vh", width: "100%" }}>
+      <section style={s.section}>
 
-        {/* LEFT — image */}
-        <div style={s.imageCol}>
-          <div
-            style={{
-              ...s.imageFallback,
-              background: FALLBACK_COLORS[activeId - 1],
-              transition: "background 0.5s ease",
-            }}
-          />
-          <img
-            key={activeStep.id}
-            src={activeStep.image}
-            alt={activeStep.title}
-            style={{
-              ...s.image,
-              opacity: imgVisible ? 1 : 0,
-              transition: "opacity 0.5s ease",
-            }}
-          />
-
-          {/* Overlay label */}
-          <div style={s.imageOverlay}>
-            <span style={s.overlayNum}>
-              {String(activeId).padStart(2, "0")} / {String(steps.length).padStart(2, "0")}
-            </span>
-            <span
-              style={{
-                ...s.overlayTitle,
-                opacity: imgVisible ? 1 : 0,
-                transform: imgVisible ? "translateY(0)" : "translateY(8px)",
-                transition: "opacity 0.4s ease, transform 0.4s ease",
-              }}
-            >
-              {activeStep.title}
-            </span>
-          </div>
-
-          {/* Progress bar */}
-          <div style={s.imgProgressTrack}>
-            <div
-              style={{
-                ...s.imgProgressFill,
-                width: `${((activeId - 1) / steps.length) * 100 + 100 / steps.length}%`,
-                transition: isPaused ? "none" : "width 1.8s linear",
-              }}
-            />
-          </div>
-        </div>
-
-        {/* RIGHT — timeline */}
-        <div style={s.right}>
-          <p style={s.eyebrow}>How it works</p>
-          <h2 style={s.title}>
-            Our <em style={s.titleItalic}>Process</em>
-          </h2>
+        <div style={s.head}>
+          <h2 style={s.title}>Our process</h2>
           <p style={s.subtitle}>
-            From start to finish, we handle every detail for you.
+            A structured approach to finding, securing and signing the right property.
           </p>
-
-          <div style={s.timeline}>
-            <div style={s.lineTrack} />
-            <div
-              style={{
-                ...s.lineFill,
-                height: `calc(${progressPct}%)`,
-                transition: "height 0.5s ease",
-              }}
-            />
-
-            {steps.map((step) => {
-              const isActive = activeId === step.id;
-              const isDone   = step.id < activeId;
-
-              return (
-                <div
-                  key={step.id}
-                  style={s.stepRow}
-                  onClick={() => handleStepClick(step.id)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => e.key === "Enter" && handleStepClick(step.id)}
-                >
-                  <div
-                    style={{
-                      ...s.circle,
-                      backgroundColor: isActive || isDone ? GREEN : "#f0efeb",
-                      borderColor:     isActive || isDone ? GREEN : "rgba(31,93,55,0.2)",
-                      color:           isActive || isDone ? "#ffffff" : "#999",
-                      opacity:   isDone ? 0.55 : 1,
-                      transform: isActive ? "scale(1.1)" : "scale(1)",
-                      transition: "all 0.3s ease",
-                    }}
-                  >
-                    {String(step.id).padStart(2, "0")}
-                  </div>
-
-                  <div style={s.stepInfo}>
-                    <p
-                      style={{
-                        ...s.stepTitle,
-                        color: isActive ? GREEN : "#444",
-                        transition: "color 0.25s ease",
-                      }}
-                    >
-                      {step.title}
-                    </p>
-                    <p
-                      style={{
-                        ...s.stepDesc,
-                        maxHeight: isActive ? "80px" : "0px",
-                        opacity:   isActive ? 1 : 0,
-                        marginTop: isActive ? "5px" : "0px",
-                        transition:
-                          "max-height 0.35s ease, opacity 0.3s ease, margin 0.3s ease",
-                      }}
-                    >
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Controls */}
-          <div style={s.controls}>
-            <button
-              style={s.pauseBtn}
-              onClick={() => setIsPaused((p) => !p)}
-              aria-label={isPaused ? "Resume autoplay" : "Pause autoplay"}
-            >
-              {isPaused ? (
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <path d="M3 2l7 4-7 4V2z" fill={GREEN} />
-                </svg>
-              ) : (
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <rect x="2" y="2" width="3" height="8" rx="1" fill={GREEN} />
-                  <rect x="7" y="2" width="3" height="8" rx="1" fill={GREEN} />
-                </svg>
-              )}
-            </button>
-
-            <div style={s.dots}>
-              {steps.map((step) => (
-                <button
-                  key={step.id}
-                  onClick={() => handleStepClick(step.id)}
-                  style={{
-                    ...s.dot,
-                    opacity:   activeId === step.id ? 1 : 0.2,
-                    transform: activeId === step.id ? "scale(1.4)" : "scale(1)",
-                    transition: "opacity 0.25s ease, transform 0.25s ease",
-                  }}
-                  aria-label={`Go to step ${step.id}`}
-                />
-              ))}
-            </div>
-          </div>
-
-          <button style={s.cta}>See more about our strategy</button>
         </div>
-      </div>
-    </section>
+
+        <ul style={s.list}>
+          {steps.map((step, i) => {
+            const numOn   = visibleNums.includes(step.id);
+            const bodyOn  = visibleBodies.includes(step.id);
+            const isLast  = i === steps.length - 1;
+
+            return (
+              <li key={step.id} style={s.item}>
+
+                {/* Number */}
+                <span style={{
+                  ...s.num,
+                  opacity:   numOn ? 1 : 0,
+                  transform: numOn ? "scale(1)" : "scale(0.45)",
+                  transition: "opacity 0.4s ease, transform 0.45s cubic-bezier(0.34,1.56,0.64,1)",
+                }}>
+                  {step.id}.
+                </span>
+
+                {/* Title + description */}
+                <div style={{
+                  ...s.body,
+                  opacity:   bodyOn ? 1 : 0,
+                  transform: bodyOn ? "translateY(0px)" : "translateY(14px)",
+                  transition: "opacity 0.35s ease, transform 0.4s cubic-bezier(0.22,1,0.36,1)",
+                }}>
+                  <p style={s.itemTitle}>{step.title}</p>
+                  <p style={s.itemDesc}>{step.description}</p>
+                </div>
+
+                {/* Arrow between steps */}
+                {!isLast && (
+                  <div style={{
+                    ...s.arrowWrap,
+                    opacity:    bodyOn ? 1 : 0,
+                    transition: "opacity 0.3s ease 0.25s",
+                  }}>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <circle cx="10" cy="10" r="9.5" stroke={`${GREEN}55`} />
+                      <path
+                        d="M10 6v8M10 14l-3-3M10 14l3-3"
+                        stroke={GREEN}
+                        strokeWidth="1.3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                )}
+
+              </li>
+            );
+          })}
+        </ul>
+
+        <div style={s.footer}>
+          <button
+            style={{
+              ...s.btn,
+              background: btnHovered ? GREEN     : "transparent",
+              color:      btnHovered ? "#ffffff" : GREEN,
+            }}
+            onMouseEnter={() => setBtnHovered(true)}
+            onMouseLeave={() => setBtnHovered(false)}
+            onClick={handleReplay}
+          >
+            HOW IT WORKS
+          </button>
+        </div>
+
+      </section>
+    </div>
   );
 }
 
 const s: Record<string, React.CSSProperties> = {
   section: {
-    backgroundColor: "#faf9f6",
-    borderTop: "1px solid rgba(31,93,55,0.1)",
-    padding: "96px 0 112px",
-    fontFamily: "'Cormorant Garamond', Georgia, serif",
+    background:  BG,
+    fontFamily:  "'DM Sans', sans-serif",
+    padding:     "64px 64px 80px",
+    maxWidth:    "640px",
+    margin:      "0 auto",
   },
-  container: {
-    maxWidth: "1100px",
-    margin: "0 auto",
-    padding: "0 40px",
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "80px",
-    alignItems: "center",
-  },
-  imageCol: {
-    position: "relative" as const,
-    borderRadius: "14px",
-    overflow: "hidden",
-    aspectRatio: "3 / 4",
-    backgroundColor: "#1a3a28",
-  },
-  imageFallback: {
-    position: "absolute" as const,
-    inset: 0,
-    zIndex: 0,
-  },
-  image: {
-    position: "absolute" as const,
-    inset: 0,
-    width: "100%",
-    height: "100%",
-    objectFit: "cover" as const,
-    display: "block",
-    zIndex: 1,
-  },
-  imageOverlay: {
-    position: "absolute" as const,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    zIndex: 2,
-    padding: "48px 24px 20px",
-    background: "linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%)",
-    display: "flex",
-    flexDirection: "column" as const,
-    gap: "4px",
-  },
-  overlayNum: {
-    fontFamily: "'DM Sans', sans-serif",
-    fontSize: "11px",
-    letterSpacing: "0.16em",
-    color: "rgba(255,255,255,0.6)",
-  },
-  overlayTitle: {
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "22px",
-    fontWeight: 500,
-    color: "#ffffff",
-    letterSpacing: "-0.01em",
-    display: "inline-block" as const,
-  },
-  imgProgressTrack: {
-    position: "absolute" as const,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: "3px",
-    backgroundColor: "rgba(255,255,255,0.2)",
-    zIndex: 3,
-  },
-  imgProgressFill: {
-    height: "100%",
-    backgroundColor: "#ffffff",
-    borderRadius: "0 2px 2px 0",
-  },
-  right: {
-    display: "flex",
-    flexDirection: "column" as const,
-  },
-  eyebrow: {
-    fontFamily: "'DM Sans', sans-serif",
-    fontSize: "11px",
-    letterSpacing: "0.2em",
-    textTransform: "uppercase" as const,
-    color: GOLD,
-    margin: "0 0 10px",
+  head: {
+    marginBottom: "36px",
   },
   title: {
-    fontSize: "clamp(32px, 4vw, 52px)",
-    fontWeight: 500,
-    color: "#1a1a1a",
-    margin: "0 0 10px",
-    lineHeight: 1.05,
-    letterSpacing: "-0.02em",
-  },
-  titleItalic: {
-    fontStyle: "italic",
-    color: GREEN,
-    fontWeight: 400,
-  },
-  subtitle: {
-    fontFamily: "'DM Sans', sans-serif",
-    fontSize: "14px",
-    color: "#666",
-    lineHeight: 1.6,
-    margin: "0 0 36px",
-  },
-  timeline: {
-    position: "relative" as const,
-    display: "flex",
-    flexDirection: "column" as const,
-  },
-  lineTrack: {
-    position: "absolute" as const,
-    left: "19px",
-    top: "20px",
-    bottom: "20px",
-    width: "1.5px",
-    backgroundColor: "rgba(31,93,55,0.15)",
-    zIndex: 0,
-  },
-  lineFill: {
-    position: "absolute" as const,
-    left: "19px",
-    top: "20px",
-    width: "1.5px",
-    backgroundColor: GREEN,
-    zIndex: 1,
-    minHeight: "0px",
-  },
-  stepRow: {
-    position: "relative" as const,
-    zIndex: 2,
-    display: "flex",
-    alignItems: "flex-start",
-    gap: "18px",
-    padding: "14px 0",
-    cursor: "pointer",
-    outline: "none",
-  },
-  circle: {
-    width: "40px",
-    height: "40px",
-    borderRadius: "50%",
-    border: "1.5px solid",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: "11px",
-    fontWeight: 500,
-    flexShrink: 0,
-    fontFamily: "'DM Sans', sans-serif",
-    letterSpacing: "0.05em",
-    userSelect: "none" as const,
-  },
-  stepInfo: {
-    paddingTop: "8px",
-    flex: 1,
-  },
-  stepTitle: {
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: "18px",
-    fontWeight: 500,
-    margin: 0,
+    fontFamily:    "'Playfair Display', serif",
+    fontSize:      "28px",
+    fontWeight:    500,
+    color:         GREEN,
+    marginBottom:  "8px",
     letterSpacing: "-0.01em",
   },
-  stepDesc: {
-    fontFamily: "'DM Sans', sans-serif",
-    fontSize: "13px",
-    color: "#666",
-    lineHeight: 1.7,
-    margin: 0,
-    overflow: "hidden",
+  subtitle: {
+    fontSize:   "13.5px",
+    color:      "#666",
+    lineHeight: 1.6,
+    margin:     0,
   },
-  controls: {
-    display: "flex",
-    alignItems: "center",
-    gap: "14px",
-    marginTop: "24px",
+  list: {
+    listStyle: "none",
+    padding:   0,
+    margin:    0,
   },
-  pauseBtn: {
-    width: "30px",
-    height: "30px",
-    borderRadius: "50%",
-    border: "1px solid rgba(31,93,55,0.3)",
-    backgroundColor: "transparent",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    cursor: "pointer",
-    flexShrink: 0,
+  item: {
+    display:               "grid",
+    gridTemplateColumns:   "90px 1fr",
+    columnGap:             "20px",
+    alignItems:            "start",
+    paddingBottom:         "4px",
   },
-  dots: {
-    display: "flex",
-    gap: "8px",
-    alignItems: "center",
+  num: {
+    fontFamily:      "'Playfair Display', serif",
+    fontSize:        "80px",
+    fontWeight:      400,
+    color:           GREEN,
+    lineHeight:      1,
+    display:         "block",
+    transformOrigin: "left center",
+    gridColumn:      "1",
+    gridRow:         "1",
   },
-  dot: {
-    width: "7px",
-    height: "7px",
-    borderRadius: "50%",
-    border: "none",
-    cursor: "pointer",
-    padding: 0,
-    backgroundColor: GREEN,
+  body: {
+    gridColumn: "2",
+    gridRow:    "1",
+    paddingTop: "10px",
   },
-  cta: {
-    marginTop: "28px",
-    alignSelf: "flex-start" as const,
-    fontFamily: "'DM Sans', sans-serif",
-    fontSize: "11px",
-    letterSpacing: "0.14em",
-    textTransform: "uppercase" as const,
-    backgroundColor: GREEN,
-    color: "#ffffff",
-    border: "none",
-    padding: "16px 32px",
-    borderRadius: "3px",
-    cursor: "pointer",
+  itemTitle: {
+    fontFamily:    "'Playfair Display', serif",
+    fontSize:      "17px",
+    fontWeight:    500,
+    color:         "#1a1a1a",
+    letterSpacing: "-0.01em",
+    margin:        "0 0 6px",
+  },
+  itemDesc: {
+    fontSize:   "13px",
+    color:      "#666",
+    lineHeight: 1.75,
+    margin:     0,
+  },
+  arrowWrap: {
+    gridColumn:      "1 / 3",
+    display:         "flex",
+    justifyContent:  "center",
+    padding:         "10px 0",
+  },
+  footer: {
+    marginTop:       "44px",
+    display:         "flex",
+    justifyContent:  "center",
+  },
+  btn: {
+    fontFamily:    "'Söhne', 'Helvetica Neue', Arial, sans-serif",
+    fontSize:      "11px",
+    fontWeight:    400,
+    letterSpacing: "0.22em",
+    border:        `1px solid ${GREEN}`,
+    padding:       "13px 32px",
+    cursor:        "pointer",
+    borderRadius:  "2px",
+    transition:    "background 0.2s ease, color 0.2s ease",
   },
 };

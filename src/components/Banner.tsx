@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import bannerImg from "../assets/DSC06227.jpg";
-// 1. UNCOMMENT THE LINE BELOW IN YOUR LOCAL PROJECT:
-// import bannerImg from "../assets/DSC06227.jpg";
+import brandVideo from "../assets/Interview Draft.mp4";
 
 const COLORS = {
   racingGreen: "#1B4332",
@@ -18,8 +17,23 @@ const FONTS = {
 };
 
 export default function App() {
-  // 2. DELETE THIS PLACEHOLDER LINE LOCALLY ONCE YOU UNCOMMENT THE IMPORT ABOVE:
-const bannerImgVar = bannerImg;
+  const [playVideo, setPlayVideo] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const handleVideoToggle = () => {
+    if (playVideo) {
+      // Pause video & show image
+      videoRef.current?.pause();
+      setPlayVideo(false);
+    } else {
+      // Play video
+      setPlayVideo(true);
+      setTimeout(() => {
+        videoRef.current?.play();
+      }, 100);
+    }
+  };
+
   return (
     <div className="page-wrapper">
       <style>{`
@@ -45,11 +59,36 @@ const bannerImgVar = bannerImg;
           display: flex;
           align-items: center;
           padding: 0 8%;
-          /* The variable 'bannerImg' is used here */
-          background-image: linear-gradient(${COLORS.overlay}, ${COLORS.overlay}), 
-                            url(${bannerImg});
+          overflow: hidden;
+          background-image: ${
+            !playVideo
+              ? `linear-gradient(${COLORS.overlay}, ${COLORS.overlay}), url(${bannerImg})`
+              : "none"
+          };
           background-size: cover;
           background-position: center;
+        }
+
+        .hero-video {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          z-index: 0;
+        }
+
+        .hero-overlay {
+          position: absolute;
+          inset: 0;
+          background: ${COLORS.overlay};
+          z-index: 1;
+        }
+
+        .content-wrap {
+          position: relative;
+          z-index: 2;
         }
 
         .hero-title {
@@ -68,7 +107,6 @@ const bannerImgVar = bannerImg;
           gap: 12px;
           background: rgba(0, 0, 0, 0.3);
           backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
           border: 1px solid rgba(255, 255, 255, 0.4);
           color: ${COLORS.white};
           padding: 14px 28px;
@@ -81,65 +119,34 @@ const bannerImgVar = bannerImg;
           transition: all 0.3s ease;
         }
 
-        .watch-btn:hover {
-          background: rgba(255, 255, 255, 0.1);
-          border-color: ${COLORS.white};
-        }
-
         .hero-bottom {
           padding: 80px 8%;
           background: #fff;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        .description {
-          font-size: clamp(16px, 2vw, 20px);
-          color: ${COLORS.textGray};
-          line-height: 1.6;
-          max-width: 900px;
-          margin-bottom: 3rem;
-          font-weight: 300;
-        }
-
-        .find-out-btn {
-          background: transparent;
-          border: 1px solid ${COLORS.aqua};
-          color: ${COLORS.racingGreen};
-          padding: 16px 36px;
-          font-size: 12px;
-          font-weight: 700;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          cursor: pointer;
-          border-radius: 4px;
-          transition: all 0.3s ease;
-          margin-bottom: 2rem;
-        }
-
-        .find-out-btn:hover {
-          background: ${COLORS.aqua};
-          color: white;
-        }
-
-        @media (max-width: 768px) {
-          .hero-top {
-            height: 60vh;
-          }
-          .hero-bottom {
-            padding: 50px 6%;
-          }
         }
       `}</style>
 
       <section className="hero-top">
+
+        {/* VIDEO */}
+        {playVideo && (
+          <>
+            <video
+              ref={videoRef}
+              className="hero-video"
+              src={brandVideo}
+              controls
+              onEnded={() => setPlayVideo(false)}
+            />
+            <div className="hero-overlay" />
+          </>
+        )}
+
         <div className="content-wrap">
           <h1 className="hero-title">
             The advantage<br />of being first.
           </h1>
           
-          <button className="watch-btn">
+          <button className="watch-btn" onClick={handleVideoToggle}>
             <svg width="10" height="12" viewBox="0 0 10 12" fill="none">
               <path d="M10 6L0 12V0L10 6Z" fill="white"/>
             </svg>
