@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import bannerImg from "../assets/DSC06227.jpg";
-import brandVideo from "../assets/Interview Draft.mp4";
+import brandVideo from "../assets/Interview Draft (1).mp4";
 
 const COLORS = {
   racingGreen: "#1B4332",
