@@ -68,7 +68,7 @@ export default function App() {
           gap: 12px;
           background: rgba(0, 0, 0, 0.25);
           backdrop-filter: blur(8px);
-          border: 1px solid rgba(255, 255, 255, 0.45);
+          border: 1px solid #2dd4bf;
           color: ${COLORS.white};
           padding: 12px 24px;
           font-family: ${FONTS.body};
@@ -108,7 +108,7 @@ export default function App() {
         .find-out-btn {
           display: inline-block;
           background: transparent;
-          border: 1px solid ${COLORS.textGray};
+          border: 1px solid #2dd4bf;
           color: ${COLORS.textGray};
           padding: 12px 32px;
           font-family: ${FONTS.body};

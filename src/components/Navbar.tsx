@@ -15,7 +15,7 @@ const FONTS = {
 
 const NAV_ITEMS = [
   { label: "About",    to: "/about"           },
-  { label: "Journeys", to: "/client-outcomes" },
+  { label: "Client Outcomes", to: "/client-outcomes" },
   { label: "Services", to: "/services"        },
   { label: "Insights", to: "/insights"        },
   { label: "Contact",  to: "/contact"         },
