@@ -191,6 +191,7 @@ export default function OurProcess() {
               ...s.btn,
               background: btnHovered ? GREEN     : "transparent",
               color:      btnHovered ? "#ffffff" : GREEN,
+              
             }}
             onMouseEnter={() => setBtnHovered(true)}
             onMouseLeave={() => setBtnHovered(false)}

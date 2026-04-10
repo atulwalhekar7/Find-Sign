@@ -69,7 +69,7 @@ export default function App() {
           background: rgba(0, 0, 0, 0.25);
           backdrop-filter: blur(8px);
           border: 1px solid #2dd4bf;
-          color: ${COLORS.white};
+          color: #003327;
           padding: 12px 24px;
           font-family: ${FONTS.body};
           font-size: 10px;
@@ -79,6 +79,7 @@ export default function App() {
           cursor: pointer;
           border-radius: 3px;
           transition: all 0.3s ease;
+          color:white;
         }
 
         .watch-btn:hover {
