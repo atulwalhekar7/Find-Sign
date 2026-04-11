@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import HERO_SRC from "../assets/DSC06268.jpg";
+
 
 /*
   Fonts (Figma type sheet):
@@ -15,12 +15,7 @@ const RACING_GREEN = "#003327";
 const WHITE        = "#FFFFFF";
 const BG           = "#FFFFFF";   /* Section background: white */
 
-const FONTS = {
-  display: "'GT Super Display', 'GT Super', 'Cormorant Garamond', Georgia, serif",
-  heading: "'GT Super', 'Cormorant Garamond', Georgia, serif",
-  body:    "'Söhne', 'DM Sans', sans-serif",
-  label:   "'WE SIGNED IT', 'DM Sans', sans-serif",
-} as const;
+
 
 const cards = [
   {
@@ -128,7 +123,7 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
           zIndex:          10,
         }}>
           <span style={{
-            fontFamily:    FONTS.body,
+            fontFamily:    "'Söhne', 'DM Sans', sans-serif",
             fontSize:      "9px",
             fontWeight:    400,
             color:         RACING_GREEN,
@@ -138,7 +133,7 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
             Growth
           </span>
           <span style={{
-            fontFamily: FONTS.display,
+            fontFamily: "'GT Super Display', 'GT Super', 'Cormorant Garamond', Georgia, serif",
             fontSize:   "20px",
             fontWeight: 400,
             color:      RACING_GREEN,
@@ -175,7 +170,7 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
             }}
           >
             <span style={{
-              fontFamily: FONTS.body,
+              fontFamily: "'Söhne', 'DM Sans', sans-serif",
               fontSize:   "13px",
               fontWeight: 300,           /* Söhne Leicht */
               color:      "#444",
@@ -183,7 +178,7 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
               {label}
             </span>
             <span style={{
-              fontFamily: FONTS.body,
+              fontFamily: "'Söhne', 'DM Sans', sans-serif",
               fontSize:   "13px",
               fontWeight: 400,           /* Söhne Buch */
               color:      RACING_GREEN,
@@ -389,8 +384,8 @@ export default function ClientOutcomes() {
           <button
             className="view-btn"
             style={{
-              fontFamily:    FONTS.label,
-              fontSize:      "10px",
+            fontFamily:    "'WE SIGNED IT', 'DM Sans', sans-serif",
+            fontSize:      "10px",
               fontWeight:    400,
               letterSpacing: "0.22em",
               textTransform: "uppercase" as const,

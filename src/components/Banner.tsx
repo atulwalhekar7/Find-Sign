@@ -1,4 +1,4 @@
-import React from "react";
+
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import bannerImg from "../assets/DSC06227.jpg";
@@ -49,11 +49,7 @@ const COLORS = {
   }
 */
 
-const FONTS = {
-  display: "'GT Super', 'Cormorant Garamond', Georgia, serif",  // D1, H1–H3
-  body:    "'Söhne', 'DM Sans', sans-serif",                    // B1–B3
-  label:   "'WE SIGNED IT', 'DM Sans', sans-serif",            // L1–L2
-} as const;
+
 
 const NAV_ITEMS = [
   { label: "About",           to: "/about"           },
@@ -106,14 +102,14 @@ function Navbar() {
               <NavLink
                 to={item.to}
                 style={({ isActive }) => ({
-                  fontFamily:     FONTS.body,
+                  fontFamily:     "'Söhne', 'DM Sans', sans-serif",
                   fontWeight:     400,
                   fontSize:       "14px",
                   color:          isActive ? COLORS.aqua : COLORS.racingGreen,
                   textDecoration: "none",
                   letterSpacing:  "0.02em",
                   transition:     "color 0.2s",
-                })}
+                })} 
               >
                 {item.label}
               </NavLink>
@@ -125,7 +121,7 @@ function Navbar() {
         <NavLink
           to="/contact"
           style={{
-            fontFamily:     FONTS.body,
+            fontFamily:     "'Söhne', 'DM Sans', sans-serif",
             fontWeight:     600,
             fontSize:       "11px",
             letterSpacing:  "0.14em",
@@ -182,7 +178,7 @@ function Navbar() {
               onClick={() => setMenuOpen(false)}
               style={({ isActive }) => ({
                 display:        "block",
-                fontFamily:     FONTS.body,
+                fontFamily:     "'Söhne', 'DM Sans', sans-serif",
                 fontSize:       "15px",
                 color:          isActive ? COLORS.aqua : COLORS.racingGreen,
                 fontWeight:     isActive ? 500 : 400,
@@ -200,7 +196,7 @@ function Navbar() {
             style={{
               display:        "inline-block",
               marginTop:      "16px",
-              fontFamily:     FONTS.body,
+              fontFamily:     "'Söhne', 'DM Sans', sans-serif",
               fontWeight:     600,
               fontSize:       "11px",
               letterSpacing:  "0.14em",

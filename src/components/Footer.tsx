@@ -28,7 +28,7 @@ const socialIcons = [
   },
 ];
 
-function SocialBtn({ icon, label }) {
+const SocialBtn: React.FC<{ icon: React.ReactNode; label: string }> = ({ icon, label }) => {
   const [hov, setHov] = useState(false);
   return (
     <button
@@ -50,7 +50,7 @@ function SocialBtn({ icon, label }) {
   );
 }
 
-function ColLink({ href = "#", children }) {
+const ColLink: React.FC<{ href?: string; children: React.ReactNode }> = ({ href = "#", children }) => {
   const [hov, setHov] = useState(false);
   return (
     <li style={{ listStyle: "none", marginBottom: 10 }}>
@@ -66,7 +66,7 @@ function ColLink({ href = "#", children }) {
   );
 }
 
-function ColTitle({ children }) {
+const ColTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <p style={{
       fontSize: 11, fontWeight: 700,

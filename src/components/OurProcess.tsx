@@ -49,16 +49,7 @@ const steps: Step[] = [
 const BG    = "rgb(255, 254, 253)";   /* updated background */
 const GREEN = "#003327";
 
-const FONTS = {
-  /* Numbers → GT Super Display (from Figma font search) */
-  display: "'GT Super Display', 'GT Super', 'Cormorant Garamond', Georgia, serif",
-  /* Headings / titles → GT Super Medium */
-  heading: "'GT Super', 'Cormorant Garamond', Georgia, serif",
-  /* Body → Söhne Leicht */
-  body:    "'Söhne', 'DM Sans', sans-serif",
-  /* Labels → WE SIGNED IT */
-  label:   "'WE SIGNED IT', 'DM Sans', sans-serif",
-} as const;
+
 
 export default function OurProcess() {
   const [btnHovered, setBtnHovered] = useState(false);

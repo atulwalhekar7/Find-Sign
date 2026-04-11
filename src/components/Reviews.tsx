@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 const reviews = [
   {
@@ -71,12 +71,12 @@ const ChevronRight = () => (
 
 const Reviews = () => {
   const [index, setIndex] = useState(0);
-  const trackRef = useRef(null);
-  const timerRef = useRef(null);
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const timerRef = useRef<number | null>(null);
   const maxIndex = reviews.length - VISIBLE;
 
   const goTo = useCallback(
-    (idx) => {
+    (idx: number) => {
       const clamped = Math.max(0, Math.min(idx, maxIndex));
       setIndex(clamped);
     },
@@ -103,7 +103,7 @@ const Reviews = () => {
     }
   }, [index]);
 
-  const handleNav = (dir) => {
+  const handleNav = (dir: number) => {
     goTo(index + dir);
     resetTimer();
   };
@@ -299,7 +299,7 @@ const Reviews = () => {
         {/* Slider */}
         <div className="fns-slider-outer">
           <div className="fns-track" ref={trackRef}>
-            {reviews.map((review, i) => (
+{reviews.map((review, i: number) => (
               <div key={i} className="fns-card">
                 <div className="fns-stars">★★★★★</div>
                 <p className="fns-card-headline">{review.headline}</p>
