@@ -1,14 +1,7 @@
 import { useState } from "react";
-import FAQ_HERO_SRC from "../assets/DSC06081.jpg"; // ← replace with your hero image path
-
-// ── Replace with your actual image import ─────────────────────────────────────
-// import faqHeroImg from "./assets/your-image.jpg";
-// Then replace src={FAQ_HERO_SRC} with src={faqHeroImg}
-// ─────────────────────────────────────────────────────────────────────────────
 
 interface FAQItem {
   id: number;
-  category: string;
   question: string;
   answer: string;
 }
@@ -16,60 +9,48 @@ interface FAQItem {
 const faqs: FAQItem[] = [
   {
     id: 1,
-    category: "About Us",
-    question: "What is Find & Sign?",
+    question: "What is a buyer's advocate?",
     answer:
-      "Find & Sign is a property buyer's advocate based in Western Australia. We represent buyers exclusively — not sellers — working inside the process to identify opportunities early and help you secure the right property with complete clarity and control.",
+      "A buyer's advocate (also called a buyer's agent) is a licensed professional who represents the buyer exclusively in a property transaction — not the seller. We search, evaluate, and negotiate on your behalf, using our market knowledge to get you the right property at the right price.",
   },
   {
     id: 2,
-    category: "Investment Properties",
-    question: "Can you help interstate investors buy in Western Australia?",
+    question: "Why use a buyer's advocate instead of searching independently?",
     answer:
-      "Absolutely. Many of our clients are NSW-based (and interstate) investors looking to diversify their portfolios into the WA market. We handle the entire process on the ground — from sourcing and inspecting to negotiating and settling — so you don't need to be there in person.",
+      "This is placeholder text to show how an answer will appear. It reflects the intended length and structure, allowing spacing and readability to be reviewed before final content is added.",
   },
   {
     id: 3,
-    category: "Investment Properties",
-    question: "What kind of investment properties do you find?",
+    question: "What challenges do buyers face in today's market?",
     answer:
-      "We source a range of investment properties depending on your strategy — from modern 3×2 homes in high-growth estates to properties in areas with strong rental demand and infrastructure development. We focus on areas with solid fundamentals: limited new supply, nearby amenities, transport links, and strong rental yields.",
+      "Today's property market moves fast. Limited stock, competitive bidding, and off-market deals make it difficult for buyers without industry access. We cut through the noise, providing you with verified opportunities before they reach the open market.",
   },
   {
     id: 4,
-    category: "Investment Properties",
-    question: "What rental yields can investors typically expect?",
+    question: "What does a buyer's advocate actually do?",
     answer:
-      "Rental yields vary by location and property type, but recent client outcomes include properties achieving $600pw on a $553,000 purchase and $585pw on a $539,000 purchase. We focus on properties offering strong ongoing returns, not just capital growth.",
+      "We manage the full buying process — from understanding your brief and sourcing properties to inspecting, evaluating, negotiating, and coordinating settlement. You get expert support at every stage with someone always working in your interest.",
   },
   {
     id: 5,
-    category: "Working With Us",
-    question: "Why should I use a buyer's advocate instead of searching myself?",
+    question: "Do you inspect every property before recommending it?",
     answer:
-      "Buying property without representation means you're often negotiating against agents who work for the seller. We level the playing field — providing expert market knowledge, access to pre-market opportunities, independent inspections, and negotiation support. Clients consistently tell us it removes the stress and uncertainty from the entire process.",
+      "Yes. Every property we recommend has been physically inspected and assessed against your specific criteria. We don't send you listings — we send you properties we'd be confident recommending to a friend.",
   },
   {
     id: 6,
-    category: "Working With Us",
-    question: "What do your clients say about working with Find & Sign?",
+    question: "Where should I invest?",
     answer:
-      "Our clients highlight our market knowledge, professionalism, and the confidence we give them throughout the process. Common feedback includes: 'went way above our needs,' 'total confidence throughout,' 'honest advice, great communication, and zero pressure.' We're proud that buyers consistently describe the experience as stress-free.",
+      "Location selection depends on your strategy, budget, and timeline. We focus on areas with strong fundamentals — limited supply, infrastructure investment, growing rental demand, and proximity to key amenities. We'll guide you based on your goals.",
+  },
+  {
+    id: 7,
+    question: "How much does a buyer's advocate cost?",
+    answer:
+      "Our fees are transparent and agreed upfront. We typically charge a flat engagement fee plus a success fee on settlement. Many clients find the savings we achieve in negotiation more than offset our fee — meaning we often pay for ourselves.",
   },
 ];
 
-// ── Colours ───────────────────────────────────────────────────────────────────
-const CREAM      = "#F5F2ED";
-const DARK_GREEN = "#1B3A2D";
-const MID_GREEN  = "#2D5A42";
-const ACCENT     = "#4CAF82";
-const GOLD       = "#C9A96E";
-const TEXT_BODY  = "#4A4A3F";
-const TEXT_MUTED = "#9A9A8A";
-const BORDER     = "#E2DDD5";
-const WHITE      = "#FFFFFF";
-
-// ── FAQ Section ───────────────────────────────────────────────────────────────
 export default function FindSignFAQ() {
   const [activeId, setActiveId] = useState<number | null>(null);
   const toggle = (id: number) => setActiveId(activeId === id ? null : id);
@@ -77,99 +58,169 @@ export default function FindSignFAQ() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap');
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(14px); }
-          to   { opacity: 1; transform: translateY(0); }
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=DM+Sans:wght@300;400;500&display=swap');
+
+        .faq-root {
+          background: #F5F2ED;
+          font-family: 'DM Sans', sans-serif;
+          width: 100%;
+          padding: 60px 196px;
+          box-sizing: border-box;
         }
-        .faq-btn:hover .faq-qtext { color: ${MID_GREEN}; }
-        .faq-item { border-top: 1px solid ${BORDER}; transition: background 0.2s ease; }
-        .faq-item:last-child { border-bottom: 1px solid ${BORDER}; }
-        .faq-item.open { background: rgba(255,255,255,0.6); border-radius: 2px; }
-        .view-btn:hover { background: ${DARK_GREEN} !important; color: ${ACCENT} !important; }
+
+        .faq-inner {
+          max-width: 1120px;
+          margin: 0 auto;
+          padding: 0 40px;
+          box-sizing: border-box;
+        }
+
+        .faq-header {
+          margin-bottom: 48px;
+        }
+
+        .faq-title {
+          font-family: "H2-GT Super";
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 500;
+    color: rgb(0, 51, 39);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 10px;
+        }
+
+        .faq-subtitle {
+          font-family: "B1-Söhne Leicht";
+    font-size: 15px;
+    font-weight: 300;
+    color: rgb(85, 85, 85);
+    line-height: 1.6;
+        }
+
+        .faq-list {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+
+        .faq-item {
+          border: 1px solid #D8D4CC;
+          background: #ffffff;
+          border-radius: 2px;
+          overflow: hidden;
+        }
+
+        .faq-question-btn {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 20px 24px;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          text-align: left;
+          gap: 24px;
+        }
+
+        .faq-question-text {
+          font-family: "B2-Söhne Buch";
+          font-size: 14px;
+          font-weight: 400;
+          color: #1B3A2D;
+          line-height: 1.5;
+        }
+
+        .faq-chevron {
+          flex-shrink: 0;
+          width: 18px;
+          height: 18px;
+          color: #1B3A2D;
+          transition: transform 0.25s ease;
+        }
+
+        .faq-chevron.open {
+          transform: rotate(180deg);
+        }
+
+        .faq-answer {
+          padding: 0 24px 20px 24px;
+          border-top: 1px solid #E8E4DC;
+        }
+
+        .faq-answer-text {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 13px;
+          font-weight: 300;
+          color: #4A4A3F;
+          line-height: 1.75;
+          margin: 16px 0 0 0;
+        }
+
+        .faq-cta {
+          margin-top: 48px;
+          text-align: center;
+        }
+
+        .view-all-btn {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 10px;
+          font-weight: 500;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: #1B3A2D;
+          border: 1px solid #1B3A2D;
+          padding: 14px 36px;
+          border-radius: 2px;
+          background: transparent;
+          cursor: pointer;
+          transition: background 0.2s, color 0.2s;
+        }
+
+        .view-all-btn:hover {
+          background: #1B3A2D;
+          color: #F5F2ED;
+        }
       `}</style>
 
-      {/* ── FAQ SECTION ── */}
-      <div style={{
-        position: "relative",
-        backgroundColor: CREAM,
-        fontFamily: "'DM Sans', sans-serif",
-        overflow: "hidden",
-        padding: "80px 24px 60px",
-      }}>
-        {/* Soft radial bg */}
-        <div style={{
-          position: "absolute", inset: 0, pointerEvents: "none",
-          backgroundImage: `radial-gradient(circle at 80% 20%, rgba(45,90,66,0.06) 0%, transparent 50%),
-                            radial-gradient(circle at 20% 80%, rgba(76,175,130,0.05) 0%, transparent 50%)`,
-        }} />
+      <div className="faq-root">
+        <div className="faq-inner">
 
-        <div style={{ position: "relative", maxWidth: 860, margin: "0 auto" }}>
-
-          {/* Header */}
-          <div style={{ textAlign: "center", marginBottom: 52, animation: "fadeUp 0.5s ease both" }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
-              <span style={{ display: "inline-block", width: 40, height: 1, background: GOLD, opacity: 0.8 }} />
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 500, letterSpacing: "0.18em", color: GOLD }}>
-                FREQUENTLY ASKED QUESTIONS
-              </p>
-              <span style={{ display: "inline-block", width: 40, height: 1, background: GOLD, opacity: 0.8 }} />
-            </div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(36px, 5vw, 54px)", fontWeight: 600, color: DARK_GREEN, lineHeight: 1.15, marginBottom: 16 }}>
-              Common{" "}
-              <em style={{ fontStyle: "italic", fontWeight: 400, color: MID_GREEN }}>Questions</em>
-            </h2>
-            <p style={{ fontSize: 16, color: TEXT_MUTED, fontWeight: 300, letterSpacing: "0.01em" }}>
-              Everything you need to know about working with Find &amp; Sign.
-            </p>
+          <div className="faq-header">
+            <h2 className="faq-title">FAQs</h2>
+            <p className="faq-subtitle">Answers to common questions about the process and how we work.</p>
           </div>
 
-          {/* FAQ List */}
-          <div>
-            {faqs.map((faq, index) => {
+          <div className="faq-list">
+            {faqs.map((faq) => {
               const isOpen = activeId === faq.id;
               return (
-                <div
-                  key={faq.id}
-                  className={`faq-item${isOpen ? " open" : ""}`}
-                  style={{ animation: `fadeUp 0.4s ${index * 0.05}s ease both` }}
-                >
+                <div key={faq.id} className="faq-item">
                   <button
-                    className="faq-btn"
+                    className="faq-question-btn"
                     onClick={() => toggle(faq.id)}
                     aria-expanded={isOpen}
-                    style={{
-                      width: "100%", display: "flex", alignItems: "center",
-                      justifyContent: "space-between", padding: "22px 16px",
-                      background: "transparent", border: "none", cursor: "pointer",
-                      textAlign: "left", gap: 16,
-                    }}
                   >
-                    <div style={{ display: "flex", alignItems: "flex-start", gap: 20, flex: 1 }}>
-                      <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 13, color: ACCENT, fontWeight: 600, letterSpacing: "0.05em", marginTop: 2, flexShrink: 0 }}>
-                        {String(faq.id).padStart(2, "0")}
-                      </span>
-                      <span className="faq-qtext" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, fontWeight: 500, color: DARK_GREEN, lineHeight: 1.4, letterSpacing: "-0.01em", transition: "color 0.2s" }}>
-                        {faq.question}
-                      </span>
-                    </div>
-                    <span style={{ color: isOpen ? ACCENT : TEXT_MUTED, flexShrink: 0, transition: "transform 0.3s ease, color 0.2s ease", display: "flex", alignItems: "center", transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}>
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
+                    <span className="faq-question-text">{faq.question}</span>
+                    <svg
+                      className={`faq-chevron${isOpen ? " open" : ""}`}
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M5 7.5L10 12.5L15 7.5"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </button>
 
                   {isOpen && (
-                    <div style={{ padding: "0 16px 24px 56px" }}>
-                      <div style={{ width: 32, height: 1, background: ACCENT, marginBottom: 16, opacity: 0.6 }} />
-                      <p style={{ fontSize: 15, color: TEXT_BODY, lineHeight: 1.75, fontWeight: 300, marginBottom: 16 }}>
-                        {faq.answer}
-                      </p>
-                      <span style={{ display: "inline-block", padding: "4px 12px", borderRadius: 100, background: "rgba(45,90,66,0.08)", color: MID_GREEN, fontSize: 11, fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                        {faq.category}
-                      </span>
+                    <div className="faq-answer">
+                      <p className="faq-answer-text">{faq.answer}</p>
                     </div>
                   )}
                 </div>
@@ -177,68 +228,10 @@ export default function FindSignFAQ() {
             })}
           </div>
 
-          {/* View All FAQs button */}
-          <div style={{ textAlign: "center", marginTop: 44 }}>
-            <button
-              className="view-btn"
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontWeight: 500, fontSize: 10,
-                letterSpacing: "0.22em", textTransform: "uppercase",
-                color: DARK_GREEN, border: `1.5px solid ${DARK_GREEN}`,
-                padding: "13px 32px", borderRadius: 4,
-                cursor: "pointer", background: "transparent",
-                transition: "background 0.2s, color 0.2s",
-              }}
-            >
-              View All FAQs
-            </button>
+          <div className="faq-cta">
+            <button className="view-all-btn">VIEW ALL FAQS</button>
           </div>
 
-        </div>
-      </div>
-
-      {/* ── HERO IMAGE SECTION ── */}
-      <div style={{
-        position: "relative",
-        width: "100%",
-        height: 860,
-        overflow: "hidden",
-        background: DARK_GREEN,
-        display: "block",
-        lineHeight: 0,
-      }}>
-        {/*
-          HOW TO USE YOUR OWN IMAGE:
-          1. import faqHeroImg from "./assets/your-image.jpg";
-          2. Change src below to: src={faqHeroImg}
-        */}
-        <img
-          src={FAQ_HERO_SRC}
-          alt="Where you buy matters more than when you buy"
-          style={{
-            width: "100%", height: "100",
-            objectFit: "cover", objectPosition: "center center",
-            display: "block",
-          }}
-        />
-
-        {/* Dark overlay */}
-        <div style={{ position: "absolute", inset: 0, background: "rgba(0,20,14,0.48)", pointerEvents: "none" }} />
-
-        {/* Centred headline */}
-        <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 24px" }}>
-          <h2 style={{
-            fontFamily: "'Cormorant Garamond', Georgia, serif",
-            fontWeight: 600, fontStyle: "italic",
-            fontSize: "clamp(24px, 3.4vw, 50px)",
-            color: WHITE, textAlign: "center",
-            lineHeight: 1.28, letterSpacing: "0.01em",
-            maxWidth: 720, margin: 0,
-            textShadow: "0 2px 24px rgba(0,0,0,0.45)",
-          }}>
-            Where you buy matters more than when you buy.
-          </h2>
         </div>
       </div>
     </>

@@ -1,118 +1,82 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 
-type Review = {
-  name: string;
-  meta: string;
-  text: string;
-  highlight: string;
-  avatarColor: string;
-};
-
-const reviews: Review[] = [
+const reviews = [
   {
     name: "Rok Son",
-    meta: "6 reviews · 5 months ago",
+    headline: "Professional &\nknowledgeable",
     text: "Working with Niki was an absolute pleasure from start to finish. He's professional, knowledgeable, and genuinely invested in finding the perfect property for his clients.",
-    highlight: "professional, knowledgeable",
-    avatarColor: "#2E5940",
   },
   {
     name: "Amit Bhardwaj",
-    meta: "3 reviews · a month ago",
+    headline: "One of the best\ndecisions we made",
     text: "Having Niki as our buyer's agent was one of the best decisions we made. From the very start, he genuinely cared about finding the right home for us.",
-    highlight: "one of the best decisions we made",
-    avatarColor: "#4A7C5F",
   },
   {
     name: "Oshi Thilakarathna",
-    meta: "9 reviews · 4 months ago",
+    headline: "Fantastic—\nprofessional, proactive",
     text: "Niki was fantastic—professional, proactive, and got the deal done smoothly. He made the whole process easy, and settlement was completely stress-free.",
-    highlight: "fantastic—professional, proactive",
-    avatarColor: "#C9A96E",
   },
   {
     name: "Rinzin Wangchuk",
-    meta: "4 reviews · 2 months ago",
-    text: "Niki is very professional and goes way above your needs. He provided us a detailed market scenario which greatly helped us in deciding where to buy our property in Perth.",
-    highlight: "way above your needs",
-    avatarColor: "#2E5940",
+    headline: "Goes way above\nyour needs",
+    text: "Niki is very professional and goes way above your needs. He provided us a detailed market scenario which greatly helped us in deciding where to buy in Perth.",
   },
   {
     name: "Dayna Bechar",
-    meta: "2 reviews · 5 months ago",
+    headline: "Total confidence\nthroughout",
     text: "Niki's market knowledge and clear communication gave us total confidence throughout. Thanks to Niki, we found our dream home without any stress. Highly recommend!",
-    highlight: "total confidence throughout",
-    avatarColor: "#1F3D2B",
   },
   {
     name: "Subho Ghosh",
-    meta: "2 reviews · a month ago",
-    text: "Niki and Bec were absolute legends. They really listened, stayed patient, and went the extra mile. Honest advice, great communication, and zero pressure. Couldn't have asked for better agents.",
-    highlight: "Honest advice, great communication, and zero pressure",
-    avatarColor: "#4A7C5F",
+    headline: "Honest advice,\nzero pressure",
+    text: "Niki and Bec were absolute legends. They really listened, stayed patient, and went the extra mile. Honest advice, great communication, and zero pressure.",
   },
   {
     name: "Kien Lam",
-    meta: "12 reviews · 7 months ago",
+    headline: "The best in\nthe business",
     text: "Niki is the best in the business. He has the best negotiating skills and can get you the best price for the property.",
-    highlight: "the best in the business",
-    avatarColor: "#C9A96E",
   },
   {
     name: "Jay Dass",
-    meta: "Local Guide · 35 reviews · 3 months ago",
+    headline: "Seamless,\nwell-managed",
     text: "From our first conversation through to completion, the process was seamless, well-managed and clearly communicated at every step. An absolute pleasure to work with.",
-    highlight: "seamless, well-managed",
-    avatarColor: "#2E5940",
   },
   {
     name: "Sahil Saini",
-    meta: "Local Guide · 49 reviews · 3 months ago",
+    headline: "A bargain\nsecured",
     text: "Niki is professional and great to work with. Not to mention the bargain he was able to secure for the property. His communication has been great throughout.",
-    highlight: "bargain he was able to secure",
-    avatarColor: "#1F3D2B",
   },
   {
     name: "Kush Hirani",
-    meta: "3 reviews · 3 months ago",
+    headline: "Above and\nbeyond",
     text: "Very pleased with Niki & Rebecca's service. Quick responses and always going above and beyond to make sure I found the right property. Doesn't pressure you at all.",
-    highlight: "above and beyond",
-    avatarColor: "#4A7C5F",
   },
 ];
 
-const AVATAR_COLORS = [
-  "#2E5940","#4A7C5F","#C9A96E","#1F3D2B","#2E5940",
-  "#4A7C5F","#C9A96E","#2E5940","#1F3D2B","#4A7C5F",
-];
-
-function getInitials(name: string) {
-  return name.split(" ").map((n) => n[0]).join("").slice(0, 2).toUpperCase();
-}
-
-function highlightText(text: string, highlight: string) {
-  if (!highlight) return <>{text}</>;
-  const idx = text.indexOf(highlight);
-  if (idx === -1) return <>{text}</>;
-  return (
-    <>
-      {text.slice(0, idx)}
-      <strong style={{ color: "#1F3D2B", fontWeight: 500 }}>{highlight}</strong>
-      {text.slice(idx + highlight.length)}
-    </>
-  );
-}
-
+const CARD_WIDTH = 352;
+const CARD_GAP = 24;
 const VISIBLE = 3;
 
-const Reviews: React.FC = () => {
+const ChevronLeft = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const ChevronRight = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const Reviews = () => {
   const [index, setIndex] = useState(0);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const trackRef = useRef(null);
+  const timerRef = useRef(null);
   const maxIndex = reviews.length - VISIBLE;
 
   const goTo = useCallback(
-    (idx: number) => {
+    (idx) => {
       const clamped = Math.max(0, Math.min(idx, maxIndex));
       setIndex(clamped);
     },
@@ -123,248 +87,232 @@ const Reviews: React.FC = () => {
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
       setIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-    }, 3500);
+    }, 4000);
   }, [maxIndex]);
 
   useEffect(() => {
     resetTimer();
-    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
   }, [resetTimer]);
 
   useEffect(() => {
     if (trackRef.current) {
-      const cardWidth = 384; // 360 card + 24 gap
-      trackRef.current.style.transform = `translateX(-${index * cardWidth}px)`;
+      trackRef.current.style.transform = `translateX(-${index * (CARD_WIDTH + CARD_GAP)}px)`;
     }
   }, [index]);
 
-  const handleNav = (dir: -1 | 1) => {
+  const handleNav = (dir) => {
     goTo(index + dir);
     resetTimer();
   };
 
   return (
     <>
-      {/* Google Font imports */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
 
-        .npb-section {
-          padding: 60px 40px;
-          background: #F8F5F0;
+        .fns-section {
+          background: #ffffff;
           font-family: 'DM Sans', sans-serif;
-          position: relative;
+          padding: 60px 196px;
+          box-sizing: border-box;
+          width: 100%;
+        }
+
+        .fns-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin-bottom: 48px;
+        }
+
+        .fns-header-left h2 {
+          font-family: "H2-GT Super";
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 500;
+    color: rgb(0, 51, 39);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 10px;
+        }
+
+        .fns-header-left p {
+          font-family: "B1-Söhne Leicht";
+    font-size: 15px;
+    font-weight: 300;
+    color: rgb(85, 85, 85);
+    line-height: 1.6;
+        }
+
+        .fns-arrows {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          margin-top: 8px;
+          flex-shrink: 0;
+        }
+
+        .fns-arrow-btn {
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          border: 1.5px solid #BBBBBB;
+          background: transparent;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #111111;
+          padding: 0;
+          transition: border-color 0.2s, background 0.2s, color 0.2s;
+          flex-shrink: 0;
+        }
+
+        .fns-arrow-btn:hover:not(:disabled) {
+          border-color: #111111;
+          background: #111111;
+          color: #ffffff;
+        }
+
+        .fns-arrow-btn:disabled {
+          opacity: 0.28;
+          cursor: default;
+        }
+
+        .fns-slider-outer {
           overflow: hidden;
         }
 
-        .npb-section::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background:
-            radial-gradient(ellipse at 20% 50%, rgba(31,61,43,0.04) 0%, transparent 60%),
-            radial-gradient(ellipse at 80% 20%, rgba(201,169,110,0.06) 0%, transparent 50%);
-          pointer-events: none;
+        .fns-track {
+          display: flex;
+          gap: ${CARD_GAP}px;
+          transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .npb-card {
-          min-width: 360px;
-          background: #fff;
-          border-radius: 24px;
-          padding: 32px 30px 28px;
-          box-shadow: 0 4px 20px rgba(31,61,43,0.07), 0 1px 3px rgba(0,0,0,0.04);
-          border: 1px solid rgba(31,61,43,0.06);
+        .fns-card {
+          min-width: ${CARD_WIDTH}px;
+          max-width: ${CARD_WIDTH}px;
+          min-height: 440px;
+          background: #1A3D2B;
+          border-radius: 16px;
+          padding: 36px 32px 32px;
+          box-sizing: border-box;
           display: flex;
           flex-direction: column;
-          gap: 18px;
-          transition: transform 0.35s ease, box-shadow 0.35s ease;
-          animation: npbFadeUp 0.6s ease forwards;
-          opacity: 0;
+          gap: 20px;
+          flex-shrink: 0;
         }
 
-        .npb-card:hover {
-          transform: translateY(-6px);
-          box-shadow: 0 16px 40px rgba(31,61,43,0.13);
+        .fns-stars {
+          color: #C9A96E;
+          font-size: 17px;
+          letter-spacing: 3px;
+          line-height: 1;
         }
 
-        @keyframes npbFadeUp {
-          to { opacity: 1; transform: translateY(0); }
+        .fns-card-headline {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 26px;
+          font-weight: 500;
+          line-height: 1.25;
+          color: #ffffff;
+          margin: 0;
+          white-space: pre-line;
         }
 
-        .npb-card:nth-child(1) { animation-delay: 0.1s; }
-        .npb-card:nth-child(2) { animation-delay: 0.2s; }
-        .npb-card:nth-child(3) { animation-delay: 0.3s; }
-        .npb-card:nth-child(4) { animation-delay: 0.4s; }
-        .npb-card:nth-child(5) { animation-delay: 0.5s; }
-        .npb-card:nth-child(6) { animation-delay: 0.6s; }
-
-        .npb-arrow:hover {
-          background: #1F3D2B !important;
-          border-color: #1F3D2B !important;
-          color: #fff !important;
+        .fns-card-body {
+          font-size: 14px;
+          font-weight: 300;
+          line-height: 1.75;
+          color: rgba(255, 255, 255, 0.7);
+          flex: 1;
+          margin: 0;
         }
 
-        .npb-dot {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background: #EDE8E0;
+        .fns-card-name {
+          font-size: 14px;
+          font-weight: 400;
+          color: rgba(255, 255, 255, 0.5);
+          margin: 0;
+          padding-top: 16px;
+          border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .fns-cta-row {
+          display: flex;
+          justify-content: center;
+          margin-top: 48px;
+        }
+
+        .fns-cta-btn {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 11px;
+          letter-spacing: 2.5px;
+          text-transform: uppercase;
+          font-weight: 500;
+          color: #111111;
+          background: transparent;
+          border: 1px solid #111111;
+          padding: 14px 36px;
           cursor: pointer;
-          border: none;
-          padding: 0;
-          transition: all 0.3s ease;
+          border-radius: 2px;
+          transition: background 0.2s, color 0.2s;
         }
 
-        .npb-dot.active {
-          width: 28px;
-          border-radius: 4px;
-          background: #1F3D2B;
+        .fns-cta-btn:hover {
+          background: #111111;
+          color: #ffffff;
         }
       `}</style>
 
-      <section className="npb-section">
+      <section className="fns-section">
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: 70, position: "relative", zIndex: 1 }}>
-          <div style={{
-            display: "inline-flex", alignItems: "center", gap: 10,
-            fontSize: 11, letterSpacing: 3, textTransform: "uppercase",
-            color: "#C9A96E", fontWeight: 500, marginBottom: 18,
-          }}>
-            <span style={{ width: 30, height: 1, background: "#C9A96E", display: "inline-block" }} />
-            Client Testimonials
-            <span style={{ width: 30, height: 1, background: "#C9A96E", display: "inline-block" }} />
+        <div className="fns-header">
+          <div className="fns-header-left">
+            <h2>What clients say</h2>
+            <p>In their own words, following their experience with Niki.</p>
           </div>
-          <h2 style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: 54, color: "#1F3D2B", lineHeight: 1.1, margin: "0 0 16px",
-          }}>
-            What Our Clients <em style={{ color: "#4A7C5F" }}>Say</em>
-          </h2>
-          <p style={{ color: "#7A7468", fontSize: 16, fontWeight: 300, letterSpacing: 0.3 }}>
-            Real experiences from real buyers — across Perth and beyond.
-          </p>
-        </div>
 
-        {/* Stats Bar */}
-       
+          {/* Figma-style circle chevron arrows */}
+          <div className="fns-arrows">
+            <button
+              className="fns-arrow-btn"
+              onClick={() => handleNav(-1)}
+              disabled={index <= 0}
+              aria-label="Previous reviews"
+            >
+              <ChevronLeft />
+            </button>
+            <button
+              className="fns-arrow-btn"
+              onClick={() => handleNav(1)}
+              disabled={index >= maxIndex}
+              aria-label="Next reviews"
+            >
+              <ChevronRight />
+            </button>
+          </div>
+        </div>
 
         {/* Slider */}
-        <div style={{
-          position: "relative", zIndex: 1, maxWidth: 1200,
-          margin: "0 auto", overflow: "hidden",
-        }}>
-          {/* Fade edges */}
-          <div style={{
-            position: "absolute", top: 0, bottom: 0, left: 0, width: 80,
-            background: "linear-gradient(to right, #F8F5F0, transparent)",
-            zIndex: 2, pointerEvents: "none",
-          }} />
-          <div style={{
-            position: "absolute", top: 0, bottom: 0, right: 0, width: 80,
-            background: "linear-gradient(to left, #F8F5F0, transparent)",
-            zIndex: 2, pointerEvents: "none",
-          }} />
-
-          <div style={{ overflow: "hidden" }}>
-            <div
-              ref={trackRef}
-              style={{ display: "flex", gap: 24, transition: "transform 0.65s cubic-bezier(0.4,0,0.2,1)" }}
-            >
-              {reviews.map((review, i) => (
-                <div key={i} className="npb-card">
-                  {/* Top row */}
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-                    <div style={{ display: "flex", gap: 3 }}>
-                      {[...Array(5)].map((_, s) => (
-                        <span key={s} style={{ color: "#C9A96E", fontSize: 14 }}>★</span>
-                      ))}
-                    </div>
-                    <span style={{
-                      fontFamily: "'Playfair Display', serif",
-                      fontSize: 52, color: "#EDE8E0", lineHeight: 0.6, fontWeight: 600,
-                    }}>"</span>
-                  </div>
-
-                  {/* Review text */}
-                  <p style={{ color: "#444", fontSize: 14.5, lineHeight: 1.7, fontWeight: 300, flex: 1 }}>
-                    {highlightText(review.text, review.highlight)}
-                  </p>
-
-                  {/* Footer */}
-                  <div style={{
-                    display: "flex", alignItems: "center", gap: 12,
-                    paddingTop: 16, borderTop: "1px solid #EDE8E0",
-                  }}>
-                    <div style={{
-                      width: 44, height: 44, borderRadius: "50%",
-                      background: AVATAR_COLORS[i % AVATAR_COLORS.length],
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      fontFamily: "'Playfair Display', serif",
-                      fontSize: 16, fontWeight: 600, color: "#fff", flexShrink: 0,
-                    }}>
-                      {getInitials(review.name)}
-                    </div>
-                    <div>
-                      <div style={{ fontSize: 14, fontWeight: 500, color: "#1F3D2B" }}>{review.name}</div>
-                      <div style={{ fontSize: 11, color: "#7A7468", marginTop: 2 }}>{review.meta}</div>
-                    </div>
-                    <div style={{
-                      marginLeft: "auto", display: "flex", alignItems: "center",
-                      gap: 4, fontSize: 10, color: "#7A7468", letterSpacing: 0.5,
-                    }}>
-                      <div style={{
-                        width: 14, height: 14, borderRadius: "50%", background: "#4285F4",
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                        fontSize: 8, color: "#fff", fontWeight: "bold",
-                      }}>G</div>
-                      Google
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+        <div className="fns-slider-outer">
+          <div className="fns-track" ref={trackRef}>
+            {reviews.map((review, i) => (
+              <div key={i} className="fns-card">
+                <div className="fns-stars">★★★★★</div>
+                <p className="fns-card-headline">{review.headline}</p>
+                <p className="fns-card-body">{review.text}</p>
+                <p className="fns-card-name">— {review.name}</p>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Dots */}
-        <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 40, position: "relative", zIndex: 1 }}>
-          {Array.from({ length: maxIndex + 1 }, (_, i) => (
-            <button
-              key={i}
-              className={`npb-dot${index === i ? " active" : ""}`}
-              onClick={() => { goTo(i); resetTimer(); }}
-            />
-          ))}
-        </div>
-
-        {/* Arrows */}
-        <div style={{ display: "flex", justifyContent: "center", gap: 12, marginTop: 24, position: "relative", zIndex: 1 }}>
-          <button
-            className="npb-arrow"
-            onClick={() => handleNav(-1)}
-            style={{
-              width: 44, height: 44, borderRadius: "50%",
-              border: "1.5px solid rgba(31,61,43,0.2)",
-              background: "transparent", cursor: "pointer",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              color: "#1F3D2B", fontSize: 16, transition: "all 0.25s ease",
-            }}
-          >
-            ←
-          </button>
-          <button
-            className="npb-arrow"
-            onClick={() => handleNav(1)}
-            style={{
-              width: 44, height: 44, borderRadius: "50%",
-              border: "1.5px solid rgba(31,61,43,0.2)",
-              background: "transparent", cursor: "pointer",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              color: "#1F3D2B", fontSize: 16, transition: "all 0.25s ease",
-            }}
-          >
-            →
-          </button>
+        {/* CTA */}
+        <div className="fns-cta-row">
+          <button className="fns-cta-btn">View more feedback</button>
         </div>
       </section>
     </>
