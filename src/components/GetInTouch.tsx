@@ -15,26 +15,24 @@ export default function NakraniContact() {
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .contact-page {
-          background: #F3F4F6;
-          min-height: 100vh;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-family: 'DM Sans', sans-serif;
-        }
+      .contact-page {
+  display: flex;
+  padding: 64px 196px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9);
+}
 
         /* Outer card */
-        .contact-card {
-          background: #ffffff;
-          border-radius: 0px;
-          width: 100%;
-          max-width: 1512px;
-          display: flex;
-          overflow: hidden;
-          min-height: 672px;
-          padding: 60px 196px;
-        }
+       .contact-card {
+  display: flex;
+  width: 1120px;
+  height: 544px;
+  align-items: flex-start;
+  gap: 36px;
+  background: var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9);
+}
 
         /* Left panel */
         .contact-left {
@@ -46,25 +44,33 @@ export default function NakraniContact() {
           justify-content: flex-start;
           gap: 16px;
           background: #ffffff;
+            background: var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9);
+
         }
 
-        .contact-left h2 {
-          font-family: "H2-GT Super";
-          font-size: clamp(28px, 3vw, 40px);
-          font-weight: 500;
-          color: rgb(0, 51, 39);
-          letter-spacing: -0.02em;
-          line-height: 1.1;
-        }
+      .contact-left h2 {
+  width: 350px;
+  height: 48px;
+  color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: "GT Super Display";
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 54px; /* 122.727% */
+  letter-spacing: -0.88px;
+}
 
-        .contact-left p {
-          font-family: "B1-Söhne Leicht";
-    font-size: 15px;
-    font-weight: 300;
-    color: rgb(85, 85, 85);
-    line-height: 1.6;
-        }
+       .contact-left p {
+  width: 297px;
+  color: #000;
+  font-family: "Söhne";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 36px; /* 150% */
 
+}
         /* Divider */
         // .contact-divider {
         //   width: 1px;
@@ -75,13 +81,13 @@ export default function NakraniContact() {
 
         /* Right panel */
         .contact-right {
-          width: 100%;
-          max-width: 734px;
-          padding: 0 0 0 48px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-        }
+  display: flex;
+  width: 734px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9);
+}
 
         /* Fields */
         .contact-field {
@@ -96,24 +102,27 @@ export default function NakraniContact() {
           gap: 16px;
         }
 
-        .contact-label {
-          font-size: 13px;
-          font-weight: 500;
-          color: #111827;
-        }
+       .contact-label {
+  color: var(--FS-BLACK, var(--Brand-Utility-FS-BLACK, #000));
+  font-family: "Söhne";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px; /* 140% */
+}
 
-        .contact-input {
-          width: 100%;
-          height: 48px;
-          border: 1px solid #E5E7EB;
-          border-radius: 0px;
-          padding: 0 14px;
-          font-size: 14px;
-          font-weight: 300;
-          color: #111827;
-          background: #ffffff;
-          outline: none;
-        }
+       .contact-input {
+  display: flex;
+  height: 48px;
+  padding: 8px 16px;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 8px;
+  background: var(--Brand-Utility-FS-WHITE, #FFF);
+  border: none;
+    outline: none;
+}
 
         .contact-input::placeholder {
           color: #9CA3AF;
@@ -123,19 +132,19 @@ export default function NakraniContact() {
           border-color: #2DD4BF;
         }
 
-        .contact-textarea {
-          width: 100%;
-          height: 144px;
-          border: 1px solid #E5E7EB;
-          border-radius: 0px;
-          padding: 14px;
-          font-size: 14px;
-          font-weight: 300;
-          color: #111827;
-          background: #ffffff;
-          outline: none;
-          resize: none;
-        }
+       .contact-textarea {
+  display: flex;
+  height: 112px;
+  padding: 8px 16px;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 8px;
+  background: var(--Brand-Utility-FS-WHITE, #FFF);
+  margin-bottom: 8px;
+  border: none;
+    outline: none;
+}
 
         .contact-textarea::placeholder {
           color: #9CA3AF;
@@ -146,20 +155,19 @@ export default function NakraniContact() {
         }
 
         /* Button */
-        .contact-btn {
-          width: 100%;
-          height: 48px;
-          background: #2DD4BF;
-          color: #ffffff;
-          border: none;
-          border-radius: 0px;
-          font-size: 11px;
-          font-weight: 600;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          cursor: pointer;
-          margin-top: 24px;
-        }
+     .contact-btn {
+  display: flex;
+  width: 725.921px;
+  height: 48px;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: var(--Brand-Contrast-FS-AQUA, #69E4DC);
+  border: none;
+  outline: none;
+}
 
         .contact-btn:hover {
           background: #14B8A6;

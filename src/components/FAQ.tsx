@@ -61,13 +61,14 @@ export default function FindSignFAQ() {
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=DM+Sans:wght@300;400;500&display=swap');
 
         .faq-root {
-          background: #F5F2ED;
-          font-family: 'DM Sans', sans-serif;
-          width: 100%;
-          padding: 60px 196px;
-          box-sizing: border-box;
-        }
-
+  display: flex;
+  width: 1512px;
+  padding: 64px 196px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9);
+}
         .faq-inner {
           max-width: 1120px;
           margin: 0 auto;
@@ -79,23 +80,29 @@ export default function FindSignFAQ() {
           margin-bottom: 48px;
         }
 
-        .faq-title {
-          font-family: "H2-GT Super";
-    font-size: clamp(28px, 3vw, 44px);
-    font-weight: 500;
-    color: rgb(0, 51, 39);
-    letter-spacing: -0.02em;
-    line-height: 1.05;
-    margin-bottom: 10px;
-        }
+       .faq-title {
+  width: 352px;
+  height: 56px;
+  flex-shrink: 0;
+  color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: "GT Super Display";
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 54px; /* 122.727% */
+  letter-spacing: -0.88px;
+}
 
-        .faq-subtitle {
-          font-family: "B1-Söhne Leicht";
-    font-size: 15px;
-    font-weight: 300;
-    color: rgb(85, 85, 85);
-    line-height: 1.6;
-        }
+       .faq-subtitle {
+  width: 733px;
+  color: #000;
+  font-family: "Söhne";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 36px; /* 150% */
+}
 
         .faq-list {
           display: flex;
@@ -124,12 +131,13 @@ export default function FindSignFAQ() {
         }
 
         .faq-question-text {
-          font-family: "B2-Söhne Buch";
-          font-size: 14px;
-          font-weight: 400;
-          color: #1B3A2D;
-          line-height: 1.5;
-        }
+  color: var(--FS-BLACK, var(--Brand-Utility-FS-BLACK, #000));
+  font-family: "Söhne";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px; /* 140% */
+}
 
         .faq-chevron {
           flex-shrink: 0;
@@ -149,34 +157,42 @@ export default function FindSignFAQ() {
         }
 
         .faq-answer-text {
-          font-family: 'DM Sans', sans-serif;
-          font-size: 13px;
-          font-weight: 300;
-          color: #4A4A3F;
-          line-height: 1.75;
-          margin: 16px 0 0 0;
-        }
+  flex: 1 0 0;
+  color: var(--FS-System-Grey-1, #757575);
+  font-family: "Söhne";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px; /* 140% */
+}
 
         .faq-cta {
           margin-top: 48px;
           text-align: center;
         }
 
-        .view-all-btn {
-          font-family: 'DM Sans', sans-serif;
-          font-size: 10px;
-          font-weight: 500;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          color: #1B3A2D;
-          border: 1px solid #1B3A2D;
-          padding: 14px 36px;
-          border-radius: 2px;
-          background: transparent;
-          cursor: pointer;
-          transition: background 0.2s, color 0.2s;
-        }
+      .view-all-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 
+    padding: 14px 36px;
+    border: 1px solid var(--FS-AQUA, #00BFA6);
+    border-radius: 2px;
+    background: transparent;
+
+    color: var(--FS-RACING-GREEN, #073B2F);
+
+    font-family: "CX80 Trial VAR";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 150;
+    line-height: 15px;
+    letter-spacing: 4.8px;
+
+    text-transform: uppercase;
+    cursor: pointer;
+}
         .view-all-btn:hover {
           background: #1B3A2D;
           color: #F5F2ED;
