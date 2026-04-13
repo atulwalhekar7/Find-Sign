@@ -136,31 +136,35 @@ const s: Record<string, React.CSSProperties> = {
   },
 
   /* GT Super Medium — H2 heading */
-  title: {
-    fontFamily:     "H2-GT Super",
-    fontSize:      "clamp(28px, 3vw, 40px)",
-    fontWeight:    500,
-    color:         GREEN,
-    marginBottom:  "12px",
-    letterSpacing: "-0.02em",
-    lineHeight:    1.1,
-    height: "54px",
-    width: "1120px",
-  },
+ title: {
+  fontFamily: "GT Super Display",
+  fontSize: "44px",
+  fontStyle: "normal",
+  fontWeight: 500,
+  color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+  lineHeight: "54px",
+  letterSpacing: "-0.88px",
+  fontVariantNumeric: "lining-nums proportional-nums",
+
+  marginBottom: "12px",
+  height: "54px",
+  width: "1120px",
+},
 
   /* Söhne Leicht — 1120 Fill × 54 Hug */
-  subtitle: {
-    fontFamily: "B1-Söhne Leicht",
-    fontSize:   "16px",
-    fontWeight: 300,
-    color:      "#555",
-    lineHeight: 1.7,
-    margin:     0,
-    maxWidth:   "1120px",
-    height: "36px",
-    width: "804px",
-  },
+ subtitle: {
+  fontFamily: "Söhne",
+  fontSize: "24px",
+  fontStyle: "normal",
+  fontWeight: 300,
+  color: "#000",
+  lineHeight: "36px",
 
+  margin: 0,
+  maxWidth: "1120px",
+  height: "36px",
+  width: "804px",
+},
   list: {
     listStyle: "none",
     padding:   0,
@@ -183,16 +187,20 @@ const s: Record<string, React.CSSProperties> = {
   },
 
   /* GT Super Display — large numbers */
-  num: {
-    fontFamily: "GT Super Display",
-    fontSize:   "clamp(72px, 8vw, 100px)",
-    fontWeight: 400,              /* Display weight is 400 in GT Super Display */
-    color:      GREEN,
-    lineHeight: 1,
-    display:    "block",
-    height: "148px",
-    width: "145px",
-  },
+ num: {
+  fontFamily: "GT Super Display",
+  fontSize: "168px",
+  fontStyle: "normal",
+  fontWeight: 500,
+  color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+  lineHeight: "148px",
+  letterSpacing: "-5.04px",
+  fontVariantNumeric: "lining-nums proportional-nums",
+
+  display: "block",
+  height: "148px",
+  width: "145px",
+},
 
   /* Content — W:733 */
   content: {
@@ -202,24 +210,29 @@ const s: Record<string, React.CSSProperties> = {
 
   /* GT Super Medium — step title */
   itemTitle: {
-    fontFamily:    "H3-GT Super Medium",
-    fontSize:      "clamp(16px, 1.5vw, 20px)",
-    fontWeight:    500,
-    color:         GREEN,
-    letterSpacing: "-0.01em",
-    lineHeight:    1.2,
-    margin:        "0 0 10px",
-  },
+  fontFamily: "GT Super Display",
+  fontSize: "32px",
+  fontStyle: "normal",
+  fontWeight: 500,
+  color: "#000",
+  lineHeight: "40px",
+  letterSpacing: "-0.64px",
+  fontVariantNumeric: "lining-nums proportional-nums",
+
+  margin: "0 0 10px",
+},
 
   /* Söhne Leicht — step description */
   itemDesc: {
-    fontFamily: "B2-Söhne Buch",
-    fontSize:   "14px",
-    fontWeight: 300,
-    color:      "#555",
-    lineHeight: 1.75,
-    margin:     0,
-  },
+  fontFamily: "Söhne",
+  fontSize: "20px",
+  fontStyle: "normal",
+  fontWeight: 400,
+  color: "var(--sds-color-text-default-secondary)",
+  lineHeight: "28px",
+
+  margin: 0,
+},
 
   /* Thin divider between steps */
   divider: {
@@ -236,16 +249,15 @@ const s: Record<string, React.CSSProperties> = {
   },
 
   /* WE SIGNED IT — label style button */
-  btn: {
-    fontFamily:    "L2-WE SIGNED IT",
-    fontSize:      "11px",
-    fontWeight:    400,
-    letterSpacing: "0.22em",
-    textTransform: "uppercase" as const,
-    border:        `1px solid ${GREEN}`,
-    padding:       "13px 32px",
-    cursor:        "pointer",
-    borderRadius:  "2px",
-    transition:    "background 0.2s ease, color 0.2s ease",
-  },
+ btn: {
+  display: "flex",
+  height: "48px",
+  padding: "12px 16px",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "10px",
+
+  borderRadius: "8px",
+  border: "1px solid var(--Brand-Contrast-FS-AQUA, #69E4DC)",
+},
 };

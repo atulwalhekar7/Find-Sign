@@ -1,21 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 
-
-/*
-  Fonts (Figma type sheet):
-  - "Client outcomes" heading  → GT Super Medium
-  - Subtitle                   → Söhne Leicht
-  - Card labels/values         → Söhne Buch
-  - Button                     → WE SIGNED IT
-  - Growth circle text         → GT Super Display
-*/
-
 const AQUA         = "#69E4DC";
 const RACING_GREEN = "#003327";
 const WHITE        = "#FFFFFF";
-const BG           = "#FFFFFF";   /* Section background: white */
-
-
+const BG           = "#FFFFFF";
 
 const cards = [
   {
@@ -76,28 +64,31 @@ const cards = [
 
 const VISIBLE  = 3;
 const INTERVAL = 3000;
+const GAP      = 32;
+const CARD_W   = 352;
+const CARD_H   = 440;
 
 /* ── Property Card — 352 × 440 ── */
 function PropertyCard({ card }: { card: typeof cards[0] }) {
   return (
     <div style={{
-      width:        "352px",
-      minHeight:    "440px",
-      background:   WHITE,
-      border:       "1px solid rgba(0,51,39,0.10)",
-      overflow:     "visible",           /* allow growth circle to overflow */
-      position:     "relative",
-      flexShrink:   0,
-      display:      "flex",
-      flexDirection:"column",
+      width:         "352px",
+      minHeight:     "440px",
+      background:    WHITE,
+      border:        "1px solid rgba(0,51,39,0.10)",
+      overflow:      "visible",
+      position:      "relative",
+      flexShrink:    0,
+      display:       "flex",
+      flexDirection: "column",
     }}>
 
-      {/* Image area — top portion of card */}
+      {/* Image area */}
       <div style={{
         position:   "relative",
         width:      "100%",
         height:     "220px",
-        background: "#d9d9d9",           /* checkerboard placeholder colour */
+        background: "#d9d9d9",
         overflow:   "hidden",
         flexShrink: 0,
       }}>
@@ -107,20 +98,20 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
           style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
         />
 
-        {/* Growth circle — overlaps bottom of image into card body */}
+        {/* Growth circle */}
         <div style={{
-          position:        "absolute",
-          bottom:          "-44px",
-          right:           "18px",
-          width:           "90px",
-          height:          "90px",
-          borderRadius:    "50%",
-          background:      AQUA,
-          display:         "flex",
-          flexDirection:   "column",
-          alignItems:      "center",
-          justifyContent:  "center",
-          zIndex:          10,
+          position:       "absolute",
+          bottom:         "-44px",
+          right:          "18px",
+          width:          "90px",
+          height:         "90px",
+          borderRadius:   "50%",
+          background:     AQUA,
+          display:        "flex",
+          flexDirection:  "column",
+          alignItems:     "center",
+          justifyContent: "center",
+          zIndex:         10,
         }}>
           <span style={{
             fontFamily:    "'Söhne', 'DM Sans', sans-serif",
@@ -144,12 +135,12 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
         </div>
       </div>
 
-      {/* Data rows — Söhne Buch */}
+      {/* Data rows */}
       <div style={{
-        padding:        "56px 18px 20px",   /* 56px top = space for growth circle overflow */
-        display:        "flex",
-        flexDirection:  "column",
-        flex:           1,
+        padding:       "56px 18px 20px",
+        display:       "flex",
+        flexDirection: "column",
+        flex:          1,
       }}>
         {[
           { label: "Purchase price", val: card.purchasePrice },
@@ -172,7 +163,7 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
             <span style={{
               fontFamily: "'Söhne', 'DM Sans', sans-serif",
               fontSize:   "13px",
-              fontWeight: 300,           /* Söhne Leicht */
+              fontWeight: 300,
               color:      "#444",
             }}>
               {label}
@@ -180,7 +171,7 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
             <span style={{
               fontFamily: "'Söhne', 'DM Sans', sans-serif",
               fontSize:   "13px",
-              fontWeight: 400,           /* Söhne Buch */
+              fontWeight: 400,
               color:      RACING_GREEN,
             }}>
               {val}
@@ -191,43 +182,6 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
     </div>
   );
 }
-
-/* ── Hero Banner ── */
-// function HeroBanner() {
-//   return (
-//     <div style={{
-//       position:   "relative",
-//       width:      "100%",
-//       height:     "698px",
-//       overflow:   "hidden",
-//       background: RACING_GREEN,
-//       lineHeight: 0,
-//     }}>
-//       <img
-//         src={HERO_SRC}
-//         alt="The right property, secured before the wider market"
-//         style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
-//       />
-//       <div style={{ position: "absolute", inset: 0, background: "rgba(0,20,14,0.40)", pointerEvents: "none" }} />
-//       <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 24px" }}>
-//         <h2 style={{
-//           fontFamily:    FONTS.heading,
-//           fontWeight:    500,
-//           fontStyle:     "italic",
-//           fontSize:      "clamp(22px, 3.2vw, 46px)",
-//           color:         WHITE,
-//           textAlign:     "center",
-//           lineHeight:    1.28,
-//           letterSpacing: "0.01em",
-//           maxWidth:      "680px",
-//           margin:        0,
-//         }}>
-//           The right property, secured before the wider market
-//         </h2>
-//       </div>
-//     </div>
-//   );
-// }
 
 /* ── Main Export ── */
 export default function ClientOutcomes() {
@@ -255,11 +209,6 @@ export default function ClientOutcomes() {
   const handlePrev = () => { goto(cur - 1); resetTimer(); };
   const handleNext = () => { goto(cur + 1); resetTimer(); };
 
-  /* card width: (1120px - 2 gaps of 24px) / 3 ≈ 352px — matches Figma */
-  const GAP      = 24;
-  const CARD_W   = 352;
-  const TRACK_W  = CARD_W * VISIBLE + GAP * (VISIBLE - 1);
-
   return (
     <>
       <style>{`
@@ -270,142 +219,166 @@ export default function ClientOutcomes() {
         .view-btn:hover { background: ${RACING_GREEN} !important; color: ${WHITE} !important; }
       `}</style>
 
-      {/* ── CAROUSEL SECTION — 1512 × 860 ── */}
+      {/* ── OUTER CONTAINER — Figma: display:flex; width:1512px; padding:64px 196px; flex-direction:column; align-items:flex-start; gap:10px ── */}
       <div style={{
-        background: BG,
-        width:      "100%",
-        maxWidth:   "1512px",
-        margin:     "0 auto",
-        padding:    "60px 196px 60px",   /* side padding centres 1120px content */
-        boxSizing:  "border-box",
+        background:    BG,
+        width:         "1512px",
+        display:       "flex",
+        flexDirection: "column",
+        alignItems:    "flex-start",
+        padding:       "64px 196px",
+        gap:           "10px",
+        boxSizing:     "border-box",
       }}>
 
-        {/* Header row — 1120 × 116 */}
+        {/* ── INNER CONTENT — Figma: display:flex; width:1120px; flex-direction:column; align-items:center; gap:64px ── */}
         <div style={{
-          display:        "flex",
-          justifyContent: "space-between",
-          alignItems:     "flex-start",
-          maxWidth:       "1120px",
-          margin:         "0 auto 40px",
+          width:         "1120px",
+          display:       "flex",
+          flexDirection: "column",
+          alignItems:    "center",
+          gap:           "64px",
         }}>
-          {/* Left: title + subtitle */}
-          <div>
-            {/* GT Super Medium — H1 */}
-            <h2 style={{
-              fontFamily:    "H2-GT Super",
-              fontSize:      "clamp(28px, 3vw, 44px)",
-              fontWeight:    500,
-              color:         RACING_GREEN,
-              letterSpacing: "-0.02em",
-              lineHeight:    1.05,
-              marginBottom:  "10px",
-            }}>
-              Client outcomes
-            </h2>
-            {/* Söhne Leicht — subtitle */}
-            <p style={{
-              fontFamily: "B1-Söhne Leicht",
-              fontSize:   "15px",
-              fontWeight: 300,
-              color:      "#555",
-              lineHeight: 1.6,
-            }}>
-              Growth achieved through early access and informed decisions.
-            </p>
-          </div>
 
-          {/* Right: prev / next arrows */}
-          <div style={{ display: "flex", gap: "10px", alignItems: "center", paddingTop: "6px" }}>
-            <button
-              className="arr-btn"
-              onClick={handlePrev}
-              disabled={cur === 0}
-              style={{
-                width:        "36px",
-                height:       "36px",
-                borderRadius: "50%",
-                border:       `1.5px solid ${RACING_GREEN}`,
-                background:   "transparent",
-                cursor:       cur === 0 ? "default" : "pointer",
-                display:      "flex",
-                alignItems:   "center",
-                justifyContent: "center",
-                opacity:      cur === 0 ? 0.35 : 1,
-              }}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                <path d="M15 18l-6-6 6-6" stroke={RACING_GREEN} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-            <button
-              className="arr-btn"
-              onClick={handleNext}
-              disabled={cur === maxIdx}
-              style={{
-                width:          "36px",
-                height:         "36px",
-                borderRadius:   "50%",
-                border:         `1.5px solid ${RACING_GREEN}`,
-                background:     "transparent",
-                cursor:         cur === maxIdx ? "default" : "pointer",
-                display:        "flex",
-                alignItems:     "center",
-                justifyContent: "center",
-                opacity:        cur === maxIdx ? 0.35 : 1,
-              }}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                <path d="M9 18l6-6-6-6" stroke={RACING_GREEN} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {/* Slider track */}
-        <div
-          style={{ overflow: "hidden", maxWidth: `${TRACK_W}px`, margin: "0 auto" }}
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
+          {/* Header row */}
           <div style={{
-            display:    "flex",
-            gap:        `${GAP}px`,
-            transition: "transform 0.55s cubic-bezier(0.77,0,0.18,1)",
-            transform:  `translateX(calc(-${cur} * (${CARD_W}px + ${GAP}px)))`,
+            width:          "100%",
+            display:        "flex",
+            justifyContent: "space-between",
+            alignItems:     "flex-start",
           }}>
-            {cards.map((card) => (
-              <PropertyCard key={card.id} card={card} />
-            ))}
+            {/* Left: title + subtitle */}
+            <div>
+              <h2 style={{
+                width:              "352px",
+                height:             "56px",
+                flexShrink:         0,
+                color:              "var(--FS-RACING-GREEN, #073B2F)",
+                fontVariantNumeric: "lining-nums proportional-nums",
+                fontFamily:         "'GT Super Display', Georgia, serif",
+                fontSize:           "44px",
+                fontStyle:          "normal",
+                fontWeight:         500,
+                lineHeight:         "54px",
+                letterSpacing:      "-0.88px",
+              }}>
+                Client outcomes
+              </h2>
+              <p style={{
+                width:      "733px",
+                color:      "#000",
+                fontFamily: "'Söhne', 'DM Sans', sans-serif",
+                fontSize:   "24px",
+                fontStyle:  "normal",
+                fontWeight: 300,
+                lineHeight: "36px",
+                marginTop:  "8px",
+              }}>
+                Growth achieved through early access and informed decisions.
+              </p>
+            </div>
+
+            {/* Right: prev / next arrows */}
+            <div style={{ display: "flex", gap: "10px", alignItems: "center", paddingTop: "6px" }}>
+              <button
+                className="arr-btn"
+                onClick={handlePrev}
+                disabled={cur === 0}
+                style={{
+                  width:          "36px",
+                  height:         "36px",
+                  borderRadius:   "50%",
+                  border:         `1.5px solid ${RACING_GREEN}`,
+                  background:     "transparent",
+                  cursor:         cur === 0 ? "default" : "pointer",
+                  display:        "flex",
+                  alignItems:     "center",
+                  justifyContent: "center",
+                  opacity:        cur === 0 ? 0.35 : 1,
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M15 18l-6-6 6-6" stroke={RACING_GREEN} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+              <button
+                className="arr-btn"
+                onClick={handleNext}
+                disabled={cur === maxIdx}
+                style={{
+                  width:          "36px",
+                  height:         "36px",
+                  borderRadius:   "50%",
+                  border:         `1.5px solid ${RACING_GREEN}`,
+                  background:     "transparent",
+                  cursor:         cur === maxIdx ? "default" : "pointer",
+                  display:        "flex",
+                  alignItems:     "center",
+                  justifyContent: "center",
+                  opacity:        cur === maxIdx ? 0.35 : 1,
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 18l6-6-6-6" stroke={RACING_GREEN} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+            </div>
           </div>
-        </div>
 
-        {/* VIEW MORE OUTCOMES — WE SIGNED IT label */}
-        <div style={{ textAlign: "center", marginTop: "48px" }}>
-          <button
-            className="view-btn"
-            style={{
-            fontFamily:    "'WE SIGNED IT', 'DM Sans', sans-serif",
-            fontSize:      "10px",
-              fontWeight:    400,
-              letterSpacing: "0.22em",
-              textTransform: "uppercase" as const,
-              color:         RACING_GREEN,
-              border:        `1px solid ${RACING_GREEN}`,
-              padding:       "13px 32px",
-              borderRadius:  "2px",
-              cursor:        "pointer",
-              background:    "transparent",
-              transition:    "background 0.2s, color 0.2s",
-            }}
+          {/* Slider track */}
+          <div
+            style={{ overflow: "hidden", width: `${CARD_W * VISIBLE + GAP * (VISIBLE - 1)}px` }}
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
           >
-            View More Outcomes
-          </button>
+            <div style={{
+              display:    "flex",
+              gap:        `${GAP}px`,
+              height:     `${CARD_H}px`,
+              transition: "transform 0.55s cubic-bezier(0.77,0,0.18,1)",
+              transform:  `translateX(calc(-${cur} * (${CARD_W}px + ${GAP}px)))`,
+            }}>
+              {cards.map((card) => (
+                <PropertyCard key={card.id} card={card} />
+              ))}
+            </div>
+          </div>
+
+          {/* VIEW MORE OUTCOMES */}
+          <div style={{ textAlign: "center", width: "100%" }}>
+            <button
+              className="view-btn"
+             style={{
+  display: "flex",
+  height: "48px",
+  padding: "12px 16px",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "10px",
+
+  borderRadius: "8px",
+  border: "1px solid var(--Brand-Contrast-FS-AQUA, #69E4DC)",
+
+  color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+
+  fontFamily: "CX80 Trial VAR",
+  fontSize: "15px",
+  fontStyle: "normal",
+  fontWeight: 150,
+  lineHeight: "15px",
+  letterSpacing: "4.8px",
+
+  alignSelf: "center",
+  margin: "0 auto",
+  background: "white",
+}}
+            >
+              View More Outcomes
+            </button>
+          </div>
+
         </div>
-
       </div>
-
-      {/* ── HERO BANNER — flush below carousel ── */}
-      {/* <HeroBanner /> */}
     </>
   );
 }

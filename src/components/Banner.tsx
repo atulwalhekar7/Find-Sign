@@ -258,38 +258,34 @@ export default function App() {
 
         /* D1 — GT Super Medium */
         .hero-title {
-          font-family:    'GT Super', 'Cormorant Garamond', Georgia, serif;
-          font-size:      clamp(36px, 5.5vw, 72px);
-          color:          ${COLORS.white};
-          line-height:    1.05;
-          font-weight:    500;
-          letter-spacing: -0.01em;
-        }
+  font-family: "GT Super Display";
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 500;
+  color: var(--FS-WHITE, var(--Brand-Utility-FS-WHITE, #FFF));
+  line-height: 64px;
+  letter-spacing: -1.12px;
+  font-variant-numeric: lining-nums proportional-nums;
+
+  align-self: stretch;
+}
 
         /* L1 — WE SIGNED IT (label style) */
         .watch-btn {
-          display:         inline-flex;
-          align-items:     center;
-          gap:             10px;
-          background:      rgba(0, 0, 0, 0.25);
-          backdrop-filter: blur(8px);
-          border:          1px solid ${COLORS.teal};
-          color:           ${COLORS.white};
-          padding:         11px 22px;
-          font-family:     'WE SIGNED IT', 'DM Sans', sans-serif;
-          font-size:       10px;
-          font-weight:     400;
-          letter-spacing:  0.2em;
-          text-transform:  uppercase;
-          cursor:          pointer;
-          border-radius:   3px;
-          transition:      all 0.3s ease;
-        }
+  display: flex;
+  height: 48px;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 
-        .watch-btn:hover {
-          background:   rgba(0, 0, 0, 0.45);
-          border-color: rgba(255, 255, 255, 0.7);
-        }
+  border-radius: 8px;
+  border: 1px solid var(--Brand-Contrast-FS-AQUA, #69E4DC);
+  background: transparent;
+    color: white;.description
+}
+
+        
 
         /* ── BOTTOM ── */
         .hero-bottom {
@@ -302,36 +298,46 @@ export default function App() {
         }
 
         /* B1 — Söhne Leicht 24/36 */
-        .description {
-          font-family:  'Söhne', 'DM Sans', sans-serif;
-          font-size:    24px;
-          line-height:  36px;
-          font-weight:  300;
-          color:        ${COLORS.textGray};
-          max-width:    700px;
-          margin-bottom: 2.5rem;
-        }
+       .description {
+  width: 1046px;
+
+  color: #000;
+  text-align: center;
+
+  font-family: Söhne;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 36px;
+}
 
         /* L1 — WE SIGNED IT label style */
-        .find-out-btn {
-          display:        inline-block;
-          background:     transparent;
-          border:         1px solid ${COLORS.teal};
-          color:          ${COLORS.textGray};
-          padding:        12px 32px;
-          font-family:    'WE SIGNED IT', 'DM Sans', sans-serif;
-          font-size:      10px;
-          font-weight:    400;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          cursor:         pointer;
-          border-radius:  3px;
-          transition:     all 0.3s ease;
-        }
+       .find-out-btn {
+  display: flex;
+  height: 48px;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
 
-        .find-out-btn:hover {
-          background: ${COLORS.textGray};
-          color: #fff;
+  border-radius: 8px;
+  border: 1px solid var(--Brand-Contrast-FS-AQUA, #69E4DC);
+
+  color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
+
+  font-family: "CX80 Trial VAR";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 150;
+  line-height: 15px;
+  letter-spacing: 4.8px;
+  margin-top: 30px;
+  background: white;
+}
+  .find-out-btn:hover {
+   background: #073B2F;
+          color: #ffffff;
         }
 
         /* Hamburger hidden on desktop */
