@@ -9,7 +9,7 @@ const cards = [
   {
     id: 1,
     image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80",
-    growth: "38.2%",
+    growth: "XX.X%",
     purchasePrice: "XXX",
     currentValue:  "XXX",
     timeframe:     "XXX",
@@ -18,7 +18,7 @@ const cards = [
   {
     id: 2,
     image: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80",
-    growth: "31.5%",
+    growth: "XX.X%",
     purchasePrice: "XXX",
     currentValue:  "XXX",
     timeframe:     "XXX",
@@ -27,7 +27,7 @@ const cards = [
   {
     id: 3,
     image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80",
-    growth: "44.1%",
+    growth: "XX.X%",
     purchasePrice: "XXX",
     currentValue:  "XXX",
     timeframe:     "XXX",
@@ -36,7 +36,7 @@ const cards = [
   {
     id: 4,
     image: "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&q=80",
-    growth: "27.8%",
+    growth: "XX.X%",
     purchasePrice: "XXX",
     currentValue:  "XXX",
     timeframe:     "XXX",
@@ -45,7 +45,7 @@ const cards = [
   {
     id: 5,
     image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
-    growth: "52.3%",
+    growth: "XX.X%",
     purchasePrice: "XXX",
     currentValue:  "XXX",
     timeframe:     "XXX",
@@ -54,7 +54,7 @@ const cards = [
   {
     id: 6,
     image: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=600&q=80",
-    growth: "35.6%",
+    growth: "XX.X%",
     purchasePrice: "XXX",
     currentValue:  "XXX",
     timeframe:     "XXX",
@@ -83,7 +83,7 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
       flexDirection: "column",
     }}>
 
-      {/* Image area */}
+      {/* Image area — overflow hidden only clips the image, not the circle */}
       <div style={{
         position:   "relative",
         width:      "100%",
@@ -97,47 +97,53 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
           alt="Property"
           style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
         />
+      </div>
 
-        {/* Growth circle */}
-        <div style={{
-          position:       "absolute",
-          bottom:         "-44px",
-          right:          "18px",
-          width:          "90px",
-          height:         "90px",
-          borderRadius:   "50%",
-          background:     AQUA,
-          display:        "flex",
-          flexDirection:  "column",
-          alignItems:     "center",
-          justifyContent: "center",
-          zIndex:         10,
+      {/* Growth circle — card-level so never clipped by image overflow:hidden */}
+      <div style={{
+        position:       "absolute",
+        top:            "165px",         /* 220px - half of 110px circle = 165px */
+        right:          "18px",
+        width:          "110px",
+        height:         "110px",
+        borderRadius:   "50%",
+        background:     AQUA,
+        display:        "flex",
+        flexDirection:  "column",
+        alignItems:     "center",
+        justifyContent: "center",
+        zIndex:         10,
+      }}>
+        {/* "Growth" label — Söhne, 20px, 400, line-height 28px */}
+        <span style={{
+          fontFamily:  "'Söhne', 'DM Sans', sans-serif",
+          fontSize:    "11px",
+          fontWeight:  400,
+          color:       RACING_GREEN,
+          lineHeight:  "14px",
+          textAlign:   "center",
+          display:     "block",
         }}>
-          <span style={{
-            fontFamily:    "'Söhne', 'DM Sans', sans-serif",
-            fontSize:      "9px",
-            fontWeight:    400,
-            color:         RACING_GREEN,
-            letterSpacing: "0.04em",
-            marginBottom:  "2px",
-          }}>
-            Growth
-          </span>
-          <span style={{
-            fontFamily: "'GT Super Display', 'GT Super', 'Cormorant Garamond', Georgia, serif",
-            fontSize:   "20px",
-            fontWeight: 400,
-            color:      RACING_GREEN,
-            lineHeight: 1,
-          }}>
-            {card.growth}
-          </span>
-        </div>
+          Growth
+        </span>
+        {/* "XX.X%" value — GT Super Display, 37px, 500, line-height 40px, letter-spacing -0.74px */}
+        <span style={{
+          fontFamily:    "'GT Super Display', 'GT Super', 'Cormorant Garamond', Georgia, serif",
+          fontSize:      "22px",
+          fontWeight:    500,
+          color:         RACING_GREEN,
+          lineHeight:    "24px",
+          letterSpacing: "-0.44px",
+          textAlign:     "center",
+          fontVariantNumeric: "lining-nums proportional-nums",
+        }}>
+          {card.growth}
+        </span>
       </div>
 
       {/* Data rows */}
       <div style={{
-        padding:       "56px 18px 20px",
+        padding:       "96px 18px 20px",
         display:       "flex",
         flexDirection: "column",
         flex:          1,
@@ -348,7 +354,7 @@ export default function ClientOutcomes() {
           <div style={{ textAlign: "center", width: "100%" }}>
             <button
               className="view-btn"
-             style={{
+            style={{
   display: "flex",
   height: "48px",
   padding: "12px 16px",
@@ -370,7 +376,7 @@ export default function ClientOutcomes() {
 
   alignSelf: "center",
   margin: "0 auto",
-  background: "white",
+  background:"White",
 }}
             >
               View More Outcomes

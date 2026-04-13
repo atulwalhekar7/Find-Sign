@@ -15,167 +15,193 @@ export default function NakraniContact() {
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-      .contact-page {
-  display: flex;
-  padding: 64px 196px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  background: var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9);
-}
-
-        /* Outer card */
-       .contact-card {
-  display: flex;
-  width: 1120px;
-  height: 544px;
-  align-items: flex-start;
-  gap: 36px;
-  background: var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9);
-}
-
-        /* Left panel */
-        .contact-left {
-          width: 320px;
-          flex-shrink: 0;
-          padding: 0;
+        /* ── PAGE WRAPPER
+           Figma: display:flex; padding:64px 196px; flex-direction:column;
+           align-items:flex-start; gap:10px;
+           background:var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9) ── */
+        .contact-page {
           display: flex;
+          padding: 60px 196px;
           flex-direction: column;
-          justify-content: flex-start;
-          gap: 16px;
-          background: #ffffff;
-            background: var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9);
-
+          align-items: flex-start;
+          gap: 10px;
+          background: var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9);
         }
 
-      .contact-left h2 {
-  width: 350px;
-  height: 48px;
-  color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
-  font-variant-numeric: lining-nums proportional-nums;
-  font-family: "GT Super Display";
-  font-size: 44px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 54px; /* 122.727% */
-  letter-spacing: -0.88px;
-}
+        /* ── OUTER CARD
+           Figma: display:flex; width:1120px; height:544px;
+           align-items:flex-start; gap:36px ── */
+        .contact-card {
+          display: flex;
+          width: 1120px;
+          height: 544px;
+          align-items: flex-start;
+          gap: 36px;
+          background: var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9);
+        }
 
-       .contact-left p {
-  width: 297px;
-  color: #000;
-  font-family: "Söhne";
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: 36px; /* 150% */
+        /* ── LEFT PANEL ── */
+        .contact-left {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+          flex-shrink: 0;
+          background: var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9);
+        }
 
-}
-        /* Divider */
-        // .contact-divider {
-        //   width: 1px;
-        //   background: #E5E7EB;
-        //   flex-shrink: 0;
-        //   margin: 0 48px;
-        // }
+        /* Title — Figma: width:350px; height:48px; GT Super Display 44px/500/54px/ls-0.88px */
+        .contact-left h2 {
+          width: 350px;
+          height: 48px;
+          color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
+          font-variant-numeric: lining-nums proportional-nums;
+          font-family: "GT Super Display", Georgia, serif;
+          font-size: 44px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 54px;      /* 122.727% */
+          letter-spacing: -0.88px;
+        }
 
-        /* Right panel */
+        /* Subtitle — Figma: width:297px; Söhne 24px/300/36px; color:#000 (FS-B1) */
+        .contact-left p {
+          width: 297px;
+          color: #000;
+          font-family: Söhne, "DM Sans", sans-serif;
+          font-size: 24px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 36px;      /* 150% */
+        }
+
+        /* ── RIGHT PANEL
+           Figma: display:flex; width:734px; flex-direction:column;
+           align-items:flex-start; gap:16px ── */
         .contact-right {
-  display: flex;
-  width: 734px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-  background: var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9);
-}
+          display: flex;
+          width: 734px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+          background: var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9);
+        }
 
-        /* Fields */
+        /* ── FORM fills the right panel width ── */
+        .contact-right form {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 16px;              /* Figma image 4: gap:16px between every field row */
+        }
+
+        /* ── FIELD GROUP ── */
         .contact-field {
           display: flex;
           flex-direction: column;
           gap: 6px;
+          width: 100%;
         }
 
-        .contact-fields-stack {
+        /* Label — Figma: Söhne 20px/400/28px; color:var(--FS-BLACK) (FS-B2) */
+        .contact-label {
+          color: var(--FS-BLACK, var(--Brand-Utility-FS-BLACK, #000));
+          font-family: Söhne, "DM Sans", sans-serif;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 28px;      /* 140% — FS-B2 */
+        }
+
+        /* Input — Figma: display:flex; height:48px; padding:8px 16px;
+           align-items:center; gap:10px; align-self:stretch;
+           border-radius:8px; background:var(--Brand-Utility-FS-WHITE, #FFF); no border */
+        .contact-input {
           display: flex;
-          flex-direction: column;
-          gap: 16px;
+          height: 48px;
+          padding: 8px 16px;
+          align-items: center;
+          gap: 10px;
+          align-self: stretch;
+          width: 100%;
+          border-radius: 8px;
+          background: var(--Brand-Utility-FS-WHITE, #FFF);
+          border: none;
+          outline: none;
+          font-family: Söhne, "DM Sans", sans-serif;
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 28px;
+          color: #000;
         }
-
-       .contact-label {
-  color: var(--FS-BLACK, var(--Brand-Utility-FS-BLACK, #000));
-  font-family: "Söhne";
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 28px; /* 140% */
-}
-
-       .contact-input {
-  display: flex;
-  height: 48px;
-  padding: 8px 16px;
-  align-items: center;
-  gap: 10px;
-  align-self: stretch;
-  border-radius: 8px;
-  background: var(--Brand-Utility-FS-WHITE, #FFF);
-  border: none;
-    outline: none;
-}
-
         .contact-input::placeholder {
-          color: #9CA3AF;
+          color: var(--FS-System-Grey-3, #BDBDBD);
         }
-
         .contact-input:focus {
-          border-color: #2DD4BF;
+          outline: 1.5px solid #69E4DC;
         }
 
-       .contact-textarea {
-  display: flex;
-  height: 112px;
-  padding: 8px 16px;
-  align-items: flex-start;
-  gap: 10px;
-  align-self: stretch;
-  border-radius: 8px;
-  background: var(--Brand-Utility-FS-WHITE, #FFF);
-  margin-bottom: 8px;
-  border: none;
-    outline: none;
-}
-
+        /* Textarea — same rules, height:112px, align-items:flex-start */
+        .contact-textarea {
+          display: flex;
+          height: 112px;
+          padding: 8px 16px;
+          align-items: flex-start;
+          gap: 10px;
+          align-self: stretch;
+          width: 100%;
+          border-radius: 8px;
+          background: var(--Brand-Utility-FS-WHITE, #FFF);
+          border: none;
+          outline: none;
+          font-family: Söhne, "DM Sans", sans-serif;
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 28px;
+          color: #000;
+          resize: none;
+        }
         .contact-textarea::placeholder {
-          color: #9CA3AF;
+          color: var(--FS-System-Grey-3, #BDBDBD);
         }
-
         .contact-textarea:focus {
-          border-color: #2DD4BF;
+          outline: 1.5px solid #69E4DC;
         }
 
-        /* Button */
-     .contact-btn {
-  display: flex;
-  width: 725.921px;
-  height: 48px;
-  padding: 12px 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 8px;
-  background: var(--Brand-Contrast-FS-AQUA, #69E4DC);
-  border: none;
-  outline: none;
-}
-
+        /* Submit button — Figma: full-width; height:48px (hug);
+           background:var(--Brand-Contrast-FS-AQUA, #69E4DC);
+           CX80 Trial VAR 15px/150/15px/ls4.8px; color:var(--FS-RACING-GREEN) */
+        .contact-btn {
+          display: flex;
+          width: 100%;
+          height: 48px;
+          padding: 12px 16px;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          border-radius: 8px;
+          background: var(--Brand-Contrast-FS-AQUA, #69E4DC);
+          border: none;
+          outline: none;
+          cursor: pointer;
+          color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
+          font-family: "CX80 Trial VAR", "DM Sans", sans-serif;
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 150;
+          line-height: 15px;      /* 100% — FS-L2 */
+          letter-spacing: 4.8px;
+          text-transform: uppercase;
+          transition: background 0.2s;
+        }
         .contact-btn:hover {
-          background: #14B8A6;
+          background: #3DD6CC;
         }
 
-        /* Success */
+        /* ── SUCCESS STATE ── */
         .contact-success {
           flex: 1;
+          width: 100%;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -183,7 +209,6 @@ export default function NakraniContact() {
           gap: 14px;
           text-align: center;
         }
-
         .contact-success-icon {
           width: 52px;
           height: 52px;
@@ -193,57 +218,38 @@ export default function NakraniContact() {
           align-items: center;
           justify-content: center;
         }
-
         .contact-success-title {
-          font-size: 16px;
-          font-weight: 600;
-          color: #111827;
+          font-family: Söhne, "DM Sans", sans-serif;
+          font-size: 20px;
+          font-weight: 500;
+          color: #073B2F;
         }
-
         .contact-success-sub {
-          font-size: 14px;
+          font-family: Söhne, "DM Sans", sans-serif;
+          font-size: 16px;
           font-weight: 300;
-          color: #6B7280;
+          color: #757575;
         }
 
         @media (max-width: 900px) {
-          .contact-card {
-            flex-direction: column;
-            padding: 40px 20px;
-          }
-
-          .contact-left {
-            width: 100%;
-          }
-
-          .contact-right {
-            width: 100%;
-            padding: 0;
-          }
-
-          .contact-divider {
-            width: 100%;
-            height: 1px;
-            margin: 32px 0;
-          }
+          .contact-page  { padding: 40px 20px; }
+          .contact-card  { flex-direction: column; height: auto; width: 100%; }
+          .contact-left h2 { width: 100%; height: auto; }
+          .contact-left p  { width: 100%; }
+          .contact-right { width: 100%; }
         }
       `}</style>
 
       <div className="contact-page">
         <div className="contact-card">
 
-          {/* Left */}
+          {/* ── LEFT ── */}
           <div className="contact-left">
             <h2>Get in touch</h2>
-            <p>
-              Tell us what you're looking for, and we'll come back
-              with next steps.
-            </p>
+            <p>Tell us what you're looking for, and we'll come back with next steps.</p>
           </div>
 
-          <div className="contact-divider" />
-
-          {/* Right */}
+          {/* ── RIGHT ── */}
           <div className="contact-right">
             {submitted ? (
               <div className="contact-success">
@@ -257,31 +263,29 @@ export default function NakraniContact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
-                <div className="contact-fields-stack">
 
-                  <div className="contact-field">
-                    <label className="contact-label">First name</label>
-                    <input className="contact-input" placeholder="e.g. Sarah" required />
-                  </div>
+                <div className="contact-field">
+                  <label className="contact-label">First name</label>
+                  <input className="contact-input" placeholder="e.g. Sarah" required />
+                </div>
 
-                  <div className="contact-field">
-                    <label className="contact-label">Last name</label>
-                    <input className="contact-input" placeholder="e.g. Smith" required />
-                  </div>
+                <div className="contact-field">
+                  <label className="contact-label">Last name</label>
+                  <input className="contact-input" placeholder="e.g. Smith" required />
+                </div>
 
-                  <div className="contact-field">
-                    <label className="contact-label">Email</label>
-                    <input className="contact-input" type="email" placeholder="e.g. sarah@gmail.com" required />
-                  </div>
+                <div className="contact-field">
+                  <label className="contact-label">Email</label>
+                  <input className="contact-input" type="email" placeholder="e.g. sarah@gmail.com" required />
+                </div>
 
-                  <div className="contact-field">
-                    <label className="contact-label">Message</label>
-                    <textarea className="contact-textarea" placeholder="What are you looking for?" required />
-                  </div>
-
+                <div className="contact-field">
+                  <label className="contact-label">Message</label>
+                  <textarea className="contact-textarea" placeholder="What are you looking for?" required />
                 </div>
 
                 <button type="submit" className="contact-btn">Submit</button>
+
               </form>
             )}
           </div>

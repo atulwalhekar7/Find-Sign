@@ -228,7 +228,7 @@ const s: Record<string, React.CSSProperties> = {
   fontSize: "20px",
   fontStyle: "normal",
   fontWeight: 400,
-  color: "var(--sds-color-text-default-secondary)",
+  color: "var(--FS-System-Grey-1, #757575)",
   lineHeight: "28px",
 
   margin: 0,
@@ -236,11 +236,10 @@ const s: Record<string, React.CSSProperties> = {
 
   /* Thin divider between steps */
   divider: {
-    width:      "100%",
-    height:     "1px",
-    background: `${GREEN}22`,
-    margin:     0,
-  },
+  width: "1120px",
+  height: "1px",
+  background: "var(--Brand-Foundation-FS-RACING-GREEN, #073B2F)",
+},
 
   footer: {
     marginTop:      "56px",
