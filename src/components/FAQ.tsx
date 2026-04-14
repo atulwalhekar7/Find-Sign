@@ -88,7 +88,7 @@ export default function FindSignFAQ() {
   color: var(--FS-RACING-GREEN, #073B2F);
   font-variant-numeric: lining-nums proportional-nums;
 
-  font-family: "GTSuper", Georgia, serif;
+  font-family: "GTSuper";
   font-size: 44px;
   font-style: normal;
   font-weight: 500;
@@ -99,7 +99,7 @@ export default function FindSignFAQ() {
        .faq-subtitle {
   width: 733px;
   color: #000;
-  font-family: "Sohne", "DM Sans", sans-serif;
+  font-family: "Sohne";
   font-size: 24px;
   font-style: normal;
   font-weight: 300;
@@ -177,7 +177,7 @@ export default function FindSignFAQ() {
         .faq-answer-text {
   flex: 1 0 0;
   color: var(--FS-System-Grey-1, #757575);
-  font-family: "Sohne", "DM Sans", sans-serif;
+  font-family: "Sohne";
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
