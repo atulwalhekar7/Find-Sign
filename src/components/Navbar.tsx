@@ -88,14 +88,14 @@ export default function Navbar() {
             <li key={item.label}>
               <NavLink
                 to={item.to}
-                style={({ isActive }) => ({
-                  fontFamily: FONTS.body,
-                  fontWeight: 400,
-                  fontSize: "14px",
-                  color: isActive ? COLORS.aqua : textColor,
-                  textDecoration: "none",
-                  letterSpacing: "0.02em",
-                  transition: "color 0.2s",
+               style={({ isActive }) => ({
+  fontFamily: "'Sohne', sans-serif",
+  fontWeight: 400,
+  fontSize: "20px",
+  color: "black",
+  textDecoration: "none",
+  letterSpacing: "0.02em",
+  transition: "color 0.2s",
                 })}
               >
                 {item.label}
@@ -108,20 +108,20 @@ export default function Navbar() {
         <NavLink
           to="/contact"
           style={{
-            fontFamily: FONTS.body,
-            fontWeight: 600,
-            fontSize: "11px",
-            letterSpacing: "0.14em",
-            textTransform: "uppercase" as const,
-            color: COLORS.white,
-            background: COLORS.aqua,
-            padding: "11px 24px",
-            borderRadius: "2px",
-            textDecoration: "none",
-            whiteSpace: "nowrap" as const,
-            flexShrink: 0,
-            transition: "opacity 0.2s",
-          }}
+fontFamily: "CX80",
+  fontWeight: 700,
+  fontSize: "11px",
+  letterSpacing: "0.14em",
+  textTransform: "uppercase",
+  color: COLORS.white,
+  background: COLORS.aqua,
+  padding: "11px 24px",
+  borderRadius: "2px",
+  textDecoration: "none",
+  whiteSpace: "nowrap",
+  flexShrink: 0,
+  transition: "opacity 0.2s",
+}}
           onMouseEnter={e => (e.currentTarget.style.opacity = "0.85")}
           onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
         >

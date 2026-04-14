@@ -45,35 +45,34 @@ export default function NakraniContact() {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          gap: 16px;
+          gap: 50px;
           flex-shrink: 0;
           background: var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9);
         }
 
         /* Title — Figma: width:350px; height:48px; GT Super Display 44px/500/54px/ls-0.88px */
-        .contact-left h2 {
-          width: 350px;
-          height: 48px;
-          color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
-          font-variant-numeric: lining-nums proportional-nums;
-          font-family: "GT Super Display", Georgia, serif;
-          font-size: 44px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 54px;      /* 122.727% */
-          letter-spacing: -0.88px;
-        }
+       /* Your specific class */
+.contact-left h2 {
+  width: 350px;
+  height: 48px;
+  color: var(--FS-RACING-GREEN, #073B2F);
 
+  font-family: 'GTSuper', serif;
+  font-size: 44px;
+  font-weight: 500;   /* Medium */
+  line-height: 54px;
+  letter-spacing: -0.88px;
+}
         /* Subtitle — Figma: width:297px; Söhne 24px/300/36px; color:#000 (FS-B1) */
         .contact-left p {
-          width: 297px;
-          color: #000;
-          font-family: Söhne, "DM Sans", sans-serif;
-          font-size: 24px;
-          font-style: normal;
-          font-weight: 300;
-          line-height: 36px;      /* 150% */
-        }
+  width: 297px;
+  color: #000;
+
+  font-family: 'Sohne', "DM Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 36px;
+}
 
         /* ── RIGHT PANEL
            Figma: display:flex; width:734px; flex-direction:column;
@@ -105,35 +104,37 @@ export default function NakraniContact() {
 
         /* Label — Figma: Söhne 20px/400/28px; color:var(--FS-BLACK) (FS-B2) */
         .contact-label {
-          color: var(--FS-BLACK, var(--Brand-Utility-FS-BLACK, #000));
-          font-family: Söhne, "DM Sans", sans-serif;
-          font-size: 20px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: 28px;      /* 140% — FS-B2 */
-        }
+  color: var(--FS-BLACK, var(--Brand-Utility-FS-BLACK, #000));
+
+  font-family: 'Sohne', "DM Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+}
 
         /* Input — Figma: display:flex; height:48px; padding:8px 16px;
            align-items:center; gap:10px; align-self:stretch;
            border-radius:8px; background:var(--Brand-Utility-FS-WHITE, #FFF); no border */
-        .contact-input {
-          display: flex;
-          height: 48px;
-          padding: 8px 16px;
-          align-items: center;
-          gap: 10px;
-          align-self: stretch;
-          width: 100%;
-          border-radius: 8px;
-          background: var(--Brand-Utility-FS-WHITE, #FFF);
-          border: none;
-          outline: none;
-          font-family: Söhne, "DM Sans", sans-serif;
-          font-size: 20px;
-          font-weight: 400;
-          line-height: 28px;
-          color: #000;
-        }
+       .contact-input {
+  display: flex;
+  height: 48px;
+  padding: 8px 16px;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  width: 100%;
+
+  border-radius: 8px;
+  background: var(--Brand-Utility-FS-WHITE, #FFF);
+  border: none;
+  outline: none;
+
+  font-family: 'Sohne', "DM Sans", sans-serif; /* ✅ fixed */
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #000;
+}
         .contact-input::placeholder {
           color: var(--FS-System-Grey-3, #BDBDBD);
         }
@@ -172,28 +173,31 @@ export default function NakraniContact() {
            background:var(--Brand-Contrast-FS-AQUA, #69E4DC);
            CX80 Trial VAR 15px/150/15px/ls4.8px; color:var(--FS-RACING-GREEN) */
         .contact-btn {
-          display: flex;
-          width: 100%;
-          height: 48px;
-          padding: 12px 16px;
-          justify-content: center;
-          align-items: center;
-          gap: 10px;
-          border-radius: 8px;
-          background: var(--Brand-Contrast-FS-AQUA, #69E4DC);
-          border: none;
-          outline: none;
-          cursor: pointer;
-          color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
-          font-family: "CX80 Trial VAR", "DM Sans", sans-serif;
-          font-size: 15px;
-          font-style: normal;
-          font-weight: 150;
-          line-height: 15px;      /* 100% — FS-L2 */
-          letter-spacing: 4.8px;
-          text-transform: uppercase;
-          transition: background 0.2s;
-        }
+  display: flex;
+  width: 100%;
+  height: 48px;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  border-radius: 8px;
+  background: var(--Brand-Contrast-FS-AQUA, #69E4DC);
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
+
+  font-family: 'CX80', "DM Sans", sans-serif; /* ✅ fixed */
+  font-size: 15px;
+  font-weight: 700;  /* ✅ matches Bold file */
+  line-height: 15px;
+  letter-spacing: 4.8px;
+  text-transform: uppercase;
+
+  transition: background 0.2s;
+}
         .contact-btn:hover {
           background: #3DD6CC;
         }
