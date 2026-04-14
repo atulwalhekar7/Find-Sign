@@ -135,8 +135,8 @@ function Navbar() {
         <NavLink
           to="/contact"
           style={{
-            fontFamily:     "'Söhne', 'DM Sans', sans-serif",
-            fontWeight:     600,
+            fontFamily:     "CX80",
+            fontWeight:     700,
             fontSize:       "11px",
             letterSpacing:  "0.14em",
             textTransform:  "uppercase" as const,
