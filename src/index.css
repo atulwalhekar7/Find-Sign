@@ -15,9 +15,12 @@ body {
   background: #FAF8F4;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Default font */
+  font-family: 'Sohne', sans-serif;
 }
 
-/* ─── Hero animations ──────────────────────────────────────────────────────── */
+/* ─── Animations ───────────────────────────────────────────────────────────── */
 @keyframes kenBurns {
   from { transform: scale(1); }
   to   { transform: scale(1.07); }
@@ -106,4 +109,145 @@ body {
   src: url('./assets/fonts/Söhne/otf/Söhne-Buch.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
+}
+
+/* ================= CX80 ================= */
+@font-face {
+  font-family: 'CX80';
+  src: url('./assets/Fonts/CX80/CX80Trial-Light.otf') format('opentype');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'CX80';
+  src: url('./assets/Fonts/CX80/CX80Trial-Regular.otf') format('opentype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'CX80';
+  src: url('./assets/Fonts/CX80/CX80Trial-Bold.otf') format('opentype');
+  font-weight: 700;
+}
+
+/* ================= GT Super ================= */
+@font-face {
+  font-family: 'GTSuper';
+  src: url('./assets/Fonts/GT_Super_Web/woff2/GT-Super-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'GTSuper';
+  src: url('./assets/Fonts/GT_Super_Web/woff2/GT-Super-Medium.woff2') format('woff2');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'GTSuper';
+  src: url('./assets/Fonts/GT_Super_Web/woff2/GT-Super-Bold.woff2') format('woff2');
+  font-weight: 700;
+}
+
+/* ================= Sohne ================= */
+@font-face {
+  font-family: 'Sohne';
+  src: url('./assets/Fonts/Söhne/woff2/soehne-leicht.woff2') format('woff2');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Sohne';
+  src: url('./assets/Fonts/Söhne/woff2/Sohne-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
+
+/* ================= GT Super Display ================= */
+
+/* ===== GT Super Display Fonts ===== */
+
+/* Medium */
+@font-face {
+  font-family: 'GTSuper';
+  src: url('./assets/Fonts/GT_Super_Web/otf/GT-Super-Display-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Medium Italic */
+@font-face {
+  font-family: 'GTSuper';
+  src: url('./assets/Fonts/GT_Super_Web/otf/GT-Super-Display-Medium-Italic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Bold */
+@font-face {
+  font-family: 'GTSuper';
+  src: url('./assets/Fonts/GT_Super_Web/otf/GT-Super-Display-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Bold Italic */
+@font-face {
+  font-family: 'GTSuper';
+  src: url('./assets/Fonts/GT_Super_Web/otf/GT-Super-Display-Bold-Italic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Sohne';
+  src: url('./assets/fonts/Söhne/woff2/soehne-leicht.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sohne';
+  src: url('./assets/fonts/Söhne/woff2/Sohne-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Sohne';
+  src: url('./assets/fonts/Söhne/otf/Söhne-Buch.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+/* ================= Usage ================= */
+
+/* Headings */
+h1, h2, h3 {
+  font-family: 'GTSuper', serif;
+}
+
+/* Body */
+p, span, div {
+  font-family: 'Sohne', sans-serif;
+}
+
+/* Buttons */
+button {
+  font-family: 'CX80', sans-serif;
+}
+
+@font-face {
+  font-family: 'CX80';
+  src: url('./assets/fonts/CX80/CX80Trial-Regular.otf') format('opentype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'CX80';
+  src: url('./assets/fonts/CX80/CX80Trial-Bold.otf') format('opentype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'CX80';
+  src: url('./assets/fonts/CX80/CX80Trial-Light.otf') format('opentype');
+  font-weight: 300;
 }

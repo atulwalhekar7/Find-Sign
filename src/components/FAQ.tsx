@@ -83,29 +83,29 @@ export default function FindSignFAQ() {
         }
 
         /* ── HEADER ── */
-        .faq-title {
-          width: 352px;
-          color: var(--FS-RACING-GREEN, #073B2F);
-          font-variant-numeric: lining-nums proportional-nums;
-          font-family: "GT Super Display", Georgia, serif;
-          font-size: 44px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 54px;
-          letter-spacing: -0.88px;
-        }
+       .faq-title {
+  width: 352px;
+  color: var(--FS-RACING-GREEN, #073B2F);
+  font-variant-numeric: lining-nums proportional-nums;
 
-        .faq-subtitle {
-          width: 733px;
-          color: #000;
-          font-family: Söhne, "DM Sans", sans-serif;
-          font-size: 24px;
-          font-style: normal;
-          font-weight: 300;
-          line-height: 36px;
-          margin-top: 8px;
-        }
+  font-family: "GTSuper", Georgia, serif;
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 54px;
+  letter-spacing: -0.88px;
+}
 
+       .faq-subtitle {
+  width: 733px;
+  color: #000;
+  font-family: "Sohne", "DM Sans", sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 36px;
+  margin-top: 8px;
+}
         /* ── ACCORDION LIST — gap:16px between items (Figma image 2) ── */
         .faq-list {
           display: flex;
@@ -134,17 +134,20 @@ export default function FindSignFAQ() {
           cursor: pointer;
           text-align: left;
           gap: 24px;
+          
+
         }
 
         /* Question text — Figma: color:var(--FS-BLACK); Söhne 20px/400/28px (FS-B2) */
         .faq-question-text {
           color: var(--FS-BLACK, var(--Brand-Utility-FS-BLACK, #000));
-          font-family: Söhne, "DM Sans", sans-serif;
           font-size: 20px;
           font-style: normal;
-          font-weight: 400;
           line-height: 28px; /* 140% — FS-B2 */
           flex: 1 0 0;        /* Figma: flex:1 0 0 */
+                      font-family: 'Sohne';
+              font-weight: 400;
+
         }
 
         /* Chevron */
@@ -172,15 +175,15 @@ export default function FindSignFAQ() {
 
         /* Answer text — Figma: color:var(--FS-System-Grey-1, #757575); Söhne 20px/400/28px; flex:1 0 0 */
         .faq-answer-text {
-          flex: 1 0 0;
-          color: var(--FS-System-Grey-1, #757575);
-          font-family: Söhne, "DM Sans", sans-serif;
-          font-size: 20px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: 28px; /* 140% — FS-B2 */
-          padding-top: 24px; /* sds-size-space-600 top padding inside answer */
-        }
+  flex: 1 0 0;
+  color: var(--FS-System-Grey-1, #757575);
+  font-family: "Sohne", "DM Sans", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px; /* 140% — FS-B2 */
+  padding-top: 24px; /* sds-size-space-600 top padding inside answer */
+}
 
         /* ── CTA BUTTON ── */
         .view-all-btn {
@@ -196,17 +199,20 @@ export default function FindSignFAQ() {
 
   color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
 
-  font-family: "CX80 Trial VAR";
+  font-family: 'CX80';
   font-size: 15px;
   font-style: normal;
-  font-weight: 150;
+  font-weight: 700;
   line-height: 15px;
   letter-spacing: 4.8px;
   background: white;
+    cursor: pointer !important;
+
 }
         .view-all-btn:hover {
           background: #073B2F;
           color: #F5F2ED;
+
         }
 
         .faq-cta {
