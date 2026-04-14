@@ -228,7 +228,7 @@ export default function ClientOutcomes() {
 
       {/* ── OUTER CONTAINER ── */}
       <div style={{
-        background:    BG,
+        background: "var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9)",
         width:         "1512px",
         display:       "flex",
         flexDirection: "column",
