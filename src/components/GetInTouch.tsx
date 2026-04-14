@@ -57,7 +57,7 @@ export default function NakraniContact() {
   height: 48px;
   color: var(--FS-RACING-GREEN, #073B2F);
 
-  font-family: 'GTSuper', serif;
+  font-family: 'GTSuper';
   font-size: 44px;
   font-weight: 500;   /* Medium */
   line-height: 54px;
@@ -68,7 +68,7 @@ export default function NakraniContact() {
   width: 297px;
   color: #000;
 
-  font-family: 'Sohne', "DM Sans", sans-serif;
+  font-family: 'Sohne';
   font-size: 24px;
   font-weight: 300;
   line-height: 36px;
@@ -129,7 +129,7 @@ export default function NakraniContact() {
   border: none;
   outline: none;
 
-  font-family: 'Sohne', "DM Sans", sans-serif; /* ✅ fixed */
+  font-family: 'Sohne'
   font-size: 20px;
   font-weight: 400;
   line-height: 28px;
@@ -189,7 +189,7 @@ export default function NakraniContact() {
 
   color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
 
-  font-family: 'CX80', "DM Sans", sans-serif; /* ✅ fixed */
+  font-family: 'CX80'
   font-size: 15px;
   font-weight: 700;  /* ✅ matches Bold file */
   line-height: 15px;
