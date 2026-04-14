@@ -206,7 +206,7 @@ body {
 }
 
 @font-face {
-  font-family: 'Sohne';
+  font-family: 'Sohne Regular';
   src: url('./assets/fonts/Söhne/woff2/Sohne-Regular.woff2') format('woff2');
   font-weight: 400;
 }
@@ -250,4 +250,18 @@ button {
   font-family: 'CX80';
   src: url('./assets/fonts/CX80/CX80Trial-Light.otf') format('opentype');
   font-weight: 300;
+}
+
+
+/* Woff new font */
+@font-face{
+  font-family: 'GT Super Display Medium';
+  src: url('./assets/woff/GT-Super-Display-Medium.woff') format('woff');
+  font-weight: 500;
+}
+
+@font-face{
+  font-family: 'GT Super Display Medium';
+  src: url('./assets/woff/GT-Super-Display-Bold.woff') format('woff');
+  font-weight: 700;
 }

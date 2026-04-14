@@ -57,7 +57,7 @@ export default function NakraniContact() {
   height: 48px;
   color: var(--FS-RACING-GREEN, #073B2F);
 
-  font-family: 'GTSuper';
+  font-family: 'GT Super Display Medium';
   font-size: 44px;
   font-weight: 500;   /* Medium */
   line-height: 54px;

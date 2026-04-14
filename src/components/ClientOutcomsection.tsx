@@ -127,7 +127,7 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
           Growth
         </span>
         <span style={{
-          fontFamily:         "'GT Super Display', 'GT Super', 'Cormorant Garamond', Georgia, serif",
+          fontFamily:         'GT Super Display Medium',
           fontSize:           "22px",
           fontWeight:         500,
           color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
@@ -261,7 +261,7 @@ export default function ClientOutcomes() {
                 flexShrink:         0,
                 color:              "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
                 fontVariantNumeric: "lining-nums proportional-nums",
-                fontFamily:         "GTSuper, Georgia, serif",
+                fontFamily:         'GT Super Display Medium',
                 fontSize:           "44px",
                 fontStyle:          "normal",
                 fontWeight:         500,
