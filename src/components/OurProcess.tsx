@@ -251,6 +251,7 @@ const s: Record<string, React.CSSProperties> = {
   justifyContent: "center",
   alignItems: "center",
   gap: "10px",
+  cursor: "pointer",
 
   borderRadius: "8px",
   border: "1px solid var(--Brand-Contrast-FS-AQUA, #69E4DC)",

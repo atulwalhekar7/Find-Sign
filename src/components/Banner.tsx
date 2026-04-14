@@ -1,9 +1,8 @@
-
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import bannerImg from "../assets/DSC06227.jpg";
 import logo from "../assets/FS Primary Lockup_Gold.png";
-
+import heroVideo from "../assets/Interview Draft (2).mp4"; // 👈 update this path to your actual video file
 
 const COLORS = {
   racingGreen: "#1B4332",
@@ -14,44 +13,6 @@ const COLORS = {
   overlay:     "rgba(0, 0, 0, 0.38)",
 } as const;
 
-/*
-  Typography (from Figma):
-  ─ Display / Headlines  →  GT Super Medium
-  ─ Body B1/B2/B3        →  Söhne Leicht / Söhne Buch
-  ─ Labels L1/L2         →  WE SIGNED IT (all-caps tracking)
-
-  GT Super & Söhne are licensed fonts — loaded via your existing
-  @font-face declarations in index.css / global stylesheet.
-  If not yet added, place the @font-face rules in your global CSS:
-
-  @font-face {
-    font-family: 'GT Super';
-    src: url('/fonts/GTSuperDisplay-Medium.woff2') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'Söhne';
-    src: url('/fonts/soehne-leicht.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'Söhne';
-    src: url('/fonts/soehne-buch.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'WE SIGNED IT';
-    src: url('/fonts/WeSignedIt.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-  }
-*/
-
- 
-
 const NAV_ITEMS = [
   { label: "About",           to: "/about"           },
   { label: "Services",        to: "/services"        },
@@ -59,6 +20,62 @@ const NAV_ITEMS = [
   { label: "Insights",        to: "/insights"        },
   { label: "Contact",         to: "/contact"         },
 ] as const;
+
+/* ─── Video Modal ─── */
+function VideoModal({ onClose }: { onClose: () => void }) {
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position:        "fixed",
+        inset:           0,
+        zIndex:          2000,
+        background:      "rgba(0, 0, 0, 0.35)",
+        display:         "flex",
+        alignItems:      "center",
+        justifyContent:  "center",
+        padding:         "20px",
+      }}
+    >
+      {/* Stop click from closing when clicking the video itself */}
+      <div
+        onClick={e => e.stopPropagation()}
+        style={{ position: "relative", width: "100%", maxWidth: "900px" }}
+      >
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          style={{
+            position:   "absolute",
+            top:        "-40px",
+            right:      0,
+            background: "none",
+            border:     "none",
+            cursor:     "pointer",
+            color:      "#fff",
+            fontSize:   "28px",
+            lineHeight: 1,
+            padding:    "4px 8px",
+          }}
+          aria-label="Close video"
+        >
+          ✕
+        </button>
+
+        <video
+          src={heroVideo}
+          controls
+          autoPlay
+          style={{
+            width:        "100%",
+            borderRadius: "4px",
+            display:      "block",
+          }}
+        />
+      </div>
+    </div>
+  );
+}
 
 /* ─── Navbar ─── */
 function Navbar() {
@@ -82,13 +99,10 @@ function Navbar() {
         justifyContent:  "space-between",
         gap:             "24px",
       }}>
-
-        {/* Logo */}
         <NavLink to="/" style={{ display: "flex", alignItems: "center", textDecoration: "none", flexShrink: 0 }}>
           <img src={logo} alt="Find & Sign" style={{ height: "34px", width: "auto", objectFit: "contain" }} />
         </NavLink>
 
-        {/* Desktop nav links */}
         <ul style={{
           display:        "flex",
           gap:            "36px",
@@ -110,7 +124,7 @@ function Navbar() {
                   textDecoration: "none",
                   letterSpacing:  "0.02em",
                   transition:     "color 0.2s",
-                })} 
+                })}
               >
                 {item.label}
               </NavLink>
@@ -118,7 +132,6 @@ function Navbar() {
           ))}
         </ul>
 
-        {/* Book a Call CTA */}
         <NavLink
           to="/contact"
           style={{
@@ -142,7 +155,6 @@ function Navbar() {
           Book a Call
         </NavLink>
 
-        {/* Hamburger (mobile) */}
         <button
           onClick={() => setMenuOpen(v => !v)}
           style={{
@@ -169,7 +181,6 @@ function Navbar() {
         </button>
       </div>
 
-      {/* Mobile drawer */}
       {menuOpen && (
         <div style={{ background: COLORS.white, padding: "12px 40px 24px", borderTop: "1px solid rgba(27,67,50,0.07)" }}>
           {NAV_ITEMS.map(item => (
@@ -219,35 +230,32 @@ function Navbar() {
 
 /* ─── Page ─── */
 export default function App() {
+  const [videoOpen, setVideoOpen] = useState(false); // 👈 new state
+
   return (
     <>
       <style>{`
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
           font-family: 'Söhne', 'DM Sans', sans-serif;
           background: #fff;
           overflow-x: hidden;
         }
-
-        /* Push content below fixed navbar */
         .page-wrapper { padding-top: 64px; }
 
-        /* ── HERO ── */
         .hero-top {
-          position:          relative;
-          width:             100%;
-          height:            610px;
-          display:           flex;
-          align-items:       center;
-          justify-content:   center;
-          text-align:        center;
-          overflow:          hidden;
-          background-image:  linear-gradient(${COLORS.overlay}, ${COLORS.overlay}), url(${bannerImg});
-          background-size:   cover;
+          position:            relative;
+          width:               100%;
+          height:              610px;
+          display:             flex;
+          align-items:         center;
+          justify-content:     center;
+          text-align:          center;
+          overflow:            hidden;
+          background-image:    linear-gradient(${COLORS.overlay}, ${COLORS.overlay}), url(${bannerImg});
+          background-size:     cover;
           background-position: center;
         }
-
         .content-wrap {
           position:       relative;
           z-index:        2;
@@ -256,113 +264,95 @@ export default function App() {
           align-items:    center;
           gap:            24px;
         }
-
-        /* D1 — GT Super Medium */
         .hero-title {
-  font-family: 'GTSuper', serif;
-  font-size: 56px;
-  font-style: normal;
-  font-weight: 500; /* 👈 this will pick Medium */
-  color: #FFF;
-  line-height: 64px;
-  letter-spacing: -1.12px;
-  font-variant-numeric: lining-nums proportional-nums;
-
-  align-self: stretch;
-}
-
-        /* L1 — WE SIGNED IT (label style) */
+          font-family:          'GTSuper', serif;
+          font-size:            56px;
+          font-weight:          500;
+          color:                #FFF;
+          line-height:          64px;
+          letter-spacing:       -1.12px;
+          font-variant-numeric: lining-nums proportional-nums;
+          align-self:           stretch;
+        }
         .watch-btn {
-  display: flex;
-  height: 48px;
-  padding: 12px 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  font-family: 'CX80', sans-serif;
-  font-weight: 700;
-  line-height: 15px; /* 100% */
-letter-spacing: 4.8px;
-word-spacing: 8px;
-  border-radius: 5px;
-  border: 1px solid var(--Brand-Contrast-FS-AQUA, #69E4DC);
-  background: transparent;
-    color: white;.description
-}
-
-        
-
-        /* ── BOTTOM ── */
+          display:        flex;
+          height:         48px;
+          padding:        12px 16px;
+          justify-content: center;
+          align-items:    center;
+          gap:            10px;
+          font-family:    'CX80', sans-serif;
+          font-weight:    700;
+          line-height:    15px;
+          letter-spacing: 4.8px;
+          word-spacing:   8px;
+          border-radius:  5px;
+          border:         1px solid #69E4DC;
+          background:     transparent;
+          color:          white;
+          cursor:         pointer;
+          transition:     background 0.2s, color 0.2s;
+        }
+        .watch-btn:hover {
+          background: rgba(105, 228, 220, 0.15);
+        }
         .hero-bottom {
-          padding:         72px 5%;
-          background:      #fff;
-          display:         flex;
-          flex-direction:  column;
-          align-items:     center;
-          text-align:      center;
-          background: var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9);
+          padding:        72px 5%;
+          display:        flex;
+          flex-direction: column;
+          align-items:    center;
+          text-align:     center;
+          background:     #F9F9F9;
         }
-
-        /* B1 — Söhne Leicht 24/36 */
-     .description {
-  width: 1046px;
-  color: #000;
-  text-align: center;
-
-  font-family: 'Sohne', sans-serif;
-  font-size: 24px;
-  font-weight: 300; /* ✅ now works */
-  line-height: 36px;
-  background: "var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9)";
-}
-
-        /* L1 — WE SIGNED IT label style */
-       .find-out-btn {
-  display: flex;
-  height: 48px;
-  padding: 12px 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-
-  border-radius: 8px;
-  border: 1px solid var(--Brand-Contrast-FS-AQUA, #69E4DC);
-
-  color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
-
-  font-family: 'CX80', sans-serif;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 15px;
-  letter-spacing: 4.8px;
-  margin-top: 30px;
-  background: white;
-}
-  .find-out-btn:hover {
-   background: #073B2F;
-          color: #ffffff;
+        .description {
+          width:       1046px;
+          max-width:   100%;
+          color:       #000;
+          text-align:  center;
+          font-family: 'Sohne', sans-serif;
+          font-size:   24px;
+          font-weight: 300;
+          line-height: 36px;
         }
-
-        /* Hamburger hidden on desktop */
-        @media (min-width: 769px) {
-          .hamburger { display: none !important; }
+        .find-out-btn {
+          display:        flex;
+          height:         48px;
+          padding:        12px 16px;
+          justify-content: center;
+          align-items:    center;
+          gap:            10px;
+          flex-shrink:    0;
+          border-radius:  8px;
+          border:         1px solid #69E4DC;
+          color:          #073B2F;
+          font-family:    'CX80', sans-serif;
+          font-size:      15px;
+          font-weight:    700;
+          line-height:    15px;
+          letter-spacing: 4.8px;
+          margin-top:     30px;
+          background:     white;
+          cursor:         pointer;
+          transition:     background 0.2s, color 0.2s;
         }
-        @media (max-width: 768px) {
-          .desktop-nav { display: none !important; }
-          .hamburger   { display: block !important; }
+        .find-out-btn:hover {
+          background: #073B2F;
+          color:      #ffffff;
         }
+        @media (min-width: 769px) { .hamburger { display: none !important; } }
+        @media (max-width: 768px) { .desktop-nav { display: none !important; } .hamburger { display: block !important; } }
       `}</style>
+
+      {/* ─── Video Modal ─── */}
+      {videoOpen && <VideoModal onClose={() => setVideoOpen(false)} />}
 
       <div className="page-wrapper">
         <Navbar />
 
-        {/* ── HERO ── */}
         <section className="hero-top">
           <div className="content-wrap">
             <h1 className="hero-title">The advantage of being first.</h1>
-            <button className="watch-btn">
+            <button className="watch-btn" onClick={() => setVideoOpen(true)}> {/* 👈 opens modal */}
               <svg width="9" height="11" viewBox="0 0 9 11" fill="none">
                 <path d="M9 5.5L0 11V0L9 5.5Z" fill="white" />
               </svg>
@@ -371,7 +361,6 @@ word-spacing: 8px;
           </div>
         </section>
 
-        {/* ── BOTTOM ── */}
         <section className="hero-bottom">
           <p className="description">
             Find &amp; Sign is a property buyer's advocate. We represent clients across Western Australia,
