@@ -50,7 +50,6 @@ function Logo() {
 /* ── Navbar ── */
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const textColor = COLORS.racingGreen;
 
   return (
     <nav style={{
@@ -88,7 +87,7 @@ export default function Navbar() {
             <li key={item.label}>
               <NavLink
                 to={item.to}
-               style={({ isActive }) => ({
+                style={{
   fontFamily: "'Sohne', sans-serif",
   fontWeight: 400,
   fontSize: "20px",
@@ -96,7 +95,7 @@ export default function Navbar() {
   textDecoration: "none",
   letterSpacing: "0.02em",
   transition: "color 0.2s",
-                })}
+                }}
               >
                 {item.label}
               </NavLink>

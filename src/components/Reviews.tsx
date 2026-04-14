@@ -81,25 +81,14 @@ const StarRow = () => (
   </svg>
 );
 
-const ChevronLeft = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-const ChevronRight = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
 const Reviews = () => {
   const [index, setIndex] = useState(0);
   const timerRef          = useRef<ReturnType<typeof setInterval> | null>(null);
   const maxIndex          = reviews.length - VISIBLE;
 
   const goTo = useCallback(
-    (idx: number) => setIndex(Math.max(0, Math.min(idx, maxIndex))),
+    (i
+      => setIndex(Math.max(0, Math.min(idx, maxIndex))),
     [maxIndex]
   );
 
@@ -114,8 +103,6 @@ const Reviews = () => {
     resetTimer();
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [resetTimer]);
-
-  const handleNav = (dir: number) => { goTo(index + dir); resetTimer(); };
 
   const SLIDER_W = CARD_WIDTH * VISIBLE + CARD_GAP * (VISIBLE - 1);
 

@@ -20,9 +20,9 @@ const LinkedInIcon = () => (
 );
 
 const socialIcons = [
-  { label: "Facebook",  Icon: FacebookIcon  },
-  { label: "Instagram", Icon: InstagramIcon },
-  { label: "LinkedIn",  Icon: LinkedInIcon  },
+  { label: "Facebook", Icon: FacebookIcon, url: "https://www.facebook.com/nakranipropertybuyers/" },
+  { label: "Instagram", Icon: InstagramIcon, url: "https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" },
+  { label: "LinkedIn", Icon: LinkedInIcon, url: "https://www.linkedin.com/in/niki-nakrani-13b269237/" },
 ];
 
 const ColLink: React.FC<{ href?: string; children: React.ReactNode }> = ({ href = "#", children }) => {
@@ -32,18 +32,16 @@ const ColLink: React.FC<{ href?: string; children: React.ReactNode }> = ({ href 
       href={href}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
-     style={{
-  fontSize: "13px",
-  fontWeight: 300,
-  color: hov ? "#c8b99a" : "#9dbfaa",
-  textDecoration: "none",
-  transition: "color 0.18s",
-  lineHeight: "1.6",
-  display: "block",
-  fontFamily: "'Sohne', sans-serif",
-    color: "white",
-
-}}
+      style={{
+        fontSize: "13px",
+        fontWeight: 300,
+        color: hov ? "#c8b99a" : "white",
+        textDecoration: "none",
+        transition: "color 0.18s",
+        lineHeight: "1.6",
+        display: "block",
+        fontFamily: "'Sohne', sans-serif",
+      }}
     >
       {children}
     </a>
@@ -51,23 +49,23 @@ const ColLink: React.FC<{ href?: string; children: React.ReactNode }> = ({ href 
 };
 
 const ColTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => (
- <p style={{
-  color: "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
-  fontFamily: "'CX80', 'DM Sans', sans-serif",  // ✅ fixed
-  fontSize: "18px",
-  fontStyle: "normal",
-  fontWeight: 500,  // ✅ matches Bold font
-  lineHeight: "18px",
-  letterSpacing: "5.76px"
-}}>
+  <p style={{
+    color: "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
+    fontFamily: "'CX80', 'DM Sans', sans-serif",
+    fontSize: "18px",
+    fontStyle: "normal",
+    fontWeight: 500,
+    lineHeight: "18px",
+    letterSpacing: "5.76px"
+  }}>
     {children}
   </p>
 );
 
 const contactItems = [
-  { label: "T", href: "tel:0431158233",                   text: "0431 158 233"              },
+  { label: "T", href: "tel:0431158233", text: "0431 158 233" },
   { label: "E", href: "mailto:niki@findandsignba.com.au", text: "niki@findandsignba.com.au" },
-  { label: "W", href: "https://findandsignba.com.au",     text: "findandsignba.com.au"      },
+  { label: "W", href: "https://findandsignba.com.au", text: "findandsignba.com.au" },
 ];
 
 export default function Footer() {
@@ -76,91 +74,85 @@ export default function Footer() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        .footer-social-link { color: #9dbfaa; transition: color 0.2s; text-decoration: none; display: flex; align-items: center; justify-content: center; }
+        .footer-social-link { color: white; transition: color 0.2s; text-decoration: none; display: flex; align-items: center; justify-content: center; }
         .footer-social-link:hover { color: #c8b99a; }
       `}</style>
 
-      {/* Full-width green background */}
       <footer style={{
-        width:      "100%",
+        width: "100%",
         background: "#073B2F",
         fontFamily: "'Montserrat', sans-serif",
-        color:      "#e8e0d0",
+        color: "#e8e0d0",
       }}>
 
-        {/* Centred inner container — mirrors 1512px outer with 196px side padding → 1120px content */}
         <div style={{
           maxWidth: "1120px",
-          margin:   "0 auto",
-          padding:  "80px 0 0",
+          margin: "0 auto",
+          padding: "80px 0 0",
         }}>
 
-          {/* ── MAIN ROW ── */}
           <div style={{
-            display:        "flex",
-            alignItems:     "flex-start",
+            display: "flex",
+            alignItems: "flex-start",
             justifyContent: "space-between",
-            width:          "100%",
+            width: "100%",
           }}>
 
-            {/* Logo */}
             <div style={{ flexShrink: 0 }}>
-<div
-  style={{
-    display: "flex",
-    width: "159px",
-    padding: "8px 0",
-    flexDirection: "column",
-    alignItems: "flex-start",
-    gap: "10px",
-  }}
->
-  <img
-    src={Logo}
-    alt="Find and Sign"
-    style={{
-      width: "100%",
-      display: "block",
-    }}
-  />
-</div>            </div>
+              <div
+                style={{
+                  display: "flex",
+                  width: "159px",
+                  padding: "8px 0",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  gap: "10px",
+                }}
+              >
+                <img
+                  src={Logo}
+                  alt="Find and Sign"
+                  style={{
+                    width: "100%",
+                    display: "block",
+                  }}
+                />
+              </div>
+            </div>
 
-            {/* Contact */}
             <div style={{ display: "flex", flexDirection: "column", gap: "12px", flexShrink: 0 }}>
               <ColTitle>Contact</ColTitle>
               {contactItems.map(({ label, href, text }) => (
                 <div key={label} style={{ display: "flex", alignItems: "baseline", gap: "6px" }}>
                   <span
-  style={{
-    fontSize: "12px",
-    color: "white",
-    flexShrink: 0,
-    fontFamily: "'Sohne', sans-serif",
-    fontWeight: 100, // or 300 / 500 depending on your font files
-  }}
->
-  {label}
-</span>
+                    style={{
+                      fontSize: "12px",
+                      color: "white",
+                      flexShrink: 0,
+                      fontFamily: "'Sohne', sans-serif",
+                      fontWeight: 100,
+                    }}
+                  >
+                    {label}
+                  </span>
                   <a
-  href={href}
-  style={{
-    fontSize: "12px",
-    color: "white",
-    textDecoration: "underline",
-    textUnderlineOffset: "3px",
-    whiteSpace: "nowrap",
-    fontFamily: "'Sohne', sans-serif",
-        fontWeight: 100, // or 300 / 500 depending on your font files
-
-  }}
->
-  {text}
-</a>
+                    href={href}
+                    style={{
+                      fontSize: "12px",
+                      color: "white",
+                      textDecoration: "underline",
+                      textUnderlineOffset: "3px",
+                      whiteSpace: "nowrap",
+                      fontFamily: "'Sohne', sans-serif",
+                      fontWeight: 100,
+                    }}
+                  >
+                    {text}
+                  </a>
                 </div>
               ))}
             </div>
 
-            {/* Explore */}
             <div style={{ display: "flex", flexDirection: "column", gap: "12px", flexShrink: 0 }}>
               <ColTitle>Explore</ColTitle>
               <ColLink>About</ColLink>
@@ -170,49 +162,45 @@ export default function Footer() {
               <ColLink>Contact</ColLink>
             </div>
 
-            {/* Legal */}
             <div style={{ display: "flex", flexDirection: "column", gap: "12px", flexShrink: 0 }}>
               <ColTitle>Legal</ColTitle>
               <ColLink>Privacy Policy</ColLink>
               <ColLink>Terms &amp; Conditions</ColLink>
             </div>
 
-            {/* Social icons — horizontal, far right */}
-           <div style={{ display: "flex", alignItems: "center", gap: "20px", flexShrink: 0, marginTop: "2px" }}>
-  {socialIcons.map(({ label, Icon }) => (
-    <a
-      key={label}
-      href="#"
-      title={label}
-      className="footer-social-link"
-      style={{ color: "white" }}
-    >
-      <Icon />
-    </a>
-  ))}
-</div>
+            <div style={{ display: "flex", alignItems: "center", gap: "20px", flexShrink: 0, marginTop: "2px" }}>
+              {socialIcons.map(({ label, Icon, url }) => (
+                <a
+                  key={label}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={label}
+                  className="footer-social-link"
+                >
+                  <Icon />
+                </a>
+              ))}
+            </div>
           </div>
 
-        <div
-  style={{
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginTop: "60px",
-    paddingTop: "24px",
-    paddingBottom: "40px",
-    fontFamily: "'Sohne', sans-serif",
-    fontSize: "16px",
-    fontWeight: 100,
-    color: "white",
-  }}
->
-  {/* Left */}
-  <span>ABN XXXXXXXXXX</span>
-
-  {/* Right */}
-  <span>© 2026 Find and Sign Buyer Advocate</span>
-</div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginTop: "60px",
+              paddingTop: "24px",
+              paddingBottom: "40px",
+              fontFamily: "'Sohne', sans-serif",
+              fontSize: "16px",
+              fontWeight: 100,
+              color: "white",
+            }}
+          >
+            <span>ABN XXXXXXXXXX</span>
+            <span>© 2026 Find and Sign Buyer Advocate</span>
+          </div>
         </div>
       </footer>
     </>

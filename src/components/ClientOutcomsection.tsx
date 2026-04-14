@@ -3,7 +3,6 @@ import { useState, useEffect, useRef } from "react";
 const AQUA         = "#69E4DC";
 const RACING_GREEN = "#003327";
 const WHITE        = "#FFFFFF";
-const BG           = "#FFFFFF";
 
 const cards = [
   {
