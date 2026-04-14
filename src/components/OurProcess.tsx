@@ -135,12 +135,11 @@ const s: Record<string, React.CSSProperties> = {
     maxWidth:     "1120px",
   },
 
-  /* GT Super Medium — H2 heading */
- title: {
-  fontFamily: "GT Super Display",
+  title: {
+  fontFamily: "GTSuper",   // ✅ FIXED
   fontSize: "44px",
   fontStyle: "normal",
-  fontWeight: 500,
+  fontWeight: 500,         // ✅ Medium
   color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
   lineHeight: "54px",
   letterSpacing: "-0.88px",
@@ -150,10 +149,8 @@ const s: Record<string, React.CSSProperties> = {
   height: "54px",
   width: "1120px",
 },
-
-  /* Söhne Leicht — 1120 Fill × 54 Hug */
- subtitle: {
-  fontFamily: "Söhne",
+  subtitle: {
+  fontFamily: "Sohne",   // ✅ FIXED (must match @font-face)
   fontSize: "24px",
   fontStyle: "normal",
   fontWeight: 300,
@@ -188,11 +185,11 @@ const s: Record<string, React.CSSProperties> = {
 
   /* GT Super Display — large numbers */
  num: {
-  fontFamily: "GT Super Display",
+  fontFamily: "GTSuper",   // 👈 IMPORTANT FIX
   fontSize: "168px",
   fontStyle: "normal",
-  fontWeight: 500,
-  color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+  fontWeight: 500,         // 👈 this triggers Medium
+  color: "var(--FS-RACING-GREEN, #073B2F)",
   lineHeight: "148px",
   letterSpacing: "-5.04px",
   fontVariantNumeric: "lining-nums proportional-nums",
@@ -210,10 +207,10 @@ const s: Record<string, React.CSSProperties> = {
 
   /* GT Super Medium — step title */
   itemTitle: {
-  fontFamily: "GT Super Display",
+  fontFamily: "GTSuper",   // ✅ FIXED
   fontSize: "32px",
   fontStyle: "normal",
-  fontWeight: 500,
+  fontWeight: 500,         // ✅ Medium
   color: "#000",
   lineHeight: "40px",
   letterSpacing: "-0.64px",
@@ -224,13 +221,12 @@ const s: Record<string, React.CSSProperties> = {
 
   /* Söhne Leicht — step description */
   itemDesc: {
-  fontFamily: "Söhne",
+  fontFamily: "Sohne",   // ✅ FIXED (no ö)
   fontSize: "20px",
   fontStyle: "normal",
   fontWeight: 400,
   color: "var(--FS-System-Grey-1, #757575)",
   lineHeight: "28px",
-
   margin: 0,
 },
 
@@ -258,5 +254,15 @@ const s: Record<string, React.CSSProperties> = {
 
   borderRadius: "8px",
   border: "1px solid var(--Brand-Contrast-FS-AQUA, #69E4DC)",
+
+  /* ✅ FONT ADDED */
+  fontFamily: "CX80",
+  fontSize: "15px",
+  fontStyle: "normal",
+  fontWeight: 400,   // change to 700 if you want bold
+  letterSpacing: "4.8px",
+
+  background: "#fff",
+  color: "var(--FS-RACING-GREEN, #073B2F)",
 },
 };

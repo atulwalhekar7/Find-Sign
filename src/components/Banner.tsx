@@ -4,6 +4,7 @@ import { useState } from "react";
 import bannerImg from "../assets/DSC06227.jpg";
 import logo from "../assets/FS Primary Lockup_Gold.png";
 
+
 const COLORS = {
   racingGreen: "#1B4332",
   aqua:        "#40C9A2",
@@ -258,11 +259,11 @@ export default function App() {
 
         /* D1 — GT Super Medium */
         .hero-title {
-  font-family: "GT Super Display";
+  font-family: 'GTSuper', serif;
   font-size: 56px;
   font-style: normal;
-  font-weight: 500;
-  color: var(--FS-WHITE, var(--Brand-Utility-FS-WHITE, #FFF));
+  font-weight: 500; /* 👈 this will pick Medium */
+  color: #FFF;
   line-height: 64px;
   letter-spacing: -1.12px;
   font-variant-numeric: lining-nums proportional-nums;
@@ -278,8 +279,12 @@ export default function App() {
   justify-content: center;
   align-items: center;
   gap: 10px;
-
-  border-radius: 8px;
+  font-family: 'CX80', sans-serif;
+  font-weight: 700;
+  line-height: 15px; /* 100% */
+letter-spacing: 4.8px;
+word-spacing: 8px;
+  border-radius: 5px;
   border: 1px solid var(--Brand-Contrast-FS-AQUA, #69E4DC);
   background: transparent;
     color: white;.description
@@ -295,20 +300,20 @@ export default function App() {
           flex-direction:  column;
           align-items:     center;
           text-align:      center;
+          background: var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9);
         }
 
         /* B1 — Söhne Leicht 24/36 */
-       .description {
+     .description {
   width: 1046px;
-
   color: #000;
   text-align: center;
 
-  font-family: Söhne;
+  font-family: 'Sohne', sans-serif;
   font-size: 24px;
-  font-style: normal;
-  font-weight: 300;
+  font-weight: 300; /* ✅ now works */
   line-height: 36px;
+  background: "var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9)";
 }
 
         /* L1 — WE SIGNED IT label style */
@@ -326,10 +331,10 @@ export default function App() {
 
   color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
 
-  font-family: "CX80 Trial VAR";
+  font-family: 'CX80', sans-serif;
   font-size: 15px;
   font-style: normal;
-  font-weight: 150;
+  font-weight: 700;
   line-height: 15px;
   letter-spacing: 4.8px;
   margin-top: 30px;

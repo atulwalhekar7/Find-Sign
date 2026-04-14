@@ -57,7 +57,6 @@ const CARD_WIDTH = 352;
 const CARD_GAP   = 24;
 const VISIBLE    = 3;
 
-/* ── Star Union SVG — Figma: width:210px, height:38.365px, fill:var(--Brand-Signature-FS-LIGHT-GOLD) ── */
 const StarRow = () => (
   <svg
     width="210"
@@ -67,12 +66,11 @@ const StarRow = () => (
     xmlns="http://www.w3.org/2000/svg"
     style={{ display: "block", flexShrink: 0 }}
   >
-    {/* Five individual stars as polygon paths, spaced across 210px width, each ~38px tall */}
     {[0, 1, 2, 3, 4].map((i) => {
       const cx = 19 + i * 43;
       const cy = 19;
-      const R  = 19;   // outer radius
-      const r  = 7.6;  // inner radius
+      const R  = 19;
+      const r  = 7.6;
       const pts = Array.from({ length: 10 }, (_, k) => {
         const angle = (Math.PI / 5) * k - Math.PI / 2;
         const radius = k % 2 === 0 ? R : r;
@@ -96,10 +94,9 @@ const ChevronRight = () => (
 );
 
 const Reviews = () => {
-  const [index, setIndex]   = useState(0);
-  const trackRef            = useRef<HTMLDivElement | null>(null);
-  const timerRef            = useRef<number | null>(null);
-  const maxIndex            = reviews.length - VISIBLE;
+  const [index, setIndex] = useState(0);
+  const timerRef          = useRef<ReturnType<typeof setInterval> | null>(null);
+  const maxIndex          = reviews.length - VISIBLE;
 
   const goTo = useCallback(
     (idx: number) => setIndex(Math.max(0, Math.min(idx, maxIndex))),
@@ -118,21 +115,16 @@ const Reviews = () => {
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [resetTimer]);
 
-  useEffect(() => {
-    if (trackRef.current) {
-      trackRef.current.style.transform = `translateX(-${index * (CARD_WIDTH + CARD_GAP)}px)`;
-    }
-  }, [index]);
-
   const handleNav = (dir: number) => { goTo(index + dir); resetTimer(); };
 
   const SLIDER_W = CARD_WIDTH * VISIBLE + CARD_GAP * (VISIBLE - 1);
 
+  // Dot indicators: one dot per possible index position
+  const totalDots = maxIndex + 1;
+
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         .rev-arrow-btn {
@@ -159,12 +151,6 @@ const Reviews = () => {
           cursor: default;
         }
 
-        .rev-track {
-          display: flex;
-          gap: ${CARD_GAP}px;
-          transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
         .rev-cta-btn {
           display: inline-flex;
           height: 48px;
@@ -173,20 +159,39 @@ const Reviews = () => {
           align-items: center;
           gap: 10px;
           border-radius: 8px;
-          border: 1px solid var(--Brand-Contrast-FS-AQUA, #69E4DC);
-          color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
-          font-family: "CX80 Trial VAR";
+          border: 1px solid #69E4DC;
+          color: #073B2F;
+          font-family: "CX80";
           font-size: 15px;
-          font-style: normal;
-          font-weight: 150;
+          font-weight: 700;
           line-height: 15px;
           letter-spacing: 4.8px;
           background: white;
           cursor: pointer;
+          transition: background 0.2s, color 0.2s;
         }
         .rev-cta-btn:hover {
           background: #073B2F;
           color: #ffffff;
+        }
+
+        .rev-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #D0C9C0;
+          border: none;
+          padding: 0;
+          cursor: pointer;
+          transition: background 0.2s, transform 0.2s;
+          flex-shrink: 0;
+        }
+        .rev-dot.active {
+          background: #073B2F;
+          transform: scale(1.25);
+        }
+        .rev-dot:hover:not(.active) {
+          background: #9C7B4B;
         }
       `}</style>
 
@@ -213,11 +218,13 @@ const Reviews = () => {
         }}>
           <div>
             <h2 style={{
-              fontFamily:         "'GT Super Display', Georgia, serif",
+              fontFamily:         "GTSuper, Georgia, serif",
               fontSize:           "44px",
-              fontStyle:          "normal",
               fontWeight:         500,
-              color:              "#073B2F",
+              fontStyle:          "normal",
+              color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+
+
               lineHeight:         "54px",
               letterSpacing:      "-0.88px",
               fontVariantNumeric: "lining-nums proportional-nums",
@@ -229,8 +236,8 @@ const Reviews = () => {
               color:      "#000",
               fontFamily: "Söhne, 'DM Sans', sans-serif",
               fontSize:   "24px",
-              fontStyle:  "normal",
               fontWeight: 300,
+              fontStyle:  "normal",
               lineHeight: "36px",
               marginTop:  "8px",
             }}>
@@ -238,30 +245,34 @@ const Reviews = () => {
             </p>
           </div>
 
-          <div style={{ display: "flex", gap: "10px", alignItems: "center", paddingTop: "6px", flexShrink: 0 }}>
+          {/* <div style={{ display: "flex", gap: "10px", alignItems: "center", paddingTop: "6px", flexShrink: 0 }}>
             <button className="rev-arrow-btn" onClick={() => handleNav(-1)} disabled={index <= 0} aria-label="Previous reviews">
               <ChevronLeft />
             </button>
             <button className="rev-arrow-btn" onClick={() => handleNav(1)} disabled={index >= maxIndex} aria-label="Next reviews">
               <ChevronRight />
             </button>
-          </div>
+          </div> */}
         </div>
 
         {/* ── SLIDER ── */}
         <div style={{ width: `${SLIDER_W}px`, overflow: "hidden" }}>
-          <div className="rev-track" ref={trackRef}>
+          <div
+            style={{
+              display:    "flex",
+              gap:        `${CARD_GAP}px`,
+              transform:  `translateX(-${index * (CARD_WIDTH + CARD_GAP)}px)`,
+              transition: "transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)",
+            }}
+          >
             {reviews.map((review, i) => (
               <div
                 key={i}
                 style={{
-                  /* Figma: display:flex; width:352px; height:440px; padding:32px;
-                     justify-content:space-between; align-items:flex-start;
-                     flex-direction:column; border-radius:16px;
-                     background: var(--Brand-Foundation-FS-RACING-GREEN, #073B2F) */
                   display:        "flex",
                   flexDirection:  "column",
                   width:          `${CARD_WIDTH}px`,
+                  minWidth:       `${CARD_WIDTH}px`,
                   height:         "440px",
                   padding:        "32px",
                   justifyContent: "space-between",
@@ -272,57 +283,53 @@ const Reviews = () => {
                   boxSizing:      "border-box",
                 }}
               >
-                {/* Stars — FS LIGHT GOLD, Union asset */}
+                {/* Stars */}
                 <StarRow />
 
-                {/* Middle group: headline + body stacked together, grows to fill space */}
+                {/* Middle: headline + body */}
                 <div style={{
                   display:       "flex",
                   flexDirection: "column",
                   alignSelf:     "stretch",
                   flex:          1,
-                  gap:           "8px",
+                  gap:           "32px",
                   marginTop:     "24px",
                 }}>
-                  {/* Headline — GT Super Display, 32px, 500, lh 40px, ls -0.64px */}
                   <p style={{
                     fontFamily:         "'GT Super Display', Georgia, serif",
                     fontSize:           "32px",
-                    fontStyle:          "normal",
                     fontWeight:         500,
                     lineHeight:         "40px",
                     letterSpacing:      "-0.64px",
-                    color:              "#C8B99A",
+                    color: "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
                     fontVariantNumeric: "lining-nums proportional-nums",
                     whiteSpace:         "pre-line",
+                    
                   }}>
                     {review.headline}
                   </p>
 
-                  {/* Body — Söhne, 20px, 400, lh 28px (140%) */}
-                  <p style={{
-                    fontFamily: "Söhne, 'DM Sans', sans-serif",
-                    fontSize:   "20px",
-                    fontStyle:  "normal",
-                    fontWeight: 400,
-                    lineHeight: "28px",
-                    color:      "#C8B99A",
-                  }}>
+                 <p style={{
+  fontFamily: "Sohne, 'DM Sans', sans-serif",  // ✅ FIXED
+  fontSize: "20px",
+  fontWeight: 400,
+  lineHeight: "28px",
+  color: "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
+}}>
                     {review.text}
                   </p>
                 </div>
 
-                {/* Name — Söhne, 20px, 400, lh 28px, top border */}
+                {/* Name */}
                 <p style={{
                   fontFamily: "Söhne, 'DM Sans', sans-serif",
                   fontSize:   "20px",
-                  fontStyle:  "normal",
                   fontWeight: 400,
                   lineHeight: "28px",
-                  color:      "#C8B99A",
+                  color: "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
                   alignSelf:  "stretch",
                   paddingTop: "16px",
-                  borderTop:  "1px solid rgba(200,185,154,0.2)",
+                  
                   marginTop:  "16px",
                 }}>
                   — {review.name}
@@ -330,6 +337,23 @@ const Reviews = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* ── DOT INDICATORS ── */}
+        <div style={{
+          display:    "flex",
+          gap:        "8px",
+          alignItems: "center",
+          marginTop:  "-40px", // pull closer to cards
+        }}>
+          {Array.from({ length: totalDots }).map((_, i) => (
+            <button
+              key={i}
+              className={`rev-dot${i === index ? " active" : ""}`}
+              onClick={() => { goTo(i); resetTimer(); }}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
         </div>
 
         {/* ── CTA ── */}

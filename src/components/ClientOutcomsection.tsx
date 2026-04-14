@@ -66,16 +66,17 @@ const VISIBLE  = 3;
 const INTERVAL = 3000;
 const GAP      = 32;
 const CARD_W   = 352;
-const CARD_H   = 440;
+const CARD_H   = 480; // ← increased from 440 to show all 4 rows
 
-/* ── Property Card — 352 × 440 ── */
+/* ── Property Card — 352 × auto ── */
 function PropertyCard({ card }: { card: typeof cards[0] }) {
   return (
     <div style={{
       width:         "352px",
-      minHeight:     "440px",
+      height:        "auto",           // ← was minHeight: "440px" — now grows naturally
       background:    WHITE,
       border:        "1px solid rgba(0,51,39,0.10)",
+      borderRadius:  "12px",           // ← added to match Figma rounded corners
       overflow:      "visible",
       position:      "relative",
       flexShrink:    0,
@@ -85,12 +86,13 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
 
       {/* Image area — overflow hidden only clips the image, not the circle */}
       <div style={{
-        position:   "relative",
-        width:      "100%",
-        height:     "220px",
-        background: "#d9d9d9",
-        overflow:   "hidden",
-        flexShrink: 0,
+        position:     "relative",
+        width:        "100%",
+        height:       "220px",
+        background:   "#d9d9d9",
+        overflow:     "hidden",
+        flexShrink:   0,
+        borderRadius: "12px 12px 0 0", // ← top corners rounded to match card
       }}>
         <img
           src={card.image}
@@ -102,7 +104,7 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
       {/* Growth circle — card-level so never clipped by image overflow:hidden */}
       <div style={{
         position:       "absolute",
-        top:            "165px",         /* 220px - half of 110px circle = 165px */
+        top:            "165px",
         right:          "18px",
         width:          "110px",
         height:         "110px",
@@ -114,27 +116,25 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
         justifyContent: "center",
         zIndex:         10,
       }}>
-        {/* "Growth" label — Söhne, 20px, 400, line-height 28px */}
         <span style={{
-          fontFamily:  "'Söhne', 'DM Sans', sans-serif",
-          fontSize:    "11px",
-          fontWeight:  400,
-          color:       RACING_GREEN,
-          lineHeight:  "14px",
-          textAlign:   "center",
-          display:     "block",
+          fontFamily: "'Söhne', 'DM Sans', sans-serif",
+          fontSize:   "11px",
+          fontWeight: 400,
+          color:      RACING_GREEN,
+          lineHeight: "14px",
+          textAlign:  "center",
+          display:    "block",
         }}>
           Growth
         </span>
-        {/* "XX.X%" value — GT Super Display, 37px, 500, line-height 40px, letter-spacing -0.74px */}
         <span style={{
-          fontFamily:    "'GT Super Display', 'GT Super', 'Cormorant Garamond', Georgia, serif",
-          fontSize:      "22px",
-          fontWeight:    500,
-          color:         RACING_GREEN,
-          lineHeight:    "24px",
-          letterSpacing: "-0.44px",
-          textAlign:     "center",
+          fontFamily:         "'GT Super Display', 'GT Super', 'Cormorant Garamond', Georgia, serif",
+          fontSize:           "22px",
+          fontWeight:         500,
+          color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+          lineHeight:         "24px",
+          letterSpacing:      "-0.44px",
+          textAlign:          "center",
           fontVariantNumeric: "lining-nums proportional-nums",
         }}>
           {card.growth}
@@ -161,16 +161,16 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
               justifyContent: "space-between",
               alignItems:     "center",
               padding:        "9px 0",
-              borderBottom:   i < arr.length - 1
-                ? "1px dashed rgba(0,51,39,0.15)"
-                : "none",
+              borderBottom: i < arr.length - 1
+  ? "1px dashed var(--Brand-Signature-FS-LIGHT-GOLD, #846F58)"
+  : "none",
             }}
           >
             <span style={{
-              fontFamily: "'Söhne', 'DM Sans', sans-serif",
-              fontSize:   "13px",
-              fontWeight: 300,
-              color:      "#444",
+              fontFamily: "Sohne, 'DM Sans', sans-serif",
+              fontSize: "13px",
+               fontWeight: 400,   // ✅ FIXED
+             color:" var(--FS-BLACK, var(--Brand-Utility-FS-BLACK, #000))",
             }}>
               {label}
             </span>
@@ -178,7 +178,8 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
               fontFamily: "'Söhne', 'DM Sans', sans-serif",
               fontSize:   "13px",
               fontWeight: 400,
-              color:      RACING_GREEN,
+              color: "var(--FS-System-Grey-1, #757575)",
+
             }}>
               {val}
             </span>
@@ -225,7 +226,7 @@ export default function ClientOutcomes() {
         .view-btn:hover { background: ${RACING_GREEN} !important; color: ${WHITE} !important; }
       `}</style>
 
-      {/* ── OUTER CONTAINER — Figma: display:flex; width:1512px; padding:64px 196px; flex-direction:column; align-items:flex-start; gap:10px ── */}
+      {/* ── OUTER CONTAINER ── */}
       <div style={{
         background:    BG,
         width:         "1512px",
@@ -237,7 +238,7 @@ export default function ClientOutcomes() {
         boxSizing:     "border-box",
       }}>
 
-        {/* ── INNER CONTENT — Figma: display:flex; width:1120px; flex-direction:column; align-items:center; gap:64px ── */}
+        {/* ── INNER CONTENT ── */}
         <div style={{
           width:         "1120px",
           display:       "flex",
@@ -259,9 +260,9 @@ export default function ClientOutcomes() {
                 width:              "352px",
                 height:             "56px",
                 flexShrink:         0,
-                color:              "var(--FS-RACING-GREEN, #073B2F)",
+                color:              "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
                 fontVariantNumeric: "lining-nums proportional-nums",
-                fontFamily:         "'GT Super Display', Georgia, serif",
+                fontFamily:         "GTSuper, Georgia, serif",
                 fontSize:           "44px",
                 fontStyle:          "normal",
                 fontWeight:         500,
@@ -273,7 +274,7 @@ export default function ClientOutcomes() {
               <p style={{
                 width:      "733px",
                 color:      "#000",
-                fontFamily: "'Söhne', 'DM Sans', sans-serif",
+                fontFamily: "Sohne, 'DM Sans', sans-serif",
                 fontSize:   "24px",
                 fontStyle:  "normal",
                 fontWeight: 300,
@@ -354,30 +355,27 @@ export default function ClientOutcomes() {
           <div style={{ textAlign: "center", width: "100%" }}>
             <button
               className="view-btn"
-            style={{
-  display: "flex",
-  height: "48px",
-  padding: "12px 16px",
-  justifyContent: "center",
-  alignItems: "center",
-  gap: "10px",
-
-  borderRadius: "8px",
-  border: "1px solid var(--Brand-Contrast-FS-AQUA, #69E4DC)",
-
-  color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
-
-  fontFamily: "CX80 Trial VAR",
-  fontSize: "15px",
-  fontStyle: "normal",
-  fontWeight: 150,
-  lineHeight: "15px",
-  letterSpacing: "4.8px",
-
-  alignSelf: "center",
-  margin: "0 auto",
-  background:"White",
-}}
+              style={{
+                display:       "flex",
+                height:        "48px",
+                padding:       "12px 16px",
+                justifyContent:"center",
+                alignItems:    "center",
+                gap:           "10px",
+                borderRadius:  "8px",
+                border:        "1px solid var(--Brand-Contrast-FS-AQUA, #69E4DC)",
+                color:         "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+                fontFamily:    "CX80",
+                fontSize:      "15px",
+                fontStyle:     "normal",
+                fontWeight:    700,
+                lineHeight:    "15px",
+                letterSpacing: "4.8px",
+                alignSelf:     "center",
+                margin:        "0 auto",
+                background:    "White",
+                cursor:        "pointer",
+              }}
             >
               View More Outcomes
             </button>

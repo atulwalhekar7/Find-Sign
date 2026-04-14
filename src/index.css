@@ -57,14 +57,53 @@ body {
 
 
 /* ================= GT Super ================= */
+/* Regular */
 @font-face {
   font-family: 'GTSuper';
   src: url('./assets/fonts/GT_Super_Web/woff2/GT-Super-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
+
+/* Medium */
+@font-face {
+  font-family: 'GTSuper';
+  src: url('./assets/fonts/GT_Super_Web/woff2/GT-Super-Medium.woff2') format('woff2');
+  font-weight: 500;
+}
+
+/* Bold */
+@font-face {
+  font-family: 'GTSuper';
+  src: url('./assets/fonts/GT_Super_Web/woff2/GT-Super-Bold.woff2') format('woff2');
+  font-weight: 700;
 }
 
 
+
+/* Regular */
+@font-face {
+  font-family: 'GTSuper';
+  src: url('./assets/fonts/GT_Super_Web/otf/GT-Super-Display-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
 /* ================= Sohne ================= */
 @font-face {
   font-family: 'Sohne';
+  src: url('./assets/fonts/Söhne/woff2/soehne-leicht.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sohne';
   src: url('./assets/fonts/Söhne/woff2/Sohne-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Sohne';
+  src: url('./assets/fonts/Söhne/otf/Söhne-Buch.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
 }
