@@ -49,16 +49,15 @@ const ColLink: React.FC<{ href?: string; children: React.ReactNode }> = ({ href 
 };
 
 const ColTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <p style={{
-    fontSize:      "10px",
-    fontWeight:    700,
-    letterSpacing: "0.18em",
-    textTransform: "uppercase" as const,
-    color:         "#c8b99a",
-    fontFamily:    "'Montserrat', sans-serif",
-    lineHeight:    "1",
-    marginBottom:  "4px",
-  }}>
+ <p style={{
+  color:         "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
+  fontFamily:    '"CX80 Trial VAR"',
+  fontSize:      "18px",
+  fontStyle:     "normal",
+  fontWeight:    150,
+  lineHeight:    "18px",
+  letterSpacing: "5.76px"
+}}>
     {children}
   </p>
 );
@@ -160,12 +159,23 @@ export default function Footer() {
             paddingBottom:  "40px",
           
           }}>
-            <span style={{ fontSize: "12px", color: "#6a9070", letterSpacing: "0.04em", fontFamily: "'Montserrat', sans-serif" }}>
+            <span style={{
+  display:    "inline-flex",
+  alignItems: "center",
+  gap:        "34px"
+}}>
               ABN XXXXXXXXXX
             </span>
-            <span style={{ fontSize: "12px", color: "#6a9070", letterSpacing: "0.04em", fontFamily: "'Montserrat', sans-serif" }}>
-              © 2026 Find and Sign Buyer Advocate
-            </span>
+            <span style={{
+  color:       "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
+  fontFamily:  "Söhne",
+  fontSize:    "16px",
+  fontStyle:   "normal",
+  fontWeight:  400,
+  lineHeight:  "24px"
+}}>
+  © 2026 Find and Sign Buyer Advocate
+</span>
           </div>
 
         </div>

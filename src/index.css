@@ -34,3 +34,45 @@ body {
   .desktop-nav { display: none !important; }
   .hamburger   { display: block !important; }
 }
+
+
+/* ================= CX80 ================= */
+@font-face {
+  font-family: 'CX80';
+  src: url('./assets/fonts/CX80/CX80Trial-Regular.otf') format('opentype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'CX80';
+  src: url('./assets/fonts/CX80/CX80Trial-Bold.otf') format('opentype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'CX80';
+  src: url('./assets/fonts/CX80/CX80Trial-Light.otf') format('opentype');
+  font-weight: 300;
+}
+
+
+/* ================= GT Super ================= */
+@font-face {
+  font-family: 'GTSuper';
+  src: url('./assets/fonts/GT_Super_Web/woff2/GT-Super-Regular.woff2') format('woff2');
+}
+
+
+/* ================= Sohne ================= */
+@font-face {
+  font-family: 'Sohne';
+  src: url('./assets/fonts/Söhne/woff2/soehne-leicht.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sohne';
+  src: url('./assets/fonts/Söhne/woff2/Sohne-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
