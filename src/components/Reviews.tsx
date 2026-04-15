@@ -86,11 +86,9 @@ const Reviews = () => {
   const timerRef          = useRef<ReturnType<typeof setInterval> | null>(null);
   const maxIndex          = reviews.length - VISIBLE;
 
-  const goTo = useCallback(
-    (i
-      => setIndex(Math.max(0, Math.min(idx, maxIndex))),
-    [maxIndex]
-  );
+  const goTo = useCallback((index: number) => {
+    setIndex(Math.max(0, Math.min(index, maxIndex)));
+  }, [setIndex, maxIndex]);
 
   const resetTimer = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
