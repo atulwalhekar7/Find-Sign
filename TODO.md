@@ -1,9 +1,9 @@
-# TODO: Fix TypeScript Errors
+# TODO: Fix TypeScript Build Errors
 
-## Plan Breakdown
-- [x] Step 1: Edit Navbar.tsx - Remove unused isActive from NavLink style props
-- [x] Step 2: Edit Reviews.tsx - Fix imports, add types to params, fix timerRef type
-- [x] Step 3: Edit page files (About, ClientOutcomes, Insights, Services) - Remove unused imports and COLORS
-- [x] Step 4: Verify fixes with tsc --noEmit or npm run build
-- [x] Step 5: Complete task
+## Plan Steps
+- [x] Step 1: Fix unused 'React' import in src/components/Reviews.tsx
+- [ ] Step 2: Fix unused 'isActive' declarations in src/components/Banner.tsx NavLink styles
+- [ ] Step 3: Verify build with `npm run build` (0 errors)
+- [ ] Step 4: Complete - attempt_completion
 
+**Status:** Starting edits...

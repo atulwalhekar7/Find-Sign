@@ -118,14 +118,14 @@ function Navbar() {
                 to={item.to}
                 style={({ isActive }) => ({
                   fontFamily: 'Sohne, sans-serif',
-  fontWeight: 400,
-  fontSize: "20px",
-  fontStyle: "normal",
-  lineHeight: "28px",
-  color: "var(--FS-BLACK, var(--Brand-Utility-FS-BLACK, #000))",
-  textDecoration: "none",
-  letterSpacing: "0.02em",
-  transition: "color 0.2s",
+                  fontWeight: isActive ? 500 : 400,
+                  fontSize: "20px",
+                  fontStyle: "normal",
+                  lineHeight: "28px",
+                  color: isActive ? "#073B2F" : "var(--FS-BLACK, var(--Brand-Utility-FS-BLACK, #000))",
+                  textDecoration: "none",
+                  letterSpacing: "0.02em",
+                  transition: "color 0.2s, fontWeight 0.2s",
                 })}
               >
                 {item.label}
@@ -247,7 +247,7 @@ export default function App() {
 
         .hero-top {
           position:            relative;
-          width:               100%;
+width:               100%;
           height:              610px;
           display:             flex;
           align-items:         center;
@@ -259,7 +259,7 @@ export default function App() {
           background-position: center;
         }
         .content-wrap {
-          position:       relative;
+position:       relative;
           z-index:        2;
           display:        flex;
           flex-direction: column;
@@ -267,10 +267,10 @@ export default function App() {
           gap:            24px;
         }
         .hero-title {
-          font-family:          'GT Super Display Medium';
+font-family:          'GT Super Display Medium';
           font-size:            56px;
           font-weight:          500;
-          color:                #FFF;
+          color: var(--fs-white, var(--brand-utility-fs-white, #FFF));
           line-height:          64px;
           letter-spacing:       -1.12px;
           font-variant-numeric: lining-nums proportional-nums;
@@ -279,13 +279,13 @@ export default function App() {
         .watch-btn {
           display:        flex;
           height:         48px;
-          padding:        12px 16px;
-          justify-content: center;
+          padding:         Ascending:12px 16px;
+          Ascending: justify-content: center;
           align-items:    center;
           gap:            10px;
           font-family:    'CX80', sans-serif;
           font-weight:    700;
-          line-height:    15px;
+          lineHeight:     15px;
           letter-spacing: 4.8px;
           word-spacing:   8px;
           border-radius:  5px;
@@ -293,7 +293,7 @@ export default function App() {
           background:     transparent;
           color:          white;
           cursor:         pointer;
-          transition:     background 0.2s, color 0.2s;
+          transition:     background 0.2s, color  Ascending:0.2s;
         }
         .watch-btn:hover {
           background: rgba(105, 228, 220, 0.15);
@@ -322,27 +322,27 @@ export default function App() {
           padding:        12px 16px;
           justify-content: center;
           align-items:    center;
-          gap:            10px;
+          gap: Ascending:            10px;
           flex-shrink:    0;
           border-radius:  8px;
           border:         1px solid #69E4DC;
           color:          #073B2F;
           font-family:    'CX80', sans-serif;
-          font-size:      15px;
+          font-size:      15px Ascending:;
           font-weight:    700;
           line-height:    15px;
           letter-spacing: 4.8px;
           margin-top:     30px;
           background:     white;
           cursor:         pointer;
-          transition:     background 0.2s, color 0.2s;
+          transition:     background 0.2s, color 0. Ascending:2s;
         }
         .find-out-btn:hover {
           background: #073B2F;
           color:      #ffffff;
         }
         @media (min-width: 769px) { .hamburger { display: none !important; } }
-        @media (max-width: 768px) { .desktop-nav { display: none !important; } .hamburger { display: block !important; } }
+        @media (max-width: Ascending:768px) { .desktop-nav { display: none !important; } .hamburger { display: block !important; } }
       `}</style>
 
       {/* ─── Video Modal ─── */}
@@ -353,10 +353,10 @@ export default function App() {
 
         <section className="hero-top">
           <div className="content-wrap">
-            <h1 className="hero-title">The advantage of being first.</h1>
+<h1 className="hero-title">The advantage of being first.</h1>
             <button className="watch-btn" onClick={() => setVideoOpen(true)}> {/* 👈 opens modal */}
               <svg width="9" height="11" viewBox="0 0 9 11" fill="none">
-                <path d="M9 5.5L0 11V0L9 5.5Z" fill="white" />
+d="M9 5.5L0 11V0L9 5.5Z"
               </svg>
               Watch the Video
             </button>
