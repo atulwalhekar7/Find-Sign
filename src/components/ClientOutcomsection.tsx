@@ -376,7 +376,7 @@ export default function ClientOutcomes() {
                 cursor:        "pointer",
               }}
             >
-              View More Outcomes
+              View More Outcomes.
             </button>
           </div>
 
