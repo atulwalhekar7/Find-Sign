@@ -1,27 +1,33 @@
 import React from "react";
-import heroImage from "../assets/Image+subhead (1).png"; // your image file in assets folder
+import { Grid, Box } from "@mui/material";
+import heroImage from "../assets/Image+subhead (1).png";
 
 const Image1: React.FC = () => {
   return (
-    <section
-      style={{
-        width: "1512px",
-        height: "698px",
-        overflow: "hidden",
-      }}
-    >
-      <img
-        src={heroImage}
-        alt="The right property secured before the wider market"
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          objectPosition: "center",
-          display: "block",
-        }}
-      />
-    </section>
+    <Grid container>
+      {/* Full width = 12 columns */}
+      <Grid size={12}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            width: "100%",
+          }}
+        >
+          <Box
+            component="img"
+            src={heroImage}
+            alt="The right property secured before the wider market"
+            sx={{
+              width: "100%",
+              maxWidth: "1512px", // keeps original max size
+              height: "auto",
+              display: "block",
+            }}
+          />
+        </Box>
+      </Grid>
+    </Grid>
   );
 };
 

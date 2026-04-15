@@ -90,97 +90,100 @@ function Navbar() {
       boxShadow:  "0 1px 20px rgba(0,0,0,0.08)",
       transition: "box-shadow 0.4s ease",
     }}>
-      <div style={{
-        width:           "100%",
-        padding:         "0 196px",
-        height:          "64px",
-        display:         "flex",
-        alignItems:      "center",
-        justifyContent:  "space-between",
-        gap:             "10px",
-      }}>
-        <NavLink to="/" style={{ display: "flex", alignItems: "center", textDecoration: "none", flexShrink: 0 }}>
-          <img src={logo} alt="Find & Sign" style={{ height: "34px", width: "auto", objectFit: "contain" }} />
-        </NavLink>
+      {/* 12-column grid container */}
+      <div className="grid-container" style={{ height: "64px" }}>
+        <div className="nav-row" style={{ height: "100%", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          {/* Logo */}
+          <div style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
+            <NavLink to="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
+              <img src={logo} alt="Find & Sign" style={{ height: "34px", width: "auto", objectFit: "contain" }} />
+            </NavLink>
+          </div>
 
-        <ul style={{
-          display:        "flex",
-          gap:            "36px",
-          listStyle:      "none",
-          margin:         0,
-          padding:        0,
-          flex:           1,
-          justifyContent: "center",
-        }}>
-          {NAV_ITEMS.map(item => (
-            <li key={item.label}>
-              <NavLink
-                to={item.to}
-                style={({ isActive }) => ({
-                  fontFamily: 'Sohne, sans-serif',
-                  fontWeight: isActive ? 500 : 400,
-                  fontSize: "20px",
-                  fontStyle: "normal",
-                  lineHeight: "28px",
-                  color: isActive ? "#073B2F" : "var(--FS-BLACK, var(--Brand-Utility-FS-BLACK, #000))",
-                  textDecoration: "none",
-                  letterSpacing: "0.02em",
-                  transition: "color 0.2s, fontWeight 0.2s",
-                })}
-              >
-                {item.label}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
+          {/* Nav links — desktop only */}
+          <div className="desktop-nav" style={{ display: "flex", justifyContent: "center", flex: 1 }}>
+            <ul style={{
+              display:        "flex",
+              gap:            "36px",
+              listStyle:      "none",
+              margin:         0,
+              padding:        0,
+            }}>
+              {NAV_ITEMS.map(item => (
+                <li key={item.label}>
+                  <NavLink
+                    to={item.to}
+                    style={({ isActive }) => ({
+                      fontFamily: 'Sohne, sans-serif',
+                      fontWeight: isActive ? 500 : 400,
+                      fontSize: "20px",
+                      fontStyle: "normal",
+                      lineHeight: "28px",
+                      color: isActive ? "#073B2F" : "var(--FS-BLACK, var(--Brand-Utility-FS-BLACK, #000))",
+                      textDecoration: "none",
+                      letterSpacing: "0.02em",
+                      transition: "color 0.2s, fontWeight 0.2s",
+                    })}
+                  >
+                    {item.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        <NavLink
-          to="/contact"
-          style={{
-            fontFamily:     "CX80",
-            fontWeight:     700,
-            fontSize:       "11px",
-            letterSpacing:  "0.14em",
-            textTransform:  "uppercase" as const,
-            color:          COLORS.white,
-            background:     COLORS.aqua,
-            padding:        "11px 24px",
-            borderRadius:   "2px",
-            textDecoration: "none",
-            whiteSpace:     "nowrap" as const,
-            flexShrink:     0,
-            transition:     "opacity 0.2s",
-          }}
-          onMouseEnter={e => (e.currentTarget.style.opacity = "0.85")}
-          onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
-        >
-          Book a Call
-        </NavLink>
+          {/* CTA + Hamburger */}
+          <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", flexShrink: 0 }}>
+            <NavLink
+              to="/contact"
+              className="desktop-nav"
+              style={{
+                fontFamily:     "CX80",
+                fontWeight:     700,
+                fontSize:       "11px",
+                letterSpacing:  "0.14em",
+                textTransform:  "uppercase" as const,
+                color:          COLORS.white,
+                background:     COLORS.aqua,
+                padding:        "11px 24px",
+                borderRadius:   "2px",
+                textDecoration: "none",
+                whiteSpace:     "nowrap" as const,
+                flexShrink:     0,
+                transition:     "opacity 0.2s",
+              }}
+              onMouseEnter={e => (e.currentTarget.style.opacity = "0.85")}
+              onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
+            >
+              Book a Call
+            </NavLink>
 
-        <button
-          onClick={() => setMenuOpen(v => !v)}
-          style={{
-            display:    "none",
-            background: "none",
-            border:     "none",
-            cursor:     "pointer",
-            padding:    "4px",
-            flexShrink: 0,
-          }}
-          className="hamburger"
-          aria-label="Toggle menu"
-        >
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-            {menuOpen
-              ? <path d="M5 5l12 12M5 17L17 5" stroke={COLORS.racingGreen} strokeWidth="1.4" strokeLinecap="round"/>
-              : <>
-                  <line x1="3" y1="6"  x2="19" y2="6"  stroke={COLORS.racingGreen} strokeWidth="1.4" strokeLinecap="round"/>
-                  <line x1="3" y1="11" x2="19" y2="11" stroke={COLORS.racingGreen} strokeWidth="1.4" strokeLinecap="round"/>
-                  <line x1="3" y1="16" x2="19" y2="16" stroke={COLORS.racingGreen} strokeWidth="1.4" strokeLinecap="round"/>
-                </>
-            }
-          </svg>
-        </button>
+            <button
+              onClick={() => setMenuOpen(v => !v)}
+              style={{
+                display:    "none",
+                background: "none",
+                border:     "none",
+                cursor:     "pointer",
+                padding:    "4px",
+                flexShrink: 0,
+              }}
+              className="hamburger"
+              aria-label="Toggle menu"
+            >
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                {menuOpen
+                  ? <path d="M5 5l12 12M5 17L17 5" stroke={COLORS.racingGreen} strokeWidth="1.4" strokeLinecap="round"/>
+                  : <>
+                      <line x1="3" y1="6"  x2="19" y2="6"  stroke={COLORS.racingGreen} strokeWidth="1.4" strokeLinecap="round"/>
+                      <line x1="3" y1="11" x2="19" y2="11" stroke={COLORS.racingGreen} strokeWidth="1.4" strokeLinecap="round"/>
+                      <line x1="3" y1="16" x2="19" y2="16" stroke={COLORS.racingGreen} strokeWidth="1.4" strokeLinecap="round"/>
+                    </>
+                }
+              </svg>
+            </button>
+            </div>
+        </div>
       </div>
 
       {menuOpen && (
@@ -245,9 +248,35 @@ export default function App() {
         }
         .page-wrapper { padding-top: 64px; }
 
+        /* ─── 12-Column Grid System ─── */
+        .grid-container {
+          width: 100%;
+          max-width: 100%;
+          padding: 0 196px;
+          margin: 0 auto;
+        }
+        .grid-row {
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          gap: 24px;
+          align-items: center;
+        }
+        .col-1  { grid-column: span 1; }
+        .col-2  { grid-column: span 2; }
+        .col-3  { grid-column: span 3; }
+        .col-4  { grid-column: span 4; }
+        .col-5  { grid-column: span 5; }
+        .col-6  { grid-column: span 6; }
+        .col-7  { grid-column: span 7; }
+        .col-8  { grid-column: span 8; }
+        .col-9  { grid-column: span 9; }
+        .col-10 { grid-column: span 10; }
+        .col-11 { grid-column: span 11; }
+        .col-12 { grid-column: span 12; }
+
         .hero-top {
           position:            relative;
-width:               100%;
+          width:               100%;
           height:              610px;
           display:             flex;
           align-items:         center;
@@ -259,7 +288,7 @@ width:               100%;
           background-position: center;
         }
         .content-wrap {
-position:       relative;
+          position:       relative;
           z-index:        2;
           display:        flex;
           flex-direction: column;
@@ -267,7 +296,7 @@ position:       relative;
           gap:            24px;
         }
         .hero-title {
-font-family:          'GT Super Display Medium';
+          font-family:          'GT Super Display Medium';
           font-size:            56px;
           font-weight:          500;
           color: var(--fs-white, var(--brand-utility-fs-white, #FFF));
@@ -279,8 +308,8 @@ font-family:          'GT Super Display Medium';
         .watch-btn {
           display:        flex;
           height:         48px;
-          padding:         Ascending:12px 16px;
-          Ascending: justify-content: center;
+          padding:        12px 16px;
+          justify-content: center;
           align-items:    center;
           gap:            10px;
           font-family:    'CX80', sans-serif;
@@ -293,7 +322,7 @@ font-family:          'GT Super Display Medium';
           background:     transparent;
           color:          white;
           cursor:         pointer;
-          transition:     background 0.2s, color  Ascending:0.2s;
+          transition:     background 0.2s, color 0.2s;
         }
         .watch-btn:hover {
           background: rgba(105, 228, 220, 0.15);
@@ -322,27 +351,34 @@ font-family:          'GT Super Display Medium';
           padding:        12px 16px;
           justify-content: center;
           align-items:    center;
-          gap: Ascending:            10px;
+          gap:            10px;
           flex-shrink:    0;
           border-radius:  8px;
           border:         1px solid #69E4DC;
           color:          #073B2F;
           font-family:    'CX80', sans-serif;
-          font-size:      15px Ascending:;
+          font-size:      15px;
           font-weight:    700;
           line-height:    15px;
           letter-spacing: 4.8px;
           margin-top:     30px;
           background:     white;
           cursor:         pointer;
-          transition:     background 0.2s, color 0. Ascending:2s;
+          transition:     background 0.2s, color 0.2s;
         }
         .find-out-btn:hover {
           background: #073B2F;
           color:      #ffffff;
         }
         @media (min-width: 769px) { .hamburger { display: none !important; } }
-        @media (max-width: Ascending:768px) { .desktop-nav { display: none !important; } .hamburger { display: block !important; } }
+        @media (max-width: 1200px) {
+          .grid-container { padding: 0 80px; }
+        }
+        @media (max-width: 768px) {
+          .desktop-nav { display: none !important; }
+          .hamburger { display: block !important; }
+          .grid-container { padding: 0 20px; }
+        }
       `}</style>
 
       {/* ─── Video Modal ─── */}
@@ -353,10 +389,10 @@ font-family:          'GT Super Display Medium';
 
         <section className="hero-top">
           <div className="content-wrap">
-<h1 className="hero-title">The advantage of being first.</h1>
-            <button className="watch-btn" onClick={() => setVideoOpen(true)}> {/* 👈 opens modal */}
+            <h1 className="hero-title">The advantage of being first.</h1>
+            <button className="watch-btn" onClick={() => setVideoOpen(true)}>
               <svg width="9" height="11" viewBox="0 0 9 11" fill="none">
-d="M9 5.5L0 11V0L9 5.5Z"
+                <path d="M9 5.5L0 11V0L9 5.5Z" fill="white"/>
               </svg>
               Watch the Video
             </button>
