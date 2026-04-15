@@ -17,26 +17,35 @@ export default function ClientOutcomes() {
         padding: "0 20px",
       }}
     >
-      {/* Dark overlay for the whole background image */}
+      {/* Overlay */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          background: "rgba(0,0,0,0.4)", // Slightly lighter overlay to let image show
+          background: "rgba(0,0,0,0.4)",
         }}
       />
-      
-      {/* Centered box with Grey Background */}
+
+      {/* ✅ RESPONSIVE CENTER BOX */}
       <div
         style={{
           position: "relative",
           zIndex: 2,
+
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
           textAlign: "center",
+
+          width: "90%",            // 🔥 prevents edge touching
           maxWidth: "800px",
+          margin: "0 auto",
+
           padding: "60px 40px",
-          backgroundColor: "rgba(33, 33, 33, 0.85)", // The grey background
+          backgroundColor: "rgba(33, 33, 33, 0.85)",
           borderRadius: "12px",
-          backdropFilter: "blur(8px)", // Modern "glass" effect
+          backdropFilter: "blur(8px)",
           border: "1px solid rgba(255, 255, 255, 0.1)",
         }}
       >
@@ -45,31 +54,64 @@ export default function ClientOutcomes() {
             fontFamily: "'GTSuper', serif",
             fontSize: "56px",
             fontWeight: 500,
-            color: "#FFFFFF", // Changed from #000 to #FFF for readability
+            color: "#FFFFFF",
             lineHeight: "64px",
             letterSpacing: "-1.12px",
-            fontVariantNumeric: "lining-nums proportional-nums",
             margin: 0,
           }}
         >
           Client Outcomes
         </h1>
+
         <p
           style={{
-            color: '#CCCCCC',
-            textAlign: 'center',
-            fontFamily: 'Söhne',
-            fontSize: '24px',
-            fontStyle: 'normal',
+            color: "#CCCCCC",
+            fontFamily: "Söhne",
+            fontSize: "24px",
             fontWeight: 300,
-            lineHeight: '36px',
-            maxWidth: '600px',
-            margin: '20px auto 0'
+            lineHeight: "36px",
+            maxWidth: "600px",
+            margin: "20px auto 0",
           }}
         >
           Find & Sign
         </p>
       </div>
+
+      {/* ✅ RESPONSIVE FIX */}
+      <style>{`
+        @media (max-width: 900px) {
+          div[style*="max-width: 800px"] {
+            width: 92% !important;
+            padding: 32px 20px !important;
+          }
+
+          h1 {
+            font-size: 40px !important;
+            line-height: 48px !important;
+          }
+
+          p {
+            font-size: 18px !important;
+            line-height: 28px !important;
+          }
+        }
+
+        @media (max-width: 600px) {
+          div[style*="max-width: 800px"] {
+            width: 94% !important;
+          }
+
+          h1 {
+            font-size: 32px !important;
+            line-height: 40px !important;
+          }
+
+          p {
+            font-size: 16px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

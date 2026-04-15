@@ -6,6 +6,7 @@ interface Step {
   description: string;
 }
 
+/* ================= DATA ================= */
 const steps: Step[] = [
   {
     id: 1,
@@ -45,11 +46,9 @@ const steps: Step[] = [
   },
 ];
 
-/* ── Design tokens from Figma ── */
-const BG    = "rgb(255, 254, 253)";   /* updated background */
-const GREEN = "#003327";
-
-
+/* ================= COLORS ================= */
+const BG = "rgb(255, 254, 253)";
+const GREEN = "#073B2F";
 
 export default function OurProcess() {
   const [btnHovered, setBtnHovered] = useState(false);
@@ -58,60 +57,61 @@ export default function OurProcess() {
     <div style={{ background: BG, width: "100%" }}>
       <section style={s.section}>
 
-        {/* ── Header ── */}
-        <div style={s.head}>
-          {/* GT Super Medium heading */}
-          <h2 style={s.title}>Our process</h2>
-          {/* Söhne Leicht subtitle — 1120 Fill × 54 Hug */}
-          <p style={s.subtitle}>
-            A structured approach to finding, securing and signing the right property.
-          </p>
+        {/* ================= HEADER ================= */}
+        <div style={s.container}>
+          <div style={s.head}>
+            <h2 style={s.title}>Our process</h2>
+            <p style={s.subtitle}>
+              A structured approach to finding, securing and signing the right property.
+            </p>
+          </div>
         </div>
 
-        {/* ── Steps list ── */}
-        <ul style={s.list}>
-          {steps.map((step, i) => {
-            const isLast = i === steps.length - 1;
-            return (
-              <li key={step.id}>
-                <div style={s.row}>
+        {/* ================= STEPS ================= */}
+        <div style={s.container}>
+          <ul style={s.list}>
+            {steps.map((step, i) => {
+              const isLast = i === steps.length - 1;
 
-                  {/* Number col — W:145 H:Hug, GT Super Display */}
-                  <div style={s.numCol}>
-                    <span style={s.num}>{step.id}.</span>
+              return (
+                <li key={step.id} style={s.item}>
+                  <div style={s.row}>
+
+                    {/* NUMBER */}
+                    <div style={s.numCol}>
+                      <span style={s.num}>{step.id}.</span>
+                    </div>
+
+                    {/* CONTENT */}
+                    <div style={s.content}>
+                      <p style={s.itemTitle}>{step.title}</p>
+                      <p style={s.itemDesc}>{step.description}</p>
+                    </div>
+
                   </div>
 
-                  {/* Content col — W:733, gap:32 */}
-                  <div style={s.content}>
-                    {/* GT Super Medium */}
-                    <p style={s.itemTitle}>{step.title}</p>
-                    {/* Söhne Leicht */}
-                    <p style={s.itemDesc}>{step.description}</p>
-                  </div>
+                  {!isLast && <div style={s.divider} />}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
 
-                </div>
-
-                {/* Divider */}
-                {!isLast && <div style={s.divider} />}
-              </li>
-            );
-          })}
-        </ul>
-
-        {/* ── Footer CTA — WE SIGNED IT label ── */}
-        <div style={s.footer}>
-          <button
-            style={{
-              ...s.btn,
-              background: btnHovered ? GREEN     : "transparent",
-              color:      btnHovered ? "#ffffff" : GREEN,
-              
-            }}
-            onMouseEnter={() => setBtnHovered(true)}
-            onMouseLeave={() => setBtnHovered(false)}
-          >
-            HOW IT WORKS
-          </button>
+        {/* ================= CTA ================= */}
+        <div style={s.container}>
+          <div style={s.footer}>
+            <button
+              style={{
+                ...s.btn,
+                background: btnHovered ? GREEN : "transparent",
+                color: btnHovered ? "#ffffff" : GREEN,
+              }}
+              onMouseEnter={() => setBtnHovered(true)}
+              onMouseLeave={() => setBtnHovered(false)}
+            >
+              HOW IT WORKS
+            </button>
+          </div>
         </div>
 
       </section>
@@ -119,153 +119,134 @@ export default function OurProcess() {
   );
 }
 
+/* ================= STYLES ================= */
 const s: Record<string, React.CSSProperties> = {
 
-  /* Full-width section, max 1512px, centered */
+  /* Section */
   section: {
     background: BG,
-    width:      "100%",
-    maxWidth:   "1512px",
-    margin:     "0 auto",
-    padding:    "64px 196px 80px",
-    boxSizing:  "border-box",
+    width: "100%",
+    padding: "64px 0 80px",
   },
 
+  /* 12-grid container */
+  container: {
+    maxWidth: "1120px",
+    margin: "0 auto",
+    padding: "0 24px",
+  },
+
+  /* Header */
   head: {
     marginBottom: "48px",
-    maxWidth:     "1120px",
   },
 
   title: {
-  fontFamily: 'GT Super Display Medium',   // ✅ FIXED
-  fontSize: "44px",
-  fontStyle: "normal",
-  fontWeight: 500,         // ✅ Medium
-  color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
-  lineHeight: "54px",
-  letterSpacing: "-0.88px",
-  fontVariantNumeric: "lining-nums proportional-nums",
+    fontFamily: "GT Super Display Medium",
+    fontSize: "44px",
+    fontWeight: 500,
+    lineHeight: "54px",
+    letterSpacing: "-0.88px",
+    color: GREEN,
+    marginBottom: "12px",
+  },
 
-  marginBottom: "12px",
-  height: "54px",
-  width: "1120px",
-},
   subtitle: {
-  fontFamily: "Sohne",   // ✅ FIXED (must match @font-face)
-  fontSize: "24px",
-  fontStyle: "normal",
-  fontWeight: 300,
-  color: "#000",
-  lineHeight: "36px",
+    fontFamily: "Sohne",
+    fontSize: "24px",
+    fontWeight: 300,
+    lineHeight: "36px",
+    color: "#000",
+    maxWidth: "804px",
+    margin: 0,
+  },
 
-  margin: 0,
-  maxWidth: "1120px",
-  height: "36px",
-  width: "804px",
-},
-
+  /* List */
   list: {
     listStyle: "none",
-    padding:   0,
-    margin:    0,
+    margin: 0,
+    padding: 0,
   },
 
-  /* Row — number W:145 + content W:733, gap:32 */
+  item: {
+    width: "100%",
+  },
+
+  /* STEP ROW (grid structure preserved) */
   row: {
-    display:             "grid",
+    display: "grid",
     gridTemplateColumns: "145px 1fr",
-    columnGap:           "32px",
-    alignItems:          "start",
-    padding:             "24px 0",
+    columnGap: "32px",
+    alignItems: "start",
+    padding: "24px 0",
   },
 
-  /* Number column — W:145, H:Hug */
+  /* NUMBER */
   numCol: {
-    width:      "145px",
-    flexShrink: 0,
+    width: "145px",
   },
 
-  /* GT Super Display — large numbers */
- num: {
-  fontFamily: "GT Super Display Medium",
-  fontSize: "168px",
-  fontStyle: "normal",
-  fontWeight: 500, // match the @font-face
-  color: "var(--FS-RACING-GREEN, #073B2F)",
-  lineHeight: "148px",
-  letterSpacing: "-5.04px",
-  fontVariantNumeric: "lining-nums proportional-nums",
+  num: {
+    fontFamily: "GT Super Display Medium",
+    fontSize: "168px",
+    fontWeight: 500,
+    lineHeight: "148px",
+    letterSpacing: "-5.04px",
+    color: GREEN,
+    display: "block",
+  },
 
-  display: "block",
-  height: "148px",
-  width: "145px",
-},
-
-  /* Content — W:733 */
+  /* CONTENT */
   content: {
-    maxWidth:   "733px",
+    maxWidth: "733px",
     paddingTop: "8px",
   },
 
-  /* GT Super Medium — step title */
   itemTitle: {
-  fontFamily: 'GT Super Display Medium',   // ✅ FIXED
-  fontSize: "32px",
-  fontStyle: "normal",
-  fontWeight: 500,         // ✅ Medium
-  color: "#000",
-  lineHeight: "40px",
-  letterSpacing: "-0.64px",
-  fontVariantNumeric: "lining-nums proportional-nums",
+    fontFamily: "GT Super Display Medium",
+    fontSize: "32px",
+    fontWeight: 500,
+    lineHeight: "40px",
+    letterSpacing: "-0.64px",
+    margin: "0 0 10px",
+    color: "#000",
+  },
 
-  margin: "0 0 10px",
-},
-
-  /* Söhne Leicht — step description */
   itemDesc: {
-  fontFamily: "Sohne",   // ✅ FIXED (no ö)
-  fontSize: "20px",
-  fontStyle: "normal",
-  fontWeight: 400,
-  color: "var(--FS-System-Grey-1, #757575)",
-  lineHeight: "28px",
-  margin: 0,
-},
+    fontFamily: "Sohne",
+    fontSize: "20px",
+    fontWeight: 400,
+    lineHeight: "28px",
+    color: "#757575",
+    margin: 0,
+  },
 
-  /* Thin divider between steps */
+  /* Divider */
   divider: {
-  width: "1120px",
-  height: "1px",
-  background: "var(--Brand-Foundation-FS-RACING-GREEN, #073B2F)",
-},
+    width: "100%",
+    height: "1px",
+    background: "#073B2F",
+  },
 
+  /* CTA */
   footer: {
-    marginTop:      "56px",
-    display:        "flex",
+    marginTop: "56px",
+    display: "flex",
     justifyContent: "center",
   },
 
-  /* WE SIGNED IT — label style button */
- btn: {
-  display: "flex",
-  height: "48px",
-  padding: "12px 16px",
-  justifyContent: "center",
-  alignItems: "center",
-  gap: "10px",
-  cursor: "pointer",
-
-  borderRadius: "8px",
-  border: "1px solid var(--Brand-Contrast-FS-AQUA, #69E4DC)",
-
-  /* ✅ FONT ADDED */
-  fontFamily: "CX80",
-  fontSize: "15px",
-  fontStyle: "normal",
-  fontWeight: 400,   // change to 700 if you want bold
-  letterSpacing: "4.8px",
-
-  background: "#fff",
-  color: "var(--FS-RACING-GREEN, #073B2F)",
-},
+  btn: {
+    display: "flex",
+    height: "48px",
+    padding: "12px 16px",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: "8px",
+    border: "1px solid #69E4DC",
+    fontFamily: "CX80",
+    fontSize: "15px",
+    letterSpacing: "4.8px",
+    cursor: "pointer",
+    transition: "all 0.2s ease",
+  },
 };
