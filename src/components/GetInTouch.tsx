@@ -36,8 +36,8 @@ export default function NakraniContact() {
 
         .contact-left h2 {
           color: #073B2F;
-          font-family: 'DM Sans', sans-serif;
-          font-size: 44px;
+ font-family: 'GT Super Display Medium';
+           font-size: 44px;
           font-weight: 500;
           line-height: 54px;
           letter-spacing: -0.88px;
