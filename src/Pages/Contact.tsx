@@ -1,1 +1,75 @@
-import bannerImg from "../assets/DSC06286.jpg";&#10;&#10;const COLORS = {&#10;  racingGreen: "#1B4332",&#10;  aqua: "#40C9A2",&#10;  white: "#FFFFFF",&#10;} as const;&#10;&#10;export default function Contact() {&#10;  return (&#10;    <section&#10;      style={{&#10;        minHeight: "100vh",&#10;        display: "flex",&#10;        alignItems: "center",&#10;        justifyContent: "center",&#10;        backgroundImage: `url(\${bannerImg})`,&#10;        backgroundSize: "cover",&#10;        backgroundPosition: "center",&#10;        backgroundRepeat: "no-repeat",&#10;        backgroundAttachment: "fixed",&#10;        position: "relative",&#10;        padding: "0 20px",&#10;      }}&#10;    >&#10;      {/* Dark overlay */}&#10;      <div&#10;        style={{&#10;          position: "absolute",&#10;          inset: 0,&#10;          background: "rgba(0,0,0,0.3)",&#10;        }}&#10;      />&#10;      &#10;      {/* Centered content box */}&#10;      <div&#10;        style={{&#10;          position: "relative",&#10;          zIndex: 2,&#10;          textAlign: "center",&#10;          maxWidth: "750px",&#10;          backgroundColor: "rgba(33, 33, 33, 0.85)",&#10;          padding: "60px 40px",&#10;          borderRadius: "12px",&#10;          backdropFilter: "blur(8px)",&#10;          border: "1px solid rgba(255, 255, 255, 0.1)",&#10;        }}&#10;      >&#10;        <h1&#10;          style={{&#10;            fontFamily: "'GTSuper', serif",&#10;            fontSize: "56px",&#10;            fontWeight: 500,&#10;            color: "#FFF",&#10;            lineHeight: "64px",&#10;            letterSpacing: "-1.12px",&#10;            fontVariantNumeric: "lining-nums proportional-nums",&#10;            margin: 0,&#10;          }}&#10;        >&#10;          Contact&#10;        </h1>&#10;        <p&#10;          style={{&#10;            color: '#CCCCCC',&#10;            textAlign: 'center',&#10;            fontFamily: 'Söhne',&#10;            fontSize: '24px',&#10;            fontStyle: 'normal',&#10;            fontWeight: 300,&#10;            lineHeight: '36px',&#10;            maxWidth: '600px',&#10;            margin: '20px auto 0'&#10;          }}&#10;        >&#10;          Find &amp; Sign&#10;        </p>&#10;      </div>&#10;    </section>&#10;  );&#10;}
+import bannerImg from "../assets/DSC06286.jpg";
+
+export default function Contact() {
+  return (
+    <section
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundImage: `url(${bannerImg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
+        position: "relative",
+        padding: "0 20px",
+      }}
+    >
+      {/* Dark overlay */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "rgba(0,0,0,0.3)",
+        }}
+      />
+      
+      {/* Centered content box */}
+      <div
+        style={{
+          position: "relative",
+          zIndex: 2,
+          textAlign: "center",
+          maxWidth: "750px",
+          backgroundColor: "rgba(33, 33, 33, 0.85)",
+          padding: "60px 40px",
+          borderRadius: "12px",
+          backdropFilter: "blur(8px)",
+          border: "1px solid rgba(255, 255, 255, 0.1)",
+        }}
+      >
+        <h1
+          style={{
+            fontFamily: "'GTSuper', serif",
+            fontSize: "56px",
+            fontWeight: 500,
+            color: "#FFF",
+            lineHeight: "64px",
+            letterSpacing: "-1.12px",
+            fontVariantNumeric: "lining-nums proportional-nums",
+            margin: 0,
+          }}
+        >
+          Contact
+        </h1>
+        <p
+          style={{
+            color: '#CCCCCC',
+            textAlign: 'center',
+            fontFamily: 'Söhne',
+            fontSize: '24px',
+            fontStyle: 'normal',
+            fontWeight: 300,
+            lineHeight: '36px',
+            maxWidth: '600px',
+            margin: '20px auto 0'
+          }}
+        >
+          Find & Sign
+        </p>
+      </div>
+    </section>
+  );
+}
