@@ -1,11 +1,4 @@
 import bannerImg from "../assets/About.jpg";
-import { NavLink } from "react-router-dom";
-
-const COLORS = {
-  racingGreen: "#1B4332",
-  aqua: "#40C9A2",
-  white: "#FFFFFF",
-} as const;
 
 export default function About() {
   return (

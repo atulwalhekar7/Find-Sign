@@ -102,7 +102,7 @@ export default function Navbar() {
             <li key={item.label}>
               <NavLink
   to={item.to}
-  style={({ isActive }) => ({
+  style={() => ({
     fontFamily: 'Söhne, "DM Sans", sans-serif',
     fontWeight: 400,
     fontSize: "14px",

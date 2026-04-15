@@ -85,16 +85,16 @@ const StarRow = () => (
 
 const App = () => {
   const [index, setIndex] = useState(0);
-  const timerRef = useRef(null);
+  const timerRef = useRef<number | null>(null);
   const maxIndex = reviews.length - VISIBLE;
 
-  const goTo = useCallback((idx) => {
+const goTo = useCallback((idx: number) => {
     setIndex(Math.max(0, Math.min(idx, maxIndex)));
   }, [maxIndex]);
 
   const resetTimer = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
-    timerRef.current = setInterval(() => {
+  timerRef.current = setInterval(() => {
       setIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
     }, 4500);
   }, [maxIndex]);
@@ -104,7 +104,7 @@ const App = () => {
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [resetTimer]);
 
-  const handleNav = (dir) => {
+const handleNav = (dir: number) => {
     const nextIndex = index + dir;
     if (nextIndex >= 0 && nextIndex <= maxIndex) {
       goTo(nextIndex);
