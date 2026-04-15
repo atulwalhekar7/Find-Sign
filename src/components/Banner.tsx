@@ -265,7 +265,7 @@ export default function App() {
           gap:            24px;
         }
         .hero-title {
-          font-family:          'GTSuper', serif;
+          font-family:          'GT Super Display Medium';
           font-size:            56px;
           font-weight:          500;
           color:                #FFF;

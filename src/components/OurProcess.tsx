@@ -137,7 +137,7 @@ const s: Record<string, React.CSSProperties> = {
   },
 
   title: {
-  fontFamily: "GTSuper",   // ✅ FIXED
+  fontFamily: 'GT Super Display Medium',   // ✅ FIXED
   fontSize: "44px",
   fontStyle: "normal",
   fontWeight: 500,         // ✅ Medium
@@ -186,10 +186,10 @@ const s: Record<string, React.CSSProperties> = {
 
   /* GT Super Display — large numbers */
  num: {
-  fontFamily: "GTSuper",   // 👈 IMPORTANT FIX
+  fontFamily: "GT Super Display Medium",
   fontSize: "168px",
   fontStyle: "normal",
-  fontWeight: 500,         // 👈 this triggers Medium
+  fontWeight: 500, // match the @font-face
   color: "var(--FS-RACING-GREEN, #073B2F)",
   lineHeight: "148px",
   letterSpacing: "-5.04px",
@@ -208,7 +208,7 @@ const s: Record<string, React.CSSProperties> = {
 
   /* GT Super Medium — step title */
   itemTitle: {
-  fontFamily: "GTSuper",   // ✅ FIXED
+  fontFamily: 'GT Super Display Medium',   // ✅ FIXED
   fontSize: "32px",
   fontStyle: "normal",
   fontWeight: 500,         // ✅ Medium
