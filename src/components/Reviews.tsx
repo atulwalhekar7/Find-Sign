@@ -203,7 +203,7 @@ const Reviews = () => {
         }}>
           <div>
             <h2 style={{
-              fontFamily:         "GTSuper, Georgia, serif",
+              fontFamily:         'GT Super Display Medium',
               fontSize:           "44px",
               fontWeight:         500,
               fontStyle:          "normal",
@@ -281,7 +281,7 @@ const Reviews = () => {
                   marginTop:     "24px",
                 }}>
                   <p style={{
-                    fontFamily:         "'GT Super Display', Georgia, serif",
+                    fontFamily:         'GT Super Display Medium',
                     fontSize:           "32px",
                     fontWeight:         500,
                     lineHeight:         "40px",

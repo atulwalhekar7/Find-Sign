@@ -88,7 +88,7 @@ export default function FindSignFAQ() {
   color: var(--FS-RACING-GREEN, #073B2F);
   font-variant-numeric: lining-nums proportional-nums;
 
-  font-family: "GTSuper";
+  font-family: 'GT Super Display Medium';
   font-size: 44px;
   font-style: normal;
   font-weight: 500;
