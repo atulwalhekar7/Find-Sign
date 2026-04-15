@@ -65,23 +65,25 @@ const VISIBLE  = 3;
 const INTERVAL = 3000;
 const GAP      = 32;
 const CARD_W   = 352;
-const CARD_H   = 480;
+const CARD_H   = 480; // ← increased from 440 to show all 4 rows
 
-/* ── Property Card ── */
+/* ── Property Card — 352 × auto ── */
 function PropertyCard({ card }: { card: typeof cards[0] }) {
   return (
     <div style={{
       width:         "352px",
-      height:        "auto",
+      height:        "auto",           // ← was minHeight: "440px" — now grows naturally
       background:    WHITE,
       border:        "1px solid rgba(0,51,39,0.10)",
-      borderRadius:  "12px",
+      borderRadius:  "12px",           // ← added to match Figma rounded corners
       overflow:      "visible",
       position:      "relative",
       flexShrink:    0,
       display:       "flex",
       flexDirection: "column",
     }}>
+
+      {/* Image area — overflow hidden only clips the image, not the circle */}
       <div style={{
         position:     "relative",
         width:        "100%",
@@ -89,7 +91,7 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
         background:   "#d9d9d9",
         overflow:     "hidden",
         flexShrink:   0,
-        borderRadius: "12px 12px 0 0",
+        borderRadius: "12px 12px 0 0", // ← top corners rounded to match card
       }}>
         <img
           src={card.image}
@@ -98,7 +100,7 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
         />
       </div>
 
-      {/* Growth circle */}
+      {/* Growth circle — card-level so never clipped by image overflow:hidden */}
       <div style={{
         position:       "absolute",
         top:            "165px",
@@ -125,10 +127,10 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
           Growth
         </span>
         <span style={{
-          fontFamily:         "GT Super Display Medium",
+          fontFamily:         'GT Super Display Medium',
           fontSize:           "22px",
           fontWeight:         500,
-          color:              "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+          color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
           lineHeight:         "24px",
           letterSpacing:      "-0.44px",
           textAlign:          "center",
@@ -139,7 +141,12 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
       </div>
 
       {/* Data rows */}
-      <div style={{ padding: "96px 18px 20px", display: "flex", flexDirection: "column", flex: 1 }}>
+      <div style={{
+        padding:       "96px 18px 20px",
+        display:       "flex",
+        flexDirection: "column",
+        flex:          1,
+      }}>
         {[
           { label: "Purchase price", val: card.purchasePrice },
           { label: "Current value",  val: card.currentValue  },
@@ -153,15 +160,26 @@ function PropertyCard({ card }: { card: typeof cards[0] }) {
               justifyContent: "space-between",
               alignItems:     "center",
               padding:        "9px 0",
-              borderBottom:   i < arr.length - 1
-                ? "1px dashed var(--Brand-Signature-FS-LIGHT-GOLD, #846F58)"
-                : "none",
+              borderBottom: i < arr.length - 1
+  ? "1px dashed var(--Brand-Signature-FS-LIGHT-GOLD, #846F58)"
+  : "none",
             }}
           >
-            <span style={{ fontFamily: "Sohne, 'DM Sans', sans-serif", fontSize: "13px", fontWeight: 400, color: "var(--FS-BLACK, var(--Brand-Utility-FS-BLACK, #000))" }}>
+            <span style={{
+              fontFamily: "Sohne, 'DM Sans', sans-serif",
+              fontSize: "13px",
+               fontWeight: 400,   // ✅ FIXED
+             color:" var(--FS-BLACK, var(--Brand-Utility-FS-BLACK, #000))",
+            }}>
               {label}
             </span>
-            <span style={{ fontFamily: "'Söhne', 'DM Sans', sans-serif", fontSize: "13px", fontWeight: 400, color: "var(--FS-System-Grey-1, #757575)" }}>
+            <span style={{
+              fontFamily: "'Söhne', 'DM Sans', sans-serif",
+              fontSize:   "13px",
+              fontWeight: 400,
+              color: "var(--FS-System-Grey-1, #757575)",
+
+            }}>
               {val}
             </span>
           </div>
@@ -200,60 +218,89 @@ export default function ClientOutcomes() {
   return (
     <>
       <style>{`
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         .arr-btn { transition: background 0.2s, border-color 0.2s; }
         .arr-btn:hover { background: ${RACING_GREEN} !important; }
         .arr-btn:hover path { stroke: ${WHITE} !important; }
         .view-btn:hover { background: ${RACING_GREEN} !important; color: ${WHITE} !important; }
       `}</style>
 
-      <div style={{ background: "var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9)", width: "100%" }}>
+      {/* ── OUTER CONTAINER ── */}
+      <div style={{
+        background: "var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9)",
+        width:         "1512px",
+        display:       "flex",
+        flexDirection: "column",
+        alignItems:    "flex-start",
+        padding:       "64px 196px",
+        gap:           "10px",
+        boxSizing:     "border-box",
+      }}>
 
-        {/* ── 12-col grid container ── */}
-        <div className="grid-container" style={{ paddingTop: "64px", paddingBottom: "64px" }}>
+        {/* ── INNER CONTENT ── */}
+        <div style={{
+          width:         "1120px",
+          display:       "flex",
+          flexDirection: "column",
+          alignItems:    "center",
+          gap:           "64px",
+        }}>
 
-          {/* Header row: title+subtitle (left) | arrows (right) */}
-          <div className="grid-row" style={{ marginBottom: "64px", alignItems: "flex-start" }}>
-
-            {/* Title + subtitle — 9 cols */}
-            <div className="col-9">
+          {/* Header row */}
+          <div style={{
+            width:          "100%",
+            display:        "flex",
+            justifyContent: "space-between",
+            alignItems:     "flex-start",
+          }}>
+            {/* Left: title + subtitle */}
+            <div>
               <h2 style={{
-                fontFamily:         "GT Super Display Medium",
+                width:              "352px",
+                height:             "56px",
+                flexShrink:         0,
+                color:              "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+                fontVariantNumeric: "lining-nums proportional-nums",
+                fontFamily:         'GT Super Display Medium',
                 fontSize:           "44px",
                 fontStyle:          "normal",
                 fontWeight:         500,
-                color:              "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
                 lineHeight:         "54px",
                 letterSpacing:      "-0.88px",
-                fontVariantNumeric: "lining-nums proportional-nums",
-                marginBottom:       "8px",
               }}>
                 Client outcomes
               </h2>
               <p style={{
+                width:      "733px",
+                color:      "#000",
                 fontFamily: "Sohne, 'DM Sans', sans-serif",
                 fontSize:   "24px",
                 fontStyle:  "normal",
                 fontWeight: 300,
-                color:      "#000",
                 lineHeight: "36px",
-                margin:     0,
+                marginTop:  "8px",
               }}>
                 Growth achieved through early access and informed decisions.
               </p>
             </div>
 
-            {/* Arrows — 3 cols, right-aligned */}
-            <div className="col-3" style={{ display: "flex", justifyContent: "flex-end", gap: "10px", alignItems: "center", paddingTop: "6px" }}>
+            {/* Right: prev / next arrows */}
+            <div style={{ display: "flex", gap: "10px", alignItems: "center", paddingTop: "6px" }}>
               <button
                 className="arr-btn"
                 onClick={handlePrev}
                 disabled={cur === 0}
                 style={{
-                  width: "36px", height: "36px", borderRadius: "50%",
-                  border: `1.5px solid ${RACING_GREEN}`, background: "transparent",
-                  cursor: cur === 0 ? "default" : "pointer",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  opacity: cur === 0 ? 0.35 : 1,
+                  width:          "36px",
+                  height:         "36px",
+                  borderRadius:   "50%",
+                  border:         `1.5px solid ${RACING_GREEN}`,
+                  background:     "transparent",
+                  cursor:         cur === 0 ? "default" : "pointer",
+                  display:        "flex",
+                  alignItems:     "center",
+                  justifyContent: "center",
+                  opacity:        cur === 0 ? 0.35 : 1,
                 }}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -265,11 +312,16 @@ export default function ClientOutcomes() {
                 onClick={handleNext}
                 disabled={cur === maxIdx}
                 style={{
-                  width: "36px", height: "36px", borderRadius: "50%",
-                  border: `1.5px solid ${RACING_GREEN}`, background: "transparent",
-                  cursor: cur === maxIdx ? "default" : "pointer",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  opacity: cur === maxIdx ? 0.35 : 1,
+                  width:          "36px",
+                  height:         "36px",
+                  borderRadius:   "50%",
+                  border:         `1.5px solid ${RACING_GREEN}`,
+                  background:     "transparent",
+                  cursor:         cur === maxIdx ? "default" : "pointer",
+                  display:        "flex",
+                  alignItems:     "center",
+                  justifyContent: "center",
+                  opacity:        cur === maxIdx ? 0.35 : 1,
                 }}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -279,58 +331,53 @@ export default function ClientOutcomes() {
             </div>
           </div>
 
-          {/* Slider — full 12 cols */}
-          <div className="grid-row">
-            <div className="col-12">
-              <div
-                style={{ overflow: "hidden", width: `${CARD_W * VISIBLE + GAP * (VISIBLE - 1)}px`, maxWidth: "100%" }}
-                onMouseEnter={() => setPaused(true)}
-                onMouseLeave={() => setPaused(false)}
-              >
-                <div style={{
-                  display:    "flex",
-                  gap:        `${GAP}px`,
-                  height:     `${CARD_H}px`,
-                  transition: "transform 0.55s cubic-bezier(0.77,0,0.18,1)",
-                  transform:  `translateX(calc(-${cur} * (${CARD_W}px + ${GAP}px)))`,
-                }}>
-                  {cards.map((card) => (
-                    <PropertyCard key={card.id} card={card} />
-                  ))}
-                </div>
-              </div>
+          {/* Slider track */}
+          <div
+            style={{ overflow: "hidden", width: `${CARD_W * VISIBLE + GAP * (VISIBLE - 1)}px` }}
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
+            <div style={{
+              display:    "flex",
+              gap:        `${GAP}px`,
+              height:     `${CARD_H}px`,
+              transition: "transform 0.55s cubic-bezier(0.77,0,0.18,1)",
+              transform:  `translateX(calc(-${cur} * (${CARD_W}px + ${GAP}px)))`,
+            }}>
+              {cards.map((card) => (
+                <PropertyCard key={card.id} card={card} />
+              ))}
             </div>
           </div>
 
-          {/* View More CTA — full 12 cols, centered */}
-          <div className="grid-row" style={{ marginTop: "64px" }}>
-            <div className="col-12" style={{ display: "flex", justifyContent: "center" }}>
-              <button
-                className="view-btn"
-                style={{
-                  display:        "flex",
-                  height:         "48px",
-                  padding:        "12px 16px",
-                  justifyContent: "center",
-                  alignItems:     "center",
-                  gap:            "10px",
-                  borderRadius:   "8px",
-                  border:         "1px solid var(--Brand-Contrast-FS-AQUA, #69E4DC)",
-                  color:          "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
-                  fontFamily:     "CX80",
-                  fontSize:       "15px",
-                  fontStyle:      "normal",
-                  fontWeight:     700,
-                  lineHeight:     "15px",
-                  letterSpacing:  "4.8px",
-                  background:     "white",
-                  cursor:         "pointer",
-                  transition:     "background 0.2s, color 0.2s",
-                }}
-              >
-                View More Outcomes
-              </button>
-            </div>
+          {/* VIEW MORE OUTCOMES */}
+          <div style={{ textAlign: "center", width: "100%" }}>
+            <button
+              className="view-btn"
+              style={{
+                display:       "flex",
+                height:        "48px",
+                padding:       "12px 16px",
+                justifyContent:"center",
+                alignItems:    "center",
+                gap:           "10px",
+                borderRadius:  "8px",
+                border:        "1px solid var(--Brand-Contrast-FS-AQUA, #69E4DC)",
+                color:         "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+                fontFamily:    "CX80",
+                fontSize:      "15px",
+                fontStyle:     "normal",
+                fontWeight:    700,
+                lineHeight:    "15px",
+                letterSpacing: "4.8px",
+                alignSelf:     "center",
+                margin:        "0 auto",
+                background:    "White",
+                cursor:        "pointer",
+              }}
+            >
+              View More Outcomes
+            </button>
           </div>
 
         </div>
