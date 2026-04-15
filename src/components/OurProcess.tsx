@@ -163,6 +163,7 @@ const s: Record<string, React.CSSProperties> = {
   height: "36px",
   width: "804px",
 },
+
   list: {
     listStyle: "none",
     padding:   0,

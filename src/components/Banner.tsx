@@ -311,7 +311,7 @@ export default function App() {
           max-width:   100%;
           color:       #000;
           text-align:  center;
-          font-family: 'Sohne', sans-serif;
+          font-family: 'Sohne';
           font-size:   24px;
           font-weight: 300;
           line-height: 36px;
