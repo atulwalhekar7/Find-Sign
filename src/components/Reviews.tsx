@@ -236,31 +236,35 @@ const App = () => {
         fontFamily: "'DM Sans', sans-serif",
       }}>
 
-        {/* ── HEADER ROW (Text Only Now) ── */}
+       {/* ── HEADER ROW ── */}
         <div style={{
-          width: "100%",
-          maxWidth: `${SLIDER_W}px`,
-          display: "flex",
-          justifyContent: "center",
-          textAlign: "center"
+          width:          `${SLIDER_W}px`,
+          display:        "flex",
+          justifyContent: "space-between",
+          alignItems:     "flex-start",
         }}>
           <div>
             <h2 style={{
-              fontSize: "44px",
-              fontWeight: 500,
-              color: "#073B2F",
-              lineHeight: "54px",
-              letterSpacing: "-0.88px",
+              fontFamily:         'GT Super Display Medium',
+              fontSize:           "44px",
+              fontWeight:         500,
+              fontStyle:          "normal",
+              color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+              lineHeight:         "54px",
+              letterSpacing:      "-0.88px",
+              fontVariantNumeric: "lining-nums proportional-nums",
             }}>
               What clients say
             </h2>
             <p style={{
-              maxWidth: "733px",
-              color: "#000",
-              fontSize: "24px",
+              width:      "733px",
+              color:      "#000",
+              fontFamily: "Söhne, 'DM Sans', sans-serif",
+              fontSize:   "24px",
               fontWeight: 300,
+              fontStyle:  "normal",
               lineHeight: "36px",
-              marginTop: "8px",
+              marginTop:  "8px",
             }}>
               In their own words, following their experience with Niki.
             </p>
