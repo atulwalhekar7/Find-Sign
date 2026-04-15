@@ -92,12 +92,12 @@ function Navbar() {
     }}>
       <div style={{
         width:           "100%",
-        padding:         "0 40px",
+        padding:         "0 196px",
         height:          "64px",
         display:         "flex",
         alignItems:      "center",
         justifyContent:  "space-between",
-        gap:             "24px",
+        gap:             "10px",
       }}>
         <NavLink to="/" style={{ display: "flex", alignItems: "center", textDecoration: "none", flexShrink: 0 }}>
           <img src={logo} alt="Find & Sign" style={{ height: "34px", width: "auto", objectFit: "contain" }} />
@@ -117,13 +117,15 @@ function Navbar() {
               <NavLink
                 to={item.to}
                 style={({ isActive }) => ({
-                  fontFamily:     "'Söhne', 'DM Sans', sans-serif",
-                  fontWeight:     400,
-                  fontSize:       "14px",
-                  color:          isActive ? COLORS.aqua : COLORS.racingGreen,
-                  textDecoration: "none",
-                  letterSpacing:  "0.02em",
-                  transition:     "color 0.2s",
+                  fontFamily: 'Sohne, sans-serif',
+  fontWeight: 400,
+  fontSize: "20px",
+  fontStyle: "normal",
+  lineHeight: "28px",
+  color: "var(--FS-BLACK, var(--Brand-Utility-FS-BLACK, #000))",
+  textDecoration: "none",
+  letterSpacing: "0.02em",
+  transition: "color 0.2s",
                 })}
               >
                 {item.label}

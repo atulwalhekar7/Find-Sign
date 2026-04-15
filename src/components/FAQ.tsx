@@ -116,9 +116,9 @@ export default function FindSignFAQ() {
 
         /* ── ACCORDION ITEM — border:1px solid #D8D4CC; border-radius:2px ── */
         .faq-item {
-          border: 1px solid #D8D4CC;
+          
           background: #ffffff;
-          border-radius: 2px;
+          border-radius: 12px;
           overflow: hidden;
         }
 

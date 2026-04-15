@@ -206,7 +206,7 @@ body {
 }
 
 @font-face {
-  font-family: 'Sohne';
+  font-family: 'Sohne Regular';
   src: url('./assets/fonts/Söhne/woff2/Sohne-Regular.woff2') format('woff2');
   font-weight: 400;
 }
