@@ -18,12 +18,10 @@ export default function NakraniContact() {
 
         .contact-page {
           display: flex;
-          padding: 60px 196px;
+          padding: 64px 196px;
           flex-direction: column;
           align-items: flex-start;
           gap: 10px;
-          background: #F9F9F9;
-          min-height: 100vh;
         }
 
         .contact-left {
@@ -36,8 +34,8 @@ export default function NakraniContact() {
 
         .contact-left h2 {
           color: #073B2F;
- font-family: 'GT Super Display Medium';
-           font-size: 44px;
+          font-family: 'GT Super Display Medium';
+          font-size: 44px;
           font-weight: 500;
           line-height: 54px;
           letter-spacing: -0.88px;
@@ -45,10 +43,11 @@ export default function NakraniContact() {
 
         .contact-left p {
           color: #000;
-          font-family: 'DM Sans', sans-serif;
-          font-size: 24px;
+          font-family: 'sohne';;
+          font-size: 18px;
           font-weight: 300;
-          line-height: 36px;
+          line-height: 28px;
+          max-width: 220px;
         }
 
         .contact-right {
@@ -61,9 +60,10 @@ export default function NakraniContact() {
 
         .contact-right form {
           display: flex;
-          flex-direction: column;
-          gap: 16px;
           width: 100%;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
         }
 
         .contact-field {
@@ -94,7 +94,6 @@ export default function NakraniContact() {
         }
 
         .contact-input::placeholder { color: #BDBDBD; }
-
         .contact-input:focus { outline: 1.5px solid #69E4DC; }
 
         .contact-textarea {
@@ -161,35 +160,36 @@ export default function NakraniContact() {
           color: #757575;
         }
 
-       @media (max-width: 900px) {
-  .contact-page { padding: 40px 20px; }
-  
-  .contact-row {
-    flex-direction: column !important;
-    gap: 24px !important;
-  }
-  
-  .contact-left {
-    flex: none !important;
-    width: 100% !important;
-    gap: 16px;
-  }
+        @media (max-width: 900px) {
+          .contact-page { padding: 40px 20px; }
 
-  .contact-left h2 { 
-    width: 100%; 
-    font-size: 32px;
-    line-height: 42px;
-  }
-  
-  .contact-left p { 
-    width: 100%; 
-    font-size: 18px;
-  }
+          .contact-row {
+            flex-direction: column !important;
+            gap: 24px !important;
+          }
 
-  .contact-right {
-    width: 100% !important;
-  }
+          .contact-left {
+            flex: none !important;
+            width: 100% !important;
+            gap: 16px;
+          }
 
+          .contact-left h2 {
+            width: 100%;
+            font-size: 32px;
+            line-height: 42px;
+          }
+
+          .contact-left p {
+            width: 100%;
+            max-width: 100%;
+            font-size: 18px;
+          }
+
+          .contact-right {
+            width: 100% !important;
+          }
+        }
       `}</style>
 
       <div className="contact-page">
@@ -200,14 +200,13 @@ export default function NakraniContact() {
             margin: "0 auto",
           }}
         >
-          {/* ✅ Simple flexbox row — no MUI Grid interference */}
           <Box
             className="contact-row"
             sx={{
               display: "flex",
               flexDirection: "row",
               alignItems: "flex-start",
-              gap: "32px",
+              columnGap: "120px",
               width: "100%",
             }}
           >
@@ -255,7 +254,6 @@ export default function NakraniContact() {
                 </form>
               )}
             </div>
-
           </Box>
         </Box>
       </div>

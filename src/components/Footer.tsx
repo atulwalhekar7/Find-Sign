@@ -20,24 +20,10 @@ const LinkedInIcon = () => (
   </svg>
 );
 
-/* ================= SOCIAL LINKS ================= */
-
 const socialIcons = [
-  {
-    label: "Facebook",
-    Icon: FacebookIcon,
-    url: "https://www.facebook.com/nakranipropertybuyers/",
-  },
-  {
-    label: "Instagram",
-    Icon: InstagramIcon,
-    url: "https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr",
-  },
-  {
-    label: "LinkedIn",
-    Icon: LinkedInIcon,
-    url: "https://www.linkedin.com/in/niki-nakrani-13b269237/",
-  },
+  { label: "Facebook", Icon: FacebookIcon, url: "https://www.facebook.com/nakranipropertybuyers/" },
+  { label: "Instagram", Icon: InstagramIcon, url: "https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" },
+  { label: "LinkedIn", Icon: LinkedInIcon, url: "https://www.linkedin.com/in/niki-nakrani-13b269237/" },
 ];
 
 export default function Footer() {
@@ -55,39 +41,43 @@ export default function Footer() {
         .footer-container {
           max-width: 1120px;
           margin: 0 auto;
-          padding: 80px 40px 40px;
+          padding: 80px 40px 48px;
         }
 
-        /* ================= GRID ================= */
+        /* ================= 12-COL GRID ================= */
         .footer-grid {
           display: grid;
           grid-template-columns: repeat(12, 1fr);
-          column-gap: 32px;
+          column-gap: 24px;
           row-gap: 40px;
           align-items: start;
         }
 
-        .logo { grid-column: span 3; }
-        .contact { grid-column: span 3; }
-        .explore { grid-column: span 2; }
-        .legal { grid-column: span 2; }
+        .logo    { grid-column: 1 / span 2; }
+        .contact { grid-column: 3 / span 3; }
+        .explore { grid-column: 6 / span 2; }
+        .legal   { grid-column: 8 / span 2; }
 
+        /* Social top-right, aligned with headers row */
         .social {
-          grid-column: span 2;
+          grid-column: 11 / span 2;
           display: flex;
           justify-content: flex-end;
-          gap: 18px;
           align-items: center;
+          gap: 18px;
         }
 
         /* ================= TEXT ================= */
-        .title {
-          font-family: "CX80", "DM Sans", sans-serif;
-          font-size: 13px;
-          letter-spacing: 0.28em;
-          margin-bottom: 16px;
-          color: #F9F9F9;
-        }
+       .title {
+  font-family: "CX80";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 5.76px;
+  margin-bottom: 16px;
+  color: #F9F9F9;
+}
 
         .link {
           display: block;
@@ -106,68 +96,104 @@ export default function Footer() {
           margin-bottom: 10px;
           font-size: 12px;
           font-family: "Sohne", sans-serif;
+          font-weight: 300;
         }
 
+        .footer-bottom span:first-child {
+  color: var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9));
+  font-family: "Sohne";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 24px;
+}
+
+.footer-bottom span:last-child {
+  color: var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9));
+  font-family: "Sohne";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 24px;
+}
         .contact-row a {
           color: white;
           text-decoration: underline;
           text-underline-offset: 3px;
         }
 
-        /* ================= SOCIAL (FIXED) ================= */
+        /* ================= SOCIAL ICONS — plain, no circle, no border ================= */
         .social-link {
-          width: 24px;
-          height: 24px;
           display: flex;
           align-items: center;
           justify-content: center;
-  color: rgba(255, 255, 255, 0.85);
+          color: white;
+          opacity: 0.9;
           transition: opacity 0.2s ease;
-          
+          text-decoration: none;
+          flex-shrink: 0;
         }
 
         .social-link svg {
-          width: 24px;
-          height: 24px;
+          width: 18px;
+          height: 18px;
           display: block;
         }
 
         .social-link:hover {
-          opacity: 0.7;
+          opacity: 0.6;
         }
+          .copyright {
+  color: var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9));
+  font-family: 'Sohne';
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
 
-        /* ================= BOTTOM ================= */
+        /* ================= BOTTOM BAR ================= */
         .footer-bottom {
           display: flex;
           justify-content: space-between;
-          margin-top: 70px;
+          align-items: center;
+          margin-top: 80px;
           font-family: "Sohne", sans-serif;
-          font-size: 13px;
+          font-size: 11px;
           font-weight: 300;
+          color: rgba(255, 255, 255, 0.45);
+          letter-spacing: 0.01em;
         }
 
         /* ================= TABLET ================= */
-        @media (max-width: 1024px) {
-          .logo { grid-column: span 6; }
-          .contact { grid-column: span 6; }
-          .explore { grid-column: span 4; }
-          .legal { grid-column: span 4; }
-          .social { grid-column: span 4; justify-content: flex-start; }
+        @media (max-width: 1024px) and (min-width: 769px) {
+          .logo    { grid-column: 1 / span 3; }
+          .contact { grid-column: 4 / span 3; }
+          .explore { grid-column: 7 / span 2; }
+          .legal   { grid-column: 9 / span 2; }
+          .social  { grid-column: 11 / span 2; justify-content: flex-end; }
         }
 
         /* ================= MOBILE ================= */
         @media (max-width: 768px) {
-          .footer-container {
-            padding: 60px 20px 30px;
-          }
+          .footer-container { padding: 60px 20px 32px; }
 
           .footer-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 24px;
+            row-gap: 32px;
           }
+
+          .logo    { grid-column: 1 / span 2; }
+          .contact { grid-column: 1 / span 2; }
+          .explore { grid-column: 1 / span 1; }
+          .legal   { grid-column: 2 / span 1; }
+          .social  { grid-column: 1 / span 2; justify-content: flex-start; }
 
           .footer-bottom {
             flex-direction: column;
-            gap: 8px;
+            align-items: flex-start;
+            gap: 6px;
+            margin-top: 48px;
           }
         }
       `}</style>
@@ -179,30 +205,23 @@ export default function Footer() {
 
             {/* LOGO */}
             <div className="logo">
-              <img src={Logo} alt="logo" style={{ width: "150px" }} />
+              <img src={Logo} alt="Find and Sign logo" style={{ width: "120px" }} />
             </div>
 
             {/* CONTACT */}
             <div className="contact">
               <div className="title">CONTACT</div>
-
               <div className="contact-row">
                 <span>T</span>
                 <a href="tel:0431158233">0431 158 233</a>
               </div>
-
               <div className="contact-row">
                 <span>E</span>
-                <a href="mailto:niki@findandsignba.com.au">
-                  niki@findandsignba.com.au
-                </a>
+                <a href="mailto:niki@findandsignba.com.au">niki@findandsignba.com.au</a>
               </div>
-
               <div className="contact-row">
                 <span>W</span>
-                <a href="https://findandsignba.com.au">
-                  findandsignba.com.au
-                </a>
+                <a href="https://findandsignba.com.au">findandsignba.com.au</a>
               </div>
             </div>
 
@@ -223,10 +242,11 @@ export default function Footer() {
               <a className="link">Terms & Conditions</a>
             </div>
 
-            {/* SOCIAL */}
+            {/* SOCIAL — plain icons, top-right */}
             <div className="social">
               {socialIcons.map(({ label, Icon, url }) => (
                 <a
+                
                   key={label}
                   href={url}
                   target="_blank"
@@ -241,11 +261,10 @@ export default function Footer() {
 
           </div>
 
-          {/* BOTTOM BAR */}
+          {/* BOTTOM BAR — no divider line, just large margin-top */}
           <div className="footer-bottom">
             <span>ABN XXXXXXXXXX</span>
-            <span>© 2026 Find and Sign Buyer Advocate</span>
-          </div>
+<span className="copyright">© 2026 Find and Sign Buyer Advocate</span>          </div>
 
         </div>
       </footer>
