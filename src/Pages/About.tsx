@@ -7,7 +7,7 @@ export default function About() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true); // start muted (browser policy)
-  const [showControls, setShowControls] = useState(false);
+  const [, setShowControls] = useState(false);
 
   // Attempt to unmute after first user interaction (browser autoplay policy)
   useEffect(() => {
