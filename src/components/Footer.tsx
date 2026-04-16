@@ -1,29 +1,16 @@
 import Logo from "../assets/FS Primary Lockup_Gold.png";
 
+/* ✅ IMPORT SOCIAL ICON IMAGES */
+import fbIcon from "../assets/Vector (2).png";
+import igIcon from "../assets/Instagram (2).png";
+import liIcon from "../assets/Vector(1).png";
+
 /* ================= SOCIAL ICONS ================= */
 
-const FacebookIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 17.9895 4.3882 22.954 10.125 23.8542V15.4688H7.07812V12H10.125V9.35625C10.125 6.34875 11.9166 4.6875 14.6576 4.6875C15.9701 4.6875 17.3438 4.92188 17.3438 4.92188V7.875H15.8306C14.34 7.875 13.875 8.80008 13.875 9.75V12H17.2031L16.6711 15.4688H13.875V23.8542C19.6118 22.954 24 17.9895 24 12Z"/>
-  </svg>
-);
-
-const InstagramIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 7.2c-2.65 0-4.8 2.15-4.8 4.8s2.15 4.8 4.8 4.8 4.8-2.15 4.8-4.8-2.15-4.8-4.8-4.8zm0 7.8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm5.8-8.5c-.6 0-1.1-.5-1.1-1.1s.5-1.1 1.1-1.1 1.1.5 1.1 1.1-.5 1.1-1.1 1.1zM7 2c-2.76 0-5 2.24-5 5v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 18H7c-2.21 0-4-1.79-4-4V7c0-2.21 1.79-4 4-4h10c2.21 0 4 1.79 4 4v9c0 2.21-1.79 4-4 4z"/>
-  </svg>
-);
-
-const LinkedInIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM8.5 17H6.5V9h2v8zM7.5 7.8c-.7 0-1.2-.6-1.2-1.3S6.8 5.2 7.5 5.2s1.2.6 1.2 1.3-.5 1.3-1.2 1.3zM18 17h-2v-4.3c0-1-.4-1.7-1.3-1.7-.8 0-1.3.6-1.3 1.7V17h-2V9h2v1.1c.4-.6 1.2-1.3 2.3-1.3 1.8 0 2.3 1.2 2.3 3V17z"/>
-  </svg>
-);
-
 const socialIcons = [
-  { label: "Facebook", Icon: FacebookIcon, url: "https://www.facebook.com/nakranipropertybuyers/" },
-  { label: "Instagram", Icon: InstagramIcon, url: "https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" },
-  { label: "LinkedIn", Icon: LinkedInIcon, url: "https://www.linkedin.com/in/niki-nakrani-13b269237/" },
+  { label: "Facebook", img: fbIcon, url: "https://www.facebook.com/nakranipropertybuyers/" },
+  { label: "Instagram", img: igIcon, url: "https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" },
+  { label: "LinkedIn", img: liIcon, url: "https://www.linkedin.com/in/niki-nakrani-13b269237/" },
 ];
 
 export default function Footer() {
@@ -44,7 +31,6 @@ export default function Footer() {
           padding: 80px 40px 48px;
         }
 
-        /* ================= 12-COL GRID ================= */
         .footer-grid {
           display: grid;
           grid-template-columns: repeat(12, 1fr);
@@ -58,7 +44,6 @@ export default function Footer() {
         .explore { grid-column: 6 / span 2; }
         .legal   { grid-column: 8 / span 2; }
 
-        /* Social top-right, aligned with headers row */
         .social {
           grid-column: 11 / span 2;
           display: flex;
@@ -67,17 +52,15 @@ export default function Footer() {
           gap: 18px;
         }
 
-        /* ================= TEXT ================= */
-       .title {
-  font-family: "CX80";
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 18px;
-  letter-spacing: 5.76px;
-  margin-bottom: 16px;
-  color: #F9F9F9;
-}
+        .title {
+          font-family: "CX80";
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 18px;
+          letter-spacing: 5.76px;
+          margin-bottom: 16px;
+          color: #F9F9F9;
+        }
 
         .link {
           display: block;
@@ -100,29 +83,28 @@ export default function Footer() {
         }
 
         .footer-bottom span:first-child {
-  color: var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9));
-  font-family: "Sohne";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: 24px;
-}
+          color: #F9F9F9;
+          font-family: "Sohne";
+          font-size: 16px;
+          font-weight: 300;
+          line-height: 24px;
+        }
 
-.footer-bottom span:last-child {
-  color: var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9));
-  font-family: "Sohne";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: 24px;
-}
+        .footer-bottom span:last-child {
+          color: #F9F9F9;
+          font-family: "Sohne";
+          font-size: 16px;
+          font-weight: 300;
+          line-height: 24px;
+        }
+
         .contact-row a {
           color: white;
           text-decoration: underline;
           text-underline-offset: 3px;
         }
 
-        /* ================= SOCIAL ICONS — plain, no circle, no border ================= */
+        /* ✅ UPDATED: IMAGE ICON STYLE */
         .social-link {
           display: flex;
           align-items: center;
@@ -134,24 +116,25 @@ export default function Footer() {
           flex-shrink: 0;
         }
 
-        .social-link svg {
-          width: 18px;
-          height: 18px;
+        .social-link img {
+          width: 24px;
+          height: 24px;
+          object-fit: contain;
           display: block;
         }
 
         .social-link:hover {
           opacity: 0.6;
         }
-          .copyright {
-  color: var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9));
-  font-family: 'Sohne';
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 24px;
-}
 
-        /* ================= BOTTOM BAR ================= */
+        .copyright {
+          color: #F9F9F9;
+          font-family: 'Sohne';
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 24px;
+        }
+
         .footer-bottom {
           display: flex;
           justify-content: space-between;
@@ -164,7 +147,6 @@ export default function Footer() {
           letter-spacing: 0.01em;
         }
 
-        /* ================= TABLET ================= */
         @media (max-width: 1024px) and (min-width: 769px) {
           .logo    { grid-column: 1 / span 3; }
           .contact { grid-column: 4 / span 3; }
@@ -173,7 +155,6 @@ export default function Footer() {
           .social  { grid-column: 11 / span 2; justify-content: flex-end; }
         }
 
-        /* ================= MOBILE ================= */
         @media (max-width: 768px) {
           .footer-container { padding: 60px 20px 32px; }
 
@@ -200,15 +181,12 @@ export default function Footer() {
 
       <footer className="footer">
         <div className="footer-container">
-
           <div className="footer-grid">
 
-            {/* LOGO */}
             <div className="logo">
               <img src={Logo} alt="Find and Sign logo" style={{ width: "120px" }} />
             </div>
 
-            {/* CONTACT */}
             <div className="contact">
               <div className="title">CONTACT</div>
               <div className="contact-row">
@@ -225,7 +203,6 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* EXPLORE */}
             <div className="explore">
               <div className="title">EXPLORE</div>
               <a className="link">About</a>
@@ -235,18 +212,16 @@ export default function Footer() {
               <a className="link">Contact</a>
             </div>
 
-            {/* LEGAL */}
             <div className="legal">
               <div className="title">LEGAL</div>
               <a className="link">Privacy Policy</a>
               <a className="link">Terms & Conditions</a>
             </div>
 
-            {/* SOCIAL — plain icons, top-right */}
+            {/* ✅ UPDATED SOCIAL IMAGES */}
             <div className="social">
-              {socialIcons.map(({ label, Icon, url }) => (
+              {socialIcons.map(({ label, img, url }) => (
                 <a
-                
                   key={label}
                   href={url}
                   target="_blank"
@@ -254,17 +229,17 @@ export default function Footer() {
                   className="social-link"
                   aria-label={label}
                 >
-                  <Icon />
+                  <img src={img} alt={label} />
                 </a>
               ))}
             </div>
 
           </div>
 
-          {/* BOTTOM BAR — no divider line, just large margin-top */}
           <div className="footer-bottom">
             <span>ABN XXXXXXXXXX</span>
-<span className="copyright">© 2026 Find and Sign Buyer Advocate</span>          </div>
+            <span className="copyright">© 2026 Find and Sign Buyer Advocate</span>
+          </div>
 
         </div>
       </footer>
