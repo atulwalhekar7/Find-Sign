@@ -10,6 +10,7 @@ export default function About() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true); // start muted (browser policy)
   const [, setShowControls] = useState(false);
+  
 
   // Attempt to unmute after first user interaction (browser autoplay policy)
   // useEffect(() => {
@@ -110,6 +111,8 @@ export default function About() {
   loop
   muted
   playsInline
+    poster={aboutContentImg}   // 👈 ADD THIS
+
   className="video-el"
 />
           {/* Dark overlay */}
@@ -161,10 +164,7 @@ export default function About() {
             </button>
           </div>
 
-          {/* Audio hint — shown briefly on load */}
-          <div className="audio-hint">
-            🔇 Click anywhere to enable audio
-          </div>
+        
         </div>
       </section>
 
