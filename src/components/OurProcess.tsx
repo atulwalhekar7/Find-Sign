@@ -6,6 +6,7 @@ interface Step {
   description: string;
 }
 
+/* ================= DATA ================= */
 const steps: Step[] = [
   {
     id: 1,

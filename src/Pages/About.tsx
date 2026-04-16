@@ -2,125 +2,121 @@ import bannerImg from "../assets/About.jpg";
 
 export default function About() {
   return (
-    <>
-      {/* HERO SECTION */}
-      <section
+    <section
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",   // vertical center
+        justifyContent: "center", // horizontal center
+        backgroundImage: `url(${bannerImg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
+        position: "relative",
+      }}
+    >
+      {/* Overlay */}
+      <div
         style={{
-          height: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundImage: `url(${bannerImg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-          position: "relative",
+          position: "absolute",
+          inset: 0,
+          background: "rgba(0,0,0,0.3)",
         }}
-      >
-        {/* Overlay */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "rgba(0,0,0,0.3)",
-          }}
-        />
+      />
 
-        {/* Content */}
-        <div
+      {/* ✅ CENTER BOX */}
+     <div
+  style={{
+    position: "relative",
+    zIndex: 2,
+
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+
+    width: "90%",              // 🔥 IMPORTANT (adds left-right space)
+    maxWidth: "600px",         // keeps desktop size same
+
+    margin: "0 auto",          // center
+
+    backgroundColor: "rgba(30, 30, 30, 0.85)",
+    padding: "40px 60px",
+    borderRadius: "12px",
+    backdropFilter: "blur(4px)",
+    border: "1px solid rgba(255, 255, 255, 0.1)",
+  }}
+>        <h1
           style={{
-            position: "relative",
-            zIndex: 2,
-            textAlign: "center",
-            background: "rgba(30,30,30,0.85)",
-            padding: "40px 60px",
-            borderRadius: "12px",
-            color: "#fff",
+            fontFamily: "'GTSuper', serif",
+            fontSize: "56px",
+            fontWeight: 500,
+            color: "#FFFFFF",
+            lineHeight: "64px",
+            letterSpacing: "-1.12px",
+            margin: 0,
           }}
         >
-          <h1 style={{ fontSize: "56px", margin: 0 }}>About Us</h1>
-          <p style={{ fontSize: "24px", marginTop: "15px", color: "#ccc" }}>
-            Find & Sign
-          </p>
-        </div>
-      </section>
+          About Us
+        </h1>
 
-      {/* STICKY SECTION (Image + Text) */}
-      <section
-        style={{
-          position: "sticky",
-          top: 0,
-          height: "100vh",
-          background: "#ffffff",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          zIndex: 1,
-        }}
-      >
-        <div
+        <p
           style={{
-            display: "flex",
-            maxWidth: "1100px",
-            width: "100%",
-            padding: "40px",
-            gap: "40px",
-            alignItems: "center",
-            flexWrap: "wrap",
+            color: "#CCCCCC",
+            fontFamily: "Söhne",
+            fontSize: "24px",
+            fontWeight: 300,
+            lineHeight: "36px",
+            marginTop: "15px",
           }}
         >
-          {/* Image */}
-          <div style={{ flex: "1 1 400px" }}>
-            <div
-              style={{
-                width: "100%",
-                height: "250px",
-                background: "#ddd",
-                borderRadius: "10px",
-              }}
-            />
-          </div>
+          Find & Sign
+        </p>
+      </div>
 
-          {/* Text */}
-          <div style={{ flex: "1 1 400px" }}>
-            <p style={{ color: "#555", lineHeight: "1.6", fontSize: "18px" }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam.
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* ✅ RESPONSIVE */}
+      <style>{`
+        @media (max-width: 900px) {
+          h1 {
+            font-size: 40px !important;
+            line-height: 48px !important;
+          }
 
-      {/* SCROLLING SECTION (comes over sticky) */}
-      <section
-        style={{
-          
-          height: "100vh",
-          background: "#f5f5f5",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          zIndex: 2,
-          position: "fixed",
-        }}
-      >
-        <div
-          style={{
-            width: "80%",
-            maxWidth: "1000px",
-            height: "300px",
-            background: "#ccc",
-            borderRadius: "12px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            
-          }}
-        >
-          <span style={{ color: "#444" }}>Media / Video Section</span>
-        </div>
-      </section>
-    </>
+          p {
+            font-size: 18px !important;
+            line-height: 28px !important;
+          }
+
+          div[style*="padding: 40px 60px"] {
+            padding: 24px 20px !important;
+          }
+        }
+
+        @media (max-width: 600px) {
+          h1 {
+            font-size: 32px !important;
+            line-height: 40px !important;
+          }
+
+          p {
+            font-size: 16px !important;
+          }
+        }
+          @media (max-width: 900px) {
+  div[style*="max-width: 600px"] {
+    width: 92% !important;     /* 🔥 space from edges */
+    padding: 24px 20px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  div[style*="max-width: 600px"] {
+    width: 94% !important;     /* 🔥 more breathing space */
+  }
+}
+      `}</style>
+    </section>
   );
 }
