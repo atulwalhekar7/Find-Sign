@@ -2,6 +2,8 @@ import { useRef, useState, useEffect } from "react";
 import bannerImg from "../assets/About.jpg";
 import aboutContentImg from "../assets/DSC06081.jpg";
 import aboutVideo from "../assets/Interview Draft (2).mp4";
+import SimpleGetInTouch from "../components/SimpleGetInTouch";
+import SimpleFooter from "../components/SimpleFooter";
 
 export default function About() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -461,6 +463,8 @@ export default function About() {
           .hero-banner { background-attachment: scroll; }
         }
       `}</style>
+      <SimpleGetInTouch />
+      <SimpleFooter />
     </>
   );
 }

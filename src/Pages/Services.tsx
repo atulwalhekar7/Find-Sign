@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import SimpleGetInTouch from "../components/SimpleGetInTouch";
+import SimpleFooter from "../components/SimpleFooter";
 
 // ── Animation hook ────────────────────────────────────────────────────────────
 function useInView(threshold = 0.15) {
@@ -379,108 +381,8 @@ export default function Services() {
         </div>
       </section>
 
-      {/* ── SECTION 4: Get in touch ──────────────────────────────────────── */}
-      <section
-        style={{
-          maxWidth: 320,
-          margin: "0 auto",
-          padding: "72px 0",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: 24,
-        }}
-      >
-        <FadeUp>
-          <h2 style={{ margin: 0, fontSize: 26, fontWeight: 700, textAlign: "center" }}>Get in touch</h2>
-        </FadeUp>
-        <FadeUp delay={0.08}>
-          <a href="#" style={{ fontSize: 14, color: "#0057ff", textDecoration: "underline" }}>Book a call</a>
-        </FadeUp>
-        <FadeUp delay={0.15}>
-          <div
-            style={{
-              width: 320,
-              border: "1.5px solid #e0e0e0",
-              borderRadius: 10,
-              padding: "24px",
-              display: "flex",
-              flexDirection: "column",
-              gap: 24,
-              boxSizing: "border-box",
-            }}
-          >
-            <InputField label="Name" placeholder="Value" />
-            <InputField label="Surname" placeholder="Value" />
-            <InputField label="Email" placeholder="Value" />
-            <InputField label="Message" placeholder="Value" multiline />
-            <button
-              style={{
-                padding: "12px",
-                borderRadius: 6,
-                border: "none",
-                background: "#111",
-                color: "#fff",
-                fontFamily: "inherit",
-                fontSize: 14,
-                fontWeight: 600,
-                cursor: "pointer",
-                width: "100%",
-                transition: "background 0.2s",
-              }}
-              onMouseEnter={e => (e.currentTarget.style.background = "#333")}
-              onMouseLeave={e => (e.currentTarget.style.background = "#111")}
-            >
-              Submit
-            </button>
-          </div>
-        </FadeUp>
-      </section>
-
-      {/* ── SECTION 5: Footer ────────────────────────────────────────────── */}
-      <footer style={{ borderTop: "1px solid #e0e0e0", padding: "56px 40px 32px" }}>
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "row",
-            gap: 48,
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-            flexWrap: "wrap",
-          }}
-        >
-          <div style={{ display: "flex", flexDirection: "column", gap: 16, minWidth: 140 }}>
-            <div style={{ width: 80, height: 28, background: "#e0e0e0", borderRadius: 4 }} />
-            <div style={{ display: "flex", gap: 10 }}>
-              {["𝕏", "IG", "YT", "FB", "IN"].map((s) => (
-                <a key={s} href="#" style={{ fontSize: 12, color: "#555", textDecoration: "none" }}>{s}</a>
-              ))}
-            </div>
-          </div>
-          <FooterLinkList title="Use cases" links={["UI design", "UX design", "Wireframing", "Diagramming", "Brainstorming", "Online whiteboard", "Team collaboration"]} />
-          <FooterLinkList title="Explore" links={["Design", "Prototyping", "Development features", "Design systems", "Collaboration features", "Design process", "FigJam"]} />
-          <FooterLinkList title="Resources" links={["Blog", "Best practices", "Colors", "Color wheel", "Support", "Developers", "Resource library"]} />
-        </div>
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: "40px auto 0",
-            paddingTop: 24,
-            borderTop: "1px solid #eee",
-            fontSize: 12,
-            color: "#999",
-            display: "flex",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: 8,
-          }}
-        >
-          <span>© 2024 Company Name. All rights reserved.</span>
-          <span>Privacy · Terms</span>
-        </div>
-      </footer>
+      <SimpleGetInTouch />
+      <SimpleFooter />
 
       {/* ── Styles ───────────────────────────────────────────────────────── */}
       <style>{`
