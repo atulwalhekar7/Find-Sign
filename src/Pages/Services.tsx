@@ -330,7 +330,7 @@ export default function Services() {
       <section style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}>
         <FadeUp>
           <h2 style={{ margin: "0 0 4px", fontSize: 22, fontWeight: 700 }}>Our services</h2>
-          <p style={{ margin: "0 0 32px", fontSize: 14, color: "#0057ff" }}>Subheading</p>
+          <p style={{ margin: "0 0 32px", fontSize: 14, color: "#383b3f" }}>Subheading</p>
         </FadeUp>
 
         {/* Top row: Buyer Advocate + Advisory — horizontal cards */}
