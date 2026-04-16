@@ -2,76 +2,125 @@ import bannerImg from "../assets/About.jpg";
 
 export default function About() {
   return (
-    <section
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundImage: `url(${bannerImg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundAttachment: "fixed",
-        position: "relative",
-        padding: "0 20px",
-      }}
-    >
-      {/* Optional: Dark overlay for the whole image */}
-      <div
+    <>
+      {/* HERO SECTION */}
+      <section
         style={{
-          position: "absolute",
-          inset: 0,
-          background: "rgba(0,0,0,0.3)", // Lightened to make the text box stand out
-        }}
-      />
-      
-      {/* Text Container with Grey Background */}
-      <div
-        style={{
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundImage: `url(${bannerImg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
           position: "relative",
-          zIndex: 2,
-          textAlign: "center",
-          maxWidth: "750px",
-          color: "white",
-          // --- Added Grey Background Styles ---
-          backgroundColor: "rgba(30, 30, 30, 0.85)", // Dark grey with slight transparency
-          padding: "40px 60px",
-          borderRadius: "12px",
-          backdropFilter: "blur(4px)", // Adds a modern "glass" effect
-          border: "1px solid rgba(255, 255, 255, 0.1)",
         }}
       >
-        <h1
+        {/* Overlay */}
+        <div
           style={{
-            fontFamily: "'GTSuper', serif",
-            fontSize: "56px",
-            fontWeight: 500,
-            color: "#FFFFFF", // Changed to white for readability
-            lineHeight: "64px",
-            letterSpacing: "-1.12px",
-            fontVariantNumeric: "lining-nums proportional-nums",
-            margin: 0,
+            position: "absolute",
+            inset: 0,
+            background: "rgba(0,0,0,0.3)",
+          }}
+        />
+
+        {/* Content */}
+        <div
+          style={{
+            position: "relative",
+            zIndex: 2,
+            textAlign: "center",
+            background: "rgba(30,30,30,0.85)",
+            padding: "40px 60px",
+            borderRadius: "12px",
+            color: "#fff",
           }}
         >
-          About Us
-        </h1>
-        <p
+          <h1 style={{ fontSize: "56px", margin: 0 }}>About Us</h1>
+          <p style={{ fontSize: "24px", marginTop: "15px", color: "#ccc" }}>
+            Find & Sign
+          </p>
+        </div>
+      </section>
+
+      {/* STICKY SECTION (Image + Text) */}
+      <section
+        style={{
+          position: "sticky",
+          top: 0,
+          height: "100vh",
+          background: "#ffffff",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          zIndex: 1,
+        }}
+      >
+        <div
           style={{
-            color: '#CCCCCC',
-            textAlign: 'center',
-            fontFamily: 'Söhne',
-            fontSize: '24px',
-            fontStyle: 'normal',
-            fontWeight: 300,
-            lineHeight: '36px',
-            maxWidth: '600px', // Changed to maxWidth for responsiveness
-            margin: '15px auto 0'
+            display: "flex",
+            maxWidth: "1100px",
+            width: "100%",
+            padding: "40px",
+            gap: "40px",
+            alignItems: "center",
+            flexWrap: "wrap",
           }}
         >
-          Find & Sign
-        </p>
-      </div>
-    </section>
+          {/* Image */}
+          <div style={{ flex: "1 1 400px" }}>
+            <div
+              style={{
+                width: "100%",
+                height: "250px",
+                background: "#ddd",
+                borderRadius: "10px",
+              }}
+            />
+          </div>
+
+          {/* Text */}
+          <div style={{ flex: "1 1 400px" }}>
+            <p style={{ color: "#555", lineHeight: "1.6", fontSize: "18px" }}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SCROLLING SECTION (comes over sticky) */}
+      <section
+        style={{
+          
+          height: "100vh",
+          background: "#f5f5f5",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          zIndex: 2,
+          position: "fixed",
+        }}
+      >
+        <div
+          style={{
+            width: "80%",
+            maxWidth: "1000px",
+            height: "300px",
+            background: "#ccc",
+            borderRadius: "12px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            
+          }}
+        >
+          <span style={{ color: "#444" }}>Media / Video Section</span>
+        </div>
+      </section>
+    </>
   );
 }
