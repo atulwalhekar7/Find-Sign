@@ -1,4 +1,4 @@
-import React from "react";
+
 import bannerImg from "../assets/About.jpg";
 import SimpleGetInTouch from "../components/SimpleGetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
@@ -6,13 +6,9 @@ import AboutSection from "../components/AboutSection";
 
 // --- Helper Components ---
 
-const FadeUp = ({ children, delay = 0 }) => (
-  <div style={{
-    animation: `heroFadeIn 0.8s ease-out ${delay}s both`
-  }}>
-    {children}
-  </div>
-);
+
+
+
 
 
 

@@ -1,11 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import SimpleGetInTouch from "../components/SimpleGetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
 
 // ── Animation hook ────────────────────────────────────────────────────────────
-function useInView(threshold = 0.15) {
-  const ref = useRef(null);
+import type { RefObject } from 'react';
+
+function useInView(threshold = 0.15): [RefObject<HTMLDivElement | null>, boolean] {
+  const ref = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -19,7 +21,12 @@ function useInView(threshold = 0.15) {
 }
 
 // ── Animated wrapper ──────────────────────────────────────────────────────────
-function FadeUp({ children, delay = 0 }) {
+interface FadeUpProps {
+  children: React.ReactNode;
+  delay?: number;
+}
+
+function FadeUp({ children, delay = 0 }: FadeUpProps) {
   const [ref, visible] = useInView();
   return (
     <div
@@ -36,7 +43,12 @@ function FadeUp({ children, delay = 0 }) {
 }
 
 // ── Placeholder image ─────────────────────────────────────────────────────────
-const Placeholder = ({ width = "100%", height = 160, label = "Image" }) => (
+interface PlaceholderProps {
+  width?: string | number;
+  height?: string | number;
+}
+
+const Placeholder = ({ width = "100%", height = 160 }: PlaceholderProps) => (
   <div
     style={{
       width,
@@ -63,7 +75,7 @@ const Placeholder = ({ width = "100%", height = 160, label = "Image" }) => (
 );
 
 // ── Outline Button ────────────────────────────────────────────────────────────
-const OutlineButton = ({ children }) => (
+const OutlineButton = ({ children }: { children: React.ReactNode }) => (
   <button
     style={{
       padding: "8px 18px",
@@ -86,52 +98,10 @@ const OutlineButton = ({ children }) => (
   </button>
 );
 
-// ── InputField ────────────────────────────────────────────────────────────────
-const InputField = ({ label, placeholder, multiline = false }) => (
-  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-    <label style={{ fontSize: 13, fontWeight: 500, color: "#333" }}>
-      {label}
-    </label>
-    {multiline ? (
-      <textarea
-        placeholder={placeholder}
-        rows={5}
-        style={{
-          padding: "10px 12px",
-          border: "1.5px solid #ccc",
-          borderRadius: 6,
-          
-          fontSize: 14,
-          color: "#222",
-          resize: "vertical",
-          outline: "none",
-          transition: "border-color 0.2s",
-        }}
-        onFocus={e => (e.target.style.borderColor = "#222")}
-        onBlur={e => (e.target.style.borderColor = "#ccc")}
-      />
-    ) : (
-      <input
-        placeholder={placeholder}
-        style={{
-          padding: "10px 12px",
-          border: "1.5px solid #ccc",
-          borderRadius: 6,
-          
-          fontSize: 14,
-          color: "#222",
-          outline: "none",
-          transition: "border-color 0.2s",
-        }}
-        onFocus={e => (e.target.style.borderColor = "#222")}
-        onBlur={e => (e.target.style.borderColor = "#ccc")}
-      />
-    )}
-  </div>
-);
+
 
 // ── Top Service Card (Horizontal: image left + text right) ────────────────────
-const TopServiceCard = ({ title, body, delay = 0 }) => {
+const TopServiceCard = ({ title, body, delay = 0 }: { title: string; body: string; delay?: number }) => {
   const [hovered, setHovered] = useState(false);
   return (
     <FadeUp delay={delay}>
@@ -156,7 +126,7 @@ const TopServiceCard = ({ title, body, delay = 0 }) => {
       >
         {/* Fixed 160×160 image */}
         <div style={{ width: 160, height: 160, flexShrink: 0, borderRadius: 6, overflow: "hidden" }}>
-          <Placeholder width={160} height={160} label="img" />
+          <Placeholder width={160} height={160} />
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 8, flex: 1, minWidth: 0 }}>
           <h3 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: "#111" }}>
@@ -172,7 +142,7 @@ const TopServiceCard = ({ title, body, delay = 0 }) => {
 };
 
 // ── Small Service Card (vertical, 3-col grid) ─────────────────────────────────
-const SmallServiceCard = ({ title, body, hasButton = false, delay = 0 }) => {
+const SmallServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title: string; body: string; hasButton?: boolean; delay?: number }) => {
   const [hovered, setHovered] = useState(false);
   return (
     <FadeUp delay={delay}>
@@ -189,20 +159,20 @@ const SmallServiceCard = ({ title, body, hasButton = false, delay = 0 }) => {
           cursor: "default",
         }}
       >
-        <div
-          style={{
-            width: 160,
-            height: 160,
-            borderRadius: 8,
-            overflow: "hidden",
-            flexShrink: 0,
-            transition: "box-shadow 0.25s",
-            boxShadow: hovered ? "0 6px 24px rgba(0,0,0,0.10)" : "none",
-          }}
-        >
-          <Placeholder width={160} height={160} label="img" />
-        </div>
-        <h3 style={{ margin: 0, fontSize: 15, fontWeight: 600, color: "#111"}}>
+          <div
+            style={{
+              width: 160,
+              height: 160,
+              borderRadius: 8,
+              overflow: "hidden",
+              flexShrink: 0,
+              transition: "box-shadow 0.25s",
+              boxShadow: hovered ? "0 6px 24px rgba(0,0,0,0.10)" : "none",
+            }}
+          >
+            <Placeholder width={160} height={160} />
+          </div>
+          <h3 style={{ margin: 0, fontSize: 15, fontWeight: 600, color: "#111"}}>
           {title}
         </h3>
         <p style={{ margin: 0, fontSize: 13, color: "#555", lineHeight: 1.7}}>
@@ -215,7 +185,7 @@ const SmallServiceCard = ({ title, body, hasButton = false, delay = 0 }) => {
 };
 
 // ── Accounting card (horizontal, fixed 160×160 image) ────────────────────────
-const AccountingCard = ({ title, body, delay = 0 }) => {
+const AccountingCard = ({ title, body, delay = 0 }: { title: string; body: string; delay?: number }) => {
   const [hovered, setHovered] = useState(false);
   return (
     <FadeUp delay={delay}>
@@ -233,7 +203,7 @@ const AccountingCard = ({ title, body, delay = 0 }) => {
         }}
       >
         <div style={{ width: 160, height: 160, flexShrink: 0, borderRadius: 6, overflow: "hidden" }}>
-          <Placeholder width={160} height={160} label="img" />
+          <Placeholder width={160} height={160} />
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
           <h3 style={{ margin: 0, fontSize: 15, fontWeight: 600, color: "#111" }}>
@@ -248,23 +218,7 @@ const AccountingCard = ({ title, body, delay = 0 }) => {
   );
 };
 
-// ── Footer Link List ──────────────────────────────────────────────────────────
-const FooterLinkList = ({ title, links }) => (
-  <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-    <span style={{ fontWeight: 700, fontSize: 13, color: "#111" }}>{title}</span>
-    {links.map((link) => (
-      <a
-        key={link}
-        href="#"
-        style={{ fontSize: 13, color: "#444", textDecoration: "none", lineHeight: 1.5, transition: "color 0.15s" }}
-        onMouseEnter={e => (e.currentTarget.style.color = "#000")}
-        onMouseLeave={e => (e.currentTarget.style.color = "#444")}
-      >
-        {link}
-      </a>
-    ))}
-  </div>
-);
+
 
 // ── Main Component ────────────────────────────────────────────────────────────
 export default function Services() {

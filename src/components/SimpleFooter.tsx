@@ -1,8 +1,13 @@
+interface FooterLinkListProps {
+  title: string;
+  links: string[];
+}
+
 // ── Footer Link List ──────────────────────────────────────────────────────────
-const FooterLinkList = ({ title, links }) => (
+const FooterLinkList = ({ title, links }: FooterLinkListProps) => (
   <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
     <span style={{ fontWeight: 700, fontSize: 13, color: "#111", fontFamily: "inherit" }}>{title}</span>
-    {links.map((link) => (
+{links.map((link: string) => (
       <a
         key={link}
         href="#"

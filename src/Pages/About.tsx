@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import bannerImg from "../assets/About.jpg";
 import aboutContentImg from "../assets/DSC06081.jpg";
 import aboutVideo from "../assets/Interview Draft (2).mp4";
