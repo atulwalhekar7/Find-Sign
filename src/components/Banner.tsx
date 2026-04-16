@@ -187,7 +187,7 @@ function Navbar() {
                     <NavLink
                       to={item.to}
                       style={({ isActive }) => ({
-                        fontFamily:    "Sohne, sans-serif",
+                        fontFamily:    "Sohne",
                         fontWeight:    isActive ? 500 : 400,
                         fontSize:      "20px",
                         fontStyle:     "normal",
@@ -210,22 +210,22 @@ function Navbar() {
               <NavLink
                 to="/contact"
                 className="nav-cta-desktop"
-                style={{
-                  fontFamily:     "CX80",
-                  fontWeight:     700,
-                  fontSize:       "11px",
-                  letterSpacing:  "0.14em",
-                  textTransform:  "uppercase" as const,
-                  color:          COLORS.white,
-                  background:     COLORS.aqua,
-                  padding:        "11px 24px",
-                  borderRadius:   "2px",
-                  textDecoration: "none",
-                  whiteSpace:     "nowrap" as const,
-                  flexShrink:     0,
-                  transition:     "opacity 0.2s",
-                  alignItems:     "center",
-                }}
+               style={{
+  fontFamily:     "CX80",
+  fontWeight:     700,
+  fontSize:       "11px",
+  letterSpacing:  "0.14em",
+  textTransform:  "uppercase" as const,
+  color:          "#073B2F",
+  background:     "#76e4dc",
+  padding:        "11px 24px",
+  borderRadius:   "10px",
+  textDecoration: "none",
+  whiteSpace:     "nowrap" as const,
+  flexShrink:     0,
+  transition:     "opacity 0.2s",
+  alignItems:     "center",
+}}
                 onMouseEnter={e => (e.currentTarget.style.opacity = "0.85")}
                 onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
               >
