@@ -1,12 +1,11 @@
-# Refactor Duplicated GetInTouch and Footer Components
+# Refactoring Plan Progress: Extract Duplicate About Sections
 
-## Steps to complete:
-
-- [x] User approved the plan
-- [x] Step 1: Create src/components/SimpleGetInTouch.tsx
-- [x] Step 2: Create src/components/SimpleFooter.tsx  
-- [x] Step 3: Update src/Pages/Services.tsx (replace inline sections with components)
-- [x] Step 4: Update src/Pages/Insights.tsx (replace inline sections with components)
-- [x] Step 5: Test rendering - npm run dev
-- [ ] Step 6: Complete task with attempt_completion
+## TODO Steps
+- [x] 1. User confirmed plan
+- [x] 2. Create `src/components/AboutSection.tsx` reusable component (TypeScript errors fixed inline)
+- [x] 3. Update `src/Pages/Services.tsx` - Replace SECTION 2 with `<AboutSection />`
+- [x] 4. Update `src/Pages/Insights.tsx` - Replace SECTION 2 with `<AboutSection />`
+- [x] 5. Optionally adapt `src/Pages/About.tsx` (skipped - different structure)
+- [ ] 6. Test changes (npm run dev)
+- [ ] 7. attempt_completion
 

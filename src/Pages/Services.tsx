@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import SimpleGetInTouch from "../components/SimpleGetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
+import AboutSection from "../components/AboutSection";
 
 // ── Animation hook ────────────────────────────────────────────────────────────
 function useInView(threshold = 0.15) {
@@ -318,30 +319,12 @@ export default function Services() {
         </div>
       </section>
 
-      {/* ── SECTION 2: About our Services ───────────────────────────────── */}
-      <section style={{ maxWidth: 1200, margin: "0 auto", padding: "80px 40px" }}>
-        <div className="about-grid" style={{ display: "flex", flexDirection: "row", gap: 56, alignItems: "flex-start" }}>
-          {/* Image: fixed 484×350 per Figma */}
-          <FadeUp>
-            <div style={{ flexShrink: 0 }}>
-              <Placeholder width={484} height={350} label="Service image" />
-            </div>
-          </FadeUp>
-          {/* Text */}
-          <FadeUp delay={0.15}>
-            <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: 20 }}>
-              <div>
-                <h2 style={{ margin: 0, fontSize: 28, fontWeight: 700, color: "#111" }}>About our Services</h2>
-                <p style={{ margin: "4px 0 0", fontSize: 14, color: "#999" }}>Subheading</p>
-              </div>
-              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.75, color: "#333" }}>
-                Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-              </p>
-              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.75, color: "#333" }}>{longBody}</p>
-            </div>
-          </FadeUp>
-        </div>
-      </section>
+      <AboutSection 
+        heading="About our Services"
+        subheading="Subheading"
+        body1="Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:"
+        body2={longBody}
+      />
 
       {/* ── SECTION 3: Our Services ──────────────────────────────────────── */}
       <section style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}>

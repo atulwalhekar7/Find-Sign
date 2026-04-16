@@ -2,6 +2,7 @@ import React from "react";
 import bannerImg from "../assets/About.jpg";
 import SimpleGetInTouch from "../components/SimpleGetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
+import AboutSection from "../components/AboutSection";
 
 // --- Helper Components ---
 
@@ -74,28 +75,12 @@ export default function Insights() {
         </div>
       </section>
 
-      {/* ── SECTION 2: Featured Article ───────────────────────────────── */}
-      <section style={{ maxWidth: 1200, margin: "0 auto", padding: "80px 40px" }}>
-        <div className="about-grid" style={{ display: "flex", flexDirection: "row", gap: 56, alignItems: "flex-start" }}>
-          <FadeUp>
-            <div style={{ flexShrink: 0, width: 484, height: 350, backgroundColor: "#E5E5E5", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-               <div style={{ opacity: 0.2, fontSize: "40px" }}>🖼️</div>
-            </div>
-          </FadeUp>
-          <FadeUp delay={0.15}>
-            <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: 20 }}>
-              <div>
-                <h2 style={{ margin: 0, fontSize: 32, fontWeight: 700, color: "#111" }}>Heading</h2>
-                <p style={{ margin: "4px 0 0", fontSize: 14, color: "#999" }}>Subheading</p>
-              </div>
-              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.75, color: "#333" }}>
-                Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:
-              </p>
-              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.75, color: "#333" }}>{longBody}</p>
-            </div>
-          </FadeUp>
-        </div>
-      </section>
+      <AboutSection 
+        heading="Heading"
+        subheading="Subheading"
+        body1="Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look:"
+        body2={longBody}
+      />
 
       {/* ── SECTION 3: Blogs ────────────────────────────────────────────── */}
       <section style={{ maxWidth: "1200px", margin: "0 auto 80px", padding: "0 40px" }}>
