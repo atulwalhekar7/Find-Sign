@@ -45,15 +45,14 @@ const useVisibleCount = () => {
 
 const App = () => {
   const [index, setIndex] = useState(0);
-  const [animKey, setAnimKey] = useState(0);
-  const timerRef = useRef(null);
+
+  const timerRef = useRef<number | null>(null);
   const visible = useVisibleCount();
   const maxIndex = Math.max(0, reviews.length - visible);
 
-  const goTo = useCallback((idx) => {
+const goTo = useCallback((idx: number) => {
     const next = Math.max(0, Math.min(idx, maxIndex));
     setIndex(next);
-    setAnimKey((k) => k + 1);
   }, [maxIndex]);
 
   const resetTimer = useCallback(() => {
@@ -61,7 +60,6 @@ const App = () => {
     timerRef.current = setInterval(() => {
       setIndex((prev) => {
         const next = prev >= maxIndex ? 0 : prev + 1;
-        setAnimKey((k) => k + 1);
         return next;
       });
     }, 4500);
@@ -76,12 +74,12 @@ const App = () => {
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [resetTimer]);
 
-  const handleNav = (dir) => {
+  const handleNav = (dir: number) => {
     const next = index + dir;
     if (next >= 0 && next <= maxIndex) { goTo(next); resetTimer(); }
   };
 
-  const totalDots = maxIndex + 1;
+  // const totalDots = maxIndex + 1; // unused
 
   return (
     <div className="min-h-screen bg-white">
@@ -327,13 +325,12 @@ const App = () => {
         {/* ── SLIDER ── */}
         <SliderSection
           index={index}
-          animKey={animKey}
           visible={visible}
           goTo={goTo}
           resetTimer={resetTimer}
           maxIndex={maxIndex}
           handleNav={handleNav}
-          totalDots={totalDots}
+          totalDots={1}
         />
 
         {/* ── CTA ── */}
@@ -344,8 +341,18 @@ const App = () => {
   );
 };
 
-const SliderSection = ({ index, animKey, visible, goTo, resetTimer, maxIndex, handleNav, totalDots }) => {
-  const containerRef = useRef(null);
+interface SliderSectionProps {
+  index: number;
+  visible: number;
+  goTo: (idx: number) => void;
+  resetTimer: () => void;
+  maxIndex: number;
+  handleNav: (dir: number) => void;
+  totalDots: number;
+}
+
+const SliderSection = ({ index, visible, goTo, resetTimer, maxIndex, handleNav, totalDots }: SliderSectionProps) => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const [cardWidth, setCardWidth] = useState(352);
 
   useEffect(() => {
@@ -374,7 +381,7 @@ const SliderSection = ({ index, animKey, visible, goTo, resetTimer, maxIndex, ha
           >
             {reviews.map((review, i) => (
               <div
-                key={`${animKey}-${i}`}
+                key={i}
                 className={`npb-card animate`}
                 style={{ width: `${cardWidth}px`, minWidth: `${cardWidth}px` }}
               >

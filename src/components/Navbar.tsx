@@ -22,7 +22,7 @@ const NAV_ITEMS = [
 ];
 
 /* ── Logo ── */
-function Logo({ isHome }) {
+function Logo({ isHome }: { isHome: boolean }) {
   return (
     <NavLink
       to="/"

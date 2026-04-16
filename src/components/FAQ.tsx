@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Grid, Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 
 interface FAQItem {
   id: number;
@@ -188,29 +188,29 @@ export default function FindSignFAQ() {
         {/* ── MAX WIDTH CONTAINER ── */}
         <Container maxWidth="lg" disableGutters sx={{ px: { xs: 0, md: "196px" }, maxWidth: "1512px !important" }}>
 
-          <Grid container spacing={0} direction="column" sx={{ gap: "48px" }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
 
             {/* ── HEADER ROW ── */}
-<Grid item xs={12}>
-  <Grid container direction="column" sx={{ gap: "8px" }}>
-    <Grid item xs={12}>
+<Box sx={{ width: '100%' }}>
+  <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    <Box sx={{ width: '100%' }}>
       <h2 className="faq-title">FAQs</h2>
-    </Grid>
-    <Grid item xs={12}>
+    </Box>
+    <Box sx={{ width: '100%' }}>
       <p className="faq-subtitle">
         Answers to common questions about the process and how we work.
       </p>
-    </Grid>
-  </Grid>
-</Grid>
+    </Box>
+  </Box>
+</Box>
 
             {/* ── ACCORDION LIST ROW ── */}
-            <Grid item xs={12}>
-              <Grid container spacing={0} direction="column" sx={{ gap: "16px" }}>
+            <Box sx={{ width: '100%' }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 {faqs.map((faq) => {
                   const isOpen = activeId === faq.id;
                   return (
-                    <Grid item xs={12} key={faq.id}>
+                    <Box sx={{ width: '100%' }} key={faq.id}>
                       <div className="faq-item">
                         <button
                           className="faq-question-btn"
@@ -240,20 +240,18 @@ export default function FindSignFAQ() {
                           </div>
                         )}
                       </div>
-                    </Grid>
+                    </Box>
                   );
                 })}
-              </Grid>
-            </Grid>
+              </Box>
+            </Box>
 
             {/* ── CTA ROW ── */}
-            <Grid item xs={12}>
-              <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
+            <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                 <button className="view-all-btn">VIEW ALL FAQS</button>
-              </Box>
-            </Grid>
+            </Box>
 
-          </Grid>
+          </Box>
         </Container>
       </Box>
     </>

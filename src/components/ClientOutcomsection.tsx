@@ -66,11 +66,9 @@ const INTERVAL = 3000;
 /* ── Property Card ── */
 function PropertyCard({
   card,
-  animKey,
   index,
 }: {
   card: typeof cards[0];
-  animKey: number;
   index: number;
 }) {
   return (
@@ -600,7 +598,6 @@ export default function ClientOutcomes() {
                 <PropertyCard
                   key={`${card.id}-${animKey}`}
                   card={card}
-                  animKey={animKey}
                   index={i}
                 />
               ))}

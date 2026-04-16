@@ -1,13 +1,13 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Box } from "@mui/material";
 import heroImage from "../assets/Image+subhead.png";
 
 const Image1: React.FC = () => {
   return (
-    <Grid container justifyContent="center">
+    <Box sx={{ display: "flex", justifyContent: "center" }}>
       
       {/* 🔥 12-column responsive wrapper */}
-      <Grid item xs={12}>
+      <Box sx={{ width: "100%" }}>
         
         <section
           style={{
@@ -32,8 +32,8 @@ const Image1: React.FC = () => {
           />
         </section>
 
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
   );
 };
 
