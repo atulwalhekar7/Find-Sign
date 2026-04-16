@@ -210,7 +210,7 @@ const goTo = useCallback((idx: number) => {
           border-radius: 8px;
           border: 1px solid #69E4DC;
           color: #073B2F;
-          font-family: inherit;
+          
           font-size: 15px; font-weight: 700; line-height: 15px;
           letter-spacing: 4.8px;
           background: white;

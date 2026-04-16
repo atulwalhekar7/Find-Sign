@@ -82,7 +82,7 @@ export default function Contact() {
           border: 1px solid #d0d0d0;
           font-size: 14px;
           outline: none;
-          font-family: inherit;
+          
         }
 
         textarea {

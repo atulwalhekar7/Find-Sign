@@ -71,7 +71,7 @@ const OutlineButton = ({ children }) => (
       border: "1.5px solid #222",
       background: "transparent",
       color: "#222",
-      fontFamily: "inherit",
+      
       fontSize: 13,
       fontWeight: 500,
       cursor: "pointer",
@@ -89,7 +89,7 @@ const OutlineButton = ({ children }) => (
 // ── InputField ────────────────────────────────────────────────────────────────
 const InputField = ({ label, placeholder, multiline = false }) => (
   <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-    <label style={{ fontSize: 13, fontWeight: 500, color: "#333", fontFamily: "inherit" }}>
+    <label style={{ fontSize: 13, fontWeight: 500, color: "#333" }}>
       {label}
     </label>
     {multiline ? (
@@ -100,7 +100,7 @@ const InputField = ({ label, placeholder, multiline = false }) => (
           padding: "10px 12px",
           border: "1.5px solid #ccc",
           borderRadius: 6,
-          fontFamily: "inherit",
+          
           fontSize: 14,
           color: "#222",
           resize: "vertical",
@@ -117,7 +117,7 @@ const InputField = ({ label, placeholder, multiline = false }) => (
           padding: "10px 12px",
           border: "1.5px solid #ccc",
           borderRadius: 6,
-          fontFamily: "inherit",
+          
           fontSize: 14,
           color: "#222",
           outline: "none",
@@ -159,10 +159,10 @@ const TopServiceCard = ({ title, body, delay = 0 }) => {
           <Placeholder width={160} height={160} label="img" />
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 8, flex: 1, minWidth: 0 }}>
-          <h3 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: "#111", fontFamily: "inherit" }}>
+          <h3 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: "#111" }}>
             {title}
           </h3>
-          <p style={{ margin: 0, fontSize: 13, color: "#555", lineHeight: 1.7, fontFamily: "inherit" }}>
+          <p style={{ margin: 0, fontSize: 13, color: "#555", lineHeight: 1.7 }}>
             {body}
           </p>
         </div>
@@ -202,10 +202,10 @@ const SmallServiceCard = ({ title, body, hasButton = false, delay = 0 }) => {
         >
           <Placeholder width={160} height={160} label="img" />
         </div>
-        <h3 style={{ margin: 0, fontSize: 15, fontWeight: 600, color: "#111", fontFamily: "inherit" }}>
+        <h3 style={{ margin: 0, fontSize: 15, fontWeight: 600, color: "#111"}}>
           {title}
         </h3>
-        <p style={{ margin: 0, fontSize: 13, color: "#555", lineHeight: 1.7, fontFamily: "inherit" }}>
+        <p style={{ margin: 0, fontSize: 13, color: "#555", lineHeight: 1.7}}>
           {body}
         </p>
         {hasButton && <OutlineButton>Button</OutlineButton>}
@@ -236,10 +236,10 @@ const AccountingCard = ({ title, body, delay = 0 }) => {
           <Placeholder width={160} height={160} label="img" />
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-          <h3 style={{ margin: 0, fontSize: 15, fontWeight: 600, color: "#111", fontFamily: "inherit" }}>
+          <h3 style={{ margin: 0, fontSize: 15, fontWeight: 600, color: "#111" }}>
             {title}
           </h3>
-          <p style={{ margin: 0, fontSize: 13, color: "#555", lineHeight: 1.7, fontFamily: "inherit" }}>
+          <p style={{ margin: 0, fontSize: 13, color: "#555", lineHeight: 1.7}}>
             {body}
           </p>
         </div>
@@ -251,12 +251,12 @@ const AccountingCard = ({ title, body, delay = 0 }) => {
 // ── Footer Link List ──────────────────────────────────────────────────────────
 const FooterLinkList = ({ title, links }) => (
   <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-    <span style={{ fontWeight: 700, fontSize: 13, color: "#111", fontFamily: "inherit" }}>{title}</span>
+    <span style={{ fontWeight: 700, fontSize: 13, color: "#111" }}>{title}</span>
     {links.map((link) => (
       <a
         key={link}
         href="#"
-        style={{ fontSize: 13, color: "#444", textDecoration: "none", fontFamily: "inherit", lineHeight: 1.5, transition: "color 0.15s" }}
+        style={{ fontSize: 13, color: "#444", textDecoration: "none", lineHeight: 1.5, transition: "color 0.15s" }}
         onMouseEnter={e => (e.currentTarget.style.color = "#000")}
         onMouseLeave={e => (e.currentTarget.style.color = "#444")}
       >
@@ -274,7 +274,7 @@ export default function Services() {
   const longBody = `Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning.`;
 
   return (
-    <div style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif", color: "#111", background: "#fff", margin: 0, padding: 0 }}>
+    <div style={{  color: "#111", background: "#fff", margin: 0, padding: 0 }}>
 
       {/* ── SECTION 1: Hero ─────────────────────────────────────────────── */}
       <section
