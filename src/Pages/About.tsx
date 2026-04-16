@@ -12,17 +12,17 @@ export default function About() {
   const [, setShowControls] = useState(false);
 
   // Attempt to unmute after first user interaction (browser autoplay policy)
-  useEffect(() => {
-    const tryUnmute = () => {
-      if (videoRef.current) {
-        videoRef.current.muted = false;
-        setIsMuted(false);
-      }
-      window.removeEventListener("click", tryUnmute);
-    };
-    window.addEventListener("click", tryUnmute);
-    return () => window.removeEventListener("click", tryUnmute);
-  }, []);
+  // useEffect(() => {
+  //   const tryUnmute = () => {
+  //     if (videoRef.current) {
+  //       videoRef.current.muted = false;
+  //       setIsMuted(false);
+  //     }
+  //     window.removeEventListener("click", tryUnmute);
+  //   };
+  //   window.addEventListener("click", tryUnmute);
+  //   return () => window.removeEventListener("click", tryUnmute);
+  // }, []);
 
   const togglePlayPause = () => {
     const vid = videoRef.current;
@@ -105,15 +105,13 @@ export default function About() {
         >
           {/* Video element — NOT muted so audio plays */}
           <video
-            ref={videoRef}
-            src={aboutVideo}
-            autoPlay
-            loop
-            muted        /* starts muted due to browser policy; unmuted on first click */
-            playsInline
-            className="video-el"
-          />
-
+  ref={videoRef}
+  src={aboutVideo}
+  loop
+  muted
+  playsInline
+  className="video-el"
+/>
           {/* Dark overlay */}
           <div className="video-overlay" />
 
