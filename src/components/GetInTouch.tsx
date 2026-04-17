@@ -22,6 +22,7 @@ export default function NakraniContact() {
           flex-direction: column;
           align-items: flex-start;
           gap: 10px;
+          background:var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9);
         }
 
         .contact-left {
