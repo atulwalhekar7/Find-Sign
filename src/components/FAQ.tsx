@@ -54,21 +54,16 @@ const faqs: FAQItem[] = [
 
 export default function FindSignFAQ() {
   const [activeId, setActiveId] = useState<number | null>(null);
-  const toggle = (id: number) => setActiveId(activeId === id ? null : id);
 
   return (
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap');
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
         .faq-title {
-          color: var(--FS-RACING-GREEN, #073B2F);
-          font-variant-numeric: lining-nums proportional-nums;
-          font-family: 'GT Super Display Medium';
+          color: #073B2F;
+          font-family: 'GT Super Display Medium', serif;
           font-size: 44px;
-          font-style: normal;
           font-weight: 500;
           line-height: 54px;
           letter-spacing: -0.88px;
@@ -76,9 +71,8 @@ export default function FindSignFAQ() {
 
         .faq-subtitle {
           color: #000;
-          font-family: "Sohne";
+          font-family: "Sohne", sans-serif;
           font-size: 24px;
-          font-style: normal;
           font-weight: 300;
           line-height: 36px;
           margin-top: 8px;
@@ -88,29 +82,55 @@ export default function FindSignFAQ() {
           background: #ffffff;
           border-radius: 12px;
           overflow: hidden;
+          transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+          border: 1px solid #E8E4DC;
+          position: relative;
+          z-index: 1;
+          margin-bottom: 16px;
         }
 
-        .faq-question-btn {
+        /* ── GREEN SHADOW ANIMATION ── */
+        .faq-item.active {
+          transform: translateX(12px) translateY(-2px); 
+          z-index: 10;
+          border-color: #073B2F;
+          
+          /* Layered Green Shadow: -X for left side, +Y for bottom side */
+          box-shadow: 
+            -15px 15px 40px rgba(7, 59, 47, 0.2), 
+            -5px 5px 15px rgba(7, 59, 47, 0.1);
+            
+          /* Optional: Thickening the left border to reinforce the green glow direction */
+          border-left: 8px solid #073B2F;
+        }
+
+        .faq-question-area {
           width: 100%;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 20px 24px;
+          padding: 24px 32px;
           background: transparent;
           border: none;
-          cursor: pointer;
           text-align: left;
           gap: 24px;
+          cursor: pointer;
         }
 
         .faq-question-text {
-          color: var(--FS-BLACK, #000);
+          color: #000;
           font-size: 20px;
-          font-style: normal;
           line-height: 28px;
-          flex: 1 0 0;
-          font-family: 'Sohne';
+          flex: 1;
+          font-family: 'Sohne', sans-serif;
           font-weight: 400;
+          transition: color 0.3s ease;
+        }
+
+        .faq-item.active .faq-question-text {
+          color: #073B2F;
+          font-weight: 500;
+          padding-left: 4px;
         }
 
         .faq-chevron {
@@ -118,139 +138,143 @@ export default function FindSignFAQ() {
           width: 20px;
           height: 20px;
           color: #073B2F;
-          transition: transform 0.25s ease;
+          transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
+        
         .faq-chevron.open {
           transform: rotate(180deg);
         }
 
+        /* Drawer Slide Effect */
+        .faq-drawer {
+          display: grid;
+          grid-template-rows: 0fr;
+          transition: grid-template-rows 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .faq-drawer.open {
+          grid-template-rows: 1fr;
+        }
+
+        .faq-drawer-inner {
+          overflow: hidden;
+        }
+
         .faq-answer {
+          padding: 0px 32px 32px 32px;
           display: flex;
-          padding: 0px 24px 24px 24px;
           flex-direction: column;
-          align-items: flex-start;
-          gap: 10px;
-          border-top: 1px solid #E8E4DC;
+          border-top: 1px solid #F5F2ED;
         }
 
         .faq-answer-text {
-          flex: 1 0 0;
-          color: var(--FS-System-Grey-1, #757575);
-          font-family: "Sohne";
-          font-size: 20px;
-          font-style: normal;
+          color: #757575;
+          font-family: "Sohne", sans-serif;
+          font-size: 18px;
           font-weight: 400;
           line-height: 28px;
           padding-top: 24px;
+          opacity: 0;
+          transform: translateY(10px);
+          transition: all 0.4s ease-out;
+        }
+
+        .faq-drawer.open .faq-answer-text {
+          opacity: 1;
+          transform: translateY(0);
+          transition-delay: 0.1s;
         }
 
         .view-all-btn {
           display: inline-flex;
-          height: 48px;
-          padding: 12px 16px;
+          height: 52px;
+          padding: 0 32px;
           justify-content: center;
           align-items: center;
-          gap: 10px;
           border-radius: 8px;
-          border: 1px solid var(--Brand-Contrast-FS-AQUA, #69E4DC);
-          color: var(--FS-RACING-GREEN, #073B2F);
-          font-family: 'CX80';
-          font-size: 15px;
-          font-style: normal;
+          border: 1px solid #69E4DC;
+          color: #073B2F;
+          font-family: 'CX80', sans-serif;
+          font-size: 14px;
           font-weight: 700;
-          line-height: 15px;
           letter-spacing: 4.8px;
           background: white;
           cursor: pointer;
+          transition: all 0.3s ease;
+          text-transform: uppercase;
+          margin-top: 32px;
         }
+
         .view-all-btn:hover {
           background: #073B2F;
           color: #F5F2ED;
+          border-color: #073B2F;
         }
 
         @media (max-width: 600px) {
-          .faq-title { font-size: 32px; line-height: 42px; }
-          .faq-subtitle { font-size: 18px; line-height: 28px; }
-          .faq-question-text { font-size: 16px; }
-          .faq-answer-text { font-size: 16px; }
+          .faq-title { font-size: 32px; }
+          .faq-item.active { transform: translateX(6px); }
+          .faq-question-area { padding: 20px; }
         }
       `}</style>
 
-      {/* ── PAGE WRAPPER ── */}
-      <Box
-        sx={{
-          background: "#F9F9F9",
-          width: "100%",
-          py: { xs: "40px", md: "64px" },
-          px: { xs: "20px", md: "0px" },
-        }}
-      >
-        {/* ── MAX WIDTH CONTAINER ── */}
-        <Container maxWidth="lg" disableGutters sx={{ px: { xs: 0, md: "196px" }, maxWidth: "1512px !important" }}>
-
+      <Box sx={{ background: "#F9F9F9", width: "100%", py: { xs: 8, md: 12 } }}>
+        <Container 
+          maxWidth={false} 
+          sx={{ px: { xs: 2, md: "196px" }, maxWidth: "1512px", margin: "0 auto" }}
+        >
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
+            
+            <Box>
+              <h2 className="faq-title">FAQs</h2>
+              <p className="faq-subtitle">
+                Answers to common questions about the process and how we work.
+              </p>
+            </Box>
 
-            {/* ── HEADER ROW ── */}
-<Box sx={{ width: '100%' }}>
-  <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-    <Box sx={{ width: '100%' }}>
-      <h2 className="faq-title">FAQs</h2>
-    </Box>
-    <Box sx={{ width: '100%' }}>
-      <p className="faq-subtitle">
-        Answers to common questions about the process and how we work.
-      </p>
-    </Box>
-  </Box>
-</Box>
+            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+              {faqs.map((faq) => {
+                const isOpen = activeId === faq.id;
+                return (
+                  <Box 
+                    key={faq.id} 
+                    className={`faq-item ${isOpen ? "active" : ""}`}
+                    onMouseEnter={() => setActiveId(faq.id)}
+                    onMouseLeave={() => setActiveId(null)}
+                  >
+                    <div className="faq-question-area">
+                      <span className="faq-question-text">{faq.question}</span>
+                      <svg
+                        className={`faq-chevron ${isOpen ? "open" : ""}`}
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M5 7.5L10 12.5L15 7.5"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
 
-            {/* ── ACCORDION LIST ROW ── */}
-            <Box sx={{ width: '100%' }}>
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                {faqs.map((faq) => {
-                  const isOpen = activeId === faq.id;
-                  return (
-                    <Box sx={{ width: '100%' }} key={faq.id}>
-                      <div className="faq-item">
-                        <button
-                          className="faq-question-btn"
-                          onClick={() => toggle(faq.id)}
-                          aria-expanded={isOpen}
-                        >
-                          <span className="faq-question-text">{faq.question}</span>
-                          <svg
-                            className={`faq-chevron${isOpen ? " open" : ""}`}
-                            viewBox="0 0 20 20"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M5 7.5L10 12.5L15 7.5"
-                              stroke="currentColor"
-                              strokeWidth="1.5"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        </button>
-
-                        {isOpen && (
-                          <div className="faq-answer">
-                            <p className="faq-answer-text">{faq.answer}</p>
-                          </div>
-                        )}
+                    <div className={`faq-drawer ${isOpen ? "open" : ""}`}>
+                      <div className="faq-drawer-inner">
+                        <div className="faq-answer">
+                          <p className="faq-answer-text">{faq.answer}</p>
+                        </div>
                       </div>
-                    </Box>
-                  );
-                })}
-              </Box>
+                    </div>
+                  </Box>
+                );
+              })}
             </Box>
 
-            {/* ── CTA ROW ── */}
-            <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                <button className="view-all-btn">VIEW ALL FAQS</button>
+            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+              <button className="view-all-btn">VIEW ALL FAQS</button>
             </Box>
-
           </Box>
         </Container>
       </Box>
