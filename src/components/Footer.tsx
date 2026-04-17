@@ -1,11 +1,8 @@
 import Logo from "../assets/FS Primary Lockup_Gold.png";
 
-/* ✅ IMPORT SOCIAL ICON IMAGES */
 import fbIcon from "../assets/Vector (2).png";
 import igIcon from "../assets/Instagram (2).png";
 import liIcon from "../assets/Vector(1).png";
-
-/* ================= SOCIAL ICONS ================= */
 
 const socialIcons = [
   { label: "Facebook", img: fbIcon, url: "https://www.facebook.com/nakranipropertybuyers/" },
@@ -23,6 +20,27 @@ export default function Footer() {
           background: #073B2F;
           color: white;
           width: 100%;
+          position: relative;
+          overflow: hidden;
+        }
+
+        /* ✅ WHITE SHIMMER */
+        .footer::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            120deg,
+            transparent,
+            rgba(255,255,255,0.06),
+            transparent
+          );
+          transform: translateX(-100%);
+          animation: shimmer 5s infinite;
+        }
+
+        @keyframes shimmer {
+          100% { transform: translateX(100%); }
         }
 
         .footer-container {
@@ -62,6 +80,7 @@ export default function Footer() {
           color: #F9F9F9;
         }
 
+        /* ✅ POPUP + POINTER */
         .link {
           display: block;
           font-family: "Sohne", sans-serif;
@@ -71,6 +90,13 @@ export default function Footer() {
           text-decoration: none;
           margin-bottom: 10px;
           line-height: 1.6;
+
+          cursor: pointer;
+          transition: transform 0.2s ease;
+        }
+
+        .link:hover {
+          transform: translateY(-2px) scale(1.03);
         }
 
         .contact-row {
@@ -82,9 +108,44 @@ export default function Footer() {
           font-weight: 300;
         }
 
+        .contact-row a {
+          color: white;
+          text-decoration: underline;
+          text-underline-offset: 3px;
+          cursor: pointer;
+        }
+
+        .social-link {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0.9;
+          text-decoration: none;
+          cursor: pointer;
+          transition: opacity 0.2s ease;
+        }
+
+        .social-link img {
+          width: 24px;
+          height: 24px;
+        }
+
+        .social-link:hover {
+          opacity: 0.6;
+        }
+
+        /* ✅ EXACT FIGMA TEXT STYLING */
+        .footer-bottom {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 80px;
+          width: 100%;
+        }
+
         .footer-bottom span:first-child {
           color: #F9F9F9;
-          font-family: "Sohne";
+          font-family: "Sohne", sans-serif;
           font-size: 16px;
           font-weight: 300;
           line-height: 24px;
@@ -92,67 +153,14 @@ export default function Footer() {
 
         .footer-bottom span:last-child {
           color: #F9F9F9;
-          font-family: "Sohne";
+          font-family: "Sohne", sans-serif;
           font-size: 16px;
           font-weight: 300;
           line-height: 24px;
-        }
-
-        .contact-row a {
-          color: white;
-          text-decoration: underline;
-          text-underline-offset: 3px;
-        }
-
-        /* ✅ UPDATED: IMAGE ICON STYLE */
-        .social-link {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          opacity: 0.9;
-          transition: opacity 0.2s ease;
-          text-decoration: none;
-          flex-shrink: 0;
-        }
-
-        .social-link img {
-          width: 24px;
-          height: 24px;
-          object-fit: contain;
-          display: block;
-        }
-
-        .social-link:hover {
-          opacity: 0.6;
         }
 
         .copyright {
-          color: #F9F9F9;
-          font-family: 'Sohne';
-          font-size: 16px;
-          font-weight: 700;
-          line-height: 24px;
-        }
-
-        .footer-bottom {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-top: 80px;
-          font-family: "Sohne", sans-serif;
-          font-size: 11px;
-          font-weight: 300;
-          color: rgba(255, 255, 255, 0.45);
-          letter-spacing: 0.01em;
-        }
-
-        @media (max-width: 1024px) and (min-width: 769px) {
-          .logo    { grid-column: 1 / span 3; }
-          .contact { grid-column: 4 / span 3; }
-          .explore { grid-column: 7 / span 2; }
-          .legal   { grid-column: 9 / span 2; }
-          .social  { grid-column: 11 / span 2; justify-content: flex-end; }
+          font-weight: 400;
         }
 
         @media (max-width: 768px) {
@@ -160,7 +168,6 @@ export default function Footer() {
 
           .footer-grid {
             grid-template-columns: 1fr 1fr;
-            column-gap: 24px;
             row-gap: 32px;
           }
 
@@ -168,7 +175,7 @@ export default function Footer() {
           .contact { grid-column: 1 / span 2; }
           .explore { grid-column: 1 / span 1; }
           .legal   { grid-column: 2 / span 1; }
-          .social  { grid-column: 1 / span 2; justify-content: flex-start; }
+          .social  { grid-column: 1 / span 2; }
 
           .footer-bottom {
             flex-direction: column;
@@ -218,17 +225,9 @@ export default function Footer() {
               <a className="link">Terms & Conditions</a>
             </div>
 
-            {/* ✅ UPDATED SOCIAL IMAGES */}
             <div className="social">
               {socialIcons.map(({ label, img, url }) => (
-                <a
-                  key={label}
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-link"
-                  aria-label={label}
-                >
+                <a key={label} href={url} target="_blank" rel="noopener noreferrer" className="social-link">
                   <img src={img} alt={label} />
                 </a>
               ))}

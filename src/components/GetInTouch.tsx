@@ -25,6 +25,17 @@ export default function NakraniContact() {
           background:var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9);
         }
 
+        /* 🔥 animation only */
+        .contact-row {
+          animation: fadeSlideUp 0.8s ease forwards;
+          opacity: 0;
+        }
+
+        @keyframes fadeSlideUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
         .contact-left {
           display: flex;
           flex-direction: column;
@@ -67,11 +78,29 @@ export default function NakraniContact() {
           gap: 16px;
         }
 
+        /* 🔥 stagger animation */
         .contact-field {
           display: flex;
           flex-direction: column;
           gap: 6px;
           width: 100%;
+
+          opacity: 0;
+          transform: translateY(20px);
+          animation: fadeItem 0.5s ease forwards;
+        }
+
+        .contact-field:nth-child(1) { animation-delay: 0.1s; }
+        .contact-field:nth-child(2) { animation-delay: 0.2s; }
+        .contact-field:nth-child(3) { animation-delay: 0.3s; }
+        .contact-field:nth-child(4) { animation-delay: 0.4s; }
+        .contact-field:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes fadeItem {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
 
         .contact-label {
@@ -125,9 +154,19 @@ export default function NakraniContact() {
           font-weight: 700;
           letter-spacing: 4.8px;
           text-transform: uppercase;
+
+          /* 🔥 animation only */
+          transition: transform 0.2s ease;
         }
 
-        .contact-btn:hover { background: #3DD6CC; }
+        .contact-btn:hover { 
+          background: #3DD6CC;
+          transform: translateY(-2px);
+        }
+
+        .contact-btn:active {
+          transform: scale(0.98);
+        }
 
         .contact-success {
           width: 100%;
@@ -137,6 +176,14 @@ export default function NakraniContact() {
           justify-content: center;
           gap: 14px;
           text-align: center;
+
+          /* 🔥 animation */
+          opacity: 0;
+          animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+          to { opacity: 1; }
         }
 
         .contact-success-icon {
@@ -147,6 +194,13 @@ export default function NakraniContact() {
           display: flex;
           align-items: center;
           justify-content: center;
+
+          animation: pop 0.4s ease;
+        }
+
+        @keyframes pop {
+          0% { transform: scale(0.6); }
+          100% { transform: scale(1); }
         }
 
         .contact-success-title {
@@ -194,13 +248,7 @@ export default function NakraniContact() {
       `}</style>
 
       <div className="contact-page">
-        <Box
-          sx={{
-            width: "100%",
-            maxWidth: "1120px",
-            margin: "0 auto",
-          }}
-        >
+        <Box sx={{ width: "100%", maxWidth: "1120px", margin: "0 auto" }}>
           <Box
             className="contact-row"
             sx={{
@@ -211,20 +259,16 @@ export default function NakraniContact() {
               width: "100%",
             }}
           >
-            {/* LEFT */}
             <div className="contact-left">
               <h2>Get in touch</h2>
               <p>Tell us what you're looking for, and we'll come back with next steps.</p>
             </div>
 
-            {/* RIGHT */}
             <div className="contact-right">
               {submitted ? (
                 <div className="contact-success">
                   <div className="contact-success-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0D9488" strokeWidth="2.5">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
+                    ✓
                   </div>
                   <span className="contact-success-title">Message sent!</span>
                   <span className="contact-success-sub">We'll be in touch soon.</span>
