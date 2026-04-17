@@ -1,5 +1,4 @@
-
-
+import SimpleFooter from "../components/SimpleFooter";
 // Helper for Footer Links
 interface FooterLinkListProps {
   title: string;
@@ -148,60 +147,7 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* ── FOOTER SECTION ────────────────────────────────────────────── */}
-      <footer style={{ 
-        borderTop: "1px solid #e0e0e0", 
-        padding: "56px 40px 32px", 
-        backgroundColor: "#FFFFFF",
-        marginTop: "auto"
-      }}>
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "row",
-            gap: 48,
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-            flexWrap: "wrap",
-          }}
-        >
-          {/* Brand & Socials */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 16, minWidth: 140 }}>
-            <div style={{ width: 80, height: 28, background: "#e0e0e0", borderRadius: 4 }} />
-            <div style={{ display: "flex", gap: 10 }}>
-              {["𝕏", "IG", "YT", "FB", "IN"].map((s) => (
-                <a key={s} href="#" style={{ fontSize: 12, color: "#555", textDecoration: "none" }}>{s}</a>
-              ))}
-            </div>
-          </div>
-
-          {/* Link Columns */}
-          <FooterLinkList title="Use cases" links={["UI design", "UX design", "Wireframing", "Diagramming", "Brainstorming", "Online whiteboard", "Team collaboration"]} />
-          <FooterLinkList title="Explore" links={["Design", "Prototyping", "Development features", "Design systems", "Collaboration features", "Design process", "FigJam"]} />
-          <FooterLinkList title="Resources" links={["Blog", "Best practices", "Colors", "Color wheel", "Support", "Developers", "Resource library"]} />
-        </div>
-
-        {/* Bottom Bar */}
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: "40px auto 0",
-            paddingTop: 24,
-            borderTop: "1px solid #eee",
-            fontSize: 12,
-            color: "#999",
-            display: "flex",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: 8,
-          }}
-        >
-          <span>© 2024 Company Name. All rights reserved.</span>
-          <span>Privacy · Terms</span>
-        </div>
-      </footer>
+      <SimpleFooter />
     </>
   );
 }

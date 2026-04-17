@@ -1,3 +1,8 @@
+import xIcon from "../assets/icon/Icon.png";
+import igIcon from "../assets/icon/instagrame.png";
+import ytIcon from "../assets/icon/Logo YouTube.png";
+import inIcon from "../assets/icon/LinkedIn.png";
+
 interface FooterLinkListProps {
   title: string;
   links: string[];
@@ -37,12 +42,23 @@ export default function SimpleFooter() {
         }}
       >
         <div style={{ display: "flex", flexDirection: "column", gap: 16, minWidth: 140 }}>
-          <div style={{ width: 80, height: 28, background: "#e0e0e0", borderRadius: 4 }} />
+          
           <div style={{ display: "flex", gap: 10 }}>
-            {["𝕏", "IG", "YT", "FB", "IN"].map((s) => (
-              <a key={s} href="#" style={{ fontSize: 12, color: "#555", textDecoration: "none" }}>{s}</a>
-            ))}
-          </div>
+  {[
+    { icon: xIcon, link: "#" },
+    { icon: igIcon, link: "#" },
+    { icon: ytIcon, link: "#" },
+    { icon: inIcon, link: "#" },
+  ].map((item, index) => (
+    <a key={index} href={item.link}>
+      <img
+        src={item.icon}
+        alt="social icon"
+        style={{ width: 20, height: 20 }}
+      />
+    </a>
+  ))}
+</div>
         </div>
         <FooterLinkList title="Use cases" links={["UI design", "UX design", "Wireframing", "Diagramming", "Brainstorming", "Online whiteboard", "Team collaboration"]} />
         <FooterLinkList title="Explore" links={["Design", "Prototyping", "Development features", "Design systems", "Collaboration features", "Design process", "FigJam"]} />
