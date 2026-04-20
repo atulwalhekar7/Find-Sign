@@ -210,22 +210,28 @@ function Navbar() {
               <NavLink
                 to="/contact"
                 className="nav-cta-desktop"
-               style={{
-  fontFamily:     "CX80",
-  fontWeight:     700,
-  fontSize:       "11px",
-  letterSpacing:  "0.14em",
-  textTransform:  "uppercase" as const,
-  color:          "#073B2F",
-  background:     "#76e4dc",
-  padding:        "11px 24px",
-  borderRadius:   "10px",
-  textDecoration: "none",
-  whiteSpace:     "nowrap" as const,
-  flexShrink:     0,
-  transition:     "opacity 0.2s",
-  alignItems:     "center",
-}}
+                style={{
+                  fontFamily:     "CX80 ",
+                  fontWeight:     700,
+                  fontSize:       "15px",
+                  letterSpacing:  "4.8px",
+                  lineHeight:     "15px",
+                  fontStyle:      "normal",
+                  textTransform:  "uppercase" as const,
+                  color:          "#073B2F",
+                  background:     "#76e4dc",
+                  padding:        "12px 24px",
+                  borderRadius:   "8px",
+                  textDecoration: "none",
+                  whiteSpace:     "nowrap" as const,
+                  flexShrink:     0,
+                  display:        "flex",
+                  height:         "48px",
+                  justifyContent: "center",
+                  alignItems:     "center",
+                  gap:            "16px",
+                  transition:     "opacity 0.2s",
+                }}
                 onMouseEnter={e => (e.currentTarget.style.opacity = "0.85")}
                 onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
               >
@@ -426,7 +432,7 @@ export default function App() {
           border-radius:  8px;
           border:         1px solid #69E4DC;
           color:          #073B2F;
-          font-family:    'CX80', sans-serif;
+          font-family: 'CX80';
           font-size:      15px;
           font-weight:    700;
           line-height:    15px;
