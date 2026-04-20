@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import bannerImg from "../assets/About.jpg";
 import aboutContentImg from "../assets/DSC06081.jpg";
 import aboutVideo from "../assets/Interview Draft (2).mp4";
+import AboutSection from "../components/AboutSection";
 import SimpleGetInTouch from "../components/SimpleGetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 
@@ -43,36 +44,13 @@ export default function About() {
         </div>
       </section>
 
-      {/* ─────────────────────────────────────────
-          SECTION 2 — Panel Image + Content
-      ───────────────────────────────────────── */}
-      <section className="panel-section">
-        <div className="panel-inner">
-          <div className="panel-image-wrap">
-            <img src={aboutContentImg} alt="About Find & Sign" className="panel-image" />
-          </div>
-          <div className="panel-text">
-            <div className="panel-heading-block">
-              <h2 className="panel-heading">About Find & Sign</h2>
-              <p className="panel-subheading">Subheading</p>
-            </div>
-            <p className="panel-body">
-              Body text for your whole article or post. We'll put in some lorem
-              ipsum to show how a filled-out page might look.
-            </p>
-            <p className="panel-body">
-              Excepteur efficient emerging, minim veniam anim aute carefully
-              curated Ginza conversation exquisite perfect nostrud nisi intricate
-              Content. Qui international first-class nulla ut. Punctual
-              adipisicing, essential lovely queen tempor eiusmod irure. Exclusive
-              izakaya charming Scandinavian impeccable aute quality of life soft
-              power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip,
-              et Porter destination Toto remarkable officia Helsinki excepteur
-              Basset hound. Zürich sleepy perfect consectetur.
-            </p>
-          </div>
-        </div>
-      </section>
+      <AboutSection 
+        imageSrc={aboutContentImg}
+        heading="About our Services"
+        subheading="Subheading"
+        body1="Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look."
+        body2="Excepteur efficient emerging, minim veniam anim aute carefully curated content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure."
+      />
 
       {/* ─────────────────────────────────────────
           SECTION 3 — Video (starts paused)
@@ -137,6 +115,11 @@ export default function About() {
         </div>
       </section>
 
+
+
+
+      
+
       <style>{`
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -196,11 +179,19 @@ export default function About() {
           font-size: clamp(14px, 1.5vw, 16px); line-height: 1.75; color: #444444;
         }
 
-        .video-section { width: 100%; background: #111; }
-        .video-inner {
-          position: relative; max-width: 1200px;
-          margin: 0 auto; height: 606px; overflow: hidden;
-        }
+.video-section {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #111;
+}
+      .video-inner {
+  position: relative;
+  width: 100%;
+
+  aspect-ratio: 16 / 9;   /* 🔥 responsive full width */
+  overflow: hidden;
+}
         .video-el {
           position: absolute; inset: 0;
           width: 100%; height: 100%; object-fit: cover; display: block;
@@ -234,6 +225,153 @@ export default function About() {
         .mute-btn:hover { background: rgba(255,255,255,0.25); transform: scale(1.08); }
         .mute-btn:active { transform: scale(0.96); }
 
+
+/* ───────── TEAM SECTION ───────── */
+/* SECTION */
+.team-section {
+  width: 100%;
+  padding: 64px 32px;
+  background: #f5f5f5;
+}
+
+/* CONTAINER */
+.team-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* HEADER */
+.team-header {
+  margin-bottom: 32px;
+}
+
+.team-header h2 {
+  color: var(--sds-color-text-default-default, #111);
+
+  font-family: var(--sds-typography-heading-font-family, 'GTSuper');
+  font-size: var(--sds-typography-heading-size-base, 22px);
+  font-style: normal; /* 🔥 restored */
+  font-weight: var(--sds-typography-heading-font-weight, 600); /* 🔥 restored */
+
+  line-height: 120%;
+  letter-spacing: -0.48px;
+
+  width: 100%;
+}
+
+.team-header p {
+  color: var(--sds-color-text-default-secondary, #888);
+
+  font-family: var(--sds-typography-subheading-font-family, 'Söhne', sans-serif);
+  font-size: var(--sds-typography-subheading-size-medium, 14px);
+  font-style: normal;
+  font-weight: var(--sds-typography-subheading-font-weight, 400);
+
+  line-height: 120%;
+
+  margin-top: 4px;
+  width: 100%; /* 🔥 instead of align-self */
+}
+
+/* PANEL (the big grey box inside) */
+.team-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 48px;
+
+  width: 100%;                 /* 🔥 important */
+  box-sizing: border-box;
+
+  padding: 40px;               /* keep this (Figma spacing) */
+  background: #f0f0f0;         /* keep this (grey box) */
+  border-radius: 4px;
+}
+
+/* GRID */
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+/* CARD */
+.team-card {
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+
+  flex: 1 0 0;
+  min-width: 240px;
+
+  padding: var(--sds-size-space-600, 20px);
+  gap: var(--sds-size-space-600, 16px);
+
+  border-radius: var(--sds-size-radius-200, 6px);
+  border: var(--sds-size-stroke-border, 1px) solid var(--sds-color-border-default-default, #e5e5e5);
+  background: var(--sds-color-background-default-default, #fff);
+
+  box-sizing: border-box; /* 🔥 important */
+}
+
+/* IMAGE */
+.team-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 160px;
+  height: 160px;
+  min-width: 160px;
+
+  background: #dcdcdc;
+  border-radius: 6px;
+
+  flex-shrink: 0;
+}
+
+/* TEXT */
+.team-text h3 {
+  color: var(--sds-color-text-default-default, #111);
+
+  font-family:'GTSuper';
+  font-size: 300;
+  font-style: normal;
+  font-weight: var(--sds-typography-heading-font-weight, 600);
+
+  line-height: 120%;
+  letter-spacing: -0.48px;
+
+  margin-bottom: 6px;
+  width: 100%; /* 🔥 instead of align-self */
+}
+
+.team-text p {
+  color: var(--sds-color-text-default-secondary, #666);
+
+  font-family: 'Söhne';
+  font-size: 300;
+  font-style: normal;
+  font-weight: var(--sds-typography-body-font-weight-regular, 400);
+
+  line-height: 140%;
+
+  width: 100%; /* 🔥 instead of align-self */
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-panel {
+    padding: 24px;
+  }
+}
+
+
+
         @media (max-width: 900px) {
           .hero-box { padding: 36px 32px; width: 92%; }
           .panel-inner { flex-direction: column; padding: 48px 32px; gap: 32px; }
@@ -255,6 +393,56 @@ export default function About() {
           .hero-banner { background-attachment: scroll; }
         }
       `}</style>
+
+{/* ─────────────────────────────────────────
+    SECTION 4 — Meet the Team
+───────────────────────────────────────── */}
+<section className="team-section">
+  <div className="team-container">
+
+    {/* Header */}
+    <div className="team-header">
+      <h2>Meet the team</h2>
+      <p>Subheading</p>
+    </div>
+
+    {/* Panel (pink box in your image) */}
+    <div className="team-panel">
+
+      <div className="team-grid">
+        
+        {/* Card 1 */}
+        <div className="team-card">
+          <div className="team-img" />
+          <div className="team-text">
+            <h3>Title</h3>
+            <p>
+              Body text for whatever you'd like to say. Add main takeaway points,
+              quotes, anecdotes, or even a very short story.
+            </p>
+          </div>
+        </div>
+
+        {/* Card 2 */}
+        <div className="team-card">
+          <div className="team-img" />
+          <div className="team-text">
+            <h3>Title</h3>
+            <p>
+              Body text for whatever you'd like to say. Add main takeaway points,
+              quotes, anecdotes, or even a very short story.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
       <SimpleGetInTouch />
       <SimpleFooter />
     </>

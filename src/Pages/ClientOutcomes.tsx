@@ -1,4 +1,7 @@
 import bannerImg from "../assets/DSC06218.jpg";
+import AboutSection from "../components/AboutSection";
+import SimpleGetInTouch from "../components/SimpleGetInTouch";
+import SimpleFooter from "../components/SimpleFooter";
 
 export default function ClientOutcomes() {
   return (
