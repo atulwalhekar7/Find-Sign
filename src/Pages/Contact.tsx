@@ -1,22 +1,5 @@
 import SimpleFooter from "../components/SimpleFooter";
-// Helper for Footer Links
-interface FooterLinkListProps {
-  title: string;
-  links: string[];
-}
 
-const FooterLinkList = ({ title, links }: FooterLinkListProps) => (
-  <div style={{ display: "flex", flexDirection: "column", gap: 12, minWidth: 140 }}>
-    <h4 style={{ margin: 0, fontSize: 14, fontWeight: 600, color: "#111", textAlign: "left" }}>{title}</h4>
-    <div style={{ display: "flex", flexDirection: "column", gap: 8, textAlign: "left" }}>
-      {links.map((link) => (
-        <a key={link} href="#" style={{ fontSize: 13, color: "#666", textDecoration: "none" }}>
-          {link}
-        </a>
-      ))}
-    </div>
-  </div>
-);
 
 export default function Contact() {
   return (
