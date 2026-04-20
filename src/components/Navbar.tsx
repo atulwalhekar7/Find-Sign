@@ -8,11 +8,6 @@ const COLORS = {
   white: "#FFFFFF",
 };
 
-const FONTS = {
-  display: "'Cormorant Garamond', Georgia, serif",
-  body: "'DM Sans', sans-serif",
-};
-
 const NAV_ITEMS = [
   { label: "About", to: "/about" },
   { label: "Client Outcomes", to: "/client-outcomes" },
@@ -21,33 +16,6 @@ const NAV_ITEMS = [
   { label: "Contact", to: "/contact" },
 ];
 
-/* ── Logo ── */
-function Logo({ isHome }: { isHome: boolean }) {
-  return (
-    <NavLink
-      to="/"
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "9px",
-        textDecoration: "none",
-      }}
-    >
-      <img
-        src={logo}
-        alt="Logo"
-        style={{
-          height: "34px",
-          width: "auto",
-          objectFit: "contain",
-          filter: isHome ? "brightness(0) invert(1)" : "none",
-        }}
-      />
-    </NavLink>
-  );
-}
-
-/* ── Navbar ── */
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
@@ -56,74 +24,77 @@ export default function Navbar() {
   return (
     <>
       <style>{`
-        .nav-grid {
+        /* ───────── NAV LAYOUT ───────── */
+        .nav-inner {
           width: 100%;
-          padding: 0 40px;
+          max-width: 1512px;
+          margin: 0 auto;
           height: 64px;
-          display: grid;
-          grid-template-columns: repeat(12, 1fr);
-          align-items: center;
-          gap: 16px;
-        }
-
-        .logo-col {
-          grid-column: span 3;
           display: flex;
           align-items: center;
+          justify-content: space-between;
+          padding: 0 196px;
+          box-sizing: border-box;
         }
 
-        .nav-col {
-          grid-column: span 6;
+        /* Desktop nav */
+        .nav-links {
           display: flex;
-          justify-content: center;
-        }
-
-        .cta-col {
-          grid-column: span 3;
-          display: flex;
-          justify-content: flex-end;
-          align-items: center;
-          gap: 16px;
-        }
-
-        .desktop-nav {
-          display: flex;
+          gap: 36px;
           list-style: none;
           margin: 0;
           padding: 0;
-          gap: 24px;
         }
 
-        /* Tablet & Mobile */
-        @media (max-width: 1024px) {
-          .desktop-nav {
+        /* CTA */
+        .nav-cta {
+          display: flex;
+        }
+
+        /* Hamburger */
+        .nav-hamburger {
+          display: none;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 4px;
+        }
+
+        /* Mobile drawer */
+        .nav-drawer {
+          display: none;
+          background: ${COLORS.white};
+          padding: 12px 20px 24px;
+          border-top: 1px solid rgba(27,67,50,0.07);
+        }
+
+        /* Tablet */
+        @media (max-width: 1199px) {
+          .nav-inner {
+            padding: 0 48px;
+          }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+          .nav-inner {
+            padding: 0 20px;
+          }
+
+          .nav-links {
             display: none !important;
           }
 
-          .hamburger {
+          .nav-cta {
+            display: none !important;
+          }
+
+          .nav-hamburger {
             display: block !important;
           }
 
-          .cta {
-            display: none;
-          }
-
-          .logo-col {
-            grid-column: span 6;
-          }
-
-          .nav-col {
-            display: none;
-          }
-
-          .cta-col {
-            grid-column: span 6;
-          }
-        }
-
-        @media (max-width: 768px) {
-          .nav-grid {
-            padding: 0 20px;
+          .nav-drawer {
+            display: block;
           }
         }
       `}</style>
@@ -140,67 +111,78 @@ export default function Navbar() {
           transition: "all 0.4s ease",
         }}
       >
-        <div className="nav-grid">
+        {/* ───── Top Bar ───── */}
+        <div className="nav-inner">
           {/* Logo */}
-          <div className="logo-col">
-            <Logo isHome={isHome} />
-          </div>
+          <NavLink to="/" style={{ display: "flex", alignItems: "center" }}>
+            <img
+              src={logo}
+              alt="Logo"
+              style={{
+                height: "34px",
+                objectFit: "contain",
+                filter: isHome ? "brightness(0) invert(1)" : "none",
+              }}
+            />
+          </NavLink>
 
-          {/* Desktop Nav */}
-          <div className="nav-col">
-            <ul className="desktop-nav">
-              {NAV_ITEMS.map((item) => (
-                <li key={item.label}>
-                  <NavLink
-                    to={item.to}
-                    style={{
-                      fontFamily: 'Söhne, "DM Sans", sans-serif',
-                      fontWeight: 400,
-                      fontSize: "14px",
-                      color: "rgb(27, 67, 50)",
-                      textDecoration: "none",
-                      letterSpacing: "0.02em",
-                    }}
-                  >
-                    {item.label}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Desktop Links */}
+          <ul className="nav-links">
+            {NAV_ITEMS.map((item) => (
+              <li key={item.label}>
+                <NavLink
+                  to={item.to}
+                  style={({ isActive }) => ({
+                    fontFamily: 'Söhne, "DM Sans", sans-serif',
+                    fontWeight: isActive ? 500 : 400,
+                    fontSize: "20px",
+                    lineHeight: "28px",
+                    color: isActive
+                      ? "#073B2F"
+                      : isHome
+                      ? "#FFFFFF"
+                      : "#000",
+                    textDecoration: "none",
+                    letterSpacing: "0.02em",
+                    transition: "color 0.2s",
+                  })}
+                >
+                  {item.label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
 
           {/* CTA + Hamburger */}
-          <div className="cta-col">
+          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+            {/* CTA */}
             <NavLink
               to="/contact"
-              className="cta"
+              className="nav-cta"
               style={{
                 fontFamily: "CX80",
                 fontWeight: 700,
-                fontSize: "11px",
-                letterSpacing: "0.14em",
+                fontSize: "15px",
+                letterSpacing: "4.8px",
                 textTransform: "uppercase",
-                color: COLORS.white,
-                background: COLORS.aqua,
-                padding: "11px 24px",
-                borderRadius: "2px",
+                color: "#073B2F",
+                background: "#76e4dc",
+                padding: "12px 24px",
+                borderRadius: "8px",
                 textDecoration: "none",
-                whiteSpace: "nowrap",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "48px",
               }}
             >
               Book a Call
             </NavLink>
 
+            {/* Hamburger */}
             <button
-              className="hamburger"
+              className="nav-hamburger"
               onClick={() => setMenuOpen((v) => !v)}
-              style={{
-                display: "none",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                padding: "4px",
-              }}
             >
               <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
                 {menuOpen ? (
@@ -246,15 +228,9 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Drawer */}
+        {/* ───── Mobile Drawer ───── */}
         {menuOpen && (
-          <div
-            style={{
-              background: COLORS.white,
-              padding: "12px 40px 24px",
-              borderTop: "1px solid rgba(27,67,50,0.07)",
-            }}
-          >
+          <div className="nav-drawer">
             {NAV_ITEMS.map((item) => (
               <NavLink
                 key={item.label}
@@ -262,9 +238,11 @@ export default function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 style={({ isActive }) => ({
                   display: "block",
-                  fontFamily: FONTS.body,
+                  fontFamily: "'Söhne', 'DM Sans', sans-serif",
                   fontSize: "15px",
-                  color: isActive ? COLORS.aqua : COLORS.racingGreen,
+                  color: isActive
+                    ? COLORS.aqua
+                    : COLORS.racingGreen,
                   fontWeight: isActive ? 500 : 400,
                   textDecoration: "none",
                   padding: "10px 0",
@@ -281,7 +259,7 @@ export default function Navbar() {
               style={{
                 display: "inline-block",
                 marginTop: "16px",
-                fontFamily: FONTS.body,
+                fontFamily: "'Söhne', 'DM Sans', sans-serif",
                 fontWeight: 600,
                 fontSize: "11px",
                 letterSpacing: "0.14em",

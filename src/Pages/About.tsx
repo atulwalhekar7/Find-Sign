@@ -5,6 +5,7 @@ import aboutVideo from "../assets/Interview Draft (2).mp4";
 import AboutSection from "../components/AboutSection";
 import SimpleGetInTouch from "../components/SimpleGetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
+import OurProcess from "../components/OurProcess";
 
 export default function About() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -44,13 +45,13 @@ export default function About() {
         </div>
       </section>
 
-      <AboutSection 
-        imageSrc={aboutContentImg}
-        heading="About our Services"
-        subheading="Subheading"
-        body1="Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look."
-        body2="Excepteur efficient emerging, minim veniam anim aute carefully curated content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure."
-      />
+    <AboutSection
+  imageSrc={aboutContentImg}
+  heading="About Find & Sign"
+  subheading="Subheading"
+  body1="Body text for your whole article or post. We’ll put in some lorem ipsum to show how a filled-out page might look."
+  body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."
+/>
 
       {/* ─────────────────────────────────────────
           SECTION 3 — Video (starts paused)
@@ -243,30 +244,25 @@ export default function About() {
 /* HEADER */
 .team-header {
   margin-bottom: 32px;
+  
 }
 
 .team-header h2 {
-  color: var(--sds-color-text-default-default, #111);
-
-  font-family: var(--sds-typography-heading-font-family, 'GTSuper');
-  font-size: var(--sds-typography-heading-size-base, 22px);
-  font-style: normal; /* 🔥 restored */
-  font-weight: var(--sds-typography-heading-font-weight, 600); /* 🔥 restored */
-
+color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));        
+  font-family: "GT Super Display Medium";       
+   font-size:44px;
+  font-weight: 500;
   line-height: 120%;
   letter-spacing: -0.48px;
-
   width: 100%;
 }
 
 .team-header p {
-  color: var(--sds-color-text-default-secondary, #888);
+          color: #888;
 
-  font-family: var(--sds-typography-subheading-font-family, 'Söhne', sans-serif);
-  font-size: var(--sds-typography-subheading-size-medium, 14px);
-  font-style: normal;
-  font-weight: var(--sds-typography-subheading-font-weight, 400);
-
+ font-family: 'Sohne';
+          font-size:24px;
+          font-weight: 300;
   line-height: 120%;
 
   margin-top: 4px;
@@ -336,8 +332,8 @@ export default function About() {
 
   font-family:'GTSuper';
   font-size: 300;
-  font-style: normal;
-  font-weight: var(--sds-typography-heading-font-weight, 600);
+  
+  font-weight: 20px;
 
   line-height: 120%;
   letter-spacing: -0.48px;
@@ -442,7 +438,7 @@ export default function About() {
 </section>
 
 
-
+<OurProcess />
       <SimpleGetInTouch />
       <SimpleFooter />
     </>
