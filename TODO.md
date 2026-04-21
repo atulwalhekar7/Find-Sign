@@ -1,11 +1,11 @@
-# TODO: Make AboutSection images page-specific
+## TODO: Fix TS6133 and TS2322 Errors
 
-## Plan Steps:
-- [x] Step 1: Fix AboutSection component to use imageSrc prop
-- [x] Step 2: Update ClientOutcomes.tsx image prop/import
-- [x] Step 3: Update About.tsx image prop/import  
-- [ ] Step 4: Update Insights.tsx image prop/import
-- [ ] Step 5: Update Services.tsx image prop/import
-- [ ] Step 6: Test pages & attempt_completion
+- [x] Create TODO.md to track progress
+- [x] 1. Edit src/components/AboutSection.tsx: Remove unused React import
+- [x] 2. Edit src/Pages/ClientOutcomes.tsx: Remove unused React import
+- [x] 3. Edit src/Pages/Insights.tsx: Remove unused aboutContentImg import and longBody const
+- [x] 4. Edit src/Pages/Services.tsx: Remove unused imports (aboutContentImg), unused AccountingCard component (lines 230-261), unused longBody const (line 270), and fix type error by changing JSX title to string "Settlement Agent"
+- [x] 5. Verify fixes by running TypeScript check/build
+- [x] 6. Mark complete and attempt_completion
 
-Current: Steps 1-3 complete. Step 4 next.
+

@@ -1,7 +1,7 @@
 import SimpleGetInTouch from "../components/SimpleGetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
-import aboutContentImg from "../assets/DSC06081.jpg";
+
 import aboutInsightsImg from "../assets/About Insights.jpg";
 import bannerImg from "../assets/Insights_Banner.jpg";
 
@@ -20,7 +20,7 @@ const blogPosts = Array(6).fill({
   description: "Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story.",
 });
 
-const longBody = "Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Quis international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.";
+
 
 export default function Insights() {
   return (
