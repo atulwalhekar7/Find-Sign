@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import SimpleGetInTouch from "../components/SimpleGetInTouch";
-import SimpleFooter from "../components/SimpleFooter";
+import SimpleFooter from "../components/Footer";
 
 // --- Assets (Assuming these exist in the Blogs folder as per instructions) ---
 import bannerImg from "../assets/Blogs/Blog 1_Image.jpg";
