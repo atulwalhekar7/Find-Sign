@@ -36,7 +36,7 @@ export default function ClientOutcomes() {
           backgroundImage: `url(${bannerImg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundAttachment: "fixed",
+          
           position: "relative",
           padding: "0 20px",
         }}
@@ -50,11 +50,19 @@ export default function ClientOutcomes() {
             textAlign: "center",
             maxWidth: "750px",
             padding: "60px 40px",
-            backgroundColor: "rgba(33,33,33,0.85)",
-            borderRadius: "12px",
+borderRadius: 0,
           }}
         >
-          <h1 style={{ fontSize: "56px", color: "#FFF", margin: 0 }}>
+<h1 style={{ 
+            fontFamily: "'GT Super Display Medium'",
+            fontSize: "56px",
+            fontWeight: "500",
+            color: "#FFF",
+            lineHeight: "64px",
+            letterSpacing: "-1.12px",
+            fontVariantNumeric: "lining-nums proportional-nums",
+            margin: 0 
+          }}>
             Client Outcomes
           </h1>
           <p style={{ color: "#CCC", fontSize: "24px", marginTop: 20 }}>
