@@ -3,7 +3,7 @@ import aboutContentImg from "../assets/DSC06081.jpg";
 import aboutVideo from "../assets/Interview Draft (2).mp4";
 import AboutSection from "../components/AboutSection";
 import SimpleGetInTouch from "../components/SimpleGetInTouch";
-import SimpleFooter from "../components/SimpleFooter";
+import SimpleFooter from "../components/Footer";
 import OurProcess from "../components/OurProcess";
 import Banner from "../assets/About Us_Banner.jpg";
 import AboutUsBanner from "../assets/About Find&Sign.jpg";
@@ -331,31 +331,42 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
 
 /* TEXT */
 .team-text h3 {
-  color: var(--sds-color-text-default-default, #111);
+  color: rgb(0, 0, 0);
 
-  font-family:'GTSuper';
-  font-size: 300;
-  
-  font-weight: 20px;
+  font-family: "GT Super Display Medium";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
 
-  line-height: 120%;
-  letter-spacing: -0.48px;
+  line-height: 40px;
+  letter-spacing: -0.64px;
+  font-variant-numeric: lining-nums proportional-nums;
 
-  margin-bottom: 6px;
-  width: 100%; /* 🔥 instead of align-self */
+  margin: 0px 0px 10px;
+
+  transition: opacity 0.6s 680ms, transform 0.6s 680ms;
+  opacity: 1;
+  transform: translateX(0px);
+
+  width: 100%;
 }
 
 .team-text p {
-  color: var(--sds-color-text-default-secondary, #666);
+  color: var(--FS-System-Grey-1, #757575);
 
-  font-family: 'Söhne';
-  font-size: 300;
+  font-family: "Sohne";
+  font-size: 20px;
   font-style: normal;
-  font-weight: var(--sds-typography-body-font-weight-regular, 400);
+  font-weight: 400;
 
-  line-height: 140%;
+  line-height: 28px;
 
-  width: 100%; /* 🔥 instead of align-self */
+  margin: 0px;
+
+  transition: opacity 0.7s 660ms;
+  opacity: 1;
+
+  width: 100%;
 }
 
 /* MOBILE */
@@ -461,7 +472,7 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
 </section>
 
 
-<OurProcess />
+<OurProcess showButton={false} />
       <SimpleGetInTouch />
       <SimpleFooter />
     </>

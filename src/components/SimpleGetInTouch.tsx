@@ -142,13 +142,28 @@ export default function GetInTouch() {
   };
 
   const headingStyle: React.CSSProperties = {
-    margin: 0,
-    fontSize: "26px",
-    fontWeight: 500,
-    textAlign: "center",
-    color: "var(--sds-color-text-default-default, #111)",
-    fontFamily: "var(--sds-typography-body-font-family, GT Super Display Medium)",
-  };
+  margin: 0,
+
+  fontFamily: "GT Super Display Medium",
+  fontSize: "44px",
+  fontStyle: "normal",
+  fontWeight: 500,
+  lineHeight: "54px",
+  letterSpacing: "-0.88px",
+  fontVariantNumeric: "lining-nums proportional-nums",
+
+  textAlign: "center",
+  color: "var(--FS-RACING-GREEN, #073B2F)",
+
+  marginBottom: "12px",
+
+  width: "1120px",
+  maxWidth: "100%",
+
+  opacity: 1,
+  transform: "translateY(0px)",
+  transition: "opacity 0.8s, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1)",
+};
 
   return (
     <section style={sectionStyle}>

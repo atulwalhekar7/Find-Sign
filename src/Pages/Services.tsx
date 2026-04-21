@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import SimpleGetInTouch from "../components/SimpleGetInTouch";
-import SimpleFooter from "../components/SimpleFooter";
+import SimpleFooter from "../components/Footer";
 import AboutSection from "../components/AboutSection";
 import aboutContentImg from "../assets/DSC06081.jpg";
 import bannerImg from "../assets/DSC06227.jpg";

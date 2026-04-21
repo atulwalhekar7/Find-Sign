@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <HeroBanner />
-      <OurProcess />
+<OurProcess showButton={true} />
       <ClientOutcomes/>
       <Image1/>
       <Reviews />

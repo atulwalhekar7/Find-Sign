@@ -1,4 +1,4 @@
-import SimpleFooter from "../components/SimpleFooter";
+import SimpleFooter from "../components/Footer";
 
 
 export default function Contact() {
