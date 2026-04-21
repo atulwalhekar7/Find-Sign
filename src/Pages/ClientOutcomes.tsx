@@ -36,7 +36,7 @@ export default function ClientOutcomes() {
           backgroundImage: `url(${bannerImg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundAttachment: "fixed",
+          
           position: "relative",
           padding: "0 20px",
         }}
