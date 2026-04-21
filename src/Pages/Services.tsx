@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import SimpleGetInTouch from "../components/SimpleGetInTouch";
 import SimpleFooter from "../components/Footer";
 import AboutSection from "../components/AboutSection";
-import aboutContentImg from "../assets/DSC06081.jpg";
 import bannerImg from "../assets/DSC06227.jpg";
 import AboutServiceImg from "../assets/About Our Services.jpg";
 
@@ -227,38 +226,7 @@ const SmallServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title
 };
 
 // ── Accounting card (horizontal, fixed 160×160 image) ────────────────────────
-const AccountingCard = ({ title, body, delay = 0 }: { title: string; body: string; delay?: number }) => {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <FadeUp delay={delay}>
-      <div
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          gap: 16,
-          alignItems: "flex-start",
-          transition: "transform 0.25s",
-          transform: hovered ? "translateY(-3px)" : "translateY(0)",
-          cursor: "default",
-        }}
-      >
-        <div style={{ width: 160, height: 160, flexShrink: 0, borderRadius: 6, overflow: "hidden" }}>
-          <Placeholder width={160} height={160} />
-        </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-          <h3 style={{ margin: 0, fontSize: 15, fontWeight: 600, color: "#111" }}>
-            {title}
-          </h3>
-          <p style={{ margin: 0, fontSize: 13, color: "#555", lineHeight: 1.7}}>
-            {body}
-          </p>
-        </div>
-      </div>
-    </FadeUp>
-  );
-};
+
 
 
 
@@ -267,7 +235,7 @@ export default function Services() {
   const body =
     "Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very short story.";
 
-  const longBody = `Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning.`;
+
 
   return (
     <div style={{  color: "#111", background: "#fff", margin: 0, padding: 0 }}>
@@ -356,7 +324,7 @@ export default function Services() {
         <div className="three-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, marginBottom: 40 }}>
           <SmallServiceCard title="Property Management" body={body} hasButton delay={0} />
          <SmallServiceCard 
-  title={<>Settlement<br />Agent</>} 
+  title="Settlement Agent" 
   body={body} 
   hasButton 
   delay={0.1} 

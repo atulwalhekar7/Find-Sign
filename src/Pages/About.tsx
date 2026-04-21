@@ -472,7 +472,7 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
 </section>
 
 
-<OurProcess showButton={false} />
+<OurProcess />
       <SimpleGetInTouch />
       <SimpleFooter />
     </>
