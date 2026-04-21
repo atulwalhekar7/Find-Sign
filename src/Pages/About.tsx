@@ -41,7 +41,6 @@ export default function About() {
           SECTION 1 — Hero Banner
       ───────────────────────────────────────── */}
       <section className="hero-banner">
-        <div className="hero-overlay" />
         <div className="hero-box">
           <h1 className="hero-title">About Us</h1>
           <p className="hero-subtitle">Find & Sign</p>
@@ -124,32 +123,36 @@ export default function About() {
       <style>{`
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .hero-banner {
-          position: relative;
-          min-height: 100vh;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-image: url(${Banner});
-          background-size: cover;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-attachment: fixed;
-        }
-        .hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.35); }
-        .hero-box {
+      .hero-banner {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image: url(${Banner});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  background-attachment: scroll; /* ALWAYS scroll */
+}
+.hero-box {
           position: relative; z-index: 2;
           display: flex; flex-direction: column; align-items: center;
           justify-content: center; text-align: center;
           width: 90%; max-width: 600px; margin: 0 auto;
-          background: rgba(30,30,30,0.85); padding: 48px 64px;
-          border-radius: 12px; backdrop-filter: blur(4px);
-          border: 1px solid rgba(255,255,255,0.1);
+          
+          border-radius: 12px; 
         }
-        .hero-title {
-          font-family: 'GTSuper', Georgia, serif;
-          font-size: clamp(32px, 6vw, 56px); font-weight: 500;
-          color: #ffffff; line-height: 1.15; letter-spacing: -1.12px;
+.hero-title {
+          font-family: 'GT Super Display Medium';
+          font-size: 56px;
+          font-weight: 500;
+          color: #FFF;
+          line-height: 64px;
+          letter-spacing: -1.12px;
+          font-variant-numeric: lining-nums proportional-nums;
         }
         .hero-subtitle {
           color: #cccccc; font-family: 'Söhne', sans-serif;

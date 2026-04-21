@@ -36,7 +36,7 @@ export default function Insights() {
           backgroundImage: `url(${bannerImg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundAttachment: "fixed",
+          // backgroundAttachment: "fixed",
           position: "relative",
           padding: "0 20px",
         }}
@@ -55,15 +55,20 @@ export default function Insights() {
             maxWidth: "750px",
             margin: "0 auto",
             padding: "60px 40px",
-            backgroundColor: "rgba(33,33,33,0.85)",
-            borderRadius: "12px",
-            backdropFilter: "blur(8px)",
-            border: "1px solid rgba(255,255,255,0.1)",
-            boxShadow: "0 4px 20px rgba(0,0,0,0.25)",
+
             animation: "heroFadeIn 0.8s ease both",
           }}
         >
-          <h1 style={{ fontSize: "56px", fontWeight: 500, color: "#FFF", lineHeight: "64px", letterSpacing: "-1.12px", margin: 0 }}>
+<h1 style={{ 
+            fontFamily: "'GT Super Display Medium'",
+            fontSize: "56px",
+            fontWeight: 500,
+            color: "#FFF",
+            lineHeight: "64px",
+            letterSpacing: "-1.12px",
+            fontVariantNumeric: "lining-nums proportional-nums",
+            margin: 0 
+          }}>
             Insights
           </h1>
           <p style={{ color: "#CCCCCC", fontSize: "24px", fontWeight: 300, lineHeight: "36px", maxWidth: "600px", margin: "20px auto 0" }}>
