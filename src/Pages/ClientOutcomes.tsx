@@ -1,33 +1,31 @@
-
+import React from "react";
 import SimpleGetInTouch from "../components/SimpleGetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
+
 import aboutContentImg from "../assets/DSC06081.jpg";
 import bannerImg from "../assets/Client Outcomes_Banner.jpg";
 
-
-// --- Helper Components ---
-
-
-
-
-
-
-
-// --- Main Component ---
-
+// ── DATA ─────────────────────────────────────────────
 const blogPosts = Array(6).fill({
   title: "Title",
-  description: "Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story.",
+  description:
+    "Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story.",
 });
 
-const longBody = "Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Quis international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur.";
+const reviews = Array(6).fill({
+  title: "Review title",
+  body: "Review body",
+  name: "Reviewer name",
+  date: "Date",
+});
 
+// ── MAIN COMPONENT ───────────────────────────────────
 export default function ClientOutcomes() {
   return (
     <div style={{ backgroundColor: "#FFFFFF", fontFamily: "Söhne, sans-serif" }}>
       
-      {/* ── SECTION 1: Hero ─────────────────────────────────────────────── */}
+      {/* ── HERO ───────────────────────────────── */}
       <section
         style={{
           minHeight: "100vh",
@@ -42,68 +40,142 @@ export default function ClientOutcomes() {
           padding: "0 20px",
         }}
       >
-        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.3)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.4)" }} />
+
         <div
           style={{
             position: "relative",
             zIndex: 2,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
             textAlign: "center",
-            width: "90%",
             maxWidth: "750px",
-            margin: "0 auto",
             padding: "60px 40px",
             backgroundColor: "rgba(33,33,33,0.85)",
             borderRadius: "12px",
-            backdropFilter: "blur(8px)",
-            border: "1px solid rgba(255,255,255,0.1)",
-            boxShadow: "0 4px 20px rgba(0,0,0,0.25)",
-            animation: "heroFadeIn 0.8s ease both",
           }}
         >
-          <h1 style={{ fontSize: "56px", fontWeight: 500, color: "#FFF", lineHeight: "64px", letterSpacing: "-1.12px", margin: 0 }}>
+          <h1 style={{ fontSize: "56px", color: "#FFF", margin: 0 }}>
             Client Outcomes
           </h1>
-          <p style={{ color: "#CCCCCC", fontSize: "24px", fontWeight: 300, lineHeight: "36px", maxWidth: "600px", margin: "20px auto 0" }}>
+          <p style={{ color: "#CCC", fontSize: "24px", marginTop: 20 }}>
             Find & Sign
           </p>
         </div>
       </section>
 
-     <AboutSection
-       imageSrc={aboutContentImg}
-       heading="About Find & Sign"
-       subheading="Subheading"
-       body1="Body text for your whole article or post. We’ll put in some lorem ipsum to show how a filled-out page might look."
-       body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."
-     />
+      {/* ── ABOUT ───────────────────────────────── */}
+      <AboutSection
+        imageSrc={aboutContentImg}
+        heading="About Find & Sign"
+        subheading="Subheading"
+        body1="Body text for your whole article or post. We’ll put in some lorem ipsum to show how a filled-out page might look."
+        body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."
+      />
 
-     
+      {/* ── CLIENT OUTCOMES GRID ───────────────────────────────── */}
+      <section style={{ maxWidth: 1200, margin: "0 auto", padding: "80px 40px" }}>
+        
+        <div style={{ marginBottom: 32 }}>
+<h2 style={{ margin: "0 0 4px", fontSize: 22, fontWeight: 700 }}>Client Outcomes</h2>
+          <p style={{ margin: "0 0 32px", fontSize: 14, color: "#383b3f" }}>Subheading</p>
+        </div>
 
+        <div
+          className="grid-3"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: 24,
+          }}
+        >
+          {blogPosts.map((post, i) => (
+            <div
+              key={i}
+              style={{
+                border: "1px solid #E5E5E5",
+                borderRadius: 10,
+                padding: 20,
+                background: "#fff",
+                display: "flex",
+                flexDirection: "column",
+                gap: 12,
+                height: "100%",
+              }}
+            >
+              {/* Image */}
+              <div
+              style={{
+  display: "flex",
+  width: "160px",
+  height: "160px",
+  minWidth: "160px",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+background: "#eee",}}
+              />
+
+<h3
+  style={{
+    margin: 0,
+    color: "#000",
+
+    fontFamily: "GT Super Display",
+    fontSize: "32px",
+    fontStyle: "normal",
+    fontWeight: 500,
+    lineHeight: "40px",
+    letterSpacing: "-0.64px",
+
+    fontVariantNumeric: "lining-nums proportional-nums",
+
+    width: "229px",
+  }}
+>                     {post.title}
+              </h3>
+
+<p
+  style={{
+    margin: 0,
+    width: "229px",
+    color: "#757575",
+
+    fontFamily: "Söhne",
+    fontSize: "16px",
+    fontStyle: "normal",
+    fontWeight: 400,
+    lineHeight: "24px",
+  }}
+>                {post.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+
+      {/* ── GET IN TOUCH ───────────────────────────────── */}
       <SimpleGetInTouch />
+
+      {/* ── FOOTER ───────────────────────────────── */}
       <SimpleFooter />
 
-      {/* ── Styles ───────────────────────────────────────────────────────── */}
+      {/* ── RESPONSIVE ───────────────────────────────── */}
       <style>{`
-        @keyframes heroFadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-
         @media (max-width: 900px) {
-          .about-grid {
-            flex-direction: column !important;
-          }
-          .about-grid > div {
-            width: 100% !important;
+          .grid-3 {
+            grid-template-columns: 1fr 1fr !important;
           }
         }
 
         @media (max-width: 500px) {
-          h1 { font-size: 36px !important; line-height: 44px !important; }
+          .grid-3 {
+            grid-template-columns: 1fr !important;
+          }
+
+          h1 {
+            font-size: 36px !important;
+            line-height: 44px !important;
+          }
         }
       `}</style>
     </div>
