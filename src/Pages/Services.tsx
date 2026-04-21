@@ -33,11 +33,19 @@ function FadeUp({ children, delay = 0 }: FadeUpProps) {
   return (
     <div
       ref={ref}
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(28px)",
-        transition: `opacity 0.55s ease ${delay}s, transform 0.55s ease ${delay}s`,
-      }}
+     style={{
+  display: "inline-flex",
+  padding: "24px",
+  flexDirection: "column",
+  alignItems: "flex-start",
+  gap: "20px",
+  borderRadius: "16px",
+  // background: "var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9)",
+
+  opacity: visible ? 1 : 0,
+  transform: visible ? "translateY(0)" : "translateY(28px)",
+  transition: `opacity 0.55s ease ${delay}s, transform 0.55s ease ${delay}s`,
+}}
     >
       {children}
     </div>
@@ -152,14 +160,18 @@ const SmallServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 10,
-          padding: "0 0 4px",
-          transition: "transform 0.25s",
-          transform: hovered ? "translateY(-4px)" : "translateY(0)",
-          cursor: "default",
-        }}
+  display: "inline-flex",
+  padding: "24px",
+  flexDirection: "column",
+  alignItems: "flex-start",
+  gap: "20px",
+  borderRadius: "16px",
+  background: "var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9)",
+
+  transition: "transform 0.25s",
+  transform: hovered ? "translateY(-4px)" : "translateY(0)",
+  cursor: "default",
+}}
       >
           <div
             style={{
@@ -174,11 +186,37 @@ const SmallServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title
           >
             <Placeholder width={160} height={160} />
           </div>
-          <h3 style={{ margin: 0, fontSize: 15, fontWeight: 600, color: "#111"}}>
-          {title}
+<h3
+  style={{
+    margin: 0,
+    color: "#000",
+
+    fontFamily: "GT Super Display",
+    fontSize: "32px",
+    fontStyle: "normal",
+    fontWeight: 500,
+    lineHeight: "40px",
+    letterSpacing: "-0.64px",
+
+    fontVariantNumeric: "lining-nums proportional-nums",
+
+    width: "229px",
+  }}
+>          {title}
         </h3>
-        <p style={{ margin: 0, fontSize: 13, color: "#555", lineHeight: 1.7}}>
-          {body}
+<p
+  style={{
+    margin: 0,
+    width: "229px",
+    color: "#757575",
+
+    fontFamily: "Söhne",
+    fontSize: "16px",
+    fontStyle: "normal",
+    fontWeight: 400,
+    lineHeight: "24px",
+  }}
+>          {body}
         </p>
         {hasButton && <OutlineButton>Button</OutlineButton>}
       </div>
@@ -304,14 +342,17 @@ export default function Services() {
         {/* Row 1: 3 cards with image on top */}
         <div className="three-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, marginBottom: 40 }}>
           <SmallServiceCard title="Property Management" body={body} hasButton delay={0} />
-          <SmallServiceCard title="Settlement Agent" body={body} hasButton delay={0.1} />
+         <SmallServiceCard 
+  title={<>Settlement<br />Agent</>} 
+  body={body} 
+  hasButton 
+  delay={0.1} 
+/>
           <SmallServiceCard title="Building Inspection" body={body} hasButton delay={0.2} />
         </div>
 
         {/* Accounting — horizontal small card */}
-        <div style={{ marginBottom: 40, maxWidth: 500 }}>
-          <AccountingCard title="Accounting" body={body} delay={0} />
-        </div>
+       
 
         {/* Row 2: 3 cards */}
         <div className="three-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>

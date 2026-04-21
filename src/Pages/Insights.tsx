@@ -83,17 +83,71 @@ export default function Insights() {
 
       {/* ── SECTION 3: Blogs ────────────────────────────────────────────── */}
       <section style={{ maxWidth: "1200px", margin: "0 auto 80px", padding: "0 40px" }}>
-        <h2 style={{ fontSize: "28px", margin: "0 0 8px 0" }}>Blogs</h2>
-        <p style={{ color: "#888", marginBottom: "40px" }}>Subheading</p>
+        <h2 style={{  margin: 0,
+  color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+  fontFamily: "GT Super Display Medium",
+  fontSize: "44px",
+  fontWeight: 500,
+  lineHeight: "120%",
+  letterSpacing: "-0.48px", }}>Blogs</h2>
+       <p
+  style={{
+    margin: "0 0 16px 0",
+
+    fontFamily: "'Söhne', sans-serif",
+    fontSize: "24px",
+    fontWeight: 300,
+    lineHeight: "120%",
+
+    color: "#888888",
+  }}
+>
+  Subheading
+</p>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           {blogPosts.map((post, index) => (
             <div key={index} style={{ border: "1px solid #EEE", borderRadius: "12px", padding: "24px", display: "flex", gap: "24px", alignItems: "center" }}>
               <div style={{ width: "160px", height: "160px", backgroundColor: "#F0F0F0", borderRadius: "8px" }}></div>
               <div style={{ flex: 1 }}>
-                <h3 style={{ margin: "0 0 10px 0", fontSize: "22px" }}>{post.title}</h3>
-                <p style={{ color: "#666", marginBottom: "20px", maxWidth: "600px" }}>{post.description}</p>
-                <button style={{ padding: "8px 24px", border: "1px solid #CCC", borderRadius: "6px", backgroundColor: "#F9F9F9", cursor: "pointer" }}>Button</button>
+<h3
+  style={{
+    margin: "0 0 10px 0",
+
+   color: "var(--sds-color-text-default-default, #111)",
+
+  fontFamily: "'GTSuper'",
+  fontSize: "20px",     // fixed
+  fontWeight: 300,      // fixed
+
+    lineHeight: "120%",
+    letterSpacing: "-0.48px",
+
+    alignSelf: "stretch",
+  }}
+>
+  {post.title}
+</h3>              
+<p
+  style={{
+    marginBottom: "20px",
+
+    color: "var(--sds-color-text-default-secondary, #666)",
+
+    fontFamily: "'Söhne', sans-serif",
+    fontSize: "16px", // ✅ fixed (replace 300)
+    fontStyle: "normal",
+    fontWeight: "var(--sds-typography-body-font-weight-regular, 400)",
+
+    lineHeight: "140%",
+    width: "100%",
+
+    maxWidth: "600px", // keep your original constraint
+  }}
+>
+  {post.description}
+</p>                
+<button style={{ padding: "8px 24px", border: "1px solid #CCC", borderRadius: "6px", backgroundColor: "#918d8d", cursor: "pointer" }}>Button</button>
               </div>
             </div>
           ))}

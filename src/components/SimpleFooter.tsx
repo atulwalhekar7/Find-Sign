@@ -13,24 +13,36 @@ const FooterLinkList = ({ title, links }: FooterLinkListProps) => (
   <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
 <span
   style={{
-    fontWeight: 700,
-    fontSize: 13,
-    color: "#111",
-    fontFamily: "inherit",
-    height: "22px",
-    width: "262px",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-start",
-  }}
+  fontFamily: "CX80",
+  fontSize: "18px",
+  fontWeight: 400,
+  lineHeight: "18px",
+  letterSpacing: "5.76px",
+  marginBottom: "16px",
+color: "#073B2F",
+
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-start",
+}}
 >
   {title}
 </span>{links.map((link: string) => (
       <a
         key={link}
         href="#"
-        style={{ fontSize: 13, color: "#444", textDecoration: "none", fontFamily: "inherit", lineHeight: 1.5, transition: "color 0.15s" }}
-        onMouseEnter={e => (e.currentTarget.style.color = "#000")}
+style={{
+  display: "block",
+  fontFamily: "Sohne, sans-serif",
+  fontSize: "13px",
+  fontWeight: 300,
+color: "#073B2F",
+  textDecoration: "none",
+  marginBottom: "10px",
+  lineHeight: "1.6",
+  cursor: "pointer",
+  transition: "transform 0.2s ease",
+}}        onMouseEnter={e => (e.currentTarget.style.color = "#000")}
         onMouseLeave={e => (e.currentTarget.style.color = "#444")}
       >
         {link}
