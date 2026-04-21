@@ -230,10 +230,12 @@ const SmallServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title
 
 
 
+
 // ── Main Component ────────────────────────────────────────────────────────────
 export default function Services() {
   const body =
     "Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very short story.";
+
 
 
 
