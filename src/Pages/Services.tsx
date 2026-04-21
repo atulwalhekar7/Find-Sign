@@ -303,15 +303,21 @@ export default function Services() {
             maxWidth: "750px",
             margin: "0 auto",
             padding: "60px 40px",
-            backgroundColor: "rgba(33,33,33,0.85)",
             borderRadius: "12px",
-            backdropFilter: "blur(8px)",
-            border: "1px solid rgba(255,255,255,0.1)",
-            boxShadow: "0 4px 20px rgba(0,0,0,0.25)",
+/* border: "1px solid rgba(255,255,255,0.1)", */
             animation: "heroFadeIn 0.8s ease both",
           }}
         >
-          <h1 style={{ fontSize: "56px", fontWeight: 500, color: "#FFF", lineHeight: "64px", letterSpacing: "-1.12px", margin: 0 }}>
+<h1 style={{ 
+            fontFamily: "'GT Super Display Medium'",
+            fontSize: "56px",
+            fontWeight: 500,
+            color: "#FFF",
+            lineHeight: "64px",
+            letterSpacing: "-1.12px",
+            fontVariantNumeric: "lining-nums proportional-nums",
+            margin: 0 
+          }}>
             Services
           </h1>
           <p style={{ color: "#CCCCCC", fontSize: "24px", fontWeight: 300, lineHeight: "36px", maxWidth: "600px", margin: "20px auto 0" }}>
@@ -322,7 +328,7 @@ export default function Services() {
 
       <AboutSection
   imageSrc={AboutServiceImg}
-  heading="About Find & Sign"
+  heading="About Our Services"
   subheading="Subheading"
   body1="Body text for your whole article or post. We’ll put in some lorem ipsum to show how a filled-out page might look."
   body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."

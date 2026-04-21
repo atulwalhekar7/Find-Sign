@@ -1,11 +1,12 @@
-# TODO: Make AboutSection images page-specific
+# Banner Text Shadow Removal & Styling Update
+Status: ✅ In Progress
 
-## Plan Steps:
-- [x] Step 1: Fix AboutSection component to use imageSrc prop
-- [x] Step 2: Update ClientOutcomes.tsx image prop/import
-- [x] Step 3: Update About.tsx image prop/import  
-- [ ] Step 4: Update Insights.tsx image prop/import
-- [ ] Step 5: Update Services.tsx image prop/import
-- [ ] Step 6: Test pages & attempt_completion
+## Approved Plan Steps:
+1. [x] Create TODO.md ✅
+2. [x] Edit src/Pages/About.tsx (remove shadow + update h1 styling) ✅
+3. [x] Edit src/Pages/ClientOutcomes.tsx (remove shadow + update h1 styling) ✅ 
+4. [x] Edit src/Pages/Services.tsx (remove shadow + update h1 styling) ✅
+5. [x] Edit src/Pages/Insights.tsx (remove shadow + update h1 styling) ✅
+6. [x] Verify all 4 pages ✅
+7. [x] Complete task ✅
 
-Current: Steps 1-3 complete. Step 4 next.
