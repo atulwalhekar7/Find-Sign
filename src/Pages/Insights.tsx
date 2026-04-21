@@ -1,9 +1,9 @@
 
-import bannerImg from "../assets/About.jpg";
 import SimpleGetInTouch from "../components/SimpleGetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
 import aboutContentImg from "../assets/DSC06081.jpg";
+import bannerImg from "../assets/Insights_Banner.jpg";
 
 
 // --- Helper Components ---
@@ -147,7 +147,7 @@ export default function Insights() {
 >
   {post.description}
 </p>                
-<button style={{ padding: "8px 24px", border: "1px solid #CCC", borderRadius: "6px", backgroundColor: "#918d8d", cursor: "pointer" }}>Button</button>
+<button style={{ padding: "8px 24px", border: "1px solid #d1d0d0", borderRadius: "6px", backgroundColor: "#918d8d", cursor: "pointer" }}>Button</button>
               </div>
             </div>
           ))}

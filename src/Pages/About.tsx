@@ -1,11 +1,13 @@
 import { useRef, useState } from "react";
-import bannerImg from "../assets/About.jpg";
 import aboutContentImg from "../assets/DSC06081.jpg";
 import aboutVideo from "../assets/Interview Draft (2).mp4";
 import AboutSection from "../components/AboutSection";
 import SimpleGetInTouch from "../components/SimpleGetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import OurProcess from "../components/OurProcess";
+import Banner from "../assets/About Us_Banner.jpg";
+import Bec from "../assets/Bec_Bio.jpg";
+import niki from "../assets/Niki_Bio.jpg";
 
 export default function About() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -130,7 +132,7 @@ export default function About() {
           display: flex;
           align-items: center;
           justify-content: center;
-          background-image: url(${bannerImg});
+          background-image: url(${Banner});
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
@@ -409,8 +411,18 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
         
         {/* Card 1 */}
         <div className="team-card">
-          <div className="team-img" />
-          <div className="team-text">
+<div className="team-img">
+  <img
+    src={Bec}
+    alt="team member"
+    style={{
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      borderRadius: "inherit",
+    }}
+  />
+</div>          <div className="team-text">
             <h3>Title</h3>
             <p>
               Body text for whatever you'd like to say. Add main takeaway points,
@@ -421,8 +433,18 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
 
         {/* Card 2 */}
         <div className="team-card">
-          <div className="team-img" />
-          <div className="team-text">
+<div className="team-img">
+  <img
+    src={niki}
+    alt="team member"
+    style={{
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      borderRadius: "inherit",
+    }}
+  />
+</div>          <div className="team-text">
             <h3>Title</h3>
             <p>
               Body text for whatever you'd like to say. Add main takeaway points,

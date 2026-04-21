@@ -3,6 +3,7 @@ import SimpleGetInTouch from "../components/SimpleGetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
 import aboutContentImg from "../assets/DSC06081.jpg";
+import bannerImg from "../assets/DSC06227.jpg";
 
 
 // ── Animation hook ────────────────────────────────────────────────────────────
@@ -271,17 +272,22 @@ export default function Services() {
     <div style={{  color: "#111", background: "#fff", margin: 0, padding: 0 }}>
 
       {/* ── SECTION 1: Hero ─────────────────────────────────────────────── */}
-      <section
-        style={{
-          minHeight: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)",
-          position: "relative",
-          padding: "0 20px",
-        }}
-      >
+     <section
+  style={{
+    minHeight: "100vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    backgroundImage: `url(${bannerImg})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+
+    position: "relative",
+    padding: "0 20px",
+  }}
+>
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.3)" }} />
         <div
           style={{

@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import AboutBanner from "../assets/About Find&Sign.jpg";
 
 const FadeUp = ({ children, delay = 0 }: any) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -53,7 +54,7 @@ const AboutSection = ({
         <FadeUp>
           <div className="about-image">
             {imageSrc ? (
-              <img src={imageSrc} alt="" />
+              <img src={AboutBanner} alt="" />
             ) : (
               <div className="placeholder" />
             )}
