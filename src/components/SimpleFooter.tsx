@@ -10,9 +10,22 @@ interface FooterLinkListProps {
 
 // ── Footer Link List ──────────────────────────────────────────────────────────
 const FooterLinkList = ({ title, links }: FooterLinkListProps) => (
-  <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-    <span style={{ fontWeight: 700, fontSize: 13, color: "#111", fontFamily: "inherit" }}>{title}</span>
-{links.map((link: string) => (
+  <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+<span
+  style={{
+    fontWeight: 700,
+    fontSize: 13,
+    color: "#111",
+    fontFamily: "inherit",
+    height: "22px",
+    width: "262px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+  }}
+>
+  {title}
+</span>{links.map((link: string) => (
       <a
         key={link}
         href="#"
@@ -35,7 +48,7 @@ export default function SimpleFooter() {
           margin: "0 auto",
           display: "flex",
           flexDirection: "row",
-          gap: 48,
+          gap: 16,
           justifyContent: "space-between",
           alignItems: "flex-start",
           flexWrap: "wrap",
@@ -54,7 +67,7 @@ export default function SimpleFooter() {
       <img
         src={item.icon}
         alt="social icon"
-        style={{ width: 20, height: 20 }}
+        style={{ width: 23.98, height: 24 }}
       />
     </a>
   ))}
@@ -78,8 +91,7 @@ export default function SimpleFooter() {
           gap: 8,
         }}
       >
-        <span>© 2024 Company Name. All rights reserved.</span>
-        <span>Privacy · Terms</span>
+        
       </div>
     </footer>
   );
