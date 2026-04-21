@@ -6,6 +6,7 @@ import Services from "./Pages/Services";
 import ClientOutcomes from "./Pages/ClientOutcomes";
 import Insights from "./Pages/Insights";
 import Contact from "./Pages/Contact";
+import BuyerAgentPerthBlog from "./Pages/BuyerAgentPerthBlog";
 import "./index.css";
 
 /* ── Google Fonts ── */
@@ -24,7 +25,8 @@ function App() {
           <Route path="/services"        element={<Services />}       />
           <Route path="/client-outcomes" element={<ClientOutcomes />} />
           <Route path="/insights"        element={<Insights />}       />
-          <Route path="/contact"         element={<Contact />}        />
+          <Route path="/contact"        element={<Contact />}        />
+          <Route path="/blog/buyers-agent-perth" element={<BuyerAgentPerthBlog />} />
         </Route>
       </Routes>
     </BrowserRouter>

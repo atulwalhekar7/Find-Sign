@@ -1,28 +1,29 @@
+import { useNavigate } from "react-router-dom";
 import SimpleGetInTouch from "../components/SimpleGetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
 
 import aboutInsightsImg from "../assets/About Insights.jpg";
 import bannerImg from "../assets/Insights_Banner.jpg";
+import perthBlogImg from "../assets/Blogs/DSC06286.jpg";
 
 // --- Helper Components ---
 
-
-
-
-
-
-
 // --- Main Component ---
 
-const blogPosts = Array(6).fill({
-  title: "Title",
-  description: "Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story.",
-});
-
+const blogPosts = [
+  {
+    title: "Your Ultimate Guide to Hiring a Buyer’s Agent in Perth",
+    description: "Buying property in Perth is one of the biggest financial decisions you’ll ever make. Whether you're a first-home buyer, upgrading your family home, or building an investment portfolio, the process can feel overwhelming.",
+    image: perthBlogImg,
+    path: "/blog/buyers-agent-perth"
+  }
+];
 
 
 export default function Insights() {
+  const navigate = useNavigate();
+
   return (
     <div style={{ backgroundColor: "#FFFFFF", fontFamily: "Söhne, sans-serif" }}>
       
@@ -112,7 +113,7 @@ export default function Insights() {
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           {blogPosts.map((post, index) => (
             <div key={index} style={{ border: "1px solid #EEE", borderRadius: "12px", padding: "24px", display: "flex", gap: "24px", alignItems: "center" }}>
-              <div style={{ width: "160px", height: "160px", backgroundColor: "#F0F0F0", borderRadius: "8px" }}></div>
+              <img src={post.image} alt={post.title} style={{ width: "160px", height: "160px", objectFit: "cover", borderRadius: "8px" }} />
               <div style={{ flex: 1 }}>
 <h3
   style={{
@@ -151,21 +152,24 @@ export default function Insights() {
 >
   {post.description}
 </p>                
-<button style={{ padding: "8px 24px", border: "1px solid #d1d0d0", borderRadius: "6px", backgroundColor: "#918d8d", cursor: "pointer" }}>Button</button>
+<button 
+  onClick={() => navigate(post.path)}
+  style={{ 
+    padding: "12px 32px", 
+    border: "none", 
+    borderRadius: "6px", 
+    backgroundColor: "#073B2F", 
+    color: "#FFF", 
+    cursor: "pointer",
+    fontFamily: "Söhne, sans-serif",
+    fontWeight: 500
+  }}
+>
+  View more
+</button>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* PAGINATION */}
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "15px", marginTop: "60px", color: "#666" }}>
-          <span style={{ cursor: "pointer" }}>← Previous</span>
-          <span style={{ backgroundColor: "#333", color: "#FFF", padding: "5px 12px", borderRadius: "4px" }}>1</span>
-          <span>2</span>
-          <span>3</span>
-          <span>...</span>
-          <span>67</span>
-          <span>Next →</span>
         </div>
       </section>
 
