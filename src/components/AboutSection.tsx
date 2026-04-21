@@ -54,7 +54,7 @@ const AboutSection = ({
         <FadeUp>
           <div className="about-image">
             {imageSrc ? (
-              <img src={AboutBanner} alt="" />
+              <img src={imageSrc || AboutBanner} alt="" />
             ) : (
               <div className="placeholder" />
             )}

@@ -1,10 +1,9 @@
-
 import SimpleGetInTouch from "../components/SimpleGetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
 import aboutContentImg from "../assets/DSC06081.jpg";
+import aboutInsightsImg from "../assets/About Insights.jpg";
 import bannerImg from "../assets/Insights_Banner.jpg";
-
 
 // --- Helper Components ---
 
@@ -74,10 +73,10 @@ export default function Insights() {
       </section>
 
      <AboutSection
-       imageSrc={aboutContentImg}
+       imageSrc={aboutInsightsImg}
        heading="About Find & Sign"
        subheading="Subheading"
-       body1="Body text for your whole article or post. We’ll put in some lorem ipsum to show how a filled-out page might look."
+       body1="Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look."
        body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."
      />
 

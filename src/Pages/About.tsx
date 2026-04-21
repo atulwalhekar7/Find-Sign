@@ -6,6 +6,7 @@ import SimpleGetInTouch from "../components/SimpleGetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import OurProcess from "../components/OurProcess";
 import Banner from "../assets/About Us_Banner.jpg";
+import AboutUsBanner from "../assets/About Find&Sign.jpg";
 import Bec from "../assets/Bec_Bio.jpg";
 import niki from "../assets/Niki_Bio.jpg";
 
@@ -48,10 +49,10 @@ export default function About() {
       </section>
 
     <AboutSection
-  imageSrc={aboutContentImg}
+  imageSrc={AboutUsBanner}
   heading="About Find & Sign"
   subheading="Subheading"
-  body1="Body text for your whole article or post. We’ll put in some lorem ipsum to show how a filled-out page might look."
+  body1="Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look."
   body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."
 />
 
@@ -117,9 +118,6 @@ export default function About() {
           </div>
         </div>
       </section>
-
-
-
 
       
 

@@ -4,6 +4,7 @@ import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
 import aboutContentImg from "../assets/DSC06081.jpg";
 import bannerImg from "../assets/DSC06227.jpg";
+import AboutServiceImg from "../assets/About Our Services.jpg";
 
 
 // ── Animation hook ────────────────────────────────────────────────────────────
@@ -320,7 +321,7 @@ export default function Services() {
       </section>
 
       <AboutSection
-  imageSrc={aboutContentImg}
+  imageSrc={AboutServiceImg}
   heading="About Find & Sign"
   subheading="Subheading"
   body1="Body text for your whole article or post. We’ll put in some lorem ipsum to show how a filled-out page might look."
