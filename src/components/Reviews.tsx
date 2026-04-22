@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 const reviews = [
   { name: "Rok Son", headline: "Headline over\ntwo lines", text: "This is placeholder text used to represent a client outcome. It mirrors the structure and length of a real testimonial, showing how content will sit" },
@@ -51,6 +52,7 @@ const useVisibleCount = () => {
 };
 
 const App = () => {
+  const navigate = useNavigate();
   const [index, setIndex] = useState(0);
   const timerRef = useRef<number | null>(null);
   const visible = useVisibleCount();
@@ -273,7 +275,12 @@ const App = () => {
         />
 
         {/* ── CTA ── */}
-        <button className="rev-cta-btn">View more feedback</button>
+        <button 
+          className="rev-cta-btn" 
+          onClick={() => navigate("/client-outcomes")}
+        >
+          View more feedback
+        </button>
 
       </section>
     </div>
