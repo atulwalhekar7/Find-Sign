@@ -348,8 +348,8 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
 .team-text h3 {
   color: var(--sds-color-text-default-default, #111);
 
-  font-family:'GTSuper';
-  font-size: 300;
+  font-family:'GT Super Display Medium';
+  font-size: 500;
   
   font-weight: 20px;
 
