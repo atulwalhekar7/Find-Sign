@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import id1 from "../assets/Client Outcomes/id1.webp";
 import id2 from "../assets/Client Outcomes/id2.webp";
 import id3 from "../assets/Client Outcomes/id3.webp";
@@ -501,6 +502,7 @@ function PropertyCard({
 }
 
 export default function ClientOutcomes() {
+  const navigate = useNavigate();
   const [cur, setCur] = useState(0);
   const [paused, setPaused] = useState(false);
   const [animKey, setAnimKey] = useState(0);
@@ -892,7 +894,12 @@ export default function ClientOutcomes() {
             ))}
           </div>
 
-          <button className="view-btn">View More Outcomes</button>
+          <button 
+            className="view-btn" 
+            onClick={() => navigate("/client-outcomes")}
+          >
+            View More Outcomes
+          </button>
         </div>
       </div>
     </>
