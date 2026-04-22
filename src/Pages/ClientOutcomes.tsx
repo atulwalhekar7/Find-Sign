@@ -135,43 +135,44 @@ export default function ClientOutcomes() {
       {/* ── HERO ───────────────────────────────── */}
       <section
         style={{
-          minHeight: "100vh",
+          minHeight: "80vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           backgroundImage: `url(${bannerImg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          
           position: "relative",
           padding: "0 20px",
         }}
       >
-        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.4)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.35)" }} />
 
         <div
           style={{
             position: "relative",
             zIndex: 2,
             textAlign: "center",
-            maxWidth: "750px",
-            padding: "60px 40px",
-borderRadius: 0,
+            maxWidth: "900px",
+            margin: "0 auto",
+            padding: "60px 20px",
+            borderRadius: "12px",
+            animation: "heroFadeIn 0.8s ease both",
           }}
         >
 <h1 style={{ 
             fontFamily: "'GT Super Display Medium'",
-            fontSize: "56px",
-            fontWeight: "500",
+            fontSize: "64px",
+            fontWeight: 500,
             color: "#FFF",
-            lineHeight: "64px",
-            letterSpacing: "-1.12px",
+            lineHeight: "1.1",
+            letterSpacing: "-1.28px",
             fontVariantNumeric: "lining-nums proportional-nums",
             margin: 0 
           }}>
             Client Outcomes
           </h1>
-          <p style={{ color: "#CCC", fontSize: "24px", marginTop: 20 }}>
+          <p style={{ color: "#FFFFFF", fontSize: "24px", fontWeight: 300, marginTop: "24px", opacity: 0.9 }}>
             Find & Sign
           </p>
         </div>
@@ -354,6 +355,11 @@ borderRadius: 0,
 
       {/* ── RESPONSIVE ───────────────────────────────── */}
       <style>{`
+        @keyframes heroFadeIn {
+          from { opacity: 0; transform: translateY(30px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+
         @keyframes cardReveal {
           from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
@@ -455,16 +461,15 @@ borderRadius: 0,
           .grid-3 {
             grid-template-columns: 1fr 1fr !important;
           }
+          h1 { font-size: 44px !important; line-height: 1.2 !important; }
         }
 
         @media (max-width: 500px) {
           .grid-3 {
             grid-template-columns: 1fr !important;
           }
-
           h1 {
             font-size: 36px !important;
-            line-height: 44px !important;
           }
         }
       `}</style>
