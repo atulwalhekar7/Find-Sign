@@ -41,6 +41,7 @@ export default function About() {
           SECTION 1 — Hero Banner
       ───────────────────────────────────────── */}
       <section className="hero-banner">
+        <div className="banner-overlay" />
         <div className="hero-box">
           <h1 className="hero-title">About Us</h1>
           <p className="hero-subtitle">Find & Sign</p>
@@ -125,7 +126,7 @@ export default function About() {
 
       .hero-banner {
   position: relative;
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -137,27 +138,41 @@ export default function About() {
 
   background-attachment: scroll; /* ALWAYS scroll */
 }
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 1;
+}
 .hero-box {
           position: relative; z-index: 2;
           display: flex; flex-direction: column; align-items: center;
           justify-content: center; text-align: center;
-          width: 90%; max-width: 600px; margin: 0 auto;
-          
-          border-radius: 12px; 
+          width: 90%; 
+          max-width: 900px; 
+          margin: 0 auto;
+          padding: 60px 20px;
+          border-radius: 12px;
+          animation: heroFadeIn 0.8s ease both;
         }
 .hero-title {
           font-family: 'GT Super Display Medium';
-          font-size: 56px;
+          font-size: 64px;
           font-weight: 500;
           color: #FFF;
-          line-height: 64px;
-          letter-spacing: -1.12px;
+          line-height: 1.1;
+          letter-spacing: -1.28px;
           font-variant-numeric: lining-nums proportional-nums;
+          margin: 0;
         }
         .hero-subtitle {
-          color: #cccccc; font-family: 'Söhne', sans-serif;
-          font-size: clamp(16px, 2.5vw, 24px); font-weight: 300;
-          line-height: 1.5; margin-top: 14px;
+          color: #FFFFFF; 
+          font-family: 'Söhne', sans-serif;
+          font-size: 24px; 
+          font-weight: 300;
+          line-height: 1.5; 
+          margin-top: 24px;
+          opacity: 0.9;
         }
 
         .panel-section { width: 100%; background-color: #ffffff; }
@@ -369,17 +384,23 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
   }
 }
 
+        @keyframes heroFadeIn {
+          from { opacity: 0; transform: translateY(30px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
 
 
         @media (max-width: 900px) {
-          .hero-box { padding: 36px 32px; width: 92%; }
+          .hero-box { padding: 60px 20px; width: 92%; }
+          .hero-title { font-size: 44px !important; line-height: 1.2 !important; }
           .panel-inner { flex-direction: column; padding: 48px 32px; gap: 32px; }
           .panel-image-wrap, .panel-text { flex: 0 0 100%; width: 100%; }
           .video-inner { height: 400px; }
           .play-btn, .mute-btn { width: 42px; height: 42px; }
         }
         @media (max-width: 600px) {
-          .hero-box { padding: 28px 20px; width: 94%; border-radius: 8px; }
+          .hero-box { padding: 60px 20px; width: 94%; border-radius: 8px; }
+          .hero-title { font-size: 36px !important; }
           .panel-inner { padding: 36px 20px; gap: 24px; }
           .video-inner { height: 260px; }
           .play-btn, .mute-btn { width: 36px; height: 36px; }
