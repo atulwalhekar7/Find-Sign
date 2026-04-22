@@ -126,6 +126,7 @@ const App = () => {
         .npb-card:hover {
           transform: translateY(-12px);
           box-shadow: 0 24px 48px rgba(7, 59, 47, 0.25);
+          box-shadow: 0 24px 48px rgba(11, 215, 205, 0.4);
         }
 
         /* ── SLIDER TRACK ── */
@@ -160,6 +161,7 @@ const App = () => {
           justify-content: center; align-items: center; gap: 10px;
           border-radius: 8px;
           border: 1px solid #69E4DC;
+          border: 1px solid rgba(11, 215, 205, 0.96);
           color: #073B2F;
           font-family: 'DM Sans', sans-serif;
           font-size: 15px; font-weight: 700; line-height: 15px;
