@@ -32,8 +32,10 @@ export default function Navbar() {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 24px 196px;
           box-sizing: border-box;
+padding: 24px 130px;
+align-items: flex-start;
+align-self: stretch;
         }
 
         .nav-logo {
@@ -120,7 +122,7 @@ export default function Navbar() {
         /* Tablet */
         @media (max-width: 1199px) {
           .nav-inner {
-            padding: 0 48px;
+            padding: 24px 48px;
           }
 
           .nav-actions {
@@ -137,7 +139,7 @@ export default function Navbar() {
         @media (max-width: 768px) {
           .nav-inner {
             height: 80px;
-            padding: 0 20px;
+            padding: 24px 20px;
           }
 
           .nav-logo {
