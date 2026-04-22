@@ -61,7 +61,7 @@ export default function Insights() {
           }}
         >
 <h1 style={{ 
-            fontFamily: "'GT Super Display Medium'",
+            fontFamily: 'GT Super Display Medium',
             fontSize: "64px",
             fontWeight: 500,
             color: "#FFF",
@@ -99,7 +99,7 @@ export default function Insights() {
   style={{
     margin: "0 0 16px 0",
 
-    fontFamily: "'Söhne', sans-serif",
+    fontFamily: 'Söhne',
     fontSize: "24px",
     fontWeight: 300,
     lineHeight: "120%",
@@ -121,9 +121,9 @@ export default function Insights() {
 
    color: "var(--sds-color-text-default-default, #111)",
 
-  fontFamily: "'GTSuper'",
+  fontFamily: "GT Super Display Medium",
   fontSize: "20px",     // fixed
-  fontWeight: 300,      // fixed
+  fontWeight: 500,      // fixed
 
     lineHeight: "120%",
     letterSpacing: "-0.48px",
@@ -139,10 +139,10 @@ export default function Insights() {
 
     color: "var(--sds-color-text-default-secondary, #666)",
 
-    fontFamily: "'Söhne', sans-serif",
+    fontFamily: 'Söhne',
     fontSize: "16px", // ✅ fixed (replace 300)
     fontStyle: "normal",
-    fontWeight: "var(--sds-typography-body-font-weight-regular, 400)",
+    fontWeight: 400,
 
     lineHeight: "140%",
     width: "100%",
@@ -161,8 +161,8 @@ export default function Insights() {
     backgroundColor: "#073B2F", 
     color: "#FFF", 
     cursor: "pointer",
-    fontFamily: "Söhne, sans-serif",
-    fontWeight: 500
+    fontFamily: 'CX80',
+    fontWeight: 400
   }}
 >
   View more

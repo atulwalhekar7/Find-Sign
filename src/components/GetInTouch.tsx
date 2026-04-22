@@ -40,7 +40,7 @@ export default function NakraniContact() {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          gap: 50px;
+          gap: 64px;
           flex: 0 0 350px;
         }
 
@@ -82,7 +82,7 @@ export default function NakraniContact() {
         .contact-field {
           display: flex;
           flex-direction: column;
-          gap: 6px;
+          gap: 16px;
           width: 100%;
 
           opacity: 0;
@@ -119,7 +119,8 @@ export default function NakraniContact() {
           background: #FFF;
           border: none;
           outline: none;
-          font-family: 'DM Sans', sans-serif;
+          font-family: 'Sohne';
+           font-weight: 400;
           font-size: 20px;
         }
 
@@ -134,7 +135,8 @@ export default function NakraniContact() {
           background: #FFF;
           border: none;
           outline: none;
-          font-family: 'DM Sans', sans-serif;
+          font-family: 'Sohne';
+          font-weight: 400;
           font-size: 20px;
           resize: none;
         }
