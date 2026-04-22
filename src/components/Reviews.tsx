@@ -206,7 +206,7 @@ const App = () => {
         }
         .rev-subheading {
           color: #000;
-          font-family: "Söhne", "DM Sans", sans-serif;
+          font-family: 'Sohne';
           font-size: 24px;
           font-weight: 300;
           line-height: 36px;
@@ -346,14 +346,16 @@ const SliderSection = ({
                       letterSpacing: "-0.64px",
                       color: "#F9F9F9",
                       whiteSpace: "pre-line",
+                      fontFamily: "GT Super Display Medium",
                     }}>
                       {review.headline}
                     </p>
                     <p style={{
                       fontSize: "clamp(15px, 1.5vw, 20px)",
-                      fontWeight: 400,
+                      fontWeight: 300,
                       lineHeight: "1.5",
                       color: "#F9F9F9",
+                      fontFamily: "Sohne",
                     }}>
                       {review.text}
                     </p>
@@ -366,6 +368,7 @@ const SliderSection = ({
                     alignSelf: "stretch",
                     marginTop: "16px",
                     opacity: 0.9,
+                    fontFamily:'Sohne',
                   }}>
                     — {review.name}
                   </p>
