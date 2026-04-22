@@ -220,18 +220,18 @@ body {
 /* ================= Usage ================= */
 
 /* Headings */
-h1, h2, h3 {
+/* h1, h2, h3 {
   font-family: 'GTSuper', serif;
-}
+} */
 
 /* Body */
-p, span, div {
+/* p, span, div {
   font-family: 'Sohne';
-}
+} */
 
 /* Buttons */
 button {
-  font-family: 'CX80', sans-serif;
+  font-family: 'CX80';
 }
 
 @font-face {

@@ -349,9 +349,9 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
   color: var(--sds-color-text-default-default, #111);
 
   font-family:'GT Super Display Medium';
-  font-size: 500;
+  font-size: 20px;
   
-  font-weight: 20px;
+  font-weight: 500;
 
   line-height: 120%;
   letter-spacing: -0.48px;
