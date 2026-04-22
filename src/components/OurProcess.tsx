@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface Step {
   id: number;
@@ -340,6 +341,7 @@ function StepRow({ step, index, isLast }: { step: Step; index: number; isLast: b
 
 /* ── Main export ── */
 export default function OurProcess() {
+  const navigate = useNavigate();
   const [btnHovered, setBtnHovered] = useState(false);
   const [btnClicked, setBtnClicked] = useState(false);
   const { ref: headRef,   inView: headVisible   } = useInView(0.1);
@@ -412,7 +414,11 @@ export default function OurProcess() {
             onMouseLeave={() => setBtnHovered(false)}
             onMouseDown={() => setBtnClicked(true)}
             onMouseUp={() => setBtnClicked(false)}
-            onClick={() => { setBtnClicked(true); setTimeout(() => setBtnClicked(false), 400); }}
+            onClick={() => {
+              setBtnClicked(true);
+              setTimeout(() => setBtnClicked(false), 400);
+              navigate("/about");
+            }}
           >
             HOW IT WORKS
           </button>
