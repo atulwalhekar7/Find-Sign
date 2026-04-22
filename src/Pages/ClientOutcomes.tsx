@@ -76,19 +76,19 @@ const reviews = [
     name: "Rok Son",
     date: "5 months ago",
     title: "Absolute pleasure from start to finish",
-    body: "Working with Niki was an absolute pleasure from start to finish. He’s professional, knowledgeable, and genuinely invested in finding the perfect property for his clients. From our first meeting, Niki took the time to understand exactly what I was looking for — my budget, preferred locations, and must-have features — and used his deep market knowledge to guide me through every step of the buying process.",
+    body: "Working with Niki was an absolute pleasure from start to finish. He’s professional, knowledgeable, and genuinely invested in finding the perfect property for his clients. From our first meeting, Niki took the time to understand exactly what I was looking for — my budget. ",
   },
   {
     name: "Amit Bhardwaj",
     date: "2 months ago",
     title: "One of the best decisions we made",
-    body: "Having Niki as our buyer’s agent was one of the best decisions we made. From the very start, he genuinely cared about finding the right home for us. He listened, guided us with confidence, and made what could have been a stressful process feel calm and manageable. Niki’s market knowledge, negotiation skills, and constant communication gave us complete peace of mind. We always felt supported and never left guessing.",
+    body: "Having Niki as our buyer’s agent was one of the best decisions we made. From the very start, he genuinely cared about finding the right home for us. He listened, guided us with confidence, and made what could have been a stressful process feel calm and manageable. ",
   },
   {
     name: "Raveen Liyanage",
     date: "a month ago",
     title: "Pleasure doing business with you",
-    body: "Hi Niki, It was a pleasure doing business with you. Your genuine commitment to looking after your clients, while also ensuring the process runs smoothly for everyone involved, truly stands out. You consistently strive to find practical, win-win solutions for all parties, which makes working together both productive and enjoyable.",
+    body: "Hi Niki, It was a pleasure doing business with you. Your genuine commitment to looking after your clients, while also ensuring the process runs smoothly for everyone involved, truly stands out. You consistently strive to find practical.",
   },
   {
     name: "Sahil Saini",
@@ -100,13 +100,13 @@ const reviews = [
     name: "Rinzin Wangchuk",
     date: "3 months ago",
     title: "Very professional and goes way above your needs",
-    body: "Niki is very professional and goes way above your needs. I was looking for my first home in Perth and didn’t know where to begin. Niki provided us a detailed market scenario which greatly helped us in deciding where to buy our property.",
+    body: "Niki is very professional and goes way above your needs. I was looking for my first home in Perth and didn’t know where to begin.",
   },
   {
     name: "Prashanth Nayar",
     date: "5 months ago",
     title: "Thorough market insights and dedicated due-diligence",
-    body: "As a selling-agent based in Perth, I've found that Niki brings thorough market insights, dedicated due-diligence and a genuine commitment to finding the right property for his clients. Our collaboration ensures the buyer knows they’re getting a fair deal.",
+    body: "As a selling-agent based in Perth, I've found that Niki brings thorough market insights, dedicated due-diligence and a genuine commitment to finding the right property for his clients. ",
   },
   {
     name: "Gian Ottavio",
@@ -118,7 +118,7 @@ const reviews = [
     name: "Karen Rowley",
     date: "5 months ago",
     title: "Absolutely fantastic experience",
-    body: "We had an absolutely fantastic experience working with Niki as a Buyer’s agent. He was very professional and always communicated well with ourselves and his clients throughout the process. I would highly recommend Nakrani Property Buyers for anyone looking for a Buyers Agent.",
+    body: "We had an absolutely fantastic experience working with Niki as a Buyer’s agent. He was very professional and always communicated well with ourselves and his clients throughout the process. ",
   },
   {
     name: "dayna bechar",
@@ -130,7 +130,7 @@ const reviews = [
     name: "Jay DASS",
     date: "4 months ago",
     title: "Seamless, well-managed and clearly communicated",
-    body: "Niki from Nakrani Property Buyers was an absolute pleasure to work with. From our first conversation through to completion, the process was seamless, well-managed and communicated clearly at every step. His professionalism, market knowledge is top-notch.",
+    body: "Niki from Nakrani Property Buyers was an absolute pleasure to work with. From our first conversation through to completion, the process was seamless, well-managed and communicated clearly at every step.",
   },
   {
     name: "Zed A",
@@ -142,7 +142,7 @@ const reviews = [
     name: "Josh Mezger",
     date: "3 months ago",
     title: "A Bespoke, High-Touch Experience",
-    body: "What truly defines Nakrani Property Buyers is the white-glove service. Niki is: Proactive: He anticipates hurdles before they arise. Transparent: You are never left wondering where a deal stands; his communication is frequent, clear, and honest. Patient: He never pushes for a quick sale, ensuring that every decision is the right decision for your long-term goals.",
+    body: "What truly defines Nakrani Property Buyers is the white-glove service. Niki is: Proactive: He anticipates hurdles before they arise. Transparent: You are never left wondering where a deal stands; his communication is frequent, clear, and honest. ",
   },
   {
     name: "salam ishikura",
@@ -154,7 +154,7 @@ const reviews = [
     name: "Kumar Vasinda Comara",
     date: "7 months ago",
     title: "Great experience from start to finish",
-    body: "As the seller's agent, I had the pleasure of working with Niki from Nakrani Property, and it was a great experience from start to finish. Niki was professional, proactive, and an excellent communicator throughout the process, making the transaction smooth for everyone.",
+    body: "As the seller's agent, I had the pleasure of working with Niki from Nakrani Property, and it was a great experience from start to finish.",
   },
 ];
 
