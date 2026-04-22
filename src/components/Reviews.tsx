@@ -149,7 +149,7 @@ const App = () => {
           transition: all 0.25s ease;
           flex-shrink: 0;
         }
-        .rev-arrow-btn:hover:not(:disabled) { background: #073B2F; color: #ffffff; transform: scale(1.05); }
+        .rev-arrow-btn:hover:not(:disabled) { transform: scale(1.05); }
         .rev-arrow-btn:disabled { opacity: 0.2; cursor: default; }
 
         /* ── CTA ── */
@@ -169,7 +169,6 @@ const App = () => {
           transition: all 0.2s ease;
           text-transform: uppercase;
         }
-        .rev-cta-btn:hover { background: #073B2F; color: #ffffff; }
 
         /* ── DOTS ── */
         .rev-dot {
