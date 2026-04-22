@@ -642,15 +642,13 @@ export default function ClientOutcomes() {
         }
 
         .co-subtitle {
-         color: #000;
+        color: #000;
         /* FS—B1 */
-        font-family: Söhne;
+        font-family: Sohne;
         font-size: 24px;
         font-style: normal;
         font-weight: 300;
-         line-height: 36px; /* 150% */
-         width: 439.41px;
-        height: 36px;
+        line-height: 36px; /* 150% */
         }
 
 @media (max-width: 1199px) {
