@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Star, Quote } from "lucide-react";
 import SimpleGetInTouch from "../components/SimpleGetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
@@ -174,12 +174,11 @@ const formattedReviews = reviews.map(review => ({
 
 // Use formattedReviews in the component
 // ── SUB-COMPONENT ───────────────────────────────────
-function PropertyCard({ card, index }: { card: typeof cards[0]; index: number }) {
+function PropertyCard({ card }: { card: typeof cards[0]; index?: number }) {
   return (
     <div
       className="property-card"
       style={{
-        animationDelay: `${index * 80}ms`,
         flex: "0 0 auto",
       }}
     >
@@ -189,9 +188,6 @@ function PropertyCard({ card, index }: { card: typeof cards[0]; index: number })
 
       <div
         className="growth-circle"
-        style={{
-          animationDelay: `${index * 150}ms`,
-        }}
       >
         <span className="growth-label">Growth</span>
         <span className="growth-value">{card.growth}</span>
@@ -226,6 +222,12 @@ export default function ClientOutcomes() {
   const [reviewIdx, setReviewIdx] = useState(0);
   const [visibleCount, setVisibleCount] = useState(3);
 
+  const [propertyContainerWidth, setPropertyContainerWidth] = useState(0);
+  const [reviewContainerWidth, setReviewContainerWidth] = useState(0);
+
+  const propertyContainerRef = useRef<HTMLDivElement>(null);
+  const reviewContainerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth;
@@ -235,7 +237,24 @@ export default function ClientOutcomes() {
     };
     update();
     window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
+
+    const obs = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.target === propertyContainerRef.current) {
+          setPropertyContainerWidth(entry.contentRect.width);
+        } else if (entry.target === reviewContainerRef.current) {
+          setReviewContainerWidth(entry.contentRect.width);
+        }
+      }
+    });
+
+    if (propertyContainerRef.current) obs.observe(propertyContainerRef.current);
+    if (reviewContainerRef.current) obs.observe(reviewContainerRef.current);
+
+    return () => {
+      window.removeEventListener("resize", update);
+      obs.disconnect();
+    };
   }, []);
 
   const maxPropIdx = Math.max(0, cards.length - visibleCount);
@@ -245,16 +264,8 @@ export default function ClientOutcomes() {
     setPropertyIdx(prev => (prev >= maxPropIdx ? 0 : prev + 1));
   }, [maxPropIdx]);
 
-  const prevProp = useCallback(() => {
-    setPropertyIdx(prev => (prev <= 0 ? maxPropIdx : prev - 1));
-  }, [maxPropIdx]);
-
   const nextReview = useCallback(() => {
     setReviewIdx(prev => (prev >= maxReviewIdx ? 0 : prev + 1));
-  }, [maxReviewIdx]);
-
-  const prevReview = useCallback(() => {
-    setReviewIdx(prev => (prev <= 0 ? maxReviewIdx : prev - 1));
   }, [maxReviewIdx]);
 
   // Auto-play
@@ -268,10 +279,18 @@ export default function ClientOutcomes() {
     return () => clearInterval(timer);
   }, [nextReview]);
 
-  // Calculate width for responsive items
-  const getItemWidth = (containerWidth: number) => {
-    return (containerWidth - CARD_GAP * (visibleCount - 1)) / visibleCount;
-  };
+  useEffect(() => {
+    setPropertyIdx(prev => Math.min(prev, maxPropIdx));
+    setReviewIdx(prev => Math.min(prev, maxReviewIdx));
+  }, [visibleCount, maxPropIdx, maxReviewIdx]);
+
+  // Calculate precise card widths based on measured container width to ensure perfect alignment
+  const propertyCardWidth = propertyContainerWidth 
+    ? (propertyContainerWidth - CARD_GAP * (visibleCount - 1)) / visibleCount 
+    : 350;
+  const reviewCardWidth = reviewContainerWidth 
+    ? (reviewContainerWidth - 32 * (visibleCount - 1)) / visibleCount 
+    : 350;
 
   return (
     <div style={{ backgroundColor: "#FFFFFF", fontFamily: "Söhne, sans-serif" }}>
@@ -341,18 +360,18 @@ export default function ClientOutcomes() {
           </div>
         </div>
 
-        <div style={{ overflow: "hidden", padding: "40px 0", margin: "-40px 0" }}>
+        <div ref={propertyContainerRef} style={{ overflow: "hidden", padding: "40px 0", margin: "-40px 0" }}>
           <div
             className="slider-track"
             style={{
               display: "flex",
               gap: CARD_GAP,
               transition: "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
-              transform: `translateX(calc(-${propertyIdx} * (100% / ${visibleCount} + ${CARD_GAP / visibleCount}px)))`,
+              transform: `translateX(-${propertyIdx * (propertyCardWidth + CARD_GAP)}px)`,
             }}
           >
             {cards.map((card, i) => (
-              <div key={card.id} style={{ flex: `0 0 calc((100% - ${CARD_GAP * (visibleCount - 1)}px) / ${visibleCount})` }}>
+              <div key={card.id} style={{ flex: `0 0 ${propertyCardWidth}px`, width: `${propertyCardWidth}px` }}>
                 <PropertyCard card={card} index={i} />
               </div>
             ))}
@@ -390,6 +409,15 @@ export default function ClientOutcomes() {
           box-shadow: 0 20px 40px -5px rgba(11, 215, 205, 0.3);
         }
 
+        .avatar-circle {
+          transition: all 0.3s ease;
+        }
+        .testimonial-card:hover .avatar-circle {
+          box-shadow: 0 4px 15px rgba(11, 215, 205, 0.6);
+          border-color: rgba(11, 215, 205, 0.96) !important;
+          transform: scale(1.05);
+        }
+
         .reviews-grid {
           display: grid;
           grid-template-columns: repeat(1, 1fr);
@@ -418,11 +446,6 @@ export default function ClientOutcomes() {
       `}</style>
 
       <section className="testimonials-section" style={{ position: 'relative', padding: '80px 0', background: '#F9F9F9', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none', opacity: 0.3 }}>
-          <div style={{ position: 'absolute', top: '40px', right: '80px', width: '288px', height: '288px', backgroundColor: 'rgba(105, 228, 220, 0.05)', borderRadius: '50%', filter: 'blur(64px)' }}></div>
-          <div style={{ position: 'absolute', bottom: '80px', left: '40px', width: '384px', height: '384px', backgroundColor: 'rgba(7, 59, 47, 0.05)', borderRadius: '50%', filter: 'blur(64px)' }}></div>
-        </div>
-
         <div style={{ position: 'relative', maxWidth: '1200px', margin: '0 auto', padding: '0 32px' }}>
           <div style={{  
             display: 'flex', 
@@ -448,21 +471,21 @@ export default function ClientOutcomes() {
             </h2>
           </div>
 
-          <div style={{ overflow: "hidden", padding: "40px 0", margin: "-40px 0" }}>
+          <div ref={reviewContainerRef} style={{ overflow: "hidden", padding: "40px 0", margin: "-40px 0" }}>
           <div 
             className="slider-track"
             style={{
               display: "flex",
               gap: 32,
               transition: "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
-              transform: `translateX(calc(-${reviewIdx} * (100% / ${visibleCount} + ${32 / visibleCount}px)))`,
+              transform: `translateX(-${reviewIdx * (reviewCardWidth + 32)}px)`,
             }}
           >
             {formattedReviews.map((testimonial, index) => (
               <div 
                 key={index} 
                 className="testimonial-card"
-                style={{ flex: `0 0 calc((100% - ${32 * (visibleCount - 1)}px) / ${visibleCount})`, display: 'flex', flexDirection: 'column' }}
+                style={{ flex: `0 0 ${reviewCardWidth}px`, width: `${reviewCardWidth}px`, display: 'flex', flexDirection: 'column' }}
               >
                 <div style={{ 
                   position: 'absolute', top: '-12px', left: '24px', background: 'rgba(11, 215, 205, 0.96)', color: '#073B2F', fontSize: '10px', fontWeight: 'bold', padding: '4px 12px', borderRadius: '9999px', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)', zIndex: 10,
@@ -488,7 +511,7 @@ export default function ClientOutcomes() {
                   </p>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px', borderTop: '1px solid #f3f4f6', paddingTop: '16px' }}>
-                    <div style={{ width: 48, height: 48, borderRadius: "50%", backgroundColor: "#D9D9D9", display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid white", overflow: 'hidden' }}>
+                    <div className="avatar-circle" style={{ width: 48, height: 48, borderRadius: "50%", backgroundColor: "#D9D9D9", display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid white", overflow: 'hidden' }}>
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <circle cx="12" cy="8" r="4" stroke="#aaa" strokeWidth="1.5"/>
                         <path d="M4 20c0-4 3.58-7 8-7s8 3 8 7" stroke="#aaa" strokeWidth="1.5" strokeLinecap="round"/>
@@ -519,16 +542,6 @@ export default function ClientOutcomes() {
 
       {/* ── RESPONSIVE ───────────────────────────────── */}
       <style>{`
-        @keyframes heroFadeIn {
-          from { opacity: 0; transform: translateY(30px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes cardReveal {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
         @keyframes heartbeatFloat {
           0% {
             transform: translateY(0) scale(1);
@@ -561,7 +574,6 @@ export default function ClientOutcomes() {
           display: flex;
           flex-direction: column;
           height: 360px; /* Reduced fixed height for property cards */
-          animation: cardReveal 0.5s ease both;
           transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
           cursor: pointer;
         }
