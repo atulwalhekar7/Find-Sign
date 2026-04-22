@@ -10,6 +10,10 @@ import AboutUsBanner from "../assets/About Find&Sign.jpg";
 import Bec from "../assets/Bec_Bio.jpg";
 import niki from "../assets/Niki_Bio.jpg";
 
+import fbIcon from "../assets/Vector (2).png";
+import igIcon from "../assets/Instagram (2).png";
+import liIcon from "../assets/Vector(1).png";
+
 export default function About() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false); // starts paused
@@ -291,7 +295,7 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
 .team-panel {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 48px;
 
   width: 100%;                 /* 🔥 important */
@@ -304,8 +308,10 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
 
 /* GRID */
 .team-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
   gap: 32px;
 }
 
@@ -315,8 +321,9 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
   align-items: flex-start;
   align-content: flex-start;
 
-  flex: 1 0 0;
-  min-width: 240px;
+  width: 100%;
+  max-width: 480px;
+  min-width: 320px;
 
   padding: var(--sds-size-space-600, 20px);
   gap: var(--sds-size-space-600, 16px);
@@ -326,6 +333,14 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
   background: var(--sds-color-background-default-default, #fff);
 
   box-sizing: border-box; /* 🔥 important */
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  cursor: pointer;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(7, 59, 47, 0.12);
+  border-color: #69E4DC;
 }
 
 /* IMAGE */
@@ -364,7 +379,7 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
   color: var(--sds-color-text-default-secondary, #666);
 
   font-family: 'Söhne';
-  font-size: 300;
+  font-weight: 300;
   font-style: normal;
   font-weight: var(--sds-typography-body-font-weight-regular, 400);
 
@@ -445,33 +460,90 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
     }}
   />
 </div>          <div className="team-text">
-            <h3>Title</h3>
-            <p>
-              Body text for whatever you'd like to say. Add main takeaway points,
-              quotes, anecdotes, or even a very short story.
-            </p>
+            <h3>Rebecca Nakrani</h3>
+            <div style={{ fontSize: "16px", fontWeight: 400, color: "#666", marginBottom: "4px" }}>
+              Client Operations Manager
+            </div>
+            <div style={{ fontSize: "12px", lineHeight: "22px" }}>
+              E:
+              <a href="mailto:info@findandsignba.com.au" style={{ textDecoration: "none", color: "#000" }}>
+                info@findandsignba.com.au
+              </a>
+            </div>
+
+            {/* Social */}
+            <table cellPadding="0" cellSpacing="0" border={0} style={{ marginTop: "8px" }}>
+              <tbody>
+                <tr>
+                  <td width="16">
+                    <a href="https://www.facebook.com/nakranipropertybuyers/" target="_blank" rel="noreferrer">
+                      <img src={fbIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="Facebook" />
+                    </a>
+                  </td>
+                  <td width="16" style={{ paddingLeft: "16px" }}>
+                    <a href="https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" target="_blank" rel="noreferrer">
+                      <img src={igIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="Instagram" />
+                    </a>
+                  </td>
+                  <td width="16" style={{ paddingLeft: "16px" }}>
+                    <a href="https://www.linkedin.com/in/niki-nakrani-13b269237/" target="_blank" rel="noreferrer">
+                      <img src={liIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="LinkedIn" />
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
         {/* Card 2 */}
         <div className="team-card">
-<div className="team-img">
   <img
     src={niki}
-    alt="team member"
+    alt="Niki Nakrani"
+    className="team-img"
     style={{
-      width: "100%",
-      height: "100%",
       objectFit: "cover",
-      borderRadius: "inherit",
+      objectPosition: "top",
+      
+      boxSizing: "border-box",
     }}
   />
-</div>          <div className="team-text">
-            <h3>Title</h3>
-            <p>
-              Body text for whatever you'd like to say. Add main takeaway points,
-              quotes, anecdotes, or even a very short story.
-            </p>
+          <div className="team-text">
+            <h3>Niki Nakrani</h3>
+            <div style={{ fontSize: "16px", fontWeight: 400, color: "#666", marginBottom: "4px" }}>
+              CEO & Founder
+            </div>
+            <div style={{ fontSize: "12px", lineHeight: "22px" }}>
+              T: 0431 158 233 <br />
+              E:
+              <a href="mailto:niki@findandsignba.com.au" style={{ textDecoration: "none", color: "#000" }}>
+                niki@findandsignba.com.au
+              </a>
+            </div>
+
+            {/* Social */}
+            <table cellPadding="0" cellSpacing="0" border={0} style={{ marginTop: "8px" }}>
+              <tbody>
+                <tr>
+                  <td width="16">
+                    <a href="https://www.facebook.com/nakranipropertybuyers/" target="_blank" rel="noreferrer">
+                      <img src={fbIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="Facebook" />
+                    </a>
+                  </td>
+                  <td width="16" style={{ paddingLeft: "16px" }}>
+                    <a href="https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" target="_blank" rel="noreferrer">
+                      <img src={igIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="Instagram" />
+                    </a>
+                  </td>
+                  <td width="16" style={{ paddingLeft: "16px" }}>
+                    <a href="https://www.linkedin.com/in/niki-nakrani-13b269237/" target="_blank" rel="noreferrer">
+                      <img src={liIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="LinkedIn" />
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
