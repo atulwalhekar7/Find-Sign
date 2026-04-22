@@ -254,9 +254,34 @@ export default function Services() {
       {/* ── SECTION 3: Our Services ──────────────────────────────────────── */}
       <section style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}>
         <FadeUp>
-          <h2 style={{ margin: "0 0 4px", fontSize: 22, fontWeight: 700 }}>Our services</h2>
-          <p style={{ margin: "0 0 32px", fontSize: 14, color: "#383b3f" }}>Subheading</p>
-        </FadeUp>
+<h2
+  style={{
+    margin: "0 0 4px",
+    color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+    fontFamily: "GT Super Display Medium",
+    fontSize: "44px",
+    fontWeight: 500,
+    lineHeight: "120%",
+    letterSpacing: "-0.48px",
+    width: "100%"
+  }}
+>
+  Our services
+</h2>   
+<p
+  style={{
+    margin: "0 0 32px",
+    marginTop: "4px",
+    color: "#888",
+    fontFamily: "Sohne",
+    fontSize: "24px",
+    fontWeight: 300,
+    lineHeight: "120%",
+    width: "100%"
+  }}
+>
+  Subheading
+</p>        </FadeUp>
 
         {/* Top row: Buyer Advocate + Advisory — horizontal cards */}
         <div className="top-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginBottom: 56 }}>
@@ -266,7 +291,19 @@ export default function Services() {
 
         {/* Other Services */}
         <FadeUp>
-          <h3 style={{ margin: "0 0 24px", fontSize: 18, fontWeight: 600 }}>Other Services</h3>
+          <h3 
+          style={{
+             margin: "0 0 30px",
+    color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+    fontFamily: "GT Super Display Medium",
+    fontSize: "44px",
+    fontWeight: 500,
+    lineHeight: "120%",
+    letterSpacing: "-0.48px",
+    width: "100%"
+            }}
+             >
+              Other Services</h3>
         </FadeUp>
 
         {/* Row 1: 3 cards with image on top */}
