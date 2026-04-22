@@ -124,7 +124,7 @@ export default function NakraniContact() {
           font-size: 20px;
         }
 
-        .contact-input::placeholder { color: #BDBDBD; }
+        .contact-input::placeholder, .contact-textarea::placeholder { color: #BDBDBD; }
         .contact-input:focus { outline: 1.5px solid #69E4DC; }
 
         .contact-textarea {
