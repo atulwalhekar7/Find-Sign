@@ -77,8 +77,9 @@ const App = () => {
   }, [resetTimer]);
 
   const handleNav = (dir: number) => {
-    const next = index + dir;
-    if (next >= 0 && next <= maxIndex) { goTo(next); resetTimer(); }
+    const next = (index + dir + totalDots) % totalDots;
+    goTo(next);
+    resetTimer();
   };
 
   const totalDots = maxIndex + 1;
@@ -105,30 +106,6 @@ const App = () => {
 
         .rev-full { grid-column: 1 / -1; }
 
-        /* ── CARD ENTRANCE ── */
-        @keyframes cardEntrance {
-          0%   { opacity: 0; transform: translateY(40px) scale(0.96); }
-          60%  { opacity: 1; transform: translateY(-8px) scale(1.01); }
-          80%  { transform: translateY(4px) scale(0.995); }
-          100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        /* ── SIDE SHADOW BREATHING ── */
-        @keyframes shadowBreathe {
-          0%, 100% {
-            box-shadow:
-              -18px 0 32px -4px rgba(7, 59, 47, 0.55),
-               18px 0 32px -4px rgba(7, 59, 47, 0.55),
-                0px 8px 24px -4px rgba(7, 59, 47, 0.15);
-          }
-          50% {
-            box-shadow:
-              -28px 0 48px -2px rgba(7, 59, 47, 0.80),
-               28px 0 48px -2px rgba(7, 59, 47, 0.80),
-                0px 12px 32px -2px rgba(7, 59, 47, 0.25);
-          }
-        }
-
         /* ── BASE CARD ── */
         .npb-card {
           display: flex;
@@ -141,37 +118,14 @@ const App = () => {
           border-radius: 16px;
           background: #073B2F;
           box-sizing: border-box;
-          position: relative;
-          /* always-on side shadow */
-          box-shadow:
-            -18px 0 32px -4px rgba(7, 59, 47, 0.55),
-             18px 0 32px -4px rgba(7, 59, 47, 0.55),
-              0px 8px 24px -4px rgba(7, 59, 47, 0.15);
-          transition:
-            transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-            box-shadow 0.38s ease;
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+          transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s ease;
         }
-
-        /* ── ANIMATE STATE — entrance + breathing shadow ── */
-        .npb-card.animate {
-          animation:
-            cardEntrance 0.75s cubic-bezier(0.175, 0.885, 0.32, 1.275) both,
-            shadowBreathe 3.8s ease-in-out 0.75s infinite;
-        }
-
-        /* stagger per card */
-        .npb-card.animate:nth-child(1) { animation-delay: 0.05s, 0.80s; }
-        .npb-card.animate:nth-child(2) { animation-delay: 0.18s, 0.93s; }
-        .npb-card.animate:nth-child(3) { animation-delay: 0.31s, 1.06s; }
 
         /* ── HOVER — lift + intensify ── */
         .npb-card:hover {
-          transform: translateY(-14px) scale(1.02);
-          box-shadow:
-            -40px 0 64px -4px rgba(7, 59, 47, 0.72),
-             40px 0 64px -4px rgba(7, 59, 47, 0.72),
-              0px 28px 56px -4px rgba(7, 59, 47, 0.30);
-          animation-play-state: paused;
+          transform: translateY(-12px);
+          box-shadow: 0 24px 48px rgba(7, 59, 47, 0.25);
         }
 
         /* ── SLIDER TRACK ── */
@@ -370,11 +324,10 @@ const SliderSection = ({
             style={{ transform: `translateX(-${offset}px)` }}
           >
             {reviews.map((review, i) => {
-              const isVisible = i >= index && i < index + visible;
               return (
                 <div
-                  key={`${i}-${animKey}-${isVisible}`}
-                  className={`npb-card${isVisible ? " animate" : ""}`}
+                  key={i}
+                  className="npb-card"
                   style={{ width: `${cardWidth}px`, minWidth: `${cardWidth}px` }}
                 >
                   <StarRow />
@@ -445,7 +398,6 @@ const SliderSection = ({
           <button
             className="rev-arrow-btn"
             onClick={() => handleNav(-1)}
-            disabled={index <= 0}
             aria-label="Previous slide"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -455,7 +407,6 @@ const SliderSection = ({
           <button
             className="rev-arrow-btn"
             onClick={() => handleNav(1)}
-            disabled={index >= maxIndex}
             aria-label="Next slide"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
