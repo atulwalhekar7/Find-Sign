@@ -1,18 +1,72 @@
-
+import { useState, useEffect } from "react";
 import SimpleGetInTouch from "../components/SimpleGetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
 
-// import aboutContentImg from "../assets/DSC06081.jpg";
 import bannerImg from "../assets/Client Outcomes_Banner.jpg";
 import AboutClientOutcomesImg from "../assets/About Client Outcomes.png";
 
 // ── DATA ─────────────────────────────────────────────
-const blogPosts = Array(6).fill({
-  title: "Title",
-  description:
-    "Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story.",
-});
+const AQUA = "#69E4DC";
+const RACING_GREEN = "#003327";
+const WHITE = "#FFFFFF";
+
+const cards = [
+  {
+    id: 1,
+    image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80",
+    growth: "101.7%",
+    purchasePrice: "$290k",
+    currentValue: "$585k",
+    timeframe: "2 yrs 4 mths",
+    rentalYield: "Owner Occ",
+  },
+  {
+    id: 2,
+    image: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80",
+    growth: "41.3%",
+    purchasePrice: "$630k",
+    currentValue: "$890k",
+    timeframe: "2 years",
+    rentalYield: "6.2%",
+  },
+  {
+    id: 3,
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80",
+    growth: "29.9%",
+    purchasePrice: "$654k",
+    currentValue: "$850k",
+    timeframe: "2 years",
+    rentalYield: "5.4%",
+  },
+  {
+    id: 4,
+    image: "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&q=80",
+    growth: "30.0%",
+    purchasePrice: "$862k",
+    currentValue: "$1.12M",
+    timeframe: "2 years",
+    rentalYield: "Owner Occ",
+  },
+  {
+    id: 5,
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+    growth: "41.9%",
+    purchasePrice: "$620k",
+    currentValue: "$880k",
+    timeframe: "1 yr 10 mths",
+    rentalYield: "Owner Occ",
+  },
+  {
+    id: 6,
+    image: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=600&q=80",
+    growth: "34.5%",
+    purchasePrice: "$550k",
+    currentValue: "$740k",
+    timeframe: "1 yr 10 mths",
+    rentalYield: "6.1%",
+  },
+];
 
 const reviews = Array(6).fill({
   title: "Review title",
@@ -21,51 +75,104 @@ const reviews = Array(6).fill({
   date: "Date",
 });
 
+// ── SUB-COMPONENT ───────────────────────────────────
+function PropertyCard({ card, index }: { card: typeof cards[0]; index: number }) {
+  return (
+    <div
+      className="property-card"
+      style={{
+        animationDelay: `${index * 80}ms`,
+      }}
+    >
+      <div className="card-image-wrap">
+        <img src={card.image} alt="Property" className="card-image" />
+      </div>
+
+      <div
+        className="growth-circle"
+        style={{
+          animationDelay: `${index * 150}ms`,
+        }}
+      >
+        <span className="growth-label">Growth</span>
+        <span className="growth-value">{card.growth}</span>
+      </div>
+
+      <div className="card-data">
+        {[
+          { label: "Purchase price", val: card.purchasePrice },
+          { label: "Current value", val: card.currentValue },
+          { label: "Timeframe", val: card.timeframe },
+          { label: "Rental yield", val: card.rentalYield },
+        ].map(({ label, val }, i, arr) => (
+          <div
+            key={label}
+            className="card-row"
+            style={{
+              borderBottom: i < arr.length - 1 ? "1px dashed #846F58" : "none",
+            }}
+          >
+            <span className="row-label">{label}</span>
+            <span className="row-val">{val}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // ── MAIN COMPONENT ───────────────────────────────────
 export default function ClientOutcomes() {
+  const [animKey, setAnimKey] = useState(0);
+
+  useEffect(() => {
+    setAnimKey(prev => prev + 1);
+  }, []);
+
   return (
     <div style={{ backgroundColor: "#FFFFFF", fontFamily: "Söhne, sans-serif" }}>
       
       {/* ── HERO ───────────────────────────────── */}
       <section
         style={{
-          minHeight: "100vh",
+          minHeight: "80vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           backgroundImage: `url(${bannerImg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          
           position: "relative",
           padding: "0 20px",
         }}
       >
-        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.4)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.35)" }} />
 
         <div
           style={{
             position: "relative",
             zIndex: 2,
             textAlign: "center",
-            maxWidth: "750px",
-            padding: "60px 40px",
-borderRadius: 0,
+            maxWidth: "900px",
+            margin: "0 auto",
+            padding: "60px 20px",
+            borderRadius: "12px",
+            animation: "heroFadeIn 0.8s ease both",
           }}
         >
 <h1 style={{ 
             fontFamily: "'GT Super Display Medium'",
-            fontSize: "56px",
-            fontWeight: "500",
+            fontSize: "64px",
+            fontWeight: 500,
             color: "#FFF",
-            lineHeight: "64px",
-            letterSpacing: "-1.12px",
+            lineHeight: "1.1",
+            letterSpacing: "-1.28px",
             fontVariantNumeric: "lining-nums proportional-nums",
             margin: 0 
           }}>
             Client Outcomes
           </h1>
-          <p style={{ color: "#CCC", fontSize: "24px", marginTop: 20 }}>
+          <p style={{ color: "#FFFFFF", fontSize: "24px", fontWeight: 300, marginTop: "24px", opacity: 0.9 }}>
             Find & Sign
           </p>
         </div>
@@ -96,71 +203,11 @@ borderRadius: 0,
             gap: 24,
           }}
         >
-          {blogPosts.map((post, i) => (
-            <div
-              key={i}
-              style={{
-                border: "1px solid #E5E5E5",
-                borderRadius: 10,
-                padding: 20,
-                background: "#fff",
-                display: "flex",
-                flexDirection: "column",
-                gap: 12,
-                height: "100%",
-              }}
-            >
-              {/* Image */}
-              <div
-              style={{
-  display: "flex",
-  width: "160px",
-  height: "160px",
-  minWidth: "160px",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-background: "#eee",}}
-              />
-
-<h3
-  style={{
-    margin: 0,
-    color: "#000",
-
-    fontFamily: "GT Super Display",
-    fontSize: "32px",
-    fontStyle: "normal",
-    fontWeight: 500,
-    lineHeight: "40px",
-    letterSpacing: "-0.64px",
-
-    fontVariantNumeric: "lining-nums proportional-nums",
-
-    width: "229px",
-  }}
->                     {post.title}
-              </h3>
-
-<p
-  style={{
-    margin: 0,
-    width: "229px",
-    color: "#757575",
-
-    fontFamily: "Söhne",
-    fontSize: "16px",
-    fontStyle: "normal",
-    fontWeight: 400,
-    lineHeight: "24px",
-  }}
->                {post.description}
-              </p>
-            </div>
+          {cards.map((card, i) => (
+            <PropertyCard key={`${card.id}-${animKey}`} card={card} index={i} />
           ))}
         </div>
       </section>
-
 
       {/* ── WHAT OUR CLIENTS ARE SAYING ───────────────────────────────── */}
 <section style={{ maxWidth: 1200, margin: "0 auto", padding: "60px 40px" }}>
@@ -308,20 +355,121 @@ background: "#eee",}}
 
       {/* ── RESPONSIVE ───────────────────────────────── */}
       <style>{`
+        @keyframes heroFadeIn {
+          from { opacity: 0; transform: translateY(30px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes cardReveal {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes heartbeatFloat {
+          0% {
+            transform: translateY(0) scale(1);
+            box-shadow: 0 4px 12px rgba(105, 228, 220, 0.3);
+          }
+          14% {
+            transform: translateY(-3px) scale(1.06);
+            box-shadow: 0 8px 20px rgba(105, 228, 220, 0.4);
+          }
+          28% {
+            transform: translateY(0) scale(1);
+          }
+          42% {
+            transform: translateY(-3px) scale(1.06);
+            box-shadow: 0 8px 20px rgba(105, 228, 220, 0.4);
+          }
+          70% {
+            transform: translateY(-8px) scale(1);
+          }
+          100% {
+            transform: translateY(0) scale(1);
+          }
+        }
+
+        .property-card {
+          background: ${WHITE};
+          border: 1px solid rgba(0,51,39,0.1);
+          border-radius: 12px;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          animation: cardReveal 0.5s ease both;
+          transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+          cursor: pointer;
+          overflow: hidden;
+        }
+        
+        .property-card:hover {
+          transform: translateY(-12px);
+          box-shadow: 0 20px 40px rgba(0, 51, 39, 0.12);
+          border-color: ${AQUA};
+        }
+
+        .card-image-wrap {
+          width: 100%;
+          height: 200px;
+          border-radius: 12px 12px 0 0;
+          overflow: hidden;
+          position: relative;
+        }
+        
+        .card-image { 
+          width: 100%; 
+          height: 100%; 
+          object-fit: cover; 
+          transition: transform 0.6s ease;
+        }
+
+        .property-card:hover .card-image {
+          transform: scale(1.08);
+        }
+
+        .growth-circle {
+          position: absolute;
+          top: 155px;
+          right: 18px;
+          width: 90px;
+          height: 90px;
+          border-radius: 50%;
+          background: ${AQUA};
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          z-index: 10;
+          animation: heartbeatFloat 4s ease-in-out infinite;
+          transition: background 0.3s ease;
+        }
+
+        .property-card:hover .growth-circle {
+          background: ${WHITE};
+          box-shadow: 0 4px 15px rgba(105, 228, 220, 0.5);
+        }
+
+        .growth-label { font-size: 10px; text-transform: uppercase; color: ${RACING_GREEN}; }
+        .growth-value { font-size: 18px; font-weight: 700; color: ${RACING_GREEN}; }
+
+        .card-data { padding: 55px 18px 20px; flex: 1; }
+        .card-row { display: flex; justify-content: space-between; padding: 10px 0; }
+        .row-label { font-size: 13px; color: #000; }
+        .row-val { font-size: 13px; color: #757575; }
+
         @media (max-width: 900px) {
           .grid-3 {
             grid-template-columns: 1fr 1fr !important;
           }
+          h1 { font-size: 44px !important; line-height: 1.2 !important; }
         }
 
         @media (max-width: 500px) {
           .grid-3 {
             grid-template-columns: 1fr !important;
           }
-
           h1 {
             font-size: 36px !important;
-            line-height: 44px !important;
           }
         }
       `}</style>

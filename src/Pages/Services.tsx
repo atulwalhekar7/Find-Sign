@@ -244,7 +244,7 @@ export default function Services() {
       {/* ── SECTION 1: Hero ─────────────────────────────────────────────── */}
      <section
   style={{
-    minHeight: "100vh",
+    minHeight: "80vh",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -258,7 +258,7 @@ export default function Services() {
     padding: "0 20px",
   }}
 >
-        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.3)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.35)" }} />
         <div
           style={{
             position: "relative",
@@ -269,9 +269,9 @@ export default function Services() {
             justifyContent: "center",
             textAlign: "center",
             width: "90%",
-            maxWidth: "750px",
+            maxWidth: "900px",
             margin: "0 auto",
-            padding: "60px 40px",
+            padding: "60px 20px",
             borderRadius: "12px",
 /* border: "1px solid rgba(255,255,255,0.1)", */
             animation: "heroFadeIn 0.8s ease both",
@@ -279,17 +279,17 @@ export default function Services() {
         >
 <h1 style={{ 
             fontFamily: "'GT Super Display Medium'",
-            fontSize: "56px",
+            fontSize: "64px",
             fontWeight: 500,
             color: "#FFF",
-            lineHeight: "64px",
-            letterSpacing: "-1.12px",
+            lineHeight: "1.1",
+            letterSpacing: "-1.28px",
             fontVariantNumeric: "lining-nums proportional-nums",
             margin: 0 
           }}>
             Services
           </h1>
-          <p style={{ color: "#CCCCCC", fontSize: "24px", fontWeight: 300, lineHeight: "36px", maxWidth: "600px", margin: "20px auto 0" }}>
+          <p style={{ color: "#FFFFFF", fontSize: "24px", fontWeight: 300, lineHeight: "1.5", margin: "24px auto 0", opacity: 0.9 }}>
             Find & Sign
           </p>
         </div>
@@ -359,6 +359,7 @@ export default function Services() {
           .about-grid > div > div[style] {
             width: 100% !important;
           }
+          h1 { font-size: 44px !important; line-height: 1.2 !important; }
         }
 
         @media (max-width: 768px) {
@@ -367,11 +368,11 @@ export default function Services() {
           }
         }
 
-        @media (max-width: 500px) {
+        @media (max-width: 600px) {
           .three-grid {
             grid-template-columns: 1fr !important;
           }
-          h1 { font-size: 36px !important; line-height: 44px !important; }
+          h1 { font-size: 36px !important; }
         }
       `}</style>
     </div>
