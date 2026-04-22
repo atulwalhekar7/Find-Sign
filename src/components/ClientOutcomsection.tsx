@@ -1,398 +1,437 @@
 import { useState, useEffect, useRef } from "react";
 
-const AQUA         = "#69E4DC";
+const AQUA = "#69E4DC";
 const RACING_GREEN = "#003327";
-const WHITE        = "#FFFFFF";
+const WHITE = "#FFFFFF";
 
 const cards = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80",
     growth: "101.7%",
     purchasePrice: "$290k",
-    currentValue:  "$585k",
-    timeframe:     "2 yrs 4 mths",
-    rentalYield:   "Owner Occ",
+    currentValue: "$585k",
+    timeframe: "2 yrs 4 mths",
+    rentalYield: "Owner Occ",
     address: "8/15 Debenham St, Thornlie WA 6108",
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80",
     growth: "41.3%",
     purchasePrice: "$630k",
-    currentValue:  "$890k",
-    timeframe:     "2 years",
-    rentalYield:   "6.2%",
+    currentValue: "$890k",
+    timeframe: "2 years",
+    rentalYield: "6.2%",
     address: "27 Willard Circuit, Banksia Grove WA 6031",
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80",
     growth: "29.9%",
     purchasePrice: "$654k",
-    currentValue:  "$850k",
-    timeframe:     "2 years",
-    rentalYield:   "5.4%",
+    currentValue: "$850k",
+    timeframe: "2 years",
+    rentalYield: "5.4%",
     address: "105 Surf Drive, Secret Harbour WA 6173",
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&q=80",
     growth: "30.0%",
     purchasePrice: "$862k",
-    currentValue:  "$1.12M",
-    timeframe:     "2 years",
-    rentalYield:   "Owner Occ",
+    currentValue: "$1.12M",
+    timeframe: "2 years",
+    rentalYield: "Owner Occ",
     address: "7 Limerick Loop, Wattle Grove WA 6107",
   },
   {
     id: 5,
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
     growth: "41.9%",
     purchasePrice: "$620k",
-    currentValue:  "$880k",
-    timeframe:     "1 yr 10 mths",
-    rentalYield:   "Owner Occ",
+    currentValue: "$880k",
+    timeframe: "1 yr 10 mths",
+    rentalYield: "Owner Occ",
     address: "34 Sawmill Road, Whitby WA 6123",
   },
   {
     id: 6,
-    image: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=600&q=80",
     growth: "34.5%",
     purchasePrice: "$550k",
-    currentValue:  "$740k",
-    timeframe:     "1 yr 10 mths",
-    rentalYield:   "6.1%",
+    currentValue: "$740k",
+    timeframe: "1 yr 10 mths",
+    rentalYield: "6.1%",
     address: "32 Breccia Parade, Wellard WA 6170",
   },
   {
     id: 7,
-    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80",
     growth: "16.4%",
     purchasePrice: "$670k",
-    currentValue:  "$780k",
-    timeframe:     "8 months",
-    rentalYield:   "5.2%",
+    currentValue: "$780k",
+    timeframe: "8 months",
+    rentalYield: "5.2%",
     address: "42 Timperley Road, South Bunbury WA 6230",
   },
   {
     id: 8,
-    image: "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?w=600&q=80",
     growth: "15.2%",
     purchasePrice: "$820k",
-    currentValue:  "$945k",
-    timeframe:     "5 months",
-    rentalYield:   "7.6%",
+    currentValue: "$945k",
+    timeframe: "5 months",
+    rentalYield: "7.6%",
     address: "130B&C Gabriel St, Cloverdale WA 6105",
   },
   {
     id: 9,
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80",
     growth: "14.9%",
     purchasePrice: "$870k",
-    currentValue:  "$1M",
-    timeframe:     "8 months",
-    rentalYield:   "5.4%",
+    currentValue: "$1M",
+    timeframe: "8 months",
+    rentalYield: "5.4%",
     address: "40 Keane Street, Kewdale WA 6105",
   },
   {
     id: 10,
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80",
     growth: "12.1%",
     purchasePrice: "$580k",
-    currentValue:  "$650k",
-    timeframe:     "3 months",
-    rentalYield:   "6.3%",
+    currentValue: "$650k",
+    timeframe: "3 months",
+    rentalYield: "6.3%",
     address: "10/61 Hardey Road, Belmont WA 6104",
   },
   {
     id: 11,
-    image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&q=80",
     growth: "11.9%",
     purchasePrice: "$670k",
-    currentValue:  "$750k",
-    timeframe:     "6 months",
-    rentalYield:   "5.8%",
+    currentValue: "$750k",
+    timeframe: "6 months",
+    rentalYield: "5.8%",
     address: "12/158 George St, Queens Park WA 6107",
   },
   {
     id: 12,
-    image: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&q=80",
     growth: "12.6%",
     purchasePrice: "$870k",
-    currentValue:  "$980k",
-    timeframe:     "6 months",
-    rentalYield:   "5.1%",
+    currentValue: "$980k",
+    timeframe: "6 months",
+    rentalYield: "5.1%",
     address: "278 Adelaide St, High Wycombe WA 6057",
   },
   {
     id: 13,
-    image: "https://images.unsplash.com/photo-1567496898669-ee935f5f647a?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1567496898669-ee935f5f647a?w=600&q=80",
     growth: "6.3%",
     purchasePrice: "$1.28M",
-    currentValue:  "$1.36M",
-    timeframe:     "1 month",
-    rentalYield:   "6.5%",
+    currentValue: "$1.36M",
+    timeframe: "1 month",
+    rentalYield: "6.5%",
     address: "124 Lakeside Drive, Joondalup WA 6027",
   },
   {
     id: 14,
-    image: "https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=600&q=80",
     growth: "36.7%",
     purchasePrice: "$695k",
-    currentValue:  "$950k",
-    timeframe:     "1 yr 8 mths",
-    rentalYield:   "6.4%",
+    currentValue: "$950k",
+    timeframe: "1 yr 8 mths",
+    rentalYield: "6.4%",
     address: "10 Wilbury Road, Bullsbrook WA 6084",
   },
   {
     id: 15,
-    image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&q=80",
     growth: "31.1%",
     purchasePrice: "$610k",
-    currentValue:  "$800k",
-    timeframe:     "1 yr 7 mths",
-    rentalYield:   "5.5%",
+    currentValue: "$800k",
+    timeframe: "1 yr 7 mths",
+    rentalYield: "5.5%",
     address: "26 Mainsheet Way, Alkimos WA 6038",
   },
   {
     id: 16,
-    image: "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=600&q=80",
     growth: "6.2%",
     purchasePrice: "$650k",
-    currentValue:  "$690k",
-    timeframe:     "1 month",
-    rentalYield:   "5.9%",
+    currentValue: "$690k",
+    timeframe: "1 month",
+    rentalYield: "5.9%",
     address: "6 Lofter Way, Yanchep WA 6035",
   },
   {
     id: 17,
-    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80",
     growth: "25.7%",
     purchasePrice: "$875k",
-    currentValue:  "$1.1M",
-    timeframe:     "1 yr 4 mths",
-    rentalYield:   "Owner Occ",
+    currentValue: "$1.1M",
+    timeframe: "1 yr 4 mths",
+    rentalYield: "Owner Occ",
     address: "4 Newhaven Place, Canning Vale WA 6155",
   },
   {
     id: 18,
-    image: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600&q=80",
     growth: "11.1%",
     purchasePrice: "$1.26M",
-    currentValue:  "$1.4M",
-    timeframe:     "8 months",
-    rentalYield:   "Owner Occ",
+    currentValue: "$1.4M",
+    timeframe: "8 months",
+    rentalYield: "Owner Occ",
     address: "4 Congressional Cres, Connolly WA 6027",
   },
   {
     id: 19,
-    image: "https://images.unsplash.com/photo-1593696954577-ab3d39317b97?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1593696954577-ab3d39317b97?w=600&q=80",
     growth: "10.0%",
     purchasePrice: "$850k",
-    currentValue:  "$935k",
-    timeframe:     "4 months",
-    rentalYield:   "Owner Occ",
+    currentValue: "$935k",
+    timeframe: "4 months",
+    rentalYield: "Owner Occ",
     address: "99 The Promenade, Wattle Grove WA 6107",
   },
   {
     id: 20,
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80",
     growth: "9.5%",
     purchasePrice: "$630k",
-    currentValue:  "$690k",
-    timeframe:     "6 months",
-    rentalYield:   "6.0%",
+    currentValue: "$690k",
+    timeframe: "6 months",
+    rentalYield: "6.0%",
     address: "2/168 Sydenham St, Kewdale WA 6105",
   },
   {
     id: 21,
-    image: "https://images.unsplash.com/photo-1599427303058-f04cbcf4756f?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1599427303058-f04cbcf4756f?w=600&q=80",
     growth: "31.9%",
     purchasePrice: "$690k",
-    currentValue:  "$910k",
-    timeframe:     "4 months",
-    rentalYield:   "6.4%",
+    currentValue: "$910k",
+    timeframe: "4 months",
+    rentalYield: "6.4%",
     address: "64 Connemara Drive, Thornlie WA 6108",
   },
   {
     id: 22,
-    image: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=600&q=80",
     growth: "4.9%",
     purchasePrice: "$810k",
-    currentValue:  "$850k",
-    timeframe:     "1 month",
-    rentalYield:   "Owner Occ",
+    currentValue: "$850k",
+    timeframe: "1 month",
+    rentalYield: "Owner Occ",
     address: "11 Kelton Way, Thornlie WA 6108",
   },
   {
     id: 23,
-    image: "https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=600&q=80",
     growth: "13.2%",
     purchasePrice: "$680k",
-    currentValue:  "$770k",
-    timeframe:     "7 months",
-    rentalYield:   "6.11%",
+    currentValue: "$770k",
+    timeframe: "7 months",
+    rentalYield: "6.11%",
     address: "6 Fresco Way, Alkimos WA 6038",
   },
   {
     id: 24,
-    image: "https://images.unsplash.com/photo-1600047508788-786f3865b8b0?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1600047508788-786f3865b8b0?w=600&q=80",
     growth: "16.4%",
     purchasePrice: "$730k",
-    currentValue:  "$850k",
-    timeframe:     "6 months",
-    rentalYield:   "Owner Occ",
+    currentValue: "$850k",
+    timeframe: "6 months",
+    rentalYield: "Owner Occ",
     address: "15C Wardong Road, Westminster WA 6061",
   },
   {
     id: 25,
-    image: "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?w=600&q=80",
     growth: "33.3%",
     purchasePrice: "$705k",
-    currentValue:  "$940k",
-    timeframe:     "1 yr 6 mths",
-    rentalYield:   "5.5%",
+    currentValue: "$940k",
+    timeframe: "1 yr 6 mths",
+    rentalYield: "5.5%",
     address: "31 Ranella Street, Jindalee WA 6036",
   },
   {
     id: 26,
-    image: "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=600&q=80",
     growth: "21.4%",
     purchasePrice: "$865k",
-    currentValue:  "$1.05M",
-    timeframe:     "10 months",
-    rentalYield:   "8.11%",
+    currentValue: "$1.05M",
+    timeframe: "10 months",
+    rentalYield: "8.11%",
     address: "9A Humphry Street, St James WA 6102",
   },
   {
     id: 27,
-    image: "https://images.unsplash.com/photo-1592595896551-12b371d546d5?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1592595896551-12b371d546d5?w=600&q=80",
     growth: "47.1%",
     purchasePrice: "$544k",
-    currentValue:  "$800k",
-    timeframe:     "2 years",
-    rentalYield:   "Owner Occ",
+    currentValue: "$800k",
+    timeframe: "2 years",
+    rentalYield: "Owner Occ",
     address: "565 Farrall Road, Midvale WA 6056",
   },
   {
     id: 28,
-    image: "https://images.unsplash.com/photo-1598228723793-52759bba239c?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1598228723793-52759bba239c?w=600&q=80",
     growth: "28.8%",
     purchasePrice: "$854k",
-    currentValue:  "$1.1M",
-    timeframe:     "1 yr 8 mths",
-    rentalYield:   "Owner Occ",
+    currentValue: "$1.1M",
+    timeframe: "1 yr 8 mths",
+    rentalYield: "Owner Occ",
     address: "11 Pissaro Crescent, Ashby WA 6065",
   },
   {
     id: 29,
-    image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=80",
     growth: "3.1%",
     purchasePrice: "$1.27M",
-    currentValue:  "$1.31M",
-    timeframe:     "5 months",
-    rentalYield:   "Owner Occ",
+    currentValue: "$1.31M",
+    timeframe: "5 months",
+    rentalYield: "Owner Occ",
     address: "9 Templar Place, Currambine WA 6028",
   },
   {
     id: 30,
-    image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=600&q=80",
     growth: "23.6%",
     purchasePrice: "$700k",
-    currentValue:  "$865k",
-    timeframe:     "11 months",
-    rentalYield:   "Owner Occ",
+    currentValue: "$865k",
+    timeframe: "11 months",
+    rentalYield: "Owner Occ",
     address: "37 Seminole Gardens, Seville Grove WA 6112",
   },
   {
     id: 31,
-    image: "https://images.unsplash.com/photo-1571939228382-b2f2b585ce15?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1571939228382-b2f2b585ce15?w=600&q=80",
     growth: "3.2%",
     purchasePrice: "$775k",
-    currentValue:  "$800k",
-    timeframe:     "4 months",
-    rentalYield:   "Owner Occ",
+    currentValue: "$800k",
+    timeframe: "4 months",
+    rentalYield: "Owner Occ",
     address: "7 Cherrytree Chase, Maddington WA 6109",
   },
   {
     id: 32,
-    image: "https://images.unsplash.com/photo-1602941525421-8f8b81d3edbb?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1602941525421-8f8b81d3edbb?w=600&q=80",
     growth: "6.3%",
     purchasePrice: "$790k",
-    currentValue:  "$840k",
-    timeframe:     "2 months",
-    rentalYield:   "5.1%",
+    currentValue: "$840k",
+    timeframe: "2 months",
+    rentalYield: "5.1%",
     address: "86A Gosnells Road West, Maddington WA 6109",
   },
   {
     id: 33,
-    image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80",
     growth: "8.3%",
     purchasePrice: "$720k",
-    currentValue:  "$780k",
-    timeframe:     "4 months",
-    rentalYield:   "Owner Occ",
+    currentValue: "$780k",
+    timeframe: "4 months",
+    rentalYield: "Owner Occ",
     address: "51 Beckwith Loop, Haynes WA 6112",
   },
   {
     id: 34,
-    image: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80",
     growth: "15.3%",
     purchasePrice: "$685k",
-    currentValue:  "$790k",
-    timeframe:     "9 months",
-    rentalYield:   "5.3%",
+    currentValue: "$790k",
+    timeframe: "9 months",
+    rentalYield: "5.3%",
     address: "23 Ellen Brook Drive, The Vines WA 6069",
   },
   {
     id: 35,
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80",
     growth: "32.4%",
     purchasePrice: "$740k",
-    currentValue:  "$980k",
-    timeframe:     "1 yr 5 mths",
-    rentalYield:   "Owner Occ",
+    currentValue: "$980k",
+    timeframe: "1 yr 5 mths",
+    rentalYield: "Owner Occ",
     address: "3 Robson Avenue, Hilbert WA 6112",
   },
   {
     id: 36,
-    image: "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&q=80",
     growth: "13.6%",
     purchasePrice: "$810k",
-    currentValue:  "$920k",
-    timeframe:     "7 months",
-    rentalYield:   "5.1%",
+    currentValue: "$920k",
+    timeframe: "7 months",
+    rentalYield: "5.1%",
     address: "13 Bright Street, Haynes WA 6112",
   },
   {
     id: 37,
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
     growth: "33.3%",
     purchasePrice: "$630k",
-    currentValue:  "$840k",
-    timeframe:     "1 yr 4 mths",
-    rentalYield:   "6.1%",
+    currentValue: "$840k",
+    timeframe: "1 yr 4 mths",
+    rentalYield: "6.1%",
     address: "89 Cheriton Avenue, Ellenbrook WA 6069",
   },
   {
     id: 38,
-    image: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=600&q=80",
     growth: "17.8%",
     purchasePrice: "$730k",
-    currentValue:  "$860k",
-    timeframe:     "1 yr 5 mths",
-    rentalYield:   "Owner Occ",
+    currentValue: "$860k",
+    timeframe: "1 yr 5 mths",
+    rentalYield: "Owner Occ",
     address: "7 Gippsland Way, Ellenbrook WA 6069",
   },
   {
     id: 39,
-    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80",
     growth: "25.5%",
     purchasePrice: "$765k",
-    currentValue:  "$960k",
-    timeframe:     "1 yr 3 mths",
-    rentalYield:   "Owner Occ",
+    currentValue: "$960k",
+    timeframe: "1 yr 3 mths",
+    rentalYield: "Owner Occ",
     address: "225 Maida Vale Road, High Wycombe WA 6057",
   },
 ];
@@ -404,7 +443,7 @@ function PropertyCard({
   card,
   index,
 }: {
-  card: typeof cards[0];
+  card: (typeof cards)[0];
   index: number;
 }) {
   return (
@@ -415,18 +454,14 @@ function PropertyCard({
       }}
     >
       <div className="card-image-wrap">
-        <img
-          src={card.image}
-          alt="Property"
-          className="card-image"
-        />
+        <img src={card.image} alt="Property" className="card-image" />
       </div>
 
       {/* Growth circle with continuous heartbeat and float animation */}
-      <div 
-        className="growth-circle" 
-        style={{ 
-          animationDelay: `${(index * 150)}ms` 
+      <div
+        className="growth-circle"
+        style={{
+          animationDelay: `${index * 150}ms`,
         }}
       >
         <span className="growth-label">Growth</span>
@@ -436,18 +471,15 @@ function PropertyCard({
       <div className="card-data">
         {[
           { label: "Purchase price", val: card.purchasePrice },
-          { label: "Current value",  val: card.currentValue  },
-          { label: "Timeframe",      val: card.timeframe      },
-          { label: "Rental yield",   val: card.rentalYield    },
+          { label: "Current value", val: card.currentValue },
+          { label: "Timeframe", val: card.timeframe },
+          { label: "Rental yield", val: card.rentalYield },
         ].map(({ label, val }, i, arr) => (
           <div
             key={label}
             className="card-row"
             style={{
-              borderBottom:
-                i < arr.length - 1
-                  ? "1px dashed #846F58"
-                  : "none",
+              borderBottom: i < arr.length - 1 ? "1px dashed #846F58" : "none",
             }}
           >
             <span className="row-label">{label}</span>
@@ -460,16 +492,16 @@ function PropertyCard({
 }
 
 export default function ClientOutcomes() {
-  const [cur, setCur]           = useState(0);
-  const [paused, setPaused]     = useState(false);
-  const [animKey, setAnimKey]   = useState(0);
+  const [cur, setCur] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [animKey, setAnimKey] = useState(0);
   const [visibleCount, setVisibleCount] = useState(3);
-  const timerRef                = useRef<ReturnType<typeof setInterval> | null>(null);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth;
-      if (w < 640)  setVisibleCount(1);
+      if (w < 640) setVisibleCount(1);
       else if (w < 1024) setVisibleCount(2);
       else setVisibleCount(3);
     };
@@ -507,7 +539,9 @@ export default function ClientOutcomes() {
         });
       }
     }, INTERVAL);
-    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
   }, [paused, maxIdx]);
 
   useEffect(() => {
@@ -592,22 +626,42 @@ export default function ClientOutcomes() {
         }
 
         .co-h2 {
-          font-family: serif;
+          color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
+          font-variant-numeric: lining-nums proportional-nums;
+          /* FS—H2 */
+          font-family: "GT Super Display";
           font-size: 44px;
-          color: ${RACING_GREEN};
+          font-style: normal;
+          font-weight: 500;
+          line-height: 54px; /* 122.727% */
+          letter-spacing: -0.88px;
+          width: 352px;
+          height: 56px;
+          flex-shrink: 0;
           margin-bottom: 12px;
         }
 
         .co-subtitle {
-          font-family: sans-serif;
-          font-size: 24px;
-          font-weight: 300;
-          color: #000;
+         color: #000;
+        /* FS—B1 */
+        font-family: Söhne;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 300;
+         line-height: 36px; /* 150% */
+         width: 439.41px;
+        height: 36px;
         }
 
-        @media (max-width: 1199px) {
+@media (max-width: 1199px) {
           .co-section { padding: 48px 48px 64px; column-gap: 32px; }
-          .co-h2 { font-size: 36px; }
+          .co-h2 { 
+            font-size: 36px;
+            width: 288px;
+            height: 46px;
+            line-height: 44px;
+            letter-spacing: -0.72px;
+          }
           .co-subtitle { font-size: 20px; }
         }
 
@@ -616,6 +670,14 @@ export default function ClientOutcomes() {
           .co-header { grid-template-columns: 1fr; }
           .co-title-group, .co-arrows { grid-column: 1 / -1; }
           .co-arrows { justify-content: flex-start; }
+          .co-h2 { 
+            font-size: 32px;
+            width: 100%;
+            height: auto;
+            line-height: 38px;
+            letter-spacing: -0.64px;
+            flex-shrink: 1;
+          }
         }
 
         .arr-btn {
@@ -742,18 +804,46 @@ export default function ClientOutcomes() {
           <div className="co-header">
             <div className="co-title-group">
               <h2 className="co-h2">Client outcomes</h2>
-              <p className="co-subtitle">Growth achieved through early access and informed decisions.</p>
+              <p className="co-subtitle">
+                Growth achieved through early access and informed decisions.
+              </p>
             </div>
 
             <div className="co-arrows">
-              <button className="arr-btn" onClick={() => { goto(cur - 1); resetTimer(); }} disabled={cur === 0}>
+              <button
+                className="arr-btn"
+                onClick={() => {
+                  goto(cur - 1);
+                  resetTimer();
+                }}
+                disabled={cur === 0}
+              >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path d="M15 18l-6-6 6-6" stroke={RACING_GREEN} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path
+                    d="M15 18l-6-6 6-6"
+                    stroke={RACING_GREEN}
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </button>
-              <button className="arr-btn" onClick={() => { goto(cur + 1); resetTimer(); }} disabled={cur === maxIdx}>
+              <button
+                className="arr-btn"
+                onClick={() => {
+                  goto(cur + 1);
+                  resetTimer();
+                }}
+                disabled={cur === maxIdx}
+              >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path d="M9 18l6-6-6-6" stroke={RACING_GREEN} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path
+                    d="M9 18l6-6-6-6"
+                    stroke={RACING_GREEN}
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </button>
             </div>
@@ -761,7 +851,11 @@ export default function ClientOutcomes() {
         </div>
 
         <div className="co-slider-outer">
-          <div className="co-slider-viewport" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+          <div
+            className="co-slider-viewport"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
             <div
               className="co-slider-track"
               style={{
@@ -769,14 +863,25 @@ export default function ClientOutcomes() {
               }}
             >
               {cards.map((card, i) => (
-                <PropertyCard key={`${card.id}-${animKey}`} card={card} index={i} />
+                <PropertyCard
+                  key={`${card.id}-${animKey}`}
+                  card={card}
+                  index={i}
+                />
               ))}
             </div>
           </div>
 
           <div className="co-dots">
             {Array.from({ length: maxIdx + 1 }).map((_, i) => (
-              <button key={i} className={`co-dot${cur === i ? " active" : ""}`} onClick={() => { goto(i); resetTimer(); }} />
+              <button
+                key={i}
+                className={`co-dot${cur === i ? " active" : ""}`}
+                onClick={() => {
+                  goto(i);
+                  resetTimer();
+                }}
+              />
             ))}
           </div>
 
