@@ -161,6 +161,7 @@ export default function Footer() {
 
         .copyright {
           font-weight: 400;
+
         }
 
         @media (max-width: 768px) {
@@ -178,6 +179,7 @@ export default function Footer() {
           .social  { grid-column: 1 / span 2; }
 
           .footer-bottom {
+          width:'100%'
             flex-direction: column;
             align-items: flex-start;
             gap: 6px;
