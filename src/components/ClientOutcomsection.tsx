@@ -626,14 +626,12 @@ export default function ClientOutcomes() {
           align-items: flex-start;
         }
 
-        .co-title-group { grid-column: 1 / 9; }
+        .co-title-group { grid-column: 1 / -1; }
         .co-arrows {
-          grid-column: 10 / 13;
           display: flex;
           gap: 10px;
           align-items: center;
-          justify-content: flex-end;
-          padding-top: 6px;
+          justify-content: center;
         }
 
         .co-h2 {
@@ -646,8 +644,6 @@ export default function ClientOutcomes() {
           font-weight: 500;
           line-height: 54px; /* 122.727% */
           letter-spacing: -0.88px;
-          width: 352px;
-          height: 56px;
           flex-shrink: 0;
           margin-bottom: 12px;
         }
@@ -678,7 +674,6 @@ export default function ClientOutcomes() {
           .co-section { grid-template-columns: repeat(4, 1fr); padding: 40px 20px 56px; }
           .co-header { grid-template-columns: 1fr; }
           .co-title-group, .co-arrows { grid-column: 1 / -1; }
-          .co-arrows { justify-content: flex-start; }
           .co-h2 { 
             font-size: 32px;
             width: 100%;
@@ -817,45 +812,6 @@ export default function ClientOutcomes() {
                 Growth achieved through early access and informed decisions.
               </p>
             </div>
-
-            <div className="co-arrows">
-              <button
-                className="arr-btn"
-                onClick={() => {
-                  goto(cur - 1);
-                  resetTimer();
-                }}
-                disabled={cur === 0}
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M15 18l-6-6 6-6"
-                    stroke={RACING_GREEN}
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-              <button
-                className="arr-btn"
-                onClick={() => {
-                  goto(cur + 1);
-                  resetTimer();
-                }}
-                disabled={cur === maxIdx}
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M9 18l6-6-6-6"
-                    stroke={RACING_GREEN}
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
           </div>
         </div>
 
@@ -892,6 +848,45 @@ export default function ClientOutcomes() {
                 }}
               />
             ))}
+          </div>
+
+          <div className="co-arrows">
+            <button
+              className="arr-btn"
+              onClick={() => {
+                goto(cur - 1);
+                resetTimer();
+              }}
+              disabled={cur === 0}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M15 18l-6-6 6-6"
+                  stroke={RACING_GREEN}
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+            <button
+              className="arr-btn"
+              onClick={() => {
+                goto(cur + 1);
+                resetTimer();
+              }}
+              disabled={cur === maxIdx}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M9 18l6-6-6-6"
+                  stroke={RACING_GREEN}
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
           </div>
 
           <button 
