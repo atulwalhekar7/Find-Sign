@@ -339,7 +339,7 @@ function StepRow({ step, index, isLast }: { step: Step; index: number; isLast: b
 }
 
 /* ── Main export ── */
-export default function OurProcess() {
+export default function OurProcess({ visible = true }: { visible?: boolean }) {
   const [btnHovered, setBtnHovered] = useState(false);
   const [btnClicked, setBtnClicked] = useState(false);
   const { ref: headRef,   inView: headVisible   } = useInView(0.1);
@@ -384,8 +384,9 @@ export default function OurProcess() {
           ))}
         </ul>
 
-        {/* ── Footer CTA ── */}
-        <div className="op-footer" ref={footerRef as React.Ref<HTMLDivElement>}>
+        {visible && (
+          /* ── Footer CTA ── */
+          <div className="op-footer" ref={footerRef as React.Ref<HTMLDivElement>}>
           <button
             className="op-btn"
             style={{
@@ -417,6 +418,7 @@ export default function OurProcess() {
             HOW IT WORKS
           </button>
         </div>
+      )}
 
       </section>
     </div>
