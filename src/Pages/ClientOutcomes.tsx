@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Star, Quote } from "lucide-react";
-import SimpleGetInTouch from "../components/SimpleGetInTouch";
-import SimpleFooter from "../components/Footer";
+import SimpleGetInTouch from "../components/GetInTouch";
+import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
 
 import bannerImg from "../assets/Client Outcomes_Banner.jpg";
@@ -798,11 +798,39 @@ export default function ClientOutcomes() {
         }
 
         .nav-arrow {
-          width: 40px; height: 40px; border-radius: 50%; border: 1px solid #E5E5E5;
-          background: white; cursor: pointer; display: flex; align-items: center; justify-content: center;
-          transition: all 0.2s;
+          width: 44px; height: 44px;
+          border-radius: 50%;
+          border: 1.5px solid rgba(11, 215, 205, 0.96);
+          background: white;
+          cursor: pointer;
+          display: flex; align-items: center; justify-content: center;
+          color: #073B2F;
+          padding: 0;
+          transition: all 0.25s ease;
+          flex-shrink: 0;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 20;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        .nav-arrow:hover { border-color: rgba(11, 215, 205, 0.96); color: rgba(11, 215, 205, 0.96); }
+        .nav-arrow.prev { left: -60px; }
+        .nav-arrow.next { right: -60px; }
+        .nav-arrow:hover:not(:disabled) { 
+          transform: translateY(-50%) scale(1.05);
+          background: #073B2F;
+          color: white;
+          border-color: #073B2F;
+        }
+        .nav-arrow:disabled { opacity: 0.2; cursor: default; }
+
+        @media (max-width: 1199px) {
+          .nav-arrow.prev { left: -44px; }
+          .nav-arrow.next { right: -44px; }
+        }
+        @media (max-width: 767px) {
+          .nav-arrow { display: none; }
+        }
 
         @media (min-width: 768px) {
           .reviews-grid { grid-template-columns: repeat(2, 1fr); }
@@ -812,7 +840,7 @@ export default function ClientOutcomes() {
         }
       `}</style>
 
-      <section className="testimonials-section" style={{ position: 'relative', padding: '80px 0', background: '#F9F9F9', overflow: 'hidden' }}>
+      <section className="testimonials-section" style={{ position: 'relative', padding: '80px 0', background: '#F9F9F9' }}>
         <div style={{ position: 'relative', maxWidth: '1200px', margin: '0 auto', padding: '0 32px' }}>
           <div style={{  
             display: 'block', 
@@ -834,7 +862,29 @@ export default function ClientOutcomes() {
             </h2>
           </div>
 
-          <div ref={reviewContainerRef} style={{ overflow: "hidden", padding: "40px 0", margin: "-40px 0" }}>
+          <div style={{ position: 'relative' }}>
+            <button
+              className="nav-arrow prev"
+              onClick={() => setReviewIdx(prev => Math.max(0, prev - 1))}
+              disabled={reviewIdx === 0}
+              aria-label="Previous slide"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              className="nav-arrow next"
+              onClick={() => setReviewIdx(prev => Math.min(maxReviewIdx, prev + 1))}
+              disabled={reviewIdx === maxReviewIdx}
+              aria-label="Next slide"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            <div ref={reviewContainerRef} style={{ overflow: "hidden", padding: "40px 0", margin: "-40px 0" }}>
           <div 
             className="slider-track"
             style={{
@@ -872,7 +922,7 @@ export default function ClientOutcomes() {
                 
                 <Quote style={{ color: 'rgba(11, 215, 205, 0.1)', position: 'absolute', top: '20px', right: '20px' }} size={48} />
 
-                <div style={{ position: 'relative', zIndex: 10, display: 'flex', flexDirection: 'column', flex: 1 }}>
+                <div style={{ position: 'relative', zIndex: 10, display: 'flex', flexDirection: 'column', flex: 1, paddingTop: '24px' }}>
                   <div style={{ display: 'flex', gap: '4px', marginBottom: '16px' }}>
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} style={{ color: '#fbbf24', fill: '#fbbf24' }} size={14} />
@@ -913,6 +963,18 @@ export default function ClientOutcomes() {
               </div>
             ))}
           </div> {/* Closing the reviews-grid wrapper div */}
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}>
+            <a
+              href="https://www.google.com/search?sca_esv=fe4e0a021dfb896a&hl=en-GB&authuser=0&sxsrf=ANbL-n5lF1RzZHnMwJ9D4UBLKQGWqn1i7w:1776761558452&kgmid=/g/11vyhyd916&q=Find+and+Sign+Buyer+Advocate&shem=epsdc&shndl=30&source=sh/x/loc/uni/m1/1&kgs=498ca325ea654c29&utm_source=epsdc,sh/x/loc/uni/m1/1#lrd=0x81920490ca986a8f:0x8eea5b46a5653f4b,1,,,,"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="view-more-outcomes-btn"
+            >
+              View more feedback
+            </a>
+          </div>
           </div>
         </div>
       </section>
@@ -1058,17 +1120,22 @@ export default function ClientOutcomes() {
         }
 
         .view-more-outcomes-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
           height: 48px;
           padding: 0 32px;
           border-radius: 8px;
           border: 1px solid ${AQUA};
           color: ${RACING_GREEN};
-          font-family: 'Sohne', sans-serif;
+          font-family: 'CX80', sans-serif;
+          font-size: 15px;
           font-weight: 700;
-          letter-spacing: 2px;
+          letter-spacing: 4.8px;
           text-transform: uppercase;
           background: ${WHITE};
           cursor: pointer;
+          text-decoration: none;
           transition: all 0.3s ease;
         }
         .view-more-outcomes-btn:hover { background: ${AQUA}; transform: scale(1.05); }
