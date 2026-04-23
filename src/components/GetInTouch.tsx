@@ -105,7 +105,7 @@ export default function NakraniContact() {
 
         .contact_label {
           color: #000;
-          font-family: 'DM Sans', sans-serif;
+          font-family: 'DM Sans';
           font-size: 20px;
           font-weight: 400;
           line-height: 28px;

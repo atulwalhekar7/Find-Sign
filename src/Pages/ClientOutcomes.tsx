@@ -713,7 +713,7 @@ export default function ClientOutcomes() {
       {/* ── CLIENT OUTCOMES GRID ───────────────────────────────── */}
       <section style={{ maxWidth: 1200, margin: "0 auto", padding: "80px 40px" }}>
         
-        <div style={{ marginBottom: 48, textAlign: 'center' }}>
+        <div style={{ marginBottom: 48, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <h2 style={{ 
             fontFamily: "'GT Super Display Medium'",
             fontSize: "44px",
@@ -722,7 +722,10 @@ export default function ClientOutcomes() {
             lineHeight: "120%",
             letterSpacing: "-0.48px",
             fontVariantNumeric: "lining-nums proportional-nums",
-            margin: "0 0 4px"
+            margin: "0 0 4px",
+            borderBottom: "2px solid #073B2F",
+            paddingBottom: "8px",
+            width: "fit-content"
           }}>
             Client Outcomes
           </h2>
@@ -842,11 +845,12 @@ export default function ClientOutcomes() {
 
       <section className="testimonials-section" style={{ position: 'relative', padding: '80px 0', background: '#F9F9F9' }}>
         <div style={{ position: 'relative', maxWidth: '1200px', margin: '0 auto', padding: '0 32px' }}>
-          <div style={{  
-            display: 'block', 
-            padding: '0px', 
-            marginBottom: '48px',
-            textAlign: 'center'
+          <div style={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center', 
+            marginBottom: '48px', 
+            textAlign: 'center' 
           }}>
             <h2 style={{ 
               fontFamily: "'GT Super Display Medium'",
@@ -857,6 +861,9 @@ export default function ClientOutcomes() {
   letterSpacing: "-0.48px",
   fontVariantNumeric: "lining-nums proportional-nums",
   margin: "0px 0px 4px",
+  borderBottom: "2px solid #073B2F",
+  paddingBottom: "8px",
+  width: "fit-content"
             }}>
               What our clients are saying
             </h2>
@@ -1119,25 +1126,32 @@ export default function ClientOutcomes() {
           }
         }
 
-        .view-more-outcomes-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          height: 48px;
-          padding: 0 32px;
-          border-radius: 8px;
-          border: 1px solid ${AQUA};
-          color: ${RACING_GREEN};
-          font-family: 'CX80', sans-serif;
-          font-size: 15px;
-          font-weight: 700;
-          letter-spacing: 4.8px;
-          text-transform: uppercase;
-          background: ${WHITE};
-          cursor: pointer;
-          text-decoration: none;
-          transition: all 0.3s ease;
-        }
+       .view-more-outcomes-btn {
+  display: flex;
+  height: 48px;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+
+  border-radius: 8px;
+  border: 1px solid #69E4DC;
+  background: #ffffff;
+
+  color: #073B2F;
+  font-family: 'CX80';
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 4.8px;
+
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+
+  transition: background 0.2s ease, color 0.2s ease;
+}
         .view-more-outcomes-btn:hover { background: ${AQUA}; transform: scale(1.05); }
       `}</style>
     </div>

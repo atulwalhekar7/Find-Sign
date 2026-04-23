@@ -1,6 +1,8 @@
 import { useState, useRef } from "react";
 import bannervideo from "../assets/F&S_Brand Video_Banner.mov";
 import heroVideo from "../assets/Interview Draft (2).mp4";
+import { useNavigate } from "react-router-dom";
+
  
 /* ─── Video Modal ─── */
 function VideoModal({ onClose }: { onClose: () => void }) {
@@ -57,6 +59,8 @@ function VideoModal({ onClose }: { onClose: () => void }) {
     </div>
   );
 }
+
+
  
 /* ─── Page ─── */
 export default function App() {
@@ -67,7 +71,7 @@ export default function App() {
     bgVideoRef.current?.pause();
     setVideoOpen(true);
   }
-
+const navigate = useNavigate();
   function closeVideo() {
     setVideoOpen(false);
     bgVideoRef.current?.play();
@@ -78,7 +82,7 @@ export default function App() {
       <style>{`
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-          font-family: 'Söhne', 'DM Sans', sans-serif;
+          font-family: 'Söhne';
           background: #fff;
           overflow-x: hidden;
         }
@@ -192,10 +196,10 @@ export default function App() {
           cursor:         pointer;
           transition:     background 0.2s, color 0.2s;
         }
-        .find-out-btn:hover {
-          background: #073B2F;
-          color:      #ffffff;
-        }
+       .find-out-btn:hover {
+  background: #69E4DC;
+  color: #073B2F;
+}
 
         /* ── Responsive ── */
         @media (max-width: 768px) {
@@ -247,7 +251,12 @@ export default function App() {
             Find &amp; Sign is a property buyer's advocate. We represent clients across Western Australia,
             identifying the right properties and securing them before they reach the wider market.
           </p>
-          <button className="find-out-btn">Find Out More</button>
+          <button
+      className="find-out-btn"
+      onClick={() => navigate("/services")}
+    >
+      Find Out More
+    </button>
         </section>
       </div>
     </>

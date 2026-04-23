@@ -54,31 +54,47 @@ const OutlineButton = ({ children, onClick }: { children: React.ReactNode; onCli
   const [btnHover, setBtnHover] = useState(false);
   return (
   <button
-    onMouseEnter={() => setBtnHover(true)}
-    onMouseLeave={() => setBtnHover(false)}
-    onClick={onClick}
-    style={{
-      display: "flex",
-      height: "48px",
-      padding: "12px 16px",
-      justifyContent: "center",
-      alignItems: "center",
-      gap: "10px",
-      borderRadius: "8px",
-      border: "1px solid var(--Brand-Contrast-FS-AQUA, #69E4DC)",
-      background: btnHover ? "var(--Brand-Contrast-FS-AQUA, #69E4DC)" : "transparent",
-      color: "#111",
-      fontSize: "12px",
-      letterSpacing: "4px",
-      fontWeight: 600,
-      textTransform: "uppercase",
-      cursor: "pointer",
-      transition: "all 0.3s ease",
-      width: "fit-content",
-    }}
-  >
-    {children}
-  </button>
+  onMouseEnter={() => setBtnHover(true)}
+  onMouseLeave={() => setBtnHover(false)}
+  onClick={onClick}
+  style={{
+    display: "flex",
+    height: "48px",
+    padding: "12px 16px",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "10px",
+
+    borderRadius: "8px",
+    border: "1px solid #69E4DC",
+
+    fontFamily: "CX80",
+    fontSize: "15px",
+    fontStyle: "normal",
+    fontWeight: 700,
+    letterSpacing: "4.8px",
+
+    background: btnHover
+      ? "#69E4DC"
+      : "transparent",
+
+    color: btnHover ? "#073B2F" : "#073B2F",
+
+    cursor: "pointer",
+    transform: "none",
+    boxShadow: "none",
+    opacity: 1,
+
+    transition:
+      "background 0.35s, color 0.35s, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s, opacity 0.8s 0.3s",
+
+    animation: "btnPulse 2s ease 1s 2",
+
+    width: "fit-content",
+  }}
+>
+  {children}
+</button>
   );
 };
 
@@ -187,7 +203,7 @@ const OtherServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title
           color: "#000",
           textAlign: "center",
           fontVariantNumeric: "lining-nums proportional-nums",
-          fontFamily: "'GT Super Display Medium', serif",
+          fontFamily: "'GT Super Display Medium'",
           fontSize: "32px",
           fontStyle: "normal",
           fontWeight: 500,
@@ -200,7 +216,7 @@ const OtherServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title
         <p style={{
           color: "#757575",
           textAlign: "center",
-          fontFamily: "'Söhne', sans-serif",
+          fontFamily: "'Söhne'",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: 400,
@@ -317,12 +333,14 @@ export default function Services() {
                 fontWeight: 500,
                 lineHeight: "54px",
                 letterSpacing: "-0.88px",
-                margin: 0,
+                margin: "0 0 12px",
+                borderBottom: "2px solid #073B2F",
+                paddingBottom: "8px",
+                width: "fit-content"
               }}
             >
               Our services
             </h2>
-            <div style={{ width: "236px", height: "1px", background: "var(--Brand-Foundation-FS-RACING-GREEN, #073B2F)" }} />
           </div>
         </FadeUp>
 

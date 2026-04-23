@@ -62,11 +62,15 @@ export default function FindSignFAQ() {
 
         .faq-title {
           color: #073B2F;
-          font-family: 'GT Super Display Medium', serif;
+          font-family: 'GT Super Display Medium';
           font-size: 44px;
           font-weight: 500;
           line-height: 54px;
           letter-spacing: -0.88px;
+          border-bottom: 2px solid #073B2F;
+          padding-bottom: 8px;
+          width: fit-content;
+          margin: 0 auto;
         }
 
         .faq-subtitle {
@@ -76,6 +80,7 @@ export default function FindSignFAQ() {
           font-weight: 300;
           line-height: 36px;
           margin-top: 8px;
+          text-align: center;
         }
 
         .faq-item {
@@ -211,11 +216,11 @@ export default function FindSignFAQ() {
   transition: background 0.2s, color 0.2s;
 }
 
-        .view-all-btn:hover {
-          background: #073B2F;
-          color: #F5F2ED;
-          border-color: #073B2F;
-        }
+       .view-all-btn:hover {
+  background: #69E4DC;
+  color: #073B2F;
+  border-color: #69E4DC;
+}
 
         @media (max-width: 600px) {
           .faq-title { font-size: 32px; }
@@ -231,7 +236,7 @@ export default function FindSignFAQ() {
         >
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
             
-            <Box>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <h2 className="faq-title">FAQs</h2>
               <p className="faq-subtitle">
                 Answers to common questions about the process and how we work.
@@ -278,9 +283,9 @@ export default function FindSignFAQ() {
               })}
             </Box>
 
-            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+            {/* <Box sx={{ display: 'flex', justifyContent: 'center' }}>
               <button className="view-all-btn">VIEW ALL FAQS</button>
-            </Box>
+            </Box> */}
           </Box>
         </Container>
       </Box>
