@@ -44,14 +44,26 @@ export default function NakraniContact() {
           flex: 0 0 350px;
         }
 
-        .contact-left h2 {
-          color: #073B2F;
-          font-family: 'GT Super Display Medium';
-          font-size: 44px;
-          font-weight: 500;
-          line-height: 54px;
-          letter-spacing: -0.88px;
-        }
+       .contact-left h2 {
+  color: #073B2F;
+  font-family: 'GT Super Display Medium';
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 54px;
+  letter-spacing: -0.88px;
+
+  position: relative;
+  display: inline-block;
+}
+
+.contact-left h2::after {
+  content: "";
+  display: block;
+  width: 230px; /* adjust as needed */
+  height: 2px;
+  background: #073B2F;
+  margin-top: 8px;
+}
 
         .contact-left p {
           color: #000;
