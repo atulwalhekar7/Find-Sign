@@ -103,7 +103,7 @@ export default function NakraniContact() {
           }
         }
 
-        .contact-label {
+        .contact_label {
           color: #000;
           font-family: 'DM Sans', sans-serif;
           font-size: 20px;
@@ -278,22 +278,22 @@ export default function NakraniContact() {
               ) : (
                 <form onSubmit={handleSubmit}>
                   <div className="contact-field">
-                    <label className="contact-label">First name</label>
+                    <label className="contact_label">First name</label>
                     <input className="contact-input" placeholder="e.g. Sarah" required />
                   </div>
 
                   <div className="contact-field">
-                    <label className="contact-label">Last name</label>
+                    <label className="contact_label">Last name</label>
                     <input className="contact-input" placeholder="e.g. Smith" required />
                   </div>
 
                   <div className="contact-field">
-                    <label className="contact-label">Email</label>
+                    <label className="contact_label">Email</label>
                     <input className="contact-input" type="email" placeholder="e.g. sarah@gmail.com" required />
                   </div>
 
                   <div className="contact-field">
-                    <label className="contact-label">Message</label>
+                    <label className="contact_label">Message</label>
                     <textarea className="contact-textarea" placeholder="What are you looking for?" required />
                   </div>
 
