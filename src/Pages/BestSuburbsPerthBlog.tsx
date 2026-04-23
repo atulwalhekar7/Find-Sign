@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
 
@@ -143,12 +143,12 @@ export default function BestSuburbsPerthBlog() {
           }
         />
 
-        {/* ── Top Suburbs Grid ── */}
+        {/* ── Top Suburbs ── */}
         <section style={{ padding: "60px 0" }}>
           <h2 style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", color: "#073B2F", textAlign: "center", marginBottom: "50px" }}>
             Top Suburbs in Perth for Property Investment
           </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "40px" }}>
+          <div className="top-suburbs-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0" }}>
             {[
               { name: "Baldivis", why: ["Growing population", "New housing developments", "Good rental demand"] },
               { name: "Morley", why: ["Strong infrastructure growth", "Increasing demand", "Proximity to major shopping centres"] },
@@ -157,11 +157,14 @@ export default function BestSuburbsPerthBlog() {
               { name: "Canning Vale", why: ["High-quality amenities", "Good schools", "Stable property prices"] },
               { name: "Rockingham", why: ["Affordable entry", "Lifestyle demand", "Growth potential"] }
             ].map((suburb, i) => (
-              <div key={i} style={{ padding: "32px", backgroundColor: "#FBFBFB", borderRadius: "16px", border: "1px solid #F0F0F0" }}>
-                <h3 style={{ fontFamily: "GT Super Display Medium", fontSize: "28px", color: "#073B2F", marginBottom: "20px" }}>{suburb.name}</h3>
-                <ul style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+              <div key={i} style={{ padding: "32px 40px", borderBottom: "1px solid #E8E4DC", borderRight: i % 2 === 0 ? "1px solid #E8E4DC" : "none" }}>
+                <h3 style={{ fontFamily: "GT Super Display Medium", fontSize: "28px", color: "#073B2F", marginBottom: "16px" }}>{suburb.name}</h3>
+                <ul style={{ display: "flex", flexDirection: "column", gap: "8px", padding: 0, margin: 0, listStyle: "none" }}>
                   {suburb.why.map((item, j) => (
-                    <li key={j} style={{ fontSize: "18px", color: "#555" }}>&bull; {item}</li>
+                    <li key={j} style={{ fontSize: "18px", color: "#555", display: "flex", alignItems: "center", gap: "10px" }}>
+                      <span style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#69E4DC", flexShrink: 0 }} />
+                      {item}
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -170,22 +173,25 @@ export default function BestSuburbsPerthBlog() {
         </section>
 
         {/* ── Emerging ── */}
-        <section style={{ padding: "60px 0", backgroundColor: "#F9FAF9" }}>
+        <section style={{ padding: "60px 0", backgroundColor: "#F9F9F9" }}>
           <h2 style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", color: "#073B2F", textAlign: "center", marginBottom: "50px" }}>
             Emerging Suburbs to Watch in 2026
           </h2>
           <p style={{ fontSize: "20px", textAlign: "center", maxWidth: "800px", margin: "0 auto 50px", color: "#555" }}>
             Smart investors don't just look at current hotspots—they identify future growth areas.
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "40px" }}>
+          <div className="emerging-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "40px" }}>
             {[
               { name: "Alkimos", desc: "Rapid development and coastal location make it a promising suburb." },
               { name: "Byford", desc: "Affordable housing and infrastructure upgrades are driving demand." },
               { name: "Ellenbrook", desc: "Improved transport links are increasing its investment appeal." }
             ].map((suburb, i) => (
-              <div key={i} style={{ padding: "32px", backgroundColor: "#FFF", borderRadius: "16px", boxShadow: "0 10px 30px rgba(0,0,0,0.05)" }}>
-                <h3 style={{ fontFamily: "GT Super Display Medium", fontSize: "28px", color: "#073B2F", marginBottom: "15px" }}>{suburb.name}</h3>
-                <p style={{ fontSize: "18px", color: "#555", margin: 0 }}>{suburb.desc}</p>
+              <div key={i} style={{ textAlign: "center", padding: "24px 16px" }}>
+                <div style={{ width: "48px", height: "48px", borderRadius: "50%", border: "2px solid #69E4DC", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px", fontFamily: "GT Super Display Medium", fontSize: "20px", color: "#073B2F" }}>
+                  {i + 1}
+                </div>
+                <h3 style={{ fontFamily: "GT Super Display Medium", fontSize: "24px", color: "#073B2F", marginBottom: "12px" }}>{suburb.name}</h3>
+                <p style={{ fontSize: "18px", color: "#555", margin: 0, lineHeight: "1.6" }}>{suburb.desc}</p>
               </div>
             ))}
           </div>
@@ -214,7 +220,7 @@ export default function BestSuburbsPerthBlog() {
           <p style={{ fontSize: "20px", textAlign: "center", maxWidth: "800px", margin: "0 auto 50px", color: "#666" }}>
             Even in a strong market like Perth, mistakes can be costly.
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "30px", maxWidth: "1000px", margin: "0 auto" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0", maxWidth: "900px", margin: "0 auto" }}>
             {[
               "Choosing suburbs based on hype instead of data",
               "Ignoring rental demand",
@@ -222,8 +228,9 @@ export default function BestSuburbsPerthBlog() {
               "Not considering long-term growth",
               "Skipping professional advice"
             ].map((mistake, i) => (
-              <div key={i} style={{ padding: "24px", backgroundColor: "#FFF3CD", borderRadius: "12px", borderLeft: "4px solid #FFA000" }}>
-                <p style={{ margin: 0, fontSize: "18px", color: "#856404" }}>{mistake}</p>
+              <div key={i} style={{ display: "flex", alignItems: "center", gap: "20px", padding: "24px 0", borderBottom: "1px solid #E8E4DC" }}>
+                <span style={{ fontFamily: "GT Super Display Medium", fontSize: "28px", color: "#073B2F", lineHeight: 1, minWidth: "36px" }}>{String(i + 1).padStart(2, "0")}</span>
+                <p style={{ margin: 0, fontSize: "18px", color: "#444" }}>{mistake}</p>
               </div>
             ))}
           </div>
@@ -279,27 +286,70 @@ export default function BestSuburbsPerthBlog() {
         {/* ── FAQs ── */}
         <section style={{ padding: "60px 0", borderTop: "1px solid #EEE" }}>
           <h2 style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", color: "#073B2F", marginBottom: "40px", textAlign: "center" }}>FAQs</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "24px", maxWidth: "900px", margin: "0 auto" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px", maxWidth: "900px", margin: "0 auto" }}>
             {[
               { q: "Which suburb in Perth has the highest growth potential?", a: "Suburbs with strong infrastructure development and population growth tend to offer the best potential." },
               { q: "Is Perth good for property investment in 2026?", a: "Yes, Perth remains one of Australia's most affordable and high-growth markets." },
               { q: "What is the best strategy for beginners?", a: "Start with affordable suburbs that offer strong rental demand and growth potential." },
               { q: "Should I invest in coastal or inland suburbs?", a: "Both have advantages—coastal for lifestyle demand, inland for affordability and yield." },
               { q: "How can a buyer agent help with suburb selection?", a: "They provide data-driven insights and access to opportunities you may not find on your own." }
-            ].map((faq, i) => (
-              <div 
-                key={i} 
-                style={{ 
-                  padding: "32px", 
-                  backgroundColor: "#FBFBFB", 
-                  borderRadius: "16px", 
-                  border: "1px solid #F0F0F0" 
-                }}
-              >
-                <h3 style={{ fontSize: "22px", color: "#073B2F", marginBottom: "16px", fontFamily: "GT Super Display Medium", fontWeight: 500 }}>{faq.q}</h3>
-                <p style={{ color: "#555", fontSize: "18px", lineHeight: "1.6", margin: 0 }}>{faq.a}</p>
-              </div>
-            ))}
+            ].map((faq, i) => {
+              const [open, setOpen] = useState(false);
+              return (
+                <div
+                  key={i}
+                  style={{
+                    border: "1px solid #E8E4DC",
+                    borderRadius: "12px",
+                    overflow: "hidden",
+                    background: "#FFF",
+                    transition: "all 0.3s ease",
+                    ...(open ? { borderLeft: "4px solid #073B2F" } : {})
+                  }}
+                >
+                  <button
+                    onClick={() => setOpen(!open)}
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      padding: "24px 32px",
+                      background: "transparent",
+                      border: "none",
+                      textAlign: "left",
+                      cursor: "pointer",
+                      gap: "24px",
+                    }}
+                  >
+                    <span style={{ fontSize: "20px", color: open ? "#073B2F" : "#000", fontFamily: "'Sohne', sans-serif", fontWeight: open ? 500 : 400, flex: 1, transition: "color 0.3s ease" }}>
+                      {faq.q}
+                    </span>
+                    <svg
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        flexShrink: 0,
+                        color: "#073B2F",
+                        transform: open ? "rotate(180deg)" : "rotate(0deg)",
+                        transition: "transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                      }}
+                      viewBox="0 0 20 20"
+                      fill="none"
+                    >
+                      <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+                  {open && (
+                    <div style={{ padding: "0 32px 24px", borderTop: "1px solid #F5F2ED" }}>
+                      <p style={{ color: "#757575", fontSize: "18px", lineHeight: "1.6", margin: 0, paddingTop: "16px" }}>
+                        {faq.a}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </section>
 
@@ -314,8 +364,13 @@ export default function BestSuburbsPerthBlog() {
           to   { opacity: 1; transform: translateY(0); }
         }
         @media (max-width: 900px) {
-          h1 { font-size: 44px !important; lineHeight: 1.2 !important; }
+          h1 { font-size: 44px !important; line-height: 1.2 !important; }
           h2 { font-size: 36px !important; }
+        }
+        @media (max-width: 768px) {
+          .top-suburbs-grid { grid-template-columns: 1fr !important; }
+          .top-suburbs-grid > div { border-right: none !important; }
+          .emerging-grid { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 600px) {
           h1 { font-size: 36px !important; }

@@ -21,7 +21,7 @@ const blogPosts = [
   {
     title: "Your Ultimate Guide to Hiring a Buyer’s Agent in Perth",
     description: "Buying property in Perth is one of the biggest financial decisions you’ll ever make. Whether you're a first-home buyer, upgrading your family home, or building an investment portfolio, the process can feel overwhelming.",
-    image: perthBlogImg,
+    image:bannerImg,
     path: "/blog/buyers-agent-perth"
   }
 ];
