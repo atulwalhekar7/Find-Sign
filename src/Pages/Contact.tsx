@@ -23,10 +23,10 @@ export default function Contact() {
           text-align: center;
         }
 
-        .title {
-          font-family: "Playfair Display", serif;
+        .title-bar {
+          font-family: 'GT Super Display Medium';
           font-size: 48px;
-          font-weight: 700;
+          font-weight: 500;
           color: #2b2b2b;
           margin-bottom: 6px;
         }
@@ -102,7 +102,7 @@ export default function Contact() {
 
       {/* Main Content */}
       <div className="container">
-        <div className="title">Contact us</div>
+        <div className="title-bar">Contact us</div>
         <div className="subtitle">Subtitle</div>
 
         <div className="form-box">

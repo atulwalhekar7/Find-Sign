@@ -30,7 +30,7 @@ export default function Insights() {
       {/* ── SECTION 1: Hero ─────────────────────────────────────────────── */}
       <section
         style={{
-          minHeight: "100vh",
+          minHeight: "80vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -42,7 +42,7 @@ export default function Insights() {
           padding: "0 20px",
         }}
       >
-        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.3)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.35)" }} />
         <div
           style={{
             position: "relative",
@@ -53,26 +53,26 @@ export default function Insights() {
             justifyContent: "center",
             textAlign: "center",
             width: "90%",
-            maxWidth: "750px",
+            maxWidth: "900px",
             margin: "0 auto",
-            padding: "60px 40px",
+            padding: "60px 20px",
 
             animation: "heroFadeIn 0.8s ease both",
           }}
         >
 <h1 style={{ 
-            fontFamily: "'GT Super Display Medium'",
-            fontSize: "56px",
+            fontFamily: 'GT Super Display Medium',
+            fontSize: "64px",
             fontWeight: 500,
             color: "#FFF",
-            lineHeight: "64px",
-            letterSpacing: "-1.12px",
+            lineHeight: "1.1",
+            letterSpacing: "-1.28px",
             fontVariantNumeric: "lining-nums proportional-nums",
             margin: 0 
           }}>
             Insights
           </h1>
-          <p style={{ color: "#CCCCCC", fontSize: "24px", fontWeight: 300, lineHeight: "36px", maxWidth: "600px", margin: "20px auto 0" }}>
+          <p style={{ color: "#FFFFFF", fontSize: "24px", fontWeight: 300, lineHeight: "1.5", margin: "24px auto 0", opacity: 0.9 }}>
             Find & Sign
           </p>
         </div>
@@ -99,7 +99,7 @@ export default function Insights() {
   style={{
     margin: "0 0 16px 0",
 
-    fontFamily: "'Söhne', sans-serif",
+    fontFamily: 'Söhne',
     fontSize: "24px",
     fontWeight: 300,
     lineHeight: "120%",
@@ -121,9 +121,9 @@ export default function Insights() {
 
    color: "var(--sds-color-text-default-default, #111)",
 
-  fontFamily: "'GTSuper'",
+  fontFamily: "GT Super Display Medium",
   fontSize: "20px",     // fixed
-  fontWeight: 300,      // fixed
+  fontWeight: 500,      // fixed
 
     lineHeight: "120%",
     letterSpacing: "-0.48px",
@@ -139,10 +139,10 @@ export default function Insights() {
 
     color: "var(--sds-color-text-default-secondary, #666)",
 
-    fontFamily: "'Söhne', sans-serif",
+    // fontFamily: 'Söhne',
     fontSize: "16px", // ✅ fixed (replace 300)
     fontStyle: "normal",
-    fontWeight: "var(--sds-typography-body-font-weight-regular, 400)",
+    fontWeight: 400,
 
     lineHeight: "140%",
     width: "100%",
@@ -161,8 +161,8 @@ export default function Insights() {
     backgroundColor: "#073B2F", 
     color: "#FFF", 
     cursor: "pointer",
-    fontFamily: "Söhne, sans-serif",
-    fontWeight: 500
+    fontFamily: 'CX80',
+    fontWeight: 400
   }}
 >
   View more
@@ -179,7 +179,7 @@ export default function Insights() {
       {/* ── Styles ───────────────────────────────────────────────────────── */}
       <style>{`
         @keyframes heroFadeIn {
-          from { opacity: 0; transform: translateY(20px); }
+          from { opacity: 0; transform: translateY(30px); }
           to   { opacity: 1; transform: translateY(0); }
         }
 
@@ -190,10 +190,11 @@ export default function Insights() {
           .about-grid > div {
             width: 100% !important;
           }
+          h1 { font-size: 44px !important; line-height: 1.2 !important; }
         }
 
-        @media (max-width: 500px) {
-          h1 { font-size: 36px !important; line-height: 44px !important; }
+        @media (max-width: 600px) {
+          h1 { font-size: 36px !important; }
         }
       `}</style>
     </div>

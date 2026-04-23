@@ -1,25 +1,24 @@
 import { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "../assets/FS Primary Lockup_Gold.png";
 
 const COLORS = {
-  racingGreen: "#1B4332",
-  aqua: "#40C9A2",
+  racingGreen: "#073B2F",
+  aqua: "#69E4DC",
+  black: "#000000",
   white: "#FFFFFF",
 };
 
 const NAV_ITEMS = [
   { label: "About", to: "/about" },
-  { label: "Client Outcomes", to: "/client-outcomes" },
   { label: "Services", to: "/services" },
+  { label: "Client Outcomes", to: "/client-outcomes" },
   { label: "Insights", to: "/insights" },
   { label: "Contact", to: "/contact" },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation();
-  const isHome = location.pathname === "/";
 
   return (
     <>
@@ -29,26 +28,78 @@ export default function Navbar() {
           width: 100%;
           max-width: 1512px;
           margin: 0 auto;
-          height: 64px;
+          height: 96px;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 0 196px;
           box-sizing: border-box;
+padding: 24px 130px;
+align-items: flex-start;
+align-self: stretch;
+        }
+
+        .nav-logo {
+          width: 128px;
+          height: 47px;
+          object-fit: contain;
+          display: block;
+        }
+
+        .nav-actions {
+          display: flex;
+          align-items: center;
+          gap: 68px;
         }
 
         /* Desktop nav */
         .nav-links {
           display: flex;
-          gap: 36px;
+          align-items: center;
+          justify-content: space-between;
+          width: 558px;
           list-style: none;
           margin: 0;
           padding: 0;
         }
 
+        .nav-link {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 10px 8px;
+          color: ${COLORS.black};
+          font-family: "Sohne", "DM Sans", sans-serif;
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 28px;
+          letter-spacing: 0;
+          text-decoration: none;
+          white-space: nowrap;
+          transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+          color: ${COLORS.racingGreen};
+        }
+
         /* CTA */
         .nav-cta {
           display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 48px;
+          padding: 12px 24px;
+          border-radius: 8px;
+          background: ${COLORS.aqua};
+          color: ${COLORS.racingGreen};
+          font-family: "CX80", sans-serif;
+          font-size: 15px;
+          font-weight: 700;
+          line-height: 15px;
+          letter-spacing: 4.8px;
+          text-decoration: none;
+          text-transform: uppercase;
+          white-space: nowrap;
         }
 
         /* Hamburger */
@@ -71,18 +122,37 @@ export default function Navbar() {
         /* Tablet */
         @media (max-width: 1199px) {
           .nav-inner {
-            padding: 0 48px;
+            padding: 24px 48px;
+          }
+
+          .nav-actions {
+            gap: 36px;
+          }
+
+          .nav-links {
+            width: auto;
+            gap: 20px;
           }
         }
 
         /* Mobile */
         @media (max-width: 768px) {
           .nav-inner {
-            padding: 0 20px;
+            height: 80px;
+            padding: 24px 20px;
+          }
+
+          .nav-logo {
+            width: 108px;
+            height: auto;
           }
 
           .nav-links {
             display: none !important;
+          }
+
+          .nav-actions {
+            gap: 12px;
           }
 
           .nav-cta {
@@ -101,13 +171,11 @@ export default function Navbar() {
 
       <nav
         style={{
-          position: "fixed",
+          position: "sticky",
           top: 0,
-          left: 0,
-          right: 0,
           zIndex: 1000,
-          background: isHome ? "transparent" : COLORS.white,
-          boxShadow: isHome ? "none" : "0 1px 20px rgba(0,0,0,0.08)",
+          background: COLORS.white,
+          width: "100%",
           transition: "all 0.4s ease",
         }}
       >
@@ -118,63 +186,27 @@ export default function Navbar() {
             <img
               src={logo}
               alt="Logo"
-              style={{
-                height: "34px",
-                objectFit: "contain",
-                filter: isHome ? "brightness(0) invert(1)" : "none",
-              }}
+              className="nav-logo"
             />
           </NavLink>
 
-          {/* Desktop Links */}
-          <ul className="nav-links">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.label}>
-                <NavLink
-                  to={item.to}
-                  style={({ isActive }) => ({
-                    fontFamily: 'Söhne, "DM Sans", sans-serif',
-                    fontWeight: isActive ? 500 : 400,
-                    fontSize: "20px",
-                    lineHeight: "28px",
-                    color: isActive
-                      ? "#073B2F"
-                      : isHome
-                      ? "#FFFFFF"
-                      : "#000",
-                    textDecoration: "none",
-                    letterSpacing: "0.02em",
-                    transition: "color 0.2s",
-                  })}
-                >
-                  {item.label}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-
           {/* CTA + Hamburger */}
-          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+          <div className="nav-actions">
+            {/* Desktop Links */}
+            <ul className="nav-links">
+              {NAV_ITEMS.map((item) => (
+                <li key={item.label}>
+                  <NavLink to={item.to} className="nav-link">
+                    {item.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+
             {/* CTA */}
             <NavLink
               to="/contact"
               className="nav-cta"
-              style={{
-                fontFamily: "CX80",
-                fontWeight: 700,
-                fontSize: "15px",
-                letterSpacing: "4.8px",
-                textTransform: "uppercase",
-                color: "#073B2F",
-                background: "#76e4dc",
-                padding: "12px 24px",
-                borderRadius: "8px",
-                textDecoration: "none",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                height: "48px",
-              }}
             >
               Book a Call
             </NavLink>
@@ -188,7 +220,7 @@ export default function Navbar() {
                 {menuOpen ? (
                   <path
                     d="M5 5l12 12M5 17L17 5"
-                    stroke={isHome ? COLORS.white : COLORS.racingGreen}
+                    stroke={COLORS.racingGreen}
                     strokeWidth="1.4"
                     strokeLinecap="round"
                   />
@@ -199,7 +231,7 @@ export default function Navbar() {
                       y1="6"
                       x2="19"
                       y2="6"
-                      stroke={isHome ? COLORS.white : COLORS.racingGreen}
+                      stroke={COLORS.racingGreen}
                       strokeWidth="1.4"
                       strokeLinecap="round"
                     />
@@ -208,7 +240,7 @@ export default function Navbar() {
                       y1="11"
                       x2="19"
                       y2="11"
-                      stroke={isHome ? COLORS.white : COLORS.racingGreen}
+                      stroke={COLORS.racingGreen}
                       strokeWidth="1.4"
                       strokeLinecap="round"
                     />
@@ -217,7 +249,7 @@ export default function Navbar() {
                       y1="16"
                       x2="19"
                       y2="16"
-                      stroke={isHome ? COLORS.white : COLORS.racingGreen}
+                      stroke={COLORS.racingGreen}
                       strokeWidth="1.4"
                       strokeLinecap="round"
                     />

@@ -134,33 +134,36 @@ export default function Footer() {
           opacity: 0.6;
         }
 
-        /* ✅ EXACT FIGMA TEXT STYLING */
         .footer-bottom {
-          display: flex;
-          justify-content: space-between;
+          display: inline-flex;
           align-items: center;
+          gap: 34px;
           margin-top: 80px;
-          width: 100%;
         }
 
-        .footer-bottom span:first-child {
+        .footer-bottom-item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 10px 0;
           color: #F9F9F9;
           font-family: "Sohne", sans-serif;
           font-size: 16px;
-          font-weight: 300;
-          line-height: 24px;
-        }
-
-        .footer-bottom span:last-child {
-          color: #F9F9F9;
-          font-family: "Sohne", sans-serif;
-          font-size: 16px;
-          font-weight: 300;
-          line-height: 24px;
-        }
-
-        .copyright {
           font-weight: 400;
+          line-height: 24px;
+          white-space: nowrap;
+        }
+
+        .footer-bottom-spacer {
+          width: 145px;
+        }
+
+        .footer-bottom-abn {
+          width: 223px;
+        }
+
+        .footer-bottom-copy {
+          width: 354px;
         }
 
         @media (max-width: 768px) {
@@ -178,10 +181,21 @@ export default function Footer() {
           .social  { grid-column: 1 / span 2; }
 
           .footer-bottom {
+            display: flex;
+            width: 100%;
             flex-direction: column;
             align-items: flex-start;
             gap: 6px;
             margin-top: 48px;
+          }
+
+          .footer-bottom-spacer {
+            display: none;
+          }
+
+          .footer-bottom-abn,
+          .footer-bottom-copy {
+            width: auto;
           }
         }
       `}</style>
@@ -236,8 +250,9 @@ export default function Footer() {
           </div>
 
           <div className="footer-bottom">
-            <span>ABN XXXXXXXXXX</span>
-            <span className="copyright">© 2026 Find and Sign Buyer Advocate</span>
+            <div className="footer-bottom-item footer-bottom-spacer" aria-hidden="true" />
+            <span className="footer-bottom-item footer-bottom-abn">ABN XXXXXXXXXX</span>
+            <span className="footer-bottom-item footer-bottom-copy">© 2026 Find and Sign Buyer Advocate</span>
           </div>
 
         </div>

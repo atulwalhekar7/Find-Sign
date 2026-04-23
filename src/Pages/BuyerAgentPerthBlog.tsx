@@ -27,7 +27,7 @@ const SideBySideSection = ({
     flexDirection: reverse ? "row-reverse" : "row", 
     alignItems: "center", 
     gap: "80px", 
-    padding: "80px 0",
+    padding: "60px 0",
     flexWrap: "wrap"
   }}>
     <div style={{ flex: "1 1 450px" }}>
@@ -114,7 +114,7 @@ export default function BuyerAgentPerthBlog() {
       <main style={{ maxWidth: "1300px", margin: "0 auto", padding: "0 40px" }}>
         
         {/* ── INTRO ────────────────────────────────────────────────── */}
-        <section style={{ padding: "100px 0 60px", textAlign: "center", maxWidth: "850px", margin: "0 auto" }}>
+        <section style={{ padding: "60px 0 40px", textAlign: "center", maxWidth: "850px", margin: "0 auto" }}>
           <p style={{ fontSize: "24px", lineHeight: "1.5", color: "#111", fontWeight: 300, marginBottom: "30px" }}>
             Buying property in Perth is one of the biggest financial decisions you’ll ever make. Whether you're a first-home buyer, upgrading your family home, or building an investment portfolio, the process can feel overwhelming.
           </p>
@@ -188,7 +188,7 @@ export default function BuyerAgentPerthBlog() {
         />
 
         {/* ── SECTION 6: How It Works ──────────────────────────────── */}
-        <section style={{ padding: "80px 0", borderTop: "1px solid #EEE" }}>
+        <section style={{ padding: "60px 0", borderTop: "1px solid #EEE" }}>
           <h2 style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", color: "#073B2F", marginBottom: "50px", textAlign: "center" }}>How the Buying Process Works</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "40px" }}>
             {[
@@ -208,7 +208,7 @@ export default function BuyerAgentPerthBlog() {
         </section>
 
         {/* ── SECTION 7: Why Choose Us ─────────────────────────────── */}
-        <section style={{ padding: "80px 40px", backgroundColor: "#073B2F", borderRadius: "24px", color: "#FFF", marginBottom: "80px" }}>
+        <section style={{ padding: "60px 40px", backgroundColor: "#073B2F", borderRadius: "24px", color: "#FFF", marginBottom: "60px" }}>
           <div style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center" }}>
             <h2 style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", marginBottom: "24px" }}>Why Choose Find and Sign Buyer Advocate?</h2>
             <p style={{ fontSize: "20px", marginBottom: "40px", opacity: 0.9 }}>Selecting the right agent is the key difference between a successful purchase and a costly mistake.</p>
@@ -221,15 +221,17 @@ export default function BuyerAgentPerthBlog() {
         </section>
 
         {/* ── SECTION 8: Service Areas ─────────────────────────────── */}
-        <section style={{ padding: "40px 0 80px", textAlign: "center" }}>
-          <h2 style={{ fontFamily: "GT Super Display Medium", fontSize: "36px", color: "#073B2F", marginBottom: "20px" }}>Service Areas in Perth</h2>
-          <p style={{ fontSize: "18px", color: "#666", marginBottom: "30px" }}>We serve clients across the Perth CBD, Western Suburbs, Northern Suburbs, Southern Suburbs, and surrounding metropolitan areas.</p>
+        <section style={{ padding: "60px 0", textAlign: "center", borderTop: "1px solid #EEE" }}>
+          <h2 style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", color: "#073B2F", marginBottom: "32px" }}>Service Areas in Perth</h2>
+          <p style={{ fontSize: "20px", color: "#555", maxWidth: "800px", margin: "0 auto", lineHeight: "1.7" }}>
+            We serve clients across the Perth CBD, Western Suburbs, Northern Suburbs, Southern Suburbs, and surrounding metropolitan areas.
+          </p>
         </section>
 
         {/* ── SECTION 9: FAQs ──────────────────────────────────────── */}
-        <section style={{ padding: "80px 0", borderTop: "1px solid #EEE" }}>
-          <h2 style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", color: "#073B2F", marginBottom: "40px" }}>Frequently Asked Questions</h2>
-          <div style={{ display: "flex", flexDirection: "column", gap: "30px" }}>
+        <section style={{ padding: "60px 0", borderTop: "1px solid #EEE" }}>
+          <h2 style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", color: "#073B2F", marginBottom: "40px", textAlign: "center" }}>Frequently Asked Questions</h2>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "24px", maxWidth: "900px", margin: "0 auto" }}>
             {[
               { q: "What does a buyer’s agent do?", a: "A buyer’s agent represents property buyers, helping them find, evaluate, and purchase properties at the best price." },
               { q: "Is hiring a buyer’s agent in Perth a smart investment for today’s market?", a: "Yes, especially in competitive markets. They help you save time, avoid overpaying, and access off-market properties." },
@@ -237,22 +239,48 @@ export default function BuyerAgentPerthBlog() {
               { q: "Can a buyer’s agent help investors?", a: "Absolutely. They provide property investment advisory, identify growth areas, and help maximise returns." },
               { q: "Do buyer’s agents have access to off-market properties?", a: "Yes, they often have industry connections that give clients access to exclusive listings." }
             ].map((faq, i) => (
-              <div key={i} style={{ borderBottom: "1px solid #F0F0F0", paddingBottom: "20px" }}>
-                <h4 style={{ fontSize: "20px", color: "#111", marginBottom: "12px", fontFamily: "GT Super Display Medium" }}>{faq.q}</h4>
-                <p style={{ color: "#666", fontSize: "17px", lineHeight: "1.6" }}>{faq.a}</p>
+              <div 
+                key={i} 
+                style={{ 
+                  padding: "32px", 
+                  backgroundColor: "#FBFBFB", 
+                  borderRadius: "16px", 
+                  border: "1px solid #F0F0F0" 
+                }}
+              >
+                <h4 style={{ fontSize: "22px", color: "#073B2F", marginBottom: "16px", fontFamily: "GT Super Display Medium", fontWeight: 500 }}>{faq.q}</h4>
+                <p style={{ color: "#555", fontSize: "18px", lineHeight: "1.6", margin: 0 }}>{faq.a}</p>
               </div>
             ))}
           </div>
         </section>
 
         {/* ── FINAL THOUGHTS ───────────────────────────────────────── */}
-        <section style={{ padding: "60px 0 100px", textAlign: "center" }}>
-          <p style={{ fontSize: "20px", fontStyle: "italic", color: "#444" }}>
-            "A professional buyer’s agent doesn’t just simplify the process—they give you a strategic advantage."
-          </p>
-          <p style={{ fontSize: "18px", marginTop: "20px", color: "#666" }}>
-            If you're looking to buy property in Perth, Find and Sign Buyer Advocate is here to help you every step of the way.
-          </p>
+        <section style={{ padding: "20px 0", borderTop: "1px solid #EEE", backgroundColor: "#F9FAF9" }}>
+          <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center", padding: "0 40px" }}>
+            <div style={{ marginBottom: "40px" }}>
+              <span style={{ fontSize: "60px", color: "#073B2F", opacity: 0.2, fontFamily: "serif", lineHeight: 1 }}>“</span>
+              <p style={{ 
+                fontSize: "32px", 
+                fontStyle: "italic", 
+                color: "#073B2F", 
+                fontFamily: "GT Super Display Medium", 
+                lineHeight: "1.3", 
+                marginTop: "-20px" 
+              }}>
+                A professional buyer’s agent doesn’t just simplify the process—they give you a strategic advantage.
+              </p>
+            </div>
+            <p style={{ 
+              fontSize: "20px", 
+              color: "#444", 
+              lineHeight: "1.6",
+              maxWidth: "700px",
+              margin: "0 auto"
+            }}>
+              If you're looking to buy property in Perth, Find and Sign Buyer Advocate is here to help you every step of the way.
+            </p>
+          </div>
         </section>
 
       </main>

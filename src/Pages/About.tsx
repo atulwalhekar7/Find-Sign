@@ -10,6 +10,10 @@ import AboutUsBanner from "../assets/About Find&Sign.jpg";
 import Bec from "../assets/Bec_Bio.jpg";
 import niki from "../assets/Niki_Bio.jpg";
 
+import fbIcon from "../assets/Vector (2).png";
+import igIcon from "../assets/Instagram (2).png";
+import liIcon from "../assets/Vector(1).png";
+
 export default function About() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false); // starts paused
@@ -41,6 +45,7 @@ export default function About() {
           SECTION 1 — Hero Banner
       ───────────────────────────────────────── */}
       <section className="hero-banner">
+        <div className="banner-overlay" />
         <div className="hero-box">
           <h1 className="hero-title">About Us</h1>
           <p className="hero-subtitle">Find & Sign</p>
@@ -125,7 +130,7 @@ export default function About() {
 
       .hero-banner {
   position: relative;
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -137,27 +142,41 @@ export default function About() {
 
   background-attachment: scroll; /* ALWAYS scroll */
 }
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 1;
+}
 .hero-box {
           position: relative; z-index: 2;
           display: flex; flex-direction: column; align-items: center;
           justify-content: center; text-align: center;
-          width: 90%; max-width: 600px; margin: 0 auto;
-          
-          border-radius: 12px; 
+          width: 90%; 
+          max-width: 900px; 
+          margin: 0 auto;
+          padding: 60px 20px;
+          border-radius: 12px;
+          animation: heroFadeIn 0.8s ease both;
         }
 .hero-title {
           font-family: 'GT Super Display Medium';
-          font-size: 56px;
+          font-size: 64px;
           font-weight: 500;
           color: #FFF;
-          line-height: 64px;
-          letter-spacing: -1.12px;
+          line-height: 1.1;
+          letter-spacing: -1.28px;
           font-variant-numeric: lining-nums proportional-nums;
+          margin: 0;
         }
         .hero-subtitle {
-          color: #cccccc; font-family: 'Söhne', sans-serif;
-          font-size: clamp(16px, 2.5vw, 24px); font-weight: 300;
-          line-height: 1.5; margin-top: 14px;
+          color: #FFFFFF; 
+          font-family: 'Söhne', sans-serif;
+          font-size: 24px; 
+          font-weight: 300;
+          line-height: 1.5; 
+          margin-top: 24px;
+          opacity: 0.9;
         }
 
         .panel-section { width: 100%; background-color: #ffffff; }
@@ -276,7 +295,7 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
 .team-panel {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 48px;
 
   width: 100%;                 /* 🔥 important */
@@ -289,8 +308,10 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
 
 /* GRID */
 .team-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
   gap: 32px;
 }
 
@@ -300,8 +321,9 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
   align-items: flex-start;
   align-content: flex-start;
 
-  flex: 1 0 0;
-  min-width: 240px;
+  width: 100%;
+  max-width: 480px;
+  min-width: 320px;
 
   padding: var(--sds-size-space-600, 20px);
   gap: var(--sds-size-space-600, 16px);
@@ -311,6 +333,14 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
   background: var(--sds-color-background-default-default, #fff);
 
   box-sizing: border-box; /* 🔥 important */
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  cursor: pointer;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(7, 59, 47, 0.12);
+  border-color: #69E4DC;
 }
 
 /* IMAGE */
@@ -333,9 +363,9 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
 .team-text h3 {
   color: rgb(0, 0, 0);
 
-  font-family: "GT Super Display Medium";
-  font-size: 32px;
-  font-style: normal;
+  font-family:'GT Super Display Medium';
+  font-size: 20px;
+  
   font-weight: 500;
 
   line-height: 40px;
@@ -354,8 +384,8 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
 .team-text p {
   color: var(--FS-System-Grey-1, #757575);
 
-  font-family: "Sohne";
-  font-size: 20px;
+  font-family: 'Söhne';
+  font-weight: 300;
   font-style: normal;
   font-weight: 400;
 
@@ -380,17 +410,23 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
   }
 }
 
+        @keyframes heroFadeIn {
+          from { opacity: 0; transform: translateY(30px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
 
 
         @media (max-width: 900px) {
-          .hero-box { padding: 36px 32px; width: 92%; }
+          .hero-box { padding: 60px 20px; width: 92%; }
+          .hero-title { font-size: 44px !important; line-height: 1.2 !important; }
           .panel-inner { flex-direction: column; padding: 48px 32px; gap: 32px; }
           .panel-image-wrap, .panel-text { flex: 0 0 100%; width: 100%; }
           .video-inner { height: 400px; }
           .play-btn, .mute-btn { width: 42px; height: 42px; }
         }
         @media (max-width: 600px) {
-          .hero-box { padding: 28px 20px; width: 94%; border-radius: 8px; }
+          .hero-box { padding: 60px 20px; width: 94%; border-radius: 8px; }
+          .hero-title { font-size: 36px !important; }
           .panel-inner { padding: 36px 20px; gap: 24px; }
           .video-inner { height: 260px; }
           .play-btn, .mute-btn { width: 36px; height: 36px; }
@@ -435,33 +471,90 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
     }}
   />
 </div>          <div className="team-text">
-            <h3>Title</h3>
-            <p>
-              Body text for whatever you'd like to say. Add main takeaway points,
-              quotes, anecdotes, or even a very short story.
-            </p>
+            <h3>Rebecca Nakrani</h3>
+            <div style={{ fontSize: "16px", fontWeight: 400, color: "#666", marginBottom: "4px" }}>
+              Client Operations Manager
+            </div>
+            <div style={{ fontSize: "12px", lineHeight: "22px" }}>
+              E:
+              <a href="mailto:info@findandsignba.com.au" style={{ textDecoration: "none", color: "#000" }}>
+                info@findandsignba.com.au
+              </a>
+            </div>
+
+            {/* Social */}
+            <table cellPadding="0" cellSpacing="0" border={0} style={{ marginTop: "8px" }}>
+              <tbody>
+                <tr>
+                  <td width="16">
+                    <a href="https://www.facebook.com/nakranipropertybuyers/" target="_blank" rel="noreferrer">
+                      <img src={fbIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="Facebook" />
+                    </a>
+                  </td>
+                  <td width="16" style={{ paddingLeft: "16px" }}>
+                    <a href="https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" target="_blank" rel="noreferrer">
+                      <img src={igIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="Instagram" />
+                    </a>
+                  </td>
+                  <td width="16" style={{ paddingLeft: "16px" }}>
+                    <a href="https://www.linkedin.com/in/niki-nakrani-13b269237/" target="_blank" rel="noreferrer">
+                      <img src={liIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="LinkedIn" />
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
         {/* Card 2 */}
         <div className="team-card">
-<div className="team-img">
   <img
     src={niki}
-    alt="team member"
+    alt="Niki Nakrani"
+    className="team-img"
     style={{
-      width: "100%",
-      height: "100%",
       objectFit: "cover",
-      borderRadius: "inherit",
+      objectPosition: "top",
+      
+      boxSizing: "border-box",
     }}
   />
-</div>          <div className="team-text">
-            <h3>Title</h3>
-            <p>
-              Body text for whatever you'd like to say. Add main takeaway points,
-              quotes, anecdotes, or even a very short story.
-            </p>
+          <div className="team-text">
+            <h3>Niki Nakrani</h3>
+            <div style={{ fontSize: "16px", fontWeight: 400, color: "#666", marginBottom: "4px" }}>
+              CEO & Founder
+            </div>
+            <div style={{ fontSize: "12px", lineHeight: "22px" }}>
+              T: 0431 158 233 <br />
+              E:
+              <a href="mailto:niki@findandsignba.com.au" style={{ textDecoration: "none", color: "#000" }}>
+                niki@findandsignba.com.au
+              </a>
+            </div>
+
+            {/* Social */}
+            <table cellPadding="0" cellSpacing="0" border={0} style={{ marginTop: "8px" }}>
+              <tbody>
+                <tr>
+                  <td width="16">
+                    <a href="https://www.facebook.com/nakranipropertybuyers/" target="_blank" rel="noreferrer">
+                      <img src={fbIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="Facebook" />
+                    </a>
+                  </td>
+                  <td width="16" style={{ paddingLeft: "16px" }}>
+                    <a href="https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" target="_blank" rel="noreferrer">
+                      <img src={igIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="Instagram" />
+                    </a>
+                  </td>
+                  <td width="16" style={{ paddingLeft: "16px" }}>
+                    <a href="https://www.linkedin.com/in/niki-nakrani-13b269237/" target="_blank" rel="noreferrer">
+                      <img src={liIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="LinkedIn" />
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
@@ -472,7 +565,7 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
 </section>
 
 
-<OurProcess />
+<OurProcess visible={false} />
       <SimpleGetInTouch />
       <SimpleFooter />
     </>

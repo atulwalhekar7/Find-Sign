@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface Step {
   id: number;
@@ -339,7 +340,8 @@ function StepRow({ step, index, isLast }: { step: Step; index: number; isLast: b
 }
 
 /* ── Main export ── */
-export default function OurProcess() {
+export default function OurProcess({ visible = true }: { visible?: boolean }) {
+  const navigate = useNavigate();
   const [btnHovered, setBtnHovered] = useState(false);
   const [btnClicked, setBtnClicked] = useState(false);
   const { ref: headRef,   inView: headVisible   } = useInView(0.1);
@@ -384,8 +386,9 @@ export default function OurProcess() {
           ))}
         </ul>
 
-        {/* ── Footer CTA ── */}
-        <div className="op-footer" ref={footerRef as React.Ref<HTMLDivElement>}>
+        {visible && (
+          /* ── Footer CTA ── */
+          <div className="op-footer" ref={footerRef as React.Ref<HTMLDivElement>}>
           <button
             className="op-btn"
             style={{
@@ -412,11 +415,16 @@ export default function OurProcess() {
             onMouseLeave={() => setBtnHovered(false)}
             onMouseDown={() => setBtnClicked(true)}
             onMouseUp={() => setBtnClicked(false)}
-            onClick={() => { setBtnClicked(true); setTimeout(() => setBtnClicked(false), 400); }}
+            onClick={() => {
+              setBtnClicked(true);
+              setTimeout(() => setBtnClicked(false), 400);
+              navigate("/about");
+            }}
           >
             HOW IT WORKS
           </button>
         </div>
+      )}
 
       </section>
     </div>
