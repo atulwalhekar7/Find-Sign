@@ -7,6 +7,7 @@ import ClientOutcomes from "./Pages/ClientOutcomes";
 import Insights from "./Pages/Insights";
 import Contact from "./Pages/Contact";
 import BuyerAgentPerthBlog from "./Pages/BuyerAgentPerthBlog";
+import BestSuburbsPerthBlog from "./Pages/BestSuburbsPerthBlog";
 import "./index.css";
 
 /* ── Google Fonts ── */
@@ -28,6 +29,7 @@ function App() {
           <Route path="/insights"        element={<Insights />}       />
           <Route path="/contact"        element={<Contact />}        />
           <Route path="/blog/buyers-agent-perth" element={<BuyerAgentPerthBlog />} />
+          <Route path="/blog/best-suburbs-perth" element={<BestSuburbsPerthBlog />} />
         </Route>
       </Routes>
     </BrowserRouter>

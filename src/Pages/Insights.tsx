@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import SimpleGetInTouch from "../components/SimpleGetInTouch";
+import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
 import AboutSection from "../components/AboutSection";
 
@@ -12,6 +12,12 @@ import perthBlogImg from "../assets/Blogs/DSC06286.jpg";
 // --- Main Component ---
 
 const blogPosts = [
+  {
+    title: "Best Suburbs in Perth for Property Investment in 2026",
+    description: "Discover the best suburbs in Perth for property investment in 2026. Learn where to invest for high growth, rental yield, and long-term returns.",
+    image: perthBlogImg,
+    path: "/blog/best-suburbs-perth"
+  },
   {
     title: "Your Ultimate Guide to Hiring a Buyer’s Agent in Perth",
     description: "Buying property in Perth is one of the biggest financial decisions you’ll ever make. Whether you're a first-home buyer, upgrading your family home, or building an investment portfolio, the process can feel overwhelming.",
