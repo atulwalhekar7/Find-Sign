@@ -509,6 +509,8 @@ export default function ClientOutcomes() {
   const [visibleCount, setVisibleCount] = useState(3);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  const sliderCards = cards.slice(0, 10);
+
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth;
@@ -521,7 +523,7 @@ export default function ClientOutcomes() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  const maxIdx = Math.max(0, cards.length - visibleCount);
+  const maxIdx = Math.max(0, sliderCards.length - visibleCount);
 
   const goto = (idx: number) => {
     const next = Math.max(0, Math.min(idx, maxIdx));
@@ -844,7 +846,7 @@ export default function ClientOutcomes() {
                 transform: `translateX(calc(-${cur} * (100% / ${visibleCount} + clamp(16px, 2.11vw, 32px) / ${visibleCount})))`,
               }}
             >
-              {cards.map((card, i) => (
+              {sliderCards.map((card, i) => (
                 <PropertyCard
                   key={`${card.id}-${animKey}`}
                   card={card}
@@ -856,7 +858,7 @@ export default function ClientOutcomes() {
           </div>
 
           <div className="co-dots">
-            {Array.from({ length: maxIdx + 1 }).map((_, i) => (
+            {Array.from({ length: Math.min(8, maxIdx + 1) }).map((_, i) => (
               <button
                 key={i}
                 className={`co-dot${cur === i ? " active" : ""}`}
