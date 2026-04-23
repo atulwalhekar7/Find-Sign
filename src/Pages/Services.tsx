@@ -106,7 +106,7 @@ const ServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title: str
           background: "var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9)",
           transition: "transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease",
           transform: hovered ? "translateY(-12px)" : "translateY(0)",
-          boxShadow: hovered ? "0 10px 22px rgba(11, 215, 205, 0.96)" : "0 4px 12px rgba(0,0,0,0.03)",
+          boxShadow: hovered ? "0 10px 22px rgba(105, 228, 220, 0.96)" : "0 4px 12px rgba(0,0,0,0.03)",
           cursor: "default",
         }}
       >

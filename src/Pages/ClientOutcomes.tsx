@@ -603,6 +603,9 @@ export default function ClientOutcomes() {
   const [reviewIdx, setReviewIdx] = useState(0);
   const [visibleCount, setVisibleCount] = useState(3);
 
+  const [showAllCards, setShowAllCards] = useState(false);
+  const INITIAL_CARDS_COUNT = 21;
+
   const [reviewContainerWidth, setReviewContainerWidth] = useState(0);
 
   const reviewContainerRef = useRef<HTMLDivElement>(null);
@@ -695,9 +698,6 @@ export default function ClientOutcomes() {
           }}>
             Client Outcomes
           </h1>
-          <p style={{ color: "#FFFFFF", fontSize: "24px", fontWeight: 300, marginTop: "24px", opacity: 0.9 }}>
-            Find & Sign
-          </p>
         </div>
       </section>
 
@@ -705,7 +705,7 @@ export default function ClientOutcomes() {
       <AboutSection
         imageSrc={AboutClientOutcomesImg}
         heading="About Find & Sign"
-        subheading="Subheading"
+        subheading=""
         body1="Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look."
         body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."
       />
@@ -713,7 +713,7 @@ export default function ClientOutcomes() {
       {/* ── CLIENT OUTCOMES GRID ───────────────────────────────── */}
       <section style={{ maxWidth: 1200, margin: "0 auto", padding: "80px 40px" }}>
         
-        <div style={{ marginBottom: 48 }}>
+        <div style={{ marginBottom: 48, textAlign: 'center' }}>
           <h2 style={{ 
             fontFamily: "'GT Super Display Medium'",
             fontSize: "44px",
@@ -726,22 +726,24 @@ export default function ClientOutcomes() {
           }}>
             Client Outcomes
           </h2>
-          <p style={{ 
-            fontFamily: 'Sohne',
-            fontSize: "24px",
-            fontWeight: 300,
-            color: "#888",
-            margin: 0
-          }}>
-            Subheading
-          </p>
         </div>
 
         <div className="outcomes-grid">
-          {cards.map((card, i) => (
+          {(showAllCards ? cards : cards.slice(0, INITIAL_CARDS_COUNT)).map((card, i) => (
             <PropertyCard key={card.id} card={card} index={i} />
           ))}
         </div>
+
+        {cards.length > INITIAL_CARDS_COUNT && (
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}>
+            <button 
+              className="view-more-outcomes-btn" 
+              onClick={() => setShowAllCards(!showAllCards)}
+            >
+              {showAllCards ? "View Less" : "View More Outcomes"}
+            </button>
+          </div>
+        )}
       </section>
 
       {/* ── WHAT OUR CLIENTS ARE SAYING ───────────────────────────────── */}
@@ -770,16 +772,16 @@ export default function ClientOutcomes() {
         }
         .testimonial-card:hover {
           transform: translateY(-8px);
-          border-color: rgba(11, 215, 205, 0.96);
-          box-shadow: 0 20px 40px -5px rgba(11, 215, 205, 0.3);
+          border-color: #69E4DC;
+          box-shadow: 0 20px 40px -5px rgba(105, 228, 220, 0.3);
         }
 
         .avatar-circle {
           transition: all 0.3s ease;
         }
         .testimonial-card:hover .avatar-circle {
-          box-shadow: 0 4px 15px rgba(11, 215, 205, 0.6);
-          border-color: rgba(11, 215, 205, 0.96) !important;
+          box-shadow: 0 4px 15px rgba(105, 228, 220, 0.6);
+          border-color: #69E4DC !important;
           transform: scale(1.05);
         }
 
@@ -815,7 +817,8 @@ export default function ClientOutcomes() {
           <div style={{  
             display: 'block', 
             padding: '0px', 
-            marginBottom: '48px'
+            marginBottom: '48px',
+            textAlign: 'center'
           }}>
             <h2 style={{ 
               fontFamily: "'GT Super Display Medium'",
@@ -848,8 +851,21 @@ export default function ClientOutcomes() {
                 style={{ flex: `0 0 ${reviewCardWidth}px`, width: `${reviewCardWidth}px`, display: 'flex', flexDirection: 'column' }}
               >
                 <div style={{ 
-                  position: 'absolute', top: '-12px', left: '24px', background: 'rgba(11, 215, 205, 0.96)', color: '#073B2F', fontSize: '10px', fontWeight: 'bold', padding: '4px 12px', borderRadius: '9999px', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)', zIndex: 10,
-                  maxWidth: '80%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap'
+                  position: 'absolute', 
+                  top: '-16px', 
+                  left: '24px', 
+                  background: '#69E4DC', 
+                  color: '#073B2F', 
+                  fontSize: '12px', 
+                  fontWeight: 'bold', 
+                  padding: '8px 20px', 
+                  borderRadius: '9999px', 
+                  boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)', 
+                  zIndex: 10,
+                  maxWidth: '85%', 
+                  overflow: 'hidden', 
+                  textOverflow: 'ellipsis', 
+                  whiteSpace: 'nowrap'
                 }}>
                    {testimonial.title}
                 </div>
@@ -1040,6 +1056,22 @@ export default function ClientOutcomes() {
             font-size: 36px !important;
           }
         }
+
+        .view-more-outcomes-btn {
+          height: 48px;
+          padding: 0 32px;
+          border-radius: 8px;
+          border: 1px solid ${AQUA};
+          color: ${RACING_GREEN};
+          font-family: 'Sohne', sans-serif;
+          font-weight: 700;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          background: ${WHITE};
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        .view-more-outcomes-btn:hover { background: ${AQUA}; transform: scale(1.05); }
       `}</style>
     </div>
   );

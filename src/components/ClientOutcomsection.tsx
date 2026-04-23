@@ -791,11 +791,11 @@ export default function ClientOutcomes() {
           font-weight: 700;
           letter-spacing: 2px;
           text-transform: uppercase;
-          background: white;
+          background: ${WHITE};
           cursor: pointer;
           transition: all 0.3s ease;
         }
-        .view-btn:hover { background: ${RACING_GREEN}; color: white; transform: scale(1.05); }
+        .view-btn:hover { background: ${AQUA}; transform: scale(1.05); }
 
         .co-dots { display: none; gap: 8px; margin-top: 16px; }
         @media (max-width: 767px) { .co-dots { display: flex; } }
