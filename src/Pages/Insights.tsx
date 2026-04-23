@@ -139,7 +139,7 @@ export default function Insights() {
 
     color: "var(--sds-color-text-default-secondary, #666)",
 
-    fontFamily: 'Söhne',
+    // fontFamily: 'Söhne',
     fontSize: "16px", // ✅ fixed (replace 300)
     fontStyle: "normal",
     fontWeight: 400,
