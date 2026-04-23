@@ -49,37 +49,7 @@ function FadeUp({ children, delay = 0 }: FadeUpProps) {
   );
 }
 
-// ── Placeholder image ─────────────────────────────────────────────────────────
-interface PlaceholderProps {
-  width?: string | number;
-  height?: string | number;
-}
-
-const Placeholder = ({ width = "100%", height = 160 }: PlaceholderProps) => (
-  <div
-    style={{
-      width,
-      height,
-      background: "#e8e8e8",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      color: "#aaa",
-      fontSize: 12,
-      borderRadius: 6,
-      flexShrink: 0,
-      position: "relative",
-      overflow: "hidden",
-    }}
-  >
-    {/* mountain/image icon */}
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bbb" strokeWidth="1.5">
-      <rect x="3" y="3" width="18" height="18" rx="2" />
-      <circle cx="8.5" cy="8.5" r="1.5" />
-      <path d="m21 15-5-5L5 21" />
-    </svg>
-  </div>
-);
+// ── Outline Button ────────────────────────────────────────────────────────────
 
 // ── Outline Button ────────────────────────────────────────────────────────────
 const OutlineButton = ({ children }: { children: React.ReactNode }) => {

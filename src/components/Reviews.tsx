@@ -298,11 +298,11 @@ interface SliderSectionProps {
 }
 
 const SliderSection = ({
-  index, visible, goTo, resetTimer, maxIndex, handleNav, totalDots,
+  index, visible, goTo, resetTimer, handleNav, totalDots,
 }: SliderSectionProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [cardWidth, setCardWidth] = useState(352);
-  const [animKey, setAnimKey] = useState(0);
+  // const [animKey, setAnimKey] = useState(0);
 
   useEffect(() => {
     const measure = () => {
@@ -317,9 +317,6 @@ const SliderSection = ({
     return () => ro.disconnect();
   }, [visible]);
 
-  useEffect(() => {
-    setAnimKey((k) => k + 1);
-  }, [index]);
 
   const offset = index * (cardWidth + CARD_GAP);
 
