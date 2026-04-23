@@ -7,6 +7,47 @@ import AboutSection from "../components/AboutSection";
 import bannerImg from "../assets/Client Outcomes_Banner.jpg";
 import AboutClientOutcomesImg from "../assets/About Client Outcomes.png";
 
+import id1 from "../assets/Client Outcomes/id1.webp";
+import id2 from "../assets/Client Outcomes/id2.webp";
+import id3 from "../assets/Client Outcomes/id3.webp";
+import id4 from "../assets/Client Outcomes/id4.webp";
+import id5 from "../assets/Client Outcomes/id5.webp";
+import id6 from "../assets/Client Outcomes/id6.webp";
+import id7 from "../assets/Client Outcomes/id7.webp";
+import id8 from "../assets/Client Outcomes/id8.webp";
+import id9 from "../assets/Client Outcomes/id9.webp";
+import id10 from "../assets/Client Outcomes/id10.webp";
+import id11 from "../assets/Client Outcomes/id11.webp";
+import id12 from "../assets/Client Outcomes/id12.webp";
+import id13 from "../assets/Client Outcomes/id13.webp";
+import id14 from "../assets/Client Outcomes/id14.webp";
+import id15 from "../assets/Client Outcomes/id15.webp";
+import id16 from "../assets/Client Outcomes/id16.webp";
+import id17 from "../assets/Client Outcomes/id17.webp";
+import id18 from "../assets/Client Outcomes/id18.webp";
+import id19 from "../assets/Client Outcomes/id19.webp";
+import id20 from "../assets/Client Outcomes/id20.webp";
+import id21 from "../assets/Client Outcomes/id21.webp";
+import id22 from "../assets/Client Outcomes/id22.webp";
+import id23 from "../assets/Client Outcomes/id23.webp";
+import id24 from "../assets/Client Outcomes/id24.webp";
+import id25 from "../assets/Client Outcomes/id25.webp";
+import id26 from "../assets/Client Outcomes/id26.webp";
+import id27 from "../assets/Client Outcomes/id27.webp";
+import id28 from "../assets/Client Outcomes/id28.webp";
+import id29 from "../assets/Client Outcomes/id29.webp";
+import id30 from "../assets/Client Outcomes/id30.webp";
+import id31 from "../assets/Client Outcomes/id31.webp";
+import id32 from "../assets/Client Outcomes/id32.webp";
+import id33 from "../assets/Client Outcomes/id33.webp";
+import id34 from "../assets/Client Outcomes/id34.webp";
+import id35 from "../assets/Client Outcomes/id35.webp";
+import id36 from "../assets/Client Outcomes/id36.webp";
+import id37 from "../assets/Client Outcomes/id37.webp";
+import id38 from "../assets/Client Outcomes/id38.webp";
+import id39 from "../assets/Client Outcomes/id39.webp";
+
+
 // ── DATA ─────────────────────────────────────────────
 const AQUA = "#69E4DC";
 const RACING_GREEN = "#003327";
@@ -14,10 +55,17 @@ const WHITE = "#FFFFFF";
 
 const CARD_GAP = 24;
 
+const images = {
+  id1, id2, id3, id4, id5, id6, id7, id8, id9, id10,
+  id11, id12, id13, id14, id15, id16, id17, id18, id19, id20,
+  id21, id22, id23, id24, id25, id26, id27, id28, id29, id30,
+  id31, id32, id33, id34, id35, id36, id37, id38, id39
+};
+
 const cards = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80",
+    image: images.id1,
     growth: "101.7%",
     purchasePrice: "$290k",
     currentValue: "$585k",
@@ -27,7 +75,7 @@ const cards = [
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80",
+    image: images.id2,
     growth: "41.3%",
     purchasePrice: "$630k",
     currentValue: "$890k",
@@ -37,7 +85,7 @@ const cards = [
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80",
+    image: images.id3,
     growth: "29.9%",
     purchasePrice: "$654k",
     currentValue: "$850k",
@@ -47,7 +95,7 @@ const cards = [
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&q=80",
+    image: images.id4,
     growth: "30.0%",
     purchasePrice: "$862k",
     currentValue: "$1.12M",
@@ -57,7 +105,7 @@ const cards = [
   },
   {
     id: 5,
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+    image: images.id5,
     growth: "41.9%",
     purchasePrice: "$620k",
     currentValue: "$880k",
@@ -67,7 +115,7 @@ const cards = [
   },
   {
     id: 6,
-    image: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=600&q=80",
+    image: images.id6,
     growth: "34.5%",
     purchasePrice: "$550k",
     currentValue: "$740k",
@@ -77,7 +125,7 @@ const cards = [
   },
   {
     id: 7,
-    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80",
+    image: images.id7,
     growth: "16.4%",
     purchasePrice: "$670k",
     currentValue: "$780k",
@@ -87,7 +135,7 @@ const cards = [
   },
   {
     id: 8,
-    image: "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?w=600&q=80",
+    image: images.id8,
     growth: "15.2%",
     purchasePrice: "$820k",
     currentValue: "$945k",
@@ -97,7 +145,7 @@ const cards = [
   },
   {
     id: 9,
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80",
+    image: images.id9,
     growth: "14.9%",
     purchasePrice: "$870k",
     currentValue: "$1M",
@@ -107,7 +155,7 @@ const cards = [
   },
   {
     id: 10,
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80",
+    image: images.id10,
     growth: "12.1%",
     purchasePrice: "$580k",
     currentValue: "$650k",
@@ -117,7 +165,7 @@ const cards = [
   },
   {
     id: 11,
-    image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&q=80",
+    image: images.id11,
     growth: "11.9%",
     purchasePrice: "$670k",
     currentValue: "$750k",
@@ -127,7 +175,7 @@ const cards = [
   },
   {
     id: 12,
-    image: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&q=80",
+    image: images.id12,
     growth: "12.6%",
     purchasePrice: "$870k",
     currentValue: "$980k",
@@ -137,7 +185,7 @@ const cards = [
   },
   {
     id: 13,
-    image: "https://images.unsplash.com/photo-1567496898669-ee935f5f647a?w=600&q=80",
+    image: images.id13,
     growth: "6.3%",
     purchasePrice: "$1.28M",
     currentValue: "$1.36M",
@@ -147,7 +195,7 @@ const cards = [
   },
   {
     id: 14,
-    image: "https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=600&q=80",
+    image: images.id14,
     growth: "36.7%",
     purchasePrice: "$695k",
     currentValue: "$950k",
@@ -157,7 +205,7 @@ const cards = [
   },
   {
     id: 15,
-    image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&q=80",
+    image: images.id15,
     growth: "31.1%",
     purchasePrice: "$610k",
     currentValue: "$800k",
@@ -167,7 +215,7 @@ const cards = [
   },
   {
     id: 16,
-    image: "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=600&q=80",
+    image: images.id16,
     growth: "6.2%",
     purchasePrice: "$650k",
     currentValue: "$690k",
@@ -177,7 +225,7 @@ const cards = [
   },
   {
     id: 17,
-    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80",
+    image: images.id17,
     growth: "25.7%",
     purchasePrice: "$875k",
     currentValue: "$1.1M",
@@ -187,7 +235,7 @@ const cards = [
   },
   {
     id: 18,
-    image: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600&q=80",
+    image: images.id18,
     growth: "11.1%",
     purchasePrice: "$1.26M",
     currentValue: "$1.4M",
@@ -197,7 +245,7 @@ const cards = [
   },
   {
     id: 19,
-    image: "https://images.unsplash.com/photo-1593696954577-ab3d39317b97?w=600&q=80",
+    image: images.id19,
     growth: "10.0%",
     purchasePrice: "$850k",
     currentValue: "$935k",
@@ -207,7 +255,7 @@ const cards = [
   },
   {
     id: 20,
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80",
+    image: images.id20,
     growth: "9.5%",
     purchasePrice: "$630k",
     currentValue: "$690k",
@@ -217,7 +265,7 @@ const cards = [
   },
   {
     id: 21,
-    image: "https://images.unsplash.com/photo-1599427303058-f04cbcf4756f?w=600&q=80",
+    image: images.id21,
     growth: "31.9%",
     purchasePrice: "$690k",
     currentValue: "$910k",
@@ -227,7 +275,7 @@ const cards = [
   },
   {
     id: 22,
-    image: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=600&q=80",
+    image: images.id22,
     growth: "4.9%",
     purchasePrice: "$810k",
     currentValue: "$850k",
@@ -237,7 +285,7 @@ const cards = [
   },
   {
     id: 23,
-    image: "https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=600&q=80",
+    image: images.id23,
     growth: "13.2%",
     purchasePrice: "$680k",
     currentValue: "$770k",
@@ -247,7 +295,7 @@ const cards = [
   },
   {
     id: 24,
-    image: "https://images.unsplash.com/photo-1600047508788-786f3865b8b0?w=600&q=80",
+    image: images.id24,
     growth: "16.4%",
     purchasePrice: "$730k",
     currentValue: "$850k",
@@ -257,7 +305,7 @@ const cards = [
   },
   {
     id: 25,
-    image: "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?w=600&q=80",
+    image: images.id25,
     growth: "33.3%",
     purchasePrice: "$705k",
     currentValue: "$940k",
@@ -267,7 +315,7 @@ const cards = [
   },
   {
     id: 26,
-    image: "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=600&q=80",
+    image: images.id26,
     growth: "21.4%",
     purchasePrice: "$865k",
     currentValue: "$1.05M",
@@ -277,7 +325,7 @@ const cards = [
   },
   {
     id: 27,
-    image: "https://images.unsplash.com/photo-1592595896551-12b371d546d5?w=600&q=80",
+    image: images.id27,
     growth: "47.1%",
     purchasePrice: "$544k",
     currentValue: "$800k",
@@ -287,7 +335,7 @@ const cards = [
   },
   {
     id: 28,
-    image: "https://images.unsplash.com/photo-1598228723793-52759bba239c?w=600&q=80",
+    image: images.id28,
     growth: "28.8%",
     purchasePrice: "$854k",
     currentValue: "$1.1M",
@@ -297,7 +345,7 @@ const cards = [
   },
   {
     id: 29,
-    image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=80",
+    image: images.id29,
     growth: "3.1%",
     purchasePrice: "$1.27M",
     currentValue: "$1.31M",
@@ -307,7 +355,7 @@ const cards = [
   },
   {
     id: 30,
-    image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=600&q=80",
+    image: images.id30,
     growth: "23.6%",
     purchasePrice: "$700k",
     currentValue: "$865k",
@@ -317,7 +365,7 @@ const cards = [
   },
   {
     id: 31,
-    image: "https://images.unsplash.com/photo-1571939228382-b2f2b585ce15?w=600&q=80",
+    image: images.id31,
     growth: "3.2%",
     purchasePrice: "$775k",
     currentValue: "$800k",
@@ -327,7 +375,7 @@ const cards = [
   },
   {
     id: 32,
-    image: "https://images.unsplash.com/photo-1602941525421-8f8b81d3edbb?w=600&q=80",
+    image: images.id32,
     growth: "6.3%",
     purchasePrice: "$790k",
     currentValue: "$840k",
@@ -337,7 +385,7 @@ const cards = [
   },
   {
     id: 33,
-    image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80",
+    image: images.id33,
     growth: "8.3%",
     purchasePrice: "$720k",
     currentValue: "$780k",
@@ -347,7 +395,7 @@ const cards = [
   },
   {
     id: 34,
-    image: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80",
+    image: images.id34,
     growth: "15.3%",
     purchasePrice: "$685k",
     currentValue: "$790k",
@@ -357,7 +405,7 @@ const cards = [
   },
   {
     id: 35,
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80",
+    image: images.id35,
     growth: "32.4%",
     purchasePrice: "$740k",
     currentValue: "$980k",
@@ -367,7 +415,7 @@ const cards = [
   },
   {
     id: 36,
-    image: "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&q=80",
+    image: images.id36,
     growth: "13.6%",
     purchasePrice: "$810k",
     currentValue: "$920k",
@@ -377,7 +425,7 @@ const cards = [
   },
   {
     id: 37,
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+    image: images.id37,
     growth: "33.3%",
     purchasePrice: "$630k",
     currentValue: "$840k",
@@ -387,7 +435,7 @@ const cards = [
   },
   {
     id: 38,
-    image: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=600&q=80",
+    image: images.id38,
     growth: "17.8%",
     purchasePrice: "$730k",
     currentValue: "$860k",
@@ -397,7 +445,7 @@ const cards = [
   },
   {
     id: 39,
-    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80",
+    image: images.id39,
     growth: "25.5%",
     purchasePrice: "$765k",
     currentValue: "$960k",
