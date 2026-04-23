@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import SimpleGetInTouch from "../components/SimpleGetInTouch";
-import SimpleFooter from "../components/Footer";
+import SimpleGetInTouch from "../components/GetInTouch";
+import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
 import bannerImg from "../assets/DSC06227.jpg";
 import AboutServiceImg from "../assets/About Our Services.jpg";
@@ -38,7 +38,6 @@ function FadeUp({ children, delay = 0 }: FadeUpProps) {
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(28px)",
         transition: `opacity 0.55s ease ${delay}s, transform 0.55s ease ${delay}s`,
-        height: "100%",
         display: "flex",
         flexDirection: "column",
       }}
@@ -51,12 +50,13 @@ function FadeUp({ children, delay = 0 }: FadeUpProps) {
 // ── Outline Button ────────────────────────────────────────────────────────────
 
 // ── Outline Button ────────────────────────────────────────────────────────────
-const OutlineButton = ({ children }: { children: React.ReactNode }) => {
+const OutlineButton = ({ children, onClick }: { children: React.ReactNode; onClick?: () => void }) => {
   const [btnHover, setBtnHover] = useState(false);
   return (
   <button
     onMouseEnter={() => setBtnHover(true)}
     onMouseLeave={() => setBtnHover(false)}
+    onClick={onClick}
     style={{
       display: "flex",
       height: "48px",
@@ -86,6 +86,14 @@ const OutlineButton = ({ children }: { children: React.ReactNode }) => {
 
 const ServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title: string; body: string; hasButton?: boolean; delay?: number }) => {
   const [hovered, setHovered] = useState(false);
+
+  const scrollToContact = () => {
+    const element = document.getElementById("contact-form");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <FadeUp delay={delay}>
       <div
@@ -93,17 +101,16 @@ const ServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title: str
         onMouseLeave={() => setHovered(false)}
         style={{
           display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
-          width: "277px",
-          minWidth: "277px",
-          maxWidth: "277px",
-          height: "100%",
           padding: "24px",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
           gap: "20px",
+          flex: "1 0 0",
           boxSizing: "border-box",
           borderRadius: "16px",
-          background: "var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9)",
+          border: "2px solid var(--Brand-Contrast-FS-AQUA, #69E4DC)",
+          background: "var(--Brand-Utility-FS-WHITE, #FFF)",
           transition: "transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease",
           transform: hovered ? "translateY(-12px)" : "translateY(0)",
           boxShadow: hovered ? "0 10px 22px rgba(105, 228, 220, 0.96)" : "0 4px 12px rgba(0,0,0,0.03)",
@@ -111,8 +118,8 @@ const ServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title: str
         }}
       >
         <h3 style={{
-          width: "229px",
           color: "#000",
+          textAlign: "center",
           fontVariantNumeric: "lining-nums proportional-nums",
           fontFamily: "'GT Super Display Medium', serif",
           fontSize: "32px",
@@ -125,8 +132,8 @@ const ServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title: str
           {title}
         </h3>
         <p style={{
-          width: "229px",
           color: "#757575",
+          textAlign: "center",
           fontFamily: "'Söhne', sans-serif",
           fontSize: "16px",
           fontStyle: "normal",
@@ -137,7 +144,73 @@ const ServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title: str
         }}>
           {body}
         </p>
-        {hasButton && <OutlineButton>View more</OutlineButton>}
+        {hasButton && <OutlineButton onClick={scrollToContact}>Apply</OutlineButton>}
+      </div>
+    </FadeUp>
+  );
+};
+
+const OtherServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title: string; body: string; hasButton?: boolean; delay?: number }) => {
+  const [hovered, setHovered] = useState(false);
+
+  const scrollToContact = () => {
+    const element = document.getElementById("contact-form");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <FadeUp delay={delay}>
+      <div
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={{
+          display: "flex",
+          padding: "24px",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "20px",
+          flex: "1 0 0",
+          boxSizing: "border-box",
+          borderRadius: "16px",
+          border: "2px solid var(--Brand-Contrast-FS-AQUA, #69E4DC)",
+          background: "var(--Brand-Utility-FS-WHITE, #FFF)",
+          transition: "transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease",
+          transform: hovered ? "translateY(-12px)" : "translateY(0)",
+          boxShadow: hovered ? "0 10px 22px rgba(105, 228, 220, 0.96)" : "0 4px 12px rgba(0,0,0,0.03)",
+          cursor: "default",
+        }}
+      >
+        <h3 style={{
+          color: "#000",
+          textAlign: "center",
+          fontVariantNumeric: "lining-nums proportional-nums",
+          fontFamily: "'GT Super Display Medium', serif",
+          fontSize: "32px",
+          fontStyle: "normal",
+          fontWeight: 500,
+          lineHeight: "40px",
+          letterSpacing: "-0.64px",
+          margin: 0,
+        }}>
+          {title}
+        </h3>
+        <p style={{
+          color: "#757575",
+          textAlign: "center",
+          fontFamily: "'Söhne', sans-serif",
+          fontSize: "16px",
+          fontStyle: "normal",
+          fontWeight: 400,
+          lineHeight: "24px",
+          margin: 0,
+          flex: 1,
+        }}>
+          {body}
+        </p>
+        {hasButton && <OutlineButton onClick={scrollToContact}>Apply</OutlineButton>}
       </div>
     </FadeUp>
   );
@@ -208,80 +281,85 @@ export default function Services() {
           }}>
             Services
           </h1>
-          <p style={{ color: "#FFFFFF", fontSize: "24px", fontWeight: 300, lineHeight: "1.5", margin: "24px auto 0", opacity: 0.9 }}>
-            Find & Sign
-          </p>
         </div>
       </section>
 
       <AboutSection
   imageSrc={AboutServiceImg}
   heading="About Our Services"
-  subheading="Subheading"
+  subheading="" // This was already removed in the previous turn
   body1="Body text for your whole article or post. We’ll put in some lorem ipsum to show how a filled-out page might look."
   body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."
 />
 
       {/* ── SECTION 3: Our Services ──────────────────────────────────────── */}
-      <section style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}>
+      <section 
+        style={{ 
+          display: "flex",
+          padding: "64px 196px 32px",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "56px",
+          alignSelf: "stretch",
+          background: "var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9)"
+        }}
+      >
         <FadeUp>
-<h2
-  style={{
-    margin: "0 0 4px",
-    color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
-    fontFamily: "GT Super Display Medium",
-    fontSize: "44px",
-    fontWeight: 500,
-    lineHeight: "120%",
-    letterSpacing: "-0.48px",
-    width: "100%"
-  }}
->
-  Our services
-</h2>   
-<p
-  style={{
-    margin: "0 0 32px",
-    marginTop: "4px",
-    color: "#888",
-    fontFamily: "Sohne",
-    fontSize: "24px",
-    fontWeight: 300,
-    lineHeight: "120%",
-    width: "100%"
-  }}
->
-  Subheading
-</p>        </FadeUp>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px" }}>
+            <h2
+              style={{
+                color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+                textAlign: "center",
+                fontVariantNumeric: "lining-nums proportional-nums",
+                fontFamily: "GT Super Display",
+                fontSize: "44px",
+                fontStyle: "normal",
+                fontWeight: 500,
+                lineHeight: "54px",
+                letterSpacing: "-0.88px",
+                margin: 0,
+              }}
+            >
+              Our services
+            </h2>
+            <div style={{ width: "236px", height: "1px", background: "var(--Brand-Foundation-FS-RACING-GREEN, #073B2F)" }} />
+          </div>
+        </FadeUp>
 
         {/* Top row: Buyer Advocate + Advisory — horizontal cards */}
-        <div className="top-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginBottom: 56 }}>
+        <div className="top-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
           <ServiceCard title="Buyer Advocate" body={body} hasButton delay={0} />
           <ServiceCard title="Advisory" body={body} hasButton delay={0.12} />
         </div>
 
         {/* Other Services */}
         <FadeUp>
-          <h3 
-          style={{
-             margin: "0 0 30px",
-    color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
-    fontFamily: "GT Super Display Medium",
-    fontSize: "44px",
-    fontWeight: 500,
-    lineHeight: "120%",
-    letterSpacing: "-0.48px",
-    width: "100%"
-            }}
-             >
-              Other Services</h3>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px", width: "100%" }}>
+            <h3 
+              style={{
+                margin: 0,
+                color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+                textAlign: "center",
+                fontVariantNumeric: "lining-nums proportional-nums",
+                fontFamily: "GT Super Display",
+                fontSize: "44px",
+                fontStyle: "normal",
+                fontWeight: 500,
+                lineHeight: "54px",
+                letterSpacing: "-0.88px",
+              }}
+            >
+              Affiliated Services
+            </h3>
+            <div style={{ width: "338px", height: "1px", background: "var(--Brand-Foundation-FS-RACING-GREEN, #073B2F)" }} />
+          </div>
         </FadeUp>
 
         {/* Row 1: 3 cards with image on top */}
-        <div className="three-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, marginBottom: 40 }}>
-          <ServiceCard title="Property Management" body={body} hasButton delay={0} />
-          <ServiceCard title="Settlement Agent" body={body} hasButton delay={0.1} />
-          <ServiceCard title="Building Inspection" body={body} hasButton delay={0.2} />
+        <div className="three-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
+          <OtherServiceCard title="Property Management" body={body} hasButton delay={0} />
+          <OtherServiceCard title="Settlement Agent" body={body} hasButton delay={0.1} />
+          <OtherServiceCard title="Building Inspection" body={body} hasButton delay={0.2} />
         </div>
 
         {/* Accounting — horizontal small card */}
@@ -289,9 +367,9 @@ export default function Services() {
 
         {/* Row 2: 3 cards */}
         <div className="three-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
-          <ServiceCard title="Sales Agent" body={body} hasButton delay={0} />
-          <ServiceCard title="Quantity Surveyor" body={body} hasButton delay={0.1} />
-          <ServiceCard title="TBC" body={body} hasButton delay={0.2} />
+          <OtherServiceCard title="Sales Agent" body={body} hasButton delay={0} />
+          <OtherServiceCard title="Quantity Surveyor" body={body} hasButton delay={0.1} />
+          <OtherServiceCard title="Accounting" body={body} hasButton delay={0.2} />
         </div>
       </section>
 
