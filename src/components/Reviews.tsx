@@ -171,7 +171,11 @@ const App = () => {
           transition: all 0.2s ease;
           text-transform: uppercase;
         }
-
+.rev-cta-btn:hover {
+  background: #073B2F; /* or your color */
+  color: white;
+  transform: scale(1.05);
+}
         /* ── DOTS ── */
         .rev-dot {
           width: 8px; height: 8px;
