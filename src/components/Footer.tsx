@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import Logo from "../assets/FS Primary Lockup_Gold.png";
 
 import fbIcon from "../assets/Vector (2).png";
@@ -8,6 +9,14 @@ const socialIcons = [
   { label: "Facebook", img: fbIcon, url: "https://www.facebook.com/nakranipropertybuyers/" },
   { label: "Instagram", img: igIcon, url: "https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" },
   { label: "LinkedIn", img: liIcon, url: "https://www.linkedin.com/in/niki-nakrani-13b269237/" },
+];
+
+const exploreLinks = [
+  { label: "About", to: "/about" },
+  { label: "Services", to: "/services" },
+  { label: "Client Outcomes", to: "/client-outcomes" },
+  { label: "Insights", to: "/insights" },
+  { label: "Contact", to: "/contact" },
 ];
 
 export default function Footer() {
@@ -62,12 +71,26 @@ export default function Footer() {
         .explore { grid-column: 6 / span 2; }
         .legal   { grid-column: 8 / span 2; }
 
+        .footer-section {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .footer-list {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+          width: 100%;
+        }
+
         .social {
-          grid-column: 11 / span 2;
+          grid-column: 10 / span 2;
           display: flex;
           justify-content: flex-end;
           align-items: center;
-          gap: 18px;
+          gap: 32px;
         }
 
         .title {
@@ -101,18 +124,29 @@ export default function Footer() {
 
         .contact-row {
           display: flex;
-          gap: 6px;
-          margin-bottom: 10px;
-          font-size: 12px;
+          align-items: flex-start;
+        
+          width: 100%;
+          font-size: 13px;
+          line-height: 2.25;
           font-family: "Sohne", sans-serif;
           font-weight: 300;
         }
 
-        .contact-row a {
+        .contact-label {
+          min-width: 14px;
+          color: rgba(249, 249, 249, 0.72);
+        }
+
+        .contact-value {
           color: white;
-          text-decoration: underline;
-          text-underline-offset: 3px;
-          cursor: pointer;
+          word-break: break-word;
+          transition: transform 0.2s ease;
+          textDecoration: 'underline'
+        }
+
+        .contact-value:hover {
+          transform: translateY(-2px) scale(1.03);
         }
 
         .social-link {
@@ -127,7 +161,7 @@ export default function Footer() {
 
         .social-link img {
           width: 24px;
-          height: 24px;
+height: 23.854px;
         }
 
         .social-link:hover {
@@ -208,35 +242,47 @@ export default function Footer() {
               <img src={Logo} alt="Find and Sign logo" style={{ width: "120px" }} />
             </div>
 
-            <div className="contact">
+            <div className="contact footer-section">
               <div className="title">CONTACT</div>
-              <div className="contact-row">
-                <span>T</span>
-                <a href="tel:0431158233">0431 158 233</a>
-              </div>
-              <div className="contact-row">
-                <span>E</span>
-                <a href="mailto:niki@findandsignba.com.au">niki@findandsignba.com.au</a>
-              </div>
-              <div className="contact-row">
-                <span>W</span>
-                <a href="https://findandsignba.com.au">findandsignba.com.au</a>
+              <div className="footer-list">
+                <div className="contact-row">
+                  <span className="contact-label">T</span>
+                  <a className="contact-value" href="tel:0431158233">0431 158 233</a>
+                </div>
+                <div className="contact-row">
+                  <span className="contact-label">E</span>
+                  <a className="contact-value" href="mailto:niki@findandsignba.com.au">niki@findandsignba.com.au</a>
+                </div>
+                <div className="contact-row">
+                  {/* <span className="contact-label">W</span> */}
+                  <a className="contact-value" href="/contact" target="_blank" rel="noopener noreferrer">
+                    Book a call
+                  </a>
+                </div>
               </div>
             </div>
 
-            <div className="explore">
+            <div className="explore footer-section">
               <div className="title">EXPLORE</div>
-              <a className="link">About</a>
-              <a className="link">Journeys</a>
-              <a className="link">Services</a>
-              <a className="link">Insights</a>
-              <a className="link">Contact</a>
+              <div className="footer-list">
+                {exploreLinks.map(({ label, to }) => (
+                  <NavLink key={label} to={to} className="link">
+                    {label}
+                  </NavLink>
+                ))}
+              </div>
             </div>
 
-            <div className="legal">
+            <div className="legal footer-section">
               <div className="title">LEGAL</div>
-              <a className="link">Privacy Policy</a>
-              <a className="link">Terms & Conditions</a>
+              <div className="footer-list">
+                <a className="link" href="#">
+                  Privacy Policy
+                </a>
+                <a className="link" href="#">
+                  Terms & Conditions
+                </a>
+              </div>
             </div>
 
             <div className="social">
