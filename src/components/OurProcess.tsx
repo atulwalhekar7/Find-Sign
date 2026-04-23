@@ -341,7 +341,6 @@ function StepRow({ step, index, isLast }: { step: Step; index: number; isLast: b
 
 /* ── Main export ── */
 export default function OurProcess({ visible = true }: { visible?: boolean }) {
-export default function OurProcess() {
   const navigate = useNavigate();
   const [btnHovered, setBtnHovered] = useState(false);
   const [btnClicked, setBtnClicked] = useState(false);
