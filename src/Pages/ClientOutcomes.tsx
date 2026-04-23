@@ -353,11 +353,28 @@ export default function ClientOutcomes() {
       {/* ── CLIENT OUTCOMES GRID ───────────────────────────────── */}
       <section style={{ maxWidth: 1200, margin: "0 auto", padding: "80px 40px" }}>
         
-        <div style={{ marginBottom: 32, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-          <div>
-            <h2 style={{ margin: "0 0 4px", fontSize: 22, fontWeight: 700 }}>Client Outcomes</h2>
-          <p style={{ margin: "0 0 32px", fontSize: 14, color: "#383b3f" }}>Subheading</p>
-          </div>
+        <div style={{ marginBottom: 48 }}>
+          <h2 style={{ 
+            fontFamily: "'GT Super Display Medium'",
+            fontSize: "44px",
+            fontWeight: 500,
+            color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+            lineHeight: "120%",
+            letterSpacing: "-0.48px",
+            fontVariantNumeric: "lining-nums proportional-nums",
+            margin: "0 0 4px"
+          }}>
+            Client Outcomes
+          </h2>
+          <p style={{ 
+            fontFamily: 'Sohne',
+            fontSize: "24px",
+            fontWeight: 300,
+            color: "#888",
+            margin: 0
+          }}>
+            Subheading
+          </p>
         </div>
 
         <div ref={propertyContainerRef} style={{ overflow: "hidden", padding: "40px 0", margin: "-40px 0" }}>
@@ -448,24 +465,19 @@ export default function ClientOutcomes() {
       <section className="testimonials-section" style={{ position: 'relative', padding: '80px 0', background: '#F9F9F9', overflow: 'hidden' }}>
         <div style={{ position: 'relative', maxWidth: '1200px', margin: '0 auto', padding: '0 32px' }}>
           <div style={{  
-            display: 'flex', 
-            flexDirection: 'row', 
-            alignItems: 'center', 
+            display: 'block', 
             padding: '0px', 
-            width: '303px', 
-            height: '29px',
             marginBottom: '48px'
           }}>
             <h2 style={{ 
-              fontFamily: "'Inter', sans-serif",
-              fontStyle: 'normal',
-              fontWeight: 600,
-              fontSize: '24px', 
-              lineHeight: '120%', 
-              letterSpacing: '-0.02em', 
-              textDecorationLine: 'underline',
-              color: '#1E1E1E',
-              margin: 0
+              fontFamily: "'GT Super Display Medium'",
+  fontSize: "44px",
+  fontWeight: 500,
+  color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+  lineHeight: "120%",
+  letterSpacing: "-0.48px",
+  fontVariantNumeric: "lining-nums proportional-nums",
+  margin: "0px 0px 4px",
             }}>
               What our clients are saying
             </h2>
@@ -504,7 +516,14 @@ export default function ClientOutcomes() {
                   </div>
 
                   <p style={{ 
-                    color: '#374151', marginBottom: '20px', lineHeight: 1.5, fontStyle: 'italic', fontSize: '0.9rem', fontFamily: 'Sohne', flex: 1,
+                    color: '#374151', 
+                    marginBottom: '20px', 
+                    lineHeight: 1.5, 
+                    fontStyle: 'italic', 
+                    fontSize: '0.9rem', 
+                    fontFamily: 'Sohne', 
+                    fontWeight: 300,
+                    flex: 1,
                     display: '-webkit-box', WebkitLineClamp: 5, WebkitBoxOrient: 'vertical', overflow: 'hidden'
                   }}>
                     "{testimonial.body}"
