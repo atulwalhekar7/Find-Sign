@@ -143,16 +143,28 @@ const App = () => {
         .rev-arrow-btn {
           width: 44px; height: 44px;
           border-radius: 50%;
-          border: 1.5px solid #073B2F;
-          background: transparent;
+          border: 1.5px solid rgba(11, 215, 205, 0.96);
+          background: white;
           cursor: pointer;
           display: flex; align-items: center; justify-content: center;
           color: #073B2F;
           padding: 0;
           transition: all 0.25s ease;
           flex-shrink: 0;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 20;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        .rev-arrow-btn:hover:not(:disabled) { transform: scale(1.05); }
+        .rev-arrow-btn.prev { left: -60px; }
+        .rev-arrow-btn.next { right: -60px; }
+        .rev-arrow-btn:hover:not(:disabled) { 
+          transform: translateY(-50%) scale(1.05);
+          background: #073B2F;
+          color: white;
+          border-color: #073B2F;
+        }
         .rev-arrow-btn:disabled { opacity: 0.2; cursor: default; }
 
         /* ── CTA ── */
@@ -226,12 +238,15 @@ const App = () => {
           .rev-heading  { font-size: 36px !important; line-height: 46px !important; }
           .rev-subheading { font-size: 20px !important; line-height: 30px !important; }
           .npb-card { height: 400px; padding: 24px; }
+          .rev-arrow-btn.prev { left: -44px; }
+          .rev-arrow-btn.next { right: -44px; }
         }
 
         /* ── MOBILE ── */
         @media (max-width: 767px) {
           .rev-header { grid-template-columns: 1fr; column-gap: 0; row-gap: 16px; }
           .rev-title-group { grid-column: 1 / -1; }
+          .rev-arrow-btn { display: none; }
           .rev-heading  { font-size: 28px !important; line-height: 38px !important; letter-spacing: -0.5px !important; }
           .rev-subheading { font-size: 16px !important; line-height: 26px !important; }
           .npb-card { height: auto; min-height: 320px; padding: 24px; }
@@ -298,7 +313,7 @@ interface SliderSectionProps {
 }
 
 const SliderSection = ({
-  index, visible, goTo, resetTimer, handleNav, totalDots,
+  index, visible, goTo, resetTimer, maxIndex, handleNav, totalDots,
 }: SliderSectionProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [cardWidth, setCardWidth] = useState(352);
@@ -323,11 +338,32 @@ const SliderSection = ({
   return (
     <>
       <div className="rev-grid" style={{ rowGap: 0 }}>
-        <div
-          className="rev-full"
-          style={{ overflow: "hidden", padding: "28px 0" }}
-          ref={containerRef}
-        >
+        <div className="rev-full" style={{ position: "relative" }}>
+          <button
+            className="rev-arrow-btn prev"
+            onClick={() => handleNav(-1)}
+            aria-label="Previous slide"
+            disabled={index === 0}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            className="rev-arrow-btn next"
+            onClick={() => handleNav(1)}
+            aria-label="Next slide"
+            disabled={index === maxIndex}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <div
+            style={{ overflow: "hidden", padding: "28px 0" }}
+            ref={containerRef}
+          >
           <div
             className="rev-slider-track"
             style={{ transform: `translateX(-${offset}px)` }}
@@ -386,6 +422,7 @@ const SliderSection = ({
             })}
           </div>
         </div>
+        </div>
       </div>
 
       {/* ── DOTS + ARROWS ── */}
@@ -405,26 +442,6 @@ const SliderSection = ({
               aria-label={`Go to slide ${i + 1}`}
             />
           ))}
-        </div>
-        <div style={{ display: "flex", gap: "24px" }}>
-          <button
-            className="rev-arrow-btn"
-            onClick={() => handleNav(-1)}
-            aria-label="Previous slide"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button
-            className="rev-arrow-btn"
-            onClick={() => handleNav(1)}
-            aria-label="Next slide"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </button>
         </div>
       </div>
     </>
