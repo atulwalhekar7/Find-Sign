@@ -20,6 +20,17 @@ export default function About() {
   const [isMuted, setIsMuted] = useState(true);
   const [, setShowControls] = useState(false);
 
+  const body1 = `
+Find & Sign Buyer Advocate was built on the belief that every buyer should secure the right property to build equity, choice and financial freedom.
+Founder Niki learnt through experience that the right guidance is critical in securing the outcome. It is identified through local knowledge, experience and direct relationships, then secured before it reaches the wider market.
+We are a boutique buyers' agency operating nationwide, acting exclusively for buyers. Not agents. Not developers. We are intentionally selective about the number of clients we take on to give each brief our full attention and expert advice.
+`;
+
+const body2 = `
+We assess every opportunity in person by walking the property, the street, and the surrounding area. Decisions are never made from photos or data alone. Because it's about identifying the opportunity and securing it early — the advantage of being first.
+Find & Sign. We find with confidence. You sign with certainty.
+`;
+
   const togglePlayPause = () => {
     const vid = videoRef.current;
     if (!vid) return;
@@ -59,9 +70,9 @@ export default function About() {
     <AboutSection
   imageSrc={AboutUsBanner}
   heading="About Find & Sign"
-  subheading="Subheading"
-  body1="Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look."
-  body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."
+  body1={body1}
+  body2={body2}
+  imageHeight="900px"
 />
 
       {/* ─────────────────────────────────────────
@@ -186,7 +197,7 @@ export default function About() {
         }
         .hero-subtitle {
           color: #FFFFFF; 
-          font-family: 'Söhne', sans-serif;
+          font-family: 'Söhne';
           font-size: 24px; 
           font-weight: 300;
           line-height: 1.5; 
@@ -207,13 +218,13 @@ export default function About() {
         .panel-text { flex: 0 0 calc(50% - 24px); display: flex; flex-direction: column; gap: 20px; }
         .panel-heading-block { display: flex; flex-direction: column; gap: 6px; }
         .panel-heading {
-          font-family: 'GTSuper', Georgia, serif;
+          font-family: 'GTSuper';
           font-size: clamp(22px, 3vw, 36px); font-weight: 500;
           color: #1a1a1a; line-height: 1.25;
         }
-        .panel-subheading { font-family: 'Söhne', sans-serif; font-size: 15px; color: #888888; }
+        .panel-subheading { font-family: 'Söhne'; font-size: 15px; color: #888888; }
         .panel-body {
-          font-family: 'Söhne', sans-serif;
+          font-family: 'Söhne';
           font-size: clamp(14px, 1.5vw, 16px); line-height: 1.75; color: #444444;
         }
 
@@ -461,57 +472,9 @@ export default function About() {
     <div className="team-panel">
 
       <div className="team-grid">
+
+
         
-        {/* Card 1 */}
-        <div className="team-card">
-<div className="team-img">
-  <img
-    src={Bec}
-    alt="team member"
-    style={{
-      width: "100%",
-      height: "100%",
-      objectFit: "cover",
-      borderRadius: "inherit",
-    }}
-  />
-</div>          <div className="team-text">
-            <h3>Rebecca Nakrani</h3>
-            <div style={{ fontSize: "16px", fontWeight: 400, color: "#666", marginBottom: "4px" }}>
-              Client Operations Manager
-            </div>
-            <div style={{ fontSize: "12px", lineHeight: "22px" }}>
-              E:
-              <a href="mailto:info@findandsignba.com.au" style={{ textDecoration: "none", color: "#000" }}>
-                info@findandsignba.com.au
-              </a>
-            </div>
-
-            {/* Social */}
-            <table cellPadding="0" cellSpacing="0" border={0} style={{ marginTop: "8px" }}>
-              <tbody>
-                <tr>
-                  <td width="16">
-                    <a href="https://www.facebook.com/nakranipropertybuyers/" target="_blank" rel="noreferrer">
-                      <img src={fbIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="Facebook" />
-                    </a>
-                  </td>
-                  <td width="16" style={{ paddingLeft: "16px" }}>
-                    <a href="https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" target="_blank" rel="noreferrer">
-                      <img src={igIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="Instagram" />
-                    </a>
-                  </td>
-                  <td width="16" style={{ paddingLeft: "16px" }}>
-                    <a href="https://www.linkedin.com/in/niki-nakrani-13b269237/" target="_blank" rel="noreferrer">
-                      <img src={liIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="LinkedIn" />
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
         {/* Card 2 */}
         <div className="team-card">
   <img
@@ -563,8 +526,61 @@ export default function About() {
           </div>
         </div>
 
-      </div>
+        
+        {/* Card 1 */}
+        <div className="team-card">
+<div className="team-img">
+  <img
+    src={Bec}
+    alt="team member"
+    style={{
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      borderRadius: "inherit",
+    }}
+  />
+</div>          <div className="team-text">
+            <h3>Rebecca Nakrani</h3>
+            <div style={{ fontSize: "16px", fontWeight: 400, color: "#666", marginBottom: "4px" }}>
+              Client Operations Manager
+            </div>
+            <div style={{ fontSize: "12px", lineHeight: "22px" }}>
+              E:
+              <a href="mailto:info@findandsignba.com.au" style={{ textDecoration: "none", color: "#000" }}>
+                info@findandsignba.com.au
+              </a>
+            </div>
 
+            {/* Social */}
+            <table cellPadding="0" cellSpacing="0" border={0} style={{ marginTop: "8px" }}>
+              <tbody>
+                <tr>
+                  <td width="16">
+                    <a href="https://www.facebook.com/nakranipropertybuyers/" target="_blank" rel="noreferrer">
+                      <img src={fbIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="Facebook" />
+                    </a>
+                  </td>
+                  <td width="16" style={{ paddingLeft: "16px" }}>
+                    <a href="https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" target="_blank" rel="noreferrer">
+                      <img src={igIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="Instagram" />
+                    </a>
+                  </td>
+                  <td width="16" style={{ paddingLeft: "16px" }}>
+                    <a href="https://www.linkedin.com/in/niki-nakrani-13b269237/" target="_blank" rel="noreferrer">
+                      <img src={liIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="LinkedIn" />
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+
+
+      </div>
     </div>
   </div>
 </section>

@@ -194,9 +194,9 @@ const App = () => {
   transition: background 0.2s, color 0.2s;
 }
 .rev-cta-btn:hover {
-  background: #073B2F; /* or your color */
-  color: white;
-  transform: scale(1.05);
+  background: #69E4DC;
+  color: #073B2F;
+  border-color: #69E4DC;
 }
         /* ── DOTS ── */
         .rev-dot {
@@ -221,7 +221,7 @@ const App = () => {
         .rev-title-group { grid-column: 1 / 9; }
 
         .rev-heading {
-          font-family: 'GT Super Display Medium', Georgia, serif;
+          font-family: 'GT Super Display Medium';
           font-size: 44px;
           font-weight: 500;
           font-style: normal;
@@ -229,7 +229,11 @@ const App = () => {
           line-height: 54px;
           letter-spacing: -0.88px;
           font-variant-numeric: lining-nums proportional-nums;
-          margin-bottom: 12px;
+          margin: 0 auto 16px;
+          border-bottom: 2px solid #073B2F;
+          padding-bottom: 8px;
+          width: fit-content;
+          text-align: center;
         }
         .rev-subheading {
           color: #000;
@@ -238,6 +242,7 @@ const App = () => {
           font-weight: 300;
           line-height: 36px;
           margin: 0;
+          text-align: center;
         }
 
         /* ── TABLET ── */
@@ -277,8 +282,8 @@ const App = () => {
         {/* ── HEADER ── */}
         <div className="rev-grid">
           <div className="rev-full">
-            <div className="rev-header">
-              <div className="rev-title-group">
+            <div className="rev-header" style={{ display: 'flex', justifyContent: 'center' }}>
+              <div className="rev-title-group" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <h2 className="rev-heading">What clients say</h2>
                 <p className="rev-subheading">In their own words, following their experience with Niki.</p>
               </div>

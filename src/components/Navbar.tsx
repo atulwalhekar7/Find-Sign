@@ -68,7 +68,7 @@ align-self: stretch;
           justify-content: center;
           padding: 10px 8px;
           color: ${COLORS.black};
-          font-family: "Sohne", "DM Sans", sans-serif;
+          font-family: "Sohne";
           font-size: 20px;
           font-weight: 400;
           line-height: 28px;
@@ -92,7 +92,7 @@ align-self: stretch;
           border-radius: 8px;
           background: ${COLORS.aqua};
           color: ${COLORS.racingGreen};
-          font-family: "CX80", sans-serif;
+          font-family: "CX80";
           font-size: 15px;
           font-weight: 700;
           line-height: 15px;
@@ -204,12 +204,14 @@ align-self: stretch;
             </ul>
 
             {/* CTA */}
-            <NavLink
-              to="/contact"
-              className="nav-cta"
-            >
-              Book a Call
-            </NavLink>
+           <a
+  href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="nav-cta"
+>
+  Book a Call
+</a>
 
             {/* Hamburger */}
             <button
@@ -285,26 +287,28 @@ align-self: stretch;
               </NavLink>
             ))}
 
-            <NavLink
-              to="/contact"
-              onClick={() => setMenuOpen(false)}
-              style={{
-                display: "inline-block",
-                marginTop: "16px",
-                fontFamily: "'Söhne', 'DM Sans', sans-serif",
-                fontWeight: 600,
-                fontSize: "11px",
-                letterSpacing: "0.14em",
-                textTransform: "uppercase",
-                color: COLORS.white,
-                background: COLORS.aqua,
-                padding: "11px 24px",
-                borderRadius: "2px",
-                textDecoration: "none",
-              }}
-            >
-              Book a Call
-            </NavLink>
+           <a
+  href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={() => setMenuOpen(false)}
+  style={{
+    display: "inline-block",
+    marginTop: "16px",
+    fontFamily: "'Söhne', 'DM Sans', sans-serif",
+    fontWeight: 600,
+    fontSize: "11px",
+    letterSpacing: "0.14em",
+    textTransform: "uppercase",
+    color: COLORS.white,
+    background: COLORS.aqua,
+    padding: "11px 24px",
+    borderRadius: "2px",
+    textDecoration: "none",
+  }}
+>
+  Book a Call
+</a>
           </div>
         )}
       </nav>

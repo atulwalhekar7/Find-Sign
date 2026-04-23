@@ -99,7 +99,14 @@ const globalCSS = `
     padding: 64px 196px 80px;
   }
 
-  .op-head { grid-column: 1 / -1; margin-bottom: 48px; }
+  .op-head { 
+    grid-column: 1 / -1; 
+    margin-bottom: 48px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+  }
   .op-list { grid-column: 1 / -1; list-style: none; padding: 0; margin: 0; }
 
   /* ── Row base ── */
@@ -389,40 +396,36 @@ export default function OurProcess({ visible = true }: { visible?: boolean }) {
         {visible && (
           /* ── Footer CTA ── */
           <div className="op-footer" ref={footerRef as React.Ref<HTMLDivElement>}>
-          <button
-            className="op-btn"
-            style={{
-              ...s.btn,
-              background: btnHovered ? GREEN : "transparent",
-              color:      btnHovered ? "#ffffff" : DARK_GREEN,
-              transform:  btnHovered
-                ? "translateY(-3px) scale(1.02)"
-                : btnClicked
-                ? "scale(0.97)"
-                : "translateY(0) scale(1)",
-              boxShadow: btnHovered ? "0 8px 28px rgba(0,51,39,0.22)" : "none",
-              opacity:   footerVisible ? 1 : 0,
-              transition: [
-                "background 0.35s ease",
-                "color 0.35s ease",
-                "transform 0.35s cubic-bezier(0.34,1.56,0.64,1)",
-                "box-shadow 0.35s ease",
-                "opacity 0.8s ease 0.3s",
-              ].join(", "),
-              animation: footerVisible ? "btnPulse 2s ease 1s 2" : "none",
-            }}
-            onMouseEnter={() => setBtnHovered(true)}
-            onMouseLeave={() => setBtnHovered(false)}
-            onMouseDown={() => setBtnClicked(true)}
-            onMouseUp={() => setBtnClicked(false)}
-            onClick={() => {
-              setBtnClicked(true);
-              setTimeout(() => setBtnClicked(false), 400);
-              navigate("/about");
-            }}
-          >
-            HOW IT WORKS
-          </button>
+        <button
+  className="op-btn"
+  style={{
+    ...s.btn,
+    background: btnHovered ? "#69E4DC" : "transparent",
+    color:      btnHovered ? "#073B2F" : DARK_GREEN,
+   transform: btnClicked ? "scale(0.97)" : "none",
+    boxShadow: btnHovered ? "0 8px 28px rgba(0,51,39,0.22)" : "none",
+    opacity:   footerVisible ? 1 : 0,
+    transition: [
+      "background 0.35s ease",
+      "color 0.35s ease",
+      "transform 0.35s cubic-bezier(0.34,1.56,0.64,1)",
+      "box-shadow 0.35s ease",
+      "opacity 0.8s ease 0.3s",
+    ].join(", "),
+    animation: footerVisible ? "btnPulse 2s ease 1s 2" : "none",
+  }}
+  onMouseEnter={() => setBtnHovered(true)}
+  onMouseLeave={() => setBtnHovered(false)}
+  onMouseDown={() => setBtnClicked(true)}
+  onMouseUp={() => setBtnClicked(false)}
+  onClick={() => {
+    setBtnClicked(true);
+    setTimeout(() => setBtnClicked(false), 400);
+    navigate("/about");
+  }}
+>
+  HOW IT WORKS
+</button>
         </div>
       )}
 
@@ -442,10 +445,12 @@ const s: Record<string, React.CSSProperties> = {
     lineHeight: "54px",
     letterSpacing: "-0.88px",
     fontVariantNumeric: "lining-nums proportional-nums",
-    marginBottom: "12px",
-    height: "54px",
-    width: "1120px",
+    marginBottom: "16px",
+    borderBottom: "2px solid #073B2F",
+    paddingBottom: "8px",
+    width: "fit-content",
     maxWidth: "100%",
+    textAlign: "center",
   },
   subtitle: {
     fontFamily: "Sohne",
@@ -454,10 +459,10 @@ const s: Record<string, React.CSSProperties> = {
     fontWeight: 300,
     color: "#000",
     lineHeight: "36px",
-    margin: 0,
+    margin: "0 auto",
     maxWidth: "100%",
-    height: "36px",
     width: "804px",
+    textAlign: "center",
   },
   numCol: { flexShrink: 0 },
   num: {
@@ -507,7 +512,7 @@ const s: Record<string, React.CSSProperties> = {
     cursor: "pointer",
     borderRadius: "8px",
     border: "1px solid var(--Brand-Contrast-FS-AQUA, #69E4DC)",
-    fontFamily: "CX80L1",
+    fontFamily: "CX80",
     fontSize: "15px",
     fontStyle: "normal",
     fontWeight: 700,

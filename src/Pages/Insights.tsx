@@ -93,29 +93,21 @@ export default function Insights() {
      />
 
       {/* ── SECTION 3: Blogs ────────────────────────────────────────────── */}
-      <section style={{ maxWidth: "1200px", margin: "0 auto 80px", padding: "0 40px" }}>
-        <h2 style={{  margin: 0,
+      <section style={{ maxWidth: "1200px", margin: "0 auto 80px", padding: "0 40px", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <h2 style={{  
+          margin: "0 auto 12px",
   color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
   fontFamily: "GT Super Display Medium",
   fontSize: "44px",
   fontWeight: 500,
   lineHeight: "120%",
-  letterSpacing: "-0.48px", }}>Blogs</h2>
-       <p
-  style={{
-    margin: "0 0 16px 0",
-
-    fontFamily: 'Söhne',
-    fontSize: "24px",
-    fontWeight: 300,
-    lineHeight: "120%",
-
-    color: "#888888",
-  }}
->
-  Subheading
-</p>
-
+  letterSpacing: "-0.48px",
+  textAlign: "center",
+  borderBottom: "2px solid #073B2F",
+  paddingBottom: "8px",
+  width: "fit-content"
+  }}>Blogs</h2>
+      
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           {blogPosts.map((post, index) => (
             <div key={index} style={{ border: "1px solid #EEE", borderRadius: "12px", padding: "24px", display: "flex", gap: "24px", alignItems: "center" }}>
@@ -158,17 +150,43 @@ export default function Insights() {
 >
   {post.description}
 </p>                
-<button 
+<button
   onClick={() => navigate(post.path)}
-  style={{ 
-    padding: "12px 32px", 
-    border: "none", 
-    borderRadius: "6px", 
-    backgroundColor: "#073B2F", 
-    color: "#FFF", 
+  style={{
+    display: "flex",
+    height: "48px",
+    padding: "12px 16px",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "10px",
+    flexShrink: 0,
+
+    borderRadius: "8px",
+    border: "1px solid #69E4DC",
+    backgroundColor: "#ffffff",
+
+    color: "#073B2F",
+    fontFamily: "CX80",
+    fontSize: "15px",
+    fontWeight: 700,
+    lineHeight: "15px",
+    letterSpacing: "4.8px",
+
+    textTransform: "uppercase",
     cursor: "pointer",
-    fontFamily: 'CX80',
-    fontWeight: 400
+    textDecoration: "none",
+
+    transition: "background 0.2s ease, color 0.2s ease",
+  }}
+  onMouseEnter={(e) => {
+    e.currentTarget.style.backgroundColor = "#69E4DC";
+    e.currentTarget.style.color = "#073B2F";
+    e.currentTarget.style.borderColor = "#69E4DC";
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.style.backgroundColor = "#ffffff";
+    e.currentTarget.style.color = "#073B2F";
+    e.currentTarget.style.borderColor = "#69E4DC";
   }}
 >
   View more

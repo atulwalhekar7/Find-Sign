@@ -628,7 +628,13 @@ export default function ClientOutcomes() {
           align-items: flex-start;
         }
 
-        .co-title-group { grid-column: 1 / -1; }
+        .co-title-group { 
+          grid-column: 1 / -1; 
+          display: flex; 
+          flex-direction: column; 
+          align-items: center; 
+          text-align: center; 
+        }
         .co-arrows {
           display: flex;
           gap: 10px;
@@ -647,7 +653,10 @@ export default function ClientOutcomes() {
           line-height: 54px; /* 122.727% */
           letter-spacing: -0.88px;
           flex-shrink: 0;
-          margin-bottom: 12px;
+          margin-bottom: 16px;
+          border-bottom: 2px solid #073B2F;
+          padding-bottom: 8px;
+          width: fit-content;
         }
 
         .co-subtitle {

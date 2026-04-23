@@ -188,8 +188,17 @@ export default function BuyerAgentPerthBlog() {
         />
 
         {/* ── SECTION 6: How It Works ──────────────────────────────── */}
-        <section style={{ padding: "60px 0", borderTop: "1px solid #EEE" }}>
-          <h2 style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", color: "#073B2F", marginBottom: "50px", textAlign: "center" }}>How the Buying Process Works</h2>
+        <section style={{ padding: "60px 0", borderTop: "1px solid #EEE", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <h2 style={{ 
+            fontFamily: "GT Super Display Medium", 
+            fontSize: "44px", 
+            color: "#073B2F", 
+            marginBottom: "50px", 
+            textAlign: "center",
+            borderBottom: "2px solid #073B2F",
+            paddingBottom: "8px",
+            width: "fit-content" 
+          }}>How the Buying Process Works</h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "40px" }}>
             {[
               { s: "Step 1", t: "Initial Consultation", d: "Defining your goals and budget." },
@@ -208,9 +217,17 @@ export default function BuyerAgentPerthBlog() {
         </section>
 
         {/* ── SECTION 7: Why Choose Us ─────────────────────────────── */}
-        <section style={{ padding: "60px 40px", backgroundColor: "#073B2F", borderRadius: "24px", color: "#FFF", marginBottom: "60px" }}>
+        <section style={{ padding: "60px 40px", backgroundColor: "#073B2F", borderRadius: "24px", color: "#FFF", marginBottom: "60px", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <div style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center" }}>
-            <h2 style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", marginBottom: "24px" }}>Why Choose Find and Sign Buyer Advocate?</h2>
+            <h2 style={{ 
+              fontFamily: "GT Super Display Medium", 
+              fontSize: "44px", 
+              marginBottom: "24px",
+              borderBottom: "2px solid #FFFFFF",
+              paddingBottom: "8px",
+              width: "fit-content",
+              margin: "0 auto 24px"
+            }}>Why Choose Find and Sign Buyer Advocate?</h2>
             <p style={{ fontSize: "20px", marginBottom: "40px", opacity: 0.9 }}>Selecting the right agent is the key difference between a successful purchase and a costly mistake.</p>
             <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "20px" }}>
               {["Local Perth Market Expertise", "Strong Negotiation Track Record", "Access to Off-Market Properties", "Tailored Investment Strategies", "Client-Focused Approach"].map((item, i) => (
@@ -221,16 +238,33 @@ export default function BuyerAgentPerthBlog() {
         </section>
 
         {/* ── SECTION 8: Service Areas ─────────────────────────────── */}
-        <section style={{ padding: "60px 0", textAlign: "center", borderTop: "1px solid #EEE" }}>
-          <h2 style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", color: "#073B2F", marginBottom: "32px" }}>Service Areas in Perth</h2>
+        <section style={{ padding: "60px 0", textAlign: "center", borderTop: "1px solid #EEE", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <h2 style={{ 
+            fontFamily: "GT Super Display Medium", 
+            fontSize: "44px", 
+            color: "#073B2F", 
+            marginBottom: "32px",
+            borderBottom: "2px solid #073B2F",
+            paddingBottom: "8px",
+            width: "fit-content"
+          }}>Service Areas in Perth</h2>
           <p style={{ fontSize: "20px", color: "#555", maxWidth: "800px", margin: "0 auto", lineHeight: "1.7" }}>
             We serve clients across the Perth CBD, Western Suburbs, Northern Suburbs, Southern Suburbs, and surrounding metropolitan areas.
           </p>
         </section>
 
         {/* ── SECTION 9: FAQs ──────────────────────────────────────── */}
-        <section style={{ padding: "60px 0", borderTop: "1px solid #EEE" }}>
-          <h2 style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", color: "#073B2F", marginBottom: "40px", textAlign: "center" }}>Frequently Asked Questions</h2>
+        <section style={{ padding: "60px 0", borderTop: "1px solid #EEE", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <h2 style={{ 
+            fontFamily: "GT Super Display Medium", 
+            fontSize: "44px", 
+            color: "#073B2F", 
+            marginBottom: "40px", 
+            textAlign: "center",
+            borderBottom: "2px solid #073B2F",
+            paddingBottom: "8px",
+            width: "fit-content"
+          }}>Frequently Asked Questions</h2>
           <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "24px", maxWidth: "900px", margin: "0 auto" }}>
             {[
               { q: "What does a buyer’s agent do?", a: "A buyer’s agent represents property buyers, helping them find, evaluate, and purchase properties at the best price." },
