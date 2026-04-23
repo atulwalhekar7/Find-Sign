@@ -78,8 +78,10 @@ align-self: stretch;
           transition: color 0.2s ease;
         }
 
-        .nav-link:hover {
-          color: ${COLORS.racingGreen};
+        .nav-link:hover,
+        .nav-link:active,
+        .nav-link.active {
+          color: ${COLORS.aqua};
         }
 
         /* CTA */
@@ -118,6 +120,12 @@ align-self: stretch;
           background: ${COLORS.white};
           padding: 12px 20px 24px;
           border-top: 1px solid rgba(27,67,50,0.07);
+        }
+
+        .nav-drawer-link:hover,
+        .nav-drawer-link:active {
+          color: ${COLORS.aqua} !important;
+          font-weight: 500 !important;
         }
 
         @keyframes call-vibrate {
@@ -283,6 +291,7 @@ align-self: stretch;
               <NavLink
                 key={item.label}
                 to={item.to}
+                className="nav-drawer-link"
                 onClick={() => setMenuOpen(false)}
                 style={({ isActive }) => ({
                   display: "block",
