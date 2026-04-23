@@ -39,6 +39,7 @@ import id36 from "../assets/Client Outcomes/id36.webp";
 import id37 from "../assets/Client Outcomes/id37.webp";
 import id38 from "../assets/Client Outcomes/id38.webp";
 import id39 from "../assets/Client Outcomes/id39.webp";
+import ellipseImage from "../assets/Ellipse 1.png";
 
 
 const AQUA = "#69E4DC";
@@ -467,16 +468,15 @@ function PropertyCard({
         <img src={card.image} alt="Property" className="card-image" />
       </div>
 
-      {/* Growth circle with continuous heartbeat and float animation */}
-      <div
-        className="growth-circle"
+      {/* Growth image replacing circle */}
+      <img
+        src={ellipseImage}
+        alt="Growth"
+        className="growth-image"
         style={{
           animationDelay: `${index * 150}ms`,
         }}
-      >
-        <span className="growth-label">Growth</span>
-        <span className="growth-value">{card.growth}</span>
-      </div>
+      />
 
       <div className="card-data">
         {[
@@ -738,31 +738,23 @@ export default function ClientOutcomes() {
           transform: scale(1.08);
         }
 
-        /* Growth Circle with Heartbeat Animation */
-        .growth-circle {
+        /* Growth Image replacing circle with Heartbeat Animation */
+        .growth-image {
           position: absolute;
           top: 155px;
           right: 18px;
           width: 90px;
           height: 90px;
           border-radius: 50%;
-          background: ${AQUA};
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
+          object-fit: cover;
           z-index: 10;
           animation: heartbeatFloat 4s ease-in-out infinite;
-          transition: background 0.3s ease;
+          transition: filter 0.3s ease;
         }
 
-        .property-card:hover .growth-circle {
-          background: ${WHITE};
-          box-shadow: 0 4px 15px rgba(105, 228, 220, 0.5);
+        .property-card:hover .growth-image {
+          filter: brightness(1.1) drop-shadow(0 4px 15px rgba(105, 228, 220, 0.5));
         }
-
-        .growth-label { font-size: 10px; text-transform: uppercase; color: ${RACING_GREEN}; }
-        .growth-value { font-size: 18px; font-weight: 700; color: ${RACING_GREEN}; }
 
         .card-data { padding: 55px 18px 20px; flex: 1; }
         .card-row { display: flex; justify-content: space-between; padding: 10px 0; }

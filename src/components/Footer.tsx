@@ -131,11 +131,14 @@ export default function Footer() {
           line-height: 2.25;
           font-family: "Sohne", sans-serif;
           font-weight: 300;
+          
         }
 
         .contact-label {
           min-width: 14px;
-          color: rgba(249, 249, 249, 0.72);
+          font-size: 16px;
+          color: #F9F9F9;
+          margin-right: 2px;
         }
 
         .contact-value {
@@ -246,11 +249,11 @@ height: 23.854px;
               <div className="title">CONTACT</div>
               <div className="footer-list">
                 <div className="contact-row">
-                  <span className="contact-label">T</span>
+                  <span className="contact-label">T: </span>
                   <a className="contact-value" href="tel:0431158233">0431 158 233</a>
                 </div>
                 <div className="contact-row">
-                  <span className="contact-label">E</span>
+                  <span className="contact-label">E: </span>
                   <a className="contact-value" href="mailto:niki@findandsignba.com.au">niki@findandsignba.com.au</a>
                 </div>
                 <div className="contact-row">
