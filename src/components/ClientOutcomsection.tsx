@@ -39,6 +39,7 @@ import id36 from "../assets/Client Outcomes/id36.webp";
 import id37 from "../assets/Client Outcomes/id37.webp";
 import id38 from "../assets/Client Outcomes/id38.webp";
 import id39 from "../assets/Client Outcomes/id39.webp";
+import ellipseImage from "../assets/Ellipse 1.png";
 
 
 const AQUA = "#69E4DC";
@@ -467,16 +468,15 @@ function PropertyCard({
         <img src={card.image} alt="Property" className="card-image" />
       </div>
 
-      {/* Growth circle with continuous heartbeat and float animation */}
-      <div
-        className="growth-circle"
+      {/* Growth image replacing circle */}
+      <img
+        src={ellipseImage}
+        alt="Growth"
+        className="growth-image"
         style={{
           animationDelay: `${index * 150}ms`,
         }}
-      >
-        <span className="growth-label">Growth</span>
-        <span className="growth-value">{card.growth}</span>
-      </div>
+      />
 
       <div className="card-data">
         {[
@@ -509,6 +509,8 @@ export default function ClientOutcomes() {
   const [visibleCount, setVisibleCount] = useState(3);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  const sliderCards = cards.slice(0, 10);
+
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth;
@@ -521,7 +523,7 @@ export default function ClientOutcomes() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  const maxIdx = Math.max(0, cards.length - visibleCount);
+  const maxIdx = Math.max(0, sliderCards.length - visibleCount);
 
   const goto = (idx: number) => {
     const next = Math.max(0, Math.min(idx, maxIdx));
@@ -638,7 +640,7 @@ export default function ClientOutcomes() {
           color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
           font-variant-numeric: lining-nums proportional-nums;
           /* FS—H2 */
-          font-family: "GT Super Display";
+          font-family: "GT Super Display Medium";
           font-size: 44px;
           font-style: normal;
           font-weight: 500;
@@ -650,7 +652,6 @@ export default function ClientOutcomes() {
 
         .co-subtitle {
         color: #000;
-        /* FS—B1 */
         font-family: Sohne;
         font-size: 24px;
         font-style: normal;
@@ -658,7 +659,7 @@ export default function ClientOutcomes() {
         line-height: 36px; /* 150% */
         }
 
-@media (max-width: 1199px) {
+        @media (max-width: 1199px) {
           .co-section { padding: 48px 48px 64px; column-gap: 32px; }
           .co-h2 { 
             font-size: 36px;
@@ -668,6 +669,8 @@ export default function ClientOutcomes() {
             letter-spacing: -0.72px;
           }
           .co-subtitle { font-size: 20px; }
+          .rev-arrow-btn.prev { left: -44px; }
+          .rev-arrow-btn.next { right: -44px; }
         }
 
         @media (max-width: 767px) {
@@ -683,22 +686,6 @@ export default function ClientOutcomes() {
             flex-shrink: 1;
           }
         }
-
-        .arr-btn {
-          width: 36px;
-          height: 36px;
-          border-radius: 50%;
-          border: 1.5px solid ${RACING_GREEN};
-          background: transparent;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: background 0.2s;
-        }
-        .arr-btn:hover:not(:disabled) { background: ${RACING_GREEN}; }
-        .arr-btn:hover:not(:disabled) path { stroke: ${WHITE}; }
-        .arr-btn:disabled { opacity: 0.2; cursor: default; }
 
         .co-slider-viewport { width: 100%; overflow: hidden; padding: 20px 0; margin: -20px 0; }
         .co-slider-track {
@@ -751,31 +738,23 @@ export default function ClientOutcomes() {
           transform: scale(1.08);
         }
 
-        /* Growth Circle with Heartbeat Animation */
-        .growth-circle {
+        /* Growth Image replacing circle with Heartbeat Animation */
+        .growth-image {
           position: absolute;
           top: 155px;
           right: 18px;
           width: 90px;
           height: 90px;
           border-radius: 50%;
-          background: ${AQUA};
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
+          object-fit: cover;
           z-index: 10;
           animation: heartbeatFloat 4s ease-in-out infinite;
-          transition: background 0.3s ease;
+          transition: filter 0.3s ease;
         }
 
-        .property-card:hover .growth-circle {
-          background: ${WHITE};
-          box-shadow: 0 4px 15px rgba(105, 228, 220, 0.5);
+        .property-card:hover .growth-image {
+          filter: brightness(1.1) drop-shadow(0 4px 15px rgba(105, 228, 220, 0.5));
         }
-
-        .growth-label { font-size: 10px; text-transform: uppercase; color: ${RACING_GREEN}; }
-        .growth-value { font-size: 18px; font-weight: 700; color: ${RACING_GREEN}; }
 
         .card-data { padding: 55px 18px 20px; flex: 1; }
         .card-row { display: flex; justify-content: space-between; padding: 10px 0; }
@@ -809,10 +788,22 @@ export default function ClientOutcomes() {
 }
         .view-btn:hover { background: ${AQUA}; transform: scale(1.05); }
 
-        .co-dots { display: none; gap: 8px; margin-top: 16px; }
-        @media (max-width: 767px) { .co-dots { display: flex; } }
-        .co-dot { width: 8px; height: 8px; border-radius: 50%; background: #ccc; border: none; }
-        .co-dot.active { background: ${RACING_GREEN}; }
+        /* ── DOTS (REVIEWS STYLE) ── */
+        .co-dots { display: flex; gap: 12px; align-items: center; margin-bottom: 24px; }
+        .co-dot {
+          width: 8px; height: 8px;
+          border-radius: 50%;
+          background: #D0C9C0;
+          border: none; padding: 0;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          flex-shrink: 0;
+        }
+        .co-dot.active { background: #073B2F; width: 24px; border-radius: 4px; }
+
+        @media (max-width: 767px) {
+          .rev-arrow-btn { display: none; }
+        }
       `}</style>
 
       <div className="co-section">
@@ -828,18 +819,38 @@ export default function ClientOutcomes() {
         </div>
 
         <div className="co-slider-outer">
-          <div
-            className="co-slider-viewport"
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => setPaused(false)}
-          >
+          <div style={{ position: "relative", width: "100%" }}>
+            <button
+              className="rev-arrow-btn prev"
+              onClick={() => { goto(cur - 1); resetTimer(); }}
+              disabled={cur === 0}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              className="rev-arrow-btn next"
+              onClick={() => { goto(cur + 1); resetTimer(); }}
+              disabled={cur === maxIdx}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            <div
+              className="co-slider-viewport"
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+            >
             <div
               className="co-slider-track"
               style={{
                 transform: `translateX(calc(-${cur} * (100% / ${visibleCount} + clamp(16px, 2.11vw, 32px) / ${visibleCount})))`,
               }}
             >
-              {cards.map((card, i) => (
+              {sliderCards.map((card, i) => (
                 <PropertyCard
                   key={`${card.id}-${animKey}`}
                   card={card}
@@ -848,9 +859,10 @@ export default function ClientOutcomes() {
               ))}
             </div>
           </div>
+          </div>
 
           <div className="co-dots">
-            {Array.from({ length: maxIdx + 1 }).map((_, i) => (
+            {Array.from({ length: Math.min(8, maxIdx + 1) }).map((_, i) => (
               <button
                 key={i}
                 className={`co-dot${cur === i ? " active" : ""}`}
@@ -860,45 +872,6 @@ export default function ClientOutcomes() {
                 }}
               />
             ))}
-          </div>
-
-          <div className="co-arrows">
-            <button
-              className="arr-btn"
-              onClick={() => {
-                goto(cur - 1);
-                resetTimer();
-              }}
-              disabled={cur === 0}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M15 18l-6-6 6-6"
-                  stroke={RACING_GREEN}
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-            <button
-              className="arr-btn"
-              onClick={() => {
-                goto(cur + 1);
-                resetTimer();
-              }}
-              disabled={cur === maxIdx}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M9 18l6-6-6-6"
-                  stroke={RACING_GREEN}
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
           </div>
 
           <button 

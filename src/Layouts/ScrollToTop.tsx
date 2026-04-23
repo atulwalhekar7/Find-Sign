@@ -1,40 +1,32 @@
-import { useEffect, useLayoutEffect } from "react";
+import { useLayoutEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 const ScrollToTop = () => {
-  const { pathname, search, hash, key } = useLocation();
-
-  const scrollToTop = () => {
-    window.scrollTo(0, 0);
-    document.scrollingElement?.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-  };
+  const { pathname, key } = useLocation();
 
   useLayoutEffect(() => {
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
 
-    scrollToTop();
-    const frameId = window.requestAnimationFrame(scrollToTop);
+    const resetScroll = () => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      document.scrollingElement?.scrollTo(0, 0);
+      document.getElementById("root")?.scrollTo(0, 0);
+    };
 
-    return () => window.cancelAnimationFrame(frameId);
-  }, [pathname, search, hash, key]);
+    resetScroll();
 
-  useEffect(() => {
-    scrollToTop();
-
-    const frameId = window.requestAnimationFrame(scrollToTop);
-    const timeoutIds = [0, 50, 150, 300].map((delay) =>
-      window.setTimeout(scrollToTop, delay)
-    );
+    const frameId = window.requestAnimationFrame(resetScroll);
+    const timeoutId = window.setTimeout(resetScroll, 0);
 
     return () => {
       window.cancelAnimationFrame(frameId);
-      timeoutIds.forEach((timeoutId) => window.clearTimeout(timeoutId));
+      window.clearTimeout(timeoutId);
     };
-  }, [pathname, search, hash, key]);
+  }, [pathname, key]);
 
   return null;
 };

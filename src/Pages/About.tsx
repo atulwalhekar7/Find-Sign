@@ -24,11 +24,15 @@ export default function About() {
     const vid = videoRef.current;
     if (!vid) return;
     if (vid.paused) {
+      vid.muted = false;
       vid.play();
       setIsPlaying(true);
+      setIsMuted(false);
     } else {
       vid.pause();
+      vid.muted = true;
       setIsPlaying(false);
+      setIsMuted(true);
     }
   };
 
@@ -78,6 +82,17 @@ export default function About() {
             playsInline
             poster={aboutContentImg}
             className="video-el"
+            onPlay={() => {
+              setIsPlaying(true);
+              setIsMuted(false);
+            }}
+            onPause={() => {
+              if (videoRef.current) {
+                videoRef.current.muted = true;
+              }
+              setIsPlaying(false);
+              setIsMuted(true);
+            }}
           />
 
           <div className="video-overlay" />

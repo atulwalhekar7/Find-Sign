@@ -8,7 +8,6 @@ import Insights from "./Pages/Insights";
 import Contact from "./Pages/Contact";
 import BuyerAgentPerthBlog from "./Pages/BuyerAgentPerthBlog";
 import "./index.css";
-import ScrollToTop from "./Layouts/ScrollToTop";
 
 /* ── Google Fonts ── */
 const link = document.createElement("link");
@@ -19,7 +18,7 @@ document.head.appendChild(link);
 function App() {
   return (
     <BrowserRouter>
-    <ScrollToTop/>
+    
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/"                element={<Home />}           />
