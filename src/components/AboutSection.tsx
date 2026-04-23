@@ -81,20 +81,21 @@ const AboutSection = ({
           gap: 48px;
         }
 
-        /* IMAGE */
-        .about-image {
-          width: 484px;
-          height: 450px;
-          flex-shrink: 0;
-        }
+      /* IMAGE */
+.about-image {
+  width: 484px;
+  height: 450px;
+  flex-shrink: 0;
+  margin-top: 83px; /* 👈 pushes image down */
+}
 
-        .about-image img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-        }
-
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
         .placeholder {
           width: 100%;
           height: 100%;

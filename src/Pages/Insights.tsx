@@ -78,9 +78,7 @@ export default function Insights() {
           }}>
             Insights
           </h1>
-          <p style={{ color: "#FFFFFF", fontSize: "24px", fontWeight: 300, lineHeight: "1.5", margin: "24px auto 0", opacity: 0.9 }}>
-            Find & Sign
-          </p>
+          
         </div>
       </section>
 
@@ -115,41 +113,39 @@ export default function Insights() {
               <div style={{ flex: 1 }}>
 <h3
   style={{
-    margin: "0 0 10px 0",
-
-   color: "var(--sds-color-text-default-default, #111)",
-
-  fontFamily: "GT Super Display Medium",
-  fontSize: "20px",     // fixed
-  fontWeight: 500,      // fixed
-
-    lineHeight: "120%",
-    letterSpacing: "-0.48px",
-
-    alignSelf: "stretch",
+    color: "rgb(0, 0, 0)",
+    
+    fontVariantNumeric: "lining-nums proportional-nums",
+    fontFamily: '"GT Super Display Medium"',
+    fontSize: "32px",
+    fontStyle: "normal",
+    fontWeight: 500,
+    lineHeight: "40px",
+    letterSpacing: "-0.64px",
+    margin: "0px",
   }}
 >
   {post.title}
-</h3>              
+</h3>            
 <p
   style={{
+    margin: "0px",
     marginBottom: "20px",
 
-    color: "var(--sds-color-text-default-secondary, #666)",
+    color: "rgb(117, 117, 117)",
+    
 
-    // fontFamily: 'Söhne',
-    fontSize: "16px", // ✅ fixed (replace 300)
+    fontFamily: "Söhne, sans-serif",
+    fontSize: "16px",
     fontStyle: "normal",
     fontWeight: 400,
+    lineHeight: "24px",
 
-    lineHeight: "140%",
-    width: "100%",
-
-    maxWidth: "600px", // keep your original constraint
+    flex: "1 1 0%",
   }}
 >
   {post.description}
-</p>                
+</p>          
 <button
   onClick={() => navigate(post.path)}
   style={{
