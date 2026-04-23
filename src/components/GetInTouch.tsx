@@ -249,7 +249,7 @@ export default function NakraniContact() {
         }
       `}</style>
 
-      <div className="contact-page">
+      <div id="contact-form" className="contact-page">
         <Box sx={{ width: "100%", maxWidth: "1120px", margin: "0 auto" }}>
           <Box
             className="contact-row"

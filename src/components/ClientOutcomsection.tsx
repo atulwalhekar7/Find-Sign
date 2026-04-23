@@ -778,11 +778,11 @@ export default function ClientOutcomes() {
           font-weight: 700;
           letter-spacing: 2px;
           text-transform: uppercase;
-          background: white;
+          background: ${WHITE};
           cursor: pointer;
           transition: all 0.3s ease;
         }
-        .view-btn:hover { background: ${RACING_GREEN}; color: white; transform: scale(1.05); }
+        .view-btn:hover { background: ${AQUA}; transform: scale(1.05); }
 
         /* ── DOTS (REVIEWS STYLE) ── */
         .co-dots { display: flex; gap: 12px; align-items: center; margin-bottom: 24px; }
