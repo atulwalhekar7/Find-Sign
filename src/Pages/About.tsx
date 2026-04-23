@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import aboutContentImg from "../assets/DSC06081.jpg";
 import aboutVideo from "../assets/Interview Draft (2).mp4";
 import AboutSection from "../components/AboutSection";
-import SimpleGetInTouch from "../components/SimpleGetInTouch";
+import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
 import OurProcess from "../components/OurProcess";
 import Banner from "../assets/About Us_Banner.jpg";
@@ -63,7 +63,7 @@ Find & Sign. We find with confidence. You sign with certainty.
         <div className="banner-overlay" />
         <div className="hero-box">
           <h1 className="hero-title">About Us</h1>
-          <p className="hero-subtitle">Find & Sign</p>
+         
         </div>
       </section>
 
