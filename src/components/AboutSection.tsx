@@ -111,15 +111,26 @@ const AboutSection = ({
         }
 
         /* HEADING */
-        .about-text h3 {
-          margin: 0 0 6px 0;
-font-family: "GT Super Display Medium";       
-   font-size:44px;
-          font-weight: 500;
-          line-height: 120%;
-          letter-spacing: -0.48px;
-color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));        }
+       .about-text h3 {
+  margin: 0 0 6px 0;
+  font-family: "GT Super Display Medium";
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: -0.48px;
+  color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
+  position: relative;
+  display: inline-block;
+}
 
+.about-text h3::after {
+  content: "";
+  display: block;
+  width: 350px; /* adjust width */
+  height: 2px;
+  background: #073B2F;
+  margin-top: 8px;
+}
         /* SUBHEADING */
         .sub {
           margin: 0 0 16px 0;
