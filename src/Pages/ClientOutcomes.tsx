@@ -760,20 +760,20 @@ export default function ClientOutcomes() {
         .testimonial-card {
           position: relative;
           background: #FFFFFF;
-          border-radius: 24px;
+          border-radius: 16px;
           padding: 20px;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           height: 320px; /* Uniform height for testimonial cards */
-          border: 1px solid rgba(7, 59, 47, 0.1);
-          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+          border: 2px solid ${AQUA};
+          box-shadow: 0 4px 12px rgba(0,0,0,0.03);
           transition: all 0.5s;
         }
         .testimonial-card:hover {
-          transform: translateY(-8px);
+          transform: translateY(-12px);
           border-color: #69E4DC;
-          box-shadow: 0 20px 40px -5px rgba(105, 228, 220, 0.3);
+          box-shadow: 0 10px 22px rgba(105, 228, 220, 0.96);
         }
 
         .avatar-circle {
@@ -975,8 +975,9 @@ export default function ClientOutcomes() {
 
         .property-card {
           background: ${WHITE};
-          border: 1px solid rgba(0,51,39,0.1);
-          border-radius: 12px;
+          border: 2px solid ${AQUA};
+          border-radius: 16px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.03);
           position: relative;
           display: flex;
           flex-direction: column;
@@ -988,14 +989,13 @@ export default function ClientOutcomes() {
         
         .property-card:hover {
           transform: translateY(-12px);
-          box-shadow: 0 20px 40px rgba(0, 51, 39, 0.12);
-          border-color: ${AQUA};
+          box-shadow: 0 10px 22px rgba(105, 228, 220, 0.96);
         }
 
         .card-image-wrap {
           width: 100%;
           height: 200px;
-          border-radius: 12px 12px 0 0;
+          border-radius: 16px 16px 0 0;
           overflow: hidden;
           position: relative;
         }
