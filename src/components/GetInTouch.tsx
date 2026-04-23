@@ -62,6 +62,47 @@ export default function NakraniContact() {
           max-width: 220px;
         }
 
+        .contact-cta {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 48px;
+          padding: 12px 24px;
+          border-radius: 8px;
+          background: #69E4DC;
+          color: #073B2F;
+          font-family: "CX80";
+          font-size: 15px;
+          font-weight: 700;
+          line-height: 15px;
+          letter-spacing: 4.8px;
+          text-decoration: none;
+          text-transform: uppercase;
+          white-space: nowrap;
+          gap: 10px;
+          transition: transform 0.2s ease, background 0.2s ease;
+          width: fit-content;
+        }
+
+        .contact-cta:hover {
+          background: #3DD6CC;
+          transform: translateY(-2px);
+        }
+
+        .contact-cta:active {
+          transform: scale(0.98);
+        }
+
+        .vibrate-icon {
+          animation: call-vibrate 3s infinite ease-in-out;
+        }
+
+        @keyframes call-vibrate {
+          0%, 20%, 100% { transform: rotate(0deg); }
+          3%, 9%, 15% { transform: rotate(-12deg); }
+          6%, 12%, 18% { transform: rotate(12deg); }
+        }
+
         .contact-right {
           flex: 1;
           display: flex;
@@ -264,6 +305,17 @@ export default function NakraniContact() {
             <div className="contact-left">
               <h2>Get in touch</h2>
               <p>Tell us what you're looking for, and we'll come back with next steps.</p>
+              <a
+                href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-cta"
+              >
+                <svg className="vibrate-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.6-.35-.12-.73-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 2 3.2 2.45 3.2 2.99 3.2 12.37 10.83 20 20.21 20c.54 0 .99-.45.99-.99v-2.64c0-.54-.45-.99-.99-.99z" />
+                </svg>
+                Book a Call
+              </a>
             </div>
 
             <div className="contact-right">
