@@ -44,7 +44,7 @@ const steps: Step[] = [
     title: "Secure, settle and sign",
     description:
       "Once secured, we guide the process through to settlement and connect you with trusted partners where required.",
-  },
+},
 ];
 
 /* ── Design tokens ── */
@@ -507,10 +507,10 @@ const s: Record<string, React.CSSProperties> = {
     cursor: "pointer",
     borderRadius: "8px",
     border: "1px solid var(--Brand-Contrast-FS-AQUA, #69E4DC)",
-    fontFamily: "CX80",
+    fontFamily: "CX80L1",
     fontSize: "15px",
     fontStyle: "normal",
-    fontWeight: 400,
+    fontWeight: 700,
     letterSpacing: "4.8px",
   },
 };

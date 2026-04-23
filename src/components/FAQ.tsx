@@ -186,24 +186,30 @@ export default function FindSignFAQ() {
         }
 
         .view-all-btn {
-          display: inline-flex;
-          height: 52px;
-          padding: 0 32px;
-          justify-content: center;
-          align-items: center;
-          border-radius: 8px;
-          border: 1px solid #69E4DC;
-          color: #073B2F;
-          font-family: 'CX80', sans-serif;
-          font-size: 14px;
-          font-weight: 700;
-          letter-spacing: 4.8px;
-          background: white;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          text-transform: uppercase;
-          margin-top: 32px;
-        }
+  display: flex;
+  height: 48px;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+
+  border-radius: 8px;
+  border: 1px solid #69E4DC;
+  background: white;
+
+  color: #073B2F;
+  font-family: 'CX80';
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 4.8px;
+
+  margin-top: 30px;
+  cursor: pointer;
+
+  transition: background 0.2s, color 0.2s;
+}
 
         .view-all-btn:hover {
           background: #073B2F;

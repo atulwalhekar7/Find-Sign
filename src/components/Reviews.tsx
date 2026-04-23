@@ -156,23 +156,31 @@ const App = () => {
         .rev-arrow-btn:disabled { opacity: 0.2; cursor: default; }
 
         /* ── CTA ── */
-        .rev-cta-btn {
-          display: inline-flex;
-          height: 48px;
-          padding: 12px 24px;
-          justify-content: center; align-items: center; gap: 10px;
-          border-radius: 8px;
-          border: 1px solid #69E4DC;
-          border: 1px solid rgba(11, 215, 205, 0.96);
-          color: #073B2F;
-          font-family: 'DM Sans', sans-serif;
-          font-size: 15px; font-weight: 700; line-height: 15px;
-          letter-spacing: 4.8px;
-          background: white;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          text-transform: uppercase;
-        }
+       .rev-cta-btn {
+  display: flex;
+  height: 48px;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+
+  border-radius: 8px;
+  border: 1px solid #69E4DC;
+  background: white;
+
+  color: #073B2F;
+  font-family: 'CX80';
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 4.8px;
+
+  margin-top: 30px;
+  cursor: pointer;
+
+  transition: background 0.2s, color 0.2s;
+}
 .rev-cta-btn:hover {
   background: #073B2F; /* or your color */
   color: white;

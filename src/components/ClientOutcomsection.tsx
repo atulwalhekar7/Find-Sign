@@ -783,18 +783,30 @@ export default function ClientOutcomes() {
         .row-val { font-size: 13px; color: #757575; }
 
         .view-btn {
-          height: 48px;
-          padding: 0 32px;
-          border-radius: 8px;
-          border: 1px solid ${AQUA};
-          color: ${RACING_GREEN};
-          font-weight: 700;
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          background: ${WHITE};
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
+  display: flex;
+  height: 48px;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+
+  border-radius: 8px;
+  border: 1px solid ${AQUA};
+  background: ${WHITE};
+
+  color: ${RACING_GREEN};
+  font-family: 'CX80';
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 4.8px;
+
+  margin-top: 30px;
+  cursor: pointer;
+
+  transition: background 0.2s, color 0.2s;
+}
         .view-btn:hover { background: ${AQUA}; transform: scale(1.05); }
 
         .co-dots { display: none; gap: 8px; margin-top: 16px; }

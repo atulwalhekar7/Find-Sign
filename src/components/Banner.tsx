@@ -136,7 +136,7 @@ export default function App() {
           justify-content:center;
           align-items:    center;
           gap:            10px;
-          font-family:    'CX80', sans-serif;
+          font-family:    'CX80';
           font-weight:    700;
           font-size:      12px;
           line-height:    15px;

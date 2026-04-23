@@ -269,27 +269,32 @@ export default function About() {
   
 }
 
+.team-header {
+  text-align: center;
+}
+
 .team-header h2 {
-color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));        
-  font-family: "GT Super Display Medium";       
-   font-size:44px;
+  color: #073B2F;
+  font-family: "GT Super Display Medium";
+  font-size: 44px;
   font-weight: 500;
   line-height: 120%;
   letter-spacing: -0.48px;
-  width: 100%;
+  margin: 0;
+  position: relative;
+  display: inline-block;
 }
 
-.team-header p {
-          color: #888;
-
- font-family: 'Sohne';
-          font-size:24px;
-          font-weight: 300;
-  line-height: 120%;
-
-  margin-top: 4px;
-  width: 100%; /* 🔥 instead of align-self */
+.team-header h2::after {
+  content: "";
+  display: block;
+  width: 265px;          /* adjust to match image */
+  height: 1px;
+  background: #073B2F;
+  margin: 12px auto 0;   /* space between text and line */
 }
+
+
 
 /* PANEL (the big grey box inside) */
 .team-panel {
@@ -302,7 +307,7 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
   box-sizing: border-box;
 
   padding: 40px;               /* keep this (Figma spacing) */
-  background: #f0f0f0;         /* keep this (grey box) */
+ 
   border-radius: 4px;
 }
 
@@ -362,6 +367,7 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
 /* TEXT */
 .team-text h3 {
   color: rgb(0, 0, 0);
+  
 
   font-family:'GT Super Display Medium';
   font-size: 20px;
@@ -381,23 +387,7 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
   width: 100%;
 }
 
-.team-text p {
-  color: var(--FS-System-Grey-1, #757575);
 
-  font-family: 'Söhne';
-  font-weight: 300;
-  font-style: normal;
-  font-weight: 400;
-
-  line-height: 28px;
-
-  margin: 0px;
-
-  transition: opacity 0.7s 660ms;
-  opacity: 1;
-
-  width: 100%;
-}
 
 /* MOBILE */
 @media (max-width: 768px) {
@@ -449,7 +439,7 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
     {/* Header */}
     <div className="team-header">
       <h2>Meet the team</h2>
-      <p>Subheading</p>
+     
     </div>
 
     {/* Panel (pink box in your image) */}

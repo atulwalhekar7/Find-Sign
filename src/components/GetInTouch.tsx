@@ -151,7 +151,7 @@ export default function NakraniContact() {
           border: none;
           cursor: pointer;
           color: #073B2F;
-          font-family: 'DM Sans', sans-serif;
+           font-family: 'CX80';
           font-size: 15px;
           font-weight: 700;
           letter-spacing: 4.8px;
