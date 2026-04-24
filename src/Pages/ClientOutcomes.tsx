@@ -48,6 +48,16 @@ import id38 from "../assets/Client Outcomes/id38.webp";
 import id39 from "../assets/Client Outcomes/id39.webp";
 import ellipseImage from "../assets/Ellipse 1.png";
 
+import roksonImg from "../assets/testomonials/Rokson.png";
+import sahilSainiImg from "../assets/testomonials/Sahil Saini.png";
+import rinzinWangchukImg from "../assets/testomonials/Rinzin Wangchuk.png";
+import prashanthNayarImg from "../assets/testomonials/Prashanth Nayar.png";
+import zedAImg from "../assets/testomonials/Zed A.png";
+import kumarVasindaImg from "../assets/testomonials/Kumar Vasinda Comara.png";
+import fatemaManasawalaImg from "../assets/testomonials/fatema manasawala.png";
+import gurinderSinghImg from "../assets/testomonials/Gurinder Singh.png";
+import kienLamImg from "../assets/testomonials/Kien Lam.png";
+
 
 // ── DATA ─────────────────────────────────────────────
 const AQUA = "#69E4DC";
@@ -462,6 +472,7 @@ const reviews = [
     date: "5 months ago",
     title: "Absolute pleasure from start to finish",
     body: "Working with Niki was an absolute pleasure from start to finish. He’s professional, knowledgeable, and genuinely invested in finding the perfect property for his clients. From our first meeting, Niki took the time to understand exactly what I was looking for — my budget. ",
+    image: roksonImg,
   },
   {
     name: "Amit Bhardwaj",
@@ -480,18 +491,21 @@ const reviews = [
     date: "4 months ago",
     title: "Professional and great to work with",
     body: "Niki is professional and great to work with. His communication has been great for one of our clients to source a property before Christmas and met all deadlines. Not to mention the bargain he was able to secure for the property.",
+    image: sahilSainiImg,
   },
   {
     name: "Rinzin Wangchuk",
     date: "3 months ago",
     title: "Very professional and goes way above your needs",
     body: "Niki is very professional and goes way above your needs. I was looking for my first home in Perth and didn’t know where to begin.",
+    image: rinzinWangchukImg,
   },
   {
     name: "Prashanth Nayar",
     date: "5 months ago",
     title: "Thorough market insights and dedicated due-diligence",
     body: "As a selling-agent based in Perth, I've found that Niki brings thorough market insights, dedicated due-diligence and a genuine commitment to finding the right property for his clients. ",
+    image: prashanthNayarImg,
   },
   {
     name: "Gian Ottavio",
@@ -522,6 +536,7 @@ const reviews = [
     date: "5 months ago",
     title: "Massive asset, highly recommend",
     body: "My team and I have worked with Nikki from Nakrani Property on many transactions. He excels at educating his clients and securing the best deals. Having Nikki on your side is a massive asset, and I highly recommend him to anyone buying a property in Perth",
+    image: zedAImg,
   },
   {
     name: "Josh Mezger",
@@ -540,6 +555,7 @@ const reviews = [
     date: "7 months ago",
     title: "Great experience from start to finish",
     body: "As the seller's agent, I had the pleasure of working with Niki from Nakrani Property, and it was a great experience from start to finish.",
+    image: kumarVasindaImg,
   },
   {
     name: "Subho Ghosh",
@@ -558,12 +574,14 @@ const reviews = [
     date: "4 months ago",
     title: "Professionalism speaks for himself",
     body: "I have had the pleasure to work with Niki at various occassiona for his clients. His work and professionalism speaks for himself. I highly recommend him to local /overseas and interstae investors & owner as a reputable Buyers agent in Perth.",
+    image: fatemaManasawalaImg,
   },
   {
     name: "Gurinder Singh",
     date: "4 months ago",
     title: "Great experience working with Niki",
     body: "Great experience working with Niki on this transaction. Everything ran smoothly from start to finish. Niki has a strong understanding of the market, communicated clearly, and was professional throughout. A pleasure to deal with.",
+    image: gurinderSinghImg,
   },
   {
     name: "P Y",
@@ -606,6 +624,7 @@ const reviews = [
     date: "8 months ago",
     title: "Best in the business",
     body: "Niki is the best in the business. He has the best negotiating skills and can get you the best price for the property.",
+    image: kienLamImg,
   },
   {
     name: "Kush Hirani",
@@ -674,10 +693,14 @@ function TestimonialCard({ testimonial, style }: { testimonial: any; style?: Rea
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', borderTop: '1px solid #f3f4f6', paddingTop: '16px' }}>
           <div className="avatar-circle" style={{ width: 48, height: 48, borderRadius: "50%", backgroundColor: "#D9D9D9", display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid white", overflow: 'hidden' }}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="8" r="4" stroke="#aaa" strokeWidth="1.5"/>
-              <path d="M4 20c0-4 3.58-7 8-7s8 3 8 7" stroke="#aaa" strokeWidth="1.5" strokeLinecap="round"/>
-            </svg>
+            {testimonial.image ? (
+              <img src={testimonial.image} alt={testimonial.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            ) : (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="8" r="4" stroke="#aaa" strokeWidth="1.5"/>
+                <path d="M4 20c0-4 3.58-7 8-7s8 3 8 7" stroke="#aaa" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
+            )}
           </div>
           <div>
             <h4 style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#111827', margin: 0, fontFamily: 'Sohne' }}>
