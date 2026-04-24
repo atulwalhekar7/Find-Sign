@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
@@ -8,6 +9,100 @@ import bannerImg from "../assets/Insights_Banner.jpg";
 import perthBlogImg from "../assets/Blogs/DSC06286.jpg";
 
 // --- Helper Components ---
+
+const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
+  const navigate = useNavigate();
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onClick={() => navigate(post.path)}
+      style={{
+        display: "flex",
+        padding: "24px",
+        gap: "24px",
+        alignItems: "center",
+        borderRadius: "16px",
+        border: "2px solid var(--Brand-Contrast-FS-AQUA, #69E4DC)",
+        background: "var(--Brand-Utility-FS-WHITE, #FFF)",
+        transition: "transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease",
+        transform: hovered ? "translateY(-12px)" : "translateY(0)",
+        boxShadow: hovered ? "0 10px 22px rgba(105, 228, 220, 0.96)" : "0 4px 12px rgba(0,0,0,0.03)",
+        cursor: "pointer",
+      }}
+    >
+      <img
+        src={post.image}
+        alt={post.title}
+        style={{
+          width: "160px",
+          height: "160px",
+          objectFit: "cover",
+          borderRadius: "8px",
+        }}
+      />
+      <div style={{ flex: 1 }}>
+        <h3
+          style={{
+            color: "#000",
+            fontVariantNumeric: "lining-nums proportional-nums",
+            fontFamily: '"GT Super Display Medium"',
+            fontSize: "32px",
+            fontStyle: "normal",
+            fontWeight: 500,
+            lineHeight: "40px",
+            letterSpacing: "-0.64px",
+            margin: "0px",
+          }}
+        >
+          {post.title}
+        </h3>
+        <p
+          style={{
+            margin: "0px",
+            marginBottom: "20px",
+            color: "rgb(117, 117, 117)",
+            fontFamily: "Söhne, sans-serif",
+            fontSize: "16px",
+            fontStyle: "normal",
+            fontWeight: 400,
+            lineHeight: "24px",
+          }}
+        >
+          {post.description}
+        </p>
+        <button
+          style={{
+            display: "flex",
+            height: "48px",
+            padding: "12px 16px",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "10px",
+            flexShrink: 0,
+            borderRadius: "8px",
+            border: "1px solid #69E4DC",
+            backgroundColor: hovered ? "#69E4DC" : "#ffffff",
+            color: "#073B2F",
+            fontFamily: "CX80",
+            fontSize: "15px",
+            fontWeight: 700,
+            lineHeight: "15px",
+            letterSpacing: "4.8px",
+            textTransform: "uppercase",
+            cursor: "pointer",
+            textDecoration: "none",
+            transition: "background 0.2s ease, color 0.2s ease",
+          }}
+        >
+          View more
+        </button>
+      </div>
+    </div>
+  );
+};
 
 // --- Main Component ---
 
@@ -28,7 +123,6 @@ const blogPosts = [
 
 
 export default function Insights() {
-  const navigate = useNavigate();
 
   return (
     <div style={{ backgroundColor: "#FFFFFF", fontFamily: "Söhne, sans-serif" }}>
@@ -93,7 +187,7 @@ export default function Insights() {
       {/* ── SECTION 3: Blogs ────────────────────────────────────────────── */}
       <section style={{ maxWidth: "1200px", margin: "0 auto 80px", padding: "0 40px", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <h2 style={{  
-          margin: "0 auto 12px",
+          margin: "0 auto 48px",
   color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
   fontFamily: "GT Super Display Medium",
   fontSize: "44px",
@@ -103,92 +197,13 @@ export default function Insights() {
   textAlign: "center",
   borderBottom: "2px solid #073B2F",
   paddingBottom: "8px",
-  width: "fit-content"
+  width: "fit-content",
+  
   }}>Blogs</h2>
       
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           {blogPosts.map((post, index) => (
-            <div key={index} style={{ border: "1px solid #EEE", borderRadius: "12px", padding: "24px", display: "flex", gap: "24px", alignItems: "center" }}>
-              <img src={post.image} alt={post.title} style={{ width: "160px", height: "160px", objectFit: "cover", borderRadius: "8px" }} />
-              <div style={{ flex: 1 }}>
-<h3
-  style={{
-    color: "rgb(0, 0, 0)",
-    
-    fontVariantNumeric: "lining-nums proportional-nums",
-    fontFamily: '"GT Super Display Medium"',
-    fontSize: "32px",
-    fontStyle: "normal",
-    fontWeight: 500,
-    lineHeight: "40px",
-    letterSpacing: "-0.64px",
-    margin: "0px",
-  }}
->
-  {post.title}
-</h3>            
-<p
-  style={{
-    margin: "0px",
-    marginBottom: "20px",
-
-    color: "rgb(117, 117, 117)",
-    
-
-    fontFamily: "Söhne, sans-serif",
-    fontSize: "16px",
-    fontStyle: "normal",
-    fontWeight: 400,
-    lineHeight: "24px",
-
-    flex: "1 1 0%",
-  }}
->
-  {post.description}
-</p>          
-<button
-  onClick={() => navigate(post.path)}
-  style={{
-    display: "flex",
-    height: "48px",
-    padding: "12px 16px",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "10px",
-    flexShrink: 0,
-
-    borderRadius: "8px",
-    border: "1px solid #69E4DC",
-    backgroundColor: "#ffffff",
-
-    color: "#073B2F",
-    fontFamily: "CX80",
-    fontSize: "15px",
-    fontWeight: 700,
-    lineHeight: "15px",
-    letterSpacing: "4.8px",
-
-    textTransform: "uppercase",
-    cursor: "pointer",
-    textDecoration: "none",
-
-    transition: "background 0.2s ease, color 0.2s ease",
-  }}
-  onMouseEnter={(e) => {
-    e.currentTarget.style.backgroundColor = "#69E4DC";
-    e.currentTarget.style.color = "#073B2F";
-    e.currentTarget.style.borderColor = "#69E4DC";
-  }}
-  onMouseLeave={(e) => {
-    e.currentTarget.style.backgroundColor = "#ffffff";
-    e.currentTarget.style.color = "#073B2F";
-    e.currentTarget.style.borderColor = "#69E4DC";
-  }}
->
-  View more
-</button>
-              </div>
-            </div>
+            <BlogCard key={index} post={post} />
           ))}
         </div>
       </section>
