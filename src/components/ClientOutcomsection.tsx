@@ -469,15 +469,25 @@ function PropertyCard({
       </div>
 
       {/* Growth image replacing circle */}
-      <img
-        src={ellipseImage}
+      <div
         alt="Growth"
-        className="growth-image"
+        className="growth-circle-container"
         style={{
           animationDelay: `${index * 150}ms`,
+          backgroundImage: `url(${ellipseImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
-      />
-
+      >
+        <span className="growth-label">Growth</span>
+        <span className="growth-value">{card.growth}</span>
+        {/* <span className="current-value-label">Current Value</span>
+        <span className="current-value">{card.currentValue}</span> */}
+      </div>
       <div className="card-data">
         {[
           { label: "Purchase price", val: card.purchasePrice },
@@ -747,24 +757,61 @@ export default function ClientOutcomes() {
           transform: scale(1.08);
         }
 
-        /* Growth Image replacing circle with Heartbeat Animation */
-        .growth-image {
+        /* Growth Circle Container with Heartbeat Animation */
+        .growth-circle-container {
           position: absolute;
-          top: 155px;
-          right: 18px;
-          width: 90px;
-          height: 90px;
+          bottom: 160px; /* Position at the bottom */
+          right: 1px;
+          width: 130px; /* Increased size */
+          height: 130px; /* Increased size */
           border-radius: 50%;
+          background: ${AQUA}; /* Ensure it's blue */
+          background-image: url(${ellipseImage}); /* Overlay the image if it's a pattern/texture */
+          background-size: cover;
+          background-position: center;
           object-fit: cover;
           z-index: 10;
           animation: heartbeatFloat 4s ease-in-out infinite;
-          transition: filter 0.3s ease;
+          transition: filter 0.3s ease, background 0.3s ease; /* Add background to transition */
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
         }
 
-        .property-card:hover .growth-image {
+        .property-card:hover .growth-circle-container {
+          background: ${WHITE}; /* Change background on hover */
           filter: brightness(1.1) drop-shadow(0 4px 15px rgba(105, 228, 220, 0.5));
         }
 
+        .growth-circle-container .growth-label {
+          font-family: 'Sohne', sans-serif;
+          font-size: 12px;
+          color: ${RACING_GREEN};
+          opacity: 0.8;
+        }
+        .growth-circle-container .growth-value {
+          font-family: 'GT Super Display Medium';
+          font-size: 24px;
+          font-weight: 700;
+          line-height: 1.2;
+          color: ${RACING_GREEN};
+          margin-bottom: 4px;
+        }
+        // .growth-circle-container .current-value-label {
+        //   font-family: 'Sohne';
+        //   font-size: 10px;
+        //   text-transform: uppercase;
+        //   color: ${RACING_GREEN};
+        //   opacity: 0.7;
+        // }
+        // .growth-circle-container .current-value {
+        //   font-family: 'Sohne', sans-serif;
+        //   font-size: 16px;
+        //   font-weight: 500;
+        //   color: ${RACING_GREEN};
+        // }
         .card-data { padding: 55px 18px 20px; flex: 1; }
         .card-row { display: flex; justify-content: space-between; padding: 10px 0; }
         .row-label { font-size: 13px; color: #000; }
