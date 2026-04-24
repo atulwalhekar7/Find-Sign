@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import emailjs from '@emailjs/browser';
 import { Box } from "@mui/material";
 
 interface NakraniContactProps {
@@ -8,6 +9,7 @@ interface NakraniContactProps {
 export default function NakraniContact({ initialService = "" }: NakraniContactProps) {
   const [submitted, setSubmitted] = useState(false);
   const [selectedService, setSelectedService] = useState(initialService);
+  const form = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     if (initialService) {
@@ -18,6 +20,23 @@ export default function NakraniContact({ initialService = "" }: NakraniContactPr
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitted(true);
+
+    if (form.current) {
+      // Replace with your actual Service ID, Template ID, and Public Key
+      emailjs
+        .sendForm('service_tv2a04i', 'template_94gxcly', form.current, {
+          publicKey: 'kwf46-RLsvGZDJMhR',
+        })
+        .then(
+          () => {
+            setSubmitted(true);
+          },
+          (error) => {
+            console.error('EmailJS Error:', error.text);
+            alert("Failed to send message. Please try again later.");
+          },
+        );
+    }
   };
 
   return (
@@ -363,26 +382,27 @@ export default function NakraniContact({ initialService = "" }: NakraniContactPr
                   <span className="contact-success-sub">We'll be in touch soon.</span>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit}>
+                <form ref={form} onSubmit={handleSubmit}>
                   <div className="contact-field">
                     <label className="contact_label">First name</label>
-                    <input className="contact-input" placeholder="e.g. Sarah" required />
+                    <input className="contact-input" name="first_name" placeholder="e.g. Sarah" required />
                   </div>
 
                   <div className="contact-field">
                     <label className="contact_label">Last name</label>
-                    <input className="contact-input" placeholder="e.g. Smith" required />
+                    <input className="contact-input" name="last_name" placeholder="e.g. Smith" required />
                   </div>
 
                   <div className="contact-field">
                     <label className="contact_label">Email</label>
-                    <input className="contact-input" type="email" placeholder="e.g. sarah@gmail.com" required />
+                    <input className="contact-input" name="user_email" type="email" placeholder="e.g. sarah@gmail.com" required />
                   </div>
 
                   <div className="contact-field">
                     <label className="contact_label">Select Services</label>
                     <select 
                       className="contact-input" 
+                      name="service"
                       required 
                       value={selectedService}
                       onChange={(e) => setSelectedService(e.target.value)}
@@ -401,7 +421,7 @@ export default function NakraniContact({ initialService = "" }: NakraniContactPr
 
                   <div className="contact-field">
                     <label className="contact_label">Message</label>
-                    <textarea className="contact-textarea" placeholder="What are you looking for?" required />
+                    <textarea className="contact-textarea" name="message" placeholder="What are you looking for?" required />
                   </div>
 
                   <button type="submit" className="contact-btn">Submit</button>
