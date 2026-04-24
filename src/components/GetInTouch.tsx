@@ -1,8 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 
-export default function NakraniContact() {
+interface NakraniContactProps {
+  initialService?: string;
+}
+
+export default function NakraniContact({ initialService = "" }: NakraniContactProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [selectedService, setSelectedService] = useState(initialService);
+
+  useEffect(() => {
+    if (initialService) {
+      setSelectedService(initialService);
+    }
+  }, [initialService]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -180,6 +191,18 @@ export default function NakraniContact() {
         .contact-input::placeholder, .contact-textarea::placeholder { color: #BDBDBD; }
         .contact-input:focus { outline: 1.5px solid #69E4DC; }
 
+        select.contact-input {
+          appearance: none;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23BDBDBD' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-position: right 16px center;
+          background-size: 16px;
+          cursor: pointer;
+        }
+
+        select.contact-input:invalid { color: #BDBDBD; }
+        select.contact-input option { color: #000; }
+
         .contact-textarea {
           height: 112px;
           padding: 8px 16px;
@@ -354,6 +377,26 @@ export default function NakraniContact() {
                   <div className="contact-field">
                     <label className="contact_label">Email</label>
                     <input className="contact-input" type="email" placeholder="e.g. sarah@gmail.com" required />
+                  </div>
+
+                  <div className="contact-field">
+                    <label className="contact_label">Select Services</label>
+                    <select 
+                      className="contact-input" 
+                      required 
+                      value={selectedService}
+                      onChange={(e) => setSelectedService(e.target.value)}
+                    >
+                      <option value="" disabled>Select a service</option>
+                      <option value="Buyer Advocate">Buyer Advocate</option>
+                      <option value="Advisory">Advisory</option>
+                      <option value="Property Management">Property Management</option>
+                      <option value="Settlement Agent">Settlement Agent</option>
+                      <option value="Building Inspection">Building Inspection</option>
+                      <option value="Sales Agent">Sales Agent</option>
+                      <option value="Quantity Surveyor">Quantity Surveyor</option>
+                      <option value="Accounting">Accounting</option>
+                    </select>
                   </div>
 
                   <div className="contact-field">

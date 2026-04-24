@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Dialog, DialogContent, IconButton } from "@mui/material";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
@@ -101,15 +102,8 @@ const OutlineButton = ({ children, onClick }: { children: React.ReactNode; onCli
 
 
 
-const ServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title: string; body: string; hasButton?: boolean; delay?: number }) => {
+const ServiceCard = ({ title, body, hasButton = false, delay = 0, onBookCall }: { title: string; body: string; hasButton?: boolean; delay?: number; onBookCall?: (service: string) => void }) => {
   const [hovered, setHovered] = useState(false);
-
-  const scrollToContact = () => {
-    const element = document.getElementById("contact-form");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <FadeUp delay={delay}>
@@ -161,21 +155,14 @@ const ServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title: str
         }}>
           {body}
         </p>
-        {hasButton && <OutlineButton onClick={scrollToContact}>Apply</OutlineButton>}
+        {hasButton && <OutlineButton onClick={() => onBookCall?.(title)}>Book a Call</OutlineButton>}
       </div>
     </FadeUp>
   );
 };
 
-const OtherServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title: string; body: string; hasButton?: boolean; delay?: number }) => {
+const OtherServiceCard = ({ title, body, hasButton = false, delay = 0, onBookCall }: { title: string; body: string; hasButton?: boolean; delay?: number; onBookCall?: (service: string) => void }) => {
   const [hovered, setHovered] = useState(false);
-
-  const scrollToContact = () => {
-    const element = document.getElementById("contact-form");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <FadeUp delay={delay}>
@@ -227,7 +214,7 @@ const OtherServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title
         }}>
           {body}
         </p>
-        {hasButton && <OutlineButton onClick={scrollToContact}>Apply</OutlineButton>}
+        {hasButton && <OutlineButton onClick={() => onBookCall?.(title)}>Book a Call</OutlineButton>}
       </div>
     </FadeUp>
   );
@@ -243,6 +230,14 @@ const OtherServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title
 export default function Services() {
   const body =
     "Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very short story.";
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeService, setActiveService] = useState("");
+
+  const handleBookCall = (serviceName: string) => {
+    setActiveService(serviceName);
+    setIsModalOpen(true);
+  };
 
 
 
@@ -347,8 +342,8 @@ export default function Services() {
 
         {/* Top row: Buyer Advocate + Advisory — horizontal cards */}
         <div className="top-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
-          <ServiceCard title="Buyer Advocate" body={body} hasButton delay={0} />
-          <ServiceCard title="Advisory" body={body} hasButton delay={0.12} />
+          <ServiceCard title="Buyer Advocate" body={body} hasButton delay={0} onBookCall={handleBookCall} />
+          <ServiceCard title="Advisory" body={body} hasButton delay={0.12} onBookCall={handleBookCall} />
         </div>
 
         {/* Other Services */}
@@ -376,9 +371,9 @@ export default function Services() {
 
         {/* Row 1: 3 cards with image on top */}
         <div className="three-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
-          <OtherServiceCard title="Property Management" body={body} hasButton delay={0} />
-          <OtherServiceCard title="Settlement Agent" body={body} hasButton delay={0.1} />
-          <OtherServiceCard title="Building Inspection" body={body} hasButton delay={0.2} />
+          <OtherServiceCard title="Property Management" body={body} hasButton delay={0} onBookCall={handleBookCall} />
+          <OtherServiceCard title="Settlement Agent" body={body} hasButton delay={0.1} onBookCall={handleBookCall} />
+          <OtherServiceCard title="Building Inspection" body={body} hasButton delay={0.2} onBookCall={handleBookCall} />
         </div>
 
         {/* Accounting — horizontal small card */}
@@ -386,13 +381,33 @@ export default function Services() {
 
         {/* Row 2: 3 cards */}
         <div className="three-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
-          <OtherServiceCard title="Sales Agent" body={body} hasButton delay={0} />
-          <OtherServiceCard title="Quantity Surveyor" body={body} hasButton delay={0.1} />
-          <OtherServiceCard title="Accounting" body={body} hasButton delay={0.2} />
+          <OtherServiceCard title="Sales Agent" body={body} hasButton delay={0} onBookCall={handleBookCall} />
+          <OtherServiceCard title="Quantity Surveyor" body={body} hasButton delay={0.1} onBookCall={handleBookCall} />
+          <OtherServiceCard title="Accounting" body={body} hasButton delay={0.2} onBookCall={handleBookCall} />
         </div>
       </section>
               <Image1/>
-      <SimpleGetInTouch />
+      <SimpleGetInTouch initialService={activeService} />
+
+      <Dialog 
+        open={isModalOpen} 
+        onClose={() => setIsModalOpen(false)}
+        maxWidth="lg"
+        fullWidth
+        PaperProps={{
+          style: { borderRadius: '16px', overflow: 'hidden' }
+        }}
+      >
+        <DialogContent sx={{ p: 0, position: 'relative' }}>
+          <IconButton 
+            onClick={() => setIsModalOpen(false)}
+            sx={{ position: 'absolute', right: 20, top: 20, zIndex: 10, color: '#073B2F' }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </IconButton>
+          <SimpleGetInTouch initialService={activeService} />
+        </DialogContent>
+      </Dialog>
       
       <SimpleFooter />
 
