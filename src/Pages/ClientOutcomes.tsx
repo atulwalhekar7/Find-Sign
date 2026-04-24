@@ -1087,7 +1087,8 @@ export default function ClientOutcomes() {
           width: 100%; 
           height: 100%; 
           object-fit: cover; 
-          transition: transform 0.6s ease;
+          transition: 0.3s;
+          filter: blur(3px) brightness(80%);
         }
 
         .property-card:hover .card-image {

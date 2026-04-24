@@ -716,8 +716,9 @@ export default function ClientOutcomes() {
         .property-card {
           flex: 0 0 calc((100% - clamp(16px, 2.11vw, 32px) * 2) / 3);
           background: ${WHITE};
-          border: 1px solid rgba(0,51,39,0.1);
-          border-radius: 12px;
+          border: 2px solid ${AQUA};
+          border-radius: 16px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.03);
           position: relative;
           display: flex;
           flex-direction: column;
@@ -730,8 +731,7 @@ export default function ClientOutcomes() {
         /* HOVER ANIMATION: Card lifts and glows */
         .property-card:hover {
           transform: translateY(-12px);
-          box-shadow: 0 20px 40px rgba(0, 51, 39, 0.12);
-          border-color: ${AQUA};
+          box-shadow: 0 10px 22px rgba(105, 228, 220, 0.96);
         }
 
         @media (max-width: 1023px) { .property-card { flex: 0 0 calc((100% - 32px) / 2); } }
@@ -740,7 +740,7 @@ export default function ClientOutcomes() {
         .card-image-wrap {
           width: 100%;
           height: 200px;
-          border-radius: 12px 12px 0 0;
+          border-radius: 16px 16px 0 0;
           overflow: hidden;
           position: relative;
         }
@@ -749,7 +749,8 @@ export default function ClientOutcomes() {
           width: 100%; 
           height: 100%; 
           object-fit: cover; 
-          transition: transform 0.6s ease;
+          transition: 0.3s;
+          filter: blur(3px) brightness(80%);
         }
 
         /* HOVER ANIMATION: Image subtle zoom */
