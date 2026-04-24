@@ -46,6 +46,7 @@ import id36 from "../assets/Client Outcomes/id36.webp";
 import id37 from "../assets/Client Outcomes/id37.webp";
 import id38 from "../assets/Client Outcomes/id38.webp";
 import id39 from "../assets/Client Outcomes/id39.webp";
+import ellipseImage from "../assets/Ellipse 1.png";
 
 
 // ── DATA ─────────────────────────────────────────────
@@ -570,7 +571,18 @@ function PropertyCard({ card, index }: { card: typeof cards[0]; index: number })
         <img src={card.image} alt="Property" className="card-image" />
       </div>
 
-      <div className="growth-circle" style={{ animationDelay: `${index * 150}ms` }}>
+      <div
+        className="growth-circle-container"
+        style={{
+          animationDelay: `${index * 150}ms`,
+          backgroundImage: `url(${ellipseImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
         <span className="growth-label">Growth</span>
         <span className="growth-value">{card.growth}</span>
       </div>
@@ -711,42 +723,44 @@ export default function ClientOutcomes() {
       />
 
       {/* ── CLIENT OUTCOMES GRID ───────────────────────────────── */}
-      <section style={{ maxWidth: 1200, margin: "0 auto", padding: "80px 40px" }}>
-        
-        <div style={{ marginBottom: 48, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <h2 style={{ 
-            fontFamily: "'GT Super Display Medium'",
-            fontSize: "44px",
-            fontWeight: 500,
-            color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
-            lineHeight: "120%",
-            letterSpacing: "-0.48px",
-            fontVariantNumeric: "lining-nums proportional-nums",
-            margin: "0 0 4px",
-            borderBottom: "2px solid #073B2F",
-            paddingBottom: "8px",
-            width: "fit-content"
-          }}>
-            Client Outcomes
-          </h2>
-        </div>
-
-        <div className="outcomes-grid">
-          {(showAllCards ? cards : cards.slice(0, INITIAL_CARDS_COUNT)).map((card, i) => (
-            <PropertyCard key={card.id} card={card} index={i} />
-          ))}
-        </div>
-
-        {cards.length > INITIAL_CARDS_COUNT && (
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}>
-            <button 
-              className="view-more-outcomes-btn" 
-              onClick={() => setShowAllCards(!showAllCards)}
-            >
-              {showAllCards ? "View Less" : "View More Outcomes"}
-            </button>
+      <section style={{ background: '#F9F9F9', padding: "80px 0" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+          
+          <div style={{ marginBottom: 48, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <h2 style={{ 
+              fontFamily: "'GT Super Display Medium'",
+              fontSize: "44px",
+              fontWeight: 500,
+              color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+              lineHeight: "120%",
+              letterSpacing: "-0.48px",
+              fontVariantNumeric: "lining-nums proportional-nums",
+              margin: "0 0 4px",
+              borderBottom: "2px solid #073B2F",
+              paddingBottom: "8px",
+              width: "fit-content"
+            }}>
+              Client Outcomes
+            </h2>
           </div>
-        )}
+
+          <div className="outcomes-grid">
+            {(showAllCards ? cards : cards.slice(0, INITIAL_CARDS_COUNT)).map((card, i) => (
+              <PropertyCard key={card.id} card={card} index={i} />
+            ))}
+          </div>
+
+          {cards.length > INITIAL_CARDS_COUNT && (
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}>
+              <button 
+                className="view-more-outcomes-btn" 
+                onClick={() => setShowAllCards(!showAllCards)}
+              >
+                {showAllCards ? "View Less" : "View More Outcomes"}
+              </button>
+            </div>
+          )}
+        </div>
       </section>
 
       {/* ── WHAT OUR CLIENTS ARE SAYING ───────────────────────────────── */}
@@ -1080,30 +1094,48 @@ export default function ClientOutcomes() {
           transform: scale(1.08);
         }
 
-        .growth-circle {
+        /* Growth Circle Container with Heartbeat Animation */
+        .growth-circle-container {
           position: absolute;
-          top: 155px;
-          right: 18px;
-          width: 90px;
-          height: 90px;
+          bottom: 160px; /* Position at the bottom */
+          right: 1px;
+          width: 130px; /* Increased size */
+          height: 130px; /* Increased size */
           border-radius: 50%;
           background: ${AQUA};
+          background-image: url(${ellipseImage}); /* Overlay the image if it's a pattern/texture */
+          background-size: cover;
+          background-position: center;
+          object-fit: cover;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           z-index: 10;
           animation: heartbeatFloat 4s ease-in-out infinite;
-          transition: background 0.3s ease;
+          transition: filter 0.3s ease, background 0.3s ease; /* Add background to transition */
+          text-align: center;
         }
 
-        .property-card:hover .growth-circle {
+        .property-card:hover .growth-circle-container {
           background: ${WHITE};
-          box-shadow: 0 4px 15px rgba(105, 228, 220, 0.5);
+          filter: brightness(1.1) drop-shadow(0 4px 15px rgba(105, 228, 220, 0.5));
         }
 
-        .growth-label { font-family: 'Sohne'; font-size: 10px; text-transform: uppercase; color: ${RACING_GREEN}; }
-        .growth-value { font-family: 'GTSuper'; font-size: 18px; font-weight: 700; color: ${RACING_GREEN}; font-variant-numeric: lining-nums proportional-nums; }
+        .growth-circle-container .growth-label {
+          font-family: 'Sohne', sans-serif;
+          font-size: 12px;
+          color: ${RACING_GREEN};
+          opacity: 0.8;
+        }
+        .growth-circle-container .growth-value {
+          font-family: 'GT Super Display Medium';
+          font-size: 24px;
+          font-weight: 700;
+          line-height: 1.2;
+          color: ${RACING_GREEN};
+          margin-bottom: 4px;
+        }
 
         .card-data { padding: 55px 18px 20px; flex: 1; }
         .card-row { display: flex; justify-content: space-between; padding: 10px 0; }
