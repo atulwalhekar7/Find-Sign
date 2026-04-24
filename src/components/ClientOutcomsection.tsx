@@ -469,15 +469,24 @@ function PropertyCard({
       </div>
 
       {/* Growth image replacing circle */}
-      <img
-        src={ellipseImage}
-        alt="Growth"
-        className="growth-image"
+      <div
+        className="growth-circle-container"
         style={{
           animationDelay: `${index * 150}ms`,
+          backgroundImage: `url(${ellipseImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
-      />
-
+      >
+        <span className="growth-label">Growth</span>
+        <span className="growth-value">{card.growth}</span>
+        {/* <span className="current-value-label">Current Value</span>
+        <span className="current-value">{card.currentValue}</span> */}
+      </div>
       <div className="card-data">
         {[
           { label: "Purchase price", val: card.purchasePrice },
@@ -706,8 +715,9 @@ export default function ClientOutcomes() {
         .property-card {
           flex: 0 0 calc((100% - clamp(16px, 2.11vw, 32px) * 2) / 3);
           background: ${WHITE};
-          border: 1px solid rgba(0,51,39,0.1);
-          border-radius: 12px;
+          border: 2px solid ${AQUA};
+          border-radius: 16px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.03);
           position: relative;
           display: flex;
           flex-direction: column;
@@ -720,8 +730,7 @@ export default function ClientOutcomes() {
         /* HOVER ANIMATION: Card lifts and glows */
         .property-card:hover {
           transform: translateY(-12px);
-          box-shadow: 0 20px 40px rgba(0, 51, 39, 0.12);
-          border-color: ${AQUA};
+          box-shadow: 0 10px 22px rgba(105, 228, 220, 0.96);
         }
 
         @media (max-width: 1023px) { .property-card { flex: 0 0 calc((100% - 32px) / 2); } }
@@ -730,7 +739,7 @@ export default function ClientOutcomes() {
         .card-image-wrap {
           width: 100%;
           height: 200px;
-          border-radius: 12px 12px 0 0;
+          border-radius: 16px 16px 0 0;
           overflow: hidden;
           position: relative;
         }
@@ -739,7 +748,8 @@ export default function ClientOutcomes() {
           width: 100%; 
           height: 100%; 
           object-fit: cover; 
-          transition: transform 0.6s ease;
+          transition: 0.3s;
+          filter: blur(3px) brightness(80%);
         }
 
         /* HOVER ANIMATION: Image subtle zoom */
@@ -747,28 +757,65 @@ export default function ClientOutcomes() {
           transform: scale(1.08);
         }
 
-        /* Growth Image replacing circle with Heartbeat Animation */
-        .growth-image {
+        /* Growth Circle Container with Heartbeat Animation */
+        .growth-circle-container {
           position: absolute;
-          top: 155px;
-          right: 18px;
-          width: 90px;
-          height: 90px;
+          bottom: 160px; /* Position at the bottom */
+          right: 1px;
+          width: 130px; /* Increased size */
+          height: 130px; /* Increased size */
           border-radius: 50%;
+          background: ${AQUA}; /* Ensure it's blue */
+          background-image: url(${ellipseImage}); /* Overlay the image if it's a pattern/texture */
+          background-size: cover;
+          background-position: center;
           object-fit: cover;
           z-index: 10;
           animation: heartbeatFloat 4s ease-in-out infinite;
-          transition: filter 0.3s ease;
+          transition: filter 0.3s ease, background 0.3s ease; /* Add background to transition */
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
         }
 
-        .property-card:hover .growth-image {
+        .property-card:hover .growth-circle-container {
+          background: ${WHITE}; /* Change background on hover */
           filter: brightness(1.1) drop-shadow(0 4px 15px rgba(105, 228, 220, 0.5));
         }
 
+        .growth-circle-container .growth-label {
+          font-family: 'Sohne', sans-serif;
+          font-size: 12px;
+          color: ${RACING_GREEN};
+          opacity: 0.8;
+        }
+        .growth-circle-container .growth-value {
+          font-family: 'GT Super Display Medium';
+          font-size: 24px;
+          font-weight: 700;
+          line-height: 1.2;
+          color: ${RACING_GREEN};
+          margin-bottom: 4px;
+        }
+        // .growth-circle-container .current-value-label {
+        //   font-family: 'Sohne';
+        //   font-size: 10px;
+        //   text-transform: uppercase;
+        //   color: ${RACING_GREEN};
+        //   opacity: 0.7;
+        // }
+        // .growth-circle-container .current-value {
+        //   font-family: 'Sohne', sans-serif;
+        //   font-size: 16px;
+        //   font-weight: 500;
+        //   color: ${RACING_GREEN};
+        // }
         .card-data { padding: 55px 18px 20px; flex: 1; }
         .card-row { display: flex; justify-content: space-between; padding: 10px 0; }
-        .row-label { font-size: 13px; color: #000; }
-        .row-val { font-size: 13px; color: #757575; }
+        .row-label { font-family: 'Sohne';font-size: 13px; color: #000; }
+        .row-val { font-size: 13px; color: #757575;margin-right: 50px; }
 
         .view-btn {
   display: flex;
@@ -885,7 +932,7 @@ export default function ClientOutcomes() {
 
           <button 
             className="view-btn" 
-            onClick={() => navigate("/client-outcomes")}
+            onClick={() => navigate("/client-outcomes#outcomes")}
           >
             View More Outcomes
           </button>

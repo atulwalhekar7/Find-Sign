@@ -3,12 +3,13 @@ import aboutContentImg from "../assets/DSC06081.jpg";
 import aboutVideo from "../assets/Interview Draft (2).mp4";
 import AboutSection from "../components/AboutSection";
 import SimpleGetInTouch from "../components/GetInTouch";
-import SimpleFooter from "../components/Footer";
+import SimpleFooter from "../components/SimpleFooter";
 import OurProcess from "../components/OurProcess";
 import Banner from "../assets/About Us_Banner.jpg";
-import AboutUsBanner from "../assets/About Find&Sign.jpg";
+import AboutUsBanner from "../assets/About Find & Sign 2.jpg";
 import Bec from "../assets/Bec_Bio.jpg";
 import niki from "../assets/Niki_Bio.jpg";
+import Image1 from "../components/Image1";
 
 import fbIcon from "../assets/Vector (2).png";
 import igIcon from "../assets/Instagram (2).png";
@@ -20,30 +21,15 @@ export default function About() {
   const [isMuted, setIsMuted] = useState(true);
   const [, setShowControls] = useState(false);
 
-  const body1 = `
-Find & Sign Buyer Advocate was built on the belief that every buyer should secure the right property to build equity, choice and financial freedom.
-Founder Niki learnt through experience that the right guidance is critical in securing the outcome. It is identified through local knowledge, experience and direct relationships, then secured before it reaches the wider market.
-We are a boutique buyers' agency operating nationwide, acting exclusively for buyers. Not agents. Not developers. We are intentionally selective about the number of clients we take on to give each brief our full attention and expert advice.
-`;
-
-const body2 = `
-We assess every opportunity in person by walking the property, the street, and the surrounding area. Decisions are never made from photos or data alone. Because it's about identifying the opportunity and securing it early — the advantage of being first.
-Find & Sign. We find with confidence. You sign with certainty.
-`;
-
   const togglePlayPause = () => {
     const vid = videoRef.current;
     if (!vid) return;
     if (vid.paused) {
-      vid.muted = false;
       vid.play();
       setIsPlaying(true);
-      setIsMuted(false);
     } else {
       vid.pause();
-      vid.muted = true;
       setIsPlaying(false);
-      setIsMuted(true);
     }
   };
 
@@ -63,16 +49,22 @@ Find & Sign. We find with confidence. You sign with certainty.
         <div className="banner-overlay" />
         <div className="hero-box">
           <h1 className="hero-title">About Us</h1>
-         
+          <p className="hero-subtitle">Find & Sign</p>
         </div>
       </section>
 
     <AboutSection
   imageSrc={AboutUsBanner}
   heading="About Find & Sign"
-  body1={body1}
-  body2={body2}
-  imageHeight="900px"
+  // subheading="Subheading"
+  body1="Find & Sign Buyer Advocate was built on the belief that every buyer should secure the right property to build equity, choice and financial freedom.
+Founder Niki learnt through experience that the right guidance is critical in securing the outcome. It is identified through local knowledge, experience and direct relationships, then secured before it reaches the wider market.
+We are a boutique buyers' agency operating nationwide, acting exclusively for buyers. Not agents. 
+"
+  body2="Not developers. We are intentionally selective about the number of clients we take on to give each brief our full attention and expert advice.
+We assess every opportunity in person by walking the property, the street, and the surrounding area. Decisions are never made from photos or data alone. Because it's about identifying the opportunity and securing it early. The advantage of being first.
+Find & Sign. We find with confidence. You sign with certainty.
+"
 />
 
       {/* ─────────────────────────────────────────
@@ -93,17 +85,6 @@ Find & Sign. We find with confidence. You sign with certainty.
             playsInline
             poster={aboutContentImg}
             className="video-el"
-            onPlay={() => {
-              setIsPlaying(true);
-              setIsMuted(false);
-            }}
-            onPause={() => {
-              if (videoRef.current) {
-                videoRef.current.muted = true;
-              }
-              setIsPlaying(false);
-              setIsMuted(true);
-            }}
           />
 
           <div className="video-overlay" />
@@ -197,7 +178,7 @@ Find & Sign. We find with confidence. You sign with certainty.
         }
         .hero-subtitle {
           color: #FFFFFF; 
-          font-family: 'Söhne';
+          font-family: 'Söhne', sans-serif;
           font-size: 24px; 
           font-weight: 300;
           line-height: 1.5; 
@@ -218,13 +199,13 @@ Find & Sign. We find with confidence. You sign with certainty.
         .panel-text { flex: 0 0 calc(50% - 24px); display: flex; flex-direction: column; gap: 20px; }
         .panel-heading-block { display: flex; flex-direction: column; gap: 6px; }
         .panel-heading {
-          font-family: 'GTSuper';
+          font-family: 'GTSuper', Georgia, serif;
           font-size: clamp(22px, 3vw, 36px); font-weight: 500;
           color: #1a1a1a; line-height: 1.25;
         }
-        .panel-subheading { font-family: 'Söhne'; font-size: 15px; color: #888888; }
+        .panel-subheading { font-family: 'Söhne', sans-serif; font-size: 15px; color: #888888; }
         .panel-body {
-          font-family: 'Söhne';
+          font-family: 'Söhne', sans-serif;
           font-size: clamp(14px, 1.5vw, 16px); line-height: 1.75; color: #444444;
         }
 
@@ -295,32 +276,27 @@ Find & Sign. We find with confidence. You sign with certainty.
   
 }
 
-.team-header {
-  text-align: center;
-}
-
 .team-header h2 {
-  color: #073B2F;
-  font-family: "GT Super Display Medium";
-  font-size: 44px;
+color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));        
+  font-family: "GT Super Display Medium";       
+   font-size:44px;
   font-weight: 500;
   line-height: 120%;
   letter-spacing: -0.48px;
-  margin: 0;
-  position: relative;
-  display: inline-block;
+  width: 100%;
 }
 
-.team-header h2::after {
-  content: "";
-  display: block;
-  width: 265px;          /* adjust to match image */
-  height: 1px;
-  background: #073B2F;
-  margin: 12px auto 0;   /* space between text and line */
+.team-header p {
+          color: #888;
+
+ font-family: 'Sohne';
+          font-size:24px;
+          font-weight: 300;
+  line-height: 120%;
+
+  margin-top: 4px;
+  width: 100%; /* 🔥 instead of align-self */
 }
-
-
 
 /* PANEL (the big grey box inside) */
 .team-panel {
@@ -333,7 +309,7 @@ Find & Sign. We find with confidence. You sign with certainty.
   box-sizing: border-box;
 
   padding: 40px;               /* keep this (Figma spacing) */
- 
+  
   border-radius: 4px;
 }
 
@@ -354,23 +330,22 @@ Find & Sign. We find with confidence. You sign with certainty.
 
   width: 100%;
   max-width: 480px;
-  min-width: 320px;
 
   padding: var(--sds-size-space-600, 20px);
   gap: var(--sds-size-space-600, 16px);
 
-  border-radius: var(--sds-size-radius-200, 6px);
-  border: var(--sds-size-stroke-border, 1px) solid var(--sds-color-border-default-default, #e5e5e5);
+  border-radius: 16px;
+  border: 2px solid #69E4DC;
   background: var(--sds-color-background-default-default, #fff);
-
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
   box-sizing: border-box; /* 🔥 important */
   transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease;
   cursor: pointer;
 }
 
 .team-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(7, 59, 47, 0.12);
+  transform: translateY(-12px);
+  box-shadow: 0 10px 22px rgba(105, 228, 220, 0.96);
   border-color: #69E4DC;
 }
 
@@ -392,33 +367,51 @@ Find & Sign. We find with confidence. You sign with certainty.
 
 /* TEXT */
 .team-text h3 {
-  color: rgb(0, 0, 0);
-  
+  color: var(--sds-color-text-default-default, #111);
 
   font-family:'GT Super Display Medium';
   font-size: 20px;
   
   font-weight: 500;
 
-  line-height: 40px;
-  letter-spacing: -0.64px;
-  font-variant-numeric: lining-nums proportional-nums;
+  line-height: 120%;
+  letter-spacing: -0.48px;
 
-  margin: 0px 0px 10px;
-
-  transition: opacity 0.6s 680ms, transform 0.6s 680ms;
-  opacity: 1;
-  transform: translateX(0px);
-
-  width: 100%;
+  margin-bottom: 6px;
+  width: 100%; /* 🔥 instead of align-self */
 }
 
+.team-text p {
+  color: var(--sds-color-text-default-secondary, #666);
 
+  font-family: 'Söhne';
+  font-weight: 300;
+  font-style: normal;
+  font-weight: var(--sds-typography-body-font-weight-regular, 400);
+
+  line-height: 140%;
+
+  width: 100%; /* 🔥 instead of align-self */
+}
 
 /* MOBILE */
 @media (max-width: 768px) {
-  .team-grid {
-    grid-template-columns: 1fr;
+  .team-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+  }
+
+  .team-img {
+    width: 100%;
+    height: auto;
+    min-width: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .team-text table {
+    margin: 8px auto 0;
   }
 
   .team-panel {
@@ -465,29 +458,29 @@ Find & Sign. We find with confidence. You sign with certainty.
     {/* Header */}
     <div className="team-header">
       <h2>Meet the team</h2>
-     
+      {/* <p>Subheading</p> */}
     </div>
 
     {/* Panel (pink box in your image) */}
     <div className="team-panel">
 
       <div className="team-grid">
-
-
         
-        {/* Card 2 */}
+        {/* Card 1 */}
         <div className="team-card">
-  <img
-    src={niki}
-    alt="Niki Nakrani"
-    className="team-img"
-    style={{
-      objectFit: "cover",
-      objectPosition: "top",
-      
-      boxSizing: "border-box",
-    }}
-  />
+          <div className="team-img">
+            <img
+              src={niki}
+              alt="Niki Nakrani"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "top",
+                borderRadius: "inherit",
+              }}
+            />
+          </div>
           <div className="team-text">
             <h3>Niki Nakrani</h3>
             <div style={{ fontSize: "16px", fontWeight: 400, color: "#666", marginBottom: "4px" }}>
@@ -526,21 +519,21 @@ Find & Sign. We find with confidence. You sign with certainty.
           </div>
         </div>
 
-        
-        {/* Card 1 */}
+        {/* Card 2 */}
         <div className="team-card">
-<div className="team-img">
-  <img
-    src={Bec}
-    alt="team member"
-    style={{
-      width: "100%",
-      height: "100%",
-      objectFit: "cover",
-      borderRadius: "inherit",
-    }}
-  />
-</div>          <div className="team-text">
+          <div className="team-img">
+            <img
+              src={Bec}
+              alt="team member"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                borderRadius: "inherit",
+              }}
+            />
+          </div>
+          <div className="team-text">
             <h3>Rebecca Nakrani</h3>
             <div style={{ fontSize: "16px", fontWeight: 400, color: "#666", marginBottom: "4px" }}>
               Client Operations Manager
@@ -577,16 +570,14 @@ Find & Sign. We find with confidence. You sign with certainty.
           </div>
         </div>
 
-
-
-
       </div>
+
     </div>
   </div>
 </section>
 
-
 <OurProcess visible={false} />
+<Image1/>
       <SimpleGetInTouch />
       <SimpleFooter />
     </>

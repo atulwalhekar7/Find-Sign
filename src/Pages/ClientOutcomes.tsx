@@ -1,8 +1,10 @@
 import { useState, useEffect, useCallback, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import { Star, Quote } from "lucide-react";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
+import Image1 from "../components/Image1";
 
 import bannerImg from "../assets/Client Outcomes_Banner.jpg";
 import AboutClientOutcomesImg from "../assets/About Client Outcomes.png";
@@ -46,6 +48,17 @@ import id36 from "../assets/Client Outcomes/id36.webp";
 import id37 from "../assets/Client Outcomes/id37.webp";
 import id38 from "../assets/Client Outcomes/id38.webp";
 import id39 from "../assets/Client Outcomes/id39.webp";
+import ellipseImage from "../assets/Ellipse 1.png";
+
+import roksonImg from "../assets/testomonials/Rokson.png";
+import sahilSainiImg from "../assets/testomonials/Sahil Saini.png";
+import rinzinWangchukImg from "../assets/testomonials/Rinzin Wangchuk.png";
+import prashanthNayarImg from "../assets/testomonials/Prashanth Nayar.png";
+import zedAImg from "../assets/testomonials/Zed A.png";
+import kumarVasindaImg from "../assets/testomonials/Kumar Vasinda Comara.png";
+import fatemaManasawalaImg from "../assets/testomonials/fatema manasawala.png";
+import gurinderSinghImg from "../assets/testomonials/Gurinder Singh.png";
+import kienLamImg from "../assets/testomonials/Kien Lam.png";
 
 
 // ── DATA ─────────────────────────────────────────────
@@ -461,6 +474,7 @@ const reviews = [
     date: "5 months ago",
     title: "Absolute pleasure from start to finish",
     body: "Working with Niki was an absolute pleasure from start to finish. He’s professional, knowledgeable, and genuinely invested in finding the perfect property for his clients. From our first meeting, Niki took the time to understand exactly what I was looking for — my budget. ",
+    image: roksonImg,
   },
   {
     name: "Amit Bhardwaj",
@@ -479,18 +493,21 @@ const reviews = [
     date: "4 months ago",
     title: "Professional and great to work with",
     body: "Niki is professional and great to work with. His communication has been great for one of our clients to source a property before Christmas and met all deadlines. Not to mention the bargain he was able to secure for the property.",
+    image: sahilSainiImg,
   },
   {
     name: "Rinzin Wangchuk",
     date: "3 months ago",
     title: "Very professional and goes way above your needs",
     body: "Niki is very professional and goes way above your needs. I was looking for my first home in Perth and didn’t know where to begin.",
+    image: rinzinWangchukImg,
   },
   {
     name: "Prashanth Nayar",
     date: "5 months ago",
     title: "Thorough market insights and dedicated due-diligence",
     body: "As a selling-agent based in Perth, I've found that Niki brings thorough market insights, dedicated due-diligence and a genuine commitment to finding the right property for his clients. ",
+    image: prashanthNayarImg,
   },
   {
     name: "Gian Ottavio",
@@ -521,6 +538,7 @@ const reviews = [
     date: "5 months ago",
     title: "Massive asset, highly recommend",
     body: "My team and I have worked with Nikki from Nakrani Property on many transactions. He excels at educating his clients and securing the best deals. Having Nikki on your side is a massive asset, and I highly recommend him to anyone buying a property in Perth",
+    image: zedAImg,
   },
   {
     name: "Josh Mezger",
@@ -539,6 +557,82 @@ const reviews = [
     date: "7 months ago",
     title: "Great experience from start to finish",
     body: "As the seller's agent, I had the pleasure of working with Niki from Nakrani Property, and it was a great experience from start to finish.",
+    image: kumarVasindaImg,
+  },
+  {
+    name: "Subho Ghosh",
+    date: "2 months ago",
+    title: "Absolute legends",
+    body: "Niki and Bec were absolute legends. They really listened, stayed patient, and went the extra mile to help us find our dream home. Honest advice, great communication, and zero pressure. Couldn’t have asked for better agents to guide us through the process. Highly recommend them.",
+  },
+  {
+    name: "Jasmine cheema",
+    date: "6 months ago",
+    title: "Truly exceptional at what he does",
+    body: "I recently had the opportunity to work with Niki, and I must say he is truly exceptional at what he does. He consistently puts his clients first and goes above and beyond to ensure they feel supported throughout the entire process.",
+  },
+  {
+    name: "fatema manasawala",
+    date: "4 months ago",
+    title: "Professionalism speaks for himself",
+    body: "I have had the pleasure to work with Niki at various occassiona for his clients. His work and professionalism speaks for himself. I highly recommend him to local /overseas and interstae investors & owner as a reputable Buyers agent in Perth.",
+    image: fatemaManasawalaImg,
+  },
+  {
+    name: "Gurinder Singh",
+    date: "4 months ago",
+    title: "Great experience working with Niki",
+    body: "Great experience working with Niki on this transaction. Everything ran smoothly from start to finish. Niki has a strong understanding of the market, communicated clearly, and was professional throughout. A pleasure to deal with.",
+    image: gurinderSinghImg,
+  },
+  {
+    name: "P Y",
+    date: "4 months ago",
+    title: "Hands-on approach and professionalism",
+    body: "What really stood out about Niki compared to other buyer’s agents I spoke with was his hands-on approach and professionalism from the very beginning. I was unsure about using a buyer’s agent at first, but after our first call it was clear.",
+  },
+  {
+    name: "Julie",
+    date: "7 months ago",
+    title: "Absolute professional to deal with",
+    body: "I had the pleasure of working with Niki recently when he brought a buyer through one of our home opens. He was an absolute professional to deal with—clearly dedicated to his clients’ best interests while also ensuring the process remained.",
+  },
+  {
+    name: "Tom Miszczak",
+    date: "5 months ago",
+    title: "Excellent from start to finish",
+    body: "Niki and the Nakrani team were excellent from start to finish. As a Selling Agent, it's great to see such professionalism from a Buyers Agent in the WA market. We look forward to working together in the future.",
+  },
+  {
+    name: "Kathy Moore",
+    date: "7 months ago",
+    title: "High level of professionalism, communication and efficiency",
+    body: "I recently dealt with Niki for a property I was selling in Connolly, where he was representing the buyers. The whole process went smoothly, due to Niki’s high level of professionalism, communication and efficiency. I hope to have the opportunity to work with him again in the future. It’s been a pleasure.",
+  },
+  {
+    name: "Oshi Thilakarathna",
+    date: "5 months ago",
+    title: "Fantastic—professional, proactive, and got the deal done smoothly.",
+    body: "Niki was fantastic—professional, proactive, and got the deal done smoothly. He made the whole process easy, and settlement was stress-free. Highly recommend!",
+  },
+  {
+    name: "Travis Ranieri",
+    date: "10 months ago",
+    title: "Ongoing support through our property investment journey",
+    body: "As a Buyers Agent Niki provided ongoing support through our property investment journey, delivering insights and become a trusted advisor for our family. Seamless process, highly recommend leveraging Niki and his team.",
+  },
+  {
+    name: "Kien Lam",
+    date: "8 months ago",
+    title: "Best in the business",
+    body: "Niki is the best in the business. He has the best negotiating skills and can get you the best price for the property.",
+    image: kienLamImg,
+  },
+  {
+    name: "Kush Hirani",
+    date: "4 months ago",
+    title: "Very pleased with Niki & Rebecca’s service",
+    body: "Very pleased with Niki & Rebecca’s service. Quick responses and always going above and beyond to make sure I found the right property. Niki is thorough on all the home opens to point out any potential issues and doesn’t pressure you at all",
   },
 ];
 
@@ -549,6 +643,80 @@ const formatReviewBody = (text: string) => {
   }
   return text;
 };
+
+function TestimonialCard({ testimonial, style }: { testimonial: any; style?: React.CSSProperties }) {
+  return (
+    <div 
+      className="testimonial-card"
+      style={{ ...style, display: 'flex', flexDirection: 'column' }}
+    >
+      <div style={{ 
+        position: 'absolute', 
+        top: '-16px', 
+        left: '24px', 
+        background: '#69E4DC', 
+        color: '#073B2F', 
+        fontSize: '12px', 
+        fontWeight: 'bold', 
+        padding: '8px 20px', 
+        borderRadius: '9999px', 
+        boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)', 
+        zIndex: 10,
+        maxWidth: '85%', 
+        overflow: 'hidden', 
+        textOverflow: 'ellipsis', 
+        whiteSpace: 'nowrap'
+      }}>
+         {testimonial.title}
+      </div>
+      
+      <Quote style={{ color: 'rgba(11, 215, 205, 0.1)', position: 'absolute', top: '20px', right: '20px' }} size={48} />
+
+      <div style={{ position: 'relative', zIndex: 10, display: 'flex', flexDirection: 'column', flex: 1, paddingTop: '24px' }}>
+        <div style={{ display: 'flex', gap: '4px', marginBottom: '16px' }}>
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} style={{ color: '#fbbf24', fill: '#fbbf24' }} size={14} />
+          ))}
+        </div>
+
+        <p style={{ 
+          color: '#374151', 
+          marginBottom: '20px', 
+          lineHeight: 1.5, 
+          fontStyle: 'italic', 
+          fontSize: '0.9rem', 
+          fontFamily: 'Sohne', 
+          fontWeight: 300,
+          flex: 1,
+          display: '-webkit-box', WebkitLineClamp: 5, WebkitBoxOrient: 'vertical', overflow: 'hidden'
+        }}>
+          "{testimonial.body}"
+        </p>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', borderTop: '1px solid #f3f4f6', paddingTop: '16px' }}>
+          <div className="avatar-circle" style={{ width: 48, height: 48, borderRadius: "50%", backgroundColor: "#D9D9D9", display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid white", overflow: 'hidden' }}>
+            {testimonial.image ? (
+              <img src={testimonial.image} alt={testimonial.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            ) : (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="8" r="4" stroke="#aaa" strokeWidth="1.5"/>
+                <path d="M4 20c0-4 3.58-7 8-7s8 3 8 7" stroke="#aaa" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
+            )}
+          </div>
+          <div>
+            <h4 style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#111827', margin: 0, fontFamily: 'Sohne' }}>
+              {testimonial.name}
+            </h4>
+            <p style={{ fontSize: '11px', fontWeight: 500, color: '#073B2F', textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '2px', fontFamily: 'Sohne' }}>
+              {testimonial.date}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 // Map the reviews to include the formatted body
 const formattedReviews = reviews.map(review => ({
@@ -570,7 +738,18 @@ function PropertyCard({ card, index }: { card: typeof cards[0]; index: number })
         <img src={card.image} alt="Property" className="card-image" />
       </div>
 
-      <div className="growth-circle" style={{ animationDelay: `${index * 150}ms` }}>
+      <div
+        className="growth-circle-container"
+        style={{
+          animationDelay: `${index * 150}ms`,
+          backgroundImage: `url(${ellipseImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
         <span className="growth-label">Growth</span>
         <span className="growth-value">{card.growth}</span>
       </div>
@@ -600,15 +779,34 @@ function PropertyCard({ card, index }: { card: typeof cards[0]; index: number })
 
 // ── MAIN COMPONENT ───────────────────────────────────
 export default function ClientOutcomes() {
+  const { hash } = useLocation();
   const [reviewIdx, setReviewIdx] = useState(0);
   const [visibleCount, setVisibleCount] = useState(3);
 
   const [showAllCards, setShowAllCards] = useState(false);
+  const [showAllReviews, setShowAllReviews] = useState(false); // New state for reviews
+
   const INITIAL_CARDS_COUNT = 21;
 
   const [reviewContainerWidth, setReviewContainerWidth] = useState(0);
 
   const reviewContainerRef = useRef<HTMLDivElement>(null);
+  const testimonialsSectionRef = useRef<HTMLElement>(null);
+  const outcomesSectionRef = useRef<HTMLElement>(null);
+  const buttonContainerRef = useRef<HTMLDivElement>(null);
+  const reviewButtonContainerRef = useRef<HTMLDivElement>(null); // New ref for review button
+
+  useEffect(() => {
+    if (hash === "#testimonials") {
+      setTimeout(() => {
+        testimonialsSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else if (hash === "#outcomes") {
+      setTimeout(() => {
+        outcomesSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }, [hash]);
 
   useEffect(() => {
     const update = () => {
@@ -654,6 +852,37 @@ export default function ClientOutcomes() {
   const reviewCardWidth = reviewContainerWidth 
     ? (reviewContainerWidth - 32 * (visibleCount - 1)) / visibleCount 
     : 350;
+
+  const handleToggleCards = () => {
+    if (showAllCards) {
+      setShowAllCards(false);
+      // Scroll to the button container instead of the section top.
+      // Using a small timeout ensures the height of the grid has updated before we scroll.
+      setTimeout(() => {
+        buttonContainerRef.current?.scrollIntoView({ 
+          behavior: "smooth", 
+          block: "center" 
+        });
+      }, 100);
+    } else {
+      setShowAllCards(true);
+    }
+  };
+
+  const handleToggleReviews = () => {
+    if (showAllReviews) {
+      setShowAllReviews(false);
+      // Scroll to the review button container when collapsing reviews
+      setTimeout(() => {
+        reviewButtonContainerRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }, 100);
+    } else {
+      setShowAllReviews(true);
+    }
+  };
 
   return (
     <div style={{ backgroundColor: "#FFFFFF", fontFamily: "Sohne, sans-serif" }}>
@@ -704,49 +933,54 @@ export default function ClientOutcomes() {
       {/* ── ABOUT ───────────────────────────────── */}
       <AboutSection
         imageSrc={AboutClientOutcomesImg}
-        heading="About Find & Sign"
+        heading="About Client Outcomes"
         subheading=""
         body1="Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look."
         body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."
       />
 
       {/* ── CLIENT OUTCOMES GRID ───────────────────────────────── */}
-      <section style={{ maxWidth: 1200, margin: "0 auto", padding: "80px 40px" }}>
-        
-        <div style={{ marginBottom: 48, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <h2 style={{ 
-            fontFamily: "'GT Super Display Medium'",
-            fontSize: "44px",
-            fontWeight: 500,
-            color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
-            lineHeight: "120%",
-            letterSpacing: "-0.48px",
-            fontVariantNumeric: "lining-nums proportional-nums",
-            margin: "0 0 4px",
-            borderBottom: "2px solid #073B2F",
-            paddingBottom: "8px",
-            width: "fit-content"
-          }}>
-            Client Outcomes
-          </h2>
-        </div>
-
-        <div className="outcomes-grid">
-          {(showAllCards ? cards : cards.slice(0, INITIAL_CARDS_COUNT)).map((card, i) => (
-            <PropertyCard key={card.id} card={card} index={i} />
-          ))}
-        </div>
-
-        {cards.length > INITIAL_CARDS_COUNT && (
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}>
-            <button 
-              className="view-more-outcomes-btn" 
-              onClick={() => setShowAllCards(!showAllCards)}
-            >
-              {showAllCards ? "View Less" : "View More Outcomes"}
-            </button>
+      <section ref={outcomesSectionRef} id="outcomes" style={{ background: '#F9F9F9', padding: "80px 0" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+          
+          <div style={{ marginBottom: 48, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <h2 style={{ 
+              fontFamily: "'GT Super Display Medium'",
+              fontSize: "44px",
+              fontWeight: 500,
+              color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+              lineHeight: "120%",
+              letterSpacing: "-0.48px",
+              fontVariantNumeric: "lining-nums proportional-nums",
+              margin: "0 0 4px",
+              borderBottom: "2px solid #073B2F",
+              paddingBottom: "8px",
+              width: "fit-content"
+            }}>
+              Client Outcomes
+            </h2>
           </div>
-        )}
+
+          <div className="outcomes-grid">
+            {(showAllCards ? cards : cards.slice(0, INITIAL_CARDS_COUNT)).map((card, i) => (
+              <PropertyCard key={card.id} card={card} index={i} />
+            ))}
+          </div>
+
+          {cards.length > INITIAL_CARDS_COUNT && (
+            <div 
+              ref={buttonContainerRef}
+              style={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}
+            >
+              <button 
+                className="view-more-outcomes-btn" 
+                onClick={handleToggleCards}
+              >
+                {showAllCards ? "View Less" : "View More Outcomes"}
+              </button>
+            </div>
+          )}
+        </div>
       </section>
 
       {/* ── WHAT OUR CLIENTS ARE SAYING ───────────────────────────────── */}
@@ -843,7 +1077,7 @@ export default function ClientOutcomes() {
         }
       `}</style>
 
-      <section className="testimonials-section" style={{ position: 'relative', padding: '80px 0', background: '#F9F9F9' }}>
+      <section ref={testimonialsSectionRef} id="testimonials" className="testimonials-section" style={{ position: 'relative', padding: '80px 0', background: '#F9F9F9' }}>
         <div style={{ position: 'relative', maxWidth: '1200px', margin: '0 auto', padding: '0 32px' }}>
           <div style={{ 
             display: 'flex', 
@@ -870,123 +1104,75 @@ export default function ClientOutcomes() {
           </div>
 
           <div style={{ position: 'relative' }}>
-            <button
-              className="nav-arrow prev"
-              onClick={() => setReviewIdx(prev => Math.max(0, prev - 1))}
-              disabled={reviewIdx === 0}
-              aria-label="Previous slide"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M19 12H5M12 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button
-              className="nav-arrow next"
-              onClick={() => setReviewIdx(prev => Math.min(maxReviewIdx, prev + 1))}
-              disabled={reviewIdx === maxReviewIdx}
-              aria-label="Next slide"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </button>
+            {!showAllReviews && (
+              <>
+                <button
+                  className="nav-arrow prev"
+                  onClick={() => setReviewIdx(prev => Math.max(0, prev - 1))}
+                  disabled={reviewIdx === 0}
+                  aria-label="Previous slide"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  className="nav-arrow next"
+                  onClick={() => setReviewIdx(prev => Math.min(maxReviewIdx, prev + 1))}
+                  disabled={reviewIdx === maxReviewIdx}
+                  aria-label="Next slide"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </>
+            )}
 
             <div ref={reviewContainerRef} style={{ overflow: "hidden", padding: "40px 0", margin: "-40px 0" }}>
-          <div 
-            className="slider-track"
-            style={{
-              display: "flex",
-              gap: 32,
-              transition: "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
-              transform: `translateX(-${reviewIdx * (reviewCardWidth + 32)}px)`,
-            }}
-          >
-            {formattedReviews.map((testimonial, index) => (
-              <div 
-                key={index} 
-                className="testimonial-card"
-                style={{ flex: `0 0 ${reviewCardWidth}px`, width: `${reviewCardWidth}px`, display: 'flex', flexDirection: 'column' }}
-              >
-                <div style={{ 
-                  position: 'absolute', 
-                  top: '-16px', 
-                  left: '24px', 
-                  background: '#69E4DC', 
-                  color: '#073B2F', 
-                  fontSize: '12px', 
-                  fontWeight: 'bold', 
-                  padding: '8px 20px', 
-                  borderRadius: '9999px', 
-                  boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)', 
-                  zIndex: 10,
-                  maxWidth: '85%', 
-                  overflow: 'hidden', 
-                  textOverflow: 'ellipsis', 
-                  whiteSpace: 'nowrap'
-                }}>
-                   {testimonial.title}
+              {showAllReviews ? (
+                <div className="reviews-grid">
+                  {formattedReviews.map((testimonial, index) => (
+                    <TestimonialCard key={index} testimonial={testimonial} />
+                  ))}
                 </div>
-                
-                <Quote style={{ color: 'rgba(11, 215, 205, 0.1)', position: 'absolute', top: '20px', right: '20px' }} size={48} />
-
-                <div style={{ position: 'relative', zIndex: 10, display: 'flex', flexDirection: 'column', flex: 1, paddingTop: '24px' }}>
-                  <div style={{ display: 'flex', gap: '4px', marginBottom: '16px' }}>
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} style={{ color: '#fbbf24', fill: '#fbbf24' }} size={14} />
-                    ))}
-                  </div>
-
-                  <p style={{ 
-                    color: '#374151', 
-                    marginBottom: '20px', 
-                    lineHeight: 1.5, 
-                    fontStyle: 'italic', 
-                    fontSize: '0.9rem', 
-                    fontFamily: 'Sohne', 
-                    fontWeight: 300,
-                    flex: 1,
-                    display: '-webkit-box', WebkitLineClamp: 5, WebkitBoxOrient: 'vertical', overflow: 'hidden'
-                  }}>
-                    "{testimonial.body}"
-                  </p>
-
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', borderTop: '1px solid #f3f4f6', paddingTop: '16px' }}>
-                    <div className="avatar-circle" style={{ width: 48, height: 48, borderRadius: "50%", backgroundColor: "#D9D9D9", display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid white", overflow: 'hidden' }}>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <circle cx="12" cy="8" r="4" stroke="#aaa" strokeWidth="1.5"/>
-                        <path d="M4 20c0-4 3.58-7 8-7s8 3 8 7" stroke="#aaa" strokeWidth="1.5" strokeLinecap="round"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#111827', margin: 0, fontFamily: 'Sohne' }}>
-                        {testimonial.name}
-                      </h4>
-                      <p style={{ fontSize: '11px', fontWeight: 500, color: '#073B2F', textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '2px', fontFamily: 'Sohne' }}>
-                        {testimonial.date}
-                      </p>
-                    </div>
-                  </div>
+              ) : (
+                <div 
+                  className="slider-track"
+                  style={{
+                    display: "flex",
+                    gap: 32,
+                    transition: "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
+                    transform: `translateX(-${reviewIdx * (reviewCardWidth + 32)}px)`,
+                  }}
+                > 
+                  {formattedReviews.map((testimonial, index) => (
+                    <TestimonialCard 
+                      key={index} 
+                      testimonial={testimonial} 
+                      style={{ flex: `0 0 ${reviewCardWidth}px`, width: `${reviewCardWidth}px` }}
+                    />
+                  ))}
                 </div>
-              </div>
-            ))}
-          </div> {/* Closing the reviews-grid wrapper div */}
+              )}
+            </div>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}>
-            <a
-              href="https://www.google.com/search?sca_esv=fe4e0a021dfb896a&hl=en-GB&authuser=0&sxsrf=ANbL-n5lF1RzZHnMwJ9D4UBLKQGWqn1i7w:1776761558452&kgmid=/g/11vyhyd916&q=Find+and+Sign+Buyer+Advocate&shem=epsdc&shndl=30&source=sh/x/loc/uni/m1/1&kgs=498ca325ea654c29&utm_source=epsdc,sh/x/loc/uni/m1/1#lrd=0x81920490ca986a8f:0x8eea5b46a5653f4b,1,,,,"
-              target="_blank"
-              rel="noopener noreferrer"
+          {formattedReviews.length > visibleCount && ( // Only show button if there are more reviews than initially visible
+            <div ref={reviewButtonContainerRef} style={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}>
+              <button
               className="view-more-outcomes-btn"
+              onClick={handleToggleReviews}
             >
-              View more feedback
-            </a>
+              {showAllReviews ? "View Less Feedback" : "View More Feedback"}
+            </button>
           </div>
-          </div>
+          )}
         </div>
       </section>
 
       {/* ── GET IN TOUCH ───────────────────────────────── */}
+      <Image1/>
       <SimpleGetInTouch />
 
       {/* ── FOOTER ───────────────────────────────── */}
@@ -1073,42 +1259,61 @@ export default function ClientOutcomes() {
           width: 100%; 
           height: 100%; 
           object-fit: cover; 
-          transition: transform 0.6s ease;
+          transition: 0.3s;
+          filter: blur(3px) brightness(80%);
         }
 
         .property-card:hover .card-image {
           transform: scale(1.08);
         }
 
-        .growth-circle {
+        /* Growth Circle Container with Heartbeat Animation */
+        .growth-circle-container {
           position: absolute;
-          top: 155px;
-          right: 18px;
-          width: 90px;
-          height: 90px;
+          bottom: 160px; /* Position at the bottom */
+          right: 1px;
+          width: 130px; /* Increased size */
+          height: 130px; /* Increased size */
           border-radius: 50%;
           background: ${AQUA};
+          background-image: url(${ellipseImage}); /* Overlay the image if it's a pattern/texture */
+          background-size: cover;
+          background-position: center;
+          object-fit: cover;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           z-index: 10;
           animation: heartbeatFloat 4s ease-in-out infinite;
-          transition: background 0.3s ease;
+          transition: filter 0.3s ease, background 0.3s ease; /* Add background to transition */
+          text-align: center;
         }
 
-        .property-card:hover .growth-circle {
+        .property-card:hover .growth-circle-container {
           background: ${WHITE};
-          box-shadow: 0 4px 15px rgba(105, 228, 220, 0.5);
+          filter: brightness(1.1) drop-shadow(0 4px 15px rgba(105, 228, 220, 0.5));
         }
 
-        .growth-label { font-family: 'Sohne'; font-size: 10px; text-transform: uppercase; color: ${RACING_GREEN}; }
-        .growth-value { font-family: 'GTSuper'; font-size: 18px; font-weight: 700; color: ${RACING_GREEN}; font-variant-numeric: lining-nums proportional-nums; }
+        .growth-circle-container .growth-label {
+          font-family: 'Sohne', sans-serif;
+          font-size: 12px;
+          color: ${RACING_GREEN};
+          opacity: 0.8;
+        }
+        .growth-circle-container .growth-value {
+          font-family: 'GT Super Display Medium';
+          font-size: 24px;
+          font-weight: 700;
+          line-height: 1.2;
+          color: ${RACING_GREEN};
+          margin-bottom: 4px;
+        }
 
         .card-data { padding: 55px 18px 20px; flex: 1; }
         .card-row { display: flex; justify-content: space-between; padding: 10px 0; }
         .row-label { font-family: 'Sohne'; font-size: 13px; color: #000; }
-        .row-val { font-family: 'Sohne'; font-size: 13px; color: #757575; font-variant-numeric: lining-nums proportional-nums; }
+        .row-val { font-family: 'Sohne'; font-size: 13px; color: #757575; font-variant-numeric: lining-nums proportional-nums; margin-right: 50px;}
 
         @media (max-width: 900px) {
           .grid-3 {
