@@ -3,6 +3,7 @@ import { Star, Quote } from "lucide-react";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
+import Image1 from "../components/Image1";
 
 import bannerImg from "../assets/Client Outcomes_Banner.jpg";
 import AboutClientOutcomesImg from "../assets/About Client Outcomes.png";
@@ -917,7 +918,7 @@ export default function ClientOutcomes() {
       {/* ── ABOUT ───────────────────────────────── */}
       <AboutSection
         imageSrc={AboutClientOutcomesImg}
-        heading="About Find & Sign"
+        heading="About Client Outcomes"
         subheading=""
         body1="Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look."
         body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."
@@ -1156,6 +1157,7 @@ export default function ClientOutcomes() {
       </section>
 
       {/* ── GET IN TOUCH ───────────────────────────────── */}
+      <Image1/>
       <SimpleGetInTouch />
 
       {/* ── FOOTER ───────────────────────────────── */}
@@ -1296,7 +1298,7 @@ export default function ClientOutcomes() {
         .card-data { padding: 55px 18px 20px; flex: 1; }
         .card-row { display: flex; justify-content: space-between; padding: 10px 0; }
         .row-label { font-family: 'Sohne'; font-size: 13px; color: #000; }
-        .row-val { font-family: 'Sohne'; font-size: 13px; color: #757575; font-variant-numeric: lining-nums proportional-nums; }
+        .row-val { font-family: 'Sohne'; font-size: 13px; color: #757575; font-variant-numeric: lining-nums proportional-nums; margin-right: 30px;}
 
         @media (max-width: 900px) {
           .grid-3 {

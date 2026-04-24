@@ -4,6 +4,7 @@ import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
 import bannerImg from "../assets/DSC06227.jpg";
 import AboutServiceImg from "../assets/About Our Services.jpg";
+import Image1 from "../components/Image1";
 
 
 // ── Animation hook ────────────────────────────────────────────────────────────
@@ -137,7 +138,7 @@ const ServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title: str
           color: "#000",
           textAlign: "center",
           fontVariantNumeric: "lining-nums proportional-nums",
-          fontFamily: "'GT Super Display Medium', serif",
+          fontFamily: 'GT Super Display Medium', 
           fontSize: "32px",
           fontStyle: "normal",
           fontWeight: 500,
@@ -203,7 +204,7 @@ const OtherServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title
           color: "#000",
           textAlign: "center",
           fontVariantNumeric: "lining-nums proportional-nums",
-          fontFamily: "'GT Super Display Medium'",
+          fontFamily: "GT Super Display Medium",
           fontSize: "32px",
           fontStyle: "normal",
           fontWeight: 500,
@@ -216,7 +217,7 @@ const OtherServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title
         <p style={{
           color: "#757575",
           textAlign: "center",
-          fontFamily: "'Söhne'",
+          fontFamily: ' Sohne',
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: 400,
@@ -286,7 +287,7 @@ export default function Services() {
           }}
         >
 <h1 style={{ 
-            fontFamily: "'GT Super Display Medium'",
+            fontFamily: "GT Super Display Medium",
             fontSize: "64px",
             fontWeight: 500,
             color: "#FFF",
@@ -327,7 +328,7 @@ export default function Services() {
                 color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
                 textAlign: "center",
                 fontVariantNumeric: "lining-nums proportional-nums",
-                fontFamily: "GT Super Display",
+                fontFamily: "GT Super Display Medium",
                 fontSize: "44px",
                 fontStyle: "normal",
                 fontWeight: 500,
@@ -359,7 +360,7 @@ export default function Services() {
                 color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
                 textAlign: "center",
                 fontVariantNumeric: "lining-nums proportional-nums",
-                fontFamily: "GT Super Display",
+                fontFamily: "GT Super Display Medium",
                 fontSize: "44px",
                 fontStyle: "normal",
                 fontWeight: 500,
@@ -390,8 +391,9 @@ export default function Services() {
           <OtherServiceCard title="Accounting" body={body} hasButton delay={0.2} />
         </div>
       </section>
-
+              <Image1/>
       <SimpleGetInTouch />
+      
       <SimpleFooter />
 
       {/* ── Styles ───────────────────────────────────────────────────────── */}
