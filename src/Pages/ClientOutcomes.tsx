@@ -621,6 +621,8 @@ export default function ClientOutcomes() {
   const [reviewContainerWidth, setReviewContainerWidth] = useState(0);
 
   const reviewContainerRef = useRef<HTMLDivElement>(null);
+  const outcomesSectionRef = useRef<HTMLElement>(null);
+  const buttonContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const update = () => {
@@ -666,6 +668,22 @@ export default function ClientOutcomes() {
   const reviewCardWidth = reviewContainerWidth 
     ? (reviewContainerWidth - 32 * (visibleCount - 1)) / visibleCount 
     : 350;
+
+  const handleToggleCards = () => {
+    if (showAllCards) {
+      setShowAllCards(false);
+      // Scroll to the button container instead of the section top.
+      // Using a small timeout ensures the height of the grid has updated before we scroll.
+      setTimeout(() => {
+        buttonContainerRef.current?.scrollIntoView({ 
+          behavior: "smooth", 
+          block: "center" 
+        });
+      }, 100);
+    } else {
+      setShowAllCards(true);
+    }
+  };
 
   return (
     <div style={{ backgroundColor: "#FFFFFF", fontFamily: "Sohne, sans-serif" }}>
@@ -723,7 +741,7 @@ export default function ClientOutcomes() {
       />
 
       {/* ── CLIENT OUTCOMES GRID ───────────────────────────────── */}
-      <section style={{ background: '#F9F9F9', padding: "80px 0" }}>
+      <section ref={outcomesSectionRef} style={{ background: '#F9F9F9', padding: "80px 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
           
           <div style={{ marginBottom: 48, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -751,10 +769,13 @@ export default function ClientOutcomes() {
           </div>
 
           {cards.length > INITIAL_CARDS_COUNT && (
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}>
+            <div 
+              ref={buttonContainerRef}
+              style={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}
+            >
               <button 
                 className="view-more-outcomes-btn" 
-                onClick={() => setShowAllCards(!showAllCards)}
+                onClick={handleToggleCards}
               >
                 {showAllCards ? "View Less" : "View More Outcomes"}
               </button>
