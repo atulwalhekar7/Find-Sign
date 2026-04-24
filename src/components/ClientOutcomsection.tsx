@@ -470,7 +470,6 @@ function PropertyCard({
 
       {/* Growth image replacing circle */}
       <div
-        alt="Growth"
         className="growth-circle-container"
         style={{
           animationDelay: `${index * 150}ms`,

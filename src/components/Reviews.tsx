@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 // ── DATA ─────────────────────────────────────────────
 const AQUA = "#69E4DC";
-const RACING_GREEN = "#003327";
 
 const reviews = [
   { name: "Rok Son", headline: "Headline over\ntwo lines", text: "This is placeholder text used to represent a client outcome. It mirrors the structure and length of a real testimonial, showing how content will sit" },
