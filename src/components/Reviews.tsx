@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
+// ── DATA ─────────────────────────────────────────────
+const AQUA = "#69E4DC";
+const RACING_GREEN = "#003327";
+
 const reviews = [
   { name: "Rok Son", headline: "Headline over\ntwo lines", text: "This is placeholder text used to represent a client outcome. It mirrors the structure and length of a real testimonial, showing how content will sit" },
   { name: "Amit Bhardwaj", headline: "Headline over\ntwo lines", text: "This is placeholder text used to represent a client outcome. It mirrors the structure and length of a real testimonial, showing how content will sit" },
@@ -119,16 +123,18 @@ const App = () => {
           align-items: flex-start;
           border-radius: 16px;
           background: #073B2F;
+          border: 2px solid ${AQUA}; /* Added border */
           box-sizing: border-box;
           box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-          transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s ease;
+          transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease; /* Updated transition */
+          cursor: pointer; /* Added cursor pointer */
         }
 
         /* ── HOVER — lift + intensify ── */
         .npb-card:hover {
           transform: translateY(-12px);
-          box-shadow: 0 24px 48px rgba(7, 59, 47, 0.25);
-          box-shadow: 0 24px 48px rgba(11, 215, 205, 0.4);
+          box-shadow: 0 10px 22px rgba(105, 228, 220, 0.96); /* Updated box-shadow */
+          border-color: ${AQUA}; /* Changed border color on hover */
         }
 
         /* ── SLIDER TRACK ── */
@@ -168,35 +174,27 @@ const App = () => {
         .rev-arrow-btn:disabled { opacity: 0.2; cursor: default; }
 
         /* ── CTA ── */
-       .rev-cta-btn {
-  display: flex;
-  height: 48px;
-  padding: 12px 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-
-  border-radius: 8px;
-  border: 1px solid #69E4DC;
-  background: white;
-
-  color: #073B2F;
-  font-family: 'CX80';
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 15px;
-  letter-spacing: 4.8px;
-
-  margin-top: 30px;
-  cursor: pointer;
-
-  transition: background 0.2s, color 0.2s;
-}
+        .rev-cta-btn {
+          display: inline-flex;
+          height: 48px;
+          padding: 12px 24px;
+          justify-content: center; align-items: center; gap: 10px;
+          border-radius: 8px;
+          border: 1px solid #69E4DC;
+          border: 1px solid rgba(11, 215, 205, 0.96);
+          color: #073B2F;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 15px; font-weight: 700; line-height: 15px;
+          letter-spacing: 4.8px;
+          background: white;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          text-transform: uppercase;
+        }
 .rev-cta-btn:hover {
-  background: #69E4DC;
-  color: #073B2F;
-  border-color: #69E4DC;
+  background: #073B2F; /* or your color */
+  color: white;
+  transform: scale(1.05);
 }
         /* ── DOTS ── */
         .rev-dot {
@@ -221,7 +219,7 @@ const App = () => {
         .rev-title-group { grid-column: 1 / 9; }
 
         .rev-heading {
-          font-family: 'GT Super Display Medium';
+          font-family: 'GT Super Display Medium', Georgia, serif;
           font-size: 44px;
           font-weight: 500;
           font-style: normal;
@@ -229,11 +227,7 @@ const App = () => {
           line-height: 54px;
           letter-spacing: -0.88px;
           font-variant-numeric: lining-nums proportional-nums;
-          margin: 0 auto 16px;
-          border-bottom: 2px solid #073B2F;
-          padding-bottom: 8px;
-          width: fit-content;
-          text-align: center;
+          margin-bottom: 12px;
         }
         .rev-subheading {
           color: #000;
@@ -242,7 +236,6 @@ const App = () => {
           font-weight: 300;
           line-height: 36px;
           margin: 0;
-          text-align: center;
         }
 
         /* ── TABLET ── */
@@ -282,8 +275,8 @@ const App = () => {
         {/* ── HEADER ── */}
         <div className="rev-grid">
           <div className="rev-full">
-            <div className="rev-header" style={{ display: 'flex', justifyContent: 'center' }}>
-              <div className="rev-title-group" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div className="rev-header">
+              <div className="rev-title-group">
                 <h2 className="rev-heading">What clients say</h2>
                 <p className="rev-subheading">In their own words, following their experience with Niki.</p>
               </div>
