@@ -932,7 +932,7 @@ export default function ClientOutcomes() {
 
           <button 
             className="view-btn" 
-            onClick={() => navigate("/client-outcomes")}
+            onClick={() => navigate("/client-outcomes#outcomes")}
           >
             View More Outcomes
           </button>

@@ -801,6 +801,10 @@ export default function ClientOutcomes() {
       setTimeout(() => {
         testimonialsSectionRef.current?.scrollIntoView({ behavior: "smooth" });
       }, 100);
+    } else if (hash === "#outcomes") {
+      setTimeout(() => {
+        outcomesSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
     }
   }, [hash]);
 
@@ -936,7 +940,7 @@ export default function ClientOutcomes() {
       />
 
       {/* ── CLIENT OUTCOMES GRID ───────────────────────────────── */}
-      <section ref={outcomesSectionRef} style={{ background: '#F9F9F9', padding: "80px 0" }}>
+      <section ref={outcomesSectionRef} id="outcomes" style={{ background: '#F9F9F9', padding: "80px 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
           
           <div style={{ marginBottom: 48, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
