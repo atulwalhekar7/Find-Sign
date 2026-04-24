@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import SimpleGetInTouch from "../components/SimpleGetInTouch";
+import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
 
 // --- Assets (Assuming these exist in the Blogs folder as per instructions) ---

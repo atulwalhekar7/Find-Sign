@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import aboutContentImg from "../assets/DSC06081.jpg";
 import aboutVideo from "../assets/Interview Draft (2).mp4";
 import AboutSection from "../components/AboutSection";
-import SimpleGetInTouch from "../components/SimpleGetInTouch";
+import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import OurProcess from "../components/OurProcess";
 import Banner from "../assets/About Us_Banner.jpg";
@@ -55,9 +55,15 @@ export default function About() {
     <AboutSection
   imageSrc={AboutUsBanner}
   heading="About Find & Sign"
-  subheading="Subheading"
-  body1="Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look."
-  body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."
+  // subheading="Subheading"
+  body1="Find & Sign Buyer Advocate was built on the belief that every buyer should secure the right property to build equity, choice and financial freedom.
+Founder Niki learnt through experience that the right guidance is critical in securing the outcome. It is identified through local knowledge, experience and direct relationships, then secured before it reaches the wider market.
+We are a boutique buyers' agency operating nationwide, acting exclusively for buyers. Not agents. 
+"
+  body2="Not developers. We are intentionally selective about the number of clients we take on to give each brief our full attention and expert advice.
+We assess every opportunity in person by walking the property, the street, and the surrounding area. Decisions are never made from photos or data alone. Because it's about identifying the opportunity and securing it early. The advantage of being first.
+Find & Sign. We find with confidence. You sign with certainty.
+"
 />
 
       {/* ─────────────────────────────────────────
@@ -323,7 +329,6 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
 
   width: 100%;
   max-width: 480px;
-  min-width: 320px;
 
   padding: var(--sds-size-space-600, 20px);
   gap: var(--sds-size-space-600, 16px);
@@ -390,8 +395,22 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
 
 /* MOBILE */
 @media (max-width: 768px) {
-  .team-grid {
-    grid-template-columns: 1fr;
+  .team-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+  }
+
+  .team-img {
+    width: 100%;
+    height: auto;
+    min-width: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .team-text table {
+    margin: 8px auto 0;
   }
 
   .team-panel {
@@ -438,7 +457,7 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
     {/* Header */}
     <div className="team-header">
       <h2>Meet the team</h2>
-      <p>Subheading</p>
+      {/* <p>Subheading</p> */}
     </div>
 
     {/* Panel (pink box in your image) */}
@@ -448,67 +467,19 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
         
         {/* Card 1 */}
         <div className="team-card">
-<div className="team-img">
-  <img
-    src={Bec}
-    alt="team member"
-    style={{
-      width: "100%",
-      height: "100%",
-      objectFit: "cover",
-      borderRadius: "inherit",
-    }}
-  />
-</div>          <div className="team-text">
-            <h3>Rebecca Nakrani</h3>
-            <div style={{ fontSize: "16px", fontWeight: 400, color: "#666", marginBottom: "4px" }}>
-              Client Operations Manager
-            </div>
-            <div style={{ fontSize: "12px", lineHeight: "22px" }}>
-              E:
-              <a href="mailto:info@findandsignba.com.au" style={{ textDecoration: "none", color: "#000" }}>
-                info@findandsignba.com.au
-              </a>
-            </div>
-
-            {/* Social */}
-            <table cellPadding="0" cellSpacing="0" border={0} style={{ marginTop: "8px" }}>
-              <tbody>
-                <tr>
-                  <td width="16">
-                    <a href="https://www.facebook.com/nakranipropertybuyers/" target="_blank" rel="noreferrer">
-                      <img src={fbIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="Facebook" />
-                    </a>
-                  </td>
-                  <td width="16" style={{ paddingLeft: "16px" }}>
-                    <a href="https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" target="_blank" rel="noreferrer">
-                      <img src={igIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="Instagram" />
-                    </a>
-                  </td>
-                  <td width="16" style={{ paddingLeft: "16px" }}>
-                    <a href="https://www.linkedin.com/in/niki-nakrani-13b269237/" target="_blank" rel="noreferrer">
-                      <img src={liIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="LinkedIn" />
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div className="team-img">
+            <img
+              src={niki}
+              alt="Niki Nakrani"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "top",
+                borderRadius: "inherit",
+              }}
+            />
           </div>
-        </div>
-
-        {/* Card 2 */}
-        <div className="team-card">
-  <img
-    src={niki}
-    alt="Niki Nakrani"
-    className="team-img"
-    style={{
-      objectFit: "cover",
-      objectPosition: "top",
-      
-      boxSizing: "border-box",
-    }}
-  />
           <div className="team-text">
             <h3>Niki Nakrani</h3>
             <div style={{ fontSize: "16px", fontWeight: 400, color: "#666", marginBottom: "4px" }}>
@@ -547,14 +518,64 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
           </div>
         </div>
 
+        {/* Card 2 */}
+        <div className="team-card">
+          <div className="team-img">
+            <img
+              src={Bec}
+              alt="team member"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                borderRadius: "inherit",
+              }}
+            />
+          </div>
+          <div className="team-text">
+            <h3>Rebecca Nakrani</h3>
+            <div style={{ fontSize: "16px", fontWeight: 400, color: "#666", marginBottom: "4px" }}>
+              Client Operations Manager
+            </div>
+            <div style={{ fontSize: "12px", lineHeight: "22px" }}>
+              E:
+              <a href="mailto:info@findandsignba.com.au" style={{ textDecoration: "none", color: "#000" }}>
+                info@findandsignba.com.au
+              </a>
+            </div>
+
+            {/* Social */}
+            <table cellPadding="0" cellSpacing="0" border={0} style={{ marginTop: "8px" }}>
+              <tbody>
+                <tr>
+                  <td width="16">
+                    <a href="https://www.facebook.com/nakranipropertybuyers/" target="_blank" rel="noreferrer">
+                      <img src={fbIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="Facebook" />
+                    </a>
+                  </td>
+                  <td width="16" style={{ paddingLeft: "16px" }}>
+                    <a href="https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" target="_blank" rel="noreferrer">
+                      <img src={igIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="Instagram" />
+                    </a>
+                  </td>
+                  <td width="16" style={{ paddingLeft: "16px" }}>
+                    <a href="https://www.linkedin.com/in/niki-nakrani-13b269237/" target="_blank" rel="noreferrer">
+                      <img src={liIcon} width="16" height="16" style={{ display: "block", border: 0, filter: "brightness(0)" }} alt="LinkedIn" />
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
       </div>
 
     </div>
   </div>
 </section>
 
-
-<OurProcess />
+<OurProcess visible={false} />
       <SimpleGetInTouch />
       <SimpleFooter />
     </>
