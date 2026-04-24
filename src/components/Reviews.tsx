@@ -332,7 +332,7 @@ const App = () => {
         {/* ── CTA ── */}
         <button 
           className="rev-cta-btn" 
-          onClick={() => navigate("/client-outcomes")}
+          onClick={() => navigate("/client-outcomes#testimonials")}
         >
           View more feedback
         </button>
@@ -505,7 +505,7 @@ const SliderSection = ({
         width: "100%",
       }}>
         <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-          {Array.from({ length: totalDots }).map((_, i) => (
+          {Array.from({ length: Math.min(8, totalDots) }).map((_, i) => (
             <button
               key={i}
               className={`rev-dot${i === index ? " active" : ""}`}
