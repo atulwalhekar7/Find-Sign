@@ -78,8 +78,10 @@ align-self: stretch;
           transition: color 0.2s ease;
         }
 
-        .nav-link:hover {
-          color: ${COLORS.racingGreen};
+        .nav-link:hover,
+        .nav-link:active,
+        .nav-link.active {
+          color: ${COLORS.aqua};
         }
 
         /* CTA */
@@ -100,6 +102,7 @@ align-self: stretch;
           text-decoration: none;
           text-transform: uppercase;
           white-space: nowrap;
+          gap: 10px;
         }
 
         /* Hamburger */
@@ -117,6 +120,22 @@ align-self: stretch;
           background: ${COLORS.white};
           padding: 12px 20px 24px;
           border-top: 1px solid rgba(27,67,50,0.07);
+        }
+
+        .nav-drawer-link:hover,
+        .nav-drawer-link:active {
+          color: ${COLORS.aqua} !important;
+          font-weight: 500 !important;
+        }
+
+        @keyframes call-vibrate {
+          0%, 20%, 100% { transform: rotate(0deg); }
+          3%, 9%, 15% { transform: rotate(-12deg); }
+          6%, 12%, 18% { transform: rotate(12deg); }
+        }
+
+        .vibrate-icon {
+          animation: call-vibrate 3s infinite ease-in-out;
         }
 
         /* Tablet */
@@ -210,6 +229,9 @@ align-self: stretch;
   rel="noopener noreferrer"
   className="nav-cta"
 >
+  <svg className="vibrate-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.6-.35-.12-.73-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 2 3.2 2.45 3.2 2.99 3.2 12.37 10.83 20 20.21 20c.54 0 .99-.45.99-.99v-2.64c0-.54-.45-.99-.99-.99z" />
+  </svg>
   Book a Call
 </a>
 
@@ -269,6 +291,7 @@ align-self: stretch;
               <NavLink
                 key={item.label}
                 to={item.to}
+                className="nav-drawer-link"
                 onClick={() => setMenuOpen(false)}
                 style={({ isActive }) => ({
                   display: "block",
@@ -293,7 +316,10 @@ align-self: stretch;
   rel="noopener noreferrer"
   onClick={() => setMenuOpen(false)}
   style={{
-    display: "inline-block",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "8px",
     marginTop: "16px",
     fontFamily: "'Söhne', 'DM Sans', sans-serif",
     fontWeight: 600,
@@ -307,6 +333,9 @@ align-self: stretch;
     textDecoration: "none",
   }}
 >
+  <svg className="vibrate-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.6-.35-.12-.73-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 2 3.2 2.45 3.2 2.99 3.2 12.37 10.83 20 20.21 20c.54 0 .99-.45.99-.99v-2.64c0-.54-.45-.99-.99-.99z" />
+  </svg>
   Book a Call
 </a>
           </div>
