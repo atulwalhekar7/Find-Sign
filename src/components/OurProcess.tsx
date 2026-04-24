@@ -424,7 +424,7 @@ export default function OurProcess({ visible = true }: { visible?: boolean }) {
     navigate("/about");
   }}
 >
-  HOW IT WORKS
+  Learn More About Us
 </button>
         </div>
       )}
@@ -436,10 +436,7 @@ export default function OurProcess({ visible = true }: { visible?: boolean }) {
 
 /* ── Static styles — all Figma values preserved exactly ── */
 const s: Record<string, React.CSSProperties> = {
-  title: {
-    fontFamily: "GT Super Display Medium",
-    fontSize: "44px",
-    fontStyle: "normal",
+
     fontWeight: 500,
     color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
     lineHeight: "54px",

@@ -60,21 +60,7 @@ export default function FindSignFAQ() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap');
 
-        .faq-title {
-          color: #073B2F;
-          font-family: 'GT Super Display Medium';
-          font-size: 44px;
-          font-weight: 500;
-          line-height: 54px;
-          letter-spacing: -0.88px;
-          border-bottom: 2px solid #073B2F;
-          padding-bottom: 8px;
-          width: fit-content;
-          margin: 0 auto;
-        }
 
-        .faq-subtitle {
-          color: #000;
           font-family: "Sohne", sans-serif;
           font-size: 24px;
           font-weight: 300;
