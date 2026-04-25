@@ -846,7 +846,7 @@ export default function ClientOutcomes() {
   line-height: 15px;
   letter-spacing: 4.8px;
 
-  margin-top: 30px;
+  
   cursor: pointer;
 
   transition: background 0.2s, color 0.2s;
