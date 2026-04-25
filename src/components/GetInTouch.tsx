@@ -105,12 +105,12 @@ export default function NakraniContact({ initialService = "" }: NakraniContactPr
         .contact-left p {
           color: #000;
           font-family: 'sohne';;
-          font-size: 18px;
+          font-size: 24px;
           font-weight: 300;
           line-height: 28px;
-          text-align: center;
+         text-align: center;
           width: 100%;
-          margin-top: 24px;
+          
         }
 
         .contact-cta {

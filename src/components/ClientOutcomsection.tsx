@@ -625,7 +625,7 @@ export default function ClientOutcomes() {
           grid-column: 1 / -1;
           display: flex;
           flex-direction: column;
-          gap: 64px;
+          gap: 40px;
           align-items: center;
         }
 
