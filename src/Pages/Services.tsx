@@ -217,7 +217,7 @@ const OtherServiceCard = ({ title, body, hasButton = false, delay = 0 }: { title
         <p style={{
           color: "#757575",
           textAlign: "center",
-          fontFamily: "'Söhne'",
+          fontFamily: ' Sohne',
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: 400,
