@@ -81,7 +81,14 @@ align-self: stretch;
         .nav-link:hover,
         .nav-link:active,
         .nav-link.active {
-          color: ${COLORS.aqua};
+          border-radius: var(--sds-size-radius-200);
+          background: #F5F5F5;
+          display: inline-flex;
+          padding: var(--sds-size-space-200);
+          justify-content: center;
+          align-items: center;
+          gap: var(--sds-size-space-200);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
         }
 
         /* CTA */
@@ -124,8 +131,14 @@ align-self: stretch;
 
         .nav-drawer-link:hover,
         .nav-drawer-link:active {
-          color: ${COLORS.aqua} !important;
-          font-weight: 500 !important;
+          border-radius: var(--sds-size-radius-200) !important;
+          background: var(--sds-color-background-brand-tertiary) !important;
+          display: inline-flex !important;
+          padding: var(--sds-size-space-200) !important;
+          justify-content: center !important;
+          align-items: center !important;
+          gap: var(--sds-size-space-200) !important;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
         }
 
         @keyframes call-vibrate {

@@ -1,3 +1,9 @@
+:root {
+  --sds-size-radius-200: 8px;
+  --sds-size-space-200: 8px;
+  --sds-color-background-brand-tertiary: #E8FAF8;
+}
+
 /* ─── Global Reset ─────────────────────────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
