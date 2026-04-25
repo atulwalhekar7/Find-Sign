@@ -309,7 +309,7 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
   box-sizing: border-box;
 
   padding: 40px;               /* keep this (Figma spacing) */
-  background: #f0f0f0;         /* keep this (grey box) */
+  
   border-radius: 4px;
 }
 
