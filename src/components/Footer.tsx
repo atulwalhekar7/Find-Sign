@@ -122,6 +122,43 @@ export default function Footer() {
           transform: translateY(-2px) scale(1.03);
         }
 
+        .footer-cta {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          height: 48px;
+          padding: 12px 24px;
+          border-radius: 8px;
+          background: #69E4DC;
+          color: #073B2F;
+          font-family: "CX80";
+          font-size: 15px;
+          font-weight: 700;
+          line-height: 15px;
+          letter-spacing: 4.8px;
+          text-decoration: none;
+          text-transform: uppercase;
+          white-space: nowrap;
+          gap: 10px;
+          margin-top: 16px;
+          transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .footer-cta:hover {
+          background: #3DD6CC;
+          transform: translateY(-2px);
+        }
+
+        @keyframes call-vibrate {
+          0%, 20%, 100% { transform: rotate(0deg); }
+          3%, 9%, 15% { transform: rotate(-12deg); }
+          6%, 12%, 18% { transform: rotate(12deg); }
+        }
+
+        .vibrate-icon {
+          animation: call-vibrate 3s infinite ease-in-out;
+        }
+
         .contact-row {
           display: flex;
           align-items: flex-start;
@@ -147,7 +184,7 @@ export default function Footer() {
           color: white;
           word-break: break-word;
           transition: transform 0.2s ease;
-          textDecoration: 'underline'
+          text-decoration: underline;
           font-family: "Sohne";
           font-size: 16px;
           font-weight: 400;
@@ -261,12 +298,17 @@ height: 23.854px;
                   <span className="contact-label">E: </span>
                   <a className="contact-value" href="mailto:niki@findandsignba.com.au">niki@findandsignba.com.au</a>
                 </div>
-                <div className="contact-row">
-                  {/* <span className="contact-label">W</span> */}
-                  <a className="contact-value" href="/contact" target="_blank" rel="noopener noreferrer">
-                    Book a call
-                  </a>
-                </div>
+                <a
+                  href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-cta"
+                >
+                  <svg className="vibrate-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.6-.35-.12-.73-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 2 3.2 2.45 3.2 2.99 3.2 12.37 10.83 20 20.21 20c.54 0 .99-.45.99-.99v-2.64c0-.54-.45-.99-.99-.99z" />
+                  </svg>
+                  Book a Call
+                </a>
               </div>
             </div>
 
