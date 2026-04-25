@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import { Star, Quote } from "lucide-react";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
@@ -778,6 +779,7 @@ function PropertyCard({ card, index }: { card: typeof cards[0]; index: number })
 
 // ── MAIN COMPONENT ───────────────────────────────────
 export default function ClientOutcomes() {
+  const { hash } = useLocation();
   const [reviewIdx, setReviewIdx] = useState(0);
   const [visibleCount, setVisibleCount] = useState(3);
 
@@ -789,9 +791,22 @@ export default function ClientOutcomes() {
   const [reviewContainerWidth, setReviewContainerWidth] = useState(0);
 
   const reviewContainerRef = useRef<HTMLDivElement>(null);
+  const testimonialsSectionRef = useRef<HTMLElement>(null);
   const outcomesSectionRef = useRef<HTMLElement>(null);
   const buttonContainerRef = useRef<HTMLDivElement>(null);
   const reviewButtonContainerRef = useRef<HTMLDivElement>(null); // New ref for review button
+
+  useEffect(() => {
+    if (hash === "#testimonials") {
+      setTimeout(() => {
+        testimonialsSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else if (hash === "#outcomes") {
+      setTimeout(() => {
+        outcomesSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }, [hash]);
 
   useEffect(() => {
     const update = () => {
@@ -925,7 +940,7 @@ export default function ClientOutcomes() {
       />
 
       {/* ── CLIENT OUTCOMES GRID ───────────────────────────────── */}
-      <section ref={outcomesSectionRef} style={{ background: '#F9F9F9', padding: "80px 0" }}>
+      <section ref={outcomesSectionRef} id="outcomes" style={{ background: '#F9F9F9', padding: "80px 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
           
           <div style={{ marginBottom: 48, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -1062,7 +1077,7 @@ export default function ClientOutcomes() {
         }
       `}</style>
 
-      <section className="testimonials-section" style={{ position: 'relative', padding: '80px 0', background: '#F9F9F9' }}>
+      <section ref={testimonialsSectionRef} id="testimonials" className="testimonials-section" style={{ position: 'relative', padding: '80px 0', background: '#F9F9F9' }}>
         <div style={{ position: 'relative', maxWidth: '1200px', margin: '0 auto', padding: '0 32px' }}>
           <div style={{ 
             display: 'flex', 
