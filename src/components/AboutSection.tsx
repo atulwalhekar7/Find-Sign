@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import AboutBanner from "../assets/About Find&Sign.jpg";
 
-const FadeUp = ({ children, delay = 0 }: any) => {
+const FadeUp = ({ children, delay = 0, style = {} }: any) => {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -27,6 +27,7 @@ const FadeUp = ({ children, delay = 0 }: any) => {
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(24px)",
         transition: `all 0.5s ease ${delay}s`,
+        ...style,
       }}
     >
       {children}
@@ -49,7 +50,6 @@ const AboutSection = ({
         padding: "80px 32px",
       }}
     >
-      {/* CENTERED HEADING BLOCK — above the row */}
       <FadeUp>
         <div className="about-heading-block">
           <h2>{heading}</h2>
@@ -58,15 +58,15 @@ const AboutSection = ({
       </FadeUp>
 
       <div className="about-row">
-        {/* IMAGE */}
-        <FadeUp>
+        {/* IMAGE — FadeUp stretches to full row height */}
+        <FadeUp style={{ display: "flex", flexShrink: 0, width: "484px" }}>
           <div className="about-image">
             <img src={imageSrc || AboutBanner} alt="" />
           </div>
         </FadeUp>
 
-        {/* TEXT — body only */}
-        <FadeUp delay={0.1}>
+        {/* TEXT */}
+        <FadeUp delay={0.1} style={{ flex: 1, display: "flex" }}>
           <div className="about-text">
             <p className="body">{body1}</p>
             <p className="body">{body2}</p>
@@ -75,7 +75,6 @@ const AboutSection = ({
       </div>
 
       <style>{`
-        /* CENTERED HEADING BLOCK */
         .about-heading-block {
           text-align: center;
           margin-bottom: 48px;
@@ -121,9 +120,8 @@ const AboutSection = ({
 
         /* IMAGE */
         .about-image {
-          width: 484px;
-          height: 450px;
-          flex-shrink: 0;
+          width: 100%;
+          height: 100%;
         }
 
         .about-image img {
@@ -134,21 +132,14 @@ const AboutSection = ({
           display: block;
         }
 
-        .placeholder {
-          width: 100%;
-          height: 100%;
-          background: #d9d9d9;
-        }
-
         /* TEXT BLOCK */
         .about-text {
-          flex: 1;
+          width: 100%;
           display: flex;
           flex-direction: column;
-          justify-content: center;
+          justify-content: flex-start;
         }
 
-        /* BODY */
         .body {
           margin: 12px 0;
           font-family: 'Sohne';
@@ -163,11 +154,6 @@ const AboutSection = ({
         @media (max-width: 900px) {
           .about-row {
             flex-direction: column;
-          }
-
-          .about-image {
-            width: 100%;
-            height: 300px;
           }
 
           .about-heading-block h2 {
