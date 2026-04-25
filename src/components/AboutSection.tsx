@@ -58,7 +58,7 @@ const AboutSection = ({
       </FadeUp>
 
       <div className="about-row">
-        {/* IMAGE — FadeUp stretches to full row height */}
+        {/* IMAGE */}
         <FadeUp style={{ display: "flex", flexShrink: 0, width: "484px" }}>
           <div className="about-image">
             <img src={imageSrc || AboutBanner} alt="" />
@@ -114,7 +114,7 @@ const AboutSection = ({
         /* MAIN ROW */
         .about-row {
           display: flex;
-          align-items: stretch;
+          align-items: flex-start;
           gap: 48px;
         }
 
@@ -138,10 +138,13 @@ const AboutSection = ({
           display: flex;
           flex-direction: column;
           justify-content: flex-start;
+          padding: 0;
+          margin: 0;
         }
 
+        /* BODY — remove all default top margin */
         .body {
-          margin: 12px 0;
+          margin: 0 0 20px 0;
           font-family: 'Sohne';
           font-size: 24px;
           font-weight: 300;
@@ -150,10 +153,19 @@ const AboutSection = ({
           text-align: left;
         }
 
+        .body:last-child {
+          margin-bottom: 0;
+        }
+
         /* MOBILE */
         @media (max-width: 900px) {
           .about-row {
             flex-direction: column;
+          }
+
+          .about-image {
+            width: 100%;
+            height: 300px;
           }
 
           .about-heading-block h2 {
