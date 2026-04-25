@@ -59,7 +59,7 @@ const AboutSection = ({
 
       <div className="about-row">
         {/* IMAGE */}
-        <FadeUp style={{ display: "flex", flexShrink: 0, width: "484px" }}>
+        <FadeUp style={{ display: "flex", flexShrink: 0, width: "484px", alignSelf: "stretch" }}>
           <div className="about-image">
             <img src={imageSrc || AboutBanner} alt="" />
           </div>
@@ -114,7 +114,7 @@ const AboutSection = ({
         /* MAIN ROW */
         .about-row {
           display: flex;
-          align-items: flex-start;
+          align-items: stretch;
           gap: 48px;
         }
 
@@ -144,7 +144,7 @@ const AboutSection = ({
 
         /* BODY — remove all default top margin */
         .body {
-          margin: 0 0 20px 0;
+          
           font-family: 'Sohne';
           font-size: 24px;
           font-weight: 300;
