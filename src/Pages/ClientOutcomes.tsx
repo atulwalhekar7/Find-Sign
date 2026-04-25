@@ -1162,7 +1162,7 @@ export default function ClientOutcomes() {
         .card-data { padding: 55px 18px 20px; flex: 1; }
         .card-row { display: flex; justify-content: space-between; padding: 10px 0; }
         .row-label { font-family: 'Sohne'; font-size: 13px; color: #000; }
-        .row-val { font-family: 'Sohne'; font-size: 13px; color: #757575; font-variant-numeric: lining-nums proportional-nums; }
+        .row-val { font-family: 'Sohne'; font-size: 13px; color: #757575; font-variant-numeric: lining-nums proportional-nums; margin-right: 30px;}
 
         @media (max-width: 900px) {
           .grid-3 {
