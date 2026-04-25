@@ -3,6 +3,7 @@ import { Star, Quote } from "lucide-react";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
+import Image1 from "../components/Image1";
 
 import bannerImg from "../assets/Client Outcomes_Banner.jpg";
 import AboutClientOutcomesImg from "../assets/About Client Outcomes.png";
@@ -1156,6 +1157,7 @@ export default function ClientOutcomes() {
       </section>
 
       {/* ── GET IN TOUCH ───────────────────────────────── */}
+      <Image1/>
       <SimpleGetInTouch />
 
       {/* ── FOOTER ───────────────────────────────── */}

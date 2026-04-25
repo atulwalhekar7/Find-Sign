@@ -4,6 +4,7 @@ import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
 import bannerImg from "../assets/DSC06227.jpg";
 import AboutServiceImg from "../assets/About Our Services.jpg";
+import Image1 from "../components/Image1";
 
 
 // ── Animation hook ────────────────────────────────────────────────────────────
@@ -390,8 +391,9 @@ export default function Services() {
           <OtherServiceCard title="Accounting" body={body} hasButton delay={0.2} />
         </div>
       </section>
-
+              <Image1/>
       <SimpleGetInTouch />
+      
       <SimpleFooter />
 
       {/* ── Styles ───────────────────────────────────────────────────────── */}

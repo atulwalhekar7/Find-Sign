@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
 import AboutSection from "../components/AboutSection";
+import Image1 from "../components/Image1";
 
 import aboutInsightsImg from "../assets/About Insights.jpg";
 import bannerImg from "../assets/Insights_Banner.jpg";
@@ -207,8 +208,9 @@ export default function Insights() {
           ))}
         </div>
       </section>
-
+          <Image1/>
       <SimpleGetInTouch />
+      
       <SimpleFooter />
 
       {/* ── Styles ───────────────────────────────────────────────────────── */}
