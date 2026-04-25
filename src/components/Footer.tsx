@@ -106,9 +106,9 @@ export default function Footer() {
         /* ✅ POPUP + POINTER */
         .link {
           display: block;
-          font-family: "Sohne", sans-serif;
-          font-size: 13px;
-          font-weight: 300;
+          font-family: "Sohne";
+          font-size: 16px;
+          font-weight: 400;
           color: white;
           text-decoration: none;
           margin-bottom: 10px;
@@ -137,6 +137,8 @@ export default function Footer() {
         .contact-label {
           min-width: 14px;
           font-size: 16px;
+          font-family: "Sohne";
+          font-weight: 400;
           color: #F9F9F9;
           margin-right: 2px;
         }
@@ -146,6 +148,9 @@ export default function Footer() {
           word-break: break-word;
           transition: transform 0.2s ease;
           textDecoration: 'underline'
+          font-family: "Sohne";
+          font-size: 16px;
+          font-weight: 400;
         }
 
         .contact-value:hover {
@@ -300,7 +305,7 @@ height: 23.854px;
 
           <div className="footer-bottom">
             <div className="footer-bottom-item footer-bottom-spacer" aria-hidden="true" />
-            <span className="footer-bottom-item footer-bottom-abn">ABN XXXXXXXXXX</span>
+            <span className="footer-bottom-item footer-bottom-abn"> ABN 29 691 543 914</span>
             <span className="footer-bottom-item footer-bottom-copy">© 2026 Find and Sign Buyer Advocate</span>
           </div>
 
