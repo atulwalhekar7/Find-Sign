@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
-import AboutSection from "../components/AboutSection";
+// import AboutSection from "../components/AboutSection";
 import Image1 from "../components/Image1";
 
-import aboutInsightsImg from "../assets/About Insights.jpg";
+// import aboutInsightsImg from "../assets/About Insights.jpg";
 import bannerImg from "../assets/Insights_Banner.jpg";
 import perthBlogImg from "../assets/Blogs/DSC06286.jpg";
 
@@ -177,13 +177,13 @@ export default function Insights() {
         </div>
       </section>
 
-     <AboutSection
+     {/* <AboutSection
        imageSrc={aboutInsightsImg}
        heading="About Find & Sign"
       
        body1="Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look."
        body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."
-     />
+     /> */}
 
       {/* ── SECTION 3: Blogs ────────────────────────────────────────────── */}
       <section style={{ maxWidth: "1200px", margin: "0 auto 80px", padding: "0 40px", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -199,6 +199,8 @@ export default function Insights() {
   borderBottom: "2px solid #073B2F",
   paddingBottom: "8px",
   width: "fit-content",
+  marginTop: "40px",
+
   
   }}>Blogs</h2>
       
