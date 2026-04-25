@@ -24,7 +24,7 @@ export default function NakraniContact({ initialService = "" }: NakraniContactPr
     if (form.current) {
       // Replace with your actual Service ID, Template ID, and Public Key
       emailjs
-        .sendForm('service_tv2a04i', 'template_94gxcly', form.current, {
+        .sendForm('service_tv2a04i', 'template_ketly2h', form.current, {
           publicKey: 'kwf46-RLsvGZDJMhR',
         })
         .then(
