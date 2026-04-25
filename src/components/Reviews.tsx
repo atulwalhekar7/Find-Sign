@@ -256,9 +256,11 @@ const App = () => {
           line-height: 54px;
           letter-spacing: -0.88px;
           font-variant-numeric: lining-nums proportional-nums;
-          margin: 0 auto 16px;
-          border-bottom: 2px solid #073B2F;
-          padding-bottom: 8px;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 24px;
           width: fit-content;
           text-align: center;
         }
@@ -268,7 +270,7 @@ const App = () => {
           font-size: 24px;
           font-weight: 300;
           line-height: 36px;
-          margin: 0;
+          margin: 24px 0 0;
           text-align: center;
         }
 
@@ -311,7 +313,10 @@ const App = () => {
           <div className="rev-full">
             <div className="rev-header" style={{ display: 'flex', justifyContent: 'center' }}>
               <div className="rev-title-group" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <h2 className="rev-heading">What clients say</h2>
+                <h2 className="rev-heading">
+                  What clients say
+                  <div style={{ width: "160px", height: "1px", background: "#073B2F" }} />
+                </h2>
                 <p className="rev-subheading">In their own words, following their experience with Niki.</p>
               </div>
             </div>

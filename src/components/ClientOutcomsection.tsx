@@ -662,10 +662,18 @@ export default function ClientOutcomes() {
           line-height: 54px; /* 122.727% */
           letter-spacing: -0.88px;
           flex-shrink: 0;
-          margin-bottom: 16px;
-          border-bottom: 2px solid #073B2F;
-          padding-bottom: 8px;
-          width: fit-content;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 24px;
+          text-align: center;
+        }
+        .co-h2::after {
+          content: "";
+          width: 160px;
+          height: 1px;
+          background: #073B2F;
         }
 
         .co-subtitle {
@@ -674,7 +682,8 @@ export default function ClientOutcomes() {
         font-size: 24px;
         font-style: normal;
         font-weight: 300;
-        line-height: 36px; /* 150% */
+        line-height: 36px;
+        margin-top: 24px;
         }
 
         @media (max-width: 1199px) {

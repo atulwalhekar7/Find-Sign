@@ -86,18 +86,20 @@ export default function NakraniContact({ initialService = "" }: NakraniContactPr
   font-weight: 500;
   line-height: 54px;
   letter-spacing: -0.88px;
-
-  position: relative;
-  display: inline-block;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+  width: 100%;
 }
 
 .contact-left h2::after {
   content: "";
-  display: block;
-  width: 230px; /* adjust as needed */
-  height: 2px;
+  width: 160px;
+  height: 1px;
   background: #073B2F;
-  margin-top: 8px;
 }
 
         .contact-left p {
@@ -106,7 +108,9 @@ export default function NakraniContact({ initialService = "" }: NakraniContactPr
           font-size: 18px;
           font-weight: 300;
           line-height: 28px;
-          max-width: 220px;
+          text-align: center;
+          width: 100%;
+          margin-top: 24px;
         }
 
         .contact-cta {
@@ -129,6 +133,7 @@ export default function NakraniContact({ initialService = "" }: NakraniContactPr
           gap: 10px;
           transition: transform 0.2s ease, background 0.2s ease;
           width: fit-content;
+          margin-left: 70px;
         }
 
         .contact-cta:hover {

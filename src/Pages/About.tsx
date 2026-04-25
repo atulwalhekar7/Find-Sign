@@ -49,14 +49,14 @@ export default function About() {
         <div className="banner-overlay" />
         <div className="hero-box">
           <h1 className="hero-title">About Us</h1>
-          <p className="hero-subtitle">Find & Sign</p>
+         
         </div>
       </section>
 
     <AboutSection
   imageSrc={AboutUsBanner}
   heading="About Find & Sign"
-  // subheading="Subheading"
+  subheading=" Explore more about Find & Sign."
   body1="Find & Sign Buyer Advocate was built on the belief that every buyer should secure the right property to build equity, choice and financial freedom.
 Founder Niki learnt through experience that the right guidance is critical in securing the outcome. It is identified through local knowledge, experience and direct relationships, then secured before it reaches the wider market.
 We are a boutique buyers' agency operating nationwide, acting exclusively for buyers. Not agents. 
@@ -284,17 +284,28 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
   line-height: 120%;
   letter-spacing: -0.48px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
+.team-header h2::after {
+  content: "";
+  width: 160px;
+  height: 1px;
+  background: #073B2F;
 }
 
 .team-header p {
-          color: #888;
-
+          color: #000;
  font-family: 'Sohne';
           font-size:24px;
           font-weight: 300;
   line-height: 120%;
-
-  margin-top: 4px;
+  margin: 0;
+  margin-top: 24px;
+  text-align: center;
   width: 100%; /* 🔥 instead of align-self */
 }
 
@@ -458,7 +469,7 @@ color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
     {/* Header */}
     <div className="team-header">
       <h2>Meet the team</h2>
-      {/* <p>Subheading</p> */}
+      <p> Explore more about our team.</p>
     </div>
 
     {/* Panel (pink box in your image) */}

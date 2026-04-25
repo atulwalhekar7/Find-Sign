@@ -67,10 +67,17 @@ export default function FindSignFAQ() {
           font-weight: 500;
           line-height: 54px;
           letter-spacing: -0.88px;
-          border-bottom: 2px solid #073B2F;
-          padding-bottom: 8px;
-          width: fit-content;
           margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 24px;
+        }
+        .faq-title::after {
+          content: "";
+          width: 160px;
+          height: 1px;
+          background: #073B2F;
         }
 
         .faq-subtitle {
@@ -79,7 +86,7 @@ export default function FindSignFAQ() {
           font-size: 24px;
           font-weight: 300;
           line-height: 36px;
-          margin-top: 8px;
+          margin-top: 24px;
           text-align: center;
         }
 

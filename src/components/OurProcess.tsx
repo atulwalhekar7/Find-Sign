@@ -372,6 +372,7 @@ export default function OurProcess({ visible = true }: { visible?: boolean }) {
             }}
           >
             Our process
+            <div style={s.titleUnderline} />
           </h2>
           <p
             className="op-subtitle-text"
@@ -445,13 +446,16 @@ const s: Record<string, React.CSSProperties> = {
     lineHeight: "54px",
     letterSpacing: "-0.88px",
     fontVariantNumeric: "lining-nums proportional-nums",
-    marginBottom: "16px",
-    borderBottom: "2px solid #073B2F",
-    paddingBottom: "8px",
-    width: "fit-content",
+    margin: "0",
+    width: "100%",
     maxWidth: "100%",
     textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "24px",
   },
+  titleUnderline: { width: "160px", height: "1px", background: "#073B2F" },
   subtitle: {
     fontFamily: "Sohne",
     fontSize: "24px",
@@ -459,7 +463,7 @@ const s: Record<string, React.CSSProperties> = {
     fontWeight: 300,
     color: "#000",
     lineHeight: "36px",
-    margin: "0 auto",
+    margin: "24px auto 0",
     maxWidth: "100%",
     width: "804px",
     textAlign: "center",

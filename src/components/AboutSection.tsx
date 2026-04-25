@@ -49,24 +49,25 @@ const AboutSection = ({
         padding: "80px 32px",
       }}
     >
+      {/* CENTERED HEADING BLOCK — above the row */}
+      <FadeUp>
+        <div className="about-heading-block">
+          <h2>{heading}</h2>
+          <p className="sub">{subheading || " "}</p>
+        </div>
+      </FadeUp>
+
       <div className="about-row">
         {/* IMAGE */}
         <FadeUp>
           <div className="about-image">
-            {imageSrc ? (
-              <img src={imageSrc || AboutBanner} alt="" />
-            ) : (
-              <div className="placeholder" />
-            )}
+            <img src={imageSrc || AboutBanner} alt="" />
           </div>
         </FadeUp>
 
-        {/* TEXT */}
+        {/* TEXT — body only */}
         <FadeUp delay={0.1}>
           <div className="about-text">
-            <h3>{heading}</h3>
-            <p className="sub">{subheading}</p>
-
             <p className="body">{body1}</p>
             <p className="body">{body2}</p>
           </div>
@@ -74,28 +75,65 @@ const AboutSection = ({
       </div>
 
       <style>{`
-        /* MAIN LAYOUT (KEY FIX) */
+        /* CENTERED HEADING BLOCK */
+        .about-heading-block {
+          text-align: center;
+          margin-bottom: 48px;
+        }
+
+        .about-heading-block h2 {
+          font-family: "GT Super Display Medium";
+          font-size: 44px;
+          font-weight: 500;
+          line-height: 120%;
+          letter-spacing: -0.48px;
+          color: #073B2F;
+          margin: 0 0 4px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+        }
+
+        .about-heading-block h2::after {
+          content: "";
+          width: 160px;
+          height: 1px;
+          background: #073B2F;
+          display: block;
+        }
+
+        .sub {
+          font-family: 'Sohne';
+          font-size: 24px;
+          font-weight: 300;
+          line-height: 36px;
+          color: #000;
+          margin: 20px 0 0;
+        }
+
+        /* MAIN ROW */
         .about-row {
           display: flex;
-          align-items: stretch; /* IMPORTANT for equal height alignment */
+          align-items: stretch;
           gap: 48px;
         }
 
-      /* IMAGE */
-.about-image {
-  width: 484px;
-  height: 450px;
-  flex-shrink: 0;
-  margin-top: 83px; /* 👈 pushes image down */
-}
+        /* IMAGE */
+        .about-image {
+          width: 484px;
+          height: 450px;
+          flex-shrink: 0;
+        }
 
-.about-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-  display: block;
-}
+        .about-image img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center 20%;
+          display: block;
+        }
+
         .placeholder {
           width: 100%;
           height: 100%;
@@ -107,48 +145,18 @@ const AboutSection = ({
           flex: 1;
           display: flex;
           flex-direction: column;
-          justify-content: flex-start;
-        }
-
-        /* HEADING */
-       .about-text h3 {
-  margin: 0 0 6px 0;
-  font-family: "GT Super Display Medium";
-  font-size: 44px;
-  font-weight: 500;
-  line-height: 120%;
-  letter-spacing: -0.48px;
-  color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
-  position: relative;
-  display: inline-block;
-}
-
-.about-text h3::after {
-  content: "";
-  display: block;
-  width: 350px; /* adjust width */
-  height: 2px;
-  background: #073B2F;
-  margin-top: 8px;
-}
-        /* SUBHEADING */
-        .sub {
-          margin: 0 0 16px 0;
-          font-family: 'Sohne';
-          font-size:24px;
-          font-weight: 300;
-          line-height: 120%;
-          color: #888;
+          justify-content: center;
         }
 
         /* BODY */
         .body {
-          margin: 0 0 12px 0;
+          margin: 12px 0;
           font-family: 'Sohne';
           font-size: 20px;
           font-weight: 400;
           line-height: 140%;
           color: #555;
+          text-align: left;
         }
 
         /* MOBILE */
@@ -160,6 +168,15 @@ const AboutSection = ({
           .about-image {
             width: 100%;
             height: 300px;
+          }
+
+          .about-heading-block h2 {
+            font-size: 32px;
+          }
+
+          .sub {
+            font-size: 18px;
+            line-height: 28px;
           }
         }
       `}</style>
