@@ -815,7 +815,7 @@ export default function ClientOutcomes() {
         .card-data { padding: 55px 18px 20px; flex: 1; }
         .card-row { display: flex; justify-content: space-between; padding: 10px 0; }
         .row-label { font-family: 'Sohne';font-size: 13px; color: #000; }
-        .row-val { font-size: 13px; color: #757575;margin-right: 30px; }
+        .row-val { font-size: 13px; color: #757575;margin-right: 50px; }
 
         .view-btn {
   display: flex;
