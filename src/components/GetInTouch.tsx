@@ -198,7 +198,7 @@ export default function NakraniContact({ initialService = "" }: NakraniContactPr
 
         .contact_label {
           color: #000;
-          font-family: 'DM Sans';
+          font-family: 'Sohne';
           font-size: 20px;
           font-weight: 400;
           line-height: 28px;

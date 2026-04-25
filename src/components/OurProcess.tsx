@@ -425,7 +425,7 @@ export default function OurProcess({ visible = true }: { visible?: boolean }) {
     navigate("/about");
   }}
 >
-  HOW IT WORKS
+  Learn More About Us
 </button>
         </div>
       )}
