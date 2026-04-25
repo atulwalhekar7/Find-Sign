@@ -6,7 +6,7 @@ import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import OurProcess from "../components/OurProcess";
 import Banner from "../assets/About Us_Banner.jpg";
-import AboutUsBanner from "../assets/About Find&Sign.jpg";
+import AboutUsBanner from "../assets/About Find & Sign 2.jpg";
 import Bec from "../assets/Bec_Bio.jpg";
 import niki from "../assets/Niki_Bio.jpg";
 import Image1 from "../components/Image1";
