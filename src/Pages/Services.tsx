@@ -394,8 +394,8 @@ export default function Services() {
         onClose={() => setIsModalOpen(false)}
         maxWidth="lg"
         fullWidth
-        PaperProps={{
-          style: { borderRadius: '16px', overflow: 'hidden' }
+        sx={{
+          "& .MuiDialog-paper": { borderRadius: '16px', overflow: 'hidden' }
         }}
       >
         <DialogContent sx={{ p: 0, position: 'relative' }}>
