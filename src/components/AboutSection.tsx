@@ -152,10 +152,10 @@ const AboutSection = ({
         .body {
           margin: 12px 0;
           font-family: 'Sohne';
-          font-size: 20px;
-          font-weight: 400;
+          font-size: 24px;
+          font-weight: 300;
           line-height: 140%;
-          color: #555;
+          color: #000;
           text-align: left;
         }
 
