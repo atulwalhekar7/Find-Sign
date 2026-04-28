@@ -4,11 +4,15 @@ import Logo from "../assets/FS Primary Lockup_Gold.png";
 import fbIcon from "../assets/Vector (2).png";
 import igIcon from "../assets/Instagram (2).png";
 import liIcon from "../assets/Vector(1).png";
+// import googleIcon from "../assets/google.png";
+// import tiktokIcon from "../assets/tik-tok.png";
 
 const socialIcons = [
   { label: "Facebook", img: fbIcon, url: "https://www.facebook.com/nakranipropertybuyers/" },
   { label: "Instagram", img: igIcon, url: "https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" },
   { label: "LinkedIn", img: liIcon, url: "https://www.linkedin.com/in/niki-nakrani-13b269237/" },
+  // { label: "Google", img: googleIcon, url: "https://g.co/kgs/zumrMmk" },
+  // { label: "TikTok", img: tiktokIcon, url: "https://www.tiktok.com/@findandsign?_t=ZS-8vz7Aoz7W47&_r=1" },
 ];
 
 const exploreLinks = [
