@@ -769,7 +769,7 @@ export default function ClientOutcomes() {
         /* Growth Circle Container with Heartbeat Animation */
         .growth-circle-container {
           position: absolute;
-          bottom: 160px; /* Position at the bottom */
+          bottom: 165px; /* Position at the bottom */
           right: 1px;
           width: 130px; /* Increased size */
           height: 130px; /* Increased size */
@@ -780,7 +780,7 @@ export default function ClientOutcomes() {
           background-position: center;
           object-fit: cover;
           z-index: 10;
-          animation: heartbeatFloat 4s ease-in-out infinite;
+          // animation: heartbeatFloat 4s ease-in-out infinite;
           transition: filter 0.3s ease, background 0.3s ease; /* Add background to transition */
           display: flex;
           flex-direction: column;
@@ -795,10 +795,12 @@ export default function ClientOutcomes() {
         }
 
         .growth-circle-container .growth-label {
-          font-family: 'Sohne', sans-serif;
+          font-family: 'Sohne';
           font-size: 12px;
           color: ${RACING_GREEN};
           opacity: 0.8;
+          font-weight: 1000;  
+          letter-spacing: 0.5px; 
         }
         .growth-circle-container .growth-value {
           font-family: 'GT Super Display Medium';

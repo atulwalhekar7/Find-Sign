@@ -17,15 +17,15 @@ const steps: Step[] = [
   },
   {
     id: 2,
-    title: "Finding the property",
+    title: "Finding the property and inspections",
     description:
-      "We identify and assess opportunities early, focusing only on properties that align with your brief and timing.",
+      "We identify and assess opportunities early, focusing only on properties that align with your brief and timing. Each property is thoroughly inspected through a professional lens, looking at issues that the everyday person may miss.",
   },
   {
     id: 3,
-    title: "Inspections and due diligence",
+    title: "Due diligence",
     description:
-      "Each property is inspected and assessed in detail to identify risks and long-term suitability.",
+      "Each property is assessed in detail to identify risks and long-term suitability.",
   },
   {
     id: 4,

@@ -12,7 +12,7 @@ const faqs: FAQItem[] = [
     id: 1,
     question: "What is a buyer's advocate?",
     answer:
-      "A buyer's advocate (also called a buyer's agent) is a licensed professional who represents the buyer exclusively in a property transaction — not the seller. We search, evaluate, and negotiate on your behalf, using our market knowledge to get you the right property at the right price.",
+      "A buyer's advocate (also called a buyer's agent) is a licensed professional who represents the buyer exclusively in a property transaction not the seller. We search, evaluate, and negotiate on your behalf, using our market knowledge to get you the right property at the right price.",
   },
   {
     id: 2,
@@ -30,25 +30,25 @@ const faqs: FAQItem[] = [
     id: 4,
     question: "What does a buyer's advocate actually do?",
     answer:
-      "We manage the full buying process — from understanding your brief and sourcing properties to inspecting, evaluating, negotiating, and coordinating settlement. You get expert support at every stage with someone always working in your interest.",
+      "We manage the full buying process from understanding your brief and sourcing properties to inspecting, evaluating, negotiating, and coordinating settlement. You get expert support at every stage with someone always working in your interest.",
   },
   {
     id: 5,
     question: "Do you inspect every property before recommending it?",
     answer:
-      "Yes. Every property we recommend has been physically inspected and assessed against your specific criteria. We don't send you listings — we send you properties we'd be confident recommending to a friend.",
+      "Yes. Every property we recommend has been physically inspected and assessed against your specific criteria. We don't send you listings we send you properties we'd be confident recommending to a friend.",
   },
   {
     id: 6,
     question: "Where should I invest?",
     answer:
-      "Location selection depends on your strategy, budget, and timeline. We focus on areas with strong fundamentals — limited supply, infrastructure investment, growing rental demand, and proximity to key amenities. We'll guide you based on your goals.",
+      "Location selection depends on your strategy, budget, and timeline. We focus on areas with strong fundamentals limited supply, infrastructure investment, growing rental demand, and proximity to key amenities. We'll guide you based on your goals.",
   },
   {
     id: 7,
     question: "How much does a buyer's advocate cost?",
     answer:
-      "Our fees are transparent and agreed upfront. We typically charge a flat engagement fee plus a success fee on settlement. Many clients find the savings we achieve in negotiation more than offset our fee — meaning we often pay for ourselves.",
+      "Our fees are transparent and agreed upfront. We typically charge a flat engagement fee plus a success fee on settlement. Many clients find the savings we achieve in negotiation more than offset our fee meaning we often pay for ourselves.",
   },
 ];
 
