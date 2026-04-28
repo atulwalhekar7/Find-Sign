@@ -934,7 +934,8 @@ export default function ClientOutcomes() {
       <AboutSection
         imageSrc={AboutClientOutcomesImg}
         heading="About Client Outcomes"
-        subheading=""
+          subheading=" Explore more about client outcomes."
+
         body1="Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look."
         body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."
       />
@@ -952,13 +953,26 @@ export default function ClientOutcomes() {
               lineHeight: "120%",
               letterSpacing: "-0.48px",
               fontVariantNumeric: "lining-nums proportional-nums",
-              margin: "0 0 4px",
-              borderBottom: "2px solid #073B2F",
-              paddingBottom: "8px",
-              width: "fit-content"
+              margin: "0",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "24px"
             }}>
               Client Outcomes
+              <div style={{ width: "160px", height: "1px", background: "#073B2F" }} />
             </h2>
+            <p style={{
+              color: "#000",
+              fontFamily: "Sohne",
+              fontSize: "24px",
+              fontWeight: 300,
+              lineHeight: "36px",
+              marginTop: "24px",
+              textAlign: "center"
+            }}>
+               Explore more about client outcomes.
+            </p>
           </div>
 
           <div className="outcomes-grid">
@@ -1087,20 +1101,33 @@ export default function ClientOutcomes() {
             textAlign: 'center' 
           }}>
             <h2 style={{ 
-              fontFamily: "'GT Super Display Medium'",
+              fontFamily: "GT Super Display Medium",
   fontSize: "44px",
   fontWeight: 500,
   color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
   lineHeight: "120%",
   letterSpacing: "-0.48px",
   fontVariantNumeric: "lining-nums proportional-nums",
-  margin: "0px 0px 4px",
-  borderBottom: "2px solid #073B2F",
-  paddingBottom: "8px",
-  width: "fit-content"
+  margin: "0",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: "24px"
             }}>
               What our clients are saying
+              <div style={{ width: "160px", height: "1px", background: "#073B2F" }} />
             </h2>
+            <p style={{
+              color: "#000",
+              fontFamily: "Sohne",
+              fontSize: "24px",
+              fontWeight: 300,
+              lineHeight: "36px",
+              marginTop: "24px",
+              textAlign: "center"
+            }}>
+                 Explore more about What our clients are saying.
+            </p>
           </div>
 
           <div style={{ position: 'relative' }}>

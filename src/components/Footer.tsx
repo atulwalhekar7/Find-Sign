@@ -226,7 +226,7 @@ height: 23.854px;
           gap: 10px;
           padding: 10px 0;
           color: #F9F9F9;
-          font-family: "Sohne", sans-serif;
+          font-family: "Sohne";
           font-size: 16px;
           font-weight: 400;
           line-height: 24px;

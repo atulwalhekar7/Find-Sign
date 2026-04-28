@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import emailjs from '@emailjs/browser';
-import { Box } from "@mui/material";
+import { Box, Dialog, DialogContent, Typography } from "@mui/material";
 
 interface NakraniContactProps {
   initialService?: string;
@@ -8,6 +8,7 @@ interface NakraniContactProps {
 
 export default function NakraniContact({ initialService = "" }: NakraniContactProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
   const [selectedService, setSelectedService] = useState(initialService);
   const form = useRef<HTMLFormElement>(null);
 
@@ -19,7 +20,7 @@ export default function NakraniContact({ initialService = "" }: NakraniContactPr
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSending(true);
 
     if (form.current) {
       // Replace with your actual Service ID, Template ID, and Public Key
@@ -30,8 +31,12 @@ export default function NakraniContact({ initialService = "" }: NakraniContactPr
         .then(
           () => {
             setSubmitted(true);
+            setIsSending(false);
+            form.current?.reset();
+            setSelectedService(initialService);
           },
           (error) => {
+            setIsSending(false);
             console.error('EmailJS Error:', error.text);
             alert("Failed to send message. Please try again later.");
           },
@@ -81,27 +86,31 @@ export default function NakraniContact({ initialService = "" }: NakraniContactPr
   font-weight: 500;
   line-height: 54px;
   letter-spacing: -0.88px;
-
-  position: relative;
-  display: inline-block;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+  width: 100%;
 }
 
 .contact-left h2::after {
   content: "";
-  display: block;
-  width: 230px; /* adjust as needed */
-  height: 2px;
+  width: 160px;
+  height: 1px;
   background: #073B2F;
-  margin-top: 8px;
 }
 
         .contact-left p {
           color: #000;
           font-family: 'sohne';;
-          font-size: 18px;
+          font-size: 24px;
           font-weight: 300;
           line-height: 28px;
-          max-width: 220px;
+         text-align: center;
+          width: 100%;
+          
         }
 
         .contact-cta {
@@ -124,6 +133,7 @@ export default function NakraniContact({ initialService = "" }: NakraniContactPr
           gap: 10px;
           transition: transform 0.2s ease, background 0.2s ease;
           width: fit-content;
+          margin-left: 70px;
         }
 
         .contact-cta:hover {
@@ -188,7 +198,7 @@ export default function NakraniContact({ initialService = "" }: NakraniContactPr
 
         .contact_label {
           color: #000;
-          font-family: 'sohne';
+          font-family: 'Sohne';
           font-size: 20px;
           font-weight: 400;
           line-height: 28px;
@@ -265,53 +275,6 @@ export default function NakraniContact({ initialService = "" }: NakraniContactPr
           transform: scale(0.98);
         }
 
-        .contact-success {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 14px;
-          text-align: center;
-
-          /* 🔥 animation */
-          opacity: 0;
-          animation: fadeIn 0.5s ease forwards;
-        }
-
-        @keyframes fadeIn {
-          to { opacity: 1; }
-        }
-
-        .contact-success-icon {
-          width: 52px;
-          height: 52px;
-          border-radius: 50%;
-          background: #CCFBF1;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          animation: pop 0.4s ease;
-        }
-
-        @keyframes pop {
-          0% { transform: scale(0.6); }
-          100% { transform: scale(1); }
-        }
-
-        .contact-success-title {
-          font-size: 20px;
-          font-weight: 500;
-          color: #073B2F;
-        }
-
-        .contact-success-sub {
-          font-size: 16px;
-          font-weight: 300;
-          color: #757575;
-        }
-
         @media (max-width: 900px) {
           .contact-page { padding: 40px 20px; }
 
@@ -373,64 +336,91 @@ export default function NakraniContact({ initialService = "" }: NakraniContactPr
             </div>
 
             <div className="contact-right">
-              {submitted ? (
-                <div className="contact-success">
-                  <div className="contact-success-icon">
-                    ✓
-                  </div>
-                  <span className="contact-success-title">Message sent!</span>
-                  <span className="contact-success-sub">We'll be in touch soon.</span>
+              <form ref={form} onSubmit={handleSubmit}>
+                <div className="contact-field">
+                  <label className="contact_label">First name</label>
+                  <input className="contact-input" name="first_name" placeholder="e.g. Sarah" required />
                 </div>
-              ) : (
-                <form ref={form} onSubmit={handleSubmit}>
-                  <div className="contact-field">
-                    <label className="contact_label">First name</label>
-                    <input className="contact-input" name="first_name" placeholder="e.g. Sarah" required />
-                  </div>
 
-                  <div className="contact-field">
-                    <label className="contact_label">Last name</label>
-                    <input className="contact-input" name="last_name" placeholder="e.g. Smith" required />
-                  </div>
+                <div className="contact-field">
+                  <label className="contact_label">Last name</label>
+                  <input className="contact-input" name="last_name" placeholder="e.g. Smith" required />
+                </div>
 
-                  <div className="contact-field">
-                    <label className="contact_label">Email</label>
-                    <input className="contact-input" name="user_email" type="email" placeholder="e.g. sarah@gmail.com" required />
-                  </div>
+                <div className="contact-field">
+                  <label className="contact_label">Email</label>
+                  <input className="contact-input" name="user_email" type="email" placeholder="e.g. sarah@gmail.com" required />
+                </div>
 
-                  <div className="contact-field">
-                    <label className="contact_label">Select Services</label>
-                    <select 
-                      className="contact-input" 
-                      name="service"
-                      required 
-                      value={selectedService}
-                      onChange={(e) => setSelectedService(e.target.value)}
-                    >
-                      <option value="" disabled>Select a service</option>
-                      <option value="Buyer Advocate">Buyer Advocate</option>
-                      <option value="Advisory">Advisory</option>
-                      <option value="Property Management">Property Management</option>
-                      <option value="Settlement Agent">Settlement Agent</option>
-                      <option value="Building Inspection">Building Inspection</option>
-                      <option value="Sales Agent">Sales Agent</option>
-                      <option value="Quantity Surveyor">Quantity Surveyor</option>
-                      <option value="Accounting">Accounting</option>
-                    </select>
-                  </div>
+                <div className="contact-field">
+                  <label className="contact_label">Select Services</label>
+                  <select 
+                    className="contact-input" 
+                    name="service"
+                    required 
+                    value={selectedService}
+                    onChange={(e) => setSelectedService(e.target.value)}
+                  >
+                    <option value="" disabled>Select a service</option>
+                    <option value="Buyer Advocate">Buyer Advocate</option>
+                    <option value="Advisory">Advisory</option>
+                    <option value="Property Management">Property Management</option>
+                    <option value="Settlement Agent">Settlement Agent</option>
+                    <option value="Building Inspection">Building Inspection</option>
+                    <option value="Sales Agent">Sales Agent</option>
+                    <option value="Quantity Surveyor">Quantity Surveyor</option>
+                    <option value="Accounting">Accounting</option>
+                  </select>
+                </div>
 
-                  <div className="contact-field">
-                    <label className="contact_label">Message</label>
-                    <textarea className="contact-textarea" name="message" placeholder="What are you looking for?" required />
-                  </div>
+                <div className="contact-field">
+                  <label className="contact_label">Message</label>
+                  <textarea className="contact-textarea" name="message" placeholder="What are you looking for?" required />
+                </div>
 
-                  <button type="submit" className="contact-btn">Submit</button>
-                </form>
-              )}
+                <button type="submit" className="contact-btn" disabled={isSending}>
+                  {isSending ? "Sending..." : "Submit"}
+                </button>
+              </form>
             </div>
           </Box>
         </Box>
       </div>
+
+      <Dialog 
+        open={submitted} 
+        onClose={() => setSubmitted(false)}
+        sx={{
+          "& .MuiDialog-paper": {
+            borderRadius: '16px',
+            padding: '24px',
+            backgroundColor: '#F9F9F9',
+            border: '2px solid #69E4DC'
+          }
+        }}
+      >
+        <DialogContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 2 }}>
+          <Box sx={{ 
+            width: 64, height: 64, borderRadius: '50%', backgroundColor: '#69E4DC', 
+            display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '32px', color: '#073B2F' 
+          }}>
+            ✓
+          </Box>
+          <Typography sx={{ fontFamily: 'GT Super Display Medium', fontSize: '32px', color: '#073B2F', fontWeight: 500 }}>
+            Success!
+          </Typography>
+          <Typography sx={{ fontFamily: 'Sohne', fontSize: '18px', color: '#000', fontWeight: 300, lineHeight: '28px' }}>
+            Your message has been sent successfully. We will get back to you shortly.
+          </Typography>
+          <button 
+            className="contact-btn" 
+            onClick={() => setSubmitted(false)}
+            style={{ marginTop: '16px', width: 'auto', padding: '12px 48px' }}
+          >
+            Close
+          </button>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }

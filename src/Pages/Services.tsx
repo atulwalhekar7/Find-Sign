@@ -299,7 +299,7 @@ export default function Services() {
       <AboutSection
   imageSrc={AboutServiceImg}
   heading="About Our Services"
-  subheading="" // This was already removed in the previous turn
+  subheading="Expert guidance for every step of your property journey."
   body1="Body text for your whole article or post. We’ll put in some lorem ipsum to show how a filled-out page might look."
   body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."
 />
@@ -317,7 +317,7 @@ export default function Services() {
         }}
       >
         <FadeUp>
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px" }}>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             <h2
               style={{
                 color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
@@ -329,14 +329,27 @@ export default function Services() {
                 fontWeight: 500,
                 lineHeight: "54px",
                 letterSpacing: "-0.88px",
-                margin: "0 0 12px",
-                borderBottom: "2px solid #073B2F",
-                paddingBottom: "8px",
-                width: "fit-content"
+                margin: "0",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "24px"
               }}
             >
               Our services
+              <div style={{ width: "160px", height: "1px", background: "#073B2F" }} />
             </h2>
+            <p style={{
+              color: "#000",
+              fontFamily: "Sohne",
+              fontSize: "24px",
+              fontWeight: 300,
+              lineHeight: "36px",
+              marginTop: "24px",
+              textAlign: "center"
+            }}>
+               Explore more about our services.
+            </p>
           </div>
         </FadeUp>
 
@@ -348,10 +361,10 @@ export default function Services() {
 
         {/* Other Services */}
         <FadeUp>
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px", width: "100%" }}>
-            <h3 
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
+            <h2 
               style={{
-                margin: 0,
+                margin: "0",
                 color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
                 textAlign: "center",
                 fontVariantNumeric: "lining-nums proportional-nums",
@@ -361,11 +374,26 @@ export default function Services() {
                 fontWeight: 500,
                 lineHeight: "54px",
                 letterSpacing: "-0.88px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "24px"
               }}
             >
               Affiliated Services
-            </h3>
-            <div style={{ width: "338px", height: "1px", background: "var(--Brand-Foundation-FS-RACING-GREEN, #073B2F)" }} />
+              <div style={{ width: "160px", height: "1px", background: "#073B2F" }} />
+            </h2>
+            <p style={{
+              color: "#000",
+              fontFamily: "Sohne",
+              fontSize: "24px",
+              fontWeight: 300,
+              lineHeight: "36px",
+              marginTop: "24px",
+              textAlign: "center"
+            }}>
+               Explore more about Affiliated Services.
+            </p>
           </div>
         </FadeUp>
 
@@ -394,8 +422,8 @@ export default function Services() {
         onClose={() => setIsModalOpen(false)}
         maxWidth="lg"
         fullWidth
-        PaperProps={{
-          style: { borderRadius: '16px', overflow: 'hidden' }
+        sx={{
+          "& .MuiDialog-paper": { borderRadius: '16px', overflow: 'hidden' }
         }}
       >
         <DialogContent sx={{ p: 0, position: 'relative' }}>

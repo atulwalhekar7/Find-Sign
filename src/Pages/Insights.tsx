@@ -188,7 +188,7 @@ export default function Insights() {
       {/* ── SECTION 3: Blogs ────────────────────────────────────────────── */}
       <section style={{ maxWidth: "1200px", margin: "0 auto 80px", padding: "0 40px", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <h2 style={{  
-          margin: "0 auto 48px",
+          margin: "40px auto 24px",
   color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
   fontFamily: "GT Super Display Medium",
   fontSize: "44px",
@@ -196,14 +196,26 @@ export default function Insights() {
   lineHeight: "120%",
   letterSpacing: "-0.48px",
   textAlign: "center",
-  borderBottom: "2px solid #073B2F",
-  paddingBottom: "8px",
-  width: "fit-content",
-  marginTop: "40px",
-
-  
-  }}>Blogs</h2>
-      
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: "24px"
+  }}>
+    Blogs
+    <div style={{ width: "160px", height: "1px", background: "#073B2F" }} />
+  </h2>
+  <p style={{
+    color: "#000",
+    fontFamily: "Sohne",
+    fontSize: "24px",
+    fontWeight: 300,
+    lineHeight: "36px",
+    marginTop: "24px",
+    textAlign: "center",
+    marginBottom: "48px"
+  }}>
+     Explore more about blogs.
+  </p>
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           {blogPosts.map((post, index) => (
             <BlogCard key={index} post={post} />

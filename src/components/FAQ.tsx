@@ -60,12 +60,33 @@ export default function FindSignFAQ() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap');
 
+        .faq-title {
+          color: #073B2F;
+          font-family: 'GT Super Display Medium';
+          font-size: 44px;
+          font-weight: 500;
+          line-height: 54px;
+          letter-spacing: -0.88px;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 24px;
+        }
+        .faq-title::after {
+          content: "";
+          width: 160px;
+          height: 1px;
+          background: #073B2F;
+        }
 
+        .faq-subtitle {
+          color: #000;
           font-family: "Sohne", sans-serif;
           font-size: 24px;
           font-weight: 300;
           line-height: 36px;
-          margin-top: 8px;
+          margin-top: 24px;
           text-align: center;
         }
 
