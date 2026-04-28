@@ -228,8 +228,36 @@ const OtherServiceCard = ({ title, body, hasButton = false, delay = 0, onBookCal
 
 // ── Main Component ────────────────────────────────────────────────────────────
 export default function Services() {
-  const body =
-    "Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very short story.";
+  const body1 =
+    "This is our complete, end-to-end service for buyers who want an expert by their side from the very first search to settlement day. We manage the entire journey on your behalf, with multiple touch points along the way so you are always informed, always confident, and never left wondering what comes next. Every engagement is personalised to your specific situation, your goals, and your timeline. No two clients are the same, and neither is our approach.";
+
+
+  const body2 =
+    "Sometimes you do not need someone to do it for you. You just need the right information to do it yourself. Our advisory service is a focused one-on-one consultation where we walk you through the property purchasing process in plain language, share insider knowledge of the property market, and give you honest, practical feedback on where you currently stand and how to move forward. You leave the conversation with clarity, confidence, and a clear path ahead. The journey is still yours to take, you will just be better equipped to take it.";
+
+
+    const body3 =
+    "Once you have secured your investment, you need someone who will look after it as carefully as you do. A great property manager protects your asset, manages your tenants, and keeps your investment performing.";
+
+    const body4 =
+    "The legal side of purchasing a property involves more moving parts than most people realise. A skilled settlement agent ensures your contracts are handled correctly, your deadlines are met, and your purchase is transferred smoothly and securely.";
+
+
+    const body5 =
+    "Never skip this step. A thorough building inspection gives you an honest picture of the property's condition before you commit, protecting you from costly surprises down the track.";
+ 
+
+    const body6 =
+    "Whether you are selling before you buy or planning an exit strategy on an investment, having a trusted sales agent in your network means you are never starting from scratch when it matters most.";
+
+    const body7 =
+    "An often overlooked but valuable member of your investment team. A quantity surveyor prepares a depreciation schedule that can significantly reduce your taxable income each financial year.";
+
+    const body8 =
+    "Property investment has real tax implications. A good accountant who understands property ensures your structure is right from the start and that you are maximising every entitlement available to you.";
+ 
+
+
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeService, setActiveService] = useState("");
@@ -300,8 +328,12 @@ export default function Services() {
   imageSrc={AboutServiceImg}
   heading="About Our Services"
   subheading="Expert guidance for every step of your property journey."
-  body1="Body text for your whole article or post. We’ll put in some lorem ipsum to show how a filled-out page might look."
-  body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."
+  body1="Find and Sign Buyer Advocate is a boutique buyers agency based in Perth, representing buyers exclusively, whether you are purchasing the home you want to live in or building the portfolio you have always planned for.
+We take on a select number of clients at any one time. Not because we have to, but because we believe a purchase of this size deserves our full attention.
+"
+  body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
+From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market.
+"
 />
 
       {/* ── SECTION 3: Our Services ──────────────────────────────────────── */}
@@ -355,8 +387,8 @@ export default function Services() {
 
         {/* Top row: Buyer Advocate + Advisory — horizontal cards */}
         <div className="top-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
-          <ServiceCard title="Buyer Advocate" body={body} hasButton delay={0} onBookCall={handleBookCall} />
-          <ServiceCard title="Advisory" body={body} hasButton delay={0.12} onBookCall={handleBookCall} />
+          <ServiceCard title="Buyer Advocate" body={body1} hasButton delay={0} onBookCall={handleBookCall} />
+          <ServiceCard title="Advisory" body={body2} hasButton delay={0.12} onBookCall={handleBookCall} />
         </div>
 
         {/* Other Services */}
@@ -399,9 +431,9 @@ export default function Services() {
 
         {/* Row 1: 3 cards with image on top */}
         <div className="three-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
-          <OtherServiceCard title="Property Management" body={body} hasButton delay={0} onBookCall={handleBookCall} />
-          <OtherServiceCard title="Settlement Agent" body={body} hasButton delay={0.1} onBookCall={handleBookCall} />
-          <OtherServiceCard title="Building Inspection" body={body} hasButton delay={0.2} onBookCall={handleBookCall} />
+          <OtherServiceCard title="Property Management" body={body3} hasButton delay={0} onBookCall={handleBookCall} />
+        <OtherServiceCard title="Settlement Agent" body={body4} hasButton delay={0.1} onBookCall={handleBookCall} />
+        <OtherServiceCard title="Building Inspection" body={body5} hasButton delay={0.2} onBookCall={handleBookCall} />
         </div>
 
         {/* Accounting — horizontal small card */}
@@ -409,9 +441,9 @@ export default function Services() {
 
         {/* Row 2: 3 cards */}
         <div className="three-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
-          <OtherServiceCard title="Sales Agent" body={body} hasButton delay={0} onBookCall={handleBookCall} />
-          <OtherServiceCard title="Quantity Surveyor" body={body} hasButton delay={0.1} onBookCall={handleBookCall} />
-          <OtherServiceCard title="Accounting" body={body} hasButton delay={0.2} onBookCall={handleBookCall} />
+        <OtherServiceCard title="Sales Agent" body={body6} hasButton delay={0} onBookCall={handleBookCall} />
+          <OtherServiceCard title="Quantity Surveyor" body={body7} hasButton delay={0.1} onBookCall={handleBookCall} />
+          <OtherServiceCard title="Accounting" body={body8} hasButton delay={0.2} onBookCall={handleBookCall} />
         </div>
       </section>
               <Image1/>
