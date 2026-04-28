@@ -371,7 +371,7 @@ export default function OurProcess({ visible = true }: { visible?: boolean }) {
               transition: "opacity 0.8s ease, transform 0.8s cubic-bezier(0.22,1,0.36,1)",
             }}
           >
-            Our process
+            Our Process
             <div style={s.titleUnderline} />
           </h2>
           <p
