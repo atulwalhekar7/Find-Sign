@@ -61,7 +61,7 @@ export default function NakraniContact({ initialService = "", showService = fals
 
         .contact-page {
           display: flex;
-          padding: 64px 160px 64px 340px;
+          padding: 64px 80px 64px 340px;
           flex-direction: column;
           align-items: flex-start;
           gap: 10px;
@@ -181,12 +181,11 @@ export default function NakraniContact({ initialService = "", showService = fals
         }
 
         .contact-right {
-          flex: 1;
+          flex: 2;
           display: flex;
           flex-direction: column;
           gap: 16px;
           min-width: 0;
-          max-width: 600px;
         }
 
         .contact-right form {
@@ -258,7 +257,7 @@ export default function NakraniContact({ initialService = "", showService = fals
           flex-direction: row;
           align-items: center;
           padding: 0;
-          gap: 24px;
+          gap: 12px;
           width: 100%;
           min-height: 48px;
           flex-wrap: nowrap;
@@ -267,14 +266,11 @@ export default function NakraniContact({ initialService = "", showService = fals
           font-family: 'Sohne';
           font-style: normal;
           font-weight: 400;
-          font-size: 16px;
-          line-height: 22px;
+          font-size: 20px;
+          line-height: 28px;
           color: #000000;
           flex: 1;
           min-width: 0;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
         }
 
         .pref-toggle-group {
@@ -282,9 +278,10 @@ export default function NakraniContact({ initialService = "", showService = fals
           flex-direction: row;
           align-items: center;
           padding: 0;
-          gap: 8px;
+          gap: 6px;
           height: 48px;
           flex-shrink: 0;
+          margin-left: auto;
         }
         .pref-toggle-btn {
           box-sizing: border-box;
@@ -292,17 +289,18 @@ export default function NakraniContact({ initialService = "", showService = fals
           flex-direction: row;
           justify-content: center;
           align-items: center;
-          padding: 8px 12px;
-          gap: 6px;
-          width: 85px;
+          padding: 6px 20px;
+          gap: 4px;
+          width: auto;
+          min-width: 120px;
           height: 48px;
           border: 1px solid ${COLORS.aqua};
           border-radius: 8px;
           background: transparent;
           font-family: 'CX80';
-          font-size: 12px;
+          font-size: 15px;
           font-weight: 700;
-          letter-spacing: 0.24em;
+          letter-spacing: 4.8px;
           color: #073B2F;
           text-transform: uppercase;
           cursor: pointer;
@@ -376,26 +374,33 @@ export default function NakraniContact({ initialService = "", showService = fals
             font-size: 18px;
           }
 
+          .contact-pref-label {
+            white-space: nowrap;
+            white-space: normal;
+          }
+
           .contact-left-info {
             max-width: 100%;
           }
 
+          .contact-pref-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+          }
           .pref-toggle-group {
             max-width: 100%;
+            margin-left: 0;
+            width: 100%;
           }
 
           .contact-pref-row {
             gap: 12px;
           }
-          .contact-pref-label { 
-            font-size: 16px;
-            line-height: 22px;
-          }
           .pref-toggle-btn {
-            padding: 10px 12px;
-            font-size: 13px;
-            letter-spacing: 0.28em;
-            width: 90px;
+            padding: 10px 16px;
+            min-width: 110px;
+            flex: 1;
           }
           .contact-right { width: 100% !important; }
         }
@@ -407,9 +412,9 @@ export default function NakraniContact({ initialService = "", showService = fals
             className="contact-row"
             sx={{
               display: "flex",
-              flexDirection: "row",
+              flexDirection: { xs: "column", md: "row" },
               alignItems: "flex-start",
-              columnGap: { xs: "24px", md: "48px", lg: "100px" },
+              columnGap: { xs: "24px", md: "100px" },
               width: "100%",
             }}
           >
@@ -546,7 +551,7 @@ export default function NakraniContact({ initialService = "", showService = fals
           <button
             className="contact-btn"
             onClick={() => setSubmitted(false)}
-            style={{ marginTop: '16px', width: 'auto', padding: '12px 48px' }}
+             style={{ marginTop: '16px', width: 'auto', padding: '12px 48px' }}
           >
             Close
           </button>
