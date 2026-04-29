@@ -380,25 +380,9 @@ From the first conversation to settlement and beyond, we are in your corner. You
               marginTop: "24px",
               textAlign: "center"
             }}>
-People we trust. Services you may need.            </p>
+Explore more about our services         </p>
 
-<p
-  style={{
-    width: "1158px",
-    color: "var(--FS-System-Grey-1, #757575)",
-    textAlign: "center",
 
-    fontFamily: "SohneBuch",
-    fontSize: "20px",
-    fontStyle: "normal",
-    fontWeight: 400,
-    lineHeight: "28px",
-
-    marginTop: "16px"
-  }}
->
-  At Find and Sign Buyer Advocate, securing the right property is only part of the process. We work with trusted professionals at each stage and can introduce them where relevant. You're never required to use these services. The choice is always yours.
-</p>
           </div>
         </FadeUp>
 
@@ -441,8 +425,25 @@ People we trust. Services you may need.            </p>
               marginTop: "24px",
               textAlign: "center"
             }}>
-               Explore more about Affiliated Services.
+               People we trust. Services you may need.
             </p>
+            <p
+  style={{
+    width: "1158px",
+    color: "var(--FS-System-Grey-1, #757575)",
+    textAlign: "center",
+
+    fontFamily: "SohneBuch",
+    fontSize: "20px",
+    fontStyle: "normal",
+    fontWeight: 400,
+    lineHeight: "28px",
+
+    marginTop: "16px"
+  }}
+>
+  At Find and Sign Buyer Advocate, securing the right property is only part of the process. We work with trusted professionals at each stage and can introduce them where relevant. You're never required to use these services. The choice is always yours.
+</p>
           </div>
         </FadeUp>
 
