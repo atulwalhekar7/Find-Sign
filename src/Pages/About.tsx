@@ -121,7 +121,7 @@ Find & Sign we find with confidence you sign with certainty.
           justify-content: center;
           background-image: url(${Banner});
           background-size: cover;
-          background-position: center;
+          background-position: center 30%;
           background-repeat: no-repeat;
           background-attachment: scroll;
         }

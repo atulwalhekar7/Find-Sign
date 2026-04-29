@@ -68,7 +68,7 @@ align-self: stretch;
           justify-content: center;
           padding: 10px 8px;
           color: ${COLORS.black};
-          font-family: "Sohne";
+          font-family: "SohneBuch";
           font-size: 20px;
           font-weight: 400;
           line-height: 28px;
