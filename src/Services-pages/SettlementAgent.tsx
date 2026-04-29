@@ -65,7 +65,11 @@ We take on a select number of clients at any one time. Not because we have to, b
 From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market."
       />
       
-      <SimpleGetInTouch initialService="Settlement Agent" />
+      <SimpleGetInTouch initialService="Settlement Agent" showService={true} />
+</xai:function_call >
+
+<xai:function_call name="edit_file">
+<parameter name="path">Find-Sign/src/Services-pages/BuildingInspection.tsx
       <SimpleFooter />
 
       <style>{`

@@ -39,13 +39,8 @@ We take on a select number of clients at any one time. Not because we have to, b
 From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market."
       />
 
-      <SimpleGetInTouch initialService="Accounting" />
+      <SimpleGetInTouch initialService="Accounting" showService={true} />
       <SimpleFooter />
-
-      <style>{`
-        @keyframes heroFadeIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-        @media (max-width: 900px) { .ba-grid { grid-template-columns: 1fr !important; } }
-      `}</style>
     </div>
   );
 }

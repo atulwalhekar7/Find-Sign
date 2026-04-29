@@ -5,7 +5,7 @@ import SimpleGetInTouch from "../components/GetInTouch";
 import AboutServiceImg from "../assets/About Our Services.jpg";
 import AboutSection from "../components/AboutSection";
 
-export default function SettlementAgent() {
+export default function QuantitySurveyor() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
@@ -65,20 +65,13 @@ We take on a select number of clients at any one time. Not because we have to, b
 From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market."
       />
       
-      <SimpleGetInTouch initialService="Settlement Agent" />
+      <SimpleGetInTouch initialService="Quantity Surveyor" showService={true} />
       <SimpleFooter />
 
       <style>{`
         @keyframes heroFadeIn {
           from { opacity: 0; transform: translateY(20px); }
           to   { opacity: 1; transform: translateY(0); }
-        }
-        @media (max-width: 900px) {
-          .sa-grid { grid-template-columns: 1fr !important; }
-          .steps-grid { grid-template-columns: 1fr 1fr !important; }
-        }
-        @media (max-width: 600px) {
-          .steps-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </div>
