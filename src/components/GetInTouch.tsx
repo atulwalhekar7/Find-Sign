@@ -14,10 +14,10 @@ interface NakraniContactProps {
   showService?: boolean;
 }
 
-export default function NakraniContact({ initialService = "", showService = false }: NakraniContactProps) {
+export default function GetInTouch({ initialService = "", showService = false }: NakraniContactProps) {
   const [submitted, setSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
-  const [contactPreference, setContactPreference] = useState<"phone" | "email" | "">("");
+  const [contactPreference, setContactPreference] = useState<"phone" | "email" | "">("email"); // Initialize with a default value
   const [selectedService, setSelectedService] = useState(initialService);
   const form = useRef<HTMLFormElement>(null);
 
@@ -40,7 +40,7 @@ export default function NakraniContact({ initialService = "", showService = fals
             setSubmitted(true);
             setIsSending(false);
             form.current?.reset();
-            setContactPreference("");
+            setContactPreference("email"); // Reset to the default value after successful submission
             setSelectedService(initialService);
           },
           (error) => {
@@ -375,7 +375,6 @@ export default function NakraniContact({ initialService = "", showService = fals
           }
 
           .contact-pref-label {
-            white-space: nowrap;
             white-space: normal;
           }
 

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import bannerImg from "../assets/DSC06227.jpg";
 import AboutSection from "../components/AboutSection";
 import SimpleFooter from "../components/SimpleFooter";
-import SimpleGetInTouch from "../components/GetInTouch";
+import GetInTouch from "../components/GetInTouch";
 import AboutServiceImg from "../assets/About Our Services.jpg";
 
 export default function BuyerAdvocate() {
@@ -71,7 +71,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
      
 
       {/* ── Get In Touch ────────────────────────────────────────────────── */}
-      <SimpleGetInTouch initialService="Buyer Advocate" showService={true} />
+      <GetInTouch initialService="Buyer Advocate" showService={true} />
       <SimpleFooter />
 
       <style>{`
