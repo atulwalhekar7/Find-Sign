@@ -23,12 +23,20 @@ export default function About() {
   const [nikiExpanded, setNikiExpanded] = useState(false);
 
   const togglePlayPause = () => {
-    const vid = videoRef.current;
-    if (!vid) return;
-    if (vid.paused) { vid.play(); setIsPlaying(true); }
-    else { vid.pause(); setIsPlaying(false); }
-  };
+  const vid = videoRef.current;
+  if (!vid) return;
 
+  if (vid.paused) {
+    vid.muted = false;        // 👈 AUTO UNMUTE ON PLAY
+    setIsMuted(false);
+
+    vid.play();
+    setIsPlaying(true);
+  } else {
+    vid.pause();
+    setIsPlaying(false);
+  }
+};
   const toggleMute = () => {
     const vid = videoRef.current;
     if (!vid) return;
@@ -326,7 +334,7 @@ Find & Sign we find with confidence you sign with certainty.
           border: 1px solid #69E4DC;
           background: transparent;
           color: #073B2F;
-          font-family: 'Söhne', 'Sohne', 'DM Sans', sans-serif;
+          font-family: 'CX80';
           font-size: 12px;
           font-weight: 700;
           letter-spacing: 3.9px;

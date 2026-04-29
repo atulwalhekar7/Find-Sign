@@ -145,7 +145,7 @@ const ServiceCard = ({ title, body, hasButton = false, delay = 0, onBookCall }: 
         <p style={{
           color: "#757575",
           textAlign: "center",
-          fontFamily: "'Söhne', sans-serif",
+          fontFamily: "'SohneBuch",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: 400,
@@ -204,7 +204,7 @@ const OtherServiceCard = ({ title, body, hasButton = false, delay = 0, onBookCal
         <p style={{
           color: "#757575",
           textAlign: "center",
-          fontFamily: ' Sohne',
+          fontFamily: 'SohneBuch',
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: 400,

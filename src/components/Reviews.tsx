@@ -56,7 +56,7 @@ const formattedReviews = reviewsData.map(review => ({
 // Layout constants
 const CARD_GAP = 32;
 const ROW_GAP = 32;
-const CARD_WIDTH = 366;
+const CARD_WIDTH = 360;
 const CARD_HEIGHT = 407;
 const COLS = 3;
 const ROWS = 2;
@@ -301,7 +301,7 @@ const App = () => {
         padding: "80px 0",
         gap: "40px",
         boxSizing: "border-box",
-        fontFamily: "'DM Sans', sans-serif",
+        fontFamily: "'DM Sans'",
       }}>
 
         {/* ── HEADER ── */}
@@ -593,10 +593,10 @@ const ReviewCard = ({ review }: ReviewCardProps) => (
       <div>
         <h4 style={{
           fontSize: '0.875rem',
-          fontWeight: 700,
+          fontWeight: 400,
           color: '#111827',
           margin: 0,
-          fontFamily: 'Sohne, DM Sans, sans-serif',
+          fontFamily: 'SohneBuch',
         }}>
           {review.name}
         </h4>
@@ -607,7 +607,7 @@ const ReviewCard = ({ review }: ReviewCardProps) => (
           textTransform: 'uppercase',
           letterSpacing: '0.05em',
           marginTop: '2px',
-          fontFamily: 'Sohne, DM Sans, sans-serif',
+          fontFamily: 'CX80',
         }}>
           {review.date}
         </p>

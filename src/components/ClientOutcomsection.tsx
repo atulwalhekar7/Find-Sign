@@ -148,11 +148,15 @@ export default function ClientOutcomes() {
   const sliderCards = cards.slice(0, 10);
   const maxIdx = Math.max(0, sliderCards.length - visibleCount);
 
+  // ─── Responsive: map breakpoints to visibleCount (mirrors 12-col grid splits) ───
+  // Desktop ≥1200px  → 12 cols → 3 cards (each spanning 4 cols)
+  // Tablet  768–1199 → 8 cols  → 2 cards (each spanning 4 cols)
+  // Mobile  <768px   → 4 cols  → 1 card  (full width)
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth;
-      if (w < 640) setVisibleCount(1);
-      else if (w < 1024) setVisibleCount(2);
+      if (w < 768) setVisibleCount(1);
+      else if (w < 1200) setVisibleCount(2);
       else setVisibleCount(3);
     };
     update();
@@ -212,19 +216,39 @@ export default function ClientOutcomes() {
           100% { transform: translateY(0)    scale(1);    }
         }
 
-        .co-wrapper { width: 100%; background: #F9F9F9; }
+        /* ─── Outer wrapper ────────────────────────────────────────────── */
+        .co-wrapper {
+          width: 100%;
+          background: #F9F9F9;
+        }
 
+        /*
+          ─── 12-column grid section ────────────────────────────────────
+          Figma layout:
+            Desktop  ≥1200px : max-width 1512px, 12 cols, 64px gutter, 196px margin
+            Tablet   768–1199: max-width 100%,   12 cols, 32px gutter,  48px margin
+            Mobile   <768px  : max-width 100%,   4  cols, 16px gutter,  24px margin
+        */
         .co-section {
           background: #F9F9F9;
           width: 100%;
           max-width: 1512px;
           margin: 0 auto;
+
+          /* 12-col grid – desktop */
           display: grid;
           grid-template-columns: repeat(12, 1fr);
           column-gap: 64px;
           padding: 64px 196px 80px;
         }
-        .co-head { grid-column: 1 / -1; margin-bottom: 48px; }
+
+        /* ─── Head block spans all 12 cols ──────────────────────────── */
+        .co-head {
+          grid-column: 1 / -1;
+          margin-bottom: 48px;
+        }
+
+        /* ─── Slider outer spans all 12 cols ────────────────────────── */
         .co-slider-outer {
           grid-column: 1 / -1;
           display: flex;
@@ -232,6 +256,8 @@ export default function ClientOutcomes() {
           gap: 40px;
           align-items: center;
         }
+
+        /* ─── Header row inside slider outer ────────────────────────── */
         .co-header {
           width: 100%;
           display: grid;
@@ -239,6 +265,8 @@ export default function ClientOutcomes() {
           column-gap: 64px;
           align-items: flex-start;
         }
+
+        /* ─── Title group: full 12 cols, centred ────────────────────── */
         .co-title-group {
           grid-column: 1 / -1;
           display: flex;
@@ -246,6 +274,7 @@ export default function ClientOutcomes() {
           align-items: center;
           text-align: center;
         }
+
         .co-h2 {
           color: var(--FS-RACING-GREEN, #073B2F);
           font-family: "GT Super Display Medium";
@@ -266,6 +295,7 @@ export default function ClientOutcomes() {
           height: 1px;
           background: #073B2F;
         }
+
         .co-subtitle {
           color: #000;
           font-family: Sohne;
@@ -275,39 +305,16 @@ export default function ClientOutcomes() {
           margin-top: 24px;
         }
 
-        /*
-          KEY FIX — Card width same as before (full section width ÷ visibleCount).
-          The clipping was NOT a card-width issue — it was the arrow buttons'
-          position:absolute pushing out of the stacking context and getting
-          clipped by an ancestor overflow:hidden.
-
-          Solution:
-          • .co-slider-wrapper   → position:relative, overflow:visible
-                                   Cards + arrows both live here.
-                                   NO overflow:hidden (arrows would be clipped).
-          • .co-slider-viewport  → overflow:hidden  ← clips the sliding track only.
-                                   It sits BETWEEN the arrows in the DOM so its
-                                   width equals full section width, exactly as before.
-          • Arrow buttons        → positioned on .co-slider-wrapper, sit outside
-                                   the viewport but inside the wrapper.
-                                   They appear over the page background, not over cards.
-        */
-
-        /* Wrapper: full width, relative for arrow positioning, NO overflow clip */
+        /* ─── Slider wrapper: relative + overflow visible for arrows ── */
         .co-slider-wrapper {
           position: relative;
           width: 100%;
         }
 
-        /*
-          Viewport: clips the track horizontally.
-          Width = 100% of .co-slider-wrapper = full section width.
-          This is identical to what it was originally — card widths are unchanged.
-        */
+        /* ─── Viewport: clips the track, full wrapper width ──────────── */
         .co-slider-viewport {
           width: 100%;
           overflow: hidden;
-          /* vertical space so hover-lift shadow isn't cut off */
           padding: 20px 0;
           margin: -20px 0;
         }
@@ -319,9 +326,19 @@ export default function ClientOutcomes() {
           will-change: transform;
         }
 
-        /* Card — IDENTICAL to original. Width driven by --visible CSS var. */
+        /* ─── Property card ──────────────────────────────────────────── */
+        /*
+          Width formula mirrors Figma 12-col logic:
+            Desktop  (3 cards) → each card = 4 of 12 cols
+            Tablet   (2 cards) → each card = 6 of 12 cols
+            Mobile   (1 card)  → each card = full 4-col width
+
+          The CSS var --visible drives the math identically across breakpoints.
+        */
         .property-card {
-          flex: 0 0 calc((100% - ${CARD_GAP}px * (var(--visible) - 1)) / var(--visible));
+          flex: 0 0 calc(
+            (100% - ${CARD_GAP}px * (var(--visible) - 1)) / var(--visible)
+          );
           min-width: 0;
           height: 440px;
           background: ${WHITE};
@@ -379,6 +396,7 @@ export default function ClientOutcomes() {
           background: ${WHITE};
           filter: brightness(1.1) drop-shadow(0 4px 15px rgba(105,228,220,0.5));
         }
+
         .growth-label {
           width: 78px;
           height: 28px;
@@ -428,6 +446,7 @@ export default function ClientOutcomes() {
           margin-left: auto;
         }
 
+        /* ─── Dot indicators ─────────────────────────────────────────── */
         .co-dots { display: flex; gap: 12px; align-items: center; margin-bottom: 24px; }
         .co-dot {
           width: 8px; height: 8px;
@@ -440,6 +459,7 @@ export default function ClientOutcomes() {
         }
         .co-dot.active { background: #073B2F; width: 24px; border-radius: 4px; }
 
+        /* ─── CTA button ─────────────────────────────────────────────── */
         .view-btn {
           display: flex;
           height: 48px;
@@ -461,11 +481,13 @@ export default function ClientOutcomes() {
         }
         .view-btn:hover { background: ${AQUA}; transform: scale(1.05); }
 
+        /* ─── Arrow buttons ──────────────────────────────────────────── */
         /*
-          Arrows: absolute on .co-slider-wrapper.
-          Negative left/right pulls them outside the viewport.
-          Because wrapper has overflow:visible they render fine.
-          The section's own padding (196px each side) gives them room.
+          Positioned on .co-slider-wrapper (overflow:visible).
+          Negative inset pulls them into the section's horizontal padding.
+          Desktop margin = 196px → arrows at –52px are safely within padding.
+          Tablet  margin =  48px → arrows at –44px are safely within padding.
+          Mobile arrows are hidden (no room in 24px margin).
         */
         .rev-arrow-btn {
           position: absolute;
@@ -487,22 +509,73 @@ export default function ClientOutcomes() {
         .rev-arrow-btn.prev { left: -52px; }
         .rev-arrow-btn.next { right: -52px; }
 
+        /* ══════════════════════════════════════════════════════════════
+           RESPONSIVE BREAKPOINTS
+           All column-gap and padding values track Figma's grid spec:
+             Desktop  ≥1200 : 12-col, 64px gap, 196px margin
+             Tablet   768–1199 : 12-col, 32px gap, 48px margin
+             Mobile   <768  : 4-col,  16px gap, 24px margin
+        ══════════════════════════════════════════════════════════════ */
+
+        /* ─── Tablet: 768px – 1199px ─────────────────────────────────
+           Grid stays 12 cols but gap narrows to 32px and margin to 48px.
+           Slider shows 2 cards → each card spans 6 of 12 cols.
+           co-header sub-grid also drops to 32px gap to match.
+        ──────────────────────────────────────────────────────────────── */
         @media (max-width: 1199px) {
-          .co-section { padding: 48px 48px 64px; column-gap: 32px; }
-          .co-h2 { font-size: 36px; line-height: 44px; letter-spacing: -0.72px; }
-          .co-subtitle { font-size: 20px; }
+          .co-section {
+            column-gap: 32px;
+            padding: 48px 48px 64px;
+          }
+          .co-header {
+            column-gap: 32px;
+          }
+          .co-h2 {
+            font-size: 36px;
+            line-height: 44px;
+            letter-spacing: -0.72px;
+          }
+          .co-subtitle {
+            font-size: 20px;
+          }
+          /* Arrows fit within 48px side padding */
           .rev-arrow-btn.prev { left: -44px; }
           .rev-arrow-btn.next { right: -44px; }
         }
+
+        /* ─── Mobile: < 768px ────────────────────────────────────────
+           Collapses to a 4-column grid (single-column layout for content).
+           Gap 16px, margin 24px. Slider shows 1 card.
+           Arrows hidden – swipe/dots used for navigation.
+        ──────────────────────────────────────────────────────────────── */
         @media (max-width: 767px) {
-          .co-section { padding: 40px 24px 56px; column-gap: 0; }
-          .co-h2 { font-size: 32px; line-height: 38px; letter-spacing: -0.64px; }
+          .co-section {
+            grid-template-columns: repeat(4, 1fr);
+            column-gap: 16px;
+            padding: 40px 24px 56px;
+          }
+          .co-header {
+            grid-template-columns: repeat(4, 1fr);
+            column-gap: 16px;
+          }
+          .co-h2 {
+            font-size: 32px;
+            line-height: 38px;
+            letter-spacing: -0.64px;
+          }
+          .co-subtitle {
+            font-size: 18px;
+            line-height: 28px;
+          }
+          /* Arrows removed on mobile — no margin to absorb them */
           .rev-arrow-btn { display: none; }
         }
       `}</style>
 
       <div className="co-wrapper">
         <div className="co-section">
+
+          {/* Head: spans all 12 cols at every breakpoint */}
           <div className="co-head">
             <div className="co-header">
               <div className="co-title-group">
@@ -514,12 +587,13 @@ export default function ClientOutcomes() {
             </div>
           </div>
 
+          {/* Slider: spans all 12 cols */}
           <div className="co-slider-outer">
             {/*
-              .co-slider-wrapper has overflow:visible so the absolute-positioned
-              arrows bleed into the section padding without clipping the track.
-              .co-slider-viewport inside it has overflow:hidden and is full width —
-              so card sizes are identical to the original design.
+              .co-slider-wrapper: overflow:visible → arrows render outside
+              the viewport clip without being cut by any ancestor overflow:hidden.
+              .co-slider-viewport: overflow:hidden → clips the sliding track.
+              Card widths are controlled by --visible CSS var set inline on the track.
             */}
             <div className="co-slider-wrapper">
               <button
@@ -566,6 +640,7 @@ export default function ClientOutcomes() {
               </div>
             </div>
 
+            {/* Dots */}
             <div className="co-dots">
               {Array.from({ length: Math.min(8, maxIdx + 1) }).map((_, i) => (
                 <button
@@ -584,6 +659,7 @@ export default function ClientOutcomes() {
               View More Outcomes
             </button>
           </div>
+
         </div>
       </div>
     </>
