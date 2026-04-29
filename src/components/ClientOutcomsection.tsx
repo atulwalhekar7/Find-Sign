@@ -55,7 +55,7 @@ const images = {
 const cards = [
   { id: 1,  image: images.id1,  growth: "101.7%", purchasePrice: "$290k",  currentValue: "$585k",  timeframe: "2 yrs 4 mths", rentalYield: "Owner Occ", address: "8/15 Debenham St, Thornlie WA 6108" },
   { id: 2,  image: images.id2,  growth: "41.3%",  purchasePrice: "$630k",  currentValue: "$890k",  timeframe: "2 years",       rentalYield: "6.2%",      address: "27 Willard Circuit, Banksia Grove WA 6031" },
-  { id: 3,  image: images.id3,  growth: "29.9%",  purchasePrice: "$654k",  currentValue: "$850k",  timeframe: "2 years",       rentalYield: "5.4%",      address: "105 Surf Drive, Secret Harbour WA 6173" },
+  { id: 3,  image: images.id3,  growth: "29.9%",  purchasePrice: "$654k",  timeframe: "2 years",       rentalYield: "5.4%",      address: "105 Surf Drive, Secret Harbour WA 6173" },
   { id: 4,  image: images.id4,  growth: "30.0%",  purchasePrice: "$862k",  currentValue: "$1.12M", timeframe: "2 years",       rentalYield: "Owner Occ", address: "7 Limerick Loop, Wattle Grove WA 6107" },
   { id: 5,  image: images.id5,  growth: "41.9%",  purchasePrice: "$620k",  currentValue: "$880k",  timeframe: "1 yr 10 mths",  rentalYield: "Owner Occ", address: "34 Sawmill Road, Whitby WA 6123" },
   { id: 6,  image: images.id6,  growth: "34.5%",  purchasePrice: "$550k",  currentValue: "$740k",  timeframe: "1 yr 10 mths",  rentalYield: "6.1%",      address: "32 Breccia Parade, Wellard WA 6170" },
@@ -148,10 +148,6 @@ export default function ClientOutcomes() {
   const sliderCards = cards.slice(0, 10);
   const maxIdx = Math.max(0, sliderCards.length - visibleCount);
 
-  // ─── Responsive: map breakpoints to visibleCount (mirrors 12-col grid splits) ───
-  // Desktop ≥1200px  → 12 cols → 3 cards (each spanning 4 cols)
-  // Tablet  768–1199 → 8 cols  → 2 cards (each spanning 4 cols)
-  // Mobile  <768px   → 4 cols  → 1 card  (full width)
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth;
@@ -216,39 +212,21 @@ export default function ClientOutcomes() {
           100% { transform: translateY(0)    scale(1);    }
         }
 
-        /* ─── Outer wrapper ────────────────────────────────────────────── */
-        .co-wrapper {
-          width: 100%;
-          background: #F9F9F9;
-        }
+        .co-wrapper { width: 100%; background: #F9F9F9; }
 
-        /*
-          ─── 12-column grid section ────────────────────────────────────
-          Figma layout:
-            Desktop  ≥1200px : max-width 1512px, 12 cols, 64px gutter, 196px margin
-            Tablet   768–1199: max-width 100%,   12 cols, 32px gutter,  48px margin
-            Mobile   <768px  : max-width 100%,   4  cols, 16px gutter,  24px margin
-        */
         .co-section {
           background: #F9F9F9;
           width: 100%;
           max-width: 1512px;
           margin: 0 auto;
-
-          /* 12-col grid – desktop */
           display: grid;
           grid-template-columns: repeat(12, 1fr);
           column-gap: 64px;
           padding: 64px 196px 80px;
         }
 
-        /* ─── Head block spans all 12 cols ──────────────────────────── */
-        .co-head {
-          grid-column: 1 / -1;
-          margin-bottom: 48px;
-        }
+        .co-head { grid-column: 1 / -1; margin-bottom: 48px; }
 
-        /* ─── Slider outer spans all 12 cols ────────────────────────── */
         .co-slider-outer {
           grid-column: 1 / -1;
           display: flex;
@@ -257,7 +235,6 @@ export default function ClientOutcomes() {
           align-items: center;
         }
 
-        /* ─── Header row inside slider outer ────────────────────────── */
         .co-header {
           width: 100%;
           display: grid;
@@ -266,7 +243,6 @@ export default function ClientOutcomes() {
           align-items: flex-start;
         }
 
-        /* ─── Title group: full 12 cols, centred ────────────────────── */
         .co-title-group {
           grid-column: 1 / -1;
           display: flex;
@@ -305,13 +281,11 @@ export default function ClientOutcomes() {
           margin-top: 24px;
         }
 
-        /* ─── Slider wrapper: relative + overflow visible for arrows ── */
         .co-slider-wrapper {
           position: relative;
           width: 100%;
         }
 
-        /* ─── Viewport: clips the track, full wrapper width ──────────── */
         .co-slider-viewport {
           width: 100%;
           overflow: hidden;
@@ -326,15 +300,7 @@ export default function ClientOutcomes() {
           will-change: transform;
         }
 
-        /* ─── Property card ──────────────────────────────────────────── */
-        /*
-          Width formula mirrors Figma 12-col logic:
-            Desktop  (3 cards) → each card = 4 of 12 cols
-            Tablet   (2 cards) → each card = 6 of 12 cols
-            Mobile   (1 card)  → each card = full 4-col width
-
-          The CSS var --visible drives the math identically across breakpoints.
-        */
+        /* ── Property card ── */
         .property-card {
           flex: 0 0 calc(
             (100% - ${CARD_GAP}px * (var(--visible) - 1)) / var(--visible)
@@ -351,6 +317,13 @@ export default function ClientOutcomes() {
           transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
                       box-shadow 0.4s ease;
           cursor: pointer;
+          /*
+            FIX: overflow:hidden on the card itself already clips children
+            to border-radius. The image-wrap no longer needs its own
+            border-radius — the card's overflow:hidden handles the top corners.
+            This eliminates the white gap that appeared between the
+            card border and the image at the top-left / top-right corners.
+          */
           overflow: hidden;
         }
         .property-card:hover {
@@ -358,10 +331,18 @@ export default function ClientOutcomes() {
           box-shadow: 0 10px 22px rgba(105,228,220,0.96);
         }
 
+        /* ── Image wrap ── */
         .card-image-wrap {
           width: 100%;
           height: 200px;
-          border-radius: 16px 16px 0 0;
+          /*
+            FIX: Remove border-radius here entirely.
+            The parent .property-card already has overflow:hidden + border-radius:16px,
+            so the image is naturally clipped at the top corners without a gap.
+            Previously border-radius:16px 16px 0 0 on this child created a
+            2px white sliver because it sat inside the 2px border of the parent.
+          */
+          border-radius: 0;
           overflow: hidden;
           flex-shrink: 0;
         }
@@ -371,9 +352,11 @@ export default function ClientOutcomes() {
           object-fit: cover;
           filter: blur(3px) brightness(80%);
           transition: transform 0.3s ease;
+          display: block;
         }
         .property-card:hover .card-image { transform: scale(1.08); }
 
+        /* ── Growth circle ── */
         .growth-circle-container {
           position: absolute;
           bottom: 175px;
@@ -446,7 +429,6 @@ export default function ClientOutcomes() {
           margin-left: auto;
         }
 
-        /* ─── Dot indicators ─────────────────────────────────────────── */
         .co-dots { display: flex; gap: 12px; align-items: center; margin-bottom: 24px; }
         .co-dot {
           width: 8px; height: 8px;
@@ -459,7 +441,6 @@ export default function ClientOutcomes() {
         }
         .co-dot.active { background: #073B2F; width: 24px; border-radius: 4px; }
 
-        /* ─── CTA button ─────────────────────────────────────────────── */
         .view-btn {
           display: flex;
           height: 48px;
@@ -481,14 +462,6 @@ export default function ClientOutcomes() {
         }
         .view-btn:hover { background: ${AQUA}; transform: scale(1.05); }
 
-        /* ─── Arrow buttons ──────────────────────────────────────────── */
-        /*
-          Positioned on .co-slider-wrapper (overflow:visible).
-          Negative inset pulls them into the section's horizontal padding.
-          Desktop margin = 196px → arrows at –52px are safely within padding.
-          Tablet  margin =  48px → arrows at –44px are safely within padding.
-          Mobile arrows are hidden (no room in 24px margin).
-        */
         .rev-arrow-btn {
           position: absolute;
           top: 50%;
@@ -509,65 +482,23 @@ export default function ClientOutcomes() {
         .rev-arrow-btn.prev { left: -52px; }
         .rev-arrow-btn.next { right: -52px; }
 
-        /* ══════════════════════════════════════════════════════════════
-           RESPONSIVE BREAKPOINTS
-           All column-gap and padding values track Figma's grid spec:
-             Desktop  ≥1200 : 12-col, 64px gap, 196px margin
-             Tablet   768–1199 : 12-col, 32px gap, 48px margin
-             Mobile   <768  : 4-col,  16px gap, 24px margin
-        ══════════════════════════════════════════════════════════════ */
-
-        /* ─── Tablet: 768px – 1199px ─────────────────────────────────
-           Grid stays 12 cols but gap narrows to 32px and margin to 48px.
-           Slider shows 2 cards → each card spans 6 of 12 cols.
-           co-header sub-grid also drops to 32px gap to match.
-        ──────────────────────────────────────────────────────────────── */
         @media (max-width: 1199px) {
-          .co-section {
-            column-gap: 32px;
-            padding: 48px 48px 64px;
-          }
-          .co-header {
-            column-gap: 32px;
-          }
-          .co-h2 {
-            font-size: 36px;
-            line-height: 44px;
-            letter-spacing: -0.72px;
-          }
-          .co-subtitle {
-            font-size: 20px;
-          }
-          /* Arrows fit within 48px side padding */
+          .co-section { column-gap: 32px; padding: 48px 48px 64px; }
+          .co-header { column-gap: 32px; }
+          .co-h2 { font-size: 36px; line-height: 44px; letter-spacing: -0.72px; }
+          .co-subtitle { font-size: 20px; }
           .rev-arrow-btn.prev { left: -44px; }
           .rev-arrow-btn.next { right: -44px; }
         }
-
-        /* ─── Mobile: < 768px ────────────────────────────────────────
-           Collapses to a 4-column grid (single-column layout for content).
-           Gap 16px, margin 24px. Slider shows 1 card.
-           Arrows hidden – swipe/dots used for navigation.
-        ──────────────────────────────────────────────────────────────── */
         @media (max-width: 767px) {
           .co-section {
             grid-template-columns: repeat(4, 1fr);
             column-gap: 16px;
             padding: 40px 24px 56px;
           }
-          .co-header {
-            grid-template-columns: repeat(4, 1fr);
-            column-gap: 16px;
-          }
-          .co-h2 {
-            font-size: 32px;
-            line-height: 38px;
-            letter-spacing: -0.64px;
-          }
-          .co-subtitle {
-            font-size: 18px;
-            line-height: 28px;
-          }
-          /* Arrows removed on mobile — no margin to absorb them */
+          .co-header { grid-template-columns: repeat(4, 1fr); column-gap: 16px; }
+          .co-h2 { font-size: 32px; line-height: 38px; letter-spacing: -0.64px; }
+          .co-subtitle { font-size: 18px; line-height: 28px; }
           .rev-arrow-btn { display: none; }
         }
       `}</style>
@@ -575,7 +506,6 @@ export default function ClientOutcomes() {
       <div className="co-wrapper">
         <div className="co-section">
 
-          {/* Head: spans all 12 cols at every breakpoint */}
           <div className="co-head">
             <div className="co-header">
               <div className="co-title-group">
@@ -587,14 +517,7 @@ export default function ClientOutcomes() {
             </div>
           </div>
 
-          {/* Slider: spans all 12 cols */}
           <div className="co-slider-outer">
-            {/*
-              .co-slider-wrapper: overflow:visible → arrows render outside
-              the viewport clip without being cut by any ancestor overflow:hidden.
-              .co-slider-viewport: overflow:hidden → clips the sliding track.
-              Card widths are controlled by --visible CSS var set inline on the track.
-            */}
             <div className="co-slider-wrapper">
               <button
                 className="rev-arrow-btn prev"
@@ -640,7 +563,6 @@ export default function ClientOutcomes() {
               </div>
             </div>
 
-            {/* Dots */}
             <div className="co-dots">
               {Array.from({ length: Math.min(8, maxIdx + 1) }).map((_, i) => (
                 <button
