@@ -314,7 +314,7 @@ const App = () => {
             <div className="rev-header" style={{ display: 'flex', justifyContent: 'center' }}>
               <div className="rev-title-group" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <h2 className="rev-heading">
-                  What clients say
+                  What Clients Say
                   <div style={{ width: "160px", height: "1px", background: "#073B2F" }} />
                 </h2>
                 <p className="rev-subheading">In their own words, following their experience with Niki.</p>
