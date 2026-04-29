@@ -82,7 +82,7 @@ align-self: stretch;
         .nav-link:active,
         .nav-link.active {
           border-radius: var(--sds-size-radius-200);
-          background: #F5F5F5;
+          background: #EAE5DF;
           display: inline-flex;
           padding: var(--sds-size-space-200);
           justify-content: center;

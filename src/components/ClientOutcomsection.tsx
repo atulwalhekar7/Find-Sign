@@ -701,8 +701,15 @@ export default function ClientOutcomes() {
         }
 
         @media (max-width: 767px) {
-          .co-section { grid-template-columns: repeat(4, 1fr); padding: 40px 20px 56px; }
-          .co-header { grid-template-columns: 1fr; }
+.co-section {
+  max-width: 1512px;
+  margin: 0 auto;
+  padding: 64px 196px 80px;
+
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 64px;
+}          .co-header { grid-template-columns: 1fr; }
           .co-title-group, .co-arrows { grid-column: 1 / -1; }
           .co-h2 { 
             font-size: 32px;
@@ -713,6 +720,10 @@ export default function ClientOutcomes() {
             flex-shrink: 1;
           }
         }
+          .co-wrapper {
+  width: 100%;
+  background: #F9F9F9;
+}
 
         .co-slider-viewport { width: 100%; overflow: hidden; padding: 20px 0; margin: -20px 0; }
         .co-slider-track {
@@ -722,7 +733,8 @@ export default function ClientOutcomes() {
         }
 
         .property-card {
-          flex: 0 0 calc((100% - clamp(16px, 2.11vw, 32px) * 2) / 3);
+flex: 0 0 calc((100% - clamp(16px, 2.11vw, 32px) * 2) / 3);
+  height: 440px;
           background: ${WHITE};
           border: 2px solid ${AQUA};
           border-radius: 16px;
@@ -769,10 +781,10 @@ export default function ClientOutcomes() {
         /* Growth Circle Container with Heartbeat Animation */
         .growth-circle-container {
           position: absolute;
-          bottom: 165px; /* Position at the bottom */
+          bottom: 175px; /* Position at the bottom */
           right: 1px;
-          width: 130px; /* Increased size */
-          height: 130px; /* Increased size */
+          width: 152px; /* Increased size */
+          height: 152px; /* Increased size */
           border-radius: 50%;
           background: ${AQUA}; /* Ensure it's blue */
           background-image: url(${ellipseImage}); /* Overlay the image if it's a pattern/texture */
@@ -788,28 +800,52 @@ export default function ClientOutcomes() {
           justify-content: center;
           text-align: center;
         }
-
+.growth-circle-container:hover {
+animation: heartbeatFloat 4s ease-in-out infinite;
+}
         .property-card:hover .growth-circle-container {
           background: ${WHITE}; /* Change background on hover */
           filter: brightness(1.1) drop-shadow(0 4px 15px rgba(105, 228, 220, 0.5));
         }
 
-        .growth-circle-container .growth-label {
-          font-family: 'Sohne';
-          font-size: 12px;
-          color: ${RACING_GREEN};
-          opacity: 0.8;
-          font-weight: 1000;  
-          letter-spacing: 0.5px; 
-        }
-        .growth-circle-container .growth-value {
-          font-family: 'GT Super Display Medium';
-          font-size: 24px;
-          font-weight: 700;
-          line-height: 1.2;
-          color: ${RACING_GREEN};
-          margin-bottom: 4px;
-        }
+      .growth-circle-container .growth-label {
+  width: 78px;
+  height: 28px;
+
+  color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
+  text-align: center;
+
+  font-family: "SohneBuch";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+       .growth-circle-container .growth-value {
+  width: 123.048px;
+  height: 48.254px;
+
+  color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
+  text-align: center;
+  font-variant-numeric: lining-nums proportional-nums;
+
+  font-family: "GT Super Display Medium";
+  font-size: 37px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 40px;
+  letter-spacing: -0.74px;
+
+  display: flex;              /* ensures width/height apply nicely */
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 4px;
+}
         // .growth-circle-container .current-value-label {
         //   font-family: 'Sohne';
         //   font-size: 10px;
@@ -818,15 +854,34 @@ export default function ClientOutcomes() {
         //   opacity: 0.7;
         // }
         // .growth-circle-container .current-value {
-        //   font-family: 'Sohne', sans-serif;
+        //   font-family: 'Sohne';
         //   font-size: 16px;
         //   font-weight: 500;
         //   color: ${RACING_GREEN};
         // }
         .card-data { padding: 55px 18px 20px; flex: 1; }
-        .card-row { display: flex; justify-content: space-between; padding: 10px 0; }
-        .row-label { font-family: 'Sohne';font-size: 13px; color: #000; }
-        .row-val { font-size: 13px; color: #757575;margin-right: 50px; }
+       .card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.row-label {
+  font-family: "SohneBuch";
+  font-size: 16px;
+  color: #000;
+  font-weight: 400;
+}
+
+.row-val {
+  font-family: "SohneBuch";
+  font-size: 13px;
+  color: #757575;
+  text-align: right;
+  font-weight:400;
+  margin-left: auto;   /* 🔥 forces right alignment */
+}
 
         .view-btn {
   display: flex;
@@ -872,12 +927,13 @@ export default function ClientOutcomes() {
           .rev-arrow-btn { display: none; }
         }
       `}</style>
+<div className="co-wrapper">
 
       <div className="co-section">
         <div className="co-head">
           <div className="co-header">
             <div className="co-title-group">
-              <h2 className="co-h2">Client outcomes</h2>
+              <h2 className="co-h2">Client Outcomes</h2>
               <p className="co-subtitle">
                 Growth achieved through early access and informed decisions.
               </p>
@@ -948,6 +1004,7 @@ export default function ClientOutcomes() {
             View More Outcomes
           </button>
         </div>
+      </div>
       </div>
     </>
   );
