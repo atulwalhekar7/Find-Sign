@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import bannerImg from "../assets/DSC06227.jpg";
 import SimpleFooter from "../components/SimpleFooter";
-import SimpleGetInTouch from "../components/GetInTouch";
+import GetInTouch from "../components/GetInTouch";
 import AboutServiceImg from "../assets/About Our Services.jpg";
 import AboutSection from "../components/AboutSection";
 
@@ -65,8 +65,7 @@ We take on a select number of clients at any one time. Not because we have to, b
 From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market."
       />
 
-      
-      <SimpleGetInTouch initialService="Property Management" showService={true} />
+      <GetInTouch initialService="Property Management" showService={true} />
       <SimpleFooter />
 
       <style>{`

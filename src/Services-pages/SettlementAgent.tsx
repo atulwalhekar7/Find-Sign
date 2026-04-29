@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import bannerImg from "../assets/DSC06227.jpg";
 import SimpleFooter from "../components/SimpleFooter";
-import SimpleGetInTouch from "../components/GetInTouch";
+import GetInTouch from "../components/GetInTouch";
 import AboutServiceImg from "../assets/About Our Services.jpg";
 import AboutSection from "../components/AboutSection";
 
@@ -64,27 +64,9 @@ We take on a select number of clients at any one time. Not because we have to, b
         body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
 From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market."
       />
-      
-      <SimpleGetInTouch initialService="Settlement Agent" showService={true} />
-</xai:function_call >
 
-<xai:function_call name="edit_file">
-<parameter name="path">Find-Sign/src/Services-pages/BuildingInspection.tsx
+      <GetInTouch initialService="Settlement Agent" showService={true} />
       <SimpleFooter />
-
-      <style>{`
-        @keyframes heroFadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        @media (max-width: 900px) {
-          .sa-grid { grid-template-columns: 1fr !important; }
-          .steps-grid { grid-template-columns: 1fr 1fr !important; }
-        }
-        @media (max-width: 600px) {
-          .steps-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </div>
   );
 }

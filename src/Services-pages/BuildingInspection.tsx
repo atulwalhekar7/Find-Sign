@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import bannerImg from "../assets/DSC06227.jpg";
 import SimpleFooter from "../components/SimpleFooter";
-import SimpleGetInTouch from "../components/GetInTouch";
+import GetInTouch from "../components/GetInTouch";
 import AboutServiceImg from "../assets/About Our Services.jpg";
 import AboutSection from "../components/AboutSection";
 
@@ -48,7 +48,7 @@ export default function BuildingInspection() {
               margin: 0,
             }}
           >
-            Settlement Agent
+            Building Inspection
           </h1>
           
         </div>
@@ -64,16 +64,8 @@ We take on a select number of clients at any one time. Not because we have to, b
         body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
 From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market."
       />
-     <AboutSection
-        imageSrc={AboutServiceImg}
-        heading="About Settlement Agent"
-        subheading="Expert guidance for every step of your property journey."
-        body1="Find and Sign Buyer Advocate is a boutique buyers agency based in Perth, representing buyers exclusively, whether you are purchasing the home you want to live in or building the portfolio you have always planned for.
-We take on a select number of clients at any one time. Not because we have to, but because we believe a purchase of this size deserves our full attention."
-        body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
-From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market."
-      />
-      <SimpleGetInTouch initialService="Building Inspection" showService={true} />
+
+      <GetInTouch initialService="Building Inspection" showService={true} />
       <SimpleFooter />
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import SimpleGetInTouch from "../components/GetInTouch";
+import GetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
 import bannerImg from "../assets/DSC06227.jpg";
@@ -495,7 +495,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
       </section>
 
       <Image1 />
-      <SimpleGetInTouch />
+      <GetInTouch />
       <SimpleFooter />
 
       {/* ── Styles ───────────────────────────────────────────────────────── */}
