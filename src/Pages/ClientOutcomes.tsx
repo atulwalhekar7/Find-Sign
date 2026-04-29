@@ -506,7 +506,7 @@ const reviews = [
   {
     name: "Prashanth Nayar",
     date: "5 months ago",
-    title: "Thorough market insights and dedicated due-diligence",
+    title: "Thorough market insights and dedicated ",
     body: "As a selling-agent based in Perth, I've found that Niki brings thorough market insights, dedicated due-diligence and a genuine commitment to finding the right property for his clients. ",
     image: prashanthNayarImg,
   },
@@ -531,7 +531,7 @@ const reviews = [
   {
     name: "Jay DASS",
     date: "4 months ago",
-    title: "Seamless, well-managed and clearly communicated",
+    title: "Seamless, well-managed ",
     body: "Niki from Nakrani Property Buyers was an absolute pleasure to work with. From our first conversation through to completion, the process was seamless, well-managed and communicated clearly at every step.",
   },
   {
@@ -607,13 +607,13 @@ const reviews = [
   {
     name: "Kathy Moore",
     date: "7 months ago",
-    title: "High level of professionalism, communication and efficiency",
+    title: "High level of professionalism",
     body: "I recently dealt with Niki for a property I was selling in Connolly, where he was representing the buyers. The whole process went smoothly, due to Niki’s high level of professionalism, communication and efficiency. I hope to have the opportunity to work with him again in the future. It’s been a pleasure.",
   },
   {
     name: "Oshi Thilakarathna",
     date: "5 months ago",
-    title: "Fantastic—professional, proactive, and got the deal done smoothly.",
+    title: "Fantastic—professional.",
     body: "Niki was fantastic—professional, proactive, and got the deal done smoothly. He made the whole process easy, and settlement was stress-free. Highly recommend!",
   },
   {
