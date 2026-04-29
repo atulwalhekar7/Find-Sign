@@ -66,20 +66,13 @@ From the first conversation to settlement and beyond, we are in your corner. You
       />
 
       
-      <SimpleGetInTouch initialService="Property Management" />
+      <SimpleGetInTouch initialService="Property Management" showService={true} />
       <SimpleFooter />
 
       <style>{`
         @keyframes heroFadeIn {
           from { opacity: 0; transform: translateY(20px); }
           to   { opacity: 1; transform: translateY(0); }
-        }
-        @media (max-width: 900px) {
-          .pm-grid { grid-template-columns: 1fr !important; }
-          .steps-grid { grid-template-columns: 1fr 1fr !important; }
-        }
-        @media (max-width: 600px) {
-          .steps-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </div>
