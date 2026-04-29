@@ -11,39 +11,39 @@ interface Step {
 const steps: Step[] = [
   {
     id: 1,
-    title: "Discovery call",
+    title: "Initial Consultation",
     description:
-      "We define your brief, budget and timing, and establish a clear direction for where and how to buy.",
+      "Defining your goals and budget.",
   },
   {
     id: 2,
-    title: "Finding the property and inspections",
+    title: "Find & Inspect",
     description:
-      "We identify and assess opportunities early, focusing only on properties that align with your brief and timing. Each property is thoroughly inspected through a professional lens, looking at issues that the everyday person may miss.",
+      "Identifying and inspecting suitable properties.",
   },
   {
     id: 3,
-    title: "Due diligence",
+    title: "Due Diligence",
     description:
-      "Each property is assessed in detail to identify risks and long-term suitability.",
+      "Evaluating value and growth potential.",
   },
   {
     id: 4,
-    title: "Assessment and evaluation",
+    title: "Negotiation",
     description:
-      "We determine fair value based on current market conditions, so decisions are informed and considered.",
+      "Securing the best possible price.",
   },
   {
     id: 5,
-    title: "Negotiation and bidding",
+    title: "Secure and Sign",
     description:
-      "We represent you through negotiation or auction, managing price and terms with a clear strategy.",
+      "Guiding the process and connecting you with trusted partners.",
   },
   {
     id: 6,
-    title: "Secure, settle and sign",
+    title: "Settlement",
     description:
-      "Once secured, we guide the process through to settlement and connect you with trusted partners where required.",
+      "Supporting you through to ownership.",
 },
 ];
 

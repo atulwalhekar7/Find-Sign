@@ -66,7 +66,7 @@ const AQUA = "#69E4DC";
 const RACING_GREEN = "#003327";
 const WHITE = "#FFFFFF";
 
-// const CARD_GAP = 24;
+const CARD_GAP = 32;
 
 const images = {
   id1, id2, id3, id4, id5, id6, id7, id8, id9, id10,
@@ -931,15 +931,14 @@ export default function ClientOutcomes() {
       </section>
 
       {/* ── ABOUT ───────────────────────────────── */}
-      <AboutSection
-        imageSrc={AboutClientOutcomesImg}
-        heading="About Client Outcomes"
-          subheading=" Explore more about client outcomes."
-
-        body1="Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look."
-        body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."
-      />
-
+      <div className="client-outcomes-about">
+  <AboutSection
+    imageSrc={AboutClientOutcomesImg}
+    heading="About Client Outcomes"
+    subheading=" Explore more about client outcomes."
+    body1="These are outcomes we have achieved for our clients. Real properties, real numbers, and measurable growth. When you engage Find and Sign Buyer Advocate, you are not simply purchasing a property; you are entering a strategy built for long-term performance. These examples show what is possible when the right property is identified and secured early."
+  />
+</div>
       {/* ── CLIENT OUTCOMES GRID ───────────────────────────────── */}
       <section ref={outcomesSectionRef} id="outcomes" style={{ background: '#F9F9F9', padding: "80px 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
@@ -1206,6 +1205,7 @@ export default function ClientOutcomes() {
       <SimpleFooter />
 
       {/* ── RESPONSIVE ───────────────────────────────── */}
+      
       <style>{`
         @keyframes cardReveal {
           from { opacity: 0; transform: translateY(20px); }
@@ -1239,7 +1239,7 @@ export default function ClientOutcomes() {
         .outcomes-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: clamp(16px, 2.11vw, 32px);
+          gap: ${CARD_GAP}px;
           padding: 40px 0;
         }
 
@@ -1256,6 +1256,8 @@ export default function ClientOutcomes() {
         }
 
         .property-card {
+          width: 100%;
+          height: 440px;
           background: ${WHITE};
           border: 2px solid ${AQUA};
           border-radius: 16px;
@@ -1263,15 +1265,15 @@ export default function ClientOutcomes() {
           position: relative;
           display: flex;
           flex-direction: column;
-          animation: cardReveal 0.5s ease both;
-          transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+          transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+                      box-shadow 0.4s ease;
           cursor: pointer;
           overflow: hidden;
         }
         
         .property-card:hover {
           transform: translateY(-12px);
-          box-shadow: 0 10px 22px rgba(105, 228, 220, 0.96);
+          box-shadow: 0 10px 22px rgba(105,228,220,0.96);
         }
 
         .card-image-wrap {
@@ -1297,7 +1299,7 @@ export default function ClientOutcomes() {
         /* Growth Circle Container with Heartbeat Animation */
         .growth-circle-container {
           position: absolute;
-          bottom: 165px; /* Position at the bottom */
+          bottom: 185px; /* Position at the bottom */
           right: 1px;
           width: 130px; /* Increased size */
           height: 130px; /* Increased size */
@@ -1317,32 +1319,63 @@ export default function ClientOutcomes() {
           text-align: center;
         }
 
+         .growth-circle-container:hover {
+          animation: heartbeatFloat 4s ease-in-out infinite;
+        }
+
         .property-card:hover .growth-circle-container {
           background: ${WHITE};
-          filter: brightness(1.1) drop-shadow(0 4px 15px rgba(105, 228, 220, 0.5));
+          filter: brightness(1.1) drop-shadow(0 4px 15px rgba(105,228,220,0.5));
         }
 
-        .growth-circle-container .growth-label {
-          font-family: 'Sohne';
-          font-size: 12px;
-          color: ${RACING_GREEN};
-          opacity: 0.8;
+        .growth-circle-container  .growth-label {
+          width: 78px;
+          height: 28px;
+          color: var(--FS-RACING-GREEN, #073B2F);
+          text-align: center;
+          font-family: "SohneBuch";
+          font-size: 20px;
           font-weight: 700;
-
+          line-height: 28px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
-        .growth-circle-container .growth-value {
-          font-family: 'GT Super Display Medium';
-          font-size: 24px;
-          font-weight: 700;
-          line-height: 1.2;
-          color: ${RACING_GREEN};
+        .growth-circle-container  .growth-value {
+          width: 123px;
+          color: var(--FS-RACING-GREEN, #073B2F);
+          text-align: center;
+          font-family: "GT Super Display Medium";
+          font-size: 37px;
+          font-weight: 500;
+          line-height: 40px;
+          letter-spacing: -0.74px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           margin-bottom: 4px;
         }
 
-        .card-data { padding: 55px 18px 20px; flex: 1; }
-        .card-row { display: flex; justify-content: space-between; padding: 10px 0; }
-        .row-label { font-family: 'Sohne'; font-size: 13px; color: #000; }
-        .row-val { font-family: 'Sohne'; font-size: 13px; color: #757575; font-variant-numeric: lining-nums proportional-nums; margin-right: 50px;}
+       .card-data { padding: 55px 18px 20px; flex: 1; }
+        .card-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 0;
+        }
+        .row-label {
+          font-family: "SohneBuch";
+          font-size: 16px;
+          color: #000;
+          font-weight: 400;
+        }
+        .row-val {
+          font-family: "SohneBuch";
+          font-size: 13px;
+          color: #757575;
+          font-weight: 400;
+          margin-left: auto;
+        }
 
         @media (max-width: 900px) {
           .grid-3 {
