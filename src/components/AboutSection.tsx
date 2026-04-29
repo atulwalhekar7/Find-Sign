@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import AboutBanner from "../assets/About Find&Sign.jpg";
 
+/* ================= FADE UP ANIMATION ================= */
 const FadeUp = ({ children, delay = 0, style = {} }: any) => {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -35,6 +36,7 @@ const FadeUp = ({ children, delay = 0, style = {} }: any) => {
   );
 };
 
+/* ================= ABOUT SECTION ================= */
 const AboutSection = ({
   imageSrc,
   heading,
@@ -50,6 +52,7 @@ const AboutSection = ({
         padding: "80px 32px",
       }}
     >
+      {/* HEADING */}
       <FadeUp>
         <div className="about-heading-block">
           <h2>{heading}</h2>
@@ -57,9 +60,17 @@ const AboutSection = ({
         </div>
       </FadeUp>
 
+      {/* ROW */}
       <div className="about-row">
         {/* IMAGE */}
-        <FadeUp style={{ display: "flex", flexShrink: 0, width: "484px", alignSelf: "stretch" }}>
+        <FadeUp
+          style={{
+            display: "flex",
+            flexShrink: 0,
+            width: "484px",
+            alignSelf: "stretch",
+          }}
+        >
           <div className="about-image">
             <img src={imageSrc || AboutBanner} alt="" />
           </div>
@@ -68,12 +79,30 @@ const AboutSection = ({
         {/* TEXT */}
         <FadeUp delay={0.1} style={{ flex: 1, display: "flex" }}>
           <div className="about-text">
-            <p className="body">{body1}</p>
-            <p className="body">{body2}</p>
+            {/* BODY 1 */}
+            {body1
+              ?.split("\n")
+              .filter((para: string) => para.trim() !== "")
+              .map((para: string, i: number) => (
+                <p key={`b1-${i}`} className="body">
+                  {para}
+                </p>
+              ))}
+
+            {/* BODY 2 */}
+            {body2
+              ?.split("\n")
+              .filter((para: string) => para.trim() !== "")
+              .map((para: string, i: number) => (
+                <p key={`b2-${i}`} className="body">
+                  {para}
+                </p>
+              ))}
           </div>
         </FadeUp>
       </div>
 
+      {/* STYLES */}
       <style>{`
         .about-heading-block {
           text-align: center;
@@ -91,7 +120,7 @@ const AboutSection = ({
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 20px;
+          gap: 24px;
         }
 
         .about-heading-block h2::after {
@@ -108,14 +137,14 @@ const AboutSection = ({
           font-weight: 300;
           line-height: 36px;
           color: #000;
-          margin: 20px 0 0;
+          margin: 24px 0 0;
         }
 
-        /* MAIN ROW */
+        /* ROW */
         .about-row {
           display: flex;
-          align-items: stretch;
-          gap: 48px;
+ align-items: flex-start;
+           gap: 48px;
         }
 
         /* IMAGE */
@@ -132,26 +161,27 @@ const AboutSection = ({
           display: block;
         }
 
-        /* TEXT BLOCK */
+        /* TEXT */
         .about-text {
           width: 100%;
           display: flex;
           flex-direction: column;
-          justify-content: flex-start;
-          padding: 0;
-          margin: 0;
         }
 
-        /* BODY — remove all default top margin */
-        .body {
-          
-          font-family: 'Sohne';
-          font-size: 24px;
-          font-weight: 300;
-          line-height: 140%;
-          color: #000;
-          text-align: left;
-        }
+       
+         .body {
+  align-self: stretch;
+  color: var(--FS-System-Grey-1, #757575);
+
+  font-family: 'SohneBuch';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+
+  text-align: left;
+  margin-bottom: 20px;
+}
 
         .body:last-child {
           margin-bottom: 0;
@@ -175,6 +205,10 @@ const AboutSection = ({
           .sub {
             font-size: 18px;
             line-height: 28px;
+          }
+
+          .body {
+            font-size: 18px;
           }
         }
       `}</style>

@@ -229,32 +229,32 @@ const OtherServiceCard = ({ title, body, hasButton = false, delay = 0, onBookCal
 // ── Main Component ────────────────────────────────────────────────────────────
 export default function Services() {
   const body1 =
-    "This is our complete, end-to-end service for buyers who want an expert by their side from the very first search to settlement day. We manage the entire journey on your behalf, with multiple touch points along the way so you are always informed, always confident, and never left wondering what comes next. Every engagement is personalised to your specific situation, your goals, and your timeline. No two clients are the same, and neither is our approach.";
+    "This is our complete service for buyers who want the right property secured from the very first search through to settlement.  We manage the process on your behalf, with clear guidance at each stage so you understand what’s happening, what to expect, and where the opportunity lies.  You’re involved at every key moment, with decisions made together and no uncertainty around what comes next.  Every engagement is tailored to your situation, your goals and your timeline.";
 
 
   const body2 =
-    "Sometimes you do not need someone to do it for you. You just need the right information to do it yourself. Our advisory service is a focused one-on-one consultation where we walk you through the property purchasing process in plain language, share insider knowledge of the property market, and give you honest, practical feedback on where you currently stand and how to move forward. You leave the conversation with clarity, confidence, and a clear path ahead. The journey is still yours to take, you will just be better equipped to take it.";
+    "Sometimes you don’t need someone to manage the entire process. You want the right guidance to make informed decisions from the first search through to securing a property. We guide you with clear advice at each stage so you understand what’s happening, what to consider, and where risks and opportunities sit. You’re supported throughout, with decisions made together and no uncertainty around what comes next. Every engagement is tailored to your situation, your goals and your timeline.";
 
 
     const body3 =
-    "Once you have secured your investment, you need someone who will look after it as carefully as you do. A great property manager protects your asset, manages your tenants, and keeps your investment performing.";
+    "Once secured, we connect you with a trusted property manager to protect your asset, manage tenants, and keep your investment performing.";
 
     const body4 =
-    "The legal side of purchasing a property involves more moving parts than most people realise. A skilled settlement agent ensures your contracts are handled correctly, your deadlines are met, and your purchase is transferred smoothly and securely.";
+    "Once secured, we guide the process through to settlement and connect you with a trusted agent to manage contracts and ensure a smooth transfer.";
 
 
     const body5 =
-    "Never skip this step. A thorough building inspection gives you an honest picture of the property's condition before you commit, protecting you from costly surprises down the track.";
+    "Before you commit, we connect you with a trusted inspector to assess the property’s condition and help you avoid costly issues.";
  
 
     const body6 =
-    "Whether you are selling before you buy or planning an exit strategy on an investment, having a trusted sales agent in your network means you are never starting from scratch when it matters most.";
+    "Where relevant, we connect you with a trusted sales agent so you can plan your sale or exit strategy with confidence.";
 
     const body7 =
-    "An often overlooked but valuable member of your investment team. A quantity surveyor prepares a depreciation schedule that can significantly reduce your taxable income each financial year.";
+    "For investors, we connect you with a trusted quantity surveyor to prepare a depreciation schedule and support long-term returns.";
 
     const body8 =
-    "Property investment has real tax implications. A good accountant who understands property ensures your structure is right from the start and that you are maximising every entitlement available to you.";
+    "We connect you with a trusted accountant to ensure your structure is right and you are maximising available tax benefits.";
  
 
 
@@ -380,8 +380,25 @@ From the first conversation to settlement and beyond, we are in your corner. You
               marginTop: "24px",
               textAlign: "center"
             }}>
-               Explore more about our services.
-            </p>
+People we trust. Services you may need.            </p>
+
+<p
+  style={{
+    width: "1158px",
+    color: "var(--FS-System-Grey-1, #757575)",
+    textAlign: "center",
+
+    fontFamily: "SohneBuch",
+    fontSize: "20px",
+    fontStyle: "normal",
+    fontWeight: 400,
+    lineHeight: "28px",
+
+    marginTop: "16px"
+  }}
+>
+  At Find and Sign Buyer Advocate, securing the right property is only part of the process. We work with trusted professionals at each stage and can introduce them where relevant. You're never required to use these services. The choice is always yours.
+</p>
           </div>
         </FadeUp>
 
