@@ -144,19 +144,17 @@ const ServiceCard = ({
         >
           {title}
         </h3>
-        <p
-          style={{
-            color: "#757575",
-            textAlign: "center",
-            fontFamily: "'Söhne', sans-serif",
-            fontSize: "16px",
-            fontStyle: "normal",
-            fontWeight: 400,
-            lineHeight: "24px",
-            margin: 0,
-            flex: 1,
-          }}
-        >
+        <p style={{
+          color: "#757575",
+          textAlign: "center",
+          fontFamily: "'SohneBuch",
+          fontSize: "16px",
+          fontStyle: "normal",
+          fontWeight: 400,
+          lineHeight: "24px",
+          margin: 0,
+          flex: 1,
+        }}>
           {body}
         </p>
         {hasButton && (
@@ -226,19 +224,17 @@ const OtherServiceCard = ({
         >
           {title}
         </h3>
-        <p
-          style={{
-            color: "#757575",
-            textAlign: "center",
-            fontFamily: "Sohne",
-            fontSize: "16px",
-            fontStyle: "normal",
-            fontWeight: 400,
-            lineHeight: "24px",
-            margin: 0,
-            flex: 1,
-          }}
-        >
+        <p style={{
+          color: "#757575",
+          textAlign: "center",
+          fontFamily: 'SohneBuch',
+          fontSize: "16px",
+          fontStyle: "normal",
+          fontWeight: 400,
+          lineHeight: "24px",
+          margin: 0,
+          flex: 1,
+        }}>
           {body}
         </p>
         {hasButton && (

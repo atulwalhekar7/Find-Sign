@@ -14,12 +14,12 @@ const faqs: FAQItem[] = [
     answer:
       "A buyer's advocate (also called a buyer's agent) is a licensed professional who represents the buyer exclusively in a property transaction not the seller. We search, evaluate, and negotiate on your behalf, using our market knowledge to get you the right property at the right price.",
   },
-  {
-    id: 2,
-    question: "Why use a buyer's advocate instead of searching independently?",
-    answer:
-      "This is placeholder text to show how an answer will appear. It reflects the intended length and structure, allowing spacing and readability to be reviewed before final content is added.",
-  },
+ {
+  id: 2,
+  question: "Why use a buyer's advocate instead of searching independently?",
+  answer:
+    "The property market isn't a level playing field and going it alone often proves it. While you're scrolling through listings, experienced buyers may already be under contract on off-market properties you never even saw. And when you're negotiating, the selling agent is working for the vendor not for you.\n\nA buyer's advocate changes that dynamic. You get better access, sharper negotiation, less guesswork, and a professional in your corner who has done this hundreds of times before.",
+},
   {
     id: 3,
     question: "What challenges do buyers face in today's market?",
@@ -134,7 +134,7 @@ export default function FindSignFAQ() {
           font-size: 20px;
           line-height: 28px;
           flex: 1;
-          font-family: 'Sohne', sans-serif;
+          font-family: 'SohneBuch';
           font-weight: 400;
           transition: color 0.3s ease;
         }
@@ -181,7 +181,7 @@ export default function FindSignFAQ() {
 
         .faq-answer-text {
           color: #757575;
-          font-family: "Sohne", sans-serif;
+          font-family: "SohneBuch";
           font-size: 18px;
           font-weight: 400;
           line-height: 28px;
