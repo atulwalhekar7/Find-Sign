@@ -272,13 +272,17 @@ const App = () => {
           text-align: center;
         }
 
-        @media (max-width: 1199px) {
+        @media (max-width: 1100px) {
           .rev-header { column-gap: 32px; }
           .rev-heading  { font-size: 36px !important; line-height: 46px !important; }
           .rev-subheading { font-size: 20px !important; line-height: 30px !important; }
-          .npb-card { height: auto; min-height: ${CARD_HEIGHT}px; width: 100% !important; min-width: unset !important; }
+          .npb-card { height: auto; min-height: ${CARD_HEIGHT}px; min-width: unset !important; }
           .rev-arrow-btn.prev { left: -44px; }
           .rev-arrow-btn.next { right: -44px; }
+        }
+
+        @media (min-width: 769px) and (max-width: 1100px) {
+          .npb-card { width: calc((100% - ${CARD_GAP}px) / 2) !important; }
         }
 
         @media (max-width: 767px) {
@@ -376,9 +380,22 @@ const SliderSection = ({
   const desktopOffset = pageIndex * (PAGE_WIDTH + CARD_GAP);
 
   // For mobile/tablet: simple per-card offset
-  const mobileColsVisible = isMobile ? 1 : 2;
-  const mobileCardWidth = isMobile ? CARD_WIDTH : CARD_WIDTH; // adjust if needed
-  const mobileOffset = pageIndex * effectivePageSize * (mobileCardWidth + CARD_GAP);
+  const [containerWidth, setContainerWidth] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const obs = new ResizeObserver((entries) => {
+      if (entries[0]) {
+        setContainerWidth(entries[0].contentRect.width);
+      }
+    });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  const mobileOffset = pageIndex * (containerWidth + CARD_GAP);
 
   // Number of columns in the grid track (desktop only)
   // Each page occupies COLS columns; total columns = pages * COLS
@@ -414,7 +431,7 @@ const SliderSection = ({
           </button>
 
           {/* Overflow clip wrapper */}
-          <div style={{ overflow: "hidden", padding: "40px 0", margin: "-40px 0" }}>
+          <div ref={containerRef} style={{ overflow: "hidden", padding: "40px 0", margin: "-40px 0" }}>
 
             {isDesktop ? (
               /* ── DESKTOP: 2-row CSS Grid track ── */
