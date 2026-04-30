@@ -482,19 +482,8 @@ const reviews = [
     title: "One of the best decisions we made",
     body: "Having Niki as our buyer’s agent was one of the best decisions we made. From the very start, he genuinely cared about finding the right home for us. He listened, guided us with confidence, and made what could have been a stressful process feel calm and manageable. ",
   },
-  {
-    name: "Raveen Liyanage",
-    date: "a month ago",
-    title: "Pleasure doing business with you",
-    body: "Hi Niki, It was a pleasure doing business with you. Your genuine commitment to looking after your clients, while also ensuring the process runs smoothly for everyone involved, truly stands out. You consistently strive to find practical.",
-  },
-  {
-    name: "Sahil Saini",
-    date: "4 months ago",
-    title: "Professional and great to work with",
-    body: "Niki is professional and great to work with. His communication has been great for one of our clients to source a property before Christmas and met all deadlines. Not to mention the bargain he was able to secure for the property.",
-    image: sahilSainiImg,
-  },
+ 
+  
   {
     name: "Rinzin Wangchuk",
     date: "3 months ago",
@@ -502,25 +491,9 @@ const reviews = [
     body: "Niki is very professional and goes way above your needs. I was looking for my first home in Perth and didn’t know where to begin.",
     image: rinzinWangchukImg,
   },
-  {
-    name: "Prashanth Nayar",
-    date: "5 months ago",
-    title: "Thorough market insights and dedicated ",
-    body: "As a selling-agent based in Perth, I've found that Niki brings thorough market insights, dedicated due-diligence and a genuine commitment to finding the right property for his clients. ",
-    image: prashanthNayarImg,
-  },
-  {
-    name: "Gian Ottavio",
-    date: "2 months ago",
-    title: "Nothing but professional",
-    body: "Niki has been nothing but professional in all my dealings with him. I never have to think twice about how my clients will be handled as I've had nothing but amazing feedback from everyone I have referred his way.",
-  },
-  {
-    name: "Karen Rowley",
-    date: "5 months ago",
-    title: "Absolutely fantastic experience",
-    body: "We had an absolutely fantastic experience working with Niki as a Buyer’s agent. He was very professional and always communicated well with ourselves and his clients throughout the process. ",
-  },
+ 
+ 
+ 
   {
     name: "dayna bechar",
     date: "5 months ago",
@@ -591,24 +564,7 @@ const reviews = [
     title: "Hands-on approach and professionalism",
     body: "What really stood out about Niki compared to other buyer’s agents I spoke with was his hands-on approach and professionalism from the very beginning. I was unsure about using a buyer’s agent at first, but after our first call it was clear.",
   },
-  {
-    name: "Julie",
-    date: "7 months ago",
-    title: "Absolute professional to deal with",
-    body: "I had the pleasure of working with Niki recently when he brought a buyer through one of our home opens. He was an absolute professional to deal with—clearly dedicated to his clients’ best interests while also ensuring the process remained.",
-  },
-  {
-    name: "Tom Miszczak",
-    date: "5 months ago",
-    title: "Excellent from start to finish",
-    body: "Niki and the Nakrani team were excellent from start to finish. As a Selling Agent, it's great to see such professionalism from a Buyers Agent in the WA market. We look forward to working together in the future.",
-  },
-  {
-    name: "Kathy Moore",
-    date: "7 months ago",
-    title: "High level of professionalism",
-    body: "I recently dealt with Niki for a property I was selling in Connolly, where he was representing the buyers. The whole process went smoothly, due to Niki’s high level of professionalism, communication and efficiency. I hope to have the opportunity to work with him again in the future. It’s been a pleasure.",
-  },
+ 
   {
     name: "Oshi Thilakarathna",
     date: "5 months ago",
