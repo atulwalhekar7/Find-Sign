@@ -130,7 +130,7 @@ export default function Footer() {
           color: #EAE5DF;
           text-decoration: none;
           margin-bottom: 10px;
-          line-height: 1.6;
+          line-height: 24px;
 
           cursor: pointer;
           transition: transform 0.2s ease;
