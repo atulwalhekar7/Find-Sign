@@ -333,7 +333,6 @@ const App = () => {
           maxPageIndex={maxPageIndex}
           handleNav={handleNav}
           totalPages={totalPages}
-          effectivePageSize={effectivePageSize}
         />
 
         {/* ── CTA ── */}
@@ -358,7 +357,6 @@ interface SliderSectionProps {
   maxPageIndex: number;
   handleNav: (dir: number) => void;
   totalPages: number;
-  effectivePageSize: number;
 }
 
 const SliderSection = ({
@@ -370,7 +368,6 @@ const SliderSection = ({
   maxPageIndex,
   handleNav,
   totalPages,
-  effectivePageSize,
 }: SliderSectionProps) => {
   const isDesktop = !isMobile && !isTablet;
 
