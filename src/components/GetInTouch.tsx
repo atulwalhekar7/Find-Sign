@@ -232,7 +232,7 @@ export default function GetInTouch({ initialService = "", showService = false }:
           background: #FFF;
           border: none;
           outline: none;
-          font-family: 'Sohne';
+          font-family: 'SohneBuch';
           font-weight: 400;
           font-size: 20px;
         }
