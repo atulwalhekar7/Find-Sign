@@ -14,7 +14,6 @@ import Image1 from "../components/Image1";
 import fbIcon from "../assets/Vector (2).png";
 import igIcon from "../assets/Instagram (2).png";
 import liIcon from "../assets/Vector(1).png";
-import { div } from "framer-motion/client";
 
 export default function About() {
   const videoRef = useRef<HTMLVideoElement>(null);
