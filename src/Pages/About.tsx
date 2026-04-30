@@ -14,6 +14,7 @@ import Image1 from "../components/Image1";
 import fbIcon from "../assets/Vector (2).png";
 import igIcon from "../assets/Instagram (2).png";
 import liIcon from "../assets/Vector(1).png";
+import { div } from "framer-motion/client";
 
 export default function About() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -53,7 +54,7 @@ export default function About() {
           <h1 className="hero-title">About Us</h1>
         </div>
       </section>
-
+<div style={{ background: "#fff" }}>
       <AboutSection
         imageSrc={AboutUsBanner}
         heading="About Find & Sign"
@@ -67,6 +68,7 @@ We assess every opportunity in person by walking the property, the street, and t
 Find & Sign we find with confidence you sign with certainty.
 "
       />
+      </div>
 
       {/* SECTION 3 — Video */}
       <section className="video-section">
@@ -180,11 +182,11 @@ Find & Sign we find with confidence you sign with certainty.
         .mute-btn:active { transform: scale(0.96); }
 
         /* ── TEAM SECTION ── */
-        .team-section {
-          width: 100%;
-          padding: 80px 32px;
-          background: #f5f5f5;
-        }
+       .team-section {
+  width: 100%;
+  padding: 80px 32px;
+  background: #fff;   /* ← add this */
+}
         .team-container { max-width: 1200px; margin: 0 auto; }
 
         .team-header {

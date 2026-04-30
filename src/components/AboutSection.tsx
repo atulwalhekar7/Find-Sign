@@ -45,11 +45,14 @@ const AboutSection = ({
   body2,
 }: any) => {
   return (
+     <div style={{ background: "#fff", width: "100%" }}> 
     <section
       style={{
         maxWidth: "1100px",
         margin: "0 auto",
         padding: "80px 32px",
+        backgroundColor: "#fff", 
+        
       }}
     >
       {/* HEADING */}
@@ -213,6 +216,7 @@ const AboutSection = ({
         }
       `}</style>
     </section>
+    </div>
   );
 };
 
