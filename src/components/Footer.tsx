@@ -320,12 +320,15 @@ import liIcon from "../assets/Vector(1).png";
 // import googleIcon from "../assets/google.png";
 // import tiktokIcon from "../assets/tik-tok.png";
 
+import tiIcon from "../assets/icon/Tiktok.png"
+import goIcon from "../assets/icon/Union.png"
 const socialIcons = [
   { label: "Facebook", img: fbIcon, url: "https://www.facebook.com/nakranipropertybuyers/" },
   { label: "Instagram", img: igIcon, url: "https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" },
   { label: "LinkedIn", img: liIcon, url: "https://www.linkedin.com/in/niki-nakrani-13b269237/" },
-  // { label: "Google", img: googleIcon, url: "https://g.co/kgs/zumrMmk" },
-  // { label: "TikTok", img: tiktokIcon, url: "https://www.tiktok.com/@findandsign?_t=ZS-8vz7Aoz7W47&_r=1" },
+
+  { label: "Tiktok", img: tiIcon, url: "https://www.linkedin.com/in/niki-nakrani-13b269237/" },
+  { label: "Google", img: goIcon, url: "https://www.google.com/search?kgmid=/g/11vyhyd916&hl=en-IN&q=Find+and+Sign+Buyer+Advocate&shem=rimspwouoe&shndl=30&source=sh/x/loc/osrp/m5/1&kgs=a7453dd27c8353ec&utm_source=rimspwouoe,sh/x/loc/osrp/m5/1" },
 ];
 
 const exploreLinks = [
@@ -350,6 +353,15 @@ export default function Footer() {
           overflow: hidden;
         }
 
+        .call{
+        padding-top:24px;
+        }
+        .contact-cta{
+        width:145px;
+        height:48px;
+        }
+
+
         /* ✅ WHITE SHIMMER */
         .footer::before {
           content: "";
@@ -370,15 +382,15 @@ export default function Footer() {
         }
 
         .footer-container {
-          max-width: 1120px;
+          max-width: 1180px;
           margin: 0 auto;
-          padding: 80px 40px 48px;
+          padding: 80px 32px 48px;
         }
 
         .footer-grid {
           display: grid;
           grid-template-columns: repeat(12, 1fr);
-          column-gap: 105px;
+          column-gap:56px;
           align-items: start;
         }
 
@@ -402,13 +414,15 @@ export default function Footer() {
         }
 
         .social {
-          grid-column: 10 / span 2;
+       grid-column: 11 / 13;
           display: flex;
-          justify-content: flex-end;
+          justify-content: flex-start;
           align-items: center;
-          gap: 32px;
+          gap: 30px;
         }
-
+.social {
+  transform: translateX(-35px);
+}
         .title {
           font-family: "CX80";
           font-size: 18px;
@@ -432,6 +446,10 @@ export default function Footer() {
 
           cursor: pointer;
           transition: transform 0.2s ease;
+        }
+
+        .legal-link {
+          white-space: nowrap;
         }
 
         .link:hover {
@@ -536,8 +554,8 @@ height: 23.854px;
           align-items: center;
           gap: 10px;
           padding: 10px 0;
-          color: #F9F9F9;
-          font-family: "Sohne";
+          color: rgb(109, 88, 67);
+          font-family: "Sohne", sans-serif;
           font-size: 16px;
           font-weight: 400;
           line-height: 24px;
@@ -591,7 +609,7 @@ height: 23.854px;
 
         @media (max-width: 1024px) {
           .footer-grid {
-            column-gap: 96px;
+            column-gap: 40px;
           }
         }
       `}</style>
@@ -615,17 +633,16 @@ height: 23.854px;
                   <span className="contact-label">E</span>
                   <a className="contact-value" href="mailto:niki@findandsignba.com.au">niki@findandsignba.com.au</a>
                 </div>
-                <a
-                  href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-cta"
-                >
-                  <svg className="vibrate-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.6-.35-.12-.73-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 2 3.2 2.45 3.2 2.99 3.2 12.37 10.83 20 20.21 20c.54 0 .99-.45.99-.99v-2.64c0-.54-.45-.99-.99-.99z" />
-                  </svg>
-                  Book a Call
-                </a>
+                <div className="contact-row call">
+                  <a
+                href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-cta"
+              >
+                Book a Call
+              </a>
+                </div>
               </div>
             </div>
 
@@ -643,12 +660,14 @@ height: 23.854px;
             <div className="legal footer-section">
               <div className="title">LEGAL</div>
               <div className="footer-list">
-                <a className="link" href="#">
+                <a className="link legal-link" href="#">
                   Privacy Policy
                 </a>
-                <a className="link" href="#">
+                <a className="link legal-link" href="#">
                   Terms & Conditions
                 </a>
+                <span className="link">Licensed Real Estate Agent RA86202 / RA84411</span>
+                  <span className="link footer-bottom-abn">ABN 29 691 543 914</span>
               </div>
             </div>
 
@@ -663,8 +682,7 @@ height: 23.854px;
           </div>
 
           <div className="footer-bottom">
-            <div className="footer-bottom-item footer-bottom-spacer" aria-hidden="true" />
-            <span className="footer-bottom-item footer-bottom-abn"> ABN 29 691 543 914</span>
+            {/* <div className="footer-bottom-item footer-bottom-spacer" aria-hidden="true" /> */}
             <span className="footer-bottom-item footer-bottom-copy">© 2026 Find and Sign Buyer Advocate</span>
           </div>
 
