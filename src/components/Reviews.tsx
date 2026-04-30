@@ -3,12 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { Quote } from "lucide-react";
 import starIcon from "../assets/Union.png";
 import roksonImg from "../assets/testomonials/Rokson.png";
-import sahilSainiImg from "../assets/testomonials/Sahil Saini.png";
 import rinzinWangchukImg from "../assets/testomonials/Rinzin Wangchuk.png";
-import prashanthNayarImg from "../assets/testomonials/Prashanth Nayar.png";
 import zedAImg from "../assets/testomonials/Zed A.png";
 import kumarVasindaImg from "../assets/testomonials/Kumar Vasinda Comara.png";
-import fatemaManasawalaImg from "../assets/testomonials/fatema manasawala.png";
 import gurinderSinghImg from "../assets/testomonials/Gurinder Singh.png";
 import kienLamImg from "../assets/testomonials/Kien Lam.png";
 
