@@ -390,7 +390,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
                 gap: "24px",
               }}
             >
-              Our services
+              Our Services
               <div style={{ width: "160px", height: "1px", background: "#073B2F" }} />
             </h2>
             <p
