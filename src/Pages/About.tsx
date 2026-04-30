@@ -324,29 +324,29 @@ Find & Sign we find with confidence you sign with certainty.
 
         /* Contact button: exact Figma — border aqua, text colour inherit */
         .team-contact-btn {
-          display: flex;
-          height: 48px;
-          padding: 12px 16px;
-          justify-content: center;
-          align-items: center;
-          gap: 10px;
-          border-radius: 8px;
-          border: 1px solid #69E4DC;
-          background: transparent;
-          color: #073B2F;
-          font-family: 'CX80';
-          font-size: 12px;
-          font-weight: 700;
-          letter-spacing: 3.9px;
-          text-transform: uppercase;
-          cursor: pointer;
-          width: 100%;
-          align-self: stretch;
-          box-sizing: border-box;
-          flex-shrink: 0;
-          transition: background 0.2s, color 0.2s;
-          text-decoration: none;
-        }
+  display: inline-flex;
+  height: 48px;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  border: 1px solid #69E4DC;
+  background: transparent;
+  color: #073B2F;
+  font-family: 'CX80';
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3.9px;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: fit-content; /* 👈 shrinks to text width */
+  align-self: flex-start; /* 👈 pins to left */
+  box-sizing: border-box;
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+}
         .team-contact-btn:hover {
           background: #69E4DC;
           color: #073B2F;
@@ -481,9 +481,14 @@ Find & Sign we find with confidence you sign with certainty.
               </div>
 
               {/* BUTTON: emails Rebecca */}
-              <a href="mailto:info@findandsignba.com.au" className="team-contact-btn">
-                Contact Rebecca
-              </a>
+              <a 
+  href="https://mail.google.com/mail/?view=cm&to=info@findandsignba.com.au&su=Website+Enquiry"
+  className="team-contact-btn"
+  target="_blank"
+  rel="noreferrer"
+>
+  Contact Rebecca
+</a>
             </div>
 
           </div>
