@@ -98,7 +98,7 @@ export default function GetInTouch({ initialService = "", showService = false }:
           max-width: 297px;
         }
         .contact-left-info span {
-          font-family: 'Sohne';
+          font-family: 'SohneBuch';
           font-style: normal;
           font-weight: 400;
           font-size: 20px;
@@ -218,7 +218,7 @@ export default function GetInTouch({ initialService = "", showService = false }:
 
         .contact_label {
           color: #000;
-          font-family: 'Sohne';
+          font-family: 'SohneBuch';
           font-size: 20px;
           font-weight: 400;
           line-height: 28px;
@@ -263,7 +263,7 @@ export default function GetInTouch({ initialService = "", showService = false }:
           flex-wrap: nowrap;
         }
         .contact-pref-label {
-          font-family: 'Sohne';
+          font-family: 'SohneBuch';
           font-style: normal;
           font-weight: 400;
           font-size: 20px;
