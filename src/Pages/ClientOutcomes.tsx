@@ -52,9 +52,7 @@ import ellipseImage from "../assets/Ellipse 1.png";
 import starIcon from "../assets/Union.png"; // Import star icon
 
 import roksonImg from "../assets/testomonials/Rokson.png";
-import sahilSainiImg from "../assets/testomonials/Sahil Saini.png";
 import rinzinWangchukImg from "../assets/testomonials/Rinzin Wangchuk.png";
-import prashanthNayarImg from "../assets/testomonials/Prashanth Nayar.png";
 import zedAImg from "../assets/testomonials/Zed A.png";
 import kumarVasindaImg from "../assets/testomonials/Kumar Vasinda Comara.png";
 import fatemaManasawalaImg from "../assets/testomonials/fatema manasawala.png";
