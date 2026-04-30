@@ -360,12 +360,12 @@ From the first conversation to settlement and beyond, we are in your corner. You
 
       {/* ── SECTION 3: Our Services ──────────────────────────────────────── */}
       <section
+        className="services-section"
         style={{
           display: "flex",
-          padding: "64px 196px 32px",
           flexDirection: "column",
           alignItems: "center",
-          gap: "56px",
+          gap: "40px",
           alignSelf: "stretch",
           background: "var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9)",
         }}
@@ -456,8 +456,8 @@ From the first conversation to settlement and beyond, we are in your corner. You
               People we trust. Services you may need.
             </p>
             <p
+              className="services-desc"
               style={{
-                width: "1158px",
                 color: "var(--FS-System-Grey-1, #757575)",
                 textAlign: "center",
                 fontFamily: "SohneBuch",
@@ -502,12 +502,26 @@ From the first conversation to settlement and beyond, we are in your corner. You
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap');
 
+        .services-section {
+          padding: 64px 196px 32px;
+        }
+
+        .services-desc {
+          width: 100%;
+          max-width: 1158px;
+        }
+
         @keyframes heroFadeIn {
           from { opacity: 0; transform: translateY(20px); }
           to   { opacity: 1; transform: translateY(0); }
         }
 
+        @media (max-width: 1200px) {
+          .services-section { padding: 64px 40px 32px; }
+        }
+
         @media (max-width: 900px) {
+          .services-section { padding: 40px 20px 32px; }
           .top-grid {
             grid-template-columns: 1fr !important;
           }
@@ -515,6 +529,8 @@ From the first conversation to settlement and beyond, we are in your corner. You
             flex-direction: column !important;
           }
           h1 { font-size: 44px !important; line-height: 1.2 !important; }
+          h2 { font-size: 32px !important; line-height: 40px !important; }
+          .services-section p { font-size: 18px !important; line-height: 28px !important; }
         }
 
         @media (max-width: 768px) {

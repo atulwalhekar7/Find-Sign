@@ -17,6 +17,7 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
 
   return (
     <div
+      className="blog-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={() => navigate(post.path)}
@@ -37,6 +38,7 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
       <img
         src={post.image}
         alt={post.title}
+        className="blog-card-img"
         style={{
           width: "160px",
           height: "160px",
@@ -186,7 +188,7 @@ export default function Insights() {
      /> */}
 
       {/* ── SECTION 3: Blogs ────────────────────────────────────────────── */}
-      <section style={{ maxWidth: "1200px", margin: "0 auto 80px", padding: "0 40px", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <section className="blogs-container" style={{ maxWidth: "1200px", margin: "0 auto 80px", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <h2 style={{  
           margin: "40px auto 24px",
   color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
@@ -234,7 +236,16 @@ export default function Insights() {
           to   { opacity: 1; transform: translateY(0); }
         }
 
+        .blogs-container {
+          padding: 0 40px;
+        }
+
+        .blog-card {
+          flex-direction: row;
+        }
+
         @media (max-width: 900px) {
+          .blogs-container { padding: 0 20px; }
           .about-grid {
             flex-direction: column !important;
           }
@@ -242,6 +253,19 @@ export default function Insights() {
             width: 100% !important;
           }
           h1 { font-size: 44px !important; line-height: 1.2 !important; }
+          h2 { font-size: 32px !important; line-height: 40px !important; }
+          section p { font-size: 18px !important; line-height: 28px !important; }
+        }
+
+        @media (max-width: 768px) {
+          .blog-card {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+          }
+          .blog-card-img {
+            width: 100% !important;
+            height: 200px !important;
+          }
         }
 
         @media (max-width: 600px) {
