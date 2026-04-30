@@ -4,7 +4,7 @@ import logo from "../assets/FS Primary Lockup_Gold.png";
 
 const COLORS = {
   racingGreen: "#073B2F",
-  aqua: "rgb(245, 245, 245)",
+  aqua: "#69E4DC",
   black: "#000000",
   white: "#FFFFFF",
 };
@@ -78,7 +78,7 @@ align-self: stretch;
           transition: color 0.2s ease;
         }
 
-       .nav-link:hover,
+        .nav-link:hover,
         .nav-link:active,
         .nav-link.active {
           border-radius: var(--sds-size-radius-200);
@@ -99,8 +99,8 @@ align-self: stretch;
           height: 48px;
           padding: 12px 24px;
           border-radius: 8px;
-          background: ${COLORS.black};
-          color: ${COLORS.white};
+          background: ${COLORS.aqua};
+          color: ${COLORS.racingGreen};
           font-family: "CX80";
           font-size: 15px;
           font-weight: 700;

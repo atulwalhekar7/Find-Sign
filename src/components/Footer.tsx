@@ -124,7 +124,7 @@ export default function Footer() {
         /* ✅ POPUP + POINTER */
         .link {
           display: block;
-          font-family: "Sohne";
+          font-family: "SohneBuch";
           font-size: 16px;
           font-weight: 400;
           color: #EAE5DF;
@@ -188,7 +188,7 @@ export default function Footer() {
           width: 100%;
           font-size: 16px;
           line-height: 2.25;
-          font-family: "Sohne";
+          font-family: "SohneBuch";
           font-weight: 400;
         }
 
@@ -202,7 +202,7 @@ export default function Footer() {
           word-break: break-word;
           transition: transform 0.2s ease;
           text-decoration: underline;
-          font-family: "Sohne";
+          font-family: "SohneBuch";
           font-size: 16px;
           font-weight: 400;
         }
@@ -243,7 +243,7 @@ height: 23.854px;
           gap: 10px;
           padding: 10px 0;
           color: #846F58;
-          font-family: "Sohne";
+          font-family: "SohneBuch";
           font-size: 16px;
           font-weight: 400;
           line-height: 24px;
