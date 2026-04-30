@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { Star, Quote } from "lucide-react";
+import { Quote } from "lucide-react";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
@@ -49,6 +49,7 @@ import id37 from "../assets/Client Outcomes/id37.webp";
 import id38 from "../assets/Client Outcomes/id38.webp";
 import id39 from "../assets/Client Outcomes/id39.webp";
 import ellipseImage from "../assets/Ellipse 1.png";
+import starIcon from "../assets/Union.png"; // Import star icon
 
 import roksonImg from "../assets/testomonials/Rokson.png";
 import sahilSainiImg from "../assets/testomonials/Sahil Saini.png";
@@ -640,7 +641,7 @@ const reviews = [
 const formatReviewBody = (text: string) => {
   if (text.endsWith("…More")) {
     return text.substring(0, text.length - 5).trim();
-  }
+  } 
   return text;
 };
 
@@ -648,70 +649,139 @@ function TestimonialCard({ testimonial, style }: { testimonial: any; style?: Rea
   return (
     <div 
       className="testimonial-card"
-      style={{ ...style, display: 'flex', flexDirection: 'column' }}
+      style={{ 
+        ...style, 
+        display: 'flex', 
+        flexDirection: 'column' 
+      }}
     >
-      <div style={{ 
-        position: 'absolute', 
-        top: '-16px', 
-        left: '24px', 
-        background: '#69E4DC', 
-        color: '#073B2F', 
-        fontSize: '12px', 
-        fontWeight: 'bold', 
-        padding: '8px 20px', 
-        borderRadius: '9999px', 
-        boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)', 
-        zIndex: 10,
-        maxWidth: '85%', 
-        overflow: 'hidden', 
-        textOverflow: 'ellipsis', 
-        whiteSpace: 'nowrap'
+      {/* ── TOP: pill ── */}
+      <div style={{
+        display: 'flex',
+        height: '45px',
+        padding: '16px',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '10px',
+        flexShrink: 0,
+        borderRadius: '12px',
+        background: '#69E4DC',
+        color: '#073B2F',
+        fontSize: '12px',
+        fontWeight: 700,
+        maxWidth: '85%',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+        fontFamily: 'SohneBuch',
+        marginBottom: '10px',
       }}>
-         {testimonial.title}
+        {testimonial.title}
       </div>
       
-      <Quote style={{ color: 'rgba(11, 215, 205, 0.1)', position: 'absolute', top: '20px', right: '20px' }} size={48} />
+      {/* Quote watermark */}
+      <Quote
+        style={{
+          color: 'rgba(11, 215, 205, 0.10)',
+          position: 'absolute',
+          top: '20px',
+          right: '20px',
+          pointerEvents: 'none',
+        }}
+        size={48}
+      />
 
-      <div style={{ position: 'relative', zIndex: 10, display: 'flex', flexDirection: 'column', flex: 1, paddingTop: '24px' }}>
-        <div style={{ display: 'flex', gap: '4px', marginBottom: '16px' }}>
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} style={{ color: '#fbbf24', fill: '#fbbf24' }} size={14} />
-          ))}
+      {/* ── STARS ── */}
+      <div style={{ display: 'flex', alignItems: 'center', marginTop: '12px', flexShrink: 0, marginBottom: '10px' }}>
+        <img
+          src={starIcon}
+          alt="5 stars"
+          style={{ width: '177px', height: '32.336px', flexShrink: 0, objectFit: 'contain' }}
+        />
+      </div>
+
+      {/* ── BODY ── */}
+      <p style={{ 
+        width: '100%',
+        color: '#000',
+        fontFamily: 'SohneBuch',
+        fontSize: '16px',
+        fontStyle: 'normal',
+        fontWeight: 400,
+        lineHeight: '24px',
+        marginTop: '12px',
+        display: '-webkit-box',
+        WebkitLineClamp: 5,
+        WebkitBoxOrient: 'vertical',
+        overflow: 'hidden',
+        position: 'relative',
+        zIndex: 1,
+      }}>
+        "{testimonial.body}"
+      </p>
+
+      {/* ── BOTTOM: avatar + name + date ── */}
+      <div style={{ 
+        display: 'flex',
+        alignItems: 'center',
+        gap: '12px',
+        borderTop: '1px solid #f3f4f6',
+        paddingTop: '12px',
+        marginTop: 'auto',
+        width: '100%',
+        position: 'relative',
+        zIndex: 1,
+        flexShrink: 0,
+      }}>
+        <div
+          className="avatar-circle"
+          style={{
+            width: 40,
+            height: 40,
+            borderRadius: '50%',
+            backgroundColor: '#D9D9D9',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            border: '2px solid white',
+            overflow: 'hidden',
+            flexShrink: 0,
+          }}
+        >
+          {testimonial.image ? (
+            <img
+              src={testimonial.image}
+              alt={testimonial.name}
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          ) : (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="8" r="4" stroke="#aaa" strokeWidth="1.5" />
+              <path d="M4 20c0-4 3.58-7 8-7s8 3 8 7" stroke="#aaa" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+          )}
         </div>
-
-        <p style={{ 
-          color: '#374151', 
-          marginBottom: '20px', 
-          lineHeight: 1.5, 
-          fontStyle: 'italic', 
-          fontSize: '0.9rem', 
-          fontFamily: 'Sohne', 
-          fontWeight: 300,
-          flex: 1,
-          display: '-webkit-box', WebkitLineClamp: 5, WebkitBoxOrient: 'vertical', overflow: 'hidden'
-        }}>
-          "{testimonial.body}"
-        </p>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', borderTop: '1px solid #f3f4f6', paddingTop: '16px' }}>
-          <div className="avatar-circle" style={{ width: 48, height: 48, borderRadius: "50%", backgroundColor: "#D9D9D9", display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid white", overflow: 'hidden' }}>
-            {testimonial.image ? (
-              <img src={testimonial.image} alt={testimonial.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-            ) : (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="8" r="4" stroke="#aaa" strokeWidth="1.5"/>
-                <path d="M4 20c0-4 3.58-7 8-7s8 3 8 7" stroke="#aaa" strokeWidth="1.5" strokeLinecap="round"/>
-              </svg>
-            )}
-          </div>
-          <div>
-            <h4 style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#111827', margin: 0, fontFamily: 'Sohne' }}>
-              {testimonial.name}
-            </h4>
-            <p style={{ fontSize: '11px', fontWeight: 500, color: '#073B2F', textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '2px', fontFamily: 'Sohne' }}>
-              {testimonial.date}
-            </p>
-          </div>
+        <div>
+          <h4 style={{
+            fontSize: '0.875rem',
+            fontWeight: 400,
+            color: '#111827',
+            margin: 0,
+            fontFamily: 'SohneBuch',
+          }}>
+            {testimonial.name}
+          </h4>
+          <p style={{
+            fontSize: '11px',
+            fontWeight: 500,
+            color: '#073B2F',
+            textTransform: 'uppercase',
+            letterSpacing: '0.05em',
+            marginTop: '2px',
+            fontFamily: 'CX80',
+          }}>
+            {testimonial.date}
+          </p>
         </div>
       </div>
     </div>
@@ -784,7 +854,6 @@ export default function ClientOutcomes() {
   const [visibleCount, setVisibleCount] = useState(3);
 
   const [showAllCards, setShowAllCards] = useState(false);
-  const [showAllReviews, setShowAllReviews] = useState(false); // New state for reviews
 
   const INITIAL_CARDS_COUNT = 21;
 
@@ -866,21 +935,6 @@ export default function ClientOutcomes() {
       }, 100);
     } else {
       setShowAllCards(true);
-    }
-  };
-
-  const handleToggleReviews = () => {
-    if (showAllReviews) {
-      setShowAllReviews(false);
-      // Scroll to the review button container when collapsing reviews
-      setTimeout(() => {
-        reviewButtonContainerRef.current?.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-        });
-      }, 100);
-    } else {
-      setShowAllReviews(true);
     }
   };
 
@@ -1010,14 +1064,14 @@ export default function ClientOutcomes() {
         .testimonial-card {
           position: relative;
           background: #FFFFFF;
-          border-radius: 16px;
+          border-radius: 24px; /* Adjusted from 16px */
           padding: 20px;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          height: 320px; /* Uniform height for testimonial cards */
-          border: 2px solid ${AQUA};
-          box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+          height: 407px; /* Adjusted from 320px */
+          border: 1px solid #69E4DC; /* Adjusted from 2px solid AQUA */
+          box-shadow: none; /* Adjusted from 0 4px 12px rgba(0,0,0,0.03) */
           transition: all 0.5s;
         }
         .testimonial-card:hover {
@@ -1030,7 +1084,7 @@ export default function ClientOutcomes() {
           transition: all 0.3s ease;
         }
         .testimonial-card:hover .avatar-circle {
-          box-shadow: 0 4px 15px rgba(105, 228, 220, 0.6);
+          box-shadow: 0 4px 15px rgba(105, 228, 220, 0.6); /* Kept as is, matches Reviews.tsx */
           border-color: #69E4DC !important;
           transform: scale(1.05);
         }
@@ -1130,70 +1184,68 @@ export default function ClientOutcomes() {
           </div>
 
           <div style={{ position: 'relative' }}>
-            {!showAllReviews && (
-              <>
-                <button
-                  className="nav-arrow prev"
-                  onClick={() => setReviewIdx(prev => Math.max(0, prev - 1))}
-                  disabled={reviewIdx === 0}
-                  aria-label="Previous slide"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M19 12H5M12 19l-7-7 7-7" />
-                  </svg>
-                </button>
-                <button
-                  className="nav-arrow next"
-                  onClick={() => setReviewIdx(prev => Math.min(maxReviewIdx, prev + 1))}
-                  disabled={reviewIdx === maxReviewIdx}
-                  aria-label="Next slide"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </button>
-              </>
-            )}
+            <button
+              className="nav-arrow prev"
+              onClick={() => setReviewIdx(prev => Math.max(0, prev - 1))}
+              disabled={reviewIdx === 0}
+              aria-label="Previous slide"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              className="nav-arrow next"
+              onClick={() => setReviewIdx(prev => Math.min(maxReviewIdx, prev + 1))}
+              disabled={reviewIdx === maxReviewIdx}
+              aria-label="Next slide"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
 
             <div ref={reviewContainerRef} style={{ overflow: "hidden", padding: "40px 0", margin: "-40px 0" }}>
-              {showAllReviews ? (
-                <div className="reviews-grid">
-                  {formattedReviews.map((testimonial, index) => (
-                    <TestimonialCard key={index} testimonial={testimonial} />
-                  ))}
-                </div>
-              ) : (
-                <div 
-                  className="slider-track"
-                  style={{
-                    display: "flex",
-                    gap: 32,
-                    transition: "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
-                    transform: `translateX(-${reviewIdx * (reviewCardWidth + 32)}px)`,
-                  }}
-                > 
-                  {formattedReviews.map((testimonial, index) => (
-                    <TestimonialCard 
-                      key={index} 
-                      testimonial={testimonial} 
-                      style={{ flex: `0 0 ${reviewCardWidth}px`, width: `${reviewCardWidth}px` }}
-                    />
-                  ))}
-                </div>
-              )}
+              <div 
+                className="slider-track"
+                style={{
+                  display: "flex",
+                  gap: 32,
+                  transition: "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
+                  transform: `translateX(-${reviewIdx * (reviewCardWidth + 32)}px)`,
+                }}
+              > 
+                {formattedReviews.map((testimonial, index) => (
+                  <TestimonialCard 
+                    key={index} 
+                    testimonial={testimonial} 
+                    style={{ flex: `0 0 ${reviewCardWidth}px`, width: `${reviewCardWidth}px` }}
+                  />
+                ))}
+              </div>
             </div>
           </div>
-
-          {formattedReviews.length > visibleCount && ( // Only show button if there are more reviews than initially visible
-            <div ref={reviewButtonContainerRef} style={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}>
-              <button
-              className="view-more-outcomes-btn"
-              onClick={handleToggleReviews}
-            >
-              {showAllReviews ? "View Less Feedback" : "View More Feedback"}
-            </button>
+          
+          {/* ── DOTS ── */}
+          <div style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "24px",
+            width: "100%",
+            marginTop: '48px'
+          }}>
+            <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+              {Array.from({ length: Math.ceil(formattedReviews.length / visibleCount) }).map((_, i) => (
+                <button
+                  key={i}
+                  className={`rev-dot${i === reviewIdx ? " active" : ""}`}
+                  onClick={() => setReviewIdx(i)}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
           </div>
-          )}
         </div>
       </section>
 
