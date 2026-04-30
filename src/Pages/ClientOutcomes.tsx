@@ -64,7 +64,6 @@ import kienLamImg from "../assets/testomonials/Kien Lam.png";
 
 // ── DATA ─────────────────────────────────────────────
 const AQUA = "#69E4DC";
-const RACING_GREEN = "#003327";
 const WHITE = "#FFFFFF";
 
 const CARD_GAP = 32;
@@ -863,7 +862,6 @@ export default function ClientOutcomes() {
   const testimonialsSectionRef = useRef<HTMLElement>(null);
   const outcomesSectionRef = useRef<HTMLElement>(null);
   const buttonContainerRef = useRef<HTMLDivElement>(null);
-  const reviewButtonContainerRef = useRef<HTMLDivElement>(null); // New ref for review button
 
   useEffect(() => {
     if (hash === "#testimonials") {
