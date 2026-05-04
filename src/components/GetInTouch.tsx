@@ -32,8 +32,8 @@ export default function GetInTouch({ initialService = "", showService = false }:
     setIsSending(true);
     if (form.current) {
       emailjs
-        .sendForm('service_tv2a04i', 'template_ketly2h', form.current, {
-          publicKey: 'kwf46-RLsvGZDJMhR',
+        .sendForm('service_78mscvf', 'template_gy6jf2o', form.current, {
+          publicKey: 'LxY_G536CLzBbrRV-',
         })
         .then(
           () => {

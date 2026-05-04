@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { Quote } from "lucide-react";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
@@ -55,7 +54,6 @@ import roksonImg from "../assets/testomonials/Rokson.png";
 import rinzinWangchukImg from "../assets/testomonials/Rinzin Wangchuk.png";
 import zedAImg from "../assets/testomonials/Zed A.png";
 import kumarVasindaImg from "../assets/testomonials/Kumar Vasinda Comara.png";
-import fatemaManasawalaImg from "../assets/testomonials/fatema manasawala.png";
 import gurinderSinghImg from "../assets/testomonials/Gurinder Singh.png";
 import kienLamImg from "../assets/testomonials/Kien Lam.png";
 
@@ -485,7 +483,7 @@ const reviews = [
   {
     name: "Rinzin Wangchuk",
     date: "3 months ago",
-    title: "Very professional and goes way above your needs",
+    title: "goes way above your needs",
     body: "Niki is very professional and goes way above your needs. I was looking for my first home in Perth and didn’t know where to begin.",
     image: rinzinWangchukImg,
   },
@@ -542,13 +540,7 @@ const reviews = [
     title: "Truly exceptional at what he does",
     body: "I recently had the opportunity to work with Niki, and I must say he is truly exceptional at what he does. He consistently puts his clients first and goes above and beyond to ensure they feel supported throughout the entire process.",
   },
-  {
-    name: "fatema manasawala",
-    date: "4 months ago",
-    title: "Professionalism speaks for himself",
-    body: "I have had the pleasure to work with Niki at various occassiona for his clients. His work and professionalism speaks for himself. I highly recommend him to local /overseas and interstae investors & owner as a reputable Buyers agent in Perth.",
-    image: fatemaManasawalaImg,
-  },
+ 
   {
     name: "Gurinder Singh",
     date: "4 months ago",
@@ -562,17 +554,11 @@ const reviews = [
     title: "Hands-on approach and professionalism",
     body: "What really stood out about Niki compared to other buyer’s agents I spoke with was his hands-on approach and professionalism from the very beginning. I was unsure about using a buyer’s agent at first, but after our first call it was clear.",
   },
- 
-  {
-    name: "Oshi Thilakarathna",
-    date: "5 months ago",
-    title: "Fantastic—professional.",
-    body: "Niki was fantastic—professional, proactive, and got the deal done smoothly. He made the whole process easy, and settlement was stress-free. Highly recommend!",
-  },
+
   {
     name: "Travis Ranieri",
     date: "10 months ago",
-    title: "Ongoing support through our property investment journey",
+    title: "Ongoing support journey",
     body: "As a Buyers Agent Niki provided ongoing support through our property investment journey, delivering insights and become a trusted advisor for our family. Seamless process, highly recommend leveraging Niki and his team.",
   },
   {
@@ -632,18 +618,6 @@ function TestimonialCard({ testimonial, style }: { testimonial: any; style?: Rea
         {testimonial.title}
       </div>
       
-      {/* Quote watermark */}
-      <Quote
-        style={{
-          color: 'rgba(11, 215, 205, 0.10)',
-          position: 'absolute',
-          top: '20px',
-          right: '20px',
-          pointerEvents: 'none',
-        }}
-        size={48}
-      />
-
       {/* ── STARS ── */}
       <div style={{ display: 'flex', alignItems: 'center', marginTop: '12px', flexShrink: 0, marginBottom: '10px' }}>
         <img
@@ -670,7 +644,7 @@ function TestimonialCard({ testimonial, style }: { testimonial: any; style?: Rea
         position: 'relative',
         zIndex: 1,
       }}>
-        "{testimonial.body}"
+        {testimonial.body}
       </p>
 
       {/* ── BOTTOM: avatar + name + date ── */}
@@ -807,6 +781,7 @@ export default function ClientOutcomes() {
   const [visibleCount, setVisibleCount] = useState(3);
 
   const [showAllCards, setShowAllCards] = useState(false);
+  const [showAllReviews, setShowAllReviews] = useState(false);
 
   const INITIAL_CARDS_COUNT = 21;
 
@@ -816,6 +791,7 @@ export default function ClientOutcomes() {
   const testimonialsSectionRef = useRef<HTMLElement>(null);
   const outcomesSectionRef = useRef<HTMLElement>(null);
   const buttonContainerRef = useRef<HTMLDivElement>(null);
+  const reviewButtonContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (hash === "#testimonials") {
@@ -887,6 +863,20 @@ export default function ClientOutcomes() {
       }, 100);
     } else {
       setShowAllCards(true);
+    }
+  };
+
+  const handleToggleReviews = () => {
+    if (showAllReviews) {
+      setShowAllReviews(false);
+      setTimeout(() => {
+        reviewButtonContainerRef.current?.scrollIntoView({ 
+          behavior: "smooth", 
+          block: "center" 
+        });
+      }, 100);
+    } else {
+      setShowAllReviews(true);
     }
   };
 
@@ -1041,6 +1031,17 @@ export default function ClientOutcomes() {
           transform: scale(1.05);
         }
 
+        .rev-dot {
+          width: 8px; height: 8px;
+          border-radius: 50%;
+          background: #D0C9C0;
+          border: none; padding: 0;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          flex-shrink: 0;
+        }
+        .rev-dot.active { background: #073B2F; width: 24px; border-radius: 4px; }
+
         .reviews-grid {
           display: grid;
           grid-template-columns: repeat(1, 1fr);
@@ -1096,7 +1097,7 @@ export default function ClientOutcomes() {
         }
       `}</style>
 
-      <section ref={testimonialsSectionRef} id="testimonials" className="testimonials-section" style={{ position: 'relative', padding: '80px 0', background: '#F9F9F9' }}>
+      <section ref={testimonialsSectionRef} id="testimonials" className="testimonials-section" style={{ position: 'relative', padding: '80px 0', background: '#EAE5DF' }}>
         <div style={{ position: 'relative', maxWidth: '1200px', margin: '0 auto', padding: '0 32px' }}>
           <div style={{ 
             display: 'flex', 
@@ -1136,67 +1137,89 @@ export default function ClientOutcomes() {
           </div>
 
           <div style={{ position: 'relative' }}>
-            <button
-              className="nav-arrow prev"
-              onClick={() => setReviewIdx(prev => Math.max(0, prev - 1))}
-              disabled={reviewIdx === 0}
-              aria-label="Previous slide"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M19 12H5M12 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button
-              className="nav-arrow next"
-              onClick={() => setReviewIdx(prev => Math.min(maxReviewIdx, prev + 1))}
-              disabled={reviewIdx === maxReviewIdx}
-              aria-label="Next slide"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </button>
+            {!showAllReviews ? (
+              <>
+                <button
+                  className="nav-arrow prev"
+                  onClick={() => setReviewIdx(prev => Math.max(0, prev - 1))}
+                  disabled={reviewIdx === 0}
+                  aria-label="Previous slide"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  className="nav-arrow next"
+                  onClick={() => setReviewIdx(prev => Math.min(maxReviewIdx, prev + 1))}
+                  disabled={reviewIdx === maxReviewIdx}
+                  aria-label="Next slide"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </button>
 
-            <div ref={reviewContainerRef} style={{ overflow: "hidden", padding: "40px 0", margin: "-40px 0" }}>
-              <div 
-                className="slider-track"
-                style={{
+                <div ref={reviewContainerRef} style={{ overflow: "hidden", padding: "40px 0", margin: "-40px 0" }}>
+                  <div 
+                    className="slider-track"
+                    style={{
+                      display: "flex",
+                      gap: 32,
+                      transition: "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
+                      transform: `translateX(-${reviewIdx * (reviewCardWidth + 32)}px)`,
+                    }}
+                  > 
+                    {formattedReviews.map((testimonial, index) => (
+                      <TestimonialCard 
+                        key={index} 
+                        testimonial={testimonial} 
+                        style={{ flex: `0 0 ${reviewCardWidth}px`, width: `${reviewCardWidth}px` }}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* ── DOTS ── */}
+                <div style={{
                   display: "flex",
-                  gap: 32,
-                  transition: "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
-                  transform: `translateX(-${reviewIdx * (reviewCardWidth + 32)}px)`,
-                }}
-              > 
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "24px",
+                  width: "100%",
+                  marginTop: '48px'
+                }}>
+                  <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+                    {Array.from({ length: Math.ceil(formattedReviews.length / visibleCount) }).map((_, i) => (
+                      <button
+                        key={i}
+                        className={`rev-dot${i === reviewIdx ? " active" : ""}`}
+                        onClick={() => setReviewIdx(i)}
+                        aria-label={`Go to slide ${i + 1}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div className="outcomes-grid" style={{ padding: '0' }}>
                 {formattedReviews.map((testimonial, index) => (
-                  <TestimonialCard 
-                    key={index} 
-                    testimonial={testimonial} 
-                    style={{ flex: `0 0 ${reviewCardWidth}px`, width: `${reviewCardWidth}px` }}
-                  />
+                  <TestimonialCard key={index} testimonial={testimonial} />
                 ))}
               </div>
-            </div>
+            )}
           </div>
           
-          {/* ── DOTS ── */}
-          <div style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "24px",
-            width: "100%",
-            marginTop: '48px'
-          }}>
-            <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-              {Array.from({ length: Math.ceil(formattedReviews.length / visibleCount) }).map((_, i) => (
-                <button
-                  key={i}
-                  className={`rev-dot${i === reviewIdx ? " active" : ""}`}
-                  onClick={() => setReviewIdx(i)}
-                  aria-label={`Go to slide ${i + 1}`}
-                />
-              ))}
-            </div>
+          <div 
+            ref={reviewButtonContainerRef}
+            style={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}
+          >
+            <button 
+              className="view-more-outcomes-btn" 
+              onClick={handleToggleReviews}
+            >
+              {showAllReviews ? "View Less Feedback" : "View More Feedback"}
+            </button>
           </div>
         </div>
       </section>

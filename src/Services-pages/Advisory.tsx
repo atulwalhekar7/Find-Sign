@@ -32,10 +32,9 @@ export default function Advisory() {
         imageSrc={AboutServiceImg}
         heading="About Advisory"
         subheading="Expert guidance for every step of your property journey."
-        body1="Find and Sign Buyer Advocate is a boutique buyers agency based in Perth, representing buyers exclusively, whether you are purchasing the home you want to live in or building the portfolio you have always planned for.
-We take on a select number of clients at any one time. Not because we have to, but because we believe a purchase of this size deserves our full attention."
-        body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
-From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market."
+        body1="Sometimes you do not need a full buyers agent service. You simply need the right information and guidance to move forward with clarity and confidence. Our advisory service is a focused two session consultation designed for buyers who want to take the lead on their own journey but want an experienced advocate in their corner before they do.
+In each session we walk you through the property purchasing process with precision and transparency, share our firsthand market knowledge, and give you honest practical feedback on where you currently stand and how to move forward. You will leave with a clear understanding of what to look for, where the risks and opportunities sit, and exactly what steps to take next."
+        body2="Every session is tailored to your specific situation, your goals, and your timeline. For those who prefer to stay hands on, our advisory service gives you the knowledge and tools to do exactly that, without ever feeling like you are navigating it alone."
       />
 
       <GetInTouch initialService="Advisory" showService={true} />

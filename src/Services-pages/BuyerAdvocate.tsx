@@ -61,10 +61,12 @@ export default function BuyerAdvocate() {
         imageSrc={AboutServiceImg}
         heading="About Buyer Advocate"
         subheading="Expert guidance for every step of your property journey."
-        body1="Find and Sign Buyer Advocate is a boutique buyers agency based in Perth, representing buyers exclusively, whether you are purchasing the home you want to live in or building the portfolio you have always planned for.
-We take on a select number of clients at any one time. Not because we have to, but because we believe a purchase of this size deserves our full attention."
-        body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
-From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market."
+        body1="Purchasing a property is one of the most significant financial decisions you will ever make. Our full buyers agent service is designed to ensure that every step of that journey is handled with the expertise, care, and attention it deserves.
+From the moment we begin working together, we take on the entire process on your behalf. We get to know your goals, your non-negotiables, and your timeline, and we build a strategy around them. We search both on-market listings and our off-market network, and every property we consider is physically inspected by us before it ever reaches you. We will never recommend a property we have not walked through ourselves. That is a standard we hold on every single engagement."
+        body2="Once the right property is identified, we manage all due diligence, coordinate building inspections and necessary reports, and negotiate the price and contract terms firmly in your favour. You are kept informed and involved at every touch point, without ever being burdened by the complexity of the process.
+Our full service is deeply personal. No two clients are the same and neither is our approach. Every engagement is tailored to your specific situation, your goals, and your timeline. You are not just another transaction to us. You are someone we are genuinely invested in seeing succeed.
+From the first conversation to settlement day and beyond, we are by your side every step of the way.
+."
       />
 
 
