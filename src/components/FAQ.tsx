@@ -246,7 +246,7 @@ export default function FindSignFAQ() {
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <h2 className="faq-title">FAQs</h2>
               <p className="faq-subtitle">
-                Answers to common questions about the process and how we work.
+                Answers to common questions about buyers agents and how they work.
               </p>
             </Box>
 

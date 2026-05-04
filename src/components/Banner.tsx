@@ -248,7 +248,7 @@ const navigate = useNavigate();
 
         <section className="hero-bottom">
           <p className="description">
-            Find &amp; Sign is a property buyer's advocate. We represent clients Australia wide,
+            Find &amp; Sign is a property buyer's advocate. We represent clients Australia-wide,
             identifying the right properties and securing them before they reach the wider market.
           </p>
           <button
