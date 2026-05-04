@@ -10,9 +10,9 @@ import AboutUsBanner from "../assets/About Find&Sign.jpg";
 import Bec from "../assets/Bec_Bio.jpg";
 import niki from "../assets/Niki_Bio.jpg";
 
-import fbIcon from "../assets/Vector (2).png";
-import igIcon from "../assets/Instagram (2).png";
-import liIcon from "../assets/Vector(1).png";
+import fbIcon from "../assets/icon/fb.svg";
+import igIcon from "../assets/icon/Instagram.svg";
+import liIcon from "../assets/icon/LinkedIn.svg";
 
 export default function About() {
   const videoRef = useRef<HTMLVideoElement>(null);
