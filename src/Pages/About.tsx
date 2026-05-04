@@ -60,9 +60,9 @@ export default function About() {
         subheading="Explore more about Find & Sign."
         body1="Find & Sign Buyer Advocate was built on the belief that every buyer should secure the right property to build equity, choice and financial freedom.
 Founder Niki learnt through experience that the right guidance is critical in securing the outcome. It is identified through local knowledge, experience and direct relationships, then secured before it reaches the wider market.
-We are a boutique buyers' agency operating nationwide, acting exclusively for buyers. Not agents. 
+We are a boutique buyers' agency operating nationwide, acting exclusively for buyers. Not agents.Not developers we are intentionally selective about the number of clients we take on to give each brief our full attention and expert advice. 
 "
-        body2="Not developers we are intentionally selective about the number of clients we take on to give each brief our full attention and expert advice.
+        body2="
 We assess every opportunity in person by walking the property, the street, and the surrounding area. Decisions are never made from photos or data alone. Because it's about identifying the opportunity and securing it early. The advantage of being first
 Find & Sign we find with confidence you sign with certainty.
 "

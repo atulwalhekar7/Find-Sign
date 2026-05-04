@@ -607,7 +607,7 @@ function TestimonialCard({ testimonial, style }: { testimonial: any; style?: Rea
         background: '#69E4DC',
         color: '#073B2F',
         fontSize: '12px',
-        fontWeight: 700,
+        fontWeight: 400,
         maxWidth: '85%',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
