@@ -52,9 +52,7 @@ import ellipseImage from "../assets/Ellipse 1.png";
 import starIcon from "../assets/Union.png"; // Import star icon
 
 import roksonImg from "../assets/testomonials/Rokson.png";
-import sahilSainiImg from "../assets/testomonials/Sahil Saini.png";
 import rinzinWangchukImg from "../assets/testomonials/Rinzin Wangchuk.png";
-import prashanthNayarImg from "../assets/testomonials/Prashanth Nayar.png";
 import zedAImg from "../assets/testomonials/Zed A.png";
 import kumarVasindaImg from "../assets/testomonials/Kumar Vasinda Comara.png";
 import fatemaManasawalaImg from "../assets/testomonials/fatema manasawala.png";
@@ -482,19 +480,8 @@ const reviews = [
     title: "One of the best decisions we made",
     body: "Having Niki as our buyer’s agent was one of the best decisions we made. From the very start, he genuinely cared about finding the right home for us. He listened, guided us with confidence, and made what could have been a stressful process feel calm and manageable. ",
   },
-  {
-    name: "Raveen Liyanage",
-    date: "a month ago",
-    title: "Pleasure doing business with you",
-    body: "Hi Niki, It was a pleasure doing business with you. Your genuine commitment to looking after your clients, while also ensuring the process runs smoothly for everyone involved, truly stands out. You consistently strive to find practical.",
-  },
-  {
-    name: "Sahil Saini",
-    date: "4 months ago",
-    title: "Professional and great to work with",
-    body: "Niki is professional and great to work with. His communication has been great for one of our clients to source a property before Christmas and met all deadlines. Not to mention the bargain he was able to secure for the property.",
-    image: sahilSainiImg,
-  },
+ 
+  
   {
     name: "Rinzin Wangchuk",
     date: "3 months ago",
@@ -502,6 +489,7 @@ const reviews = [
     body: "Niki is very professional and goes way above your needs. I was looking for my first home in Perth and didn’t know where to begin.",
     image: rinzinWangchukImg,
   },
+<<<<<<< HEAD
   {
     name: "Prashanth Nayar",
     date: "5 months ago",
@@ -521,6 +509,11 @@ const reviews = [
     title: "Absolutely fantastic experience",
     body: "We had an absolutely fantastic experience working with Niki as a Buyer’s agent. He was very professional and always communicated well with ourselves and his clients throughout the process. ",
   },
+=======
+ 
+ 
+ 
+>>>>>>> fb233c26936c49ab1204c01386168bad34e530a3
   {
     name: "dayna bechar",
     date: "5 months ago",
@@ -591,6 +584,7 @@ const reviews = [
     title: "Hands-on approach and professionalism",
     body: "What really stood out about Niki compared to other buyer’s agents I spoke with was his hands-on approach and professionalism from the very beginning. I was unsure about using a buyer’s agent at first, but after our first call it was clear.",
   },
+<<<<<<< HEAD
   {
     name: "Julie",
     date: "7 months ago",
@@ -609,6 +603,9 @@ const reviews = [
     title: "High level of professionalism",
     body: "I recently dealt with Niki for a property I was selling in Connolly, where he was representing the buyers. The whole process went smoothly, due to Niki’s high level of professionalism, communication and efficiency. I hope to have the opportunity to work with him again in the future. It’s been a pleasure.",
   },
+=======
+ 
+>>>>>>> fb233c26936c49ab1204c01386168bad34e530a3
   {
     name: "Oshi Thilakarathna",
     date: "5 months ago",
