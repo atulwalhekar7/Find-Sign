@@ -347,7 +347,7 @@ interface SliderSectionProps {
   resetTimer: () => void;
   maxReviewIdx: number;
   handleNav: (dir: number) => void;
-  reviewContainerRef: React.RefObject<HTMLDivElement>;
+  reviewContainerRef: React.RefObject<HTMLDivElement | null>;
   reviewCardWidth: number;
 }
 
