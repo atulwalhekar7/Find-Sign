@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { Quote } from "lucide-react";
 import starIcon from "../assets/Union.png";
 import roksonImg from "../assets/testomonials/Rokson.png";
 import rinzinWangchukImg from "../assets/testomonials/Rinzin Wangchuk.png";
@@ -42,62 +41,74 @@ const formattedReviews = reviewsData.map(review => ({
 }));
 
 // Layout constants
-const CARD_GAP = 32;
-const ROW_GAP = 32;
-const CARD_WIDTH = 360;
-const CARD_HEIGHT = 407;
-const COLS = 3;
-const ROWS = 2;
-const PAGE_SIZE = COLS * ROWS; // 6 cards per page
+const CARD_GAP = 32; // Gap between cards
+const CARD_HEIGHT = 407; // Fixed height for cards
 
 const App = () => {
   const navigate = useNavigate();
-  const [pageIndex, setPageIndex] = useState(0);
+  const [reviewIdx, setReviewIdx] = useState(0);
   const timerRef = useRef<number | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
-  const [isTablet, setIsTablet] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(3); // Default to 3 for desktop
+  const [reviewContainerWidth, setReviewContainerWidth] = useState(0);
+  const reviewContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const updateBreakpoint = () => {
+    const updateVisibleCount = () => {
       const w = window.innerWidth;
-      setIsMobile(w <= 768);
-      setIsTablet(w > 768 && w <= 1100);
+      if (w < 768) setVisibleCount(1);
+      else if (w < 1100) setVisibleCount(2);
+      else setVisibleCount(3);
     };
-    updateBreakpoint();
-    window.addEventListener("resize", updateBreakpoint);
-    return () => window.removeEventListener("resize", updateBreakpoint);
+    updateVisibleCount();
+    window.addEventListener("resize", updateVisibleCount);
+
+    const obs = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.target === reviewContainerRef.current) {
+          setReviewContainerWidth(entry.contentRect.width);
+        }
+      }
+    });
+
+    if (reviewContainerRef.current) obs.observe(reviewContainerRef.current);
+
+    return () => {
+      window.removeEventListener("resize", updateVisibleCount);
+      obs.disconnect();
+    };
   }, []);
 
-  // On mobile: 1 card per page, tablet: 2 cards per page, desktop: 6 (3x2)
-  const effectivePageSize = isMobile ? 1 : isTablet ? 2 : PAGE_SIZE;
-  const totalPages = Math.ceil(formattedReviews.length / effectivePageSize);
-  const maxPageIndex = Math.max(0, totalPages - 1);
+  const maxReviewIdx = Math.max(0, formattedReviews.length - visibleCount);
 
   const goTo = useCallback((idx: number) => {
-    setPageIndex(Math.max(0, Math.min(idx, maxPageIndex)));
-  }, [maxPageIndex]);
+    setReviewIdx(Math.max(0, Math.min(idx, maxReviewIdx)));
+  }, [maxReviewIdx]);
 
   const resetTimer = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
-    timerRef.current = window.setInterval(() => {
-      setPageIndex((prev) => (prev >= maxPageIndex ? 0 : prev + 1));
+    timerRef.current = window.setInterval(() => { // Use window.setInterval for clarity
+      setReviewIdx((prev) => (prev >= maxReviewIdx ? 0 : prev + 1));
     }, 4500);
-  }, [maxPageIndex]);
+  }, [maxReviewIdx]);
 
   useEffect(() => {
-    if (pageIndex > maxPageIndex) goTo(0);
-  }, [maxPageIndex]);
+    setReviewIdx(prev => Math.min(prev, maxReviewIdx));
+  }, [visibleCount, maxReviewIdx]);
 
   useEffect(() => {
     resetTimer();
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [resetTimer]);
 
-  const handleNav = (dir: number) => {
-    const next = (pageIndex + dir + totalPages) % totalPages;
+  const handleNav = useCallback((dir: number) => {
+    const next = reviewIdx + dir;
     goTo(next);
     resetTimer();
-  };
+  }, [reviewIdx, goTo, resetTimer]);
+
+  const reviewCardWidth = reviewContainerWidth
+    ? (reviewContainerWidth - CARD_GAP * (visibleCount - 1)) / visibleCount
+    : 350; // Fallback width
 
   return (
     <div className="min-h-screen bg-white">
@@ -124,10 +135,10 @@ const App = () => {
           display: flex;
           flex-direction: column;
           flex-shrink: 0;
-          padding: 24px;
-          width: ${CARD_WIDTH}px;
-          min-width: ${CARD_WIDTH}px;
-          height: ${CARD_HEIGHT}px;
+          padding: 20px;
+          /* Width will be set dynamically via style prop */
+          min-width: 0; /* Allow shrinking */
+          height: ${CARD_HEIGHT}px; /* Fixed height */
           border-radius: 24px;
           background: #FFFFFF;
           border: 1px solid #69E4DC;
@@ -155,7 +166,7 @@ const App = () => {
         }
 
         .rev-slider-track {
-          transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
           will-change: transform;
         }
 
@@ -263,14 +274,9 @@ const App = () => {
         @media (max-width: 1100px) {
           .rev-header { column-gap: 32px; }
           .rev-heading  { font-size: 36px !important; line-height: 46px !important; }
-          .rev-subheading { font-size: 20px !important; line-height: 30px !important; }
-          .npb-card { height: auto; min-height: ${CARD_HEIGHT}px; min-width: unset !important; }
+          .rev-subheading { font-size: 20px !important; line-height: 30px !important; }          
           .rev-arrow-btn.prev { left: -44px; }
           .rev-arrow-btn.next { right: -44px; }
-        }
-
-        @media (min-width: 769px) and (max-width: 1100px) {
-          .npb-card { width: calc((100% - ${CARD_GAP}px) / 2) !important; }
         }
 
         @media (max-width: 767px) {
@@ -284,7 +290,7 @@ const App = () => {
       `}</style>
 
       <section style={{
-        background: "#ffffff",
+        background: "#EAE5DF",
         width: "100%",
         display: "flex",
         flexDirection: "column",
@@ -313,14 +319,13 @@ const App = () => {
 
         {/* ── SLIDER ── */}
         <SliderSection
-          pageIndex={pageIndex}
-          isMobile={isMobile}
-          isTablet={isTablet}
+          reviewIdx={reviewIdx}
           goTo={goTo}
           resetTimer={resetTimer}
-          maxPageIndex={maxPageIndex}
+          maxReviewIdx={maxReviewIdx}
           handleNav={handleNav}
-          totalPages={totalPages}
+          reviewContainerRef={reviewContainerRef}
+          reviewCardWidth={reviewCardWidth}
         />
 
         {/* ── CTA ── */}
@@ -337,54 +342,26 @@ const App = () => {
 };
 
 interface SliderSectionProps {
-  pageIndex: number;
-  isMobile: boolean;
-  isTablet: boolean;
+  reviewIdx: number;
   goTo: (idx: number) => void;
   resetTimer: () => void;
-  maxPageIndex: number;
+  maxReviewIdx: number;
   handleNav: (dir: number) => void;
-  totalPages: number;
+  reviewContainerRef: React.RefObject<HTMLDivElement>;
+  reviewCardWidth: number;
 }
 
 const SliderSection = ({
-  pageIndex,
-  isMobile,
-  isTablet,
+  reviewIdx,
   goTo,
   resetTimer,
-  maxPageIndex,
   handleNav,
-  totalPages,
+  maxReviewIdx,
+  reviewContainerRef,
+  reviewCardWidth,
 }: SliderSectionProps) => {
-  const isDesktop = !isMobile && !isTablet;
-
-  // Desktop: page width = 3 cards + 2 gaps between them
-  const PAGE_WIDTH = COLS * CARD_WIDTH + (COLS - 1) * CARD_GAP;
-  // Shift by full page width + 1 gap (between pages) per page
-  const desktopOffset = pageIndex * (PAGE_WIDTH + CARD_GAP);
-
-  // For mobile/tablet: simple per-card offset
-  const [containerWidth, setContainerWidth] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    const obs = new ResizeObserver((entries) => {
-      if (entries[0]) {
-        setContainerWidth(entries[0].contentRect.width);
-      }
-    });
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
-  const mobileOffset = pageIndex * (containerWidth + CARD_GAP);
-
-  // Number of columns in the grid track (desktop only)
-  // Each page occupies COLS columns; total columns = pages * COLS
-  const totalGridCols = Math.ceil(formattedReviews.length / ROWS);
+  // Calculate the transform offset for the slider track
+  const transformOffset = reviewIdx * (reviewCardWidth + CARD_GAP);
 
   return (
     <>
@@ -394,9 +371,9 @@ const SliderSection = ({
           {/* Left arrow */}
           <button
             className="rev-arrow-btn prev"
-            onClick={() => handleNav(-1)}
+            onClick={() => handleNav(-1)} // Use handleNav directly
             aria-label="Previous slide"
-            disabled={pageIndex === 0}
+            disabled={reviewIdx === 0}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M19 12H5M12 19l-7-7 7-7" />
@@ -406,51 +383,33 @@ const SliderSection = ({
           {/* Right arrow */}
           <button
             className="rev-arrow-btn next"
-            onClick={() => handleNav(1)}
+            onClick={() => handleNav(1)} // Use handleNav directly
             aria-label="Next slide"
-            disabled={pageIndex === maxPageIndex}
+            disabled={reviewIdx === maxReviewIdx}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </button>
 
-          {/* Overflow clip wrapper */}
-          <div ref={containerRef} style={{ overflow: "hidden", padding: "40px 0", margin: "-40px 0" }}>
-
-            {isDesktop ? (
-              /* ── DESKTOP: 2-row CSS Grid track ── */
-              <div
-                className="rev-slider-track"
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: `repeat(${totalGridCols}, ${CARD_WIDTH}px)`,
-                  gridTemplateRows: `repeat(${ROWS}, ${CARD_HEIGHT}px)`,
-                  gridAutoFlow: "column",
-                  columnGap: `${CARD_GAP}px`,
-                  rowGap: `${ROW_GAP}px`,
-                  transform: `translateX(-${desktopOffset}px)`,
-                }}
-              >
-                {formattedReviews.map((review, i) => (
-                  <ReviewCard key={i} review={review} />
-                ))}
-              </div>
-            ) : (
-              /* ── MOBILE / TABLET: single-row flex track ── */
+          <div ref={reviewContainerRef} style={{ overflow: "hidden", padding: "40px 0", margin: "-40px 0" }}>
+            {/* Single-row flex track for all screen sizes */}
               <div
                 className="rev-slider-track"
                 style={{
                   display: "flex",
                   gap: `${CARD_GAP}px`,
-                  transform: `translateX(-${mobileOffset}px)`,
+                  transform: `translateX(-${transformOffset}px)`,
                 }}
               >
                 {formattedReviews.map((review, i) => (
-                  <ReviewCard key={i} review={review} />
+                  <ReviewCard 
+                    key={i} 
+                    review={review} 
+                    style={{ flex: `0 0 ${reviewCardWidth}px`, width: `${reviewCardWidth}px` }}
+                  />
                 ))}
               </div>
-            )}
           </div>
         </div>
       </div>
@@ -459,15 +418,15 @@ const SliderSection = ({
       <div style={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        gap: "24px",
-        width: "100%",
+          alignItems: "center", // Center the dots
+          gap: "24px", // Gap between dots and other elements
+          width: "100%", // Full width for centering
       }}>
         <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-          {Array.from({ length: Math.min(8, totalPages) }).map((_, i) => (
+          {Array.from({ length: maxReviewIdx + 1 }).map((_, i) => (
             <button
               key={i}
-              className={`rev-dot${i === pageIndex ? " active" : ""}`}
+              className={`rev-dot${i === reviewIdx ? " active" : ""}`}
               onClick={() => { goTo(i); resetTimer(); }}
               aria-label={`Go to slide ${i + 1}`}
             />
@@ -481,22 +440,16 @@ const SliderSection = ({
 /* ── Single Review Card ── */
 interface ReviewCardProps {
   review: typeof formattedReviews[0];
+  style?: React.CSSProperties;
 }
 
-const ReviewCard = ({ review }: ReviewCardProps) => (
-  <div className="npb-card">
-
-    {/* Quote watermark */}
-    <Quote
-      style={{
-        color: 'rgba(11, 215, 205, 0.10)',
-        position: 'absolute',
-        top: '20px',
-        right: '20px',
-        pointerEvents: 'none',
-      }}
-      size={48}
-    />
+const ReviewCard = ({ review, style }: ReviewCardProps) => (
+  <div 
+    className="npb-card"
+    style={{
+      ...style,
+    }}
+  >
 
     {/* ── TOP: pill ── */}
     <div style={{
@@ -511,7 +464,7 @@ const ReviewCard = ({ review }: ReviewCardProps) => (
       background: '#69E4DC',
       color: '#073B2F',
       fontSize: '12px',
-      fontWeight: 700,
+      fontWeight: 400,
       maxWidth: '85%',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
@@ -548,7 +501,7 @@ const ReviewCard = ({ review }: ReviewCardProps) => (
       position: 'relative',
       zIndex: 1,
     }}>
-      "{review.body}"
+      {review.body}
     </p>
 
     {/* ── BOTTOM: avatar + name + date ── */}

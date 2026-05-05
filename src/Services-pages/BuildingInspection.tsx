@@ -57,7 +57,7 @@ export default function BuildingInspection() {
       {/* ── About ── */}
       <AboutSection
         imageSrc={AboutServiceImg}
-        heading="About Our Services"
+        heading="About Building Inspection"
         subheading="Expert guidance for every step of your property journey."
         body1="A building inspection is one of the most important steps in the purchase process and one of the most commonly underestimated. A qualified building inspector will assess the property from top to bottom, identifying any structural issues, safety concerns, pest activity, or maintenance requirements that may not be visible to the untrained eye. The report they provide gives you a clear and honest picture of exactly what you are buying. It protects you from unexpected costs after settlement and gives you informed leverage going into final negotiations. We strongly recommend this step on every purchase, without exception."
 //         body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
