@@ -17,7 +17,7 @@ interface NakraniContactProps {
 export default function GetInTouch({ initialService = "", showService = false }: NakraniContactProps) {
   const [submitted, setSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
-  const [contactPreference, setContactPreference] = useState<"phone" | "email" | "">("email"); // Initialize with a default value
+  const [contactPreference, setContactPreference] = useState<"phone" | "email" | "">("email");
   const [selectedService, setSelectedService] = useState(initialService);
   const form = useRef<HTMLFormElement>(null);
 
@@ -40,7 +40,7 @@ export default function GetInTouch({ initialService = "", showService = false }:
             setSubmitted(true);
             setIsSending(false);
             form.current?.reset();
-            setContactPreference("email"); // Reset to the default value after successful submission
+            setContactPreference("email");
             setSelectedService(initialService);
           },
           (error) => {
@@ -59,19 +59,21 @@ export default function GetInTouch({ initialService = "", showService = false }:
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+        /* ─── PAGE WRAPPER ─── */
         .contact-page {
           display: flex;
           padding: 64px 80px 64px 340px;
           flex-direction: column;
           align-items: flex-start;
           gap: 10px;
-          background: var(--Brand-Foundation-FS-SALTBUSH,#EAE5DF);
+          background: var(--Brand-Foundation-FS-SALTBUSH, #EAE5DF);
         }
 
         @media (max-width: 1512px) {
           .contact-page { padding: 64px 5% 64px 10%; }
         }
 
+        /* ─── ROW ANIMATION ─── */
         .contact-row {
           animation: fadeSlideUp 0.8s ease forwards;
           opacity: 0;
@@ -81,45 +83,50 @@ export default function GetInTouch({ initialService = "", showService = false }:
           to   { opacity: 1; transform: translateY(0); }
         }
 
+        /* ─── LEFT COLUMN ─── */
         .contact-left {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          gap: 64px;
-          flex: 0 1 350px;
+          gap: 0;
+          flex: 0 0 350px;
           min-width: 0;
         }
 
-        .contact-left-info {
-          display: flex;
-          flex-direction: column;
-          gap: 0;
-          width: 100%;
-          max-width: 297px;
-        }
-        .contact-left-info span {
-          font-family: 'SohneBuch';
-          font-style: normal;
-          font-weight: 400;
-          font-size: 20px;
-          line-height: 28px;
-          color: #000000;
+        /* Gap after h2 → paragraph: 64px (Figma) */
+        .contact-left p {
+          margin-top: 64px;
         }
 
+        /* Gap after paragraph → Book a Call: 36px (Figma) */
+        .contact-cta {
+          margin-top: 36px;
+        }
+
+        /* Gap after Book a Call → Contact info: 36px (Figma) */
+        .contact-left-info {
+          margin-top: 36px;
+        }
+
+        /* "Get in touch" — Figma: FS-H2, W Fixed 350px, H Fixed 48px */
         .contact-left h2 {
-          color: #073B2F;
-          font-family: 'GT Super Display Medium';
-          font-size: 44px;
+          width: 350px;
+          height: 48px;
+          overflow: visible;
+          color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
+          font-variant-numeric: lining-nums proportional-nums;
+          font-family: 'GT Super Display', serif;
+          font-size: 38px;
+          font-style: normal;
           font-weight: 500;
-          line-height: 54px;
+          line-height: 48px;
           letter-spacing: -0.88px;
+          white-space: nowrap;
           margin: 0;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
           gap: 24px;
-          text-align: left;
-          width: 100%;
         }
 
         .contact-left h2::after {
@@ -129,36 +136,40 @@ export default function GetInTouch({ initialService = "", showService = false }:
           background: #073B2F;
         }
 
+        /* "Tell us what you're looking for…" — Figma: FS-B1 */
         .contact-left p {
+          width: 297px;
           color: #000;
-          font-family: 'Sohne';
+          font-family: 'Söhne', 'Sohne', sans-serif;
           font-size: 24px;
+          font-style: normal;
           font-weight: 300;
-          line-height: 28px;
-          text-align: left;
-          width: 100%;
+          line-height: 36px;
+          margin-top: 64px;
         }
 
+        /* "Book a Call" button — Figma specs */
         .contact-cta {
           display: flex;
-          align-items: center;
-          justify-content: center;
           height: 48px;
-          padding: 12px 24px;
+          padding: 12px 16px;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
           border-radius: 8px;
-          background: #69E4DC;
-          color: #073B2F;
-          font-family: "CX80";
-          font-size: 15px;
-          font-weight: 700;
-          line-height: 15px;
-          letter-spacing: 4.8px;
+          background: var(--Brand-Contrast-FS-AQUA, #69E4DC);
+          color: var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #073B2F));
+          font-family: "CX80 Trial VAR", "CX80", sans-serif;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 150;
+          line-height: 14px;
+          letter-spacing: 4.48px;
           text-decoration: none;
           text-transform: uppercase;
           white-space: nowrap;
-          gap: 10px;
-          transition: transform 0.2s ease, background 0.2s ease;
           width: fit-content;
+          transition: transform 0.2s ease, background 0.2s ease;
         }
 
         .contact-cta:hover {
@@ -176,10 +187,40 @@ export default function GetInTouch({ initialService = "", showService = false }:
 
         @keyframes call-vibrate {
           0%, 20%, 100% { transform: rotate(0deg); }
-          3%, 9%, 15% { transform: rotate(-12deg); }
-          6%, 12%, 18% { transform: rotate(12deg); }
+          3%, 9%, 15%   { transform: rotate(-12deg); }
+          6%, 12%, 18%  { transform: rotate(12deg); }
         }
 
+    /* ─── CONTACT INFO BLOCK — W Fixed 297px, H Hug 80px (Figma) ─── */
+.contact-left-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;         /* ← 80px total: 28 + 24 + 28 = 80px ✅ */
+  width: 297px;
+  height: 80px;
+  flex-shrink: 0;
+  margin-top: 36px;
+}
+
+.contact-left-info span {
+  display: block;       /* ← key fix: makes width work on span */
+  width: 297px;
+  color: #000;
+  font-family: 'Söhne', 'Sohne', sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+/* ─── TABLET override fix ─── */
+@media (max-width: 1024px) {
+  .contact-left-info span {
+    width: 297px !important;  /* ← stop the 100% override */
+  }
+}
+
+        /* ─── RIGHT COLUMN ─── */
         .contact-right {
           flex: 2;
           display: flex;
@@ -196,6 +237,7 @@ export default function GetInTouch({ initialService = "", showService = false }:
           gap: 16px;
         }
 
+        /* ─── FIELD WRAPPER ─── */
         .contact-field {
           display: flex;
           flex-direction: column;
@@ -216,28 +258,36 @@ export default function GetInTouch({ initialService = "", showService = false }:
           to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Label — Figma: FS-B2 */
         .contact_label {
-          color: #000;
-          font-family: 'SohneBuch';
+          color: var(--FS-BLACK, var(--Brand-Utility-FS-BLACK, #000));
+          font-family: 'Söhne', 'Sohne', sans-serif;
           font-size: 20px;
+          font-style: normal;
           font-weight: 400;
           line-height: 28px;
         }
 
+        /* Input — Figma: Form field layout */
         .contact-input {
+          display: flex;
           height: 48px;
           padding: 8px 16px;
-          width: 100%;
+          align-items: center;
+          gap: 10px;
+          align-self: stretch;
+          width: 761px;
           border-radius: 8px;
-          background: #FFF;
+          background: var(--Brand-Utility-FS-WHITE, #FFF);
           border: none;
           outline: none;
-          font-family: 'SohneBuch';
+          font-family: 'Söhne', 'Sohne', sans-serif;
           font-weight: 400;
           font-size: 20px;
+          color: #000;
         }
 
-        .contact-input::placeholder, .contact-textarea::placeholder { color: #BDBDBD; }
+        .contact-input::placeholder { color: #BDBDBD; }
         .contact-input:focus { outline: 1.5px solid ${COLORS.aqua}; }
 
         select.contact-input {
@@ -250,8 +300,9 @@ export default function GetInTouch({ initialService = "", showService = false }:
         }
 
         select.contact-input:invalid { color: #BDBDBD; }
-        select.contact-input option { color: #000; }
+        select.contact-input option  { color: #000; }
 
+        /* ─── CONTACT PREFERENCE ROW ─── */
         .contact-pref-row {
           display: flex;
           flex-direction: row;
@@ -262,13 +313,14 @@ export default function GetInTouch({ initialService = "", showService = false }:
           min-height: 48px;
           flex-wrap: nowrap;
         }
+
         .contact-pref-label {
-          font-family: 'SohneBuch';
+          color: var(--FS-BLACK, #000);
+          font-family: 'Söhne', 'Sohne', sans-serif;
+          font-size: 20px;
           font-style: normal;
           font-weight: 400;
-          font-size: 20px;
           line-height: 28px;
-          color: #000000;
           flex: 1;
           min-width: 0;
         }
@@ -277,68 +329,81 @@ export default function GetInTouch({ initialService = "", showService = false }:
           display: flex;
           flex-direction: row;
           align-items: center;
-          padding: 0;
           gap: 6px;
           height: 48px;
           flex-shrink: 0;
           margin-left: auto;
         }
+
+        /* Toggle buttons */
         .pref-toggle-btn {
           box-sizing: border-box;
           display: flex;
           flex-direction: row;
           justify-content: center;
           align-items: center;
-          padding: 6px 20px;
-          gap: 4px;
-          width: auto;
-          min-width: 120px;
+          padding: 12px 16px;
+          gap: 10px;
           height: 48px;
-          border: 1px solid ${COLORS.aqua};
+          min-width: 120px;
           border-radius: 8px;
+          border: 1px solid var(--Brand-Contrast-FS-AQUA, ${COLORS.aqua});
           background: transparent;
-          font-family: 'CX80';
-          font-size: 15px;
-          font-weight: 700;
-          letter-spacing: 4.8px;
+          font-family: "CX80 Trial VAR", "CX80", sans-serif;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 150;
+          line-height: 14px;
+          letter-spacing: 4.48px;
           color: #073B2F;
           text-transform: uppercase;
           cursor: pointer;
           transition: background 0.2s ease;
         }
-        .pref-toggle-btn.active { background: ${COLORS.aqua}; }
+
+        .pref-toggle-btn.active { background: var(--Brand-Contrast-FS-AQUA, ${COLORS.aqua}); }
         .pref-toggle-btn:hover:not(.active) { background: rgba(105,228,220,0.15); }
 
+        /* Textarea */
         .contact-textarea {
+          display: flex;
           height: 112px;
           padding: 8px 16px;
-          width: 100%;
+          align-items: flex-start;
+          gap: 10px;
+          align-self: stretch;
+          width: 761px;
           border-radius: 8px;
-          background: #FFF;
+          background: var(--Brand-Utility-FS-WHITE, #FFF);
           border: none;
           outline: none;
-          font-family: 'Sohne';
+          font-family: 'Söhne', 'Sohne', sans-serif;
           font-weight: 400;
           font-size: 20px;
           resize: none;
+          color: #000;
         }
 
+        .contact-textarea::placeholder { color: #BDBDBD; }
         .contact-textarea:focus { outline: 1.5px solid ${COLORS.aqua}; }
 
+        /* Submit button */
         .contact-btn {
-          width: 100%;
+          width: 761px;
           height: 48px;
           border-radius: 8px;
           background: #003327;
           border: none;
           cursor: pointer;
           color: #F9F9F9;
-          font-family: 'CX80';
-          font-size: 15px;
-          font-weight: 700;
-          letter-spacing: 4.8px;
+          font-family: "CX80 Trial VAR", "CX80", sans-serif;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 150;
+          line-height: 14px;
+          letter-spacing: 4.48px;
           text-transform: uppercase;
-          transition: transform 0.2s ease;
+          transition: transform 0.2s ease, background 0.2s ease;
         }
 
         .contact-btn:hover {
@@ -348,60 +413,145 @@ export default function GetInTouch({ initialService = "", showService = false }:
 
         .contact-btn:active { transform: scale(0.98); }
 
+        /* ─── RESPONSIVE ─── */
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+          .contact-page { padding: 64px 40px; }
+
+          .contact-left {
+            flex: 0 0 350px;
+            gap: 0;
+          }
+
+          .contact-left h2 {
+            width: 350px;
+            font-size: 38px;
+            line-height: 48px;
+          }
+
+          .contact-left p {
+            width: 297px;
+          }
+
+          .contact-left-info {
+            width: 297px;%;
+          }
+
+          .contact-left-info span {
+            width: 100%;
+          }
+        }
+
+        /* Mobile */
         @media (max-width: 900px) {
           .contact-page { padding: 40px 20px; }
 
           .contact-row {
             flex-direction: column !important;
-            gap: 24px !important;
+            gap: 32px !important;
           }
 
           .contact-left {
             flex: none !important;
             width: 100% !important;
-            gap: 16px;
+            gap: 0;
           }
 
           .contact-left h2 {
             width: 100%;
             font-size: 32px;
-            line-height: 42px;
+            line-height: 40px;
+            height: auto;
+            white-space: normal;
           }
 
           .contact-left p {
             width: 100%;
-            max-width: 100%;
             font-size: 18px;
+            line-height: 28px;
+            margin-top: 32px;
           }
 
-          .contact-pref-label {
-            white-space: normal;
+          .contact-cta {
+            margin-top: 24px;
+            width: 100%;
+            justify-content: center;
           }
 
           .contact-left-info {
-            max-width: 100%;
+            width: 100%;
+            height: auto;      /* allow natural height on mobile */
+            margin-top: 24px;
+          }
+
+          .contact-left-info span {
+            width: 100%;
+            font-size: 18px;
+          }
+
+          .contact-right {
+            width: 100% !important;
           }
 
           .contact-pref-row {
             flex-direction: column;
             align-items: flex-start;
-            gap: 16px;
-          }
-          .pref-toggle-group {
-            max-width: 100%;
-            margin-left: 0;
-            width: 100%;
+            gap: 12px;
+            min-height: unset;
           }
 
-          .contact-pref-row {
-            gap: 12px;
+          .pref-toggle-group {
+            width: 100%;
+            margin-left: 0;
+            height: auto;
           }
+
           .pref-toggle-btn {
-            padding: 10px 16px;
-            min-width: 110px;
             flex: 1;
+            min-width: unset;
+            padding: 10px 12px;
+            font-size: 12px;
+            letter-spacing: 3px;
           }
-          .contact-right { width: 100% !important; }
+
+          .contact-pref-label {
+            font-size: 18px;
+          }
+
+          .contact_label {
+            font-size: 18px;
+          }
+
+          .contact-input,
+          .contact-textarea {
+            font-size: 16px;
+          }
+        }
+
+        /* Small mobile */
+        @media (max-width: 480px) {
+          .contact-page { padding: 32px 16px; }
+
+          .contact-left h2 {
+            font-size: 28px;
+            line-height: 36px;
+          }
+
+          .contact-left p {
+            font-size: 16px;
+            line-height: 24px;
+          }
+
+          .contact-left-info span {
+            font-size: 16px;
+          }
+
+          .contact-cta {
+            font-size: 12px;
+            letter-spacing: 3px;
+            padding: 12px 16px;
+          }
         }
       `}</style>
 
@@ -413,13 +563,16 @@ export default function GetInTouch({ initialService = "", showService = false }:
               display: "flex",
               flexDirection: { xs: "column", md: "row" },
               alignItems: "flex-start",
-              columnGap: { xs: "24px", md: "100px" },
+              columnGap: { xs: "24px", md: "36px" },
               width: "100%",
             }}
           >
+            {/* ── LEFT ── */}
             <div className="contact-left">
               <h2>Get in touch</h2>
+
               <p>Tell us what you're looking for, and we'll come back with next steps.</p>
+
               <a
                 href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
                 target="_blank"
@@ -438,6 +591,7 @@ export default function GetInTouch({ initialService = "", showService = false }:
               </div>
             </div>
 
+            {/* ── RIGHT ── */}
             <div className="contact-right">
               <form ref={form} onSubmit={handleSubmit}>
                 <div className="contact-field">
@@ -463,10 +617,10 @@ export default function GetInTouch({ initialService = "", showService = false }:
                 {showService && (
                   <div className="contact-field">
                     <label className="contact_label">Select Services</label>
-                    <select 
-                      className="contact-input" 
+                    <select
+                      className="contact-input"
                       name="service"
-                      required 
+                      required
                       value={selectedService}
                       onChange={(e) => setSelectedService(e.target.value)}
                     >
@@ -520,8 +674,8 @@ export default function GetInTouch({ initialService = "", showService = false }:
         </Box>
       </div>
 
-      <Dialog 
-        open={submitted} 
+      <Dialog
+        open={submitted}
         onClose={() => setSubmitted(false)}
         maxWidth="xs"
         fullWidth
@@ -550,7 +704,7 @@ export default function GetInTouch({ initialService = "", showService = false }:
           <button
             className="contact-btn"
             onClick={() => setSubmitted(false)}
-             style={{ marginTop: '16px', width: 'auto', padding: '12px 48px' }}
+            style={{ marginTop: '16px', width: 'auto', padding: '12px 48px' }}
           >
             Close
           </button>
