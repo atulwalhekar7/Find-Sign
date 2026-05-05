@@ -159,10 +159,10 @@ export default function GetInTouch({ initialService = "", showService = false }:
           border-radius: 8px;
           background: var(--Brand-Contrast-FS-AQUA, #69E4DC);
           color: var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #073B2F));
-          font-family: "CX80 Trial VAR", "CX80", sans-serif;
+          font-family: "CX80";
           font-size: 14px;
           font-style: normal;
-          font-weight: 150;
+          font-weight: 700;
           line-height: 14px;
           letter-spacing: 4.48px;
           text-decoration: none;
@@ -352,7 +352,7 @@ export default function GetInTouch({ initialService = "", showService = false }:
           font-family: "CX80 Trial VAR", "CX80", sans-serif;
           font-size: 14px;
           font-style: normal;
-          font-weight: 150;
+          font-weight: 700;
           line-height: 14px;
           letter-spacing: 4.48px;
           color: #073B2F;
@@ -361,7 +361,7 @@ export default function GetInTouch({ initialService = "", showService = false }:
           transition: background 0.2s ease;
         }
 
-        .pref-toggle-btn.active { background: var(--Brand-Contrast-FS-AQUA, ${COLORS.aqua}); }
+        
         .pref-toggle-btn:hover:not(.active) { background: rgba(105,228,220,0.15); }
 
         /* Textarea */
