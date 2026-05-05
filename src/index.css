@@ -53,7 +53,7 @@ body {
 }
 
 @font-face {
-  font-family: 'CX80';
+  font-family: 'CX80BOLD';
   src: url('./assets/fonts/CX80/CX80Trial-Bold.otf') format('opentype');
   font-weight: 700;
 }
@@ -138,7 +138,7 @@ body {
 }
 
 @font-face {
-  font-family: 'CX80L1';
+  font-family: 'CX80BOLD';
   src: url('./assets/Fonts/CX80/CX80Trial-Bold.otf') format('opentype');
   font-weight: 700;
 }
@@ -254,7 +254,7 @@ button {
 }
 
 @font-face {
-  font-family: 'CX80';
+  font-family: 'CX80BOLD';
   src: url('./assets/fonts/CX80/CX80Trial-Bold.otf') format('opentype');
   font-weight: 700;
 }
