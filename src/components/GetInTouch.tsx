@@ -526,6 +526,7 @@ export default function GetInTouch({ initialService = "", showService = false }:
           .contact-input,
           .contact-textarea {
             font-size: 16px;
+            width: 100%; /* Ensure form fields take full width on mobile */
           }
         }
 
@@ -552,6 +553,7 @@ export default function GetInTouch({ initialService = "", showService = false }:
             letter-spacing: 3px;
             padding: 12px 16px;
           }
+          .contact-btn { width: 100%; } /* Ensure submit button takes full width on mobile */
         }
       `}</style>
 
