@@ -50,7 +50,7 @@ const AboutSection = ({
       style={{
         maxWidth: "1100px",
         margin: "0 auto",
-        padding: "80px 32px",
+        padding: "64px 32px",
         backgroundColor: "#fff", 
         
       }}
