@@ -936,7 +936,7 @@ export default function ClientOutcomes() {
   />
 </div>
       {/* ── CLIENT OUTCOMES GRID ───────────────────────────────── */}
-      <section ref={outcomesSectionRef} id="outcomes" style={{ background: '#F9F9F9', padding: "80px 0" }}>
+      <section ref={outcomesSectionRef} id="outcomes" style={{ background: '#F9F9F9', padding: "64px " }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
           
           <div style={{ marginBottom: 48, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -1097,7 +1097,7 @@ export default function ClientOutcomes() {
         }
       `}</style>
 
-      <section ref={testimonialsSectionRef} id="testimonials" className="testimonials-section" style={{ position: 'relative', padding: '80px 0', background: '#EAE5DF' }}>
+      <section ref={testimonialsSectionRef} id="testimonials" className="testimonials-section" style={{ position: 'relative', padding: '64px', background: '#EAE5DF' }}>
         <div style={{ position: 'relative', maxWidth: '1200px', margin: '0 auto', padding: '0 32px' }}>
           <div style={{ 
             display: 'flex', 
