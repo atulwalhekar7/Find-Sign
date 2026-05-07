@@ -381,13 +381,13 @@ export default function ClientOutcomes() {
         }
 
         .growth-label {
-          width: 78px;
+          width: 81.102px;
           height: 28px;
           color: var(--FS-RACING-GREEN, #073B2F);
           text-align: center;
           font-family: "SohneBuch";
           font-size: 20px;
-          font-weight: 700;
+          font-weight: 400;
           line-height: 28px;
           display: flex;
           align-items: center;
