@@ -159,7 +159,8 @@ const ServiceCard = ({
         </p>
         {hasButton && (
           <OutlineButton onClick={() => onBookCall?.(title)}>
-          Learn More          </OutlineButton>
+            Book a Call
+          </OutlineButton>
         )}
       </div>
     </FadeUp>
@@ -238,7 +239,7 @@ const OtherServiceCard = ({
         </p>
         {hasButton && (
           <OutlineButton onClick={() => onBookCall?.(title)}>
-            Learn More
+            Book a Call
           </OutlineButton>
         )}
       </div>
@@ -277,22 +278,22 @@ export default function Services() {
     "Sometimes you don't need someone to manage the entire process. You want the right guidance to make informed decisions from the first search through to securing a property. We guide you with clear advice at each stage so you understand what's happening, what to consider, and where risks and opportunities sit. You're supported throughout, with decisions made together and no uncertainty around what comes next. Every engagement is tailored to your situation, your goals and your timeline.";
 
   const body3 =
-    "Before the right money is in the right place, nothing else can move. A great mortgage broker cuts through the noise, secures the right finance structure for your situation, and ensures you are set up correctly from the very beginning of your purchase journey.";
+    "Once secured, we connect you with a trusted property manager to protect your asset, manage tenants, and keep your investment performing.";
 
   const body4 =
-    "The legal side of purchasing a property involves more moving parts than most people realise. A skilled settlement agent ensures your contracts are handled correctly, your deadlines are met, and your purchase is transferred smoothly and securely.";
+    "Once secured, we guide the process through to settlement and connect you with a trusted agent to manage contracts and ensure a smooth transfer.";
 
   const body5 =
-    "Never skip this step. A thorough building inspection gives you an honest picture of the property's condition before you commit, protecting you from costly surprises down the track.";
+    "Before you commit, we connect you with a trusted inspector to assess the property's condition and help you avoid costly issues.";
 
   const body6 =
-    "Once you have secured your investment, you need someone who will look after it as carefully as you do. A great property manager protects your asset, manages your tenants, and keeps your investment performing.";
+    "Where relevant, we connect you with a trusted sales agent so you can plan your sale or exit strategy with confidence.";
 
   const body7 =
-    "Two of the most overlooked yet most valuable members of your investment team. The right accountant and quantity surveyor ensure your structure is correct, your depreciation is maximised, and every financial entitlement available to you is working in your favour.";
+    "For investors, we connect you with a trusted quantity surveyor to prepare a depreciation schedule and support long-term returns.";
 
   const body8 =
-    "Where relevant, we connect you with a trusted sales agent so you can plan your sale or exit strategy with confidence.";
+    "We connect you with a trusted accountant to ensure your structure is right and you are maximising available tax benefits.";
 
   return (
     <div style={{ color: "#111", background: "#fff", margin: 0, padding: 0 }}>
@@ -350,7 +351,7 @@ export default function Services() {
       <AboutSection
         imageSrc={AboutServiceImg}
         heading="About Our Services"
-        // subheading="Expert guidance for every step of your property journey."
+        subheading="Expert guidance for every step of your property journey."
         body1="Find and Sign Buyer Advocate is a boutique buyers agency based in Perth, representing buyers exclusively, whether you are purchasing the home you want to live in or building the portfolio you have always planned for.
 We take on a select number of clients at any one time. Not because we have to, but because we believe a purchase of this size deserves our full attention."
         body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
@@ -418,7 +419,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
         </div>
 
         {/* Affiliated Services heading */}
-        <FadeUp>
+        <FadeUp style={{ marginBottom: "16px" }}>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
             <h2
               style={{
@@ -464,7 +465,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
                 fontStyle: "normal",
                 fontWeight: 400,
                 lineHeight: "28px",
-                marginTop: "16px",
+                marginTop: "56px",
               }}
             >
               At Find and Sign Buyer Advocate, securing the right property is only part of the process. We work with trusted professionals at each stage and can introduce them where relevant. You're never required to use these services. The choice is always yours.
@@ -477,7 +478,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
           className="three-grid"
           style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, width: "100%" }}
         >
-          <OtherServiceCard title="Mortgage Broker " body={body3} hasButton delay={0} onBookCall={handleBookCall} />
+          <OtherServiceCard title="Property Management" body={body3} hasButton delay={0} onBookCall={handleBookCall} />
           <OtherServiceCard title="Settlement Agent" body={body4} hasButton delay={0.1} onBookCall={handleBookCall} />
           <OtherServiceCard title="Building Inspection" body={body5} hasButton delay={0.2} onBookCall={handleBookCall} />
         </div>
@@ -487,9 +488,9 @@ From the first conversation to settlement and beyond, we are in your corner. You
           className="three-grid"
           style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, width: "100%" }}
         >
-          <OtherServiceCard title="Property Management" body={body6} hasButton delay={0} onBookCall={handleBookCall} />
+          <OtherServiceCard title="Sales Agent" body={body6} hasButton delay={0} onBookCall={handleBookCall} />
           <OtherServiceCard title="Quantity Surveyor" body={body7} hasButton delay={0.1} onBookCall={handleBookCall} />
-          <OtherServiceCard title="Sales Agent" body={body8} hasButton delay={0.2} onBookCall={handleBookCall} />
+          <OtherServiceCard title="Accounting" body={body8} hasButton delay={0.2} onBookCall={handleBookCall} />
         </div>
       </section>
 
