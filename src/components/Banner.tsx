@@ -44,17 +44,19 @@ function VideoModal({ onClose }: { onClose: () => void }) {
           ✕
         </button>
  
-        <video
-          src={heroVideo}
-          controls
-          autoPlay
-          style={{
-            width:        "100%",
-            borderRadius: "4px",
-            display:      "block",
-            marginTop: "10%",
-          }}
-        />
+      <iframe
+  src="https://player.vimeo.com/video/1189029882?autoplay=0&loop=1&playsinline=1"
+  style={{
+    width: "100%",
+    height: "500px",
+    borderRadius: "4px",
+    marginTop: "10%",
+  }}
+  frameBorder="0"
+  allow="autoplay; fullscreen; picture-in-picture"
+  allowFullScreen
+></iframe>
+
       </div>
     </div>
   );
@@ -89,30 +91,56 @@ const navigate = useNavigate();
         .page-wrapper { padding-top: 0; }
 
         /* ── Hero top ── */
-        .hero-top {
-          position:       relative;
-          width:          100%;
-          height:         610px;
-          overflow:       hidden;
-          display:        flex;
-          align-items:    center;
-          justify-content:center;
-          text-align:     center;
-        }
-        .hero-bg-video {
-          position:   absolute;
-          inset:      0;
-          width:      100%;
-          height:     100%;
-          object-fit: cover;
-          z-index:    0;
-        }
-        .hero-overlay {
-          position:   absolute;
-          inset:      0;
-          background: rgba(0,0,0,0.45);
-          z-index:    1;
-        }
+     .hero-top {
+  position: relative;
+  width: 100%;
+  height: 610px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.video-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+.hero-bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 177.77vh;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .hero-bg-video {
+    width: 100vw;
+    height: 56.25vw;
+  }
+}
+
+
+//       .hero-bg-video {   
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   width: 177.77vh;
+//   height: 100vh;
+//   transform: translate(-50%, -50%);
+// }
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1;
+}
         .content-wrap {
           position:        relative;
           z-index:         2;
@@ -219,7 +247,7 @@ const navigate = useNavigate();
 
       <div className="page-wrapper">
         <section className="hero-top">
-          <video
+          {/* <video
             ref={bgVideoRef}
             className="hero-bg-video"
             autoPlay
@@ -228,7 +256,18 @@ const navigate = useNavigate();
             playsInline
           >
             <source src={bannervideo} type="video/mp4" />
-          </video>
+          </video> */}
+
+      <div className="video-wrapper">
+  <iframe
+    src="https://player.vimeo.com/video/1189023931?autoplay=1&muted=1&loop=1&background=1&playsinline=1"
+    className="hero-bg-video"
+    frameBorder="0"
+    allow="autoplay; fullscreen; picture-in-picture"
+    allowFullScreen
+    loading="lazy"
+  ></iframe>
+</div>
 
           <div className="hero-overlay" />
 
