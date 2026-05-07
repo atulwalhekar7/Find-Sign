@@ -371,7 +371,7 @@
 //     </>
 //   );
 // }
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Box, Dialog, DialogContent, Typography } from "@mui/material";
 import emailjs from '@emailjs/browser';
 
@@ -382,17 +382,35 @@ const COLORS = {
   white: "#FFFFFF",
 };
 
+const SERVICES = [
+  "Buyer Advocate",
+  "Advisory",
+  "Property Management",
+  "Settlement Agent",
+  "Building Inspection",
+  "Sales Agent",
+  "Quantity Surveyor",
+  "Accounting",
+];
+
 interface NakraniContactProps {
   initialService?: string;
   showService?: boolean;
+  hideInternalHeading?: boolean; // New prop to hide the internal heading
 }
 
-export default function GetInTouch({ initialService = "", _showService = false }: NakraniContactProps) {
+export default function GetInTouch({ initialService = "", showService = false, hideInternalHeading = false }: NakraniContactProps) {
   const [submitted, setSubmitted] = useState(false);
   const [contactMethod, setContactMethod] = useState("email");
   const [isSending, setIsSending] = useState(false);
-  const [, setSelectedService] = useState(initialService);
+  const [selectedService, setSelectedService] = useState(initialService);
   const form = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    if (initialService) {
+      setSelectedService(initialService);
+    }
+  }, [initialService]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -851,7 +869,9 @@ width: 297px;
         <div className="main-container">
           {/* LEFT SIDE */}
           <div className="contact-left">
-            <h2 style={{fontFamily:"GTSuper" ,fontSize:"44px", fontWeight:"500",letterSpacing:"-0.88px",lineHeight:"54px",color:"#073B2F" ,height:"48px",width:"350px",fontStyle:"normal", marginBottom: "26px"}}>Get in touch</h2>
+            {!hideInternalHeading && (
+              <h2 style={{fontFamily:"GTSuper" ,fontSize:"44px", fontWeight:"500",letterSpacing:"-0.88px",lineHeight:"54px",color:"#073B2F" ,height:"48px",width:"350px",fontStyle:"normal", marginBottom: "26px"}}>Get in touch</h2>
+            )}
             <p className="description-text">
               Tell us what you’re looking for, and we’ll come back with next steps.
             </p>
@@ -891,6 +911,25 @@ width: 297px;
                   <label className="contact_label">Email</label>
                   <input className="contact-input" type="email" placeholder="e.g. sarah@gmail.com" required />
                 </div>
+
+                {showService && (
+                  <div className="form-group">
+                    <label className="contact_label">Service</label>
+                    <select 
+                      name="service" 
+                      className="contact-input" 
+                      value={selectedService}
+                      onChange={(e) => setSelectedService(e.target.value)}
+                      required
+                      style={{ appearance: "none", background: "#fff url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23073B2F%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E') no-repeat right 16px center" }}
+                    >
+                      <option value="" disabled>Select a service</option>
+                      {SERVICES.map((s) => (
+                        <option key={s} value={s}>{s}</option>
+                      ))}
+                    </select>
+                  </div>
+                )}
 
                <div className="contact-field-row">
   <label className="contact_label">

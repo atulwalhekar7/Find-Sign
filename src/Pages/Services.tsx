@@ -262,13 +262,13 @@ const SERVICE_ROUTES: Record<string, string> = {
 // ── Main Component ────────────────────────────────────────────────────────────
 export default function Services() {
   const navigate = useNavigate();
+  const formRef = useRef<HTMLDivElement>(null);
+  const [selectedService, setSelectedService] = useState("");
 
   // ── Handler: navigate to the service's dedicated page ──────────────────────
   const handleBookCall = (serviceName: string) => {
-    const route = SERVICE_ROUTES[serviceName];
-    if (route) {
-      navigate(route);
-    }
+    setSelectedService(serviceName);
+    formRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const body1 =
@@ -495,7 +495,9 @@ From the first conversation to settlement and beyond, we are in your corner. You
       </section>
 
       <Image1 />
-      <GetInTouch />
+      <div ref={formRef}>
+        <GetInTouch initialService={selectedService} showService={true} />
+      </div>
       <SimpleFooter />
 
       {/* ── Styles ───────────────────────────────────────────────────────── */}
