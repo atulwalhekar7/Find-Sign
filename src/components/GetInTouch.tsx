@@ -401,7 +401,7 @@ interface NakraniContactProps {
 
 export default function GetInTouch({ initialService = "", showService = false, hideInternalHeading = false }: NakraniContactProps) {
   const [submitted, setSubmitted] = useState(false);
-  const [contactMethod, setContactMethod] = useState("email");
+  const [contactMethod, setContactMethod] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [selectedService, setSelectedService] = useState(initialService);
   const form = useRef<HTMLFormElement>(null);
@@ -425,7 +425,7 @@ export default function GetInTouch({ initialService = "", showService = false, h
             setSubmitted(true);
             setIsSending(false);
             form.current?.reset();
-            setContactMethod("email");
+            setContactMethod("");
             setSelectedService(initialService);
           },
           (error: any) => {
@@ -671,6 +671,13 @@ export default function GetInTouch({ initialService = "", showService = false, h
 .submit-btn:hover {
   opacity: 0.92;
   transform: translateY(-1px);
+}
+
+.submit-btn:disabled {
+  background: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
 /* =========================
@@ -959,7 +966,13 @@ width: 297px;
                   <textarea className="contact-textarea" placeholder="What are you looking for?" required />
                 </div>
 
-                <button type="submit" className="submit-btn">SUBMIT</button>
+                <button 
+                  type="submit" 
+                  className="submit-btn" 
+                  disabled={!contactMethod || (showService && !selectedService) || isSending}
+                >
+                  {isSending ? "SENDING..." : "SUBMIT"}
+                </button>
               </form>
             )}
           </div>
