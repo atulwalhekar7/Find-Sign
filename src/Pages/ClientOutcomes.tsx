@@ -568,12 +568,7 @@ const reviews = [
     body: "Niki is the best in the business. He has the best negotiating skills and can get you the best price for the property.",
     image: kienLamImg,
   },
-  {
-    name: "Kush Hirani",
-    date: "4 months ago",
-    title: "Very pleased with Niki & Rebecca’s service",
-    body: "Very pleased with Niki & Rebecca’s service. Quick responses and always going above and beyond to make sure I found the right property. Niki is thorough on all the home opens to point out any potential issues and doesn’t pressure you at all",
-  },
+  
 ];
 
 // Helper to truncate body text if it ends with "...More"
