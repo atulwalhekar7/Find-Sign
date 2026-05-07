@@ -48,7 +48,7 @@ import id37 from "../assets/Client Outcomes/id37.webp";
 import id38 from "../assets/Client Outcomes/id38.webp";
 import id39 from "../assets/Client Outcomes/id39.webp";
 import ellipseImage from "../assets/Ellipse 1.png";
-import starIcon from "../assets/Union.png"; // Import star icon
+import starIcon from "../assets/Union.png";
 
 import roksonImg from "../assets/testomonials/Rokson.png";
 import rinzinWangchukImg from "../assets/testomonials/Rinzin Wangchuk.png";
@@ -469,31 +469,26 @@ const reviews = [
     name: "Rok Son",
     date: "5 months ago",
     title: "Absolute pleasure from start to finish",
-    body: "Working with Niki was an absolute pleasure from start to finish. He’s professional, knowledgeable, and genuinely invested in finding the perfect property for his clients. From our first meeting, Niki took the time to understand exactly what I was looking for — my budget. ",
+    body: "Working with Niki was an absolute pleasure from start to finish. He's professional, knowledgeable, and genuinely invested in finding the perfect property for his clients. From our first meeting, Niki took the time to understand exactly what I was looking for — my budget. ",
     image: roksonImg,
   },
   {
     name: "Amit Bhardwaj",
     date: "2 months ago",
     title: "One of the best decisions we made",
-    body: "Having Niki as our buyer’s agent was one of the best decisions we made. From the very start, he genuinely cared about finding the right home for us. He listened, guided us with confidence, and made what could have been a stressful process feel calm and manageable. ",
+    body: "Having Niki as our buyer's agent was one of the best decisions we made. From the very start, he genuinely cared about finding the right home for us. He listened, guided us with confidence, and made what could have been a stressful process feel calm and manageable. ",
   },
- 
-  
   {
     name: "Rinzin Wangchuk",
     date: "3 months ago",
     title: "goes way above your needs",
-    body: "Niki is very professional and goes way above your needs. I was looking for my first home in Perth and didn’t know where to begin.",
+    body: "Niki is very professional and goes way above your needs. I was looking for my first home in Perth and didn't know where to begin.",
     image: rinzinWangchukImg,
   },
- 
- 
- 
   {
     name: "dayna bechar",
     date: "5 months ago",
-    title: "Absolute pleasure to work with",
+    title: "Absolute pleasure to work ",
     body: "Niki was an absolute pleasure to work with. His market knowledge and clear communication gave us total confidence throughout the process. He was always available to answer questions and offer advice. Thanks to Niki, we found our dream home without any stress. Highly recommend!",
   },
   {
@@ -532,7 +527,7 @@ const reviews = [
     name: "Subho Ghosh",
     date: "2 months ago",
     title: "Absolute legends",
-    body: "Niki and Bec were absolute legends. They really listened, stayed patient, and went the extra mile to help us find our dream home. Honest advice, great communication, and zero pressure. Couldn’t have asked for better agents to guide us through the process. Highly recommend them.",
+    body: "Niki and Bec were absolute legends. They really listened, stayed patient, and went the extra mile to help us find our dream home. Honest advice, great communication, and zero pressure. Couldn't have asked for better agents to guide us through the process. Highly recommend them.",
   },
   {
     name: "Jasmine cheema",
@@ -540,7 +535,6 @@ const reviews = [
     title: "Truly exceptional at what he does",
     body: "I recently had the opportunity to work with Niki, and I must say he is truly exceptional at what he does. He consistently puts his clients first and goes above and beyond to ensure they feel supported throughout the entire process.",
   },
- 
   {
     name: "Gurinder Singh",
     date: "4 months ago",
@@ -552,9 +546,8 @@ const reviews = [
     name: "P Y",
     date: "4 months ago",
     title: "Hands-on approach and professionalism",
-    body: "What really stood out about Niki compared to other buyer’s agents I spoke with was his hands-on approach and professionalism from the very beginning. I was unsure about using a buyer’s agent at first, but after our first call it was clear.",
+    body: "What really stood out about Niki compared to other buyer's agents I spoke with was his hands-on approach and professionalism from the very beginning. I was unsure about using a buyer's agent at first, but after our first call it was clear.",
   },
-
   {
     name: "Travis Ranieri",
     date: "10 months ago",
@@ -568,51 +561,51 @@ const reviews = [
     body: "Niki is the best in the business. He has the best negotiating skills and can get you the best price for the property.",
     image: kienLamImg,
   },
-  
 ];
 
 // Helper to truncate body text if it ends with "...More"
 const formatReviewBody = (text: string) => {
   if (text.endsWith("…More")) {
     return text.substring(0, text.length - 5).trim();
-  } 
+  }
   return text;
 };
 
 function TestimonialCard({ testimonial, style }: { testimonial: any; style?: React.CSSProperties }) {
   return (
-    <div 
+    <div
       className="testimonial-card"
-      style={{ 
-        ...style, 
-        display: 'flex', 
-        flexDirection: 'column' 
+      style={{
+        ...style,
+        display: 'flex',
+        flexDirection: 'column'
       }}
     >
       {/* ── TOP: pill ── */}
       <div style={{
-        display: 'flex',
-        height: '45px',
-        padding: '16px',
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: '10px',
-        flexShrink: 0,
-        borderRadius: '12px',
-        background: '#69E4DC',
-        color: '#073B2F',
-        fontSize: '12px',
-        fontWeight: 400,
-        maxWidth: '85%',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
-        fontFamily: 'SohneBuch',
-        marginBottom: '10px',
+        display: 'inline-flex',
+padding: '8px 16px',
+justifyContent: 'flex-start',
+alignItems: 'center',
+gap: '10px',
+flexShrink: 0,
+borderRadius: '12px',
+background: '#69E4DC',
+color: '#073B2F',
+fontSize: '16px',
+fontWeight: 400,
+maxWidth: '100%',
+overflow: 'hidden',
+textOverflow: 'ellipsis',
+whiteSpace: 'nowrap',
+fontFamily: 'SohneBuch',
+lineHeight: '24px',
+marginBottom: '10px',
+alignSelf: 'flex-start',
       }}>
         {testimonial.title}
       </div>
-      
+
       {/* ── STARS ── */}
       <div style={{ display: 'flex', alignItems: 'center', marginTop: '12px', flexShrink: 0, marginBottom: '10px' }}>
         <img
@@ -623,7 +616,7 @@ function TestimonialCard({ testimonial, style }: { testimonial: any; style?: Rea
       </div>
 
       {/* ── BODY ── */}
-      <p style={{ 
+      <p style={{
         width: '100%',
         color: '#000',
         fontFamily: 'SohneBuch',
@@ -643,7 +636,7 @@ function TestimonialCard({ testimonial, style }: { testimonial: any; style?: Rea
       </p>
 
       {/* ── BOTTOM: avatar + name + date ── */}
-      <div style={{ 
+      <div style={{
         display: 'flex',
         alignItems: 'center',
         gap: '12px',
@@ -716,7 +709,6 @@ const formattedReviews = reviews.map(review => ({
   body: formatReviewBody(review.body),
 }));
 
-// Use formattedReviews in the component
 // ── SUB-COMPONENT ───────────────────────────────────
 function PropertyCard({ card, index }: { card: typeof cards[0]; index: number }) {
   return (
@@ -841,19 +833,17 @@ export default function ClientOutcomes() {
     setReviewIdx(prev => Math.min(prev, maxReviewIdx));
   }, [visibleCount, maxReviewIdx]);
 
-  const reviewCardWidth = reviewContainerWidth 
-    ? (reviewContainerWidth - 32 * (visibleCount - 1)) / visibleCount 
+  const reviewCardWidth = reviewContainerWidth
+    ? (reviewContainerWidth - 32 * (visibleCount - 1)) / visibleCount
     : 350;
 
   const handleToggleCards = () => {
     if (showAllCards) {
       setShowAllCards(false);
-      // Scroll to the button container instead of the section top.
-      // Using a small timeout ensures the height of the grid has updated before we scroll.
       setTimeout(() => {
-        buttonContainerRef.current?.scrollIntoView({ 
-          behavior: "smooth", 
-          block: "center" 
+        buttonContainerRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
         });
       }, 100);
     } else {
@@ -865,9 +855,9 @@ export default function ClientOutcomes() {
     if (showAllReviews) {
       setShowAllReviews(false);
       setTimeout(() => {
-        reviewButtonContainerRef.current?.scrollIntoView({ 
-          behavior: "smooth", 
-          block: "center" 
+        reviewButtonContainerRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
         });
       }, 100);
     } else {
@@ -877,7 +867,7 @@ export default function ClientOutcomes() {
 
   return (
     <div style={{ backgroundColor: "#FFFFFF", fontFamily: "Sohne, sans-serif" }}>
-      
+
       {/* ── HERO ───────────────────────────────── */}
       <section
         style={{
@@ -906,7 +896,7 @@ export default function ClientOutcomes() {
             animation: "heroFadeIn 0.8s ease both",
           }}
         >
-<h1 style={{ 
+          <h1 style={{
             fontFamily: "'GT Super Display Medium'",
             fontSize: "64px",
             fontWeight: 500,
@@ -914,7 +904,7 @@ export default function ClientOutcomes() {
             lineHeight: "1.1",
             letterSpacing: "-1.28px",
             fontVariantNumeric: "lining-nums proportional-nums",
-            margin: 0 
+            margin: 0
           }}>
             Client Outcomes
           </h1>
@@ -923,19 +913,20 @@ export default function ClientOutcomes() {
 
       {/* ── ABOUT ───────────────────────────────── */}
       <div className="client-outcomes-about">
-  <AboutSection
-    imageSrc={AboutClientOutcomesImg}
-    heading="About Client Outcomes"
-    subheading=" Explore more about client outcomes."
-    body1="These are outcomes we have achieved for our clients. Real properties, real numbers, and measurable growth. When you engage Find and Sign Buyer Advocate, you are not simply purchasing a property; you are entering a strategy built for long-term performance. These examples show what is possible when the right property is identified and secured early."
-  />
-</div>
+        <AboutSection
+          imageSrc={AboutClientOutcomesImg}
+          heading="About Client Outcomes"
+          subheading=" Explore more about client outcomes."
+          body1="These are outcomes we have achieved for our clients. Real properties, real numbers, and measurable growth. When you engage Find and Sign Buyer Advocate, you are not simply purchasing a property; you are entering a strategy built for long-term performance. These examples show what is possible when the right property is identified and secured early."
+        />
+      </div>
+
       {/* ── CLIENT OUTCOMES GRID ───────────────────────────────── */}
       <section ref={outcomesSectionRef} id="outcomes" style={{ background: '#F9F9F9', padding: "80px 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
-          
+
           <div style={{ marginBottom: 48, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <h2 style={{ 
+            <h2 style={{
               fontFamily: "'GT Super Display Medium'",
               fontSize: "44px",
               fontWeight: 500,
@@ -961,7 +952,7 @@ export default function ClientOutcomes() {
               marginTop: "24px",
               textAlign: "center"
             }}>
-               Explore more about client outcomes.
+              Explore more about client outcomes.
             </p>
           </div>
 
@@ -972,12 +963,12 @@ export default function ClientOutcomes() {
           </div>
 
           {cards.length > INITIAL_CARDS_COUNT && (
-            <div 
+            <div
               ref={buttonContainerRef}
               style={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}
             >
-              <button 
-                className="view-more-outcomes-btn" 
+              <button
+                className="view-more-outcomes-btn"
                 onClick={handleToggleCards}
               >
                 {showAllCards ? "View Less" : "View More Outcomes"}
@@ -1001,14 +992,14 @@ export default function ClientOutcomes() {
         .testimonial-card {
           position: relative;
           background: #FFFFFF;
-          border-radius: 24px; /* Adjusted from 16px */
+          border-radius: 24px;
           padding: 20px;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          height: 407px; /* Adjusted from 320px */
-          border: 1px solid #69E4DC; /* Adjusted from 2px solid AQUA */
-          box-shadow: none; /* Adjusted from 0 4px 12px rgba(0,0,0,0.03) */
+          height: 407px;
+          border: 1px solid #69E4DC;
+          box-shadow: none;
           transition: all 0.5s;
         }
         .testimonial-card:hover {
@@ -1021,7 +1012,7 @@ export default function ClientOutcomes() {
           transition: all 0.3s ease;
         }
         .testimonial-card:hover .avatar-circle {
-          box-shadow: 0 4px 15px rgba(105, 228, 220, 0.6); /* Kept as is, matches Reviews.tsx */
+          box-shadow: 0 4px 15px rgba(105, 228, 220, 0.6);
           border-color: #69E4DC !important;
           transform: scale(1.05);
         }
@@ -1046,7 +1037,7 @@ export default function ClientOutcomes() {
 
         .slider-track {
           display: flex;
-          align-items: stretch; /* Ensures all cards in a row have same height */
+          align-items: stretch;
         }
 
         .nav-arrow {
@@ -1068,7 +1059,7 @@ export default function ClientOutcomes() {
         }
         .nav-arrow.prev { left: -60px; }
         .nav-arrow.next { right: -60px; }
-        .nav-arrow:hover:not(:disabled) { 
+        .nav-arrow:hover:not(:disabled) {
           transform: translateY(-50%) scale(1.05);
           background: #073B2F;
           color: white;
@@ -1094,26 +1085,26 @@ export default function ClientOutcomes() {
 
       <section ref={testimonialsSectionRef} id="testimonials" className="testimonials-section" style={{ position: 'relative', padding: '80px 0', background: '#EAE5DF' }}>
         <div style={{ position: 'relative', maxWidth: '1200px', margin: '0 auto', padding: '0 32px' }}>
-          <div style={{ 
-            display: 'flex', 
-            flexDirection: 'column', 
-            alignItems: 'center', 
-            marginBottom: '48px', 
-            textAlign: 'center' 
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            marginBottom: '48px',
+            textAlign: 'center'
           }}>
-            <h2 style={{ 
+            <h2 style={{
               fontFamily: "GT Super Display Medium",
-  fontSize: "44px",
-  fontWeight: 500,
-  color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
-  lineHeight: "120%",
-  letterSpacing: "-0.48px",
-  fontVariantNumeric: "lining-nums proportional-nums",
-  margin: "0",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  gap: "24px"
+              fontSize: "44px",
+              fontWeight: 500,
+              color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+              lineHeight: "120%",
+              letterSpacing: "-0.48px",
+              fontVariantNumeric: "lining-nums proportional-nums",
+              margin: "0",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "24px"
             }}>
               What our clients are saying
               <div style={{ width: "160px", height: "1px", background: "#073B2F" }} />
@@ -1127,7 +1118,7 @@ export default function ClientOutcomes() {
               marginTop: "24px",
               textAlign: "center"
             }}>
-                 Explore more about What our clients are saying.
+              Explore more about What our clients are saying.
             </p>
           </div>
 
@@ -1156,7 +1147,7 @@ export default function ClientOutcomes() {
                 </button>
 
                 <div ref={reviewContainerRef} style={{ overflow: "hidden", padding: "40px 0", margin: "-40px 0" }}>
-                  <div 
+                  <div
                     className="slider-track"
                     style={{
                       display: "flex",
@@ -1164,11 +1155,11 @@ export default function ClientOutcomes() {
                       transition: "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
                       transform: `translateX(-${reviewIdx * (reviewCardWidth + 32)}px)`,
                     }}
-                  > 
+                  >
                     {formattedReviews.map((testimonial, index) => (
-                      <TestimonialCard 
-                        key={index} 
-                        testimonial={testimonial} 
+                      <TestimonialCard
+                        key={index}
+                        testimonial={testimonial}
                         style={{ flex: `0 0 ${reviewCardWidth}px`, width: `${reviewCardWidth}px` }}
                       />
                     ))}
@@ -1204,13 +1195,13 @@ export default function ClientOutcomes() {
               </div>
             )}
           </div>
-          
-          <div 
+
+          <div
             ref={reviewButtonContainerRef}
             style={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}
           >
-            <button 
-              className="view-more-outcomes-btn" 
+            <button
+              className="view-more-outcomes-btn"
               onClick={handleToggleReviews}
             >
               {showAllReviews ? "View Less Feedback" : "View More Feedback"}
@@ -1220,14 +1211,13 @@ export default function ClientOutcomes() {
       </section>
 
       {/* ── GET IN TOUCH ───────────────────────────────── */}
-      <Image1/>
+      <Image1 />
       <SimpleGetInTouch />
 
       {/* ── FOOTER ───────────────────────────────── */}
       <SimpleFooter />
 
       {/* ── RESPONSIVE ───────────────────────────────── */}
-      
       <style>{`
         @keyframes cardReveal {
           from { opacity: 0; transform: translateY(20px); }
@@ -1292,7 +1282,7 @@ export default function ClientOutcomes() {
           cursor: pointer;
           overflow: hidden;
         }
-        
+
         .property-card:hover {
           transform: translateY(-12px);
           box-shadow: 0 10px 22px rgba(105,228,220,0.96);
@@ -1305,11 +1295,11 @@ export default function ClientOutcomes() {
           overflow: hidden;
           position: relative;
         }
-        
-        .card-image { 
-          width: 100%; 
-          height: 100%; 
-          object-fit: cover; 
+
+        .card-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
           transition: 0.3s;
           filter: blur(3px) brightness(80%);
         }
@@ -1318,16 +1308,15 @@ export default function ClientOutcomes() {
           transform: scale(1.08);
         }
 
-        /* Growth Circle Container with Heartbeat Animation */
         .growth-circle-container {
           position: absolute;
-          bottom: 185px; /* Position at the bottom */
+          bottom: 185px;
           right: 1px;
-          width: 130px; /* Increased size */
-          height: 130px; /* Increased size */
+          width: 130px;
+          height: 130px;
           border-radius: 50%;
           background: ${AQUA};
-          background-image: url(${ellipseImage}); /* Overlay the image if it's a pattern/texture */
+          background-image: url(${ellipseImage});
           background-size: cover;
           background-position: center;
           object-fit: cover;
@@ -1336,12 +1325,11 @@ export default function ClientOutcomes() {
           align-items: center;
           justify-content: center;
           z-index: 10;
-          // animation: heartbeatFloat 4s ease-in-out infinite;
-          transition: filter 0.3s ease, background 0.3s ease; /* Add background to transition */
+          transition: filter 0.3s ease, background 0.3s ease;
           text-align: center;
         }
 
-         .growth-circle-container:hover {
+        .growth-circle-container:hover {
           animation: heartbeatFloat 4s ease-in-out infinite;
         }
 
@@ -1350,7 +1338,7 @@ export default function ClientOutcomes() {
           filter: brightness(1.1) drop-shadow(0 4px 15px rgba(105,228,220,0.5));
         }
 
-        .growth-circle-container  .growth-label {
+        .growth-circle-container .growth-label {
           width: 81.102px;
           height: 28px;
           color: var(--FS-RACING-GREEN, #073B2F);
@@ -1363,7 +1351,7 @@ export default function ClientOutcomes() {
           align-items: center;
           justify-content: center;
         }
-        .growth-circle-container  .growth-value {
+        .growth-circle-container .growth-value {
           width: 123px;
           color: var(--FS-RACING-GREEN, #073B2F);
           text-align: center;
@@ -1378,7 +1366,7 @@ export default function ClientOutcomes() {
           margin-bottom: 4px;
         }
 
-       .card-data { padding: 55px 18px 20px; flex: 1; }
+        .card-data { padding: 55px 18px 20px; flex: 1; }
         .card-row {
           display: flex;
           justify-content: space-between;
@@ -1415,32 +1403,28 @@ export default function ClientOutcomes() {
           }
         }
 
-       .view-more-outcomes-btn {
-  display: flex;
-  height: 48px;
-  padding: 12px 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-
-  border-radius: 8px;
-  border: 1px solid #69E4DC;
-  background: #ffffff;
-
-  color: #073B2F;
-  font-family: 'CX80';
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 15px;
-  letter-spacing: 4.8px;
-
-  text-transform: uppercase;
-  cursor: pointer;
-  text-decoration: none;
-
-  transition: background 0.2s ease, color 0.2s ease;
-}
+        .view-more-outcomes-btn {
+          display: flex;
+          height: 48px;
+          padding: 12px 16px;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          flex-shrink: 0;
+          border-radius: 8px;
+          border: 1px solid #69E4DC;
+          background: #ffffff;
+          color: #073B2F;
+          font-family: 'CX80';
+          font-size: 15px;
+          font-weight: 700;
+          line-height: 15px;
+          letter-spacing: 4.8px;
+          text-transform: uppercase;
+          cursor: pointer;
+          text-decoration: none;
+          transition: background 0.2s ease, color 0.2s ease;
+        }
         .view-more-outcomes-btn:hover { background: ${AQUA}; transform: scale(1.05); }
       `}</style>
     </div>
