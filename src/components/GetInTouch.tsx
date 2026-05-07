@@ -371,16 +371,28 @@
 //     </>
 //   );
 // }
+import { useState, useRef } from "react";
+import { Box, Dialog, DialogContent, Typography } from "@mui/material";
+import emailjs from '@emailjs/browser';
 
+const COLORS = {
+  racingGreen: "#073B2F",
+  aqua: "#69E4DC",
+  black: "#000000",
+  white: "#FFFFFF",
+};
 
+interface NakraniContactProps {
+  initialService?: string;
+  showService?: boolean;
+}
 
-
-
-import { useState } from "react";
-
-export default function GetInTouch({ initialService = "", showService = false }: NakraniContactProps) {
+export default function GetInTouch({ initialService = "", _showService = false }: NakraniContactProps) {
   const [submitted, setSubmitted] = useState(false);
-const [contactMethod, setContactMethod] = useState("email");
+  const [contactMethod, setContactMethod] = useState("email");
+  const [isSending, setIsSending] = useState(false);
+  const [, setSelectedService] = useState(initialService);
+  const form = useRef<HTMLFormElement>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -395,10 +407,10 @@ const [contactMethod, setContactMethod] = useState("email");
             setSubmitted(true);
             setIsSending(false);
             form.current?.reset();
-            setContactPreference("email");
+            setContactMethod("email");
             setSelectedService(initialService);
           },
-          (error) => {
+          (error: any) => {
             setIsSending(false);
             console.error('EmailJS Error:', error.text);
             alert("Failed to send message. Please try again later.");
@@ -839,7 +851,7 @@ width: 297px;
         <div className="main-container">
           {/* LEFT SIDE */}
           <div className="contact-left">
-            <h2 style={{fontFamily:"GTSuper" ,fontSize:"44px", fontWeight:"500",letterSpacing:"-0.88px",lineHeight:"54px",color:"#073B2F" ,height:"48px",width:"350px",fontStyle:"normal"}}>Get in touch</h2>
+            <h2 style={{fontFamily:"GTSuper" ,fontSize:"44px", fontWeight:"500",letterSpacing:"-0.88px",lineHeight:"54px",color:"#073B2F" ,height:"48px",width:"350px",fontStyle:"normal", marginBottom: "26px"}}>Get in touch</h2>
             <p className="description-text">
               Tell us what you’re looking for, and we’ll come back with next steps.
             </p>
@@ -848,9 +860,9 @@ width: 297px;
               BOOK A CALL
             </a>
 
-            <div className="nikki-info">
-              Contact Niki<br />
-              T: 0431 158 233
+            <div className="nikki-info" style={{ display: 'flex', flexDirection: 'column', gap: '37px' }}>
+              <span>Contact Niki</span>
+              <span>T: 0431 158 233</span>
             </div>
           </div>
 
@@ -859,7 +871,7 @@ width: 297px;
             {submitted ? (
               <div className="nikki-info">Thank you! We will be in touch.</div>
             ) : (
-              <form onSubmit={handleSubmit} style={{ width: "100%", display: "flex", flexDirection: "column", gap: "16px" }}>
+              <form ref={form} onSubmit={handleSubmit} style={{ width: "100%", display: "flex", flexDirection: "column", gap: "16px" }}>
                 <div className="form-group">
                   <label className="contact_label">First name</label>
                   <input className="contact-input" placeholder="e.g. Sarah" required />
