@@ -57,7 +57,7 @@ export default function About() {
       <AboutSection
         imageSrc={AboutUsBanner}
         heading="About Find & Sign"
-        subheading="Explore more about Find & Sign."
+        // subheading="Explore more about Find & Sign."
         body1="Find & Sign Buyer Advocate was built on the belief that every buyer should secure the right property to build equity, choice and financial freedom.
 Founder Niki learnt through experience that the right guidance is critical in securing the outcome. It is identified through local knowledge, experience and direct relationships, then secured before it reaches the wider market.
 We are a boutique buyers' agency operating nationwide, acting exclusively for buyers. Not agents.Not developers we are intentionally selective about the number of clients we take on to give each brief our full attention and expert advice. 

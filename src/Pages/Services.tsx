@@ -159,8 +159,7 @@ const ServiceCard = ({
         </p>
         {hasButton && (
           <OutlineButton onClick={() => onBookCall?.(title)}>
-            Book a Call
-          </OutlineButton>
+          Learn More          </OutlineButton>
         )}
       </div>
     </FadeUp>
@@ -239,7 +238,7 @@ const OtherServiceCard = ({
         </p>
         {hasButton && (
           <OutlineButton onClick={() => onBookCall?.(title)}>
-            Book a Call
+            Learn More
           </OutlineButton>
         )}
       </div>
@@ -351,7 +350,7 @@ export default function Services() {
       <AboutSection
         imageSrc={AboutServiceImg}
         heading="About Our Services"
-        subheading="Expert guidance for every step of your property journey."
+        // subheading="Expert guidance for every step of your property journey."
         body1="Find and Sign Buyer Advocate is a boutique buyers agency based in Perth, representing buyers exclusively, whether you are purchasing the home you want to live in or building the portfolio you have always planned for.
 We take on a select number of clients at any one time. Not because we have to, but because we believe a purchase of this size deserves our full attention."
         body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
