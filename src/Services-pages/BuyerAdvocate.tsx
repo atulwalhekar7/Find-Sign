@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import bannerImg from "../assets/DSC06227.jpg";
+import bannerImg from "../assets/family-home-buyers-australia-find-and-sign.jpg";
 import AboutSection from "../components/AboutSection";
 import SimpleFooter from "../components/SimpleFooter";
 import GetInTouch from "../components/GetInTouch";
-import AboutServiceImg from "../assets/About Our Services.jpg";
+import AboutServiceImg from "../assets/niki-nakrani-top-buyers-agent-perth-find-and-sign.jpg";
 
 export default function BuyerAdvocate() {
 

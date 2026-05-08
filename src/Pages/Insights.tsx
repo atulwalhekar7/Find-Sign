@@ -6,7 +6,7 @@ import SimpleFooter from "../components/Footer";
 import Image1 from "../components/Image1";
 
 // import aboutInsightsImg from "../assets/About Insights.jpg";
-import bannerImg from "../assets/Insights_Banner.jpg";
+import bannerImg from "../assets/niki-nakrani-luxury-home-buyers-agent-australia.jpg";
 import perthBlogImg from "../assets/Blogs/DSC06286.jpg";
 
 // --- Helper Components ---

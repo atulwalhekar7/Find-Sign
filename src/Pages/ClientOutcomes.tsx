@@ -5,8 +5,8 @@ import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
 import Image1 from "../components/Image1";
 
-import bannerImg from "../assets/Client Outcomes_Banner.jpg";
-import AboutClientOutcomesImg from "../assets/About Client Outcomes.png";
+import bannerImg from "../assets/niki-nakrani-trusted-buyers-agent-perth.jpg";
+import AboutClientOutcomesImg from "../assets/niki-nakrani-find-and-sign-property-expert.png";
 
 import id1 from "../assets/Client Outcomes/id1.webp";
 import id2 from "../assets/Client Outcomes/id2.webp";
