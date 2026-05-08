@@ -6,7 +6,7 @@ export default function Contact() {
     <>
       <div className="contact-page-heading-section" style={{
         backgroundColor: "#ebe6de", // Matching the background of GetInTouch
-        paddingTop: "80px", // Top padding for the section
+        paddingTop: "64px", // Top padding for the section
         paddingBottom: "40px", // Bottom padding before the GetInTouch component
         display: "flex",
         flexDirection: "column",

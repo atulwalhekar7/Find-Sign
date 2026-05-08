@@ -185,7 +185,7 @@ Find & Sign we find with confidence you sign with certainty.
         /* ── TEAM SECTION ── */
        .team-section {
   width: 100%;
-  padding: 80px 32px;
+  padding: 64px 32px;
   background: #fff;   /* ← add this */
 }
         .team-container { max-width: 1200px; margin: 0 auto; }

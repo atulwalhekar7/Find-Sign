@@ -26,7 +26,7 @@ const SideBySideSection = ({
     display: "flex", 
     flexDirection: reverse ? "row-reverse" : "row", 
     alignItems: "center", 
-    gap: "80px", 
+    gap: "64px", 
     padding: "60px 0",
     flexWrap: "wrap"
   }}>

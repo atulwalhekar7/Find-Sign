@@ -237,7 +237,7 @@ export default function Insights() {
         }
 
         .blogs-container {
-          padding: 0 40px;
+          padding: 64px;
         }
 
         .blog-card {
