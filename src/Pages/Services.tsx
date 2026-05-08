@@ -253,7 +253,7 @@ const OtherServiceCard = ({
 export default function Services() {
   const navigate = useNavigate();
   const formRef = useRef<HTMLDivElement>(null);
-  const [selectedService, setSelectedService] = useState("");
+  const [selectedService] = useState("");
 
   // ── Handler: navigate to the service's dedicated page ──────────────────────
   const handleBookCall = (serviceName: string) => {
