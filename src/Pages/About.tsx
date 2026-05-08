@@ -478,12 +478,7 @@ Find & Sign we find with confidence you sign with certainty.
                     <a href="https://www.linkedin.com/in/niki-nakrani-13b269237/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
                       <img src={liIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="LinkedIn" />
                     </a>
-                    <a href="https://www.tiktok.com/" target="_blank" rel="noreferrer" aria-label="Tiktok">
-                      <img src={tiIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Tiktok" />
-                    </a>
-                    <a href="https://www.google.com/search?kgmid=/g/11vyhyd916&hl=en-IN&q=Find+and+Sign+Buyer+Advocate" target="_blank" rel="noreferrer" aria-label="Google">
-                      <img src={goIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Google" />
-                    </a>
+                    
                   </div>
                 </div>
               </div>

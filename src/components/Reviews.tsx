@@ -311,7 +311,7 @@ const App = () => {
                   What Clients Say
                   <div style={{ width: "160px", height: "1px", background: "#073B2F" }} />
                 </h2>
-                <p className="rev-subheading">In their own words, following their experience with Niki.</p>
+                <p className="rev-subheading">In their own words, following their experience with Find & Sign.</p>
               </div>
             </div>
           </div>
