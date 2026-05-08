@@ -687,14 +687,16 @@ alignSelf: 'flex-start',
             {testimonial.name}
           </h4>
           <p style={{
-            fontSize: '11px',
-            fontWeight: 500,
-            color: '#073B2F',
-            textTransform: 'uppercase',
-            letterSpacing: '0.05em',
-            marginTop: '2px',
-            fontFamily: 'CX80',
-          }}>
+  fontSize: '9px',
+  fontWeight: 500,
+  color: '#000',
+  textTransform: 'uppercase',
+  letterSpacing: '2.88px',
+  marginTop: '2px',
+  fontFamily: 'CX80',
+  lineHeight: '15px',
+  fontStyle: 'normal',
+}}>
             {testimonial.date}
           </p>
         </div>
