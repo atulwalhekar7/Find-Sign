@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import bannerImg from "../assets/family-home-buyers-australia-find-and-sign.jpg";
+import bannerImg from "../assets/service-banner-find-and-sign-buyers-australia.jpg";
 import AboutSection from "../components/AboutSection";
 import SimpleFooter from "../components/SimpleFooter";
 import GetInTouch from "../components/GetInTouch";
-import AboutServiceImg from "../assets/niki-nakrani-top-buyers-agent-perth-find-and-sign.jpg";
+import AboutServiceImg from "../assets/about-service-find-and-sign.jpg";
 
 export default function BuyerAdvocate() {
 
@@ -65,8 +65,7 @@ export default function BuyerAdvocate() {
 From the moment we begin working together, we take on the entire process on your behalf. We get to know your goals, your non-negotiables, and your timeline, and we build a strategy around them. We search both on-market listings and our off-market network, and every property we consider is physically inspected by us before it ever reaches you. We will never recommend a property we have not walked through ourselves. That is a standard we hold on every single engagement."
         body2="Once the right property is identified, we manage all due diligence, coordinate building inspections and necessary reports, and negotiate the price and contract terms firmly in your favour. You are kept informed and involved at every touch point, without ever being burdened by the complexity of the process.
 Our full service is deeply personal. No two clients are the same and neither is our approach. Every engagement is tailored to your specific situation, your goals, and your timeline. You are not just another transaction to us. You are someone we are genuinely invested in seeing succeed.
-From the first conversation to settlement day and beyond, we are by your side every step of the way.
-."
+From the first conversation to settlement day and beyond, we are by your side every step of the way."
       />
 
 
