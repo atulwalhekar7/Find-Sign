@@ -362,7 +362,7 @@
 
 import { NavLink } from "react-router-dom";
 
-import Logo from "../assets/FS Primary Lockup_Gold.png";
+import logo from "../assets/FS Primary Lockup_Gold.png";
 
 import fbIcon from "../assets/icon/fb.svg";
 import igIcon from "../assets/icon/Instagram.svg";
@@ -398,286 +398,193 @@ export default function Footer() {
           width: 100%;
           display: flex;
           min-height: 589px;
-          padding: 96px 126px;
+          padding: 96px 8%; /* Percentage padding for better scaling */
           flex-direction: column;
           align-items: flex-start;
-          gap: 55px;
+          gap: 120px; /* Space before the copyright bottom bar */
           align-self: stretch;
         }
 
-        /* ── TOP ROW: all columns in one flex-wrap row ── */
+        /* ── 12 COLUMN GRID SYSTEM ── */
         .footer-grid {
           display: flex;
           flex-wrap: wrap;
           align-items: flex-start;
-          align-content: flex-start;
-          gap: 55px 32px;
           width: 100%;
         }
 
-        /* Logo */
-        .footer-logo {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          padding: 8px 0;
+        /* Col 1-2: Logo */
+        .footer-logo-container {
+          width: 16.66%; /* 2/12 columns */
           flex-shrink: 0;
         }
-        .footer-logo img {
-          width: 159px;
-          height: 59px;
+
+        .nav-logo {
+          width: 128px;
+          height: auto;
           object-fit: contain;
+          display: block;
         }
 
-        /* Contact */
+        /* Col 3-5: Contact (Added space from logo) */
         .footer-contact {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          gap: 8px;
-          width: 267px;
-          flex-shrink: 0;
+          gap: 4px;
+          width: 25%; /* 3/12 columns */
+          padding-left: 20px; /* Precise gap between logo and contact */
         }
 
-        /* Explore */
+        /* Col 6-7: Explore */
         .footer-explore {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          gap: 8px;
-          width: 167px;
-          flex-shrink: 0;
+          gap: 4px;
+          width: 16.66%; /* 2/12 columns */
         }
 
-        /* Legal */
+        /* Col 8-10: Legal */
         .footer-legal {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          gap: 8px;
-          width: 168px;
-          flex-shrink: 0;
+          gap: 4px;
+          width: 25%; /* 3/12 columns */
         }
 
-        /* Social icons — same row, pushes to right */
+        /* Col 11-12: Socials (Right aligned) */
         .footer-social {
           display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          align-content: center;
-          gap: 32px;
-          width: 258px;
-          padding: 10px 0;
-          flex-shrink: 0;
-          margin-left: auto;
+          align-items: flex-start;
+          justify-content: flex-end; /* Push icons to the very end of the 12th column */
+          gap: 24px; /* Reduced space between icons */
+          width: 16.66%; /* 2/12 columns */
+          padding-top: 10px;
         }
 
         /* Section heading */
         .section-title {
-          font-family:"CX80BOLD", sans-serif;
+          font-family: "CX80BOLD", sans-serif;
           font-size: 18px;
-          font-weight: 150;
-          line-height: 18px;
           letter-spacing: 5.76px;
           color: #F9F9F9;
-          padding: 10px 0;
+          padding-bottom: 20px;
           text-transform: uppercase;
-          white-space: nowrap;
         }
 
-        /* Generic row inside a section */
         .footer-row {
           display: flex;
           align-items: center;
-          padding: 10px 0;
+          padding: 6px 0;
           width: 100%;
         }
 
-        /* Body text */
-        .footer-text {
-          font-family: "Söhne", "Sohne", sans-serif;
+        .footer-text, .footer-link {
+          font-family: "Söhne", sans-serif;
           font-size: 16px;
-          font-weight: 400;
-          line-height: 24px;
           color: #EAE5DF;
           text-decoration: none;
-          transition: transform 0.2s ease;
-          cursor: pointer;
-        }
-        .footer-text:hover {
-          transform: translateY(-2px) scale(1.03);
+          transition: 0.2s ease;
         }
 
-        /* Underlined contact links */
-        .footer-link {
-          font-family: "Söhne", "Sohne", sans-serif;
-          font-size: 16px;
-          font-weight: 400;
-          line-height: 24px;
-          color: #EAE5DF;
-          text-decoration: underline;
-          transition: transform 0.2s ease;
-        }
-        .footer-link:hover {
-          transform: translateY(-2px) scale(1.03);
-        }
+        .footer-link { text-decoration: underline; }
+        .footer-text:hover, .footer-link:hover { opacity: 0.7; }
 
-        /* Inline label (T / E) */
         .contact-label {
           color: #EAE5DF;
-          font-family: "Söhne", "Sohne", sans-serif;
+          font-family: "Söhne", sans-serif;
           font-size: 16px;
-          line-height: 24px;
-          margin-right: 4px;
+          margin-right: 8px;
         }
 
-        /* Book a Call button */
         .btn-book {
-          display: flex;
+          display: inline-flex;
           height: 48px;
-          padding: 12px 16px;
+          padding: 0 24px;
           justify-content: center;
           align-items: center;
-          gap: 10px;
           background: #69E4DC;
           border-radius: 8px;
-          border: none;
-          cursor: pointer;
           text-decoration: none;
-
           font-family: "CX80BOLD", sans-serif;
           font-size: 14px;
-          font-weight: 150;
-          line-height: 14px;
           letter-spacing: 4.48px;
           color: #073B2F;
           text-transform: uppercase;
-          white-space: nowrap;
-          transition: opacity 0.2s ease;
-          margin-top: 8px;
+          margin-top: 20px;
+          transition: 0.2s;
         }
-        .btn-book:hover { opacity: 0.85; }
+        .btn-book:hover { background: #58c2ba; }
 
-        /* Legal multi-line text */
         .footer-legal-text {
-          font-family: "Söhne", "Sohne", sans-serif;
+          font-family: "Söhne", sans-serif;
           font-size: 16px;
-          font-weight: 400;
           line-height: 24px;
           color: #EAE5DF;
-          padding: 10px 0;
-          word-break: break-word;
+          padding-top: 10px;
         }
 
-        /* Social icon link */
-        .social-link {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          opacity: 0.9;
-          text-decoration: none;
-          transition: opacity 0.2s ease;
-          flex-shrink: 0;
-        }
         .social-link img {
           width: 24px;
           height: 24px;
-          object-fit: contain;
         }
-        .social-link:hover { opacity: 0.6; }
 
-        /* ── BOTTOM BAR ── */
         .footer-bottom {
-          display: flex;
-          align-items: center;
-          gap: 63px;
           width: 100%;
+          border-top: 1px solid rgba(132, 111, 88, 0.2);
+          padding-top: 30px;
         }
+        
         .footer-copyright {
-          font-family: "Söhne", "Sohne", sans-serif;
-          font-size: 16px;
-          font-weight: 400;
-          line-height: 24px;
+          font-family: "Söhne", sans-serif;
+          font-size: 14px;
           color: #846F58;
-          white-space: nowrap;
-          padding: 10px 0;
         }
 
         /* ── RESPONSIVE ── */
-        @media (max-width: 1200px) {
-          .footer {
-            padding: 80px 80px;
+        @media (max-width: 1024px) {
+          .footer-logo-container, .footer-contact, .footer-explore, .footer-legal, .footer-social {
+            width: 50%;
+            padding: 20px;
           }
-          .footer-social {
-            margin-left: 0;
-          }
+          .footer-social { justify-content: flex-start; }
         }
 
-        @media (max-width: 768px) {
-          .footer {
-            padding: 60px 24px;
-            gap: 40px;
-          }
-          .footer-grid {
-            gap: 32px 24px;
-          }
-          .footer-logo,
-          .footer-contact {
+        @media (max-width: 600px) {
+          .footer-logo-container, .footer-contact, .footer-explore, .footer-legal, .footer-social {
             width: 100%;
-          }
-          .footer-explore,
-          .footer-legal {
-            width: calc(50% - 12px);
-          }
-          .footer-social {
-            width: 100%;
-            margin-left: 0;
-          }
-          .footer-bottom {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 8px;
           }
         }
       `}</style>
 
       <footer className="footer">
-
-        {/* ── MAIN GRID ROW ── */}
         <div className="footer-grid">
-
-          {/* Logo */}
-          <div className="footer-logo">
-            <img src={Logo} alt="Find and Sign logo" />
+          {/* Logo Column */}
+          <div className="footer-logo-container">
+            <NavLink to="/">
+              <img src={logo} alt="Logo" className="nav-logo" />
+            </NavLink>
           </div>
 
-          {/* Contact */}
+          {/* Contact Column */}
           <div className="footer-contact">
             <div className="section-title">Contact</div>
-
             <div className="footer-row">
               <span className="contact-label">T</span>
               <a className="footer-link" href="tel:0431158233">0431 158 233</a>
             </div>
-
             <div className="footer-row">
               <span className="contact-label">E</span>
               <a className="footer-link" href="mailto:niki@findandsignba.com.au">niki@findandsignba.com.au</a>
             </div>
-
-            <div className="footer-row">
-              <a
-                href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-book"
-              >
-                Book a call
-              </a>
-            </div>
+            <a href="https://calendly.com/..." target="_blank" rel="noopener noreferrer" className="btn-book">
+              Book a call
+            </a>
           </div>
 
-          {/* Explore */}
+          {/* Explore Column */}
           <div className="footer-explore">
             <div className="section-title">Explore</div>
             {exploreLinks.map(({ label, to }) => (
@@ -687,25 +594,19 @@ export default function Footer() {
             ))}
           </div>
 
-          {/* Legal */}
+          {/* Legal Column */}
           <div className="footer-legal">
             <div className="section-title">Legal</div>
-            <div className="footer-row">
-              <a href="#" className="footer-text">Privacy Policy</a>
-            </div>
-            <div className="footer-row">
-              <a href="#" className="footer-text">Terms &amp; Conditions</a>
-            </div>
+            <div className="footer-row"><a href="#" className="footer-text">Privacy Policy</a></div>
+            <div className="footer-row"><a href="#" className="footer-text">Terms & Conditions</a></div>
             <div className="footer-legal-text">
               Licensed Real Estate Agent<br />
               RA86202 / RA84411
             </div>
-            <div className="footer-legal-text">
-              ABN 29 691 543 914
-            </div>
+            <div className="footer-legal-text">ABN 29 691 543 914</div>
           </div>
 
-          {/* Social icons */}
+          {/* Social icons Column */}
           <div className="footer-social">
             {socialIcons.map(({ label, img, url }) => (
               <a key={label} href={url} target="_blank" rel="noopener noreferrer" className="social-link">
@@ -713,14 +614,11 @@ export default function Footer() {
               </a>
             ))}
           </div>
-
         </div>
 
-        {/* ── BOTTOM BAR ── */}
         <div className="footer-bottom">
           <span className="footer-copyright">© 2026 Find and Sign Buyer Advocate</span>
         </div>
-
       </footer>
     </>
   );
