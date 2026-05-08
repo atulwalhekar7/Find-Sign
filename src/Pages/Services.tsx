@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import GetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
@@ -149,7 +149,7 @@ const ServiceCard = ({
         <p style={{
           color: "#757575",
           textAlign: "center",
-          fontFamily: "'SohneBuch",
+          fontFamily: "SohneBuch",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: 400,
@@ -251,13 +251,14 @@ const OtherServiceCard = ({
 
 // ── Main Component ────────────────────────────────────────────────────────────
 export default function Services() {
+  const navigate = useNavigate();
   const formRef = useRef<HTMLDivElement>(null);
   const [selectedService, setSelectedService] = useState("");
 
   // ── Handler: navigate to the service's dedicated page ──────────────────────
   const handleBookCall = (serviceName: string) => {
-    setSelectedService(serviceName);
-    formRef.current?.scrollIntoView({ behavior: "smooth" });
+    const slug = serviceName.toLowerCase().replace(/\s+/g, "-");
+    navigate(`/services/${slug}`);
   };
 
   const body1 =
