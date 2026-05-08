@@ -973,7 +973,7 @@ export default function ClientOutcomes() {
                 className="view-more-outcomes-btn"
                 onClick={handleToggleCards}
               >
-                {showAllCards ? "View Less" : "View More Outcomes"}
+                {showAllCards ? "View Less" : "View More "}
               </button>
             </div>
           )}
