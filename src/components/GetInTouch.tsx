@@ -494,7 +494,7 @@ export default function GetInTouch({ initialService = "", showService = false, h
   width: 100%;
   max-width: 297px;
   color: #000;
-  font-family: "Söhne", "Helvetica Neue", sans-serif;
+  font-family: 'sohne';
   font-size: 24px;
   font-weight: 300;
   line-height: 36px;
@@ -527,9 +527,9 @@ export default function GetInTouch({ initialService = "", showService = false, h
   width: 100%;
   max-width: 297px;
   color: #000;
-  font-family: "Söhne", sans-serif;
+  font-family: 'sohneBuch';
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 30px;
 }
 
@@ -560,7 +560,7 @@ export default function GetInTouch({ initialService = "", showService = false, h
 
 .contact_label {
   color: #000;
-  font-family: "Söhne", sans-serif;
+  font-family: 'sohneBuch';
   font-size: 20px;
   font-weight: 400;
   line-height: 28px;
@@ -575,7 +575,7 @@ export default function GetInTouch({ initialService = "", showService = false, h
   border-radius: 8px;
   background: #fff;
   border: 1px solid transparent;
-  font-family: "Söhne", sans-serif;
+  font-family: 'sohneBuch';
   font-size: 18px;
   outline: none;
   transition: all 0.2s ease;
@@ -643,7 +643,7 @@ export default function GetInTouch({ initialService = "", showService = false, h
 }
 
 .toggle-btn.selected {
-  background: #69e4dc;
+ 
   border-color: #69e4dc;
 }
 
@@ -659,7 +659,7 @@ export default function GetInTouch({ initialService = "", showService = false, h
   color: #fff;
   border: none;
   cursor: pointer;
-  font-family: "Söhne", sans-serif;
+  font-family: "CX80BOLD";
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
@@ -870,7 +870,7 @@ width: 297px;
           {/* LEFT SIDE */}
           <div className="contact-left">
             {!hideInternalHeading && (
-              <h2 style={{fontFamily:"GTSuper" ,fontSize:"44px", fontWeight:"500",letterSpacing:"-0.88px",lineHeight:"54px",color:"#073B2F" ,height:"48px",width:"350px",fontStyle:"normal", marginBottom: "26px"}}>Get in touch</h2>
+              <h2 style={{fontFamily:"GT Super Display Medium" ,fontSize:"44px", fontWeight:"500",letterSpacing:"-0.88px",lineHeight:"54px",color:"#073B2F" ,height:"48px",width:"350px",fontStyle:"normal", marginBottom: "26px"}}>Get in touch</h2>
             )}
             <p className="description-text">
               Tell us what you’re looking for, and we’ll come back with next steps.
