@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import GetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
-import bannerImg from "../assets/family-home-buyers-australia-find-and-sign.jpg";
-import AboutServiceImg from "../assets/niki-nakrani-top-buyers-agent-perth-find-and-sign.jpg";
+import bannerImg from "../assets/service-banner-find-and-sign-buyers-australia.jpg";
+import AboutServiceImg from "../assets/about-service-find-and-sign.jpg";
 import Image1 from "../components/Image1";
 
 

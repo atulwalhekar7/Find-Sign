@@ -5,8 +5,8 @@ import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
 import Image1 from "../components/Image1";
 
-import bannerImg from "../assets/niki-nakrani-trusted-buyers-agent-perth.jpg";
-import AboutClientOutcomesImg from "../assets/niki-nakrani-find-and-sign-property-expert.png";
+import bannerImg from "../assets/client-outcomes-banner-find-and-sign-buyers-agent-australia.jpg";
+import AboutClientOutcomesImg from "../assets/find-and-sign-about-client-outcomes-property-experts-australia.png";
 
 import id1 from "../assets/Client Outcomes/id1.webp";
 import id2 from "../assets/Client Outcomes/id2.webp";
@@ -1381,7 +1381,7 @@ export default function ClientOutcomes() {
           font-size: 16px;
           color: #000;
           font-weight: 400;
-          
+
         }
         .row-val {
           font-family: "SohneBuch";

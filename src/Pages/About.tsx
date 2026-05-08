@@ -5,7 +5,7 @@ import AboutSection from "../components/AboutSection";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import OurProcess from "../components/OurProcess";
-import Banner from "../assets/find-and-sign-buyers-agent-australia-property-experts-niki-nakrani-and-Rebecca.jpg";
+import Banner from "../assets/About-us-Banner-find-and-sign-buyers-agent-australia.jpg";
 import AboutUsBanner from "../assets/Australia-Find-And-Sign-About-Us.jpg";
 import Bec from "../assets/Rebecca-buyers-agent-australia-find-and-sign.jpg";
 import niki from "../assets/niki-nakrani-buyers-agent-australia-find-and-sign.jpg";
