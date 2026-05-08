@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { } from "react-router-dom";
 import GetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
@@ -29,9 +29,10 @@ function useInView(threshold = 0.15): [RefObject<HTMLDivElement | null>, boolean
 interface FadeUpProps {
   children: React.ReactNode;
   delay?: number;
+  style?: React.CSSProperties;
 }
 
-function FadeUp({ children, delay = 0 }: FadeUpProps) {
+function FadeUp({ children, delay = 0, style = {} }: FadeUpProps) {
   const [ref, visible] = useInView();
   return (
     <div
@@ -42,6 +43,7 @@ function FadeUp({ children, delay = 0 }: FadeUpProps) {
         transition: `opacity 0.55s ease ${delay}s, transform 0.55s ease ${delay}s`,
         display: "flex",
         flexDirection: "column",
+        ...style,
       }}
     >
       {children}
@@ -247,21 +249,8 @@ const OtherServiceCard = ({
   );
 };
 
-// ── Route map ─────────────────────────────────────────────────────────────────
-const SERVICE_ROUTES: Record<string, string> = {
-  "Buyer Advocate":      "/services/buyer-advocate",
-  "Advisory":            "/services/advisory",
-  "Property Management": "/services/property-management",
-  "Settlement Agent":    "/services/settlement-agent",
-  "Building Inspection": "/services/building-inspection",
-  "Sales Agent":         "/services/sales-agent",
-  "Quantity Surveyor":   "/services/quantity-surveyor",
-  "Accounting":          "/services/accounting",
-};
-
 // ── Main Component ────────────────────────────────────────────────────────────
 export default function Services() {
-  const navigate = useNavigate();
   const formRef = useRef<HTMLDivElement>(null);
   const [selectedService, setSelectedService] = useState("");
 

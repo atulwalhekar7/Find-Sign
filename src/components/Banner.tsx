@@ -1,6 +1,4 @@
 import { useState, useRef } from "react";
-import bannervideo from "../assets/F&S_Brand Video_Banner.mov";
-import heroVideo from "../assets/Interview Draft (2).mp4";
 import { useNavigate } from "react-router-dom";
 
  
