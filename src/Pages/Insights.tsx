@@ -124,7 +124,7 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
             margin: "0", // Aligned to left
           }}
         >
-          View more
+          Read Blog
         </button>
       </div>
     </div>
