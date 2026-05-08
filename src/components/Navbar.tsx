@@ -209,6 +209,7 @@ align-self: stretch;
           background: COLORS.white,
           width: "100%",
           transition: "all 0.4s ease",
+boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
         }}
       >
         {/* ───── Top Bar ───── */}

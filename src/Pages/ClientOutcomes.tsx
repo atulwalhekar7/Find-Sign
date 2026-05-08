@@ -1381,10 +1381,11 @@ export default function ClientOutcomes() {
           font-size: 16px;
           color: #000;
           font-weight: 400;
+          
         }
         .row-val {
           font-family: "SohneBuch";
-          font-size: 13px;
+          font-size: 16px;
           color: #757575;
           font-weight: 400;
           margin-left: auto;
