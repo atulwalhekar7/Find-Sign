@@ -623,28 +623,34 @@ export default function GetInTouch({ initialService = "", showService = false, h
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 120px;
-  height: 44px;
-  padding: 8px 24px;
-  background: transparent;
-  border-radius: 6px;
+  /* min-width: 120px; // Removed to match rev-cta-btn */
+  height: 48px; /* Matched rev-cta-btn */
+  padding: 12px 16px; /* Matched rev-cta-btn */
+  background: white;
+  border-radius: 8px; /* Matched rev-cta-btn */
   border: 1px solid #69e4dc;
   color: #073b2f;
-  font-size: 14px;
+  font-family: "CX80BOLD"; /* Kept existing, similar to rev-cta-btn's font-weight */
+  font-size: 15px; /* Matched rev-cta-btn */
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  line-height: 15px; /* Matched rev-cta-btn */
+  letter-spacing: 4.8px; /* Matched rev-cta-btn */
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s; /* Enhanced transition */
 }
 
 .toggle-btn:hover {
-  background: rgba(105, 228, 220, 0.12);
+  background: #69E4DC; /* Matched rev-cta-btn hover */
+  color: #073B2F; /* Matched rev-cta-btn hover */
+  border-color: #69E4DC; /* Matched rev-cta-btn hover */
+  transform: translateY(-1px); /* Added subtle hover effect */
 }
 
 .toggle-btn.selected {
- 
-  border-color: #69e4dc;
+  background: #69E4DC; /* Matched rev-cta-btn hover */
+  color: #073B2F; /* Matched rev-cta-btn hover */
+  border-color: #69e4dc; /* Kept existing */
 }
 
 .submit-btn {
@@ -883,13 +889,18 @@ width: 297px;
               Tell us what you’re looking for, and we’ll come back with next steps.
             </p>
             
-            <a href="#" className="contact-cta">
+            <a
+              href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-cta"
+            >
               BOOK A CALL
             </a>
 
-            <div className="nikki-info" style={{ display: 'flex', flexDirection: 'column', gap: '37px' }}>
-              <span>Contact Niki</span>
-              <span>T: 0431 158 233</span>
+            <div className="nikki-info" style={{ color: '#000' }}>
+              Contact Niki <br />
+              T: 0431 158 233
             </div>
           </div>
 

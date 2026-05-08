@@ -35,19 +35,26 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
         cursor: "pointer",
       }}
     >
-      <img
-        src={post.image}
-        alt={post.title}
-        className="blog-card-img"
+      <div
         style={{
-          width: "160px",
-          height: "160px",
-          objectFit: "cover",
-          borderRadius: "8px",
+          width: "145px",
+          flexShrink: 0,
+          alignSelf: "stretch",
+          borderRadius: "20px",
+          background: `url(${post.image}) lightgray 50% / cover no-repeat`,
         }}
       />
-      <div style={{ flex: 1 }}>
-        <h3
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          gap: "16px",
+          flex: 1,
+        }}
+      >
+        <div
           style={{
             color: "#000",
             fontVariantNumeric: "lining-nums proportional-nums",
@@ -61,11 +68,25 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
           }}
         >
           {post.title}
-        </h3>
+        </div>
+
+        <div
+          style={{
+            color: "var(--FS-BURNT-GOLD, var(--Brand-Signature-FS-BURNT-GOLD, #6C5843))",
+            fontFamily: 'CX80BOLD',
+            fontSize: "14px",
+            fontStyle: "normal",
+            fontWeight: 700,
+            lineHeight: "14px", /* 100% */
+            letterSpacing: "4.48px",
+          }}
+        >
+          {post.date}
+        </div>
+
         <p
           style={{
             margin: "0px",
-            marginBottom: "20px",
             color: "rgb(117, 117, 117)",
             fontFamily: "Söhne, sans-serif",
             fontSize: "16px",
@@ -76,31 +97,34 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
         >
           {post.description}
         </p>
+
         <button
           style={{
             display: "flex",
             height: "48px",
             padding: "12px 16px",
-            justifyContent: "center",
+            justifyContent: "center", // Matched rev-cta-btn
             alignItems: "center",
             gap: "10px",
             flexShrink: 0,
-            borderRadius: "8px",
+            borderRadius: "8px", // Matched rev-cta-btn
             border: "1px solid #69E4DC",
             backgroundColor: hovered ? "#69E4DC" : "#ffffff",
             color: "#073B2F",
             fontFamily: "CX80",
             fontSize: "15px",
             fontWeight: 700,
-            lineHeight: "15px",
-            letterSpacing: "4.8px",
+            lineHeight: "15px", // Matched rev-cta-btn
+            letterSpacing: "4.8px", // Matched rev-cta-btn
             textTransform: "uppercase",
             cursor: "pointer",
             textDecoration: "none",
-            transition: "background 0.2s ease, color 0.2s ease",
+            transition: "all 0.2s ease",
+            transform: hovered ? "translateY(-1px)" : "none",
+            margin: "0", // Aligned to left
           }}
         >
-          View more
+          Read Blog
         </button>
       </div>
     </div>
@@ -111,18 +135,23 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
 
 const blogPosts = [
   {
-    title: "Best Suburbs in Perth for Property Investment in 2026",
-    description: "Discover the best suburbs in Perth for property investment in 2026. Learn where to invest for high growth, rental yield, and long-term returns.",
+    title: "Blog Post One",
+    date: "01 march 2026",
+    description:
+      "Discover the best suburbs in Perth for property investment in 2026. Learn where to invest for high growth, rental yield, and long-term returns.",
     image: perthBlogImg,
-    path: "/blog/best-suburbs-perth"
+    path: "/blog/best-suburbs-perth",
   },
   {
-    title: "Your Ultimate Guide to Hiring a Buyer’s Agent in Perth",
-    description: "Buying property in Perth is one of the biggest financial decisions you’ll ever make. Whether you're a first-home buyer, upgrading your family home, or building an investment portfolio, the process can feel overwhelming.",
-    image:bannerImg,
-    path: "/blog/buyers-agent-perth"
-  }
+    title: "Blog Post Two",
+    date: "01 april 2026",
+    description:
+      "Buying property in Perth is one of the biggest financial decisions youll ever make. Whether you're a first-home buyer, upgrading your family home, or building an investment portfolio, the process can feel overwhelming.",
+    image: bannerImg,
+    path: "/blog/buyers-agent-perth",
+  },
 ];
+
 
 
 export default function Insights() {
@@ -216,7 +245,7 @@ export default function Insights() {
     textAlign: "center",
     marginBottom: "48px"
   }}>
-     Explore more about blogs.
+     Industry insights, Australia-wide expertise and more.
   </p>
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           {blogPosts.map((post, index) => (
@@ -267,6 +296,7 @@ export default function Insights() {
             height: 200px !important;
           }
         }
+
 
         @media (max-width: 600px) {
           h1 { font-size: 36px !important; }

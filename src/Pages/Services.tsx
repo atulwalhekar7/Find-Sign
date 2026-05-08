@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import GetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
@@ -149,7 +149,7 @@ const ServiceCard = ({
         <p style={{
           color: "#757575",
           textAlign: "center",
-          fontFamily: "'SohneBuch",
+          fontFamily: "SohneBuch",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: 400,
@@ -251,13 +251,14 @@ const OtherServiceCard = ({
 
 // ── Main Component ────────────────────────────────────────────────────────────
 export default function Services() {
+  const navigate = useNavigate();
   const formRef = useRef<HTMLDivElement>(null);
-  const [selectedService, setSelectedService] = useState("");
+  const [selectedService] = useState("");
 
   // ── Handler: navigate to the service's dedicated page ──────────────────────
   const handleBookCall = (serviceName: string) => {
-    setSelectedService(serviceName);
-    formRef.current?.scrollIntoView({ behavior: "smooth" });
+    const slug = serviceName.toLowerCase().replace(/\s+/g, "-");
+    navigate(`/services/${slug}`);
   };
 
   const body1 =
@@ -354,7 +355,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: "40px",
+         
           alignSelf: "stretch",
           background: "var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9)",
         }}
@@ -391,6 +392,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
                 lineHeight: "36px",
                 marginTop: "24px",
                 textAlign: "center",
+                marginBottom: "56px",
               }}
             >
               Explore more about our services
@@ -412,7 +414,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
             <h2
               style={{
-                margin: "0",
+                margin: "56px 0 0",
                 color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
                 textAlign: "center",
                 fontVariantNumeric: "lining-nums proportional-nums",
@@ -439,6 +441,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
                 fontWeight: 300,
                 lineHeight: "36px",
                 marginTop: "24px",
+                marginBottom: "56px",
                 textAlign: "center",
               }}
             >
@@ -454,7 +457,8 @@ From the first conversation to settlement and beyond, we are in your corner. You
                 fontStyle: "normal",
                 fontWeight: 400,
                 lineHeight: "28px",
-                marginTop: "56px",
+                marginTop: "0px",
+                marginBottom: "86px",
               }}
             >
               At Find and Sign Buyer Advocate, securing the right property is only part of the process. We work with trusted professionals at each stage and can introduce them where relevant. You're never required to use these services. The choice is always yours.
@@ -465,7 +469,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
         {/* Row 1: 3 affiliated cards */}
         <div
           className="three-grid"
-          style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, width: "100%" }}
+          style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, width: "100%",marginBottom:"86px" }}
         >
           <OtherServiceCard title="Property Management" body={body3} hasButton delay={0} onBookCall={handleBookCall} />
           <OtherServiceCard title="Settlement Agent" body={body4} hasButton delay={0.1} onBookCall={handleBookCall} />
@@ -475,7 +479,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
         {/* Row 2: 3 affiliated cards */}
         <div
           className="three-grid"
-          style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, width: "100%" }}
+          style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, width: "100%" ,marginBottom:"150px"}}
         >
           <OtherServiceCard title="Sales Agent" body={body6} hasButton delay={0} onBookCall={handleBookCall} />
           <OtherServiceCard title="Quantity Surveyor" body={body7} hasButton delay={0.1} onBookCall={handleBookCall} />
