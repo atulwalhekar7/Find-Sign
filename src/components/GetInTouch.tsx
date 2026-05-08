@@ -402,7 +402,7 @@ interface NakraniContactProps {
 export default function GetInTouch({ initialService = "", showService = false, hideInternalHeading = false }: NakraniContactProps) {
   const [submitted, setSubmitted] = useState(false);
   const [contactMethod, setContactMethod] = useState("");
-  const [isSending, setIsSending] = useState(false);
+  const [isSending, setIsSending] = useState(false); // Keep isSending for button disabled state
   const [selectedService, setSelectedService] = useState(initialService);
   const form = useRef<HTMLFormElement>(null);
 
@@ -414,6 +414,7 @@ export default function GetInTouch({ initialService = "", showService = false, h
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSending(true); // Set sending state to true
     if (form.current) {
       emailjs
         .sendForm('service_78mscvf', 'template_gy6jf2o', form.current, {
@@ -422,11 +423,13 @@ export default function GetInTouch({ initialService = "", showService = false, h
         .then(
           () => {
             setSubmitted(true);
+            setIsSending(false); // Reset sending state
             form.current?.reset();
             setContactMethod("");
             setSelectedService(initialService);
           },
           (error: any) => {
+            setIsSending(false); // Reset sending state on error
             console.error('EmailJS Error:', error.text);
             alert("Failed to send message. Please try again later.");
           },

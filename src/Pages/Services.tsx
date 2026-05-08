@@ -161,7 +161,7 @@ const ServiceCard = ({
         </p>
         {hasButton && (
           <OutlineButton onClick={() => onBookCall?.(title)}>
-            Book a Call
+            Learn More
           </OutlineButton>
         )}
       </div>
@@ -241,7 +241,7 @@ const OtherServiceCard = ({
         </p>
         {hasButton && (
           <OutlineButton onClick={() => onBookCall?.(title)}>
-            Book a Call
+            Learn More
           </OutlineButton>
         )}
       </div>
