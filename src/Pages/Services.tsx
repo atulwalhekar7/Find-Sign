@@ -341,7 +341,7 @@ export default function Services() {
       <AboutSection
         imageSrc={AboutServiceImg}
         heading="About Our Services"
-        subheading="Expert guidance for every step of your property journey."
+        // subheading="Expert guidance for every step of your property journey."
         body1="Find and Sign Buyer Advocate is a boutique buyers agency based in Perth, representing buyers exclusively, whether you are purchasing the home you want to live in or building the portfolio you have always planned for.
 We take on a select number of clients at any one time. Not because we have to, but because we believe a purchase of this size deserves our full attention."
         body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
@@ -355,7 +355,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: "40px",
+         
           alignSelf: "stretch",
           background: "var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9)",
         }}
@@ -392,6 +392,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
                 lineHeight: "36px",
                 marginTop: "24px",
                 textAlign: "center",
+                marginBottom: "56px",
               }}
             >
               Explore more about our services
@@ -413,7 +414,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
             <h2
               style={{
-                margin: "0",
+                margin: "56px 0 0",
                 color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
                 textAlign: "center",
                 fontVariantNumeric: "lining-nums proportional-nums",
@@ -440,6 +441,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
                 fontWeight: 300,
                 lineHeight: "36px",
                 marginTop: "24px",
+                marginBottom: "56px",
                 textAlign: "center",
               }}
             >
@@ -455,7 +457,8 @@ From the first conversation to settlement and beyond, we are in your corner. You
                 fontStyle: "normal",
                 fontWeight: 400,
                 lineHeight: "28px",
-                marginTop: "56px",
+                marginTop: "0px",
+                marginBottom: "86px",
               }}
             >
               At Find and Sign Buyer Advocate, securing the right property is only part of the process. We work with trusted professionals at each stage and can introduce them where relevant. You're never required to use these services. The choice is always yours.
@@ -466,7 +469,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
         {/* Row 1: 3 affiliated cards */}
         <div
           className="three-grid"
-          style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, width: "100%" }}
+          style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, width: "100%",marginBottom:"86px" }}
         >
           <OtherServiceCard title="Property Management" body={body3} hasButton delay={0} onBookCall={handleBookCall} />
           <OtherServiceCard title="Settlement Agent" body={body4} hasButton delay={0.1} onBookCall={handleBookCall} />
@@ -476,7 +479,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
         {/* Row 2: 3 affiliated cards */}
         <div
           className="three-grid"
-          style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, width: "100%" }}
+          style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, width: "100%" ,marginBottom:"150px"}}
         >
           <OtherServiceCard title="Sales Agent" body={body6} hasButton delay={0} onBookCall={handleBookCall} />
           <OtherServiceCard title="Quantity Surveyor" body={body7} hasButton delay={0.1} onBookCall={handleBookCall} />

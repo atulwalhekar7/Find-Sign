@@ -1,14 +1,14 @@
 import { useRef, useState } from "react";
-import aboutContentImg from "../assets/DSC06081.jpg";
+import aboutContentImg from "../assets/happy-home-buyers-australia-find-and-sign.jpg";
 import aboutVideo from "../assets/Interview Draft (2).mp4";
 import AboutSection from "../components/AboutSection";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import OurProcess from "../components/OurProcess";
-import Banner from "../assets/About Us_Banner.jpg";
-import AboutUsBanner from "../assets/About Find & Sign 2.jpg";
-import Bec from "../assets/Bec_Bio.jpg";
-import niki from "../assets/Niki_Bio.jpg";
+import Banner from "../assets/find-and-sign-buyers-agent-australia-property-experts-niki-nakrani-and-Rebecca.jpg";
+import AboutUsBanner from "../assets/Australia-Find-And-Sign-About-Us.jpg";
+import Bec from "../assets/Rebecca-buyers-agent-australia-find-and-sign.jpg";
+import niki from "../assets/niki-nakrani-buyers-agent-australia-find-and-sign.jpg";
 import Image1 from "../components/Image1";
 
 import fbIcon from "../assets/icon/fb.svg";
@@ -478,12 +478,7 @@ Find & Sign we find with confidence you sign with certainty.
                     <a href="https://www.linkedin.com/in/niki-nakrani-13b269237/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
                       <img src={liIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="LinkedIn" />
                     </a>
-                    <a href="https://www.tiktok.com/" target="_blank" rel="noreferrer" aria-label="Tiktok">
-                      <img src={tiIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Tiktok" />
-                    </a>
-                    <a href="https://www.google.com/search?kgmid=/g/11vyhyd916&hl=en-IN&q=Find+and+Sign+Buyer+Advocate" target="_blank" rel="noreferrer" aria-label="Google">
-                      <img src={goIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Google" />
-                    </a>
+                    
                   </div>
                 </div>
               </div>

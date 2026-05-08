@@ -918,7 +918,7 @@ export default function ClientOutcomes() {
         <AboutSection
           imageSrc={AboutClientOutcomesImg}
           heading="About Client Outcomes"
-          subheading=" Explore more about client outcomes."
+          // subheading=" Explore more about client outcomes."
           body1="These are outcomes we have achieved for our clients. Real properties, real numbers, and measurable growth. When you engage Find and Sign Buyer Advocate, you are not simply purchasing a property; you are entering a strategy built for long-term performance. These examples show what is possible when the right property is identified and secured early."
         />
       </div>
@@ -1120,7 +1120,8 @@ export default function ClientOutcomes() {
               marginTop: "24px",
               textAlign: "center"
             }}>
-              Explore more about What our clients are saying.
+              In their own words, following their experience with Find & Sign.
+
             </p>
           </div>
 

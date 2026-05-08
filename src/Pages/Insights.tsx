@@ -73,10 +73,10 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
         <div
           style={{
             color: "var(--FS-BURNT-GOLD, var(--Brand-Signature-FS-BURNT-GOLD, #6C5843))",
-            fontFamily: '"CX80"',
+            fontFamily: 'CX80BOLD',
             fontSize: "14px",
             fontStyle: "normal",
-            fontWeight: 150,
+            fontWeight: 700,
             lineHeight: "14px", /* 100% */
             letterSpacing: "4.48px",
           }}
