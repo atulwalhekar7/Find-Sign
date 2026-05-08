@@ -912,22 +912,22 @@ width: 297px;
               <form ref={form} onSubmit={handleSubmit} style={{ width: "100%", display: "flex", flexDirection: "column", gap: "16px" }}>
                 <div className="form-group">
                   <label className="contact_label">First name</label>
-                  <input className="contact-input" placeholder="e.g. Sarah" required />
+                  <input className="contact-input" name="first_name" placeholder="e.g. Sarah" required />
                 </div>
 
                 <div className="form-group">
                   <label className="contact_label">Last name</label>
-                  <input className="contact-input" placeholder="e.g. Smith" required />
+                  <input className="contact-input" name="last_name" placeholder="e.g. Smith" required />
                 </div>
 
                 <div className="form-group">
                   <label className="contact_label">Phone number</label>
-                  <input className="contact-input" placeholder="e.g. 0441 123 123" />
+                  <input className="contact-input" name="phone_number" placeholder="e.g. 0441 123 123" />
                 </div>
 
                 <div className="form-group">
                   <label className="contact_label">Email</label>
-                  <input className="contact-input" type="email" placeholder="e.g. sarah@gmail.com" required />
+                  <input className="contact-input" name="user_email" type="email" placeholder="e.g. sarah@gmail.com" required />
                 </div>
 
                 {showService && (
@@ -948,6 +948,7 @@ width: 297px;
                     </select>
                   </div>
                 )}
+                <input type="hidden" name="contact_preference" value={contactMethod} />
 
                <div className="contact-field-row">
   <label className="contact_label">
@@ -974,7 +975,7 @@ width: 297px;
 
                 <div className="form-group">
                   <label className="contact_label">Message</label>
-                  <textarea className="contact-textarea" placeholder="What are you looking for?" required />
+                  <textarea className="contact-textarea" name="message" placeholder="What are you looking for?" required />
                 </div>
 
                 <button 
