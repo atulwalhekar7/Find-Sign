@@ -1206,7 +1206,7 @@ export default function ClientOutcomes() {
               className="view-more-outcomes-btn"
               onClick={handleToggleReviews}
             >
-              {showAllReviews ? "View Less Feedback" : "View More Feedback"}
+              {showAllReviews ? "View Less " : "View More "}
             </button>
           </div>
         </div>
