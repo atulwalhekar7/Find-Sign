@@ -398,10 +398,10 @@ export default function Footer() {
           width: 100%;
           display: flex;
           min-height: 589px;
-          padding: 96px 196px; /* Updated per Figma */
+          padding: 96px 146px !important;
           flex-direction: column;
           align-items: flex-start;
-          gap: 66px; /* Space between social-row and grid-row */
+          gap: 66px; 
           align-self: stretch;
         }
 
@@ -428,7 +428,7 @@ export default function Footer() {
           align-items: flex-start;
           align-content: flex-start;
           gap: 55px 32px; 
-          flex-wrap: wrap;
+          // flex-wrap: wrap;
           width: 100%;
         }
 
@@ -520,6 +520,9 @@ export default function Footer() {
           margin-top: 8px;
         }
 
+   
+
+
         .footer-legal-text {
           font-family: "Söhne", sans-serif;
           font-size: 16px;
@@ -540,7 +543,7 @@ export default function Footer() {
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1200px) {
-          .footer { padding: 80px 40px; }
+          .footer { padding: 56px 76px !important}
         }
         @media (max-width: 768px) {
           .footer-grid { flex-direction: column; }
@@ -567,9 +570,8 @@ export default function Footer() {
             </NavLink>
           </div>
 
-          <div style={{width:"68px"}}>
-
-          </div>
+       <div className="desktop-only" style={{ width: "68px" }}>
+</div>
 
           {/* Contact */}
           <div className="footer-contact">
@@ -607,7 +609,7 @@ export default function Footer() {
             <div className="footer-row"><a href="#" className="footer-text">Privacy Policy</a></div>
             <div className="footer-row"><a href="#" className="footer-text">Terms & Conditions</a></div>
             <div className="footer-legal-text">
-              Licensed Real Estate Agent<br />
+              Licensed Real Estate Agent
               RA86202 / RA84411
             </div>
             <div className="footer-legal-text">ABN 29 691 543 914</div>

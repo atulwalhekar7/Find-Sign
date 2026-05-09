@@ -38,12 +38,12 @@ align-items: flex-start;
 align-self: stretch;
         }
 
-        .nav-logo {
-          width: 128px;
-          height: 47px;
-          object-fit: contain;
-          display: block;
-        }
+     .nav-logo {
+  width: 128px !important;
+  height: 47px !important;
+  object-fit: contain;
+  display: block;
+}
 
         .nav-actions {
           display: flex;
