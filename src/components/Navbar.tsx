@@ -25,18 +25,16 @@ export default function Navbar() {
       <style>{`
         /* ───────── NAV LAYOUT ───────── */
         .nav-inner {
-          width: 100%;
-          max-width: 1512px;
-          margin: 0 auto;
-          height: 96px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          box-sizing: border-box;
-padding: 24px 130px;
-align-items: flex-start;
-align-self: stretch;
-        }
+  width: 100%;
+  max-width: 1512px;
+  margin: 0 auto;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 24px 130px;
+}
 
         .nav-logo {
           width: 128px;
