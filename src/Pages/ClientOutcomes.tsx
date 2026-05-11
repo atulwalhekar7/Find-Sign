@@ -925,7 +925,7 @@ export default function ClientOutcomes() {
 
       {/* ── CLIENT OUTCOMES GRID ───────────────────────────────── */}
       <section ref={outcomesSectionRef} id="outcomes" style={{ background: '#F9F9F9', padding: "64px " }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0px 20px" }}>
 
           <div style={{ marginBottom: 48, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <h2 style={{

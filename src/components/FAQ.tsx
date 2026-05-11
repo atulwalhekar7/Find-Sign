@@ -236,10 +236,10 @@ export default function FindSignFAQ() {
         }
       `}</style>
 
-      <Box sx={{ background: "#F9F9F9", width: "100%", py: { xs: 8, md: 12 } }}>
+      <Box sx={{ background: "#F9F9F9", width: "100%",  py: { xs: 8, md: 12 } }}>
         <Container 
           maxWidth={false} 
-          sx={{ px: { xs: 2, md: "196px" }, maxWidth: "1512px", margin: "0 auto" }}
+          sx={{ px: { xs: 2, md: "130px" }, maxWidth: "1512px", margin: "0 auto" }}
         >
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
             

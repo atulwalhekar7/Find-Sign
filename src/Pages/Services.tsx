@@ -498,7 +498,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap');
 
         .services-section {
-          padding: 64px 196px 32px;
+          padding: 24px 130px 32px;
         }
 
         .services-desc {

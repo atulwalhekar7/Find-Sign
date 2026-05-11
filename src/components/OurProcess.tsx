@@ -96,7 +96,7 @@ const globalCSS = `
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     column-gap: 64px;
-    padding: 64px 196px 80px;
+    padding: 24px 130px 80px;
   }
 
   .op-head { 

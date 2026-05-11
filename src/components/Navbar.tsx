@@ -39,8 +39,8 @@ align-self: stretch;
         }
 
      .nav-logo {
-  width: 128px !important;
-  height: 47px !important;
+   width: 159px !important;
+          height: 59px !important;
   object-fit: contain;
   display: block;
 }
@@ -176,7 +176,7 @@ align-self: stretch;
 
           .nav-logo {
             width: 108px;
-            height: auto;
+            height: 40px !important;
           }
 
           .nav-links {

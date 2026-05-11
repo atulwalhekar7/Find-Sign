@@ -380,8 +380,8 @@ const socialIcons = [
 
 const exploreLinks = [
   { label: "About", to: "/about" },
-  { label: "Journeys", to: "/journeys" },
   { label: "Services", to: "/services" },
+  { label: "Client Outcomes", to: "/client-outcomes" },
   { label: "Insights", to: "/insights" },
   { label: "Contact", to: "/contact" },
 ];
@@ -398,7 +398,7 @@ export default function Footer() {
           width: 100%;
           display: flex;
           min-height: 589px;
-          padding: 96px 146px !important;
+          padding: 24px 130px; !important;
           flex-direction: column;
           align-items: flex-start;
           gap: 66px; 
@@ -434,14 +434,19 @@ export default function Footer() {
 
         /* Logo Column */
         .footer-logo-container {
-          width: 159px;
-          height: 59px;
+          width: 167px !important;
+          height: 79px !important;
           flex-shrink: 0;
           aspect-ratio: 159/59;
+          padding: 8px 0;
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
         }
-        .nav-logo {
-          width: 100%;
-          height: 100%;
+
+        .footer-logo {
+           width: 159px !important;
+          height: 59px !important;
           object-fit: contain;
         }
 
@@ -449,6 +454,7 @@ export default function Footer() {
         .footer-contact {
           display: flex;
           width: 267px;
+          padding: 10px;
           flex-direction: column;
           align-items: flex-start;
           gap: 8px;
@@ -459,6 +465,7 @@ export default function Footer() {
         .footer-explore {
           display: flex;
           width: 167px;
+          padding: 10px;
           flex-direction: column;
           align-items: flex-start;
           gap: 8px;
@@ -468,6 +475,7 @@ export default function Footer() {
         .footer-legal {
           display: flex;
           width: 168px;
+          padding: 10px 0px;
           flex-direction: column;
           align-items: flex-start;
           gap: 8px;
@@ -481,7 +489,7 @@ export default function Footer() {
           line-height: 18px;
           letter-spacing: 5.76px;
           color: #F9F9F9;
-          padding: 10px 0;
+          // padding: 10px 0;
           text-transform: uppercase;
         }
 
@@ -566,7 +574,7 @@ export default function Footer() {
           {/* Logo */}
           <div className="footer-logo-container">
             <NavLink to="/">
-              <img src={logo} alt="Logo" className="nav-logo" />
+              <img src={logo} alt="Logo" className="footer-logo" />
             </NavLink>
           </div>
 
@@ -609,7 +617,7 @@ export default function Footer() {
             <div className="footer-row"><a href="#" className="footer-text">Privacy Policy</a></div>
             <div className="footer-row"><a href="#" className="footer-text">Terms & Conditions</a></div>
             <div className="footer-legal-text">
-              Licensed Real Estate Agent
+              Licensed Real Estate Agent <br/>
               RA86202 / RA84411
             </div>
             <div className="footer-legal-text">ABN 29 691 543 914</div>
