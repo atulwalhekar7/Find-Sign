@@ -454,7 +454,7 @@ export default function GetInTouch({ initialService = "", showService = false, h
   display: flex;
   width: 100%;
   min-height: 100vh;
-  padding: 64px 140px;
+  padding: 24px 130px;
   flex-direction: column;
   align-items: center;
   background: #ebe6de;
@@ -692,7 +692,7 @@ export default function GetInTouch({ initialService = "", showService = false, h
 
 @media (max-width: 1440px) {
   .contact-page {
-    padding: 56px 72px;
+    // padding: 56px 72px;
   }
 
   .contact-left h2 {
@@ -715,7 +715,7 @@ width: 297px;
 
 @media (max-width: 1200px) {
   .contact-page {
-    padding: 48px 40px;
+    // padding: 48px 40px;
   }
 
   .main-container {
@@ -755,7 +755,7 @@ width: 297px;
 
 @media (max-width: 992px) {
   .contact-page {
-    padding: 40px 32px;
+    // padding: 40px 32px;
   }
 
   .main-container {

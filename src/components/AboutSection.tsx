@@ -48,7 +48,7 @@ const AboutSection = ({
      <div style={{ background: "#fff", width: "100%" }}> 
     <section
       style={{
-       width: "1556px",
+      //  width: "1556px",
         margin: "0 auto",
         padding: "48px 130px",
         backgroundColor: "#fff", 
@@ -170,7 +170,7 @@ const AboutSection = ({
           width: 100%;
           display: flex;
           flex-direction: column;
-          padding-right:130px;
+          // padding-right:130px;
            height:"520px !important"
         }
 
