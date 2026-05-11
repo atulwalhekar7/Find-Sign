@@ -138,7 +138,7 @@ const blogPosts = [
     title: "Blog Post One",
     date: "01 march 2026",
     description:
-      "Discover the best suburbs in Perth for property investment in 2026. Learn where to invest for high growth, rental yield, and long-term returns.",
+      "Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement.",
     image: perthBlogImg,
     path: "/blog/best-suburbs-perth",
   },
@@ -146,13 +146,11 @@ const blogPosts = [
     title: "Blog Post Two",
     date: "01 april 2026",
     description:
-      "Buying property in Perth is one of the biggest financial decisions youll ever make. Whether you're a first-home buyer, upgrading your family home, or building an investment portfolio, the process can feel overwhelming.",
+      "Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement.",
     image: bannerImg,
     path: "/blog/buyers-agent-perth",
   },
 ];
-
-
 
 export default function Insights() {
 
