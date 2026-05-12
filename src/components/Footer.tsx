@@ -475,7 +475,7 @@ gap: 10px;
         .footer-legal {
           display: flex;
           width: 168px;
-          padding: 10px 0px;
+          padding: 10px 10px;
           flex-direction: column;
           align-items: flex-start;
           gap: 8px;

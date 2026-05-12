@@ -140,7 +140,6 @@ const formattedReviews = reviews.map(r => ({
 function TestimonialCard({ testimonial, style }: { testimonial: any; style?: React.CSSProperties }) {
   return (
     <div className="testimonial-card" style={style}>
-      {/* FIX: pill now wraps text instead of truncating */}
       <div className="tc-pill">{testimonial.title}</div>
       <div className="tc-stars">
         <img src={starIcon} alt="5 stars" style={{ width: 177, height: 32.336, objectFit: "contain" }} />
@@ -218,6 +217,7 @@ export default function ClientOutcomes() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
+  // ── FIX: visibleReviewCount — desktop always shows exactly 3 ──
   const visibleReviewCount = isMobile ? 1 : isTablet ? 2 : 3;
 
   const [reviewIdx, setReviewIdx]           = useState(0);
@@ -229,8 +229,12 @@ export default function ClientOutcomes() {
   const testimonialsSectionRef               = useRef<HTMLElement>(null);
   const outcomesSectionRef                   = useRef<HTMLElement>(null);
 
-  const maxReviewIdx = Math.max(0, formattedReviews.length - visibleReviewCount);
+  // dots step: desktop=3, tablet=2, mobile=2 → ceil(15/2)=8 dots on mobile
+  const dotsStep     = isMobile ? 2 : visibleReviewCount;
+  const totalPages   = Math.ceil(formattedReviews.length / dotsStep);
+  const maxReviewIdx = Math.max(0, totalPages - 1);
 
+  // offset: each page jumps dotsStep cards
   useEffect(() => {
     const recalc = () => {
       if (reviewRafRef.current) cancelAnimationFrame(reviewRafRef.current);
@@ -240,7 +244,7 @@ export default function ClientOutcomes() {
         if (!first) return;
         const cardW = first.getBoundingClientRect().width;
         if (cardW === 0) return;
-        setReviewOffset(reviewIdx * (cardW + CARD_GAP));
+        setReviewOffset(reviewIdx * dotsStep * (cardW + CARD_GAP));
       });
     };
     recalc();
@@ -250,7 +254,7 @@ export default function ClientOutcomes() {
       ro.disconnect();
       if (reviewRafRef.current) cancelAnimationFrame(reviewRafRef.current);
     };
-  }, [reviewIdx, isMobile, isTablet]);
+  }, [reviewIdx, isMobile, isTablet, visibleReviewCount, dotsStep]);
 
   useEffect(() => {
     setReviewIdx(prev => Math.min(prev, maxReviewIdx));
@@ -273,6 +277,7 @@ export default function ClientOutcomes() {
     }
   }, [hash]);
 
+  // ── FIX: card flex-basis — desktop fills exactly 1/3 of track width ──
   const reviewCardFlexBasis = isMobile
     ? `calc(100vw - 24px - ${CARD_GAP}px - ${PEEK}px)`
     : `calc((100% - ${CARD_GAP}px * ${visibleReviewCount - 1}) / ${visibleReviewCount})`;
@@ -314,14 +319,6 @@ export default function ClientOutcomes() {
           100% { transform: translateY(0)    scale(1); }
         }
 
-        /* ══════════════════════════════════════════
-            TYPOGRAPHY HIERARCHY
-            H1 = 56px  (page title — hero only)
-            H2 = 42px  (section headings)
-            H3 = 32px  (sub-section headings)
-        ══════════════════════════════════════════ */
-
-        /* H1 — Hero page title */
         .hero-h1 {
           font-family: "GT Super Display Medium";
           font-size: 56px;
@@ -333,7 +330,6 @@ export default function ClientOutcomes() {
           margin: 0;
         }
 
-        /* H2 — Section headings (outcomes, testimonials) */
         .outcomes-h2,
         .testimonials-h2 {
           color: ${RACING_GREEN};
@@ -356,7 +352,6 @@ export default function ClientOutcomes() {
           background: ${RACING_GREEN};
         }
 
-        /* H3 — Sub-headings if needed (32px) */
         .section-h3 {
           font-family: "GT Super Display Medium";
           font-size: 32px;
@@ -449,12 +444,6 @@ export default function ClientOutcomes() {
         .row-label { font-family: "SohneBuch"; font-size: 16px; color: #000; font-weight: 400; }
         .row-val   { font-family: "SohneBuch"; font-size: 16px; color: #757575; font-weight: 400; margin-left: auto; }
 
-        /* ══ 12-COL GRID SYSTEM ══
-           Container uses a proper 12-column CSS grid.
-           Content cols are mapped: desktop 4-col cards (3 per row = 4 cols each),
-           tablet 6-col (2 per row), mobile full-width.
-        ══════════════════════════════════════════ */
-
         /* ══ OUTCOMES SECTION ══ */
         .outcomes-section-wrap {
           background: #F9F9F9;
@@ -465,14 +454,12 @@ export default function ClientOutcomes() {
           width: 100%;
           max-width: 1512px;
           margin: 0 auto;
-          /* 12-col grid */
           display: grid;
           grid-template-columns: repeat(12, 1fr);
           column-gap: 32px;
           padding: 64px 130px;
         }
         .outcomes-head {
-          /* Full 12 cols */
           grid-column: 1 / -1;
           display: flex;
           flex-direction: column;
@@ -480,7 +467,6 @@ export default function ClientOutcomes() {
           text-align: center;
           margin-bottom: 48px;
         }
-        /* Cards container: full 12 cols, inner 3-col (each card = 4/12 cols) */
         .outcomes-grid-container {
           grid-column: 1 / -1;
           display: grid;
@@ -499,14 +485,12 @@ export default function ClientOutcomes() {
         .testimonials-section-wrap {
           background: #EAE5DF;
           width: 100%;
-          /* no overflow clipping at base — desktop needs space for nav arrows */
           position: relative;
         }
         .testimonials-section {
           width: 100%;
           max-width: 1512px;
           margin: 0 auto;
-          /* 12-col grid */
           display: grid;
           grid-template-columns: repeat(12, 1fr);
           column-gap: 32px;
@@ -532,12 +516,13 @@ export default function ClientOutcomes() {
           position: relative;
           width: 100%;
         }
+
+        /* ── FIX: viewport clips overflow so only 3 cards show on desktop ── */
         .testimonials-slider-viewport {
           width: 100%;
+          overflow: hidden;
           padding: 20px 0;
           margin: -20px 0;
-          clip-path: inset(-20px -80px -20px 0px);
-          -webkit-clip-path: inset(-20px -80px -20px 0px);
         }
         .testimonials-slider-track {
           display: flex;
@@ -554,7 +539,6 @@ export default function ClientOutcomes() {
           padding: 20px;
           display: flex;
           flex-direction: column;
-          /* FIX: min-height instead of fixed height so pill wrapping doesn't clip content */
           min-height: 407px;
           height: auto;
           border: 1px solid ${AQUA};
@@ -565,7 +549,6 @@ export default function ClientOutcomes() {
           box-shadow: 0 10px 22px rgba(105,228,220,0.96);
         }
 
-        /* ══ FIX: TC-PILL — wrap text on small screens, no truncation ══ */
         .tc-pill {
           display: inline-flex;
           padding: 8px 16px;
@@ -577,12 +560,11 @@ export default function ClientOutcomes() {
           font-weight: 400;
           font-family: SohneBuch;
           line-height: 24px;
-          /* KEY FIX: allow wrapping, remove white-space:nowrap and text-overflow */
           max-width: 100%;
-          white-space: normal;          /* wrap instead of truncate */
-          word-break: break-word;       /* break long words if needed */
-          overflow: visible;            /* don't clip */
-          text-overflow: unset;         /* no ellipsis */
+          white-space: normal;
+          word-break: break-word;
+          overflow: visible;
+          text-overflow: unset;
           align-self: flex-start;
           margin-bottom: 10px;
           flex-shrink: 0;
@@ -634,7 +616,6 @@ export default function ClientOutcomes() {
         /* ══ EXPANDED ALL-REVIEWS GRID ══ */
         .reviews-all-grid {
           display: grid;
-          /* 3 cols = 3×4/12 on desktop */
           grid-template-columns: repeat(3, 1fr);
           gap: ${CARD_GAP}px;
           width: 100%;
@@ -680,109 +661,62 @@ export default function ClientOutcomes() {
         }
         .view-more-btn:hover { background: ${AQUA}; transform: scale(1.05); }
 
-        /* ══════════════════════════════════════════
-            RESPONSIVE — TABLET (768–1199px)
-            12-col grid → cards span 6 cols each (2 per row)
-        ══════════════════════════════════════════ */
+        /* ══ TABLET (768–1199px) ══ */
         @media (max-width: 1199px) {
           .outcomes-section,
           .testimonials-section {
             column-gap: 24px;
             padding: 48px 48px 64px;
           }
-
-          /* H1 desktop=56px → tablet=44px */
           .hero-h1 { font-size: 44px; letter-spacing: -0.9px; }
-
-          /* H2 desktop=42px → tablet=36px */
           .outcomes-h2,
           .testimonials-h2 { font-size: 36px; line-height: 44px; }
-
-          /* H3 desktop=32px → tablet=28px */
           .section-h3 { font-size: 28px; }
-
           .outcomes-subtitle,
           .testimonials-subtitle { font-size: 20px; line-height: 32px; }
-
-          /* Cards: 2 per row (each spans 6/12 cols) */
           .outcomes-grid-container { grid-template-columns: repeat(2, 1fr); }
-          /* Reviews: 2 per row */
           .reviews-all-grid        { grid-template-columns: repeat(2, 1fr); }
-
           .nav-arrow.prev { left: -44px; }
           .nav-arrow.next { right: -44px; }
-
           .growth-circle-container { width: 120px; height: 120px; bottom: 182px; }
           .growth-label { font-size: 18px; }
           .growth-value { font-size: 32px; }
         }
 
-        /* ══════════════════════════════════════════
-            RESPONSIVE — MOBILE (<768px)
-        ══════════════════════════════════════════ */
+        /* ══ MOBILE (<768px) ══ */
         @media (max-width: 767px) {
-
-          /* ── Typography ── */
-          /* H1: 56px */
-          .hero-h1 {
-            font-size: 56px;
-            letter-spacing: -0.6px;
-            line-height: 1.15;
-          }
-          /* H2: 42px */
+          .hero-h1 { font-size: 56px; letter-spacing: -0.6px; line-height: 1.15; }
           .outcomes-h2,
-          .testimonials-h2 {
-            font-size: 42px;
-            line-height: 32px;
-            letter-spacing: -0.2px;
-          }
+          .testimonials-h2 { font-size: 42px; line-height: 32px; letter-spacing: -0.2px; }
           .outcomes-h2::after,
           .testimonials-h2::after { width: 100px; }
-          /* H3: 32px */
           .section-h3 { font-size: 32px; }
           .outcomes-subtitle,
-          .testimonials-subtitle {
-            font-size: 15px;
-            line-height: 24px;
-            margin-top: 14px;
-          }
+          .testimonials-subtitle { font-size: 15px; line-height: 24px; margin-top: 14px; }
 
-          /* ── Section grids: normal padding both sides ──
-             Outcomes keeps symmetric padding (cards stack 1-col, no peek needed)
-          */
           .outcomes-section {
             grid-template-columns: repeat(12, 1fr);
             column-gap: 16px;
             padding: 40px 24px 56px 24px;
           }
 
-          /* ── Testimonials section: LEFT padding only + overflow:hidden on wrap ──
-             The wrap clips overflow; the section itself has no right padding
-             so the peek card bleeds to the clipped edge naturally.
-          */
-          .testimonials-section-wrap {
-            overflow: hidden;   /* clips the peeking card cleanly */
-          }
+          .testimonials-section-wrap { overflow: hidden; }
           .testimonials-section {
             grid-template-columns: repeat(12, 1fr);
             column-gap: 16px;
-            /* left:24px, right:0 — peek bleeds into the overflow:hidden wrap */
             padding: 40px 0 56px 24px;
           }
 
-          /* Head text: add right padding so text stays readable */
           .outcomes-head  { padding-right: 24px; }
           .testimonials-head { padding-right: 24px; }
 
-          /* ── Cards grids ── */
           .outcomes-grid-container { grid-template-columns: 1fr; }
           .reviews-all-grid {
             grid-template-columns: 1fr;
-            /* Add right padding so expanded cards don't bleed to screen edge */
             padding-right: 24px;
           }
 
-          /* ── Slider viewport: remove clip-path, let wrap handle clipping ── */
+          /* Mobile: restore overflow:visible + clip-path for peek effect */
           .testimonials-slider-viewport {
             overflow: visible;
             padding: 12px 0;
@@ -791,19 +725,10 @@ export default function ClientOutcomes() {
             -webkit-clip-path: none;
           }
 
-          /* ── Slider wrapper: no extra margins needed ── */
-          .testimonials-slider-wrapper {
-            width: 100%;
-          }
-
-          /* ── Hide nav arrows on mobile ── */
+          .testimonials-slider-wrapper { width: 100%; }
           .nav-arrow { display: none !important; }
-
-          /* ── Dots & CTA button: right padding so they don't touch edge ── */
           .t-dots        { padding-right: 24px; }
           .view-more-btn { margin-right: 24px; }
-
-          /* ── In expanded (View More) state, centre the button with right padding ── */
           .testimonials-slider-col > div:last-child {
             padding-right: 24px;
             width: 100%;
@@ -811,38 +736,18 @@ export default function ClientOutcomes() {
             justify-content: center;
           }
 
-          /* ── Growth circle ── */
           .growth-circle-container { width: 110px; height: 110px; bottom: 185px; }
           .growth-label { font-size: 16px; }
           .growth-value { font-size: 28px; width: 100px; }
-
-          /* ── Property card rows ── */
           .row-label, .row-val { font-size: 14px; }
-
-          /* ── Testimonial card: allow height to grow with pill wrapping ── */
-          .testimonial-card {
-            min-height: 380px;
-            height: auto;
-          }
-
-          /* ── Pill: smaller, still wraps ── */
-          .tc-pill {
-            font-size: 13px;
-            line-height: 19px;
-            padding: 6px 12px;
-            border-radius: 10px;
-          }
-
-          /* ── Stars ── */
+          .testimonial-card { min-height: unset; height: auto; }
+          .tc-body { display: block; -webkit-line-clamp: unset; overflow: visible; }
+          .tc-pill { font-size: 13px; line-height: 19px; padding: 6px 12px; border-radius: 10px; }
           .tc-stars img { width: 130px !important; height: auto !important; }
-
-          /* ── Review body text ── */
           .tc-body { font-size: 14px; line-height: 22px; }
         }
 
-        /* ══════════════════════════════════════════
-            RESPONSIVE — SMALL MOBILE (<480px)
-        ══════════════════════════════════════════ */
+        /* ══ SMALL MOBILE (<480px) ══ */
         @media (max-width: 480px) {
           .hero-h1 { font-size: 56px; }
           .outcomes-h2,
@@ -856,7 +761,7 @@ export default function ClientOutcomes() {
 
       <div style={{ backgroundColor: WHITE, fontFamily: "Sohne, sans-serif" }}>
 
-        {/* ══ HERO ══════════════════════════════════════════════ */}
+        {/* ══ HERO ══ */}
         <section style={{
           minHeight: "80vh",
           display: "flex", alignItems: "center", justifyContent: "center",
@@ -871,12 +776,11 @@ export default function ClientOutcomes() {
             padding: "60px 20px", borderRadius: 12,
             animation: "heroFadeIn 0.8s ease both",
           }}>
-            {/* H1 — 56px desktop, scales down per breakpoints */}
             <h1 className="hero-h1">Client Outcomes</h1>
           </div>
         </section>
 
-        {/* ══ ABOUT ═══════════════════════════════════════════════ */}
+        {/* ══ ABOUT ══ */}
         <div className="client-outcomes-about">
           <AboutSection
             imageSrc={AboutClientOutcomesImg}
@@ -885,27 +789,18 @@ export default function ClientOutcomes() {
           />
         </div>
 
-        {/* ══ CLIENT OUTCOMES GRID ═════════════════════════════
-            12-column grid
-            Desktop:  3 cards per row (each = 4/12 cols)
-            Tablet:   2 cards per row (each = 6/12 cols)
-            Mobile:   1 card per row  (full 12 cols)
-        ══════════════════════════════════════════════════════ */}
+        {/* ══ CLIENT OUTCOMES GRID ══ */}
         <div className="outcomes-section-wrap">
           <div ref={outcomesSectionRef} id="outcomes" className="outcomes-section">
-
-            {/* H2 — 42px desktop */}
             <div className="outcomes-head">
               <h2 className="outcomes-h2">Client Outcomes</h2>
               <p className="outcomes-subtitle">Explore more about client outcomes.</p>
             </div>
-
             <div className="outcomes-grid-container">
               {(showAllCards ? cards : cards.slice(0, INITIAL_CARDS_COUNT)).map((card, i) => (
                 <PropertyCard key={card.id} card={card} index={i} />
               ))}
             </div>
-
             {cards.length > INITIAL_CARDS_COUNT && (
               <div className="outcomes-btn-row" ref={buttonContainerRef}>
                 <button className="view-more-btn" onClick={handleToggleCards}>
@@ -916,17 +811,9 @@ export default function ClientOutcomes() {
           </div>
         </div>
 
-        {/* ══ TESTIMONIALS ═════════════════════════════════════
-            12-column grid
-            Desktop:  3 cards visible in slider
-            Tablet:   2 cards visible
-            Mobile:   1 card + peek (CARD_GAP + PEEK px)
-            Pill text now wraps — no truncation on any screen
-        ══════════════════════════════════════════════════════ */}
+        {/* ══ TESTIMONIALS ══ */}
         <div className="testimonials-section-wrap">
           <section ref={testimonialsSectionRef} id="testimonials" className="testimonials-section">
-
-            {/* H2 — 42px desktop */}
             <div className="testimonials-head">
               <h2 className="testimonials-h2">What our clients are saying</h2>
               <p className="testimonials-subtitle">In their own words, following their experience with Find &amp; Sign.</p>
@@ -977,8 +864,9 @@ export default function ClientOutcomes() {
                     </div>
                   </div>
 
+                  {/* ── FIX: dots count = totalPages (groups of visibleReviewCount) ── */}
                   <div className="t-dots">
-                    {Array.from({ length: Math.ceil(formattedReviews.length / visibleReviewCount) }).map((_, i) => (
+                    {Array.from({ length: totalPages }).map((_, i) => (
                       <button
                         key={i}
                         className={`t-dot${i === reviewIdx ? " active" : ""}`}
@@ -1002,7 +890,6 @@ export default function ClientOutcomes() {
                 </button>
               </div>
             </div>
-
           </section>
         </div>
 

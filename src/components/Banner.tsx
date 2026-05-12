@@ -8,53 +8,53 @@ function VideoModal({ onClose }: { onClose: () => void }) {
     <div
       onClick={onClose}
       style={{
-        position:        "fixed",
-        inset:           0,
-        zIndex:          2000,
-        background:      "rgba(0, 0, 0, 0.35)",
-        display:         "flex",
-        alignItems:      "center",
-        justifyContent:  "center",
-        padding:         "20px",
+        position:       "fixed",
+        inset:          0,
+        zIndex:         2000,
+        background:     "rgba(0, 0, 0, 0.4)",
+        display:        "flex",
+        alignItems:     "center",
+        justifyContent: "center",
+        padding:        "clamp(12px, 5vw, 40px) 20px",
       }}
     >
       <div
         onClick={e => e.stopPropagation()}
-        style={{ position: "relative", width: "100%", maxWidth: "900px" }}
+        style={{ width: "100%", maxWidth: "900px" }}
       >
+        {/* ✕ button: 4px below the overlay top-padding, snug above the iframe */}
         <button
           onClick={onClose}
           style={{
-            position:   "absolute",
-            top:        "-40px",
-            right:      0,
-            background: "none",
-            border:     "none",
-            cursor:     "pointer",
-            color:      "#fff",
-            fontSize:   "28px",
-            lineHeight: 1,
-            padding:    "4px 8px",
-            marginTop:"15%",
+            display:      "block",
+            marginLeft:   "auto",
+            marginBottom: "4px",
+            background:   "none",
+            border:       "none",
+            cursor:       "pointer",
+            color:        "#fff",
+            fontSize:     "24px",
+            lineHeight:   1,
+            padding:      "2px 6px",
           }}
           aria-label="Close video"
         >
           ✕
         </button>
- 
-      <iframe
-  src="https://player.vimeo.com/video/1189029882?autoplay=0&loop=1&playsinline=1"
-  style={{
-    width: "100%",
-    height: "500px",
-    borderRadius: "4px",
-    marginTop: "10%",
-  }}
-  frameBorder="0"
-  allow="autoplay; fullscreen; picture-in-picture"
-  allowFullScreen
-></iframe>
 
+        <iframe
+          src="https://player.vimeo.com/video/1189029882?autoplay=0&loop=1&playsinline=1"
+          style={{
+            width:        "100%",
+            aspectRatio:  "16/9",
+            height:       "auto",
+            borderRadius: "4px",
+            display:      "block",
+          }}
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+        />
       </div>
     </div>
   );
@@ -71,7 +71,7 @@ export default function App() {
     bgVideoRef.current?.pause();
     setVideoOpen(true);
   }
-const navigate = useNavigate();
+  const navigate = useNavigate();
   function closeVideo() {
     setVideoOpen(false);
     bgVideoRef.current?.play();
@@ -89,57 +89,47 @@ const navigate = useNavigate();
         .page-wrapper { padding-top: 0; }
 
         /* ── Hero top ── */
-     .hero-top {
-  position: relative;
-  width: 100%;
-  min-height: 400px;
-  aspect-ratio: 16 / 7;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
+        .hero-top {
+          position: relative;
+          width: 100%;
+          min-height: 400px;
+          aspect-ratio: 16 / 7;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
 
-.video-wrapper {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  z-index: 0;
-}
-.hero-bg-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 177.77vh;
-  height: 100vh;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
+        .video-wrapper {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          z-index: 0;
+        }
+        .hero-bg-video {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 177.77vh;
+          height: 100vh;
+          transform: translate(-50%, -50%);
+          pointer-events: none;
+        }
 
-@media (min-aspect-ratio: 16/9) {
-  .hero-bg-video {
-    width: 100vw;
-    height: 56.25vw;
-  }
-}
+        @media (min-aspect-ratio: 16/9) {
+          .hero-bg-video {
+            width: 100vw;
+            height: 56.25vw;
+          }
+        }
 
-
-//       .hero-bg-video {   
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   width: 177.77vh;
-//   height: 100vh;
-//   transform: translate(-50%, -50%);
-// }
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  z-index: 1;
-}
+        .hero-overlay {
+          position: absolute;
+          inset: 0;
+          background: rgba(0,0,0,0.45);
+          z-index: 1;
+        }
         .content-wrap {
           position:        relative;
           z-index:         2;
@@ -161,23 +151,23 @@ const navigate = useNavigate();
           font-variant-numeric: lining-nums proportional-nums;
         }
         .watch-btn {
-          display:        flex;
-          height:         48px;
-          padding:        12px 16px;
-          justify-content:center;
-          align-items:    center;
-          gap:            10px;
-          font-family:    'CX80';
-          font-weight:    700;
-          font-size:      12px;
-          line-height:    15px;
-          letter-spacing: 4.8px;
-          border-radius:  5px;
-          border:         1px solid #69E4DC;
-          background:     transparent;
-          color:          white;
-          cursor:         pointer;
-          transition:     background 0.2s, color 0.2s;
+          display:         flex;
+          height:          48px;
+          padding:         12px 16px;
+          justify-content: center;
+          align-items:     center;
+          gap:             10px;
+          font-family:     'CX80';
+          font-weight:     700;
+          font-size:       12px;
+          line-height:     15px;
+          letter-spacing:  4.8px;
+          border-radius:   5px;
+          border:          1px solid #69E4DC;
+          background:      transparent;
+          color:           white;
+          cursor:          pointer;
+          transition:      background 0.2s, color 0.2s;
         }
         .watch-btn:hover {
           background: rgba(105, 228, 220, 0.15);
@@ -203,32 +193,39 @@ const navigate = useNavigate();
           line-height: 36px;
         }
         .find-out-btn {
-          display:        flex;
-          height:         48px;
-          padding:        12px 16px;
-          justify-content:center;
-          align-items:    center;
-          gap:            10px;
-          flex-shrink:    0;
-          border-radius:  8px;
-          border:         1px solid #69E4DC;
-          color:          #073B2F;
-          font-family: 'CX80';
-          font-size:      15px;
-          font-weight:    700;
-          line-height:    15px;
-          letter-spacing: 4.8px;
-          margin-top:     30px;
-          background:     white;
-          cursor:         pointer;
-          transition:     background 0.2s, color 0.2s;
+          display:         flex;
+          height:          48px;
+          padding:         12px 16px;
+          justify-content: center;
+          align-items:     center;
+          gap:             10px;
+          flex-shrink:     0;
+          border-radius:   8px;
+          border:          1px solid #69E4DC;
+          color:           #073B2F;
+          font-family:     'CX80';
+          font-size:       15px;
+          font-weight:     700;
+          line-height:     15px;
+          letter-spacing:  4.8px;
+          margin-top:      30px;
+          background:      white;
+          cursor:          pointer;
+          transition:      background 0.2s, color 0.2s;
         }
-       .find-out-btn:hover {
-  background: #69E4DC;
-  color: #073B2F;
-}
+        .find-out-btn:hover {
+          background: #69E4DC;
+          color: #073B2F;
+        }
 
         /* ── Responsive ── */
+        @media (max-width: 1024px) {
+          .hero-top    { aspect-ratio: unset; min-height: 56vw; height: 56vw; margin-top: 0; }
+          .page-wrapper { padding-bottom: 0; }
+          .hero-title  { font-size: 44px; line-height: 54px; letter-spacing: -0.8px; }
+          .description { font-size: 20px; line-height: 32px; }
+          .hero-bottom { padding: 0 6%; }
+        }
         @media (max-width: 768px) {
           .hero-title   { font-size: 36px; line-height: 44px; letter-spacing: -0.5px; }
           .description  { font-size: 18px; line-height: 28px; }
@@ -246,27 +243,16 @@ const navigate = useNavigate();
 
       <div className="page-wrapper">
         <section className="hero-top">
-          {/* <video
-            ref={bgVideoRef}
-            className="hero-bg-video"
-            autoPlay
-            muted
-            loop
-            playsInline
-          >
-            <source src={bannervideo} type="video/mp4" />
-          </video> */}
-
-      <div className="video-wrapper">
-  <iframe
-    src="https://player.vimeo.com/video/1189023931?autoplay=1&muted=1&loop=1&background=1&playsinline=1"
-    className="hero-bg-video"
-    frameBorder="0"
-    allow="autoplay; fullscreen; picture-in-picture"
-    allowFullScreen
-    loading="lazy"
-  ></iframe>
-</div>
+          <div className="video-wrapper">
+            <iframe
+              src="https://player.vimeo.com/video/1189023931?autoplay=1&muted=1&loop=1&background=1&playsinline=1"
+              className="hero-bg-video"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
 
           <div className="hero-overlay" />
 
@@ -290,11 +276,11 @@ const navigate = useNavigate();
             identifying the right properties and securing them before they reach the wider market.
           </p>
           <button
-      className="find-out-btn"
-      onClick={() => navigate("/about")}
-    >
-      Find Out More
-    </button>
+            className="find-out-btn"
+            onClick={() => navigate("/about")}
+          >
+            Find Out More
+          </button>
         </section>
       </div>
     </>
