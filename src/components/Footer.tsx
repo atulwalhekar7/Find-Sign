@@ -398,7 +398,7 @@ export default function Footer() {
           width: 100%;
           display: flex;
           min-height: 589px;
-          padding: 24px 130px; !important;
+          padding: 24px 130px !important;
           flex-direction: column;
           align-items: flex-start;
           gap: 66px; 
@@ -554,7 +554,9 @@ gap: 10px;
           .footer { padding: 56px 76px !important}
         }
         @media (max-width: 768px) {
+          .footer { padding: 48px 20px !important; }
           .footer-grid { flex-direction: column; }
+          .desktop-only { display: none; }
           .footer-contact, .footer-explore, .footer-legal { width: 100%; margin-left: 0; }
         }
       `}</style>
@@ -610,6 +612,9 @@ gap: 10px;
               </div>
             ))}
           </div>
+
+       <div className="desktop-only" style={{ width: "68px" }}>
+</div>
 
           {/* Legal */}
           <div className="footer-legal">
