@@ -213,7 +213,7 @@ const globalCSS = `
 
   /* ── TABLET ── */
   @media (max-width: 1199px) {
-    .op-section { column-gap: 32px; padding: 48px 48px 64px; }
+    .op-section { column-gap: 32px; padding: 64px 48px 64px; }
     .op-row     { grid-template-columns: 1.5fr 10.5fr; column-gap: 24px; }
     .op-num           { font-size: 120px !important; line-height: 108px !important; letter-spacing: -3.6px !important; }
     .op-title-text    { font-size: 36px  !important; }

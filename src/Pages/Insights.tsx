@@ -215,9 +215,9 @@ export default function Insights() {
      /> */}
 
       {/* ── SECTION 3: Blogs ────────────────────────────────────────────── */}
-      <section className="blogs-container" style={{ maxWidth: "1200px", margin: "0 auto 80px", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <section className="blogs-container" style={{ maxWidth: "1200px", margin: "0 auto ", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <h2 style={{  
-          margin: "40px auto 24px",
+          margin: " auto 24px",
   color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
   fontFamily: "GT Super Display Medium",
   fontSize: "44px",
@@ -264,7 +264,7 @@ export default function Insights() {
         }
 
         .blogs-container {
-          padding: 24px 
+          padding: 64px 
         }
 
         .blog-card {
