@@ -87,6 +87,28 @@ const globalCSS = `
   }
 
   /* ── Section grid ── */
+
+  .op-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: fit-content;
+  max-width: 100%;
+
+  height: 48px;
+  padding: 12px 24px;
+
+  font-family: CX80;
+  font-weight: 700;
+
+  letter-spacing: 4px;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+
+  transition: all 0.3s ease;
+}
   .op-section {
     background: ${BG};
     width: 100%;
@@ -216,6 +238,14 @@ const globalCSS = `
     .op-section { column-gap: 32px; padding: 64px 48px 64px; }
     .op-row     { grid-template-columns: 1.5fr 10.5fr; column-gap: 24px; }
     .op-num           { font-size: 120px !important; line-height: 108px !important; letter-spacing: -3.6px !important; }
+    .op-section { column-gap: 32px; padding: 48px 48px 64px; }
+@media (max-width: 767px) {
+  .op-row {
+    grid-template-columns: 60px 1fr;
+    column-gap: 12px;
+    align-items: flex-start;
+  }
+}    .op-num           { font-size: 120px !important; line-height: 108px !important; letter-spacing: -3.6px !important; }
     .op-title-text    { font-size: 36px  !important; }
     .op-subtitle-text { font-size: 20px  !important; }
     .op-item-title    { font-size: 26px  !important; }
@@ -224,17 +254,71 @@ const globalCSS = `
 
   /* ── MOBILE ── */
   @media (max-width: 767px) {
+
+   /* H1 */
+  h1,
+  .h1 {
+    font-size: 56px !important;
+    line-height: 64px !important;
+  }
+
+  /* H2 */
+  h2,
+  .h2,
+  .op-title-text {
+    font-size: 42px !important;
+    line-height: 50px !important;
+  }
+
+  /* H3 */
+  h3,
+  .h3,
+  .op-item-title {
+    font-size: 32px !important;
+    line-height: 40px !important;
+  }
+
     .op-section { grid-template-columns: repeat(4,1fr); column-gap: 16px; padding: 40px 20px 56px; }
     .op-head    { margin-bottom: 32px; }
-    .op-row     { grid-template-columns: 1fr; column-gap: 0; row-gap: 8px; padding: 20px 12px; }
-    .op-row:hover { transform: translateY(-3px) scale(1.005); }
-    .op-num           { font-size: 80px !important; line-height: 72px  !important; letter-spacing: -2.4px !important; }
-    .op-title-text    { font-size: 28px !important; line-height: 38px  !important; }
-    .op-subtitle-text { font-size: 16px !important; line-height: 26px  !important; }
-    .op-item-title    { font-size: 22px !important; line-height: 30px  !important; }
-    .op-item-desc     { font-size: 16px !important; line-height: 24px  !important; }
-    .op-btn           { width: 100%; letter-spacing: 3px !important; }
+   .op-row {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    column-gap: 12px;
+    align-items: flex-start;
+    padding: 14px 12px;
   }
+       .op-row:hover { transform: translateY(-3px) scale(1.005); }
+  .op-num {
+    font-size: 64px !important;
+    line-height: 64px !important;
+    height: auto !important;
+    width: 64px !important;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    transform: translateY(2px); /* 👈 key fix */
+  }
+.op-title-text {
+  font-size: 42px !important;
+  line-height: 50px !important;
+}
+
+.op-item-title {
+  font-size: 32px !important;
+  line-height: 40px !important;
+}    .op-subtitle-text { font-size: 16px !important; line-height: 26px  !important; }
+   
+  .op-item-desc {
+    margin-top: 6px;
+    line-height: 22px;
+  }
+ .op-btn {
+    width: 100%;
+    max-width: 320px;
+    height: 44px;
+    font-size: 13px;
+    letter-spacing: 3px;
+  }  }
 `;
 
 /* ── useInView ── */
@@ -507,19 +591,27 @@ const s: Record<string, React.CSSProperties> = {
     transition: "color 0.3s ease",
   },
   btn: {
-    display: "flex",
-    height: "48px",
-    padding: "12px 16px",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "10px",
-    cursor: "pointer",
-    borderRadius: "8px",
-    border: "1px solid var(--Brand-Contrast-FS-AQUA, #69E4DC)",
-    fontFamily: "CX80",
-    fontSize: "15px",
-    fontStyle: "normal",
-    fontWeight: 700,
-    letterSpacing: "4.8px",
-  },
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+
+  width: "fit-content",
+  maxWidth: "100%",
+
+  height: "48px",
+  padding: "12px 16px",
+
+  fontFamily: "CX80",
+  fontSize: "15px",
+  fontWeight: 700,
+
+  letterSpacing: "4.8px",
+  whiteSpace: "nowrap",
+
+  borderRadius: "8px",
+  border: "1px solid #69E4DC",
+
+  cursor: "pointer",
+  transition: "all 0.3s ease",
+},
 };

@@ -23,15 +23,13 @@ const reviewsData = [
   { name: "Jasmine cheema", date: "6 months ago", title: "Truly exceptional at what he does", body: "I recently had the opportunity to work with Niki, and I must say he is truly exceptional at what he does. He consistently puts his clients first and goes above and beyond to ensure they feel supported throughout the entire process." },
   { name: "Gurinder Singh", date: "4 months ago", title: "Great experience working with Niki", body: "Great experience working with Niki on this transaction. Everything ran smoothly from start to finish. Niki has a strong understanding of the market, communicated clearly, and was professional throughout. A pleasure to deal with.", image: gurinderSinghImg },
   { name: "P Y", date: "4 months ago", title: "Hands-on approach and professionalism", body: "What really stood out about Niki compared to other buyer's agents I spoke with was his hands-on approach and professionalism from the very beginning. I was unsure about using a buyer's agent at first, but after our first call it was clear." },
-  { name: "Travis Ranieri", date: "10 months ago", title: "Ongoing support through  property ", body: "As a Buyers Agent Niki provided ongoing support through our property investment journey, delivering insights and become a trusted advisor for our family. Seamless process, highly recommend leveraging Niki and his team." },
+  { name: "Travis Ranieri", date: "10 months ago", title: "Ongoing support through property ", body: "As a Buyers Agent Niki provided ongoing support through our property investment journey, delivering insights and become a trusted advisor for our family. Seamless process, highly recommend leveraging Niki and his team." },
   { name: "Kien Lam", date: "8 months ago", title: "Best in the business", body: "Niki is the best in the business. He has the best negotiating skills and can get you the best price for the property.", image: kienLamImg },
   { name: "Kush Hirani", date: "4 months ago", title: "Very pleased with Niki & Rebecca's service", body: "Very pleased with Niki & Rebecca's service. Quick responses and always going above and beyond to make sure I found the right property. Niki is thorough on all the home opens to point out any potential issues and doesn't pressure you at all" },
 ];
 
 const formatReviewBody = (text: string) => {
-  if (text.endsWith("…More")) {
-    return text.substring(0, text.length - 5).trim();
-  }
+  if (text.endsWith("…More")) return text.substring(0, text.length - 5).trim();
   return text;
 };
 
@@ -40,137 +38,213 @@ const formattedReviews = reviewsData.map(review => ({
   body: formatReviewBody(review.body),
 }));
 
-// Layout constants
-const CARD_GAP = 32; // Gap between cards
-const CARD_HEIGHT = 407; // Fixed height for cards
+const CARD_GAP = 32;
+const CARD_HEIGHT = 407;
+const MOBILE_LEFT_PAD = 24;
+const PEEK = 56;
 
-const App = () => {
+const Testimonials = () => {
   const navigate = useNavigate();
   const [reviewIdx, setReviewIdx] = useState(0);
-  const timerRef = useRef<number | null>(null);
-  const [visibleCount, setVisibleCount] = useState(3); // Default to 3 for desktop
-  const [reviewContainerWidth, setReviewContainerWidth] = useState(0);
-  const reviewContainerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile]   = useState(false);
+  const [isTablet, setIsTablet]   = useState(false);
+  const [offset, setOffset]       = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const rafRef   = useRef<number | null>(null);
 
-  useEffect(() => {
-    const updateVisibleCount = () => {
-      const w = window.innerWidth;
-      if (w < 768) setVisibleCount(1);
-      else if (w < 1100) setVisibleCount(2);
-      else setVisibleCount(3);
-    };
-    updateVisibleCount();
-    window.addEventListener("resize", updateVisibleCount);
-
-    const obs = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.target === reviewContainerRef.current) {
-          setReviewContainerWidth(entry.contentRect.width);
-        }
-      }
-    });
-
-    if (reviewContainerRef.current) obs.observe(reviewContainerRef.current);
-
-    return () => {
-      window.removeEventListener("resize", updateVisibleCount);
-      obs.disconnect();
-    };
-  }, []);
-
+  const visibleCount = isMobile ? 1 : isTablet ? 2 : 3;
   const maxReviewIdx = Math.max(0, formattedReviews.length - visibleCount);
 
-  const goTo = useCallback((idx: number) => {
-    setReviewIdx(Math.max(0, Math.min(idx, maxReviewIdx)));
-  }, [maxReviewIdx]);
-
-  const resetTimer = useCallback(() => {
-    if (timerRef.current) clearInterval(timerRef.current);
-    timerRef.current = window.setInterval(() => { // Use window.setInterval for clarity
-      setReviewIdx((prev) => (prev >= maxReviewIdx ? 0 : prev + 1));
-    }, 4500);
-  }, [maxReviewIdx]);
+  useEffect(() => {
+    const update = () => {
+      setIsMobile(window.innerWidth < 768);
+      setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1100);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
 
   useEffect(() => {
     setReviewIdx(prev => Math.min(prev, maxReviewIdx));
-  }, [visibleCount, maxReviewIdx]);
+  }, [maxReviewIdx]);
+
+  useEffect(() => {
+    const recalc = () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(() => {
+        if (!trackRef.current) return;
+        const first = trackRef.current.querySelector<HTMLElement>(".npb-card");
+        if (!first) return;
+        const cardW = first.getBoundingClientRect().width;
+        if (cardW === 0) return;
+        setOffset(reviewIdx * (cardW + CARD_GAP));
+      });
+    };
+    recalc();
+    const ro = new ResizeObserver(recalc);
+    if (trackRef.current) ro.observe(trackRef.current);
+    return () => {
+      ro.disconnect();
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [reviewIdx, isMobile, isTablet]);
+
+  const resetTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setReviewIdx(prev => (prev >= maxReviewIdx ? 0 : prev + 1));
+    }, 4500);
+  }, [maxReviewIdx]);
 
   useEffect(() => {
     resetTimer();
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [resetTimer]);
 
+  const goTo = useCallback((idx: number) => {
+    setReviewIdx(Math.max(0, Math.min(idx, maxReviewIdx)));
+  }, [maxReviewIdx]);
+
   const handleNav = useCallback((dir: number) => {
-    const next = reviewIdx + dir;
-    goTo(next);
+    goTo(reviewIdx + dir);
     resetTimer();
   }, [reviewIdx, goTo, resetTimer]);
 
-  const reviewCardWidth = reviewContainerWidth
-    ? (reviewContainerWidth - CARD_GAP * (visibleCount - 1)) / visibleCount
-    : 350; // Fallback width
+  const cardFlexBasis = isMobile
+    ? `calc(100% - ${CARD_GAP}px - ${PEEK}px)`
+    : `calc((100% - ${CARD_GAP}px * ${visibleCount - 1}) / ${visibleCount})`;
 
   return (
-    <div className="min-h-screen bg-white">
+    <div style={{ width: "100%" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap');
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .rev-grid {
-          display: grid;
-          grid-template-columns: repeat(12, 1fr);
-          column-gap: 64px;
+        /*
+         * PEEK ARCHITECTURE
+         * ─────────────────
+         * .rev-outer-wrapper  overflow-x: clip  → no page scrollbar; peek card still renders
+         * .rev-bg-section     full width, background, overflow: visible
+         * .rev-inner-section  max-width + padding. On mobile: right padding = 0 so the
+         *                     track can bleed to the screen edge. Left pad = MOBILE_LEFT_PAD.
+         * .rev-slider-viewport  overflow: visible on mobile (does NOT clip the peek card)
+         * Card width = 100% - GAP - PEEK → next card peeks by exactly PEEK px
+         */
+
+        .rev-outer-wrapper {
           width: 100%;
-          max-width: 1512px;
-          margin: 0 auto;
-          padding: 0 100px;
-          box-sizing: border-box;
-        }
-        @media (max-width: 1199px) { .rev-grid { column-gap: 32px; padding: 0 48px; } }
-        @media (max-width: 767px)  { .rev-grid { grid-template-columns: repeat(4, 1fr); column-gap: 16px; padding: 0 20px; } }
-
-        .rev-full { grid-column: 1 / -1; }
-
-        .npb-card {
-          display: flex;
-          flex-direction: column;
-          flex-shrink: 0;
-          padding: 20px;
-          /* Width will be set dynamically via style prop */
-          min-width: 0; /* Allow shrinking */
-          height: ${CARD_HEIGHT}px; /* Fixed height */
-          border-radius: 24px;
-          background: #FFFFFF;
-          border: 1px solid #69E4DC;
-          box-sizing: border-box;
-          box-shadow: none;
-          transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-          position: relative;
-          overflow: hidden;
+          overflow-x: clip;
         }
 
-        .npb-card:hover {
-          transform: translateY(-12px);
-          box-shadow: 0 10px 22px rgba(105, 228, 220, 0.5);
-          border-color: #69E4DC;
+        .rev-bg-section {
+          width: 100%;
+          background: #EAE5DF;
           overflow: visible;
         }
 
-        .avatar-circle {
-          transition: all 0.3s ease;
+        .rev-inner-section {
+          width: 100%;
+          max-width: 1512px;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 80px 100px;
+          gap: 40px;
+          overflow: visible;
         }
+
+        .rev-header-wrap {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+        }
+
+        .rev-heading {
+          font-family: 'GT Super Display Medium';
+          font-size: 44px;
+          font-weight: 500;
+          color: #073B2F;
+          line-height: 54px;
+          letter-spacing: -0.88px;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 24px;
+          text-align: center;
+        }
+        .rev-heading::after {
+          content: "";
+          width: 160px;
+          height: 1px;
+          background: #073B2F;
+        }
+        .rev-subheading {
+          color: #000;
+          font-family: 'Sohne';
+          font-size: 24px;
+          font-weight: 300;
+          line-height: 36px;
+          margin-top: 24px;
+          text-align: center;
+        }
+
+        .rev-slider-outer {
+          width: 100%;
+          position: relative;
+          overflow: visible;
+        }
+
+        /* Desktop/tablet: clip normally */
+        .rev-slider-viewport {
+          width: 100%;
+          overflow: hidden;
+          padding: 40px 0;
+          margin: -40px 0;
+        }
+
+        .rev-slider-track {
+          display: flex;
+          gap: ${CARD_GAP}px;
+          transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          will-change: transform;
+        }
+
+        .npb-card {
+          flex: 0 0 var(--card-flex-basis);
+          min-width: 0;
+          height: ${CARD_HEIGHT}px;
+          display: flex;
+          flex-direction: column;
+          padding: 20px;
+          border-radius: 24px;
+          background: #FFFFFF;
+          border: 1px solid #69E4DC;
+          transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+                      box-shadow 0.4s ease;
+          position: relative;
+          overflow: hidden;
+          cursor: pointer;
+        }
+        .npb-card:hover {
+          transform: translateY(-12px);
+          box-shadow: 0 10px 22px rgba(105, 228, 220, 0.5);
+          overflow: visible;
+        }
+        .avatar-circle { transition: all 0.3s ease; }
         .npb-card:hover .avatar-circle {
           box-shadow: 0 4px 15px rgba(105, 228, 220, 0.6);
           border-color: #69E4DC !important;
           transform: scale(1.05);
         }
 
-        .rev-slider-track {
-          transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-          will-change: transform;
-        }
-
         .rev-arrow-btn {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
           width: 44px; height: 44px;
           border-radius: 50%;
           border: 1.5px solid rgba(11, 215, 205, 0.96);
@@ -180,12 +254,8 @@ const App = () => {
           color: #073B2F;
           padding: 0;
           transition: all 0.25s ease;
-          flex-shrink: 0;
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
           z-index: 20;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         .rev-arrow-btn.prev { left: -60px; }
         .rev-arrow-btn.next { right: -60px; }
@@ -196,33 +266,6 @@ const App = () => {
           border-color: #073B2F;
         }
         .rev-arrow-btn:disabled { opacity: 0.2; cursor: default; }
-
-        .rev-cta-btn {
-          display: flex;
-          height: 48px;
-          padding: 12px 16px;
-          justify-content: center;
-          align-items: center;
-          gap: 10px;
-          flex-shrink: 0;
-          border-radius: 8px;
-          border: 1px solid #69E4DC;
-          background: white;
-          color: #073B2F;
-          font-family: 'CX80';
-          font-size: 15px;
-          font-weight: 700;
-          line-height: 15px;
-          letter-spacing: 4.8px;
-          margin-top: 30px;
-          cursor: pointer;
-          transition: background 0.2s, color 0.2s;
-        }
-        .rev-cta-btn:hover {
-          background: #69E4DC;
-          color: #073B2F;
-          border-color: #69E4DC;
-        }
 
         .rev-dot {
           width: 8px; height: 8px;
@@ -235,310 +278,240 @@ const App = () => {
         }
         .rev-dot.active { background: #073B2F; width: 24px; border-radius: 4px; }
 
-        .rev-header {
-          width: 100%;
-          display: grid;
-          grid-template-columns: repeat(12, 1fr);
-          column-gap: 24px;
-          align-items: flex-start;
-        }
-        .rev-title-group { grid-column: 1 / -1; }
-
-        .rev-heading {
-          font-family: 'GT Super Display Medium';
-          font-size: 44px;
-          font-weight: 500;
-          font-style: normal;
-          color: #073B2F;
-          line-height: 54px;
-          letter-spacing: -0.88px;
-          font-variant-numeric: lining-nums proportional-nums;
-          margin: 0;
+        .rev-cta-btn {
           display: flex;
-          flex-direction: column;
+          height: 48px;
+          padding: 12px 16px;
+          justify-content: center;
           align-items: center;
-          gap: 24px;
-          width: fit-content;
-          text-align: center;
+          gap: 10px;
+          border-radius: 8px;
+          border: 1px solid #69E4DC;
+          background: white;
+          color: #073B2F;
+          font-family: 'CX80';
+          font-size: 15px;
+          font-weight: 700;
+          line-height: 15px;
+          letter-spacing: 4.8px;
+          cursor: pointer;
+          transition: background 0.2s, color 0.2s;
         }
-        .rev-subheading {
-          color: #000;
-          font-family: 'Sohne';
-          font-size: 24px;
-          font-weight: 300;
-          line-height: 36px;
-          margin: 24px 0 0;
-          text-align: center;
-        }
+        .rev-cta-btn:hover { background: #69E4DC; }
 
+        /* ── Tablet ── */
         @media (max-width: 1100px) {
-          .rev-header { column-gap: 32px; }
-          .rev-heading  { font-size: 36px !important; line-height: 46px !important; }
-          .rev-subheading { font-size: 20px !important; line-height: 30px !important; }          
+          .rev-inner-section { padding: 64px 48px; }
+          .rev-heading { font-size: 36px; line-height: 46px; }
+          .rev-subheading { font-size: 20px; line-height: 30px; }
           .rev-arrow-btn.prev { left: -44px; }
           .rev-arrow-btn.next { right: -44px; }
         }
 
+        /* ── Mobile ── */
         @media (max-width: 767px) {
-          .rev-header { grid-template-columns: 1fr; column-gap: 0; row-gap: 16px; }
-          .rev-title-group { grid-column: 1 / -1; }
+          .rev-inner-section {
+            /*
+             * Right padding = 0 → track bleeds to screen right edge
+             * Left padding = 24px → cards start with breathing room
+             */
+            padding: 48px 0 56px ${MOBILE_LEFT_PAD}px;
+            align-items: flex-start;
+          }
+
+          /* These elements stay padded on the right */
+          .rev-header-wrap { padding-right: ${MOBILE_LEFT_PAD}px; }
+          .rev-dots-row     { padding-right: ${MOBILE_LEFT_PAD}px; }
+          .rev-cta-row      { padding-right: ${MOBILE_LEFT_PAD}px; }
+
+          .rev-heading    { font-size: 28px; line-height: 38px; letter-spacing: -0.5px; }
+          .rev-subheading { font-size: 16px; line-height: 26px; }
+
+          /* CRITICAL: Do NOT clip on mobile — lets peek card show through */
+          .rev-slider-viewport {
+            overflow: visible;
+            padding: 0;
+            margin: 0;
+          }
+
           .rev-arrow-btn { display: none; }
-          .rev-heading  { font-size: 28px !important; line-height: 38px !important; letter-spacing: -0.5px !important; }
-          .rev-subheading { font-size: 16px !important; line-height: 26px !important; }
-          .npb-card { height: auto; min-height: ${CARD_HEIGHT}px; width: 100% !important; min-width: unset !important; }
+          .npb-card { height: auto; min-height: ${CARD_HEIGHT}px; }
         }
       `}</style>
 
-      <section style={{
-        background: "#EAE5DF",
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: "80px 0",
-        gap: "40px",
-        boxSizing: "border-box",
-        fontFamily: "'DM Sans'",
-      }}>
+      <div className="rev-outer-wrapper">
+        <div className="rev-bg-section">
+          <div className="rev-inner-section">
 
-        {/* ── HEADER ── */}
-        <div className="rev-grid">
-          <div className="rev-full">
-            <div className="rev-header" style={{ display: 'flex', justifyContent: 'center' }}>
-              <div className="rev-title-group" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <h2 className="rev-heading">
-                  What Clients Say
-                  <div style={{ width: "160px", height: "1px", background: "#073B2F" }} />
-                </h2>
-                <p className="rev-subheading">In their own words, following their experience with Find & Sign.</p>
+            {/* HEADER */}
+            <div className="rev-header-wrap">
+              <h2 className="rev-heading">What Clients Say</h2>
+              <p className="rev-subheading">
+                In their own words, following their experience with Find & Sign.
+              </p>
+            </div>
+
+            {/* SLIDER */}
+            <div className="rev-slider-outer">
+              <button
+                className="rev-arrow-btn prev"
+                onClick={() => handleNav(-1)}
+                disabled={reviewIdx === 0}
+                aria-label="Previous slide"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              <button
+                className="rev-arrow-btn next"
+                onClick={() => handleNav(1)}
+                disabled={reviewIdx === maxReviewIdx}
+                aria-label="Next slide"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </button>
+
+              <div className="rev-slider-viewport">
+                <div
+                  ref={trackRef}
+                  className="rev-slider-track"
+                  style={{
+                    transform: `translateX(-${offset}px)`,
+                    "--card-flex-basis": cardFlexBasis,
+                  } as React.CSSProperties}
+                >
+                  {formattedReviews.map((review, i) => (
+                    <ReviewCard key={i} review={review} />
+                  ))}
+                </div>
               </div>
             </div>
+
+            {/* DOTS */}
+            <div
+              className="rev-dots-row"
+              style={{ display: "flex", justifyContent: "center", width: "100%" }}
+            >
+              <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+                {Array.from({ length: Math.min(12, maxReviewIdx + 1) }).map((_, i) => (
+                  <button
+                    key={i}
+                    className={`rev-dot${i === reviewIdx ? " active" : ""}`}
+                    onClick={() => { goTo(i); resetTimer(); }}
+                    aria-label={`Go to slide ${i + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div
+              className="rev-cta-row"
+              style={{ display: "flex", justifyContent: "center", width: "100%" }}
+            >
+              <button
+                className="rev-cta-btn"
+                onClick={() => navigate("/client-outcomes#testimonials")}
+              >
+                View more Feedback
+              </button>
+            </div>
+
           </div>
         </div>
-
-        {/* ── SLIDER ── */}
-        <SliderSection
-          reviewIdx={reviewIdx}
-          goTo={goTo}
-          resetTimer={resetTimer}
-          maxReviewIdx={maxReviewIdx}
-          handleNav={handleNav}
-          reviewContainerRef={reviewContainerRef}
-          reviewCardWidth={reviewCardWidth}
-        />
-
-        {/* ── CTA ── */}
-        <button
-          className="rev-cta-btn"
-          onClick={() => navigate("/client-outcomes#testimonials")}
-        >
-          View more Feedback
-        </button>
-
-      </section>
+      </div>
     </div>
   );
 };
 
-interface SliderSectionProps {
-  reviewIdx: number;
-  goTo: (idx: number) => void;
-  resetTimer: () => void;
-  maxReviewIdx: number;
-  handleNav: (dir: number) => void;
-  reviewContainerRef: React.RefObject<HTMLDivElement | null>;
-  reviewCardWidth: number;
-}
-
-const SliderSection = ({
-  reviewIdx,
-  goTo,
-  resetTimer,
-  handleNav,
-  maxReviewIdx,
-  reviewContainerRef,
-  reviewCardWidth,
-}: SliderSectionProps) => {
-  // Calculate the transform offset for the slider track
-  const transformOffset = reviewIdx * (reviewCardWidth + CARD_GAP);
-
-  return (
-    <>
-      <div className="rev-grid" style={{ rowGap: 0 }}>
-        <div className="rev-full" style={{ position: "relative" }}>
-
-          {/* Left arrow */}
-          <button
-            className="rev-arrow-btn prev"
-            onClick={() => handleNav(-1)} // Use handleNav directly
-            aria-label="Previous slide"
-            disabled={reviewIdx === 0}
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
-          </button>
-
-          {/* Right arrow */}
-          <button
-            className="rev-arrow-btn next"
-            onClick={() => handleNav(1)} // Use handleNav directly
-            aria-label="Next slide"
-            disabled={reviewIdx === maxReviewIdx}
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </button>
-
-          <div ref={reviewContainerRef} style={{ overflow: "hidden", padding: "40px 0", margin: "-40px 0" }}>
-            {/* Single-row flex track for all screen sizes */}
-              <div
-                className="rev-slider-track"
-                style={{
-                  display: "flex",
-                  gap: `${CARD_GAP}px`,
-                  transform: `translateX(-${transformOffset}px)`,
-                }}
-              >
-                {formattedReviews.map((review, i) => (
-                  <ReviewCard 
-                    key={i} 
-                    review={review} 
-                    style={{ flex: `0 0 ${reviewCardWidth}px`, width: `${reviewCardWidth}px` }}
-                  />
-                ))}
-              </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ── DOTS ── */}
-      <div style={{
-        display: "flex",
-        flexDirection: "column",
-          alignItems: "center", // Center the dots
-          gap: "24px", // Gap between dots and other elements
-          width: "100%", // Full width for centering
-      }}>
-        <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-          {Array.from({ length: maxReviewIdx + 1 }).map((_, i) => (
-            <button
-              key={i}
-              className={`rev-dot${i === reviewIdx ? " active" : ""}`}
-              onClick={() => { goTo(i); resetTimer(); }}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
-        </div>
-      </div>
-    </>
-  );
-};
-
-/* ── Single Review Card ── */
 interface ReviewCardProps {
   review: typeof formattedReviews[0];
-  style?: React.CSSProperties;
 }
 
-const ReviewCard = ({ review, style }: ReviewCardProps) => (
-  <div 
-    className="npb-card"
-    style={{
-      ...style,
-    }}
-  >
+const ReviewCard = ({ review }: ReviewCardProps) => (
+  <div className="npb-card">
 
-    {/* ── TOP: pill ── */}
     <div style={{
-      display: 'inline-flex',
-        padding: '8px 16px',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        gap: '10px',
-        flexShrink: 0,
-        borderRadius: '12px',
-        background: '#69E4DC',
-        color: '#073B2F',
-        fontSize: '16px',
-        fontWeight: 400,
-        maxWidth: '100%',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
-        fontFamily: 'SohneBuch',
-        lineHeight: '24px',
-        marginBottom: '10px',
-        alignSelf: 'flex-start',
+      display: "inline-flex",
+      padding: "8px 16px",
+      alignItems: "center",
+      gap: "10px",
+      flexShrink: 0,
+      borderRadius: "12px",
+      background: "#69E4DC",
+      color: "#073B2F",
+      fontSize: "clamp(13px, 1.8vw, 16px)",
+      fontWeight: 400,
+      maxWidth: "100%",
+      /* Allow text to wrap so nothing is cut off */
+      whiteSpace: "normal",
+      wordBreak: "break-word",
+      fontFamily: "SohneBuch",
+      lineHeight: "22px",
+      marginBottom: "10px",
+      alignSelf: "flex-start",
     }}>
       {review.title}
     </div>
 
-    {/* ── STARS ── */}
-    <div style={{ display: 'flex', alignItems: 'center', marginTop: '12px', flexShrink: 0, marginBottom: '10px' }}>
+    <div style={{ display: "flex", alignItems: "center", marginTop: "12px", flexShrink: 0, marginBottom: "10px" }}>
       <img
         src={starIcon}
         alt="5 stars"
-        style={{ width: '177px', height: '32.336px', flexShrink: 0, objectFit: 'contain' }}
+        style={{ width: "177px", height: "32.336px", flexShrink: 0, objectFit: "contain" }}
       />
     </div>
 
-    {/* ── BODY ── */}
     <p style={{
-      width: '100%',
-      color: '#000',
-      fontFamily: 'SohneBuch',
-      fontSize: '16px',
-      fontStyle: 'normal',
+      width: "100%",
+      color: "#000",
+      fontFamily: "SohneBuch",
+      fontSize: "16px",
       fontWeight: 400,
-      lineHeight: '24px',
-      marginTop: '12px',
-      display: '-webkit-box',
+      lineHeight: "24px",
+      marginTop: "12px",
+      display: "-webkit-box",
       WebkitLineClamp: 5,
-      WebkitBoxOrient: 'vertical',
-      overflow: 'hidden',
-      position: 'relative',
+      WebkitBoxOrient: "vertical",
+      overflow: "hidden",
+      position: "relative",
       zIndex: 1,
     }}>
       {review.body}
     </p>
 
-    {/* ── BOTTOM: avatar + name + date ── */}
     <div style={{
-      display: 'flex',
-      alignItems: 'center',
-      gap: '12px',
-      borderTop: '1px solid #f3f4f6',
-      paddingTop: '12px',
-      marginTop: 'auto',
-      width: '100%',
-      position: 'relative',
+      display: "flex",
+      alignItems: "center",
+      gap: "12px",
+      borderTop: "1px solid #f3f4f6",
+      paddingTop: "12px",
+      marginTop: "auto",
+      width: "100%",
+      position: "relative",
       zIndex: 1,
       flexShrink: 0,
     }}>
       <div
         className="avatar-circle"
         style={{
-          width: 40,
-          height: 40,
-          borderRadius: '50%',
-          backgroundColor: '#D9D9D9',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          border: '2px solid white',
-          overflow: 'hidden',
+          width: 40, height: 40,
+          borderRadius: "50%",
+          backgroundColor: "#D9D9D9",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          border: "2px solid white",
+          overflow: "hidden",
           flexShrink: 0,
         }}
       >
         {review.image ? (
-          <img
-            src={review.image}
-            alt={review.name}
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          />
+          <img src={review.image} alt={review.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
         ) : (
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
             <circle cx="12" cy="8" r="4" stroke="#aaa" strokeWidth="1.5" />
@@ -547,26 +520,20 @@ const ReviewCard = ({ review, style }: ReviewCardProps) => (
         )}
       </div>
       <div>
-        <h4 style={{
-          fontSize: '0.875rem',
-          fontWeight: 400,
-          color: '#111827',
-          margin: 0,
-          fontFamily: 'SohneBuch',
-        }}>
+        <h4 style={{ fontSize: "0.875rem", fontWeight: 400, color: "#111827", margin: 0, fontFamily: "SohneBuch" }}>
           {review.name}
         </h4>
         <p style={{
-  fontSize: '9px',
-  fontWeight: 500,
-  color: '#000',
-  textTransform: 'uppercase',
-  letterSpacing: '2.88px',
-  marginTop: '2px',
-  fontFamily: 'CX80',
-  lineHeight: '15px',
-  fontStyle: 'normal',
-}}>
+          fontSize: "9px",
+          fontWeight: 500,
+          color: "#000",
+          textTransform: "uppercase",
+          letterSpacing: "2.88px",
+          marginTop: "2px",
+          fontFamily: "CX80",
+          lineHeight: "15px",
+          fontStyle: "normal",
+        }}>
           {review.date}
         </p>
       </div>
@@ -575,4 +542,4 @@ const ReviewCard = ({ review, style }: ReviewCardProps) => (
   </div>
 );
 
-export default App;
+export default Testimonials;

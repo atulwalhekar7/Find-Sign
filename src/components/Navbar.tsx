@@ -103,7 +103,7 @@ export default function Navbar() {
           font-size: 15px;
           font-weight: 700;
           line-height: 15px;
-          letter-spacing: 4.8px;
+          letter-spacing: 4.48px;
           text-decoration: none;
           text-transform: uppercase;
           white-space: nowrap;
@@ -127,18 +127,13 @@ export default function Navbar() {
           border-top: 1px solid rgba(27,67,50,0.07);
         }
 
-        .nav-drawer-link:hover,
-        .nav-drawer-link:active {
-          border-radius: var(--sds-size-radius-200) !important;
-          background: var(--sds-color-background-brand-tertiary) !important;
-          display: inline-flex !important;
-          padding: var(--sds-size-space-200) !important;
-          justify-content: center !important;
-          align-items: center !important;
-          gap: var(--sds-size-space-200) !important;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
-        }
-
+       .nav-drawer-link:hover,
+.nav-drawer-link:active,
+.nav-drawer-link.active {
+  background: #EAE5DF !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+}
         @keyframes call-vibrate {
           0%, 20%, 100% { transform: rotate(0deg); }
           3%, 9%, 15% { transform: rotate(-12deg); }
@@ -305,18 +300,18 @@ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
                 to={item.to}
                 className="nav-drawer-link"
                 onClick={() => setMenuOpen(false)}
-                style={({ isActive }) => ({
-                  display: "block",
-                  fontFamily: "'Söhne', 'DM Sans', sans-serif",
-                  fontSize: "15px",
-                  color: isActive
-                    ? COLORS.aqua
-                    : COLORS.racingGreen,
-                  fontWeight: isActive ? 500 : 400,
-                  textDecoration: "none",
-                  padding: "10px 0",
-                  borderBottom: "1px solid rgba(27,67,50,0.06)",
-                })}
+               style={({ isActive }) => ({
+  display: "block",
+  width: "100%",
+  boxSizing: "border-box",
+  fontFamily: "'Söhne', 'DM Sans', sans-serif",
+  fontSize: "15px",
+  color: isActive ? COLORS.aqua : COLORS.racingGreen,
+  fontWeight: isActive ? 500 : 400,
+  textDecoration: "none",
+  padding: "10px 12px",
+  borderBottom: "1px solid rgba(27,67,50,0.06)",
+})}
               >
                 {item.label}
               </NavLink>
@@ -327,23 +322,26 @@ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
   target="_blank"
   rel="noopener noreferrer"
   onClick={() => setMenuOpen(false)}
-  style={{
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "8px",
-    marginTop: "16px",
-    fontFamily: "'Söhne', 'DM Sans', sans-serif",
-    fontWeight: 600,
-    fontSize: "11px",
-    letterSpacing: "0.14em",
-    textTransform: "uppercase",
-    color: COLORS.white,
-    background: COLORS.aqua,
-    padding: "11px 24px",
-    borderRadius: "2px",
-    textDecoration: "none",
-  }}
+ style={{
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "10px",
+  marginTop: "16px",
+  height: "48px",
+  padding: "12px 24px",
+  borderRadius: "8px",
+  background: COLORS.aqua,
+  color: COLORS.racingGreen,
+  fontFamily: "CX80",
+  fontSize: "15px",
+  fontWeight: 700,
+  lineHeight: "15px",
+  letterSpacing: "4.8px",
+  textDecoration: "none",
+  textTransform: "uppercase",
+  whiteSpace: "nowrap",
+}}
 >
   <svg className="vibrate-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
     <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.6-.35-.12-.73-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 2 3.2 2.45 3.2 2.99 3.2 12.37 10.83 20 20.21 20c.54 0 .99-.45.99-.99v-2.64c0-.54-.45-.99-.99-.99z" />

@@ -55,7 +55,7 @@ const images = {
 const cards = [
   { id: 1,  image: images.id1,  growth: "101.7%", purchasePrice: "$290k",  currentValue: "$585k",  timeframe: "2 yrs 4 mths", rentalYield: "Owner Occ", address: "8/15 Debenham St, Thornlie WA 6108" },
   { id: 2,  image: images.id2,  growth: "41.3%",  purchasePrice: "$630k",  currentValue: "$890k",  timeframe: "2 years",       rentalYield: "6.2%",      address: "27 Willard Circuit, Banksia Grove WA 6031" },
-  { id: 3,  image: images.id3,  growth: "29.9%",  purchasePrice: "$654k",  currentValue: "$850k",timeframe: "2 years",       rentalYield: "5.4%",      address: "105 Surf Drive, Secret Harbour WA 6173" },
+  { id: 3,  image: images.id3,  growth: "29.9%",  purchasePrice: "$654k",  currentValue: "$850k",  timeframe: "2 years",       rentalYield: "5.4%",      address: "105 Surf Drive, Secret Harbour WA 6173" },
   { id: 4,  image: images.id4,  growth: "30.0%",  purchasePrice: "$862k",  currentValue: "$1.12M", timeframe: "2 years",       rentalYield: "Owner Occ", address: "7 Limerick Loop, Wattle Grove WA 6107" },
   { id: 5,  image: images.id5,  growth: "41.9%",  purchasePrice: "$620k",  currentValue: "$880k",  timeframe: "1 yr 10 mths",  rentalYield: "Owner Occ", address: "34 Sawmill Road, Whitby WA 6123" },
   { id: 6,  image: images.id6,  growth: "34.5%",  purchasePrice: "$550k",  currentValue: "$740k",  timeframe: "1 yr 10 mths",  rentalYield: "6.1%",      address: "32 Breccia Parade, Wellard WA 6170" },
@@ -96,6 +96,7 @@ const cards = [
 
 const INTERVAL = 3000;
 const CARD_GAP = 32;
+const PEEK = 56; // px of next card visible on right edge (mobile only)
 
 function PropertyCard({ card }: { card: (typeof cards)[0] }) {
   return (
@@ -103,7 +104,6 @@ function PropertyCard({ card }: { card: (typeof cards)[0] }) {
       <div className="card-image-wrap">
         <img src={card.image} alt="Property" className="card-image" />
       </div>
-
       <div
         className="growth-circle-container"
         style={{
@@ -115,7 +115,6 @@ function PropertyCard({ card }: { card: (typeof cards)[0] }) {
         <span className="growth-label">Growth</span>
         <span className="growth-value">{card.growth}</span>
       </div>
-
       <div className="card-data">
         {[
           { label: "Purchase price", val: card.purchasePrice },
@@ -139,51 +138,70 @@ function PropertyCard({ card }: { card: (typeof cards)[0] }) {
 
 export default function ClientOutcomes() {
   const navigate = useNavigate();
-  const [cur, setCur] = useState(0);
+  const [cur, setCur]       = useState(0);
   const [paused, setPaused] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(3);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+  const [offset, setOffset] = useState(0);
+  const timerRef  = useRef<ReturnType<typeof setInterval> | null>(null);
+  const trackRef  = useRef<HTMLDivElement>(null);
+  const rafRef    = useRef<number | null>(null);
 
-  const sliderCards = cards.slice(0, 10);
-  const maxIdx = Math.max(0, sliderCards.length - visibleCount);
+  const visibleCount = isMobile ? 1 : isTablet ? 2 : 3;
+  const sliderCards  = cards.slice(0, 10);
+  const maxIdx       = Math.max(0, sliderCards.length - visibleCount);
 
+  // ── Breakpoint detection ──────────────────────────────────────────────────
   useEffect(() => {
     const update = () => {
-      const w = window.innerWidth;
-      if (w < 768) setVisibleCount(1);
-      else if (w < 1200) setVisibleCount(2);
-      else setVisibleCount(3);
+      setIsMobile(window.innerWidth < 768);
+      setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1200);
     };
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, []);
 
+  // ── Clamp index on resize ─────────────────────────────────────────────────
   useEffect(() => {
     if (cur > maxIdx) setCur(maxIdx);
   }, [maxIdx]);
 
-  const getCardWidth = (): number => {
-    if (!trackRef.current) return 0;
-    const firstCard = trackRef.current.querySelector<HTMLElement>(".property-card");
-    return firstCard ? firstCard.offsetWidth : 0;
-  };
-
-  const [offset, setOffset] = useState(0);
-
+  // ── Recalculate scroll offset (FIXED) ────────────────────────────────────
+  // Uses getBoundingClientRect for accurate width after render,
+  // wrapped in requestAnimationFrame so DOM has fully painted,
+  // and observed via ResizeObserver so any layout shift is caught.
   useEffect(() => {
     const recalc = () => {
-      const cardW = getCardWidth();
-      setOffset(cur * (cardW + CARD_GAP));
+      // Cancel any pending RAF before scheduling a new one
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+
+      rafRef.current = requestAnimationFrame(() => {
+        if (!trackRef.current) return;
+        const first = trackRef.current.querySelector<HTMLElement>(".property-card");
+        if (!first) return;
+
+        // getBoundingClientRect is accurate even before offsetWidth settles
+        const cardW = first.getBoundingClientRect().width;
+        if (cardW === 0) return; // guard: not yet laid out
+
+        setOffset(cur * (cardW + CARD_GAP));
+      });
     };
+
     recalc();
-    window.addEventListener("resize", recalc);
-    return () => window.removeEventListener("resize", recalc);
-  }, [cur, visibleCount]);
 
-  const goto = (idx: number) => setCur(Math.max(0, Math.min(idx, maxIdx)));
+    // Watch for any size changes on the track (orientation change, font load, etc.)
+    const ro = new ResizeObserver(recalc);
+    if (trackRef.current) ro.observe(trackRef.current);
 
+    return () => {
+      ro.disconnect();
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [cur, isMobile, isTablet]);
+
+  // ── Auto-play ─────────────────────────────────────────────────────────────
   const resetTimer = () => {
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
@@ -198,6 +216,16 @@ export default function ClientOutcomes() {
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [paused, maxIdx]);
 
+  const goto = (idx: number) => {
+    setCur(Math.max(0, Math.min(idx, maxIdx)));
+    resetTimer();
+  };
+
+  // ── Card width ────────────────────────────────────────────────────────────
+  const cardFlexBasis = isMobile
+    ? `calc(100% - ${CARD_GAP}px - ${PEEK}px)`
+    : `calc((100% - ${CARD_GAP}px * ${visibleCount - 1}) / ${visibleCount})`;
+
   return (
     <>
       <style>{`
@@ -206,13 +234,17 @@ export default function ClientOutcomes() {
         @keyframes heartbeatFloat {
           0%   { transform: translateY(0)    scale(1);    box-shadow: 0 4px 12px rgba(105,228,220,0.3); }
           14%  { transform: translateY(-3px) scale(1.06); box-shadow: 0 8px 20px rgba(105,228,220,0.4); }
-          28%  { transform: translateY(0)    scale(1);    }
+          28%  { transform: translateY(0)    scale(1); }
           42%  { transform: translateY(-3px) scale(1.06); box-shadow: 0 8px 20px rgba(105,228,220,0.4); }
-          70%  { transform: translateY(-8px) scale(1);    }
-          100% { transform: translateY(0)    scale(1);    }
+          70%  { transform: translateY(-8px) scale(1); }
+          100% { transform: translateY(0)    scale(1); }
         }
 
-        .co-wrapper { width: 100%; background: #F9F9F9; }
+        .co-wrapper {
+          width: 100%;
+          background: #F9F9F9;
+          overflow-x: clip;
+        }
 
         .co-section {
           background: #F9F9F9;
@@ -222,7 +254,8 @@ export default function ClientOutcomes() {
           display: grid;
           grid-template-columns: repeat(12, 1fr);
           column-gap: 64px;
-          padding: 64px 130px 64px;
+          padding: 64px 130px;
+          overflow: visible;
         }
 
         .co-head { grid-column: 1 / -1; margin-bottom: 48px; }
@@ -233,6 +266,7 @@ export default function ClientOutcomes() {
           flex-direction: column;
           gap: 40px;
           align-items: center;
+          overflow: visible;
         }
 
         .co-header {
@@ -284,8 +318,10 @@ export default function ClientOutcomes() {
         .co-slider-wrapper {
           position: relative;
           width: 100%;
+          overflow: visible;
         }
 
+        /* Desktop/Tablet: clip so cards don't overflow outside the viewport */
         .co-slider-viewport {
           width: 100%;
           overflow: hidden;
@@ -300,11 +336,8 @@ export default function ClientOutcomes() {
           will-change: transform;
         }
 
-        /* ── Property card ── */
         .property-card {
-          flex: 0 0 calc(
-            (100% - ${CARD_GAP}px * (var(--visible) - 1)) / var(--visible)
-          );
+          flex: 0 0 var(--card-flex-basis);
           min-width: 0;
           height: 440px;
           background: ${WHITE};
@@ -314,35 +347,19 @@ export default function ClientOutcomes() {
           position: relative;
           display: flex;
           flex-direction: column;
+          overflow: hidden;
+          cursor: pointer;
           transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
                       box-shadow 0.4s ease;
-          cursor: pointer;
-          /*
-            FIX: overflow:hidden on the card itself already clips children
-            to border-radius. The image-wrap no longer needs its own
-            border-radius — the card's overflow:hidden handles the top corners.
-            This eliminates the white gap that appeared between the
-            card border and the image at the top-left / top-right corners.
-          */
-          overflow: hidden;
         }
         .property-card:hover {
           transform: translateY(-12px);
           box-shadow: 0 10px 22px rgba(105,228,220,0.96);
         }
 
-        /* ── Image wrap ── */
         .card-image-wrap {
           width: 100%;
           height: 200px;
-          /*
-            FIX: Remove border-radius here entirely.
-            The parent .property-card already has overflow:hidden + border-radius:16px,
-            so the image is naturally clipped at the top corners without a gap.
-            Previously border-radius:16px 16px 0 0 on this child created a
-            2px white sliver because it sat inside the 2px border of the parent.
-          */
-          border-radius: 0;
           overflow: hidden;
           flex-shrink: 0;
         }
@@ -356,7 +373,6 @@ export default function ClientOutcomes() {
         }
         .property-card:hover .card-image { transform: scale(1.08); }
 
-        /* ── Growth circle ── */
         .growth-circle-container {
           position: absolute;
           bottom: 175px;
@@ -482,6 +498,7 @@ export default function ClientOutcomes() {
         .rev-arrow-btn.prev { left: -52px; }
         .rev-arrow-btn.next { right: -52px; }
 
+        /* ── Tablet ── */
         @media (max-width: 1199px) {
           .co-section { column-gap: 32px; padding: 48px 48px 64px; }
           .co-header { column-gap: 32px; }
@@ -490,16 +507,41 @@ export default function ClientOutcomes() {
           .rev-arrow-btn.prev { left: -44px; }
           .rev-arrow-btn.next { right: -44px; }
         }
+
+        /* ── Mobile ── */
         @media (max-width: 767px) {
           .co-section {
             grid-template-columns: repeat(4, 1fr);
             column-gap: 16px;
-            padding: 40px 24px 56px;
+            padding: 40px 0 56px 24px;
           }
+          .co-head { padding-right: 24px; }
           .co-header { grid-template-columns: repeat(4, 1fr); column-gap: 16px; }
           .co-h2 { font-size: 32px; line-height: 38px; letter-spacing: -0.64px; }
           .co-subtitle { font-size: 18px; line-height: 28px; }
+
+          /*
+           * KEY FIX: On mobile, the viewport must NOT clip.
+           * Remove the padding/margin trick that was masking the card shadow
+           * and potentially interfering with layout measurements.
+           */
+          .co-slider-viewport {
+            overflow: visible;
+            padding: 0;
+            margin: 0;
+          }
+
+          /* Hide arrows on mobile — peek + dots handle navigation */
           .rev-arrow-btn { display: none; }
+
+          /* Keep dots & button centred within the padded area */
+          .co-dots  { padding-right: 24px; }
+          .view-btn { margin-right: 24px; }
+
+          .growth-circle-container { width: 120px; height: 120px; bottom: 180px; }
+          .growth-label { font-size: 16px; }
+          .growth-value { font-size: 28px; width: 100px; }
+          .row-label, .row-val { font-size: 14px; }
         }
       `}</style>
 
@@ -519,9 +561,10 @@ export default function ClientOutcomes() {
 
           <div className="co-slider-outer">
             <div className="co-slider-wrapper">
+
               <button
                 className="rev-arrow-btn prev"
-                onClick={() => { goto(cur - 1); resetTimer(); }}
+                onClick={() => goto(cur - 1)}
                 disabled={cur === 0}
                 aria-label="Previous"
               >
@@ -533,7 +576,7 @@ export default function ClientOutcomes() {
 
               <button
                 className="rev-arrow-btn next"
-                onClick={() => { goto(cur + 1); resetTimer(); }}
+                onClick={() => goto(cur + 1)}
                 disabled={cur === maxIdx}
                 aria-label="Next"
               >
@@ -552,8 +595,8 @@ export default function ClientOutcomes() {
                   ref={trackRef}
                   className="co-slider-track"
                   style={{
-                    "--visible": visibleCount,
                     transform: `translateX(-${offset}px)`,
+                    "--card-flex-basis": cardFlexBasis,
                   } as React.CSSProperties}
                 >
                   {sliderCards.map((card) => (
@@ -568,7 +611,7 @@ export default function ClientOutcomes() {
                 <button
                   key={i}
                   className={`co-dot${cur === i ? " active" : ""}`}
-                  onClick={() => { goto(i); resetTimer(); }}
+                  onClick={() => goto(i)}
                   aria-label={`Go to slide ${i + 1}`}
                 />
               ))}
