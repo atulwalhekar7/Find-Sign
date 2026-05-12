@@ -396,15 +396,23 @@ const Testimonials = () => {
               className="rev-dots-row"
               style={{ display: "flex", justifyContent: "center", width: "100%" }}
             >
-              <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-                {Array.from({ length: Math.min(12, maxReviewIdx + 1) }).map((_, i) => (
-                  <button
-                    key={i}
-                    className={`rev-dot${i === reviewIdx ? " active" : ""}`}
-                    onClick={() => { goTo(i); resetTimer(); }}
-                    aria-label={`Go to slide ${i + 1}`}
-                  />
-                ))}
+<div style={{ display: "flex", gap: "8px", alignItems: "center" }}>            
+    
+    {Array.from({
+  length: isMobile
+    ? Math.min(10, maxReviewIdx + 1)
+    : Math.min(6, maxReviewIdx + 1)
+}).map((_, i) => (
+  <button
+    key={i}
+    className={`rev-dot${i === reviewIdx ? " active" : ""}`}
+    onClick={() => {
+      goTo(i);
+      resetTimer();
+    }}
+    aria-label={`Go to slide ${i + 1}`}
+  />
+))}
               </div>
             </div>
 

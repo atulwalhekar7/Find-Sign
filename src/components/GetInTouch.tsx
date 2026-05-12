@@ -502,21 +502,33 @@ export default function GetInTouch({ initialService = "", showService = false, h
 
 .contact-cta {
   display: inline-flex;
-  height: 48px;
-  padding: 12px 20px;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  height: 48px;
+  padding: 0 28px;
+
+  background: #69E4DC;
+  border: 1px solid #69E4DC;
   border-radius: 8px;
-  background: #69e4dc;
-  color: #073b2f;
+
+  width: fit-content;   /* IMPORTANT */
+  max-width: fit-content;
+
+  color: #073B2F;
   text-decoration: none;
+
   font-family: "CX80BOLD";
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 32%;
   font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+
   transition: all 0.25s ease;
+  white-space: nowrap;
 }
+
+
 
 .contact-cta:hover {
   transform: translateY(-1px);
@@ -785,32 +797,44 @@ width: 297px;
   }
 }
 
-/* =========================
+//* =========================
    MOBILE
 ========================= */
 
 @media (max-width: 768px) {
-  .contact-page {
+    .contact-cta {
+    width: fit-content;
+    max-width: fit-content;
+    padding: 0 24px;
+    font-size: 13px;
+    letter-spacing: 3px;
+  }
+.contact-page {
     padding: 32px 20px;
+    overflow-x: hidden;
   }
 
   .main-container {
-    gap: 40px;
+    width: 100%;
+    overflow-x: hidden;
   }
 
-  .contact-left {
-    min-width: 100%;
-    gap: 28px;
+  .contact-left,
+  .contact-right {
+    width: 100%;
+    min-width: 0;
   }
 
   .contact-left h2 {
-    font-size: 34px;
-    line-height: 42px;
+    width: 100% !important;
+    max-width: 100%;
   }
+ 
 
   .description-text {
     font-size: 20px;
     line-height: 30px;
+    width: 100%;
   }
 
   .nikki-info {
@@ -826,11 +850,13 @@ width: 297px;
   .contact-input {
     height: 50px;
     font-size: 16px;
+    width: 100%;
   }
 
   .contact-textarea {
     font-size: 16px;
     min-height: 120px;
+    width: 100%;
   }
 
   .toggle-group {
@@ -854,17 +880,23 @@ width: 297px;
 
 @media (max-width: 480px) {
   .contact-page {
-    padding: 24px 16px;
+    padding: 24px 20px; /* increased from 16px */
+  }
+
+  .main-container {
+    width: 100%;
   }
 
   .contact-left h2 {
     font-size: 30px;
     line-height: 38px;
+    width: 100%;
   }
 
   .description-text {
     font-size: 18px;
     line-height: 28px;
+    width: 100%;
   }
 
   .contact-cta {
@@ -883,7 +915,22 @@ width: 297px;
           {/* LEFT SIDE */}
           <div className="contact-left">
             {!hideInternalHeading && (
-              <h2 style={{fontFamily:"GT Super Display Medium" ,fontSize:"44px", fontWeight:"500",letterSpacing:"-0.88px",lineHeight:"54px",color:"#073B2F" ,height:"48px",width:"350px",fontStyle:"normal", marginBottom: "26px"}}>Get in touch</h2>
+<h2
+  style={{
+    fontFamily:"GT Super Display Medium",
+    fontSize:"44px",
+    fontWeight:"500",
+    letterSpacing:"-0.88px",
+    lineHeight:"54px",
+    color:"#073B2F",
+    fontStyle:"normal",
+    marginBottom:"26px",
+    width:"100%",
+    maxWidth:"350px"
+  }}
+>
+  Get in touch
+</h2>
             )}
             <p className="description-text">
               Tell us what you’re looking for, and we’ll come back with next steps.

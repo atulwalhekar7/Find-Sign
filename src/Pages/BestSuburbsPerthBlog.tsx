@@ -69,8 +69,10 @@ export default function BestSuburbsPerthBlog() {
       
       {/* ── Hero ── */}
       <section
+        className="blog-hero-banner"
         style={{
           minHeight: "80vh",
+          width: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -362,6 +364,17 @@ export default function BestSuburbsPerthBlog() {
         @keyframes heroFadeIn {
           from { opacity: 0; transform: translateY(30px); }
           to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .blog-hero-banner {
+          aspect-ratio: 16 / 7;
+          min-height: 60vh;
+        }
+        @media (max-width: 768px) {
+          .blog-hero-banner {
+            aspect-ratio: 4 / 5;
+            min-height: unset;
+          }
         }
         @media (max-width: 900px) {
           h1 { font-size: 44px !important; line-height: 1.2 !important; }
