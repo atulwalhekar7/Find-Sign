@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
-import heroImage from "../assets/niki-nakrani-buyers-agent-image3-australia-find-and-sign.png";
+import heroImage from "../assets/family-home-buyers-image2-australia-find-and-sign.png";
 
 const Image1: React.FC = () => {
   return (
@@ -63,7 +63,7 @@ const Image1: React.FC = () => {
       whiteSpace: "nowrap",
     }}
   >
-    Expert guidance that shapes better outcomes.
+    Local knowledge. Direct relationships. Earlier access.
   </Box>
 </Box>
         </Box>

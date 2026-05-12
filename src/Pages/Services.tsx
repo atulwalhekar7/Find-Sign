@@ -5,7 +5,7 @@ import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
 import bannerImg from "../assets/service-banner-find-and-sign-buyers-australia.jpg";
 import AboutServiceImg from "../assets/about-service-find-and-sign.jpg";
-import Image1 from "../components/Image1";
+import Image3 from "../components/Image3";
 
 
 // ── Animation hook ────────────────────────────────────────────────────────────
@@ -542,7 +542,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
         </FadeUp>
       </section>
 
-      <Image1 />
+      <Image3 />
       <div ref={formRef}>
         <GetInTouch initialService={selectedService} showService={true} />
       </div>

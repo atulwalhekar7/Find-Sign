@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
 // import AboutSection from "../components/AboutSection";
-import Image1 from "../components/Image1";
+import Image3 from "../components/Image3";
 
 // import aboutInsightsImg from "../assets/About Insights.jpg";
 import bannerImg from "../assets/Insights-banner-find-and-sign-buyers-agent-australia.jpg";
@@ -251,7 +251,7 @@ export default function Insights() {
           ))}
         </div>
       </section>
-          <Image1/>
+          <Image3/>
       <SimpleGetInTouch />
       
       <SimpleFooter />
