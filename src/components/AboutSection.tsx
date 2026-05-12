@@ -219,7 +219,7 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
           .as-image-col,
           .as-text-col { grid-column: 1 / -1; }
 
-          .about-image  { min-height: unset; height: 340px; }
+          .about-image  { min-height: unset; height: auto; aspect-ratio: 4 / 5; }
 
           .about-heading-block { margin-bottom: 32px; }
           .about-heading-block h2 { font-size: 32px; }

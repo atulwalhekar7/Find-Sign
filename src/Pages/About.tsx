@@ -126,7 +126,9 @@ Find & Sign we find with confidence you sign with certainty.
         /* ── HERO ── */
         .hero-banner {
           position: relative;
-          min-height: 80vh;
+          width: 100%;
+          min-height: 60vh;
+          aspect-ratio: 16 / 7;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -365,6 +367,10 @@ Find & Sign we find with confidence you sign with certainty.
         @media (max-width: 900px) {
           .hero-box { padding: 60px 20px; width: 92%; }
           .hero-title { font-size: 44px !important; line-height: 1.2 !important; }
+          .hero-banner {
+            aspect-ratio: 4 / 5;
+            min-height: unset;
+          }
           .video-inner { height: 400px; }
           .play-btn, .mute-btn { width: 42px; height: 42px; }
           .team-card { width: 100%; max-width: 480px; }

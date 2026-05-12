@@ -160,8 +160,9 @@ export default function Insights() {
       
       {/* ── SECTION 1: Hero ─────────────────────────────────────────────── */}
       <section
+        className="page-hero-banner"
         style={{
-          minHeight: "80vh",
+          width: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -262,6 +263,17 @@ export default function Insights() {
         @keyframes heroFadeIn {
           from { opacity: 0; transform: translateY(30px); }
           to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .page-hero-banner {
+          aspect-ratio: 16 / 7;
+          min-height: 60vh;
+        }
+        @media (max-width: 768px) {
+          .page-hero-banner {
+            aspect-ratio: 4 / 5;
+            min-height: unset;
+          }
         }
 
         .blogs-container {

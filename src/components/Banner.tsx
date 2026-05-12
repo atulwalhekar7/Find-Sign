@@ -22,39 +22,34 @@ function VideoModal({ onClose }: { onClose: () => void }) {
         onClick={e => e.stopPropagation()}
         style={{ position: "relative", width: "100%", maxWidth: "900px" }}
       >
-       <button
-  onClick={onClose}
-  aria-label="Close video"
-  style={{
-   position: "absolute",
-top: "-40px",
-right: "10px",
-    width: "38px",
-    height: "38px",
-    borderRadius: "50%",
-    border: "none",
-    background: "rgba(0,0,0,0.75)",
-    color: "#fff",
-    fontSize: "20px",
-    cursor: "pointer",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 9999,
-  }}
->
-  ✕
-</button>
+        <button
+          onClick={onClose}
+          style={{
+            position:   "absolute",
+            top:        "-40px",
+            right:      0,
+            background: "none",
+            border:     "none",
+            cursor:     "pointer",
+            color:      "#fff",
+            fontSize:   "28px",
+            lineHeight: 1,
+            padding:    "4px 8px",
+            marginTop:"15%",
+          }}
+          aria-label="Close video"
+        >
+          ✕
+        </button>
  
       <iframe
   src="https://player.vimeo.com/video/1189029882?autoplay=0&loop=1&playsinline=1"
   style={{
-  width: "100%",
-  aspectRatio: "16 / 9",
-  borderRadius: "4px",
-  border: "none",
-  display: "block",
-}}
+    width: "100%",
+    height: "500px",
+    borderRadius: "4px",
+    marginTop: "10%",
+  }}
   frameBorder="0"
   allow="autoplay; fullscreen; picture-in-picture"
   allowFullScreen
@@ -97,7 +92,8 @@ const navigate = useNavigate();
      .hero-top {
   position: relative;
   width: 100%;
-  height: 610px;
+  min-height: 400px;
+  aspect-ratio: 16 / 7;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -236,12 +232,12 @@ const navigate = useNavigate();
         @media (max-width: 768px) {
           .hero-title   { font-size: 36px; line-height: 44px; letter-spacing: -0.5px; }
           .description  { font-size: 18px; line-height: 28px; }
-          .hero-top     { height: 420px; }
+          .hero-top     { height: auto; aspect-ratio: 4 / 5; min-height: unset; }
         }
         @media (max-width: 480px) {
           .hero-title  { font-size: 28px; line-height: 36px; }
           .description { font-size: 16px; line-height: 26px; }
-          .hero-top    { height: 340px; }
+          .hero-top    { height: auto; aspect-ratio: 4 / 5; min-height: unset; }
           .hero-bottom { padding: 48px 6%; }
         }
       `}</style>

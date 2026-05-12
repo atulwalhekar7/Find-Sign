@@ -11,7 +11,7 @@ const Image1: React.FC = () => {
           sx={{
             position: "relative",
             width: "100%",
-            aspectRatio: { xs: "1 / 1", md: "16 / 7" },
+            aspectRatio: { xs: "4 / 5", md: "16 / 7" },
             overflow: "hidden",
           }}
         >
