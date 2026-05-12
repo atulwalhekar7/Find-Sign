@@ -477,15 +477,63 @@ From the first conversation to settlement and beyond, we are in your corner. You
           <OtherServiceCard title="Building Inspection" body={body5} hasButton delay={0.2} onBookCall={handleBookCall} />
         </div>
 
-        {/* Row 2: 3 affiliated cards */}
+       {/* Row 2: 3 affiliated cards */}
         <div
           className="three-grid"
-          style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, width: "100%" ,marginBottom:"150px"}}
+          style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, width: "100%", marginBottom: "64px" }}
         >
           <OtherServiceCard title="Property Management" body={body6} hasButton delay={0} onBookCall={handleBookCall} />
           <OtherServiceCard title="Accounting / Quantity Surveyor" body={body7} hasButton delay={0.1} onBookCall={handleBookCall} />
           <OtherServiceCard title="Sales Agent" body={body8} hasButton delay={0.2} onBookCall={handleBookCall} />
         </div>
+
+        {/* ── Affiliated Services Disclosure ─────────────────────────────── */}
+        <FadeUp style={{ width: "100%" }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              alignSelf: "stretch",
+              gap: "8px",
+            }}
+          >
+            {/* Label */}
+            <p
+              style={{
+                color: "var(--FS-System-Grey-1, #757575)",
+                textAlign: "center",
+                fontFamily: " SohneBuch",
+                fontSize: "16px",
+                fontStyle: "normal",
+                fontWeight: 400,
+                lineHeight: "24px",
+                margin: 0,
+              }}
+            >
+              Affiliated Services Disclosure
+            </p>
+
+            {/* Body */}
+            <p
+              style={{
+                alignSelf: "stretch",
+                color: "var(--FS-System-Grey-1, #757575)",
+                textAlign: "center",
+                fontFamily: "Söhne, SohneBuch, sans-serif",
+                fontSize: "16px",
+                fontStyle: "normal",
+                fontWeight: 400,
+                lineHeight: "24px",
+                margin: 0,
+                maxWidth: "1158px",
+                alignSelf: "center",
+              }}
+            >
+              The affiliated services listed on this page are independent businesses and professionals that Find and Sign Buyer Advocate has developed relationships with over time. While we may refer or introduce these services, we do so based on our genuine belief in the quality of their work. Please note that Find and Sign Buyer Advocate may receive a commission or referral fee in some instances. We are not responsible for the advice, outcomes, or conduct of any third party service provider. All decisions regarding the engagement of any affiliated service remain entirely at your discretion.
+            </p>
+          </div>
+        </FadeUp>
       </section>
 
       <Image1 />
