@@ -362,7 +362,7 @@
 
 import { NavLink } from "react-router-dom";
 
-import Logo from "../assets/FS Primary Lockup_Gold.png";
+import logo from "../assets/FS Primary Lockup_Gold.png";
 
 import fbIcon from "../assets/icon/fb.svg";
 import igIcon from "../assets/icon/Instagram.svg";
@@ -380,8 +380,8 @@ const socialIcons = [
 
 const exploreLinks = [
   { label: "About", to: "/about" },
-  { label: "Journeys", to: "/journeys" },
   { label: "Services", to: "/services" },
+  { label: "Client Outcomes", to: "/client-outcomes" },
   { label: "Insights", to: "/insights" },
   { label: "Contact", to: "/contact" },
 ];
@@ -398,283 +398,207 @@ export default function Footer() {
           width: 100%;
           display: flex;
           min-height: 589px;
-          padding: 96px 126px;
+          padding: 24px 130px; !important;
           flex-direction: column;
           align-items: flex-start;
-          gap: 55px;
+          gap: 66px; 
           align-self: stretch;
         }
 
-        /* ── TOP ROW: all columns in one flex-wrap row ── */
-        .footer-grid {
+        /* ── SOCIAL ICONS ROW (Top) ── */
+        .footer-social {
           display: flex;
+          width: 258px;
+          padding: 10px 0;
+          align-items: center;
+          gap: 32px;
           flex-wrap: wrap;
+        }
+
+        .social-link {
+          display: flex;
+          transition: opacity 0.2s;
+        }
+        .social-link:hover { opacity: 0.6; }
+        .social-link img { width: 24px; height: 24px; }
+
+        /* ── MAIN CONTENT GRID ── */
+        .footer-grid {
+          display: inline-flex;
           align-items: flex-start;
           align-content: flex-start;
-          gap: 55px 32px;
+          gap: 55px 32px; 
+          // flex-wrap: wrap;
           width: 100%;
         }
 
-        /* Logo */
-        .footer-logo {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          padding: 8px 0;
+        /* Logo Column */
+        .footer-logo-container {
+          width: 167px !important;
+          height: 79px !important;
           flex-shrink: 0;
+          aspect-ratio: 159/59;
+          padding: 8px 0;
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
         }
-        .footer-logo img {
-          width: 159px;
-          height: 59px;
+
+        .footer-logo {
+           width: 159px !important;
+          height: 59px !important;
           object-fit: contain;
         }
 
-        /* Contact */
+        /* Contact Column */
         .footer-contact {
           display: flex;
+          width: 267px;
+          padding: 10px;
           flex-direction: column;
           align-items: flex-start;
           gap: 8px;
-          width: 267px;
-          flex-shrink: 0;
+          margin-left: 32px; /* Space from logo */
         }
 
-        /* Explore */
+        /* Explore Column */
         .footer-explore {
           display: flex;
+          width: 167px;
+          padding: 10px;
           flex-direction: column;
           align-items: flex-start;
           gap: 8px;
-          width: 167px;
-          flex-shrink: 0;
         }
 
-        /* Legal */
+        /* Legal Column */
         .footer-legal {
           display: flex;
+          width: 168px;
+          padding: 10px 0px;
           flex-direction: column;
           align-items: flex-start;
           gap: 8px;
-          width: 168px;
-          flex-shrink: 0;
         }
 
-        /* Social icons — same row, pushes to right */
-        .footer-social {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          align-content: center;
-          gap: 32px;
-          width: 258px;
-          padding: 10px 0;
-          flex-shrink: 0;
-          margin-left: auto;
-        }
-
-        /* Section heading */
+        /* Text Styles */
         .section-title {
-          font-family:"CX80BOLD", sans-serif;
+          font-family: "CX80BOLD", sans-serif;
           font-size: 18px;
           font-weight: 150;
           line-height: 18px;
           letter-spacing: 5.76px;
           color: #F9F9F9;
-          padding: 10px 0;
+          // padding: 10px 0;
           text-transform: uppercase;
-          white-space: nowrap;
         }
 
-        /* Generic row inside a section */
         .footer-row {
           display: flex;
           align-items: center;
-          padding: 10px 0;
-          width: 100%;
+          padding: 6px 0;
         }
 
-        /* Body text */
-        .footer-text {
-          font-family: "Söhne", "Sohne", sans-serif;
+        .footer-text, .footer-link {
+          font-family: "Söhne", sans-serif;
           font-size: 16px;
-          font-weight: 400;
           line-height: 24px;
           color: #EAE5DF;
           text-decoration: none;
-          transition: transform 0.2s ease;
-          cursor: pointer;
         }
-        .footer-text:hover {
-          transform: translateY(-2px) scale(1.03);
-        }
+        .footer-link { text-decoration: underline; }
 
-        /* Underlined contact links */
-        .footer-link {
-          font-family: "Söhne", "Sohne", sans-serif;
-          font-size: 16px;
-          font-weight: 400;
-          line-height: 24px;
-          color: #EAE5DF;
-          text-decoration: underline;
-          transition: transform 0.2s ease;
-        }
-        .footer-link:hover {
-          transform: translateY(-2px) scale(1.03);
-        }
+        .contact-label { margin-right: 8px; }
 
-        /* Inline label (T / E) */
-        .contact-label {
-          color: #EAE5DF;
-          font-family: "Söhne", "Sohne", sans-serif;
-          font-size: 16px;
-          line-height: 24px;
-          margin-right: 4px;
-        }
-
-        /* Book a Call button */
         .btn-book {
           display: flex;
           height: 48px;
           padding: 12px 16px;
           justify-content: center;
           align-items: center;
-          gap: 10px;
           background: #69E4DC;
           border-radius: 8px;
           border: none;
-          cursor: pointer;
           text-decoration: none;
-
           font-family: "CX80BOLD", sans-serif;
           font-size: 14px;
-          font-weight: 150;
-          line-height: 14px;
           letter-spacing: 4.48px;
           color: #073B2F;
           text-transform: uppercase;
-          white-space: nowrap;
-          transition: opacity 0.2s ease;
           margin-top: 8px;
         }
-        .btn-book:hover { opacity: 0.85; }
 
-        /* Legal multi-line text */
+   
+
+
         .footer-legal-text {
-          font-family: "Söhne", "Sohne", sans-serif;
+          font-family: "Söhne", sans-serif;
           font-size: 16px;
-          font-weight: 400;
           line-height: 24px;
           color: #EAE5DF;
-          padding: 10px 0;
-          word-break: break-word;
+          padding: 4px 0;
         }
 
-        /* Social icon link */
-        .social-link {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          opacity: 0.9;
-          text-decoration: none;
-          transition: opacity 0.2s ease;
-          flex-shrink: 0;
-        }
-        .social-link img {
-          width: 24px;
-          height: 24px;
-          object-fit: contain;
-        }
-        .social-link:hover { opacity: 0.6; }
-
-        /* ── BOTTOM BAR ── */
         .footer-bottom {
-          display: flex;
-          align-items: center;
-          gap: 63px;
+          margin-top: auto;
           width: 100%;
         }
         .footer-copyright {
-          font-family: "Söhne", "Sohne", sans-serif;
+          font-family: "Söhne", sans-serif;
           font-size: 16px;
-          font-weight: 400;
-          line-height: 24px;
           color: #846F58;
-          white-space: nowrap;
-          padding: 10px 0;
         }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1200px) {
-          .footer {
-            padding: 80px 80px;
-          }
-          .footer-social {
-            margin-left: 0;
-          }
+          .footer { padding: 56px 76px !important}
         }
-
         @media (max-width: 768px) {
-          .footer {
-            padding: 60px 24px;
-            gap: 40px;
-          }
-          .footer-grid {
-            gap: 32px 24px;
-          }
-          .footer-logo,
-          .footer-contact {
-            width: 100%;
-          }
-          .footer-explore,
-          .footer-legal {
-            width: calc(50% - 12px);
-          }
-          .footer-social {
-            width: 100%;
-            margin-left: 0;
-          }
-          .footer-bottom {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 8px;
-          }
+          .footer-grid { flex-direction: column; }
+          .footer-contact, .footer-explore, .footer-legal { width: 100%; margin-left: 0; }
         }
       `}</style>
 
       <footer className="footer">
+        {/* Social Icons Row (Moves to top per your screenshot) */}
+        <div className="footer-social">
+          {socialIcons.map(({ label, img, url }) => (
+            <a key={label} href={url} target="_blank" rel="noopener noreferrer" className="social-link">
+              <img src={img} alt={label} />
+            </a>
+          ))}
+        </div>
 
-        {/* ── MAIN GRID ROW ── */}
+        {/* Main Grid Row */}
         <div className="footer-grid">
-
           {/* Logo */}
-          <div className="footer-logo">
-            <img src={Logo} alt="Find and Sign logo" />
+          <div className="footer-logo-container">
+            <NavLink to="/">
+              <img src={logo} alt="Logo" className="footer-logo" />
+            </NavLink>
           </div>
+
+       <div className="desktop-only" style={{ width: "68px" }}>
+</div>
 
           {/* Contact */}
           <div className="footer-contact">
             <div className="section-title">Contact</div>
-
             <div className="footer-row">
               <span className="contact-label">T</span>
               <a className="footer-link" href="tel:0431158233">0431 158 233</a>
             </div>
-
             <div className="footer-row">
               <span className="contact-label">E</span>
               <a className="footer-link" href="mailto:niki@findandsignba.com.au">niki@findandsignba.com.au</a>
             </div>
+            <div style={{width:"93px" ,display: "flex" ,padding:" 10px",alignItems: "center" ,gap: "10px"
+}}>
 
-            <div className="footer-row">
-              <a
-                href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-book"
-              >
-                Book a call
-              </a>
             </div>
+            <a href="https://calendly.com/..." target="_blank" rel="noopener noreferrer" className="btn-book">
+              Book a call
+            </a>
           </div>
 
           {/* Explore */}
@@ -690,37 +614,20 @@ export default function Footer() {
           {/* Legal */}
           <div className="footer-legal">
             <div className="section-title">Legal</div>
-            <div className="footer-row">
-              <a href="#" className="footer-text">Privacy Policy</a>
-            </div>
-            <div className="footer-row">
-              <a href="#" className="footer-text">Terms &amp; Conditions</a>
-            </div>
+            <div className="footer-row"><a href="#" className="footer-text">Privacy Policy</a></div>
+            <div className="footer-row"><a href="#" className="footer-text">Terms & Conditions</a></div>
             <div className="footer-legal-text">
-              Licensed Real Estate Agent<br />
+              Licensed Real Estate Agent <br/>
               RA86202 / RA84411
             </div>
-            <div className="footer-legal-text">
-              ABN 29 691 543 914
-            </div>
+            <div className="footer-legal-text">ABN 29 691 543 914</div>
           </div>
-
-          {/* Social icons */}
-          <div className="footer-social">
-            {socialIcons.map(({ label, img, url }) => (
-              <a key={label} href={url} target="_blank" rel="noopener noreferrer" className="social-link">
-                <img src={img} alt={label} />
-              </a>
-            ))}
-          </div>
-
         </div>
 
-        {/* ── BOTTOM BAR ── */}
+        {/* Bottom Bar */}
         <div className="footer-bottom">
           <span className="footer-copyright">© 2026 Find and Sign Buyer Advocate</span>
         </div>
-
       </footer>
     </>
   );

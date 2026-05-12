@@ -222,7 +222,7 @@ export default function ClientOutcomes() {
           display: grid;
           grid-template-columns: repeat(12, 1fr);
           column-gap: 64px;
-          padding: 64px 196px 80px;
+          padding: 64px 130px 64px;
         }
 
         .co-head { grid-column: 1 / -1; margin-bottom: 48px; }

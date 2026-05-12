@@ -76,7 +76,7 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
         {/* Image — 5 cols desktop → 12 cols tablet-S and below */}
         <FadeUp className="as-image-col" style={{ display: "flex" }}>
           <div className="about-image">
-            <img src={imageSrc || AboutBanner} alt="" />
+            <img  src={imageSrc || AboutBanner} alt="" />
           </div>
         </FadeUp>
 
@@ -176,6 +176,8 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
           width: 100%;
           display: flex;
           flex-direction: column;
+          // padding-right:130px;
+           height:"520px !important"
         }
 
         .body {

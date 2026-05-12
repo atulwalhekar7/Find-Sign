@@ -36,12 +36,12 @@ export default function Navbar() {
   padding: 24px 130px;
 }
 
-        .nav-logo {
-          width: 128px;
-          height: 47px;
-          object-fit: contain;
-          display: block;
-        }
+     .nav-logo {
+   width: 159px !important;
+          height: 59px !important;
+  object-fit: contain;
+  display: block;
+}
 
         .nav-actions {
           display: flex;
@@ -174,7 +174,7 @@ export default function Navbar() {
 
           .nav-logo {
             width: 108px;
-            height: auto;
+            height: 40px !important;
           }
 
           .nav-links {
