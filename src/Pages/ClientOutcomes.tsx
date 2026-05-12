@@ -226,8 +226,9 @@ export default function ClientOutcomes() {
   const reviewTrackRef                       = useRef<HTMLDivElement>(null);
   const reviewRafRef                         = useRef<number | null>(null);
   const reviewButtonContainerRef             = useRef<HTMLDivElement>(null);
-  const testimonialsSectionRef               = useRef<HTMLElement>(null);
-  const outcomesSectionRef                   = useRef<HTMLElement>(null);
+  const testimonialsSectionRef               = useRef<HTMLElement | null>(null);
+  const outcomesSectionRef                   = useRef<HTMLDivElement | null>(null);
+
 
   // dots step: desktop=3, tablet=2, mobile=2 → ceil(15/2)=8 dots on mobile
   const dotsStep     = isMobile ? 2 : visibleReviewCount;
