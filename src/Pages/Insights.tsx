@@ -292,8 +292,8 @@ export default function Insights() {
           .about-grid > div {
             width: 100% !important;
           }
-          h1 { font-size: 44px !important; line-height: 1.2 !important; }
-          h2 { font-size: 32px !important; line-height: 40px !important; }
+          h1 { font-size: 56px !important; line-height: 1.2 !important; }
+          h2 { font-size: 42px !important; line-height: 40px !important; }
           section p { font-size: 18px !important; line-height: 28px !important; }
         }
 
@@ -307,10 +307,17 @@ export default function Insights() {
             height: 200px !important;
           }
         }
+        
+        /* Ensuring blog titles (H3) are 32px on mobile */
+        @media (max-width: 768px) {
+          .blog-card > div > div:first-child {
+             font-size: 32px !important;
+          }
+        }
 
 
         @media (max-width: 600px) {
-          h1 { font-size: 36px !important; }
+          h1 { font-size: 56px !important; }
         }
       `}</style>
     </div>

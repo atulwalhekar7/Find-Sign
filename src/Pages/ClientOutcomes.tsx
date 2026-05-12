@@ -723,23 +723,23 @@ export default function ClientOutcomes() {
         @media (max-width: 767px) {
 
           /* ── Typography ── */
-          /* H1: 56px → 32px */
+          /* H1: 56px */
           .hero-h1 {
-            font-size: 32px;
+            font-size: 56px;
             letter-spacing: -0.6px;
             line-height: 1.15;
           }
-          /* H2: 42px → 26px */
+          /* H2: 42px */
           .outcomes-h2,
           .testimonials-h2 {
-            font-size: 26px;
+            font-size: 42px;
             line-height: 32px;
             letter-spacing: -0.2px;
           }
           .outcomes-h2::after,
           .testimonials-h2::after { width: 100px; }
-          /* H3: 32px → 20px */
-          .section-h3 { font-size: 20px; }
+          /* H3: 32px */
+          .section-h3 { font-size: 32px; }
           .outcomes-subtitle,
           .testimonials-subtitle {
             font-size: 15px;
@@ -844,10 +844,10 @@ export default function ClientOutcomes() {
             RESPONSIVE — SMALL MOBILE (<480px)
         ══════════════════════════════════════════ */
         @media (max-width: 480px) {
-          .hero-h1 { font-size: 28px; }
+          .hero-h1 { font-size: 56px; }
           .outcomes-h2,
-          .testimonials-h2 { font-size: 23px; line-height: 29px; }
-          .section-h3 { font-size: 19px; }
+          .testimonials-h2 { font-size: 42px; line-height: 29px; }
+          .section-h3 { font-size: 32px; }
           .outcomes-subtitle,
           .testimonials-subtitle { font-size: 14px; line-height: 22px; }
           .tc-pill { font-size: 12px; padding: 5px 10px; }

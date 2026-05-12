@@ -222,7 +222,7 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
           .about-image  { min-height: unset; height: auto; aspect-ratio: 4 / 5; }
 
           .about-heading-block { margin-bottom: 32px; }
-          .about-heading-block h2 { font-size: 32px; }
+          .about-heading-block h2 { font-size: 42px; }
           .sub  { font-size: 18px; line-height: 28px; }
           .body { font-size: 18px; }
         }
@@ -237,7 +237,7 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
 
           .about-image { height: 220px; }
 
-          .about-heading-block h2 { font-size: 28px; gap: 16px; }
+          .about-heading-block h2 { font-size: 42px; gap: 16px; }
           .sub  { font-size: 16px; line-height: 24px; }
           .body { font-size: 16px; line-height: 24px; }
         }

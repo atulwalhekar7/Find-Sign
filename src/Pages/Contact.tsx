@@ -58,11 +58,13 @@ export default function Contact() {
             padding-top: 40px !important;
             padding-bottom: 20px !important;
           }
-          .contact-page-heading-section h1 { font-size: 32px !important; line-height: 40px !important; }
+          .contact-page-heading-section h1 { font-size: 56px !important; line-height: 1.1 !important; }
+          h2 { font-size: 42px !important; }
+          h3 { font-size: 32px !important; }
         }
 
         @media (max-width: 600px) {
-          .contact-page-heading-section h1 { font-size: 28px !important; line-height: 36px !important; }
+          .contact-page-heading-section h1 { font-size: 56px !important; line-height: 1.1 !important; }
         }
       `}</style>
     </>
