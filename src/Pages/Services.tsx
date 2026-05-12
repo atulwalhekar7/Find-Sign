@@ -614,8 +614,22 @@ From the first conversation to settlement and beyond, we are in your corner. You
         @media (max-width: 900px) {
           .services-section { padding: 40px 20px 32px; }
 
-          h1 { font-size: 44px !important; line-height: 1.2 !important; }
-          h2 { font-size: 32px !important; line-height: 40px !important; }
+          /* Headings */
+  h1 {
+    font-size: 56px !important;
+    line-height: 64px !important;
+  }
+
+  h2 {
+    font-size: 42px !important;
+    line-height: 50px !important;
+  }
+
+  h3 {
+    font-size: 32px !important;
+    line-height: 40px !important;
+  }
+
           .services-section p { font-size: 18px !important; line-height: 28px !important; }
 
           /* top-grid: each col-6 card full-width on tablet */
