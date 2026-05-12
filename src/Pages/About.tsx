@@ -25,20 +25,19 @@ export default function About() {
   const [nikiExpanded, setNikiExpanded] = useState(false);
 
   const togglePlayPause = () => {
-  const vid = videoRef.current;
-  if (!vid) return;
+    const vid = videoRef.current;
+    if (!vid) return;
+    if (vid.paused) {
+      vid.muted = false;
+      setIsMuted(false);
+      vid.play();
+      setIsPlaying(true);
+    } else {
+      vid.pause();
+      setIsPlaying(false);
+    }
+  };
 
-  if (vid.paused) {
-    vid.muted = false;        // 👈 AUTO UNMUTE ON PLAY
-    setIsMuted(false);
-
-    vid.play();
-    setIsPlaying(true);
-  } else {
-    vid.pause();
-    setIsPlaying(false);
-  }
-};
   const toggleMute = () => {
     const vid = videoRef.current;
     if (!vid) return;
@@ -55,20 +54,20 @@ export default function About() {
           <h1 className="hero-title">About Us</h1>
         </div>
       </section>
-<div style={{ background: "#fff" }}>
-      <AboutSection
-        imageSrc={AboutUsBanner}
-        heading="About Find & Sign"
-        // subheading="Explore more about Find & Sign."
-        body1="Find & Sign Buyer Advocate was built on the belief that every buyer should secure the right property to build equity, choice and financial freedom.
+
+      <div style={{ background: "#fff" }}>
+        <AboutSection
+          imageSrc={AboutUsBanner}
+          heading="About Find & Sign"
+          body1="Find & Sign Buyer Advocate was built on the belief that every buyer should secure the right property to build equity, choice and financial freedom.
 Founder Niki learnt through experience that the right guidance is critical in securing the outcome. It is identified through local knowledge, experience and direct relationships, then secured before it reaches the wider market.
 We are a boutique buyers' agency operating nationwide, acting exclusively for buyers. Not agents.Not developers we are intentionally selective about the number of clients we take on to give each brief our full attention and expert advice. 
 "
-        body2="
+          body2="
 We assess every opportunity in person by walking the property, the street, and the surrounding area. Decisions are never made from photos or data alone. Because it's about identifying the opportunity and securing it early. The advantage of being first
 Find & Sign we find with confidence you sign with certainty.
 "
-      />
+        />
       </div>
 
       {/* SECTION 3 — Video */}
@@ -183,11 +182,11 @@ Find & Sign we find with confidence you sign with certainty.
         .mute-btn:active { transform: scale(0.96); }
 
         /* ── TEAM SECTION ── */
-       .team-section {
-  width: 100%;
-  padding: 64px 32px;
-  background: #fff;   /* ← add this */
-}
+        .team-section {
+          width: 100%;
+          padding: 64px 32px;
+          background: #fff;
+        }
         .team-container { max-width: 1200px; margin: 0 auto; }
 
         .team-header {
@@ -205,8 +204,18 @@ Find & Sign we find with confidence you sign with certainty.
           font-weight: 300; line-height: 1.5; margin-top: 24px; text-align: center;
         }
 
-        .team-grid {
-          display: flex; justify-content: center; flex-wrap: wrap; gap: 32px; width: 100%;
+        /* ── 12-column grid for team ── */
+        .team-grid-12 {
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          gap: 32px;
+          width: 100%;
+        }
+
+        /* Desktop: each card spans 6 columns (2 cards side by side) */
+        .team-col {
+          grid-column: span 6;
+          display: flex;
         }
 
         /* ── CARD: exact Figma values ── */
@@ -214,7 +223,7 @@ Find & Sign we find with confidence you sign with certainty.
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          width: 392px;
+          width: 100%;
           padding: 24px;
           gap: 31px;
           border-radius: 24px;
@@ -325,31 +334,31 @@ Find & Sign we find with confidence you sign with certainty.
         }
         .team-socials a:hover { opacity: 0.65; }
 
-        /* Contact button: exact Figma — border aqua, text colour inherit */
+        /* Contact button */
         .team-contact-btn {
-  display: inline-flex;
-  height: 48px;
-  padding: 12px 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 8px;
-  border: 1px solid #69E4DC;
-  background: transparent;
-  color: #073B2F;
-  font-family: 'CX80';
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 3.9px;
-  text-transform: uppercase;
-  cursor: pointer;
-  width: fit-content; /* 👈 shrinks to text width */
-  align-self: flex-start; /* 👈 pins to left */
-  box-sizing: border-box;
-  flex-shrink: 0;
-  transition: background 0.2s, color 0.2s;
-  text-decoration: none;
-}
+          display: inline-flex;
+          height: 48px;
+          padding: 12px 16px;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          border-radius: 8px;
+          border: 1px solid #69E4DC;
+          background: transparent;
+          color: #073B2F;
+          font-family: 'CX80';
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 3.9px;
+          text-transform: uppercase;
+          cursor: pointer;
+          width: fit-content;
+          align-self: flex-start;
+          box-sizing: border-box;
+          flex-shrink: 0;
+          transition: background 0.2s, color 0.2s;
+          text-decoration: none;
+        }
         .team-contact-btn:hover {
           background: #69E4DC;
           color: #073B2F;
@@ -361,14 +370,18 @@ Find & Sign we find with confidence you sign with certainty.
           to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive */
+        /* ── Tablet: ≤900px — stack cards to full width ── */
         @media (max-width: 900px) {
           .hero-box { padding: 60px 20px; width: 92%; }
           .hero-title { font-size: 44px !important; line-height: 1.2 !important; }
           .video-inner { height: 400px; }
           .play-btn, .mute-btn { width: 42px; height: 42px; }
-          .team-card { width: 100%; max-width: 480px; }
+
+          /* Each card takes full 12 columns on tablet */
+          .team-col { grid-column: span 12; }
         }
+
+        /* ── Mobile: ≤600px ── */
         @media (max-width: 600px) {
           .hero-box { padding: 60px 20px; width: 94%; border-radius: 8px; }
           .hero-title { font-size: 36px !important; }
@@ -381,7 +394,11 @@ Find & Sign we find with confidence you sign with certainty.
           .team-img-wrap { width: 110px; height: 134px; min-width: 110px; }
           .team-name { font-size: 24px; line-height: 30px; }
           .team-role { font-size: 16px; line-height: 22px; }
+
+          /* Already full-width from tablet rule — stays span 12 */
+          .team-col { grid-column: span 12; }
         }
+
         @media (max-width: 768px) {
           .hero-banner { background-attachment: scroll; }
         }
@@ -396,109 +413,105 @@ Find & Sign we find with confidence you sign with certainty.
             <p>Explore more about our team.</p>
           </div>
 
-          <div className="team-grid">
+          {/* 12-column grid — 6/6 desktop, 12/12 tablet & mobile */}
+          <div className="team-grid-12">
 
-            {/* ── Card: Niki ── */}
-            <div className="team-card">
+            {/* ── Col: Niki ── */}
+            <div className="team-col">
+              <div className="team-card">
 
-              {/* TOP: image + name / role / socials */}
-              <div className="team-card-top">
-                <div className="team-img-wrap">
-                  <img src={niki} alt="Niki Nakrani" />
-                </div>
-                <div className="team-name-block">
-                  <h3 className="team-name">Niki Nakrani</h3>
-                  <p className="team-role">CEO &amp; Founder</p>
-                  {/* Social icons */}
-                  <div className="team-socials">
-                    <a href="https://www.facebook.com/nakranipropertybuyers/" target="_blank" rel="noreferrer" aria-label="Facebook">
-                      <img src={fbIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Facebook" />
-                    </a>
-                    <a href="https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" target="_blank" rel="noreferrer" aria-label="Instagram">
-                      <img src={igIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Instagram" />
-                    </a>
-                    <a href="https://www.linkedin.com/in/niki-nakrani-13b269237/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                      <img src={liIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="LinkedIn" />
-                    </a>
-                    <a href="https://www.tiktok.com/" target="_blank" rel="noreferrer" aria-label="Tiktok">
-                      <img src={tiIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Tiktok" />
-                    </a>
-                    <a href="https://www.google.com/search?kgmid=/g/11vyhyd916&hl=en-IN&q=Find+and+Sign+Buyer+Advocate" target="_blank" rel="noreferrer" aria-label="Google">
-                      <img src={goIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Google" />
-                    </a>
+                <div className="team-card-top">
+                  <div className="team-img-wrap">
+                    <img src={niki} alt="Niki Nakrani" />
+                  </div>
+                  <div className="team-name-block">
+                    <h3 className="team-name">Niki Nakrani</h3>
+                    <p className="team-role">CEO &amp; Founder</p>
+                    <div className="team-socials">
+                      <a href="https://www.facebook.com/nakranipropertybuyers/" target="_blank" rel="noreferrer" aria-label="Facebook">
+                        <img src={fbIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Facebook" />
+                      </a>
+                      <a href="https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" target="_blank" rel="noreferrer" aria-label="Instagram">
+                        <img src={igIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Instagram" />
+                      </a>
+                      <a href="https://www.linkedin.com/in/niki-nakrani-13b269237/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                        <img src={liIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="LinkedIn" />
+                      </a>
+                      <a href="https://www.tiktok.com/" target="_blank" rel="noreferrer" aria-label="Tiktok">
+                        <img src={tiIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Tiktok" />
+                      </a>
+                      <a href="https://www.google.com/search?kgmid=/g/11vyhyd916&hl=en-IN&q=Find+and+Sign+Buyer+Advocate" target="_blank" rel="noreferrer" aria-label="Google">
+                        <img src={goIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Google" />
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* BIO: toggles on "Read more" click */}
-              <div className={`team-bio-wrap${nikiExpanded ? " expanded" : ""}`}>
-                <span className="team-bio">
-                  Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement. His approach is grounded in data, sharpened by years of on-the-ground market knowledge, and guided by a{" "}
-                </span>
-                {!nikiExpanded && (
-                  <button className="team-read-more" onClick={() => setNikiExpanded(true)}>
-                    Read more…
-                  </button>
-                )}
-                {nikiExpanded && (
+                <div className={`team-bio-wrap${nikiExpanded ? " expanded" : ""}`}>
                   <span className="team-bio">
-                    genuine desire to see others succeed. Niki understands that property can feel overwhelming, and that is precisely why having the right person in your corner changes everything. He is not just your buyer's agent. He is someone who has walked the path himself and is invested in your outcome.{" "}
-                    <button className="team-read-more" onClick={() => setNikiExpanded(false)}>
-                      Show less
-                    </button>
+                    Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement. His approach is grounded in data, sharpened by years of on-the-ground market knowledge, and guided by a{" "}
                   </span>
-                )}
-              </div>
+                  {!nikiExpanded && (
+                    <button className="team-read-more" onClick={() => setNikiExpanded(true)}>
+                      Read more…
+                    </button>
+                  )}
+                  {nikiExpanded && (
+                    <span className="team-bio">
+                      genuine desire to see others succeed. Niki understands that property can feel overwhelming, and that is precisely why having the right person in your corner changes everything. He is not just your buyer's agent. He is someone who has walked the path himself and is invested in your outcome.{" "}
+                      <button className="team-read-more" onClick={() => setNikiExpanded(false)}>
+                        Show less
+                      </button>
+                    </span>
+                  )}
+                </div>
 
-              {/* BUTTON: calls Niki's number */}
-              <a href="tel:0431158233" className="team-contact-btn">
-                Contact Niki
-              </a>
+                <a href="tel:0431158233" className="team-contact-btn">
+                  Contact Niki
+                </a>
+              </div>
             </div>
 
-            {/* ── Card: Rebecca ── */}
-            <div className="team-card">
+            {/* ── Col: Rebecca ── */}
+            <div className="team-col">
+              <div className="team-card">
 
-              {/* TOP: image + name / role / socials */}
-              <div className="team-card-top">
-                <div className="team-img-wrap">
-                  <img src={Bec} alt="Rebecca Nakrani" style={{ objectPosition: "center" }} />
-                </div>
-                <div className="team-name-block">
-                  <h3 className="team-name">Rebecca </h3>
-                  <p className="team-role">Client Operations Manager</p>
-                  {/* Social icons */}
-                  <div className="team-socials">
-                    <a href="https://www.facebook.com/nakranipropertybuyers/" target="_blank" rel="noreferrer" aria-label="Facebook">
-                      <img src={fbIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Facebook" />
-                    </a>
-                    <a href="https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" target="_blank" rel="noreferrer" aria-label="Instagram">
-                      <img src={igIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Instagram" />
-                    </a>
-                    <a href="https://www.linkedin.com/in/niki-nakrani-13b269237/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                      <img src={liIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="LinkedIn" />
-                    </a>
-                    
+                <div className="team-card-top">
+                  <div className="team-img-wrap">
+                    <img src={Bec} alt="Rebecca Nakrani" style={{ objectPosition: "center" }} />
+                  </div>
+                  <div className="team-name-block">
+                    <h3 className="team-name">Rebecca</h3>
+                    <p className="team-role">Client Operations Manager</p>
+                    <div className="team-socials">
+                      <a href="https://www.facebook.com/nakranipropertybuyers/" target="_blank" rel="noreferrer" aria-label="Facebook">
+                        <img src={fbIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Facebook" />
+                      </a>
+                      <a href="https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" target="_blank" rel="noreferrer" aria-label="Instagram">
+                        <img src={igIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Instagram" />
+                      </a>
+                      <a href="https://www.linkedin.com/in/niki-nakrani-13b269237/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                        <img src={liIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="LinkedIn" />
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* BIO */}
-              <div className="team-bio-wrap expanded">
-                <span className="team-bio">
-                  Rebecca keeps every purchase moving with precision and care. Her attention to detail and deep process knowledge means nothing is missed and clients always know exactly where they stand. She has a gift for making the complex feel simple, and takes genuine pride in delivering a seamless experience from start to settlement.
-                </span>
-              </div>
+                <div className="team-bio-wrap expanded">
+                  <span className="team-bio">
+                    Rebecca keeps every purchase moving with precision and care. Her attention to detail and deep process knowledge means nothing is missed and clients always know exactly where they stand. She has a gift for making the complex feel simple, and takes genuine pride in delivering a seamless experience from start to settlement.
+                  </span>
+                </div>
 
-              {/* BUTTON: emails Rebecca */}
-              <a 
-  href="https://mail.google.com/mail/?view=cm&to=info@findandsignba.com.au&su=Website+Enquiry"
-  className="team-contact-btn"
-  target="_blank"
-  rel="noreferrer"
->
-  Contact Rebecca
-</a>
+                <a
+                  href="https://mail.google.com/mail/?view=cm&to=info@findandsignba.com.au&su=Website+Enquiry"
+                  className="team-contact-btn"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Contact Rebecca
+                </a>
+              </div>
             </div>
 
           </div>

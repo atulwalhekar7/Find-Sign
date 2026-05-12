@@ -343,7 +343,6 @@ export default function Services() {
       <AboutSection
         imageSrc={AboutServiceImg}
         heading="About Our Services"
-        // subheading="Expert guidance for every step of your property journey."
         body1="Find and Sign Buyer Advocate is a boutique buyers agency based in Perth, representing buyers exclusively, whether you are purchasing the home you want to live in or building the portfolio you have always planned for.
 We take on a select number of clients at any one time. Not because we have to, but because we believe a purchase of this size deserves our full attention."
         body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
@@ -357,7 +356,6 @@ From the first conversation to settlement and beyond, we are in your corner. You
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-         
           alignSelf: "stretch",
           background: "var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9)",
         }}
@@ -402,13 +400,14 @@ From the first conversation to settlement and beyond, we are in your corner. You
           </div>
         </FadeUp>
 
-        {/* Top row: Buyer Advocate + Advisory */}
-        <div
-          className="top-grid"
-          style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, width: "100%" }}
-        >
-          <ServiceCard title="Buyer Advocate" body={body1} hasButton delay={0} onBookCall={handleBookCall} />
-          <ServiceCard title="Advisory" body={body2} hasButton delay={0.12} onBookCall={handleBookCall} />
+        {/* Top row: Buyer Advocate + Advisory — 12-col: 6/6 → 12/12 on mobile */}
+        <div className="top-grid grid-12">
+          <div className="col-6 col-sm-12">
+            <ServiceCard title="Buyer Advocate" body={body1} hasButton delay={0} onBookCall={handleBookCall} />
+          </div>
+          <div className="col-6 col-sm-12">
+            <ServiceCard title="Advisory" body={body2} hasButton delay={0.12} onBookCall={handleBookCall} />
+          </div>
         </div>
 
         {/* Affiliated Services heading */}
@@ -499,6 +498,33 @@ From the first conversation to settlement and beyond, we are in your corner. You
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap');
 
+        /* ── 12-column grid system ───────────────────────────────────────── */
+        .grid-12 {
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          gap: 24px;
+          width: 100%;
+        }
+
+        /* Column spans — desktop */
+        .col-1  { grid-column: span 1; }
+        .col-2  { grid-column: span 2; }
+        .col-3  { grid-column: span 3; }
+        .col-4  { grid-column: span 4; }
+        .col-5  { grid-column: span 5; }
+        .col-6  { grid-column: span 6; }
+        .col-7  { grid-column: span 7; }
+        .col-8  { grid-column: span 8; }
+        .col-9  { grid-column: span 9; }
+        .col-10 { grid-column: span 10; }
+        .col-11 { grid-column: span 11; }
+        .col-12 { grid-column: span 12; }
+
+        /* Ensure FadeUp wrappers inside grid cells stretch full height */
+        .grid-12 > [class*="col-"] > div {
+          height: 100%;
+        }
+
         .services-section {
           padding: 24px 130px 32px;
         }
@@ -513,34 +539,33 @@ From the first conversation to settlement and beyond, we are in your corner. You
           to   { opacity: 1; transform: translateY(0); }
         }
 
+        /* ── xl: 1200px ──────────────────────────────────────────────────── */
         @media (max-width: 1200px) {
           .services-section { padding: 64px 40px 32px; }
         }
 
+        /* ── md: 900px — tablet ──────────────────────────────────────────── */
         @media (max-width: 900px) {
           .services-section { padding: 40px 20px 32px; }
-          .top-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .about-grid {
-            flex-direction: column !important;
-          }
+
           h1 { font-size: 44px !important; line-height: 1.2 !important; }
           h2 { font-size: 32px !important; line-height: 40px !important; }
           .services-section p { font-size: 18px !important; line-height: 28px !important; }
+
+          /* top-grid: each card full-width */
+          .top-grid.grid-12 .col-6 { grid-column: span 12; }
+
+          /* three-grid tablet: col-md-6 → span 6, col-md-12 → span 12 */
+          .three-grid.grid-12 .col-md-6  { grid-column: span 6; }
+          .three-grid.grid-12 .col-md-12 { grid-column: span 12; }
         }
 
-        @media (max-width: 768px) {
-          .three-grid {
-            grid-template-columns: 1fr 1fr !important;
-          }
-        }
-
+        /* ── sm: 600px — mobile ──────────────────────────────────────────── */
         @media (max-width: 600px) {
-          .three-grid {
-            grid-template-columns: 1fr !important;
-          }
           h1 { font-size: 36px !important; }
+
+          /* all cards go full-width on small screens */
+          .grid-12 [class*="col-"] { grid-column: span 12 !important; }
         }
       `}</style>
     </div>
