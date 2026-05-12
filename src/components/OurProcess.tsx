@@ -251,6 +251,30 @@ const globalCSS = `
 
   /* ── MOBILE ── */
   @media (max-width: 767px) {
+
+   /* H1 */
+  h1,
+  .h1 {
+    font-size: 56px !important;
+    line-height: 64px !important;
+  }
+
+  /* H2 */
+  h2,
+  .h2,
+  .op-title-text {
+    font-size: 42px !important;
+    line-height: 50px !important;
+  }
+
+  /* H3 */
+  h3,
+  .h3,
+  .op-item-title {
+    font-size: 32px !important;
+    line-height: 40px !important;
+  }
+
     .op-section { grid-template-columns: repeat(4,1fr); column-gap: 16px; padding: 40px 20px 56px; }
     .op-head    { margin-bottom: 32px; }
    .op-row {
@@ -271,13 +295,16 @@ const globalCSS = `
     justify-content: flex-start;
     transform: translateY(2px); /* 👈 key fix */
   }
-   .op-title-text    { font-size: 28px !important; line-height: 38px  !important; }
-    .op-subtitle-text { font-size: 16px !important; line-height: 26px  !important; }
-    .op-item-title {
-    margin: 0;
-    line-height: 28px;
-  }
+.op-title-text {
+  font-size: 42px !important;
+  line-height: 50px !important;
+}
 
+.op-item-title {
+  font-size: 32px !important;
+  line-height: 40px !important;
+}    .op-subtitle-text { font-size: 16px !important; line-height: 26px  !important; }
+   
   .op-item-desc {
     margin-top: 6px;
     line-height: 22px;
