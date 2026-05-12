@@ -513,7 +513,7 @@ export default function GetInTouch({ initialService = "", showService = false, h
   font-family: "CX80BOLD";
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 32%;
   font-size: 14px;
   transition: all 0.25s ease;
 }

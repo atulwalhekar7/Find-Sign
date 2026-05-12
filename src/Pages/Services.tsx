@@ -468,23 +468,29 @@ From the first conversation to settlement and beyond, we are in your corner. You
         </FadeUp>
 
         {/* Row 1: 3 affiliated cards */}
-        <div
-          className="three-grid"
-          style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, width: "100%",marginBottom:"86px" }}
-        >
-          <OtherServiceCard title="Mortgage Broker " body={body3} hasButton delay={0} onBookCall={handleBookCall} />
-          <OtherServiceCard title="Settlement Agent" body={body4} hasButton delay={0.1} onBookCall={handleBookCall} />
-          <OtherServiceCard title="Building Inspection" body={body5} hasButton delay={0.2} onBookCall={handleBookCall} />
+        <div className="grid-12" style={{ marginBottom:"86px" }}>
+          <div className="col-4 col-md-6 col-sm-12">
+            <OtherServiceCard title="Mortgage Broker " body={body3} hasButton delay={0} onBookCall={handleBookCall} />
+          </div>
+          <div className="col-4 col-md-6 col-sm-12">
+            <OtherServiceCard title="Settlement Agent" body={body4} hasButton delay={0.1} onBookCall={handleBookCall} />
+          </div>
+          <div className="col-4 col-md-6 col-sm-12">
+            <OtherServiceCard title="Building Inspection" body={body5} hasButton delay={0.2} onBookCall={handleBookCall} />
+          </div>
         </div>
 
        {/* Row 2: 3 affiliated cards */}
-        <div
-          className="three-grid"
-          style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, width: "100%", marginBottom: "64px" }}
-        >
-          <OtherServiceCard title="Property Management" body={body6} hasButton delay={0} onBookCall={handleBookCall} />
-          <OtherServiceCard title="Accounting / Quantity Surveyor" body={body7} hasButton delay={0.1} onBookCall={handleBookCall} />
-          <OtherServiceCard title="Sales Agent" body={body8} hasButton delay={0.2} onBookCall={handleBookCall} />
+        <div className="grid-12" style={{ marginBottom: "64px" }}>
+          <div className="col-4 col-md-6 col-sm-12">
+            <OtherServiceCard title="Property Management" body={body6} hasButton delay={0} onBookCall={handleBookCall} />
+          </div>
+          <div className="col-4 col-md-6 col-sm-12">
+            <OtherServiceCard title="Accounting / Quantity Surveyor" body={body7} hasButton delay={0.1} onBookCall={handleBookCall} />
+          </div>
+          <div className="col-4 col-md-6 col-sm-12">
+            <OtherServiceCard title="Sales Agent" body={body8} hasButton delay={0.2} onBookCall={handleBookCall} />
+          </div>
         </div>
 
         {/* ── Affiliated Services Disclosure ─────────────────────────────── */}
@@ -568,6 +574,18 @@ From the first conversation to settlement and beyond, we are in your corner. You
         .col-11 { grid-column: span 11; }
         .col-12 { grid-column: span 12; }
 
+        /* Column spans — tablet (md: 900px) */
+        .col-3  { grid-column: span 3; }
+        .col-4  { grid-column: span 4; }
+        .col-5  { grid-column: span 5; }
+        .col-6  { grid-column: span 6; }
+        .col-7  { grid-column: span 7; }
+        .col-8  { grid-column: span 8; }
+        .col-9  { grid-column: span 9; }
+        .col-10 { grid-column: span 10; }
+        .col-11 { grid-column: span 11; }
+        .col-12 { grid-column: span 12; }
+
         /* Ensure FadeUp wrappers inside grid cells stretch full height */
         .grid-12 > [class*="col-"] > div {
           height: 100%;
@@ -600,12 +618,22 @@ From the first conversation to settlement and beyond, we are in your corner. You
           h2 { font-size: 32px !important; line-height: 40px !important; }
           .services-section p { font-size: 18px !important; line-height: 28px !important; }
 
-          /* top-grid: each card full-width */
+          /* top-grid: each col-6 card full-width on tablet */
           .top-grid.grid-12 .col-6 { grid-column: span 12; }
 
-          /* three-grid tablet: col-md-6 → span 6, col-md-12 → span 12 */
-          .three-grid.grid-12 .col-md-6  { grid-column: span 6; }
-          .three-grid.grid-12 .col-md-12 { grid-column: span 12; }
+          /* Generic col-md-X for tablet */
+          .col-md-1  { grid-column: span 1; }
+          .col-md-2  { grid-column: span 2; }
+          .col-md-3  { grid-column: span 3; }
+          .col-md-4  { grid-column: span 4; }
+          .col-md-5  { grid-column: span 5; }
+          .col-md-6  { grid-column: span 6; }
+          .col-md-7  { grid-column: span 7; }
+          .col-md-8  { grid-column: span 8; }
+          .col-md-9  { grid-column: span 9; }
+          .col-md-10 { grid-column: span 10; }
+          .col-md-11 { grid-column: span 11; }
+          .col-md-12 { grid-column: span 12; }
         }
 
         /* ── sm: 600px — mobile ──────────────────────────────────────────── */
