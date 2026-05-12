@@ -369,7 +369,6 @@ import igIcon from "../assets/icon/Instagram.svg";
 import liIcon from "../assets/icon/LinkedIn.svg";
 import tiIcon from "../assets/icon/Tiktok.svg";
 import goIcon from "../assets/icon/Google.svg";
-import PrivacyPolicy from "../Pages/Privacy-Policy.tsx";
 
 const socialIcons = [
   { label: "Facebook", img: fbIcon, url: "https://www.facebook.com/nakranipropertybuyers/" },
