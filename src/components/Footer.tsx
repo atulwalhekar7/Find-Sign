@@ -369,6 +369,7 @@ import igIcon from "../assets/icon/Instagram.svg";
 import liIcon from "../assets/icon/LinkedIn.svg";
 import tiIcon from "../assets/icon/Tiktok.svg";
 import goIcon from "../assets/icon/Google.svg";
+import PrivacyPolicy from "../Pages/Privacy-Policy.tsx";
 
 const socialIcons = [
   { label: "Facebook", img: fbIcon, url: "https://www.facebook.com/nakranipropertybuyers/" },
@@ -619,8 +620,11 @@ gap: 10px;
           {/* Legal */}
           <div className="footer-legal">
             <div className="section-title">Legal</div>
-            <div className="footer-row"><a href="#" className="footer-text">Privacy Policy</a></div>
-            <div className="footer-row"><a href="#" className="footer-text">Terms & Conditions</a></div>
+<div className="footer-row">
+  <NavLink to="/privacy-policy" className="footer-text">
+    Privacy Policy
+  </NavLink>
+</div>            <div className="footer-row"><a href="#" className="footer-text">Terms & Conditions</a></div>
             <div className="footer-legal-text">
               Licensed Real Estate Agent <br/>
               RA86202 / RA84411

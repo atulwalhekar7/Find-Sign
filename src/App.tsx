@@ -18,7 +18,7 @@ import BuildingInspection from "./Services-pages/BuildingInspection";
 import SalesAgent         from "./Services-pages/SalesAgent";
 import QuantitySurveyor   from "./Services-pages/QuantitySurveyor";
 import Accounting         from "./Services-pages/Accounting";
-
+import PrivacyPolicy from "./Pages/Privacy-Policy";
 import "./index.css";
 
 /* ── Google Fonts ── */
@@ -42,6 +42,7 @@ function App() {
           <Route path="/contact"         element={<Contact />}        />
           <Route path="/blog/buyers-agent-perth" element={<BuyerAgentPerthBlog />} />
           <Route path="/blog/best-suburbs-perth" element={<BestSuburbsPerthBlog />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
           {/* ── 8 Service Pages ── */}
           <Route path="/services/buyer-advocate"      element={<BuyerAdvocate />}      />
