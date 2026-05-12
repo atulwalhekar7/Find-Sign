@@ -537,6 +537,7 @@ gap: 10px;
           line-height: 24px;
           color: #EAE5DF;
           padding: 4px 0;
+          white-space: nowrap;
         }
 
         .footer-bottom {
