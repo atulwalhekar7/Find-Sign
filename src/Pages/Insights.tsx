@@ -285,62 +285,33 @@ export default function Insights() {
         }
 
         @media (max-width: 900px) {
-          .blogs-container { padding: 0 20px; }
+          .blogs-container { padding: 64px 20px; }
           .about-grid {
             flex-direction: column !important;
           }
           .about-grid > div {
             width: 100% !important;
           }
-          /* Global Heading System */
-  h1 {
-    font-size: 56px !important;
-    line-height: 64px !important;
-  }
-
-  h2 {
-    font-size: 42px !important;
-    line-height: 50px !important;
-  }
-
-  h3 {
-    font-size: 32px !important;
-    line-height: 40px !important;
-  }
- section p {
-    font-size: 18px !important;
-    line-height: 28px !important;
-  }
-            }
+          h1 { font-size: 44px !important; line-height: 1.2 !important; }
+          h2 { font-size: 32px !important; line-height: 40px !important; }
+          section p { font-size: 18px !important; line-height: 28px !important; }
+        }
 
         @media (max-width: 768px) {
-            .blog-card {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-  }
-
-  .blog-card-img {
-    width: 100% !important;
-    height: 200px !important;
-  }
+          .blog-card {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+          }
+          .blog-card-img {
+            width: 100% !important;
+            height: 200px !important;
+          }
         }
 
 
         @media (max-width: 600px) {
- h1 {
-    font-size: 56px !important;
-    line-height: 64px !important;
-  }
-
-  h2 {
-    font-size: 42px !important;
-    line-height: 50px !important;
-  }
-
-  h3 {
-    font-size: 32px !important;
-    line-height: 40px !important;
-  }        }
+          h1 { font-size: 36px !important; }
+        }
       `}</style>
     </div>
   );
