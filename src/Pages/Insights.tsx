@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
 // import AboutSection from "../components/AboutSection";
-import Image1 from "../components/Image1";
+import Image3 from "../components/Image3";
 
 // import aboutInsightsImg from "../assets/About Insights.jpg";
 import bannerImg from "../assets/Insights-banner-find-and-sign-buyers-agent-australia.jpg";
@@ -36,6 +36,7 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
       }}
     >
       <div
+        className="blog-card-img"
         style={{
           width: "145px",
           flexShrink: 0,
@@ -215,9 +216,9 @@ export default function Insights() {
      /> */}
 
       {/* ── SECTION 3: Blogs ────────────────────────────────────────────── */}
-      <section className="blogs-container" style={{ maxWidth: "1200px", margin: "0 auto 80px", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <section className="blogs-container" style={{ maxWidth: "1200px", margin: "0 auto ", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <h2 style={{  
-          margin: "40px auto 24px",
+          margin: " auto 24px",
   color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
   fontFamily: "GT Super Display Medium",
   fontSize: "44px",
@@ -251,7 +252,7 @@ export default function Insights() {
           ))}
         </div>
       </section>
-          <Image1/>
+          <Image3/>
       <SimpleGetInTouch />
       
       <SimpleFooter />
@@ -264,7 +265,7 @@ export default function Insights() {
         }
 
         .blogs-container {
-          padding: 24px 
+          padding: 64px 
         }
 
         .blog-card {

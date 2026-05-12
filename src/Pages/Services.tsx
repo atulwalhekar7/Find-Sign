@@ -5,7 +5,7 @@ import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
 import bannerImg from "../assets/service-banner-find-and-sign-buyers-australia.jpg";
 import AboutServiceImg from "../assets/about-service-find-and-sign.jpg";
-import Image1 from "../components/Image1";
+import Image3 from "../components/Image3";
 
 
 // ── Animation hook ────────────────────────────────────────────────────────────
@@ -468,27 +468,81 @@ From the first conversation to settlement and beyond, we are in your corner. You
         </FadeUp>
 
         {/* Row 1: 3 affiliated cards */}
-        <div
-          className="three-grid"
-          style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, width: "100%",marginBottom:"86px" }}
-        >
-          <OtherServiceCard title="Mortgage Broker " body={body3} hasButton delay={0} onBookCall={handleBookCall} />
-          <OtherServiceCard title="Settlement Agent" body={body4} hasButton delay={0.1} onBookCall={handleBookCall} />
-          <OtherServiceCard title="Building Inspection" body={body5} hasButton delay={0.2} onBookCall={handleBookCall} />
+        <div className="grid-12" style={{ marginBottom:"86px" }}>
+          <div className="col-4 col-md-6 col-sm-12">
+            <OtherServiceCard title="Mortgage Broker " body={body3} hasButton delay={0} onBookCall={handleBookCall} />
+          </div>
+          <div className="col-4 col-md-6 col-sm-12">
+            <OtherServiceCard title="Settlement Agent" body={body4} hasButton delay={0.1} onBookCall={handleBookCall} />
+          </div>
+          <div className="col-4 col-md-6 col-sm-12">
+            <OtherServiceCard title="Building Inspection" body={body5} hasButton delay={0.2} onBookCall={handleBookCall} />
+          </div>
         </div>
 
-        {/* Row 2: 3 affiliated cards */}
-        <div
-          className="three-grid"
-          style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, width: "100%" ,marginBottom:"150px"}}
-        >
-          <OtherServiceCard title="Property Management" body={body6} hasButton delay={0} onBookCall={handleBookCall} />
-          <OtherServiceCard title="Accounting / Quantity Surveyor" body={body7} hasButton delay={0.1} onBookCall={handleBookCall} />
-          <OtherServiceCard title="Sales Agent" body={body8} hasButton delay={0.2} onBookCall={handleBookCall} />
+       {/* Row 2: 3 affiliated cards */}
+        <div className="grid-12" style={{ marginBottom: "64px" }}>
+          <div className="col-4 col-md-6 col-sm-12">
+            <OtherServiceCard title="Property Management" body={body6} hasButton delay={0} onBookCall={handleBookCall} />
+          </div>
+          <div className="col-4 col-md-6 col-sm-12">
+            <OtherServiceCard title="Accounting / Quantity Surveyor" body={body7} hasButton delay={0.1} onBookCall={handleBookCall} />
+          </div>
+          <div className="col-4 col-md-6 col-sm-12">
+            <OtherServiceCard title="Sales Agent" body={body8} hasButton delay={0.2} onBookCall={handleBookCall} />
+          </div>
         </div>
+
+        {/* ── Affiliated Services Disclosure ─────────────────────────────── */}
+        <FadeUp style={{ width: "100%" }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              alignSelf: "stretch",
+              gap: "8px",
+            }}
+          >
+            {/* Label */}
+            <p
+              style={{
+                color: "var(--FS-System-Grey-1, #757575)",
+                textAlign: "center",
+                fontFamily: " SohneBuch",
+                fontSize: "16px",
+                fontStyle: "normal",
+                fontWeight: 400,
+                lineHeight: "24px",
+                margin: 0,
+              }}
+            >
+              Affiliated Services Disclosure
+            </p>
+
+            {/* Body */}
+            <p
+              style={{
+                alignSelf: "stretch",
+                color: "var(--FS-System-Grey-1, #757575)",
+                textAlign: "center",
+                fontFamily: "Söhne, SohneBuch, sans-serif",
+                fontSize: "16px",
+                fontStyle: "normal",
+                fontWeight: 400,
+                lineHeight: "24px",
+                margin: 0,
+                maxWidth: "1158px",
+                alignSelf: "center",
+              }}
+            >
+              The affiliated services listed on this page are independent businesses and professionals that Find and Sign Buyer Advocate has developed relationships with over time. While we may refer or introduce these services, we do so based on our genuine belief in the quality of their work. Please note that Find and Sign Buyer Advocate may receive a commission or referral fee in some instances. We are not responsible for the advice, outcomes, or conduct of any third party service provider. All decisions regarding the engagement of any affiliated service remain entirely at your discretion.
+            </p>
+          </div>
+        </FadeUp>
       </section>
 
-      <Image1 />
+      <Image3 />
       <div ref={formRef}>
         <GetInTouch initialService={selectedService} showService={true} />
       </div>
@@ -509,6 +563,18 @@ From the first conversation to settlement and beyond, we are in your corner. You
         /* Column spans — desktop */
         .col-1  { grid-column: span 1; }
         .col-2  { grid-column: span 2; }
+        .col-3  { grid-column: span 3; }
+        .col-4  { grid-column: span 4; }
+        .col-5  { grid-column: span 5; }
+        .col-6  { grid-column: span 6; }
+        .col-7  { grid-column: span 7; }
+        .col-8  { grid-column: span 8; }
+        .col-9  { grid-column: span 9; }
+        .col-10 { grid-column: span 10; }
+        .col-11 { grid-column: span 11; }
+        .col-12 { grid-column: span 12; }
+
+        /* Column spans — tablet (md: 900px) */
         .col-3  { grid-column: span 3; }
         .col-4  { grid-column: span 4; }
         .col-5  { grid-column: span 5; }
@@ -552,12 +618,22 @@ From the first conversation to settlement and beyond, we are in your corner. You
           h2 { font-size: 32px !important; line-height: 40px !important; }
           .services-section p { font-size: 18px !important; line-height: 28px !important; }
 
-          /* top-grid: each card full-width */
+          /* top-grid: each col-6 card full-width on tablet */
           .top-grid.grid-12 .col-6 { grid-column: span 12; }
 
-          /* three-grid tablet: col-md-6 → span 6, col-md-12 → span 12 */
-          .three-grid.grid-12 .col-md-6  { grid-column: span 6; }
-          .three-grid.grid-12 .col-md-12 { grid-column: span 12; }
+          /* Generic col-md-X for tablet */
+          .col-md-1  { grid-column: span 1; }
+          .col-md-2  { grid-column: span 2; }
+          .col-md-3  { grid-column: span 3; }
+          .col-md-4  { grid-column: span 4; }
+          .col-md-5  { grid-column: span 5; }
+          .col-md-6  { grid-column: span 6; }
+          .col-md-7  { grid-column: span 7; }
+          .col-md-8  { grid-column: span 8; }
+          .col-md-9  { grid-column: span 9; }
+          .col-md-10 { grid-column: span 10; }
+          .col-md-11 { grid-column: span 11; }
+          .col-md-12 { grid-column: span 12; }
         }
 
         /* ── sm: 600px — mobile ──────────────────────────────────────────── */
