@@ -22,34 +22,39 @@ function VideoModal({ onClose }: { onClose: () => void }) {
         onClick={e => e.stopPropagation()}
         style={{ position: "relative", width: "100%", maxWidth: "900px" }}
       >
-        <button
-          onClick={onClose}
-          style={{
-            position:   "absolute",
-            top:        "-40px",
-            right:      0,
-            background: "none",
-            border:     "none",
-            cursor:     "pointer",
-            color:      "#fff",
-            fontSize:   "28px",
-            lineHeight: 1,
-            padding:    "4px 8px",
-            marginTop:"15%",
-          }}
-          aria-label="Close video"
-        >
-          ✕
-        </button>
+       <button
+  onClick={onClose}
+  aria-label="Close video"
+  style={{
+   position: "absolute",
+top: "-40px",
+right: "10px",
+    width: "38px",
+    height: "38px",
+    borderRadius: "50%",
+    border: "none",
+    background: "rgba(0,0,0,0.75)",
+    color: "#fff",
+    fontSize: "20px",
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 9999,
+  }}
+>
+  ✕
+</button>
  
       <iframe
   src="https://player.vimeo.com/video/1189029882?autoplay=0&loop=1&playsinline=1"
   style={{
-    width: "100%",
-    height: "500px",
-    borderRadius: "4px",
-    marginTop: "10%",
-  }}
+  width: "100%",
+  aspectRatio: "16 / 9",
+  borderRadius: "4px",
+  border: "none",
+  display: "block",
+}}
   frameBorder="0"
   allow="autoplay; fullscreen; picture-in-picture"
   allowFullScreen
