@@ -3,7 +3,8 @@ import { useLocation } from "react-router-dom";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
-import Image1 from "../components/Image1";
+import Image5 from "../components/Image5";
+import Image6 from "../components/Image6";
 
 import bannerImg from "../assets/client-outcomes-banner-find-and-sign-buyers-agent-australia.jpg";
 import AboutClientOutcomesImg from "../assets/find-and-sign-about-client-outcomes-property-experts-australia.png";
@@ -811,6 +812,7 @@ export default function ClientOutcomes() {
             )}
           </div>
         </div>
+        <Image5/>
 
         {/* ══ TESTIMONIALS ══ */}
         <div className="testimonials-section-wrap">
@@ -895,7 +897,7 @@ export default function ClientOutcomes() {
         </div>
 
         {/* ══ GET IN TOUCH + FOOTER ══ */}
-        <Image1 />
+        <Image6 />
         <SimpleGetInTouch />
         <SimpleFooter />
       </div>
