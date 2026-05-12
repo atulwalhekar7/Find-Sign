@@ -184,7 +184,7 @@ const navigate = useNavigate();
 
         /* ── Hero bottom ── */
         .hero-bottom {
-          padding:        72px 5%;
+          padding:        64px 5%;
           display:        flex;
           flex-direction: column;
           align-items:    center;

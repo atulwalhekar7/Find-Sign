@@ -454,7 +454,7 @@ export default function GetInTouch({ initialService = "", showService = false, h
   display: flex;
   width: 100%;
   min-height: 100vh;
-  padding: 24px 130px;
+  padding: 64px 130px;
   flex-direction: column;
   align-items: center;
   background: #ebe6de;

@@ -255,9 +255,11 @@ export default function Services() {
   const formRef = useRef<HTMLDivElement>(null);
   const [selectedService] = useState("");
 
+  
+
   // ── Handler: navigate to the service's dedicated page ──────────────────────
   const handleBookCall = (serviceName: string) => {
-    const slug = serviceName.toLowerCase().replace(/\s+/g, "-");
+    const slug = serviceName.toLowerCase().replace(/\s+/g, "-"); ;
     navigate(`/services/${slug}`);
   };
 
@@ -268,22 +270,22 @@ export default function Services() {
     "Sometimes you don't need someone to manage the entire process. You want the right guidance to make informed decisions from the first search through to securing a property. We guide you with clear advice at each stage so you understand what's happening, what to consider, and where risks and opportunities sit. You're supported throughout, with decisions made together and no uncertainty around what comes next. Every engagement is tailored to your situation, your goals and your timeline.";
 
   const body3 =
-    "Once secured, we connect you with a trusted property manager to protect your asset, manage tenants, and keep your investment performing.";
+    "Before the right money is in the right place, nothing else can move. A great mortgage broker cuts through the noise, secures the right finance structure for your situation, and ensures you are set up correctly from the very beginning of your purchase journey.";
 
   const body4 =
-    "Once secured, we guide the process through to settlement and connect you with a trusted agent to manage contracts and ensure a smooth transfer.";
+    "The legal side of purchasing a property involves more moving parts than most people realise. A skilled settlement agent ensures your contracts are handled correctly, your deadlines are met, and your purchase is transferred smoothly and securely.";
 
   const body5 =
-    "Before you commit, we connect you with a trusted inspector to assess the property's condition and help you avoid costly issues.";
+    "Never skip this step. A thorough building inspection gives you an honest picture of the property's condition before you commit, protecting you from costly surprises down the track.";
 
   const body6 =
-    "Where relevant, we connect you with a trusted sales agent so you can plan your sale or exit strategy with confidence.";
+    "Once you have secured your investment, you need someone who will look after it as carefully as you do. A great property manager protects your asset, manages your tenants, and keeps your investment performing.";
 
   const body7 =
-    "For investors, we connect you with a trusted quantity surveyor to prepare a depreciation schedule and support long-term returns.";
+    "Two of the most overlooked yet most valuable members of your investment team. The right accountant and quantity surveyor ensure your structure is correct, your depreciation is maximised, and every financial entitlement available to you is working in your favour.";
 
   const body8 =
-    "We connect you with a trusted accountant to ensure your structure is right and you are maximising available tax benefits.";
+    "Whether you are selling before you buy or planning an exit strategy on an investment, having a trusted sales agent in your network means you are never starting from scratch when it matters most.";
 
   return (
     <div style={{ color: "#111", background: "#fff", margin: 0, padding: 0 }}>
@@ -471,7 +473,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
           className="three-grid"
           style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, width: "100%",marginBottom:"86px" }}
         >
-          <OtherServiceCard title="Property Management" body={body3} hasButton delay={0} onBookCall={handleBookCall} />
+          <OtherServiceCard title="Mortgage Broker " body={body3} hasButton delay={0} onBookCall={handleBookCall} />
           <OtherServiceCard title="Settlement Agent" body={body4} hasButton delay={0.1} onBookCall={handleBookCall} />
           <OtherServiceCard title="Building Inspection" body={body5} hasButton delay={0.2} onBookCall={handleBookCall} />
         </div>
@@ -481,9 +483,9 @@ From the first conversation to settlement and beyond, we are in your corner. You
           className="three-grid"
           style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, width: "100%" ,marginBottom:"150px"}}
         >
-          <OtherServiceCard title="Sales Agent" body={body6} hasButton delay={0} onBookCall={handleBookCall} />
-          <OtherServiceCard title="Quantity Surveyor" body={body7} hasButton delay={0.1} onBookCall={handleBookCall} />
-          <OtherServiceCard title="Accounting" body={body8} hasButton delay={0.2} onBookCall={handleBookCall} />
+          <OtherServiceCard title="Property Management" body={body6} hasButton delay={0} onBookCall={handleBookCall} />
+          <OtherServiceCard title="Accounting / Quantity Surveyor" body={body7} hasButton delay={0.1} onBookCall={handleBookCall} />
+          <OtherServiceCard title="Sales Agent" body={body8} hasButton delay={0.2} onBookCall={handleBookCall} />
         </div>
       </section>
 
