@@ -11,7 +11,7 @@ const Image1: React.FC = () => {
           sx={{
             position: "relative",
             width: "100%",
-            aspectRatio: { xs: "16 / 10", md: "16 / 7" },
+            aspectRatio: { xs: "1 / 1", md: "16 / 7" },
             overflow: "hidden",
           }}
         >
@@ -36,6 +36,7 @@ const Image1: React.FC = () => {
     display: "flex",
     justifyContent: "center",
     alignItems: "center", // vertically centered
+    padding: { xs: "20px", md: "40px" },
     transform: "none",    // 👈 remove the translateY offset
   }}
 >
@@ -47,20 +48,21 @@ const Image1: React.FC = () => {
       fontVariantNumeric: "lining-nums proportional-nums",
       fontFamily: 'GT Super Display Medium',
       fontSize: {
-        xs: "14px",
-        sm: "24px",
+        xs: "24px",
+        sm: "32px",
         md: "44px",
       },
       fontStyle: "normal",
       fontWeight: 500,
       lineHeight: {
-        xs: "20px",
-        sm: "32px",
+        xs: "1.2",
+        sm: "1.2",
         md: "54px",
       },
       letterSpacing: "-0.88px",
       margin: 0,
-      whiteSpace: "nowrap",
+      maxWidth: { xs: "800px", md: "none" },
+      whiteSpace: { xs: "normal", md: "nowrap" },
     }}
   >
     Expert guidance that shapes better outcomes.
