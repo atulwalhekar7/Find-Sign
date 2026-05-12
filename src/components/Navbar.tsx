@@ -38,12 +38,12 @@ align-items: flex-start;
 align-self: stretch;
         }
 
-        .nav-logo {
-          width: 128px;
-          height: 47px;
-          object-fit: contain;
-          display: block;
-        }
+     .nav-logo {
+   width: 159px !important;
+          height: 59px !important;
+  object-fit: contain;
+  display: block;
+}
 
         .nav-actions {
           display: flex;
@@ -176,7 +176,7 @@ align-self: stretch;
 
           .nav-logo {
             width: 108px;
-            height: auto;
+            height: 40px !important;
           }
 
           .nav-links {
@@ -209,6 +209,7 @@ align-self: stretch;
           background: COLORS.white,
           width: "100%",
           transition: "all 0.4s ease",
+boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
         }}
       >
         {/* ───── Top Bar ───── */}

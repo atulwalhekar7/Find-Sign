@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import bannerImg from "../assets/DSC06227.jpg";
+import bannerImg from "../assets/service-banner-find-and-sign-buyers-australia.jpg";
 import SimpleFooter from "../components/SimpleFooter";
 import GetInTouch from "../components/GetInTouch";
-import AboutServiceImg from "../assets/About Our Services.jpg";
+import AboutServiceImg from "../assets/about-service-find-and-sign.jpg";
 import AboutSection from "../components/AboutSection";
 
 export default function BuildingInspection() {

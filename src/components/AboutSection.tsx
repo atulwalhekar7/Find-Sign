@@ -48,9 +48,9 @@ const AboutSection = ({
      <div style={{ background: "#fff", width: "100%" }}> 
     <section
       style={{
-        maxWidth: "1100px",
+      //  width: "1556px",
         margin: "0 auto",
-        padding: "64px 32px",
+        padding: "48px 130px",
         backgroundColor: "#fff", 
         
       }}
@@ -72,10 +72,11 @@ const AboutSection = ({
             flexShrink: 0,
             width: "484px",
             alignSelf: "stretch",
+            height:"auto"
           }}
         >
           <div className="about-image">
-            <img src={imageSrc || AboutBanner} alt="" />
+            <img  src={imageSrc || AboutBanner} alt="" />
           </div>
         </FadeUp>
 
@@ -169,6 +170,8 @@ const AboutSection = ({
           width: 100%;
           display: flex;
           flex-direction: column;
+          // padding-right:130px;
+           height:"520px !important"
         }
 
        

@@ -5,8 +5,8 @@ import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
 import Image1 from "../components/Image1";
 
-import bannerImg from "../assets/Client Outcomes_Banner.jpg";
-import AboutClientOutcomesImg from "../assets/About Client Outcomes.png";
+import bannerImg from "../assets/client-outcomes-banner-find-and-sign-buyers-agent-australia.jpg";
+import AboutClientOutcomesImg from "../assets/find-and-sign-about-client-outcomes-property-experts-australia.png";
 
 import id1 from "../assets/Client Outcomes/id1.webp";
 import id2 from "../assets/Client Outcomes/id2.webp";
@@ -925,7 +925,7 @@ export default function ClientOutcomes() {
 
       {/* ── CLIENT OUTCOMES GRID ───────────────────────────────── */}
       <section ref={outcomesSectionRef} id="outcomes" style={{ background: '#F9F9F9', padding: "64px " }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0px 20px" }}>
 
           <div style={{ marginBottom: 48, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <h2 style={{
@@ -973,7 +973,7 @@ export default function ClientOutcomes() {
                 className="view-more-outcomes-btn"
                 onClick={handleToggleCards}
               >
-                {showAllCards ? "View Less" : "View More Outcomes"}
+                {showAllCards ? "View Less" : "View More "}
               </button>
             </div>
           )}
@@ -1381,10 +1381,11 @@ export default function ClientOutcomes() {
           font-size: 16px;
           color: #000;
           font-weight: 400;
+
         }
         .row-val {
           font-family: "SohneBuch";
-          font-size: 13px;
+          font-size: 16px;
           color: #757575;
           font-weight: 400;
           margin-left: auto;

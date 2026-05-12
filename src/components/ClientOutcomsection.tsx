@@ -55,7 +55,7 @@ const images = {
 const cards = [
   { id: 1,  image: images.id1,  growth: "101.7%", purchasePrice: "$290k",  currentValue: "$585k",  timeframe: "2 yrs 4 mths", rentalYield: "Owner Occ", address: "8/15 Debenham St, Thornlie WA 6108" },
   { id: 2,  image: images.id2,  growth: "41.3%",  purchasePrice: "$630k",  currentValue: "$890k",  timeframe: "2 years",       rentalYield: "6.2%",      address: "27 Willard Circuit, Banksia Grove WA 6031" },
-  { id: 3,  image: images.id3,  growth: "29.9%",  purchasePrice: "$654k",  timeframe: "2 years",       rentalYield: "5.4%",      address: "105 Surf Drive, Secret Harbour WA 6173" },
+  { id: 3,  image: images.id3,  growth: "29.9%",  purchasePrice: "$654k",  currentValue: "$850k",timeframe: "2 years",       rentalYield: "5.4%",      address: "105 Surf Drive, Secret Harbour WA 6173" },
   { id: 4,  image: images.id4,  growth: "30.0%",  purchasePrice: "$862k",  currentValue: "$1.12M", timeframe: "2 years",       rentalYield: "Owner Occ", address: "7 Limerick Loop, Wattle Grove WA 6107" },
   { id: 5,  image: images.id5,  growth: "41.9%",  purchasePrice: "$620k",  currentValue: "$880k",  timeframe: "1 yr 10 mths",  rentalYield: "Owner Occ", address: "34 Sawmill Road, Whitby WA 6123" },
   { id: 6,  image: images.id6,  growth: "34.5%",  purchasePrice: "$550k",  currentValue: "$740k",  timeframe: "1 yr 10 mths",  rentalYield: "6.1%",      address: "32 Breccia Parade, Wellard WA 6170" },
@@ -222,7 +222,7 @@ export default function ClientOutcomes() {
           display: grid;
           grid-template-columns: repeat(12, 1fr);
           column-gap: 64px;
-          padding: 64px 196px 80px;
+          padding: 64px 130px 64px;
         }
 
         .co-head { grid-column: 1 / -1; margin-bottom: 48px; }
@@ -423,7 +423,7 @@ export default function ClientOutcomes() {
         }
         .row-val {
           font-family: "SohneBuch";
-          font-size: 13px;
+          font-size: 16px;
           color: #757575;
           font-weight: 400;
           margin-left: auto;
