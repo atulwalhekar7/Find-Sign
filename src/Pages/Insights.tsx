@@ -36,6 +36,7 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
       }}
     >
       <div
+        className="blog-card-img"
         style={{
           width: "145px",
           flexShrink: 0,
