@@ -103,7 +103,7 @@ export default function Navbar() {
           font-size: 15px;
           font-weight: 700;
           line-height: 15px;
-          letter-spacing: 4.8px;
+          letter-spacing: 4.48px;
           text-decoration: none;
           text-transform: uppercase;
           white-space: nowrap;
