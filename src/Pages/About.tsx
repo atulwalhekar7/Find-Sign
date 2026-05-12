@@ -381,6 +381,7 @@ Find & Sign we find with confidence you sign with certainty.
           .team-img-wrap { width: 110px; height: 134px; min-width: 110px; }
           .team-name { font-size: 24px; line-height: 30px; }
           .team-role { font-size: 16px; line-height: 22px; }
+          .team-socials { flex-wrap: wrap; gap: 12px; }
         }
         @media (max-width: 768px) {
           .hero-banner { background-attachment: scroll; }
