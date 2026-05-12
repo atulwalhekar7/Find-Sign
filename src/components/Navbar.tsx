@@ -210,8 +210,8 @@ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
           {/* Logo */}
           <NavLink to="/" style={{ display: "flex", alignItems: "center" }}>
             <img
-              src={logo}
-              alt="Logo"
+              src={logo} // The logo image source
+              alt="Find & Sign Buyer Advocate Logo" // Descriptive alt text for the logo
               className="nav-logo"
             />
           </NavLink>
@@ -234,7 +234,7 @@ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
   href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
   target="_blank"
   rel="noopener noreferrer"
-  className="nav-cta"
+  className="nav-cta" // The "Book a Call" button for desktop
 >
   <svg className="vibrate-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
     <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.6-.35-.12-.73-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 2 3.2 2.45 3.2 2.99 3.2 12.37 10.83 20 20.21 20c.54 0 .99-.45.99-.99v-2.64c0-.54-.45-.99-.99-.99z" />
@@ -246,8 +246,9 @@ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
             <button
               className="nav-hamburger"
               onClick={() => setMenuOpen((v) => !v)}
+              aria-label={menuOpen ? "Close menu" : "Open menu"} // Dynamic aria-label for screen readers
             >
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"> {/* Hide decorative SVG from screen readers */}
                 {menuOpen ? (
                   <path
                     d="M5 5l12 12M5 17L17 5"
@@ -321,6 +322,7 @@ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
   href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
   target="_blank"
   rel="noopener noreferrer"
+  aria-label="Book a Call" // Accessible label for the link
   onClick={() => setMenuOpen(false)}
  style={{
   display: "inline-flex",
@@ -343,7 +345,7 @@ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
   whiteSpace: "nowrap",
 }}
 >
-  <svg className="vibrate-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+  <svg className="vibrate-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> {/* Hide decorative SVG from screen readers */}
     <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.6-.35-.12-.73-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 2 3.2 2.45 3.2 2.99 3.2 12.37 10.83 20 20.21 20c.54 0 .99-.45.99-.99v-2.64c0-.54-.45-.99-.99-.99z" />
   </svg>
   Book a Call
