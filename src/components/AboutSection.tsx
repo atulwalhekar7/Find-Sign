@@ -160,7 +160,6 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
         .about-image {
           width: 100%;
           height: 100%;
-          min-height: 320px;
         }
 
         .about-image img {
@@ -176,8 +175,7 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
           width: 100%;
           display: flex;
           flex-direction: column;
-          // padding-right:130px;
-           height:"520px !important"
+          height: 100%;
         }
 
         .body {
