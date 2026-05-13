@@ -6,9 +6,9 @@ import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import OurProcess from "../components/OurProcess";
 import Banner from "../assets/About-us-Banner-find-and-sign-buyers-agent-australia.jpg";
-import AboutUsBanner from "../assets/Australia-Find-And-Sign-About-Us.jpg";
-import Bec from "../assets/Rebecca-buyers-agent-australia-find-and-sign.jpg";
-import niki from "../assets/niki-nakrani-buyers-agent-australia-find-and-sign.jpg";
+import AboutUsBanner from "../assets/Australia-Find-And-Sign-About-Us-Image.png";
+import Bec from "../assets/Rebecca-buyers-agent-australia-find-and-sign.png";
+import niki from "../assets/niki-nakrani-buyers-agent-australia-find-and-sign.png";
 import Image3 from "../components/Image3";
 
 import fbIcon from "../assets/icon/fb.svg";
@@ -333,9 +333,15 @@ Find & Sign we find with confidence you sign with certainty.
           transition: opacity 0.2s;
         }
         .team-socials a:hover { opacity: 0.65; }
-
+.team-card-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
         /* Contact button: exact Figma — border aqua, text colour inherit */
         .team-contact-btn {
+          margin-top: auto;
+
   display: inline-flex;
   height: 48px;
   padding: 12px 16px;
