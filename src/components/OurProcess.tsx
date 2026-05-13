@@ -455,7 +455,7 @@ export default function OurProcess({ visible = true }: { visible?: boolean }) {
               transition: "opacity 0.8s ease, transform 0.8s cubic-bezier(0.22,1,0.36,1)",
             }}
           >
-            Our Process
+            How the Buying Process Works
             <div style={s.titleUnderline} />
           </h2>
           <p
