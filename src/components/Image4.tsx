@@ -66,47 +66,23 @@ const Image1: React.FC = () => {
               component="h2"
               className="image4-hero-title"
               sx={{
-                color:
-                  "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
+                color: "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
                 textAlign: "center",
                 fontVariantNumeric: "lining-nums proportional-nums",
                 fontFamily: "GT Super Display Medium",
                 fontStyle: "normal",
                 fontWeight: 500,
                 margin: 0,
-
-                /* MOBILE */
-                fontSize: {
-                  xs: "18px",
-                  sm: "28px",
-                  md: "44px",
-                },
-
-                lineHeight: {
-                  xs: "24px",
-                  sm: "36px",
-                  md: "54px",
-                },
-
-                letterSpacing: {
-                  xs: "-0.3px",
-                  sm: "-0.5px",
-                  md: "-0.88px",
-                },
-
-                /* IMPORTANT FIX */
                 maxWidth: {
                   xs: "320px",
                   sm: "100%",
                   md: "none",
                 },
-
                 whiteSpace: {
                   xs: "normal",
                   sm: "nowrap",
                   md: "nowrap",
                 },
-
                 paddingBottom: {
                   xs: "30px",
                   sm: "0px",
@@ -120,32 +96,35 @@ const Image1: React.FC = () => {
         </Box>
       </Box>
 
-      {/* STYLES */}
       <style>{`
+        /* MOBILE - max 599px */
         @media (max-width: 599px) {
+          .image4-hero-title {
+            font-size: 20px !important;
+            line-height: 24px !important;
+            letter-spacing: -0.3px !important;
+          }
           .image4-overlay-container {
             align-items: flex-end !important;
             padding-bottom: 40px !important;
           }
+        }
 
+        /* TABLET - 600px to 1024px */
+        @media (min-width: 600px) and (max-width: 1024px) {
           .image4-hero-title {
             font-size: 30px !important;
-            line-height: 24px !important;
+            line-height: 38px !important;
+            letter-spacing: -0.5px !important;
           }
         }
 
-        /* TABLET FIX */
-        @media (min-width: 769px) and (max-width: 1024px) {
-          .image4-overlay-container {
-            align-items: center !important;
-            padding: 24px !important;
-          }
-
+        /* DESKTOP - 1025px+ */
+        @media (min-width: 1025px) {
           .image4-hero-title {
-            font-size: 28px !important;
-            line-height: 36px !important;
-            white-space: nowrap !important;
-            max-width: 100% !important;
+            font-size: 44px !important;
+            line-height: 54px !important;
+            letter-spacing: -0.88px !important;
           }
         }
 
@@ -167,31 +146,26 @@ const Image1: React.FC = () => {
           cursor: pointer;
           transition: all 0.25s ease;
         }
-
         .book-btn:hover {
           background: rgba(105, 228, 220, 0.15);
           transform: translateY(-1px);
         }
-
         .book-btn svg {
           width: 14px;
           height: 14px;
           stroke: #fff;
         }
-
         @media (max-width: 600px) {
           .book-btn {
             font-size: 10px;
             letter-spacing: 2px;
             padding: 8px 12px;
           }
-
           .book-btn svg {
             width: 12px;
             height: 12px;
           }
         }
-
         @media (min-width: 601px) and (max-width: 1024px) {
           .book-btn {
             font-size: 11px;
@@ -199,7 +173,6 @@ const Image1: React.FC = () => {
             padding: 10px 14px;
           }
         }
-
         @media (min-width: 1200px) {
           .book-btn {
             font-size: 13px;
