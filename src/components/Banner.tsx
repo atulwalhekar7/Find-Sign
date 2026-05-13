@@ -175,7 +175,7 @@ export default function App() {
 
         /* ── Hero bottom ── */
         .hero-bottom {
-          padding:        64px 5%;
+          // padding:        64px 5%;
           display:        flex;
           flex-direction: column;
           align-items:    center;
