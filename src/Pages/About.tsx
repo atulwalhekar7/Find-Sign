@@ -276,19 +276,39 @@ Find & Sign we find with confidence you sign with certainty.
         }
 
         /* Bio: 8-line clamp, grey text */
-        .team-bio-wrap {
-          align-self: stretch;
-          overflow: hidden;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 8;
-        }
-        .team-bio-wrap.expanded {
-          display: block;
-          overflow: visible;
-          -webkit-line-clamp: unset;
-        }
-        .team-bio {
+       .team-bio-wrap {
+  align-self: stretch;
+}
+
+.team-bio-wrap.clamped {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 8;
+}
+
+.team-bio-wrap.expanded {
+  display: block;
+}
+
+.team-read-more {
+  margin-top: 2px;
+  display: inline-block;
+    color: #69E4DC;
+  font-family: 'Söhne', 'Sohne', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.team-read-more:hover {
+  text-decoration: underline;
+}
+          .team-bio {
           color: #757575;
           font-family: 'Söhne', 'Sohne', sans-serif;
           font-size: 16px;
@@ -298,20 +318,7 @@ Find & Sign we find with confidence you sign with certainty.
           margin: 0;
           display: inline;
         }
-        .team-read-more {
-          color: #69E4DC;
-          font-family: 'Söhne', 'Sohne', sans-serif;
-          font-size: 16px;
-          font-weight: 400;
-          line-height: 24px;
-          cursor: pointer;
-          text-decoration: none;
-          display: inline;
-          background: none;
-          border: none;
-          padding: 0;
-        }
-        .team-read-more:hover { text-decoration: underline; }
+       
 
         /* Social icons row */
         .team-socials {
@@ -357,6 +364,23 @@ Find & Sign we find with confidence you sign with certainty.
           color: #073B2F;
         }
 
+        .team-bio-wrap {
+  align-self: stretch;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.team-bio {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.team-read-more {
+  margin-top: -6px !important;
+  display: inline-block;
+  line-height: 18px;
+}
+
         /* Animations */
         @keyframes heroFadeIn {
           from { opacity: 0; transform: translateY(30px); }
@@ -388,6 +412,9 @@ Find & Sign we find with confidence you sign with certainty.
           .team-name { font-size: 32px; line-height: 30px; }
           .team-role { font-size: 16px; line-height: 22px; }
           .team-socials { flex-wrap: wrap; gap: 12px; }
+            .team-read-more {
+    margin-top: -10px !important;
+  }
         }
         @media (max-width: 768px) {
           .hero-banner { background-attachment: scroll; }
@@ -437,26 +464,20 @@ Find & Sign we find with confidence you sign with certainty.
                 </div>
               </div>
 
-              {/* BIO: toggles on "Read more" click */}
-              <div className={`team-bio-wrap${nikiExpanded ? " expanded" : ""}`}>
-                <span className="team-bio">
-                  Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement. His approach is grounded in data, sharpened by years of on-the-ground market knowledge, and guided by a{" "}
-                </span>
-                {!nikiExpanded && (
-                  <button className="team-read-more" onClick={() => setNikiExpanded(true)}>
-                    Read more…
-                  </button>
-                )}
-                {nikiExpanded && (
-                  <span className="team-bio">
-                    genuine desire to see others succeed. Niki understands that property can feel overwhelming, and that is precisely why having the right person in your corner changes everything. He is not just your buyer's agent. He is someone who has walked the path himself and is invested in your outcome.{" "}
-                    <button className="team-read-more" onClick={() => setNikiExpanded(false)}>
-                      Show less
-                    </button>
-                  </span>
-                )}
-              </div>
+           {/* BIO */}
+<div className={`team-bio-wrap ${nikiExpanded ? "expanded" : "clamped"}`}>
+  <span className="team-bio">
+    Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement. His approach is grounded in data, sharpened by years of on-the-ground market knowledge, and guided by a genuine desire to see others succeed. Niki understands that property can feel overwhelming, and that is precisely why having the right person in your corner changes everything. He is not just your buyer's agent. He is someone who has walked the path himself and is invested in your outcome.
+  </span>
+</div>
 
+{/* READ MORE BUTTON */}
+<button
+  className="team-read-more"
+  onClick={() => setNikiExpanded(!nikiExpanded)}
+>
+  {nikiExpanded ? "Show less" : "Read more"}
+</button>
               {/* BUTTON: calls Niki's number */}
               <a href="tel:0431158233" className="team-contact-btn">
                 Contact Niki
