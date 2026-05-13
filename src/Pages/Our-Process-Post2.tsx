@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 
 interface Step {
   id: number;
@@ -432,11 +431,8 @@ function StepRow({ step, index, isLast }: { step: Step; index: number; isLast: b
 
 /* ── Main export ── */
 const OurProcessBlog = ({ visible = true }: { visible?: boolean }) => {
-  const navigate = useNavigate();
-  const [btnHovered, setBtnHovered] = useState(false);
-  const [btnClicked, setBtnClicked] = useState(false);
   const { ref: headRef,   inView: headVisible   } = useInView(0.1);
-  const { ref: footerRef, inView: footerVisible } = useInView(0.1);
+  const { ref: footerRef } = useInView(0.1);
 
   return (
     <div style={{ background: BG, width: "100%" }}>
