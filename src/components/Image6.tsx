@@ -30,26 +30,28 @@ const Image1: React.FC = () => {
 
           {/* OVERLAY */}
 <Box
+  className="image6-overlay-container"
   sx={{
     position: "absolute",
     inset: 0,
     display: "flex",
     justifyContent: "center",
-    alignItems: "center", // vertically centered
+    alignItems: { xs: "flex-end", md: "center" }, // vertically centered
     padding: { xs: "20px", md: "40px" },
     transform: "none",    // 👈 remove the translateY offset
   }}
 >
   <Box
     component="h2"
+    className="image6-hero-title"
     sx={{
       color: "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
       textAlign: "center",
       fontVariantNumeric: "lining-nums proportional-nums",
       fontFamily: 'GT Super Display Medium',
       fontSize: {
-        xs: "24px",
-        sm: "32px",
+        xs: "10px",
+        sm: "12px",
         md: "44px",
       },
       fontStyle: "normal",
@@ -73,6 +75,16 @@ const Image1: React.FC = () => {
 
       {/* STYLES */}
       <style>{`
+        @media (max-width: 768px) {
+          .image6-overlay-container {
+            align-items: flex-end !important;
+            padding-bottom: 60px !important;
+          }
+          .image6-hero-title {
+            font-size: 18px !important;
+            line-height: 24px !important;
+          }
+        }
         .book-btn {
           display: flex;
           align-items: center;
