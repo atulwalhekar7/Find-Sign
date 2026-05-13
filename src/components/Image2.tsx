@@ -36,7 +36,7 @@ const Image1: React.FC = () => {
     inset: 0,
     display: "flex",
     justifyContent: "center",
-    alignItems: { xs: "flex-end", md: "center" }, // vertically centered
+    alignItems: { xs: "flex-end", sm: "center" }, // vertically centered
     padding: { xs: "20px", md: "40px" },
     transform: "none",    // 👈 remove the translateY offset
   }}
@@ -50,21 +50,21 @@ const Image1: React.FC = () => {
       fontVariantNumeric: "lining-nums proportional-nums",
       fontFamily: 'GT Super Display Medium',
       fontSize: {
-        xs: "10px",
-        sm: "12px",
+        xs: "18px",
+        sm: "32px",
         md: "44px",
       },
       fontStyle: "normal",
       fontWeight: 500,
       lineHeight: {
         xs: "1.2",
-        sm: "1.2",
+        sm: "40px",
         md: "54px",
       },
       letterSpacing: "-0.88px",
       margin: 0,
-      maxWidth: { xs: "800px", md: "none" },
-      whiteSpace: { xs: "normal", md: "nowrap" },
+      maxWidth: { xs: "800px", sm: "none" },
+      whiteSpace: { xs: "normal", sm: "nowrap" },
     }}
   >
     Expert guidance that shapes better outcomes.
@@ -75,7 +75,7 @@ const Image1: React.FC = () => {
 
       {/* STYLES */}
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 599px) {
           .image2-overlay-container {
             align-items: flex-end !important;
             padding-bottom: 60px !important;

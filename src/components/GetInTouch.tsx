@@ -390,8 +390,8 @@ const SERVICES = [
   "Settlement Agent",
   "Building Inspection",
   "Sales Agent",
-  "Quantity Surveyor",
-  "Accounting",
+  "Accounting / Quantity Surveyor",
+  "Mortgage Broker",
 ];
 
 interface NakraniContactProps {
