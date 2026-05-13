@@ -8,7 +8,7 @@ import agentImg from "../assets/Blogs/DSC06286.jpg";
 import servicesImg from "../assets/About.jpg";
 import benefitsImg from "../assets/Blogs/Blog 1_Image.jpg";
 import processImg from "../assets/DSC06057.jpg";
-
+import OurProcessBlog from "./Our-Process-Post2";
 // --- Helper Components ---
 
 const SideBySideSection = ({ 
@@ -163,11 +163,9 @@ export default function BuyerAgentPerthBlog() {
           image={servicesImg}
           content={
             <ul style={{ display: "flex", flexDirection: "column", gap: "15px", paddingLeft: "20px" }}>
-              <li><strong>Buyer’s Agent Services:</strong> Complete management from search to settlement.</li>
-              <li><strong>Property Investment Advisory:</strong> Data-backed insights and growth strategies.</li>
-              <li><strong>Property Negotiation:</strong> Ensuring you never overpay and secure the best deal.</li>
-              <li><strong>Auction Bidding Services:</strong> Strategic bidding to give you the competitive edge.</li>
-              <li><strong>Off-Market Sourcing:</strong> Access exclusive listings not available publicly.</li>
+              <li><strong>Buyer Advocate:</strong> This is our complete service for buyers who want the right property secured from the very first search through to settlement. We manage the process on your behalf, with clear guidance at each stage so you understand what's happening, what to expect, and where the opportunity lies. You're involved at every key moment, with decisions made together and no uncertainty around what comes next.</li>
+              <li><strong>Advisory :</strong> Sometimes you don't need someone to manage the entire process. You want the right guidance to make informed decisions from the first search through to securing a property. We guide you with clear advice at each stage so you understand what's happening, what to consider, and where risks and opportunities sit.</li>
+              
             </ul>
           }
         />
@@ -186,35 +184,8 @@ export default function BuyerAgentPerthBlog() {
             </div>
           }
         />
-
+< OurProcessBlog />
         {/* ── SECTION 6: How It Works ──────────────────────────────── */}
-        <section style={{ padding: "60px 0", borderTop: "1px solid #EEE", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <h2 style={{ 
-            fontFamily: "GT Super Display Medium", 
-            fontSize: "44px", 
-            color: "#073B2F", 
-            marginBottom: "50px", 
-            textAlign: "center",
-            borderBottom: "2px solid #073B2F",
-            paddingBottom: "8px",
-            width: "fit-content" 
-          }}>How the Buying Process Works</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "40px" }}>
-            {[
-              { s: "Step 1", t: "Initial Consultation", d: "Defining your goals and budget." },
-              { s: "Step 2", t: "Search & Shortlisting", d: "Identifying matching properties." },
-              { s: "Step 3", t: "Due Diligence", d: "Evaluating value and growth potential." },
-              { s: "Step 4", t: "Negotiation", d: "Securing the best possible price." },
-              { s: "Step 5", t: "Settlement", d: "Support until ownership is complete." }
-            ].map((step, i) => (
-              <div key={i} style={{ textAlign: "center" }}>
-                <div style={{ fontSize: "14px", color: "#888", fontWeight: "bold", textTransform: "uppercase", marginBottom: "10px" }}>{step.s}</div>
-                <h4 style={{ fontSize: "20px", color: "#073B2F", marginBottom: "12px" }}>{step.t}</h4>
-                <p style={{ color: "#666", fontSize: "16px", lineHeight: "1.5" }}>{step.d}</p>
-              </div>
-            ))}
-          </div>
-        </section>
 
         {/* ── SECTION 7: Why Choose Us ─────────────────────────────── */}
         <section style={{ padding: "60px 40px", backgroundColor: "#073B2F", borderRadius: "24px", color: "#FFF", marginBottom: "60px", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
