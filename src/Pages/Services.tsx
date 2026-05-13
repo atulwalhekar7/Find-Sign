@@ -526,7 +526,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
                 alignSelf: "stretch",
                 color: "var(--FS-System-Grey-1, #757575)",
                 textAlign: "center",
-                fontFamily: "Söhne, SohneBuch, sans-serif",
+                fontFamily: "SohneBuch",
                 fontSize: "16px",
                 fontStyle: "normal",
                 fontWeight: 400,

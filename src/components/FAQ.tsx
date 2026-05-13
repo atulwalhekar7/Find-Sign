@@ -82,7 +82,7 @@ export default function FindSignFAQ() {
 
         .faq-subtitle {
           color: #000;
-          font-family: "Sohne", sans-serif;
+          font-family: "Sohne";
           font-size: 24px;
           font-weight: 300;
           line-height: 36px;

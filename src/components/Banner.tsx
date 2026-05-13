@@ -237,7 +237,6 @@ export default function App() {
           .hero-title  { font-size: 28px; line-height: 36px; }
           .description { font-size: 16px; line-height: 26px; }
           .hero-top    { height: auto; aspect-ratio: 4 / 5; min-height: unset; }
-          .hero-bottom { padding: 48px 6%; }
         }
       `}</style>
 

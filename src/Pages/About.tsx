@@ -203,7 +203,7 @@ Find & Sign we find with confidence you sign with certainty.
         }
         .team-header h2::after { content: ""; width: 160px; height: 1px; background: #073B2F; }
         .team-header p {
-          color: #000; font-family: 'Sohne', sans-serif; font-size: 24px;
+          color: #000; font-family: 'Sohne'; font-size: 24px;
           font-weight: 300; line-height: 1.5; margin-top: 24px; text-align: center;
         }
 
