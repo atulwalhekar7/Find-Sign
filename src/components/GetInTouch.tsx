@@ -509,7 +509,7 @@ export default function GetInTouch({ initialService = "", showService = false, h
   height: 48px;
   padding: 0 28px;
 
-  background: #FFFFFF;
+  background: #69E4DC;
   border: 1px solid #69E4DC;
   border-radius: 8px;
 

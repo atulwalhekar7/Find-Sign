@@ -168,8 +168,8 @@ export default function Navbar() {
           }
 
           .nav-logo {
-            width: 108px;
-            height: 40px !important;
+            width: 128px;
+            height: 47px !important;
           }
 
           .nav-links {
