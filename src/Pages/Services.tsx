@@ -591,7 +591,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
         }
 
         .services-section {
-          padding: 24px 130px 32px;
+          padding: 64px 130px 64px;
         }
 
         .services-desc {
@@ -606,12 +606,12 @@ From the first conversation to settlement and beyond, we are in your corner. You
 
         /* ── xl: 1200px ──────────────────────────────────────────────────── */
         @media (max-width: 1200px) {
-          .services-section { padding: 64px 40px 32px; }
+          .services-section { padding: 64px 40px 64px; }
         }
 
         /* ── md: 900px — tablet ──────────────────────────────────────────── */
         @media (max-width: 900px) {
-          .services-section { padding: 40px 20px 32px; }
+          .services-section { padding: 64px 20px 64px; }
 
           h1 { font-size: 56px !important; line-height: 1.2 !important; }
           h2 { font-size: 42px !important; line-height: 40px !important; }
