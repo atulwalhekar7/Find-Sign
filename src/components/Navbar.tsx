@@ -354,7 +354,7 @@ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
   display: "block",
   width: "100%",
   boxSizing: "border-box",
-  fontFamily: "'Söhne', 'DM Sans', sans-serif",
+  fontFamily: "'SohneBuch'",
   fontSize: "15px",
   color: isActive ? COLORS.aqua : COLORS.racingGreen,
   fontWeight: isActive ? 500 : 400,

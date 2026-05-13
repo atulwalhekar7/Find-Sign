@@ -522,7 +522,7 @@ gap: 10px;
           border-radius: 8px;
           border: none;
           text-decoration: none;
-          font-family: "CX80BOLD", sans-serif;
+          font-family: "CX80BOLD";
           font-size: 14px;
           letter-spacing: 4.48px;
           color: #073B2F;
