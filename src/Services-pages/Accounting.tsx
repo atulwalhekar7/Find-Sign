@@ -22,7 +22,7 @@ export default function Accounting() {
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
         <div style={{ position: "relative", zIndex: 2, textAlign: "center", padding: "0 20px", animation: "heroFadeIn 0.8s ease both" }}>
           <h1 style={{ fontFamily: "GT Super Display Medium", fontSize: "clamp(36px, 6vw, 64px)", fontWeight: 500, color: "#fff", letterSpacing: "-1.28px", lineHeight: 1.1, margin: 0 }}>
-            Accounting
+            Mortgage Broker
           </h1>
           
         </div>
@@ -31,7 +31,7 @@ export default function Accounting() {
       {/* About */}
       <AboutSection
         imageSrc={AboutServiceImg}
-        heading="About Accounting"
+        heading="About Mortgage Broker"
         subheading="Expert guidance for every step of your property journey."
         body1="Two of the most overlooked yet most valuable members of your investment team. A quantity surveyor prepares a detailed depreciation schedule for your property, identifying every eligible asset that can be claimed as a tax deduction over time. This alone can significantly reduce your taxable income each financial year. Your accountant then takes that information and ensures your overall financial structure is working as efficiently as possible. From the way your investment is held to the deductions you are entitled to claim, a property savvy accountant ensures you are not leaving money on the table. Getting these two professionals involved early, ideally before you purchase, can have a meaningful impact on your long term returns."
 //         body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
