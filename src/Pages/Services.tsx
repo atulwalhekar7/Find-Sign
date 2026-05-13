@@ -470,7 +470,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
         {/* Row 1: 3 affiliated cards */}
         <div className="grid-12" style={{ marginBottom:"86px" }}>
           <div className="col-4 col-md-6 col-sm-12">
-            <OtherServiceCard title="Mortgage Broker " body={body3} hasButton delay={0} onBookCall={() => navigate("/services/accounting")} />
+            <OtherServiceCard title="Mortgage Broker" body={body3} hasButton delay={0} onBookCall={() => navigate("/services/accounting")} />
           </div>
           <div className="col-4 col-md-6 col-sm-12">
             <OtherServiceCard title="Settlement Agent" body={body4} hasButton delay={0.1} onBookCall={handleBookCall} />

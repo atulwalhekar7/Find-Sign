@@ -64,7 +64,7 @@ export default function QuantitySurveyor() {
 // From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market."
       />
 
-      <GetInTouch initialService="Quantity Surveyor" showService={true} />
+      <GetInTouch initialService="Accounting / Quantity Surveyor" showService={true} />
       <SimpleFooter />
 
       <style>{`
