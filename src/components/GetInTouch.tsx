@@ -374,6 +374,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Box, Dialog, DialogContent, Typography } from "@mui/material";
 import emailjs from '@emailjs/browser';
+import checkIcon from "../assets/check.png";
 
 const COLORS = {
   racingGreen: "#073B2F",
@@ -508,7 +509,7 @@ export default function GetInTouch({ initialService = "", showService = false, h
   height: 48px;
   padding: 0 28px;
 
-  background: #69E4DC;
+  background: #FFFFFF;
   border: 1px solid #69E4DC;
   border-radius: 8px;
 
@@ -521,7 +522,7 @@ export default function GetInTouch({ initialService = "", showService = false, h
   font-family: "CX80BOLD";
   font-size: 14px;
   font-weight: 700;
-  letter-spacing: 4px;
+  letter-spacing: 4.8px;
   text-transform: uppercase;
 
   transition: all 0.25s ease;
@@ -532,7 +533,8 @@ export default function GetInTouch({ initialService = "", showService = false, h
 
 .contact-cta:hover {
   transform: translateY(-1px);
-  opacity: 0.95;
+  background: #69E4DC;
+  border-color: #69E4DC;
 }
 
 .nikki-info {
@@ -681,7 +683,7 @@ export default function GetInTouch({ initialService = "", showService = false, h
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 4px;
+  letter-spacing: 4.8px;
   margin-top: 12px;
   transition: all 0.25s ease;
 }
@@ -977,7 +979,7 @@ width: 297px;
                   <input name="user_email" className="contact-input" type="email" placeholder="e.g. sarah@gmail.com" required />
                 </div>
 
-                {showService && (
+                {showService ? (
                   <div className="form-group">
                     <label className="contact_label">Service</label>
                     <select 
@@ -994,6 +996,8 @@ width: 297px;
                       ))}
                     </select>
                   </div>
+                ) : (
+                  <input type="hidden" name="service" value={selectedService || "NA"} />
                 )}
 
                <div className="contact-field-row">
@@ -1057,20 +1061,20 @@ width: 297px;
         <DialogContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 2 }}>
           <Box sx={{
             width: 64, height: 64, borderRadius: '50%', backgroundColor: '#69E4DC',
-            display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '32px', color: '#073B2F',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>
-            ✓
+            <img src={checkIcon} alt="Success" style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
           </Box>
-          <Typography sx={{ fontFamily: 'GT Super Display Medium', fontSize: '32px', color: '#073B2F', fontWeight: 500 }}>
+          <Typography sx={{ fontFamily: 'GT Super Display', fontSize: '32px', color: '#073B2F', fontWeight: 500 }}>
             Success!
           </Typography>
-          <Typography sx={{ fontFamily: 'Sohne', fontSize: '18px', color: '#000', fontWeight: 300, lineHeight: '28px' }}>
+          <Typography sx={{ fontFamily: 'sohneBuch', fontSize: '18px', color: '#000', fontWeight: 300, lineHeight: '28px' }}>
             Your message has been sent successfully. We will get back to you shortly.
           </Typography>
           <button
-            className="contact-btn"
+            className="contact-cta"
             onClick={() => setSubmitted(false)}
-            style={{ marginTop: '16px', width: 'auto', padding: '12px 48px' }}
+            style={{ marginTop: '16px' }}
           >
             Close
           </button>
