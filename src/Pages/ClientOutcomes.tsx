@@ -818,7 +818,7 @@ export default function ClientOutcomes() {
         <div className="testimonials-section-wrap">
           <section ref={testimonialsSectionRef} id="testimonials" className="testimonials-section">
             <div className="testimonials-head">
-              <h2 className="testimonials-h2">What our clients are saying</h2>
+              <h2 className="testimonials-h2">What Clients Say</h2>
               <p className="testimonials-subtitle">In their own words, following their experience with Find &amp; Sign.</p>
             </div>
 
