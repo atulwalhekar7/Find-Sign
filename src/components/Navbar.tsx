@@ -116,6 +116,29 @@ export default function Navbar() {
           align-items: center;
           justify-content: center;
           text-decoration: none;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background: ${COLORS.white};
+          position: relative;
+          box-sizing: border-box;
+          border: 1px solid rgba(105, 228, 220, 0.3);
+        }
+
+        .mobile-call-icon::before {
+          content: "";
+          position: absolute;
+          inset: -2px;
+          border-radius: 50%;
+          padding: 2px;
+          background: conic-gradient(from 0deg, transparent, ${COLORS.aqua}, transparent 40%);
+          -webkit-mask: 
+            linear-gradient(#fff 0 0) content-box, 
+            linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          animation: rotate-border 2s linear infinite;
+          pointer-events: none;
         }
 
         /* Hamburger */
@@ -146,6 +169,11 @@ export default function Navbar() {
           0%, 20%, 100% { transform: rotate(0deg); }
           3%, 9%, 15% { transform: rotate(-12deg); }
           6%, 12%, 18% { transform: rotate(12deg); }
+        }
+
+        @keyframes rotate-border {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
         }
 
         .vibrate-icon {
