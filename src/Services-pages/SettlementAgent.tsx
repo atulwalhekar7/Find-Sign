@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import bannerImg from "../assets/service-banner-find-and-sign-buyers-australia.jpg";
+
 import SimpleFooter from "../components/SimpleFooter";
 import GetInTouch from "../components/GetInTouch";
-import AboutServiceImg from "../assets/about-service-find-and-sign.jpg";
+import AboutServiceImg from "../assets/About Find&Sign.jpg";
 import AboutSection from "../components/AboutSection";
 
 export default function SettlementAgent() {
@@ -16,41 +16,42 @@ export default function SettlementAgent() {
       {/* ── Hero ── */}
       <section
         style={{
-          minHeight: "60vh",
+          width: "100%",
+          maxWidth: "1556px",
+          height: "550px",
+          margin: "0 auto",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          backgroundImage: `url(${bannerImg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
+          background: "var(--Brand-Foundation-FS-RACING-GREEN, #073B2F)",
           position: "relative",
         }}
       >
-        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
         <div
           style={{
             position: "relative",
             zIndex: 2,
-            textAlign: "center",
-            padding: "0 20px",
+            width: "100%",
             animation: "heroFadeIn 0.8s ease both",
           }}
         >
           <h1
             style={{
+              alignSelf: "stretch",
+              color: "var(--FS-WHITE, var(--Brand-Utility-FS-WHITE, #FFF))",
+              textAlign: "center",
+              fontVariantNumeric: "lining-nums proportional-nums",
               fontFamily: "GT Super Display Medium",
-              fontSize: "clamp(36px, 6vw, 64px)",
+              fontSize: "56px",
+              fontStyle: "normal",
               fontWeight: 500,
-              color: "#fff",
-              letterSpacing: "-1.28px",
-              lineHeight: 1.1,
+              lineHeight: "64px",
+              letterSpacing: "-1.12px",
               margin: 0,
             }}
           >
             Settlement Agent
           </h1>
-          
         </div>
       </section>
 

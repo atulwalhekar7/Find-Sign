@@ -63,7 +63,7 @@ const AQUA         = "#69E4DC";
 const WHITE        = "#FFFFFF";
 const RACING_GREEN = "#073B2F";
 const CARD_GAP     = 32;
-const PEEK         = 60;
+const PEEK         = 56;
 
 const images = {
   id1, id2, id3, id4, id5, id6, id7, id8, id9, id10,
@@ -202,11 +202,22 @@ export default function ClientOutcomes() {
   const { hash } = useLocation();
 
   const [showAllCards, setShowAllCards] = useState(false);
-  const INITIAL_CARDS_COUNT             = 21;
   const buttonContainerRef              = useRef<HTMLDivElement>(null);
 
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
+
+  // Outcomes Slider State
+  const [outcomesCur, setOutcomesCur]       = useState(0);
+  const [outcomesPaused, setOutcomesPaused] = useState(false);
+  const [outcomesOffset, setOutcomesOffset] = useState(0);
+  const outcomesTimerRef  = useRef<ReturnType<typeof setInterval> | null>(null);
+  const outcomesTrackRef  = useRef<HTMLDivElement>(null);
+  const outcomesRafRef    = useRef<number | null>(null);
+
+  const outcomesVisibleCount = isMobile ? 1 : isTablet ? 2 : 3;
+  const outcomesSliderCards  = cards.slice(0, 10);
+  const outcomesMaxIdx       = Math.max(0, outcomesSliderCards.length - outcomesVisibleCount);
 
   useEffect(() => {
     const update = () => {
@@ -217,6 +228,68 @@ export default function ClientOutcomes() {
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, []);
+
+  // Clamp outcomes index on resize
+  useEffect(() => {
+    if (outcomesCur > outcomesMaxIdx) setOutcomesCur(outcomesMaxIdx);
+  }, [outcomesMaxIdx]);
+
+  // Recalculate outcomes scroll offset
+  useEffect(() => {
+    if (showAllCards) return;
+
+    const recalc = () => {
+      if (outcomesRafRef.current) cancelAnimationFrame(outcomesRafRef.current);
+
+      outcomesRafRef.current = requestAnimationFrame(() => {
+        if (!outcomesTrackRef.current) return;
+        const first = outcomesTrackRef.current.querySelector<HTMLElement>(".property-card");
+        if (!first) return;
+
+        const cardW = first.getBoundingClientRect().width;
+        if (cardW === 0) return;
+
+        setOutcomesOffset(outcomesCur * (cardW + CARD_GAP));
+      });
+    };
+
+    recalc();
+    const ro = new ResizeObserver(recalc);
+    if (outcomesTrackRef.current) ro.observe(outcomesTrackRef.current);
+
+    return () => {
+      ro.disconnect();
+      if (outcomesRafRef.current) cancelAnimationFrame(outcomesRafRef.current);
+    };
+  }, [outcomesCur, isMobile, isTablet, showAllCards]);
+
+  // Outcomes Auto-play
+  const resetOutcomesTimer = useCallback(() => {
+    if (outcomesTimerRef.current) clearInterval(outcomesTimerRef.current);
+    outcomesTimerRef.current = setInterval(() => {
+      setOutcomesCur((c) => (c >= outcomesMaxIdx ? 0 : c + 1));
+    }, 3000);
+  }, [outcomesMaxIdx]);
+
+  useEffect(() => {
+    if (showAllCards) {
+      if (outcomesTimerRef.current) clearInterval(outcomesTimerRef.current);
+      return;
+    }
+    outcomesTimerRef.current = setInterval(() => {
+      if (!outcomesPaused) setOutcomesCur((c) => (c >= outcomesMaxIdx ? 0 : c + 1));
+    }, 3000);
+    return () => { if (outcomesTimerRef.current) clearInterval(outcomesTimerRef.current); };
+  }, [outcomesPaused, outcomesMaxIdx, showAllCards]);
+
+  const gotoOutcome = useCallback((idx: number) => {
+    setOutcomesCur(Math.max(0, Math.min(idx, outcomesMaxIdx)));
+    resetOutcomesTimer();
+  }, [outcomesMaxIdx, resetOutcomesTimer]);
+
+  const outcomesCardFlexBasis = isMobile
+    ? `calc(100% - ${CARD_GAP}px - ${PEEK}px)`
+    : `calc((100% - ${CARD_GAP}px * ${outcomesVisibleCount - 1}) / ${outcomesVisibleCount})`;
 
   // ── FIX: visibleReviewCount — desktop always shows exactly 3 ──
   const visibleReviewCount = isMobile ? 1 : isTablet ? 2 : 3;
@@ -376,7 +449,8 @@ export default function ClientOutcomes() {
 
         /* ══ PROPERTY CARD ══ */
         .property-card {
-          width: 100%;
+          flex: 0 0 var(--card-flex-basis, 100%);
+          min-width: 0;
           height: 440px;
           background: ${WHITE};
           border: 2px solid ${AQUA};
@@ -482,6 +556,44 @@ export default function ClientOutcomes() {
           justify-content: center;
           margin-top: 8px;
         }
+
+        /* ══ OUTCOMES SLIDER ══ */
+        .outcomes-slider-outer {
+          grid-column: 1 / -1;
+          display: flex;
+          flex-direction: column;
+          gap: 40px;
+          align-items: center;
+          overflow: visible;
+        }
+        .outcomes-slider-wrapper {
+          position: relative;
+          width: 100%;
+          overflow: visible;
+        }
+        .outcomes-slider-viewport {
+          width: 100%;
+          overflow: hidden;
+          padding: 20px 0;
+          margin: -20px 0;
+        }
+        .outcomes-slider-track {
+          display: flex;
+          gap: ${CARD_GAP}px;
+          transition: transform 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+          will-change: transform;
+        }
+        .co-dots { display: flex; gap: 12px; align-items: center; margin-bottom: 24px; }
+        .co-dot {
+          width: 8px; height: 8px;
+          border-radius: 50%;
+          background: #D0C9C0;
+          border: none; padding: 0;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          flex-shrink: 0;
+        }
+        .co-dot.active { background: #073B2F; width: 24px; border-radius: 4px; }
 
         /* ══ TESTIMONIALS SECTION ══ */
         .testimonials-section-wrap {
@@ -726,6 +838,12 @@ export default function ClientOutcomes() {
             padding-right: 24px;
           }
 
+          .outcomes-slider-viewport {
+            overflow: visible;
+            padding: 0;
+            margin: 0;
+          }
+
           /* Mobile: restore overflow:visible + clip-path for peek effect */
           .testimonials-slider-viewport {
             overflow: visible;
@@ -809,18 +927,75 @@ export default function ClientOutcomes() {
               <h2 className="outcomes-h2">Client Outcomes</h2>
               <p className="outcomes-subtitle">Explore more about client outcomes.</p>
             </div>
-            <div className="outcomes-grid-container">
-              {(showAllCards ? cards : cards.slice(0, INITIAL_CARDS_COUNT)).map((card, i) => (
-                <PropertyCard key={card.id} card={card} index={i} />
-              ))}
-            </div>
-            {cards.length > INITIAL_CARDS_COUNT && (
-              <div className="outcomes-btn-row" ref={buttonContainerRef}>
-                <button className="view-more-btn" onClick={handleToggleCards}>
-                  {showAllCards ? "View Less" : "View More"}
-                </button>
+
+            {!showAllCards ? (
+              <div className="outcomes-slider-outer">
+                <div className="outcomes-slider-wrapper">
+                  <button
+                    className="nav-arrow prev"
+                    onClick={() => gotoOutcome(outcomesCur - 1)}
+                    disabled={outcomesCur === 0}
+                    aria-label="Previous"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  <button
+                    className="nav-arrow next"
+                    onClick={() => gotoOutcome(outcomesCur + 1)}
+                    disabled={outcomesCur === outcomesMaxIdx}
+                    aria-label="Next"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </button>
+
+                  <div
+                    className="outcomes-slider-viewport"
+                    onMouseEnter={() => setOutcomesPaused(true)}
+                    onMouseLeave={() => setOutcomesPaused(false)}
+                  >
+                    <div
+                      ref={outcomesTrackRef}
+                      className="outcomes-slider-track"
+                      style={{
+                        transform: `translateX(-${outcomesOffset}px)`,
+                        "--card-flex-basis": outcomesCardFlexBasis,
+                      } as React.CSSProperties}
+                    >
+                      {outcomesSliderCards.map((card, i) => (
+                        <PropertyCard key={card.id} card={card} index={i} />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="co-dots">
+                  {Array.from({ length: Math.min(8, outcomesMaxIdx + 1) }).map((_, i) => (
+                    <button
+                      key={i}
+                      className={`co-dot${outcomesCur === i ? " active" : ""}`}
+                      onClick={() => gotoOutcome(i)}
+                      aria-label={`Go to slide ${i + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className="outcomes-grid-container">
+                {cards.map((card, i) => (
+                  <PropertyCard key={card.id} card={card} index={i} />
+                ))}
               </div>
             )}
+
+            <div className="outcomes-btn-row" ref={buttonContainerRef}>
+              <button className="view-more-btn" onClick={handleToggleCards}>
+                {showAllCards ? "View Less" : "View More"}
+              </button>
+            </div>
           </div>
         </div>
         <Image5/>
@@ -829,7 +1004,7 @@ export default function ClientOutcomes() {
         <div className="testimonials-section-wrap">
           <section ref={testimonialsSectionRef} id="testimonials" className="testimonials-section">
             <div className="testimonials-head">
-              <h2 className="testimonials-h2">What our clients are saying</h2>
+              <h2 className="testimonials-h2">What Clients Say</h2>
               <p className="testimonials-subtitle">In their own words, following their experience with Find &amp; Sign.</p>
             </div>
 

@@ -1,9 +1,8 @@
 import { useEffect } from "react";
-import bannerImg from "../assets/service-banner-find-and-sign-buyers-australia.jpg";
 import AboutSection from "../components/AboutSection";
 import SimpleFooter from "../components/SimpleFooter";
 import GetInTouch from "../components/GetInTouch";
-import AboutServiceImg from "../assets/about-service-find-and-sign.jpg";
+import AboutServiceImg from "../assets/About Find&Sign.jpg";
 
 export default function BuyerAdvocate() {
 
@@ -15,51 +14,43 @@ export default function BuyerAdvocate() {
   return (
     <div style={{ background: "#fff", margin: 0, padding: 0, color: "#111" }}>
 
-      {/* ── Hero ────────────────────────────────────────────────────────── */}
+      {/* ── Hero ── */}
       <section
         style={{
-          minHeight: "60vh",
+          width: "100%",
+          maxWidth: "1556px",
+          height: "550px",
+          margin: "0 auto",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          backgroundImage: `url(${bannerImg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
+          background: "var(--Brand-Foundation-FS-RACING-GREEN, #073B2F)",
           position: "relative",
         }}
       >
-        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
-        <div
-          style={{
-            position: "relative",
-            zIndex: 2,
+        <div style={{ position: "relative", zIndex: 2, animation: "heroFadeIn 0.8s ease both", width: "100%" }}>
+          <h1 style={{
+            alignSelf: "stretch",
+            color: "var(--FS-WHITE, var(--Brand-Utility-FS-WHITE, #FFF))",
             textAlign: "center",
-            padding: "0 20px",
-            animation: "heroFadeIn 0.8s ease both",
-          }}
-        >
-          <h1
-            style={{
-              fontFamily: "GT Super Display Medium",
-              fontSize: "clamp(36px, 6vw, 64px)",
-              fontWeight: 500,
-              color: "#fff",
-              letterSpacing: "-1.28px",
-              lineHeight: 1.1,
-              margin: 0,
-            }}
-          >
-            Buyer Advocate
+            fontVariantNumeric: "lining-nums proportional-nums",
+            fontFamily: "GT Super Display Medium",
+            fontSize: "56px",
+            fontStyle: "normal",
+            fontWeight: 500,
+            lineHeight: "64px",
+            letterSpacing: "-1.12px",
+            margin: 0
+          }}>
+            Buyer Advocacy
           </h1>
-          
         </div>
       </section>
 
       {/* ── What We Do ──────────────────────────────────────────────────── */}
         <AboutSection
         imageSrc={AboutServiceImg}
-        heading="About Buyer Advocate"
+        heading="About Buyer Advocacy"
         subheading="Expert guidance for every step of your property journey."
         body1="Purchasing a property is one of the most significant financial decisions you will ever make. Our full buyers agent service is designed to ensure that every step of that journey is handled with the expertise, care, and attention it deserves.
 From the moment we begin working together, we take on the entire process on your behalf. We get to know your goals, your non-negotiables, and your timeline, and we build a strategy around them. We search both on-market listings and our off-market network, and every property we consider is physically inspected by us before it ever reaches you. We will never recommend a property we have not walked through ourselves. That is a standard we hold on every single engagement."
@@ -79,6 +70,13 @@ From the first conversation to settlement day and beyond, we are by your side ev
         @keyframes heroFadeIn {
           from { opacity: 0; transform: translateY(20px); }
           to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (min-width: 769px) {
+          .about-image {
+            width: 564px !important;
+            height: 744px !important;
+          }
         }
       `}</style>
     </div>
