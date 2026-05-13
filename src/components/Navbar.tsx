@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/FS Primary Lockup_Gold.png";
+import callIcon from "../assets/Icon.png";
 
 const COLORS = {
   racingGreen: "#073B2F",
@@ -37,8 +38,8 @@ export default function Navbar() {
 }
 
      .nav-logo {
-   width: 128px !important;
-          height: 47px !important;
+   width: 159px !important;
+          height: 59px !important;
   object-fit: contain;
   display: block;
 }
@@ -108,6 +109,13 @@ export default function Navbar() {
           text-transform: uppercase;
           white-space: nowrap;
           gap: 10px;
+        }
+
+        .mobile-call-icon {
+          display: none;
+          align-items: center;
+          justify-content: center;
+          text-decoration: none;
         }
 
         /* Hamburger */
@@ -184,6 +192,10 @@ export default function Navbar() {
             display: none !important;
           }
 
+          .mobile-call-icon {
+            display: flex !important;
+          }
+
           .nav-hamburger {
             display: block !important;
           }
@@ -229,6 +241,17 @@ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
               ))}
             </ul>
 
+            {/* Mobile Call Icon (outside drawer, near hamburger) */}
+            <a
+              href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mobile-call-icon"
+              aria-label="Book a Call"
+            >
+              <img src={callIcon} className="vibrate-icon" width="16" height="16" alt="" />
+            </a>
+
             {/* CTA */}
            <a
   href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
@@ -236,9 +259,7 @@ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
   rel="noopener noreferrer"
   className="nav-cta" // The "Book a Call" button for desktop
 >
-  <svg className="vibrate-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.6-.35-.12-.73-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 2 3.2 2.45 3.2 2.99 3.2 12.37 10.83 20 20.21 20c.54 0 .99-.45.99-.99v-2.64c0-.54-.45-.99-.99-.99z" />
-  </svg>
+  <img src={callIcon} className="vibrate-icon" width="20" height="20" alt="" />
   Book a Call
 </a>
 
@@ -345,9 +366,7 @@ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
   whiteSpace: "nowrap",
 }}
 >
-  <svg className="vibrate-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"> {/* Hide decorative SVG from screen readers */}
-    <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.6-.35-.12-.73-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 2 3.2 2.45 3.2 2.99 3.2 12.37 10.83 20 20.21 20c.54 0 .99-.45.99-.99v-2.64c0-.54-.45-.99-.99-.99z" />
-  </svg>
+  <img src={callIcon} className="vibrate-icon" width="18" height="18" alt="" aria-hidden="true" />
   Book a Call
 </a>
           </div>
