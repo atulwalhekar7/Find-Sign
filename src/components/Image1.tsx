@@ -1,18 +1,34 @@
 import React from "react";
 import { Box } from "@mui/material";
-import heroImage from "../assets/niki-nakrani-buyers-agent-image1-australia-find-and-sign (2).png";
+import heroImage from "../assets/niki-nakrani-buyers-agent-image1-australia-find-and-sign (2).jpg";
 
 const Image1: React.FC = () => {
   return (
     <>
-      <Box sx={{ width: "100%" }}>
+      <Box
+        sx={{
+          width: "100%",
+          display: "block",
+          lineHeight: 0,
+          fontSize: 0,
+        }}
+      >
         {/* HERO */}
         <Box
           sx={{
             position: "relative",
             width: "100%",
-            aspectRatio: { xs: "4 / 5", md: "16 / 7" },
+            aspectRatio: {
+              xs: "3 / 4",
+              sm: "16 / 9",
+              md: "16 / 7",
+            },
             overflow: "hidden",
+            display: "block",
+            lineHeight: 0,
+            fontSize: 0,
+            margin: 0,
+            padding: 0,
           }}
         >
           {/* IMAGE */}
@@ -21,70 +37,110 @@ const Image1: React.FC = () => {
             src={heroImage}
             alt="Hero"
             sx={{
+              position: "absolute",
+              top: 0,
+              left: 0,
               width: "100%",
               height: "100%",
               objectFit: "cover",
+              objectPosition: {
+                xs: "center 30%",
+                sm: "center top",
+                md: "center top",
+              },
               display: "block",
+              verticalAlign: "top",
+              margin: 0,
+              padding: 0,
             }}
           />
 
           {/* OVERLAY */}
-<Box
-  className="image1-overlay-container"
-  sx={{
-    position: "absolute",
-    inset: 0,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: { xs: "flex-end", sm: "center" }, // vertically centered
-    padding: { xs: "20px", md: "40px" },
-    transform: "none",    // 👈 remove the translateY offset
-  }}
->
-  <Box
-    component="h2"
-    className="image1-hero-title"
-    sx={{
-      color: "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
-      textAlign: "center",
-      fontVariantNumeric: "lining-nums proportional-nums",
-      fontFamily: 'GT Super Display Medium',
-      fontSize: {
-        xs: "18px",
-        sm: "32px",
-        md: "44px",
-      },
-      fontStyle: "normal",
-      fontWeight: 500,
-      lineHeight: {
-        xs: "1.2",
-        sm: "40px",
-        md: "54px",
-      },
-      letterSpacing: "-0.88px",
-      margin: 0,
-      maxWidth: { xs: "800px", sm: "none" },
-      whiteSpace: { xs: "normal", sm: "nowrap" },
-    }}
-  >
-    The right property, secured before the wider market.
-  </Box>
-</Box>
+          <Box
+            className="image1-overlay-container"
+            sx={{
+              position: "absolute",
+              inset: 0,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: {
+                xs: "flex-end",
+                sm: "center",
+                md: "center",
+              },
+              padding: {
+                xs: "20px",
+                sm: "30px",
+                md: "40px",
+              },
+            }}
+          >
+            <Box
+              component="h2"
+              className="image1-hero-title"
+              sx={{
+                color: "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
+                textAlign: "center",
+                fontVariantNumeric: "lining-nums proportional-nums",
+                fontFamily: "GT Super Display Medium",
+                fontStyle: "normal",
+                fontWeight: 500,
+                margin: 0,
+                maxWidth: {
+                  xs: "320px",
+                  sm: "100%",
+                  md: "none",
+                },
+                whiteSpace: {
+                  xs: "normal",
+                  sm: "nowrap",
+                  md: "nowrap",
+                },
+                paddingBottom: {
+                  xs: "30px",
+                  sm: "0px",
+                  md: "0px",
+                },
+              }}
+            >
+              The right property, secured before the wider market.
+            </Box>
+          </Box>
         </Box>
       </Box>
 
-      {/* STYLES */}
       <style>{`
+        /* MOBILE - max 599px */
         @media (max-width: 599px) {
+          .image1-hero-title {
+            font-size: 20px !important;
+            line-height: 24px !important;
+            letter-spacing: -0.3px !important;
+          }
           .image1-overlay-container {
             align-items: flex-end !important;
-            padding-bottom: 60px !important;
-          }
-          .image1-hero-title {
-            font-size: 18px !important;
-            line-height: 24px !important;
+            padding-bottom: 40px !important;
           }
         }
+
+        /* TABLET - 600px to 1024px */
+        @media (min-width: 600px) and (max-width: 1024px) {
+          .image1-hero-title {
+            font-size: 30px !important;
+            line-height: 38px !important;
+            letter-spacing: -0.5px !important;
+          }
+        }
+
+        /* DESKTOP - 1025px+ */
+        @media (min-width: 1025px) {
+          .image1-hero-title {
+            font-size: 44px !important;
+            line-height: 54px !important;
+            letter-spacing: -0.88px !important;
+          }
+        }
+
         .book-btn {
           display: flex;
           align-items: center;
