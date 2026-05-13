@@ -292,9 +292,8 @@ Find & Sign we find with confidence you sign with certainty.
 }
 
 .team-read-more {
-  margin-top: 2px;
   display: inline-block;
-    color: #69E4DC;
+  color: #69E4DC;
   font-family: 'Söhne', 'Sohne', sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -303,6 +302,7 @@ Find & Sign we find with confidence you sign with certainty.
   background: none;
   border: none;
   padding: 0;
+  margin: 0;
 }
 
 .team-read-more:hover {
@@ -470,20 +470,33 @@ Find & Sign we find with confidence you sign with certainty.
                 </div>
               </div>
 
-           {/* BIO */}
-<div className={`team-bio-wrap ${nikiExpanded ? "expanded" : "clamped"}`}>
-  <span className="team-bio">
-    Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement. His approach is grounded in data, sharpened by years of on-the-ground market knowledge, and guided by a genuine desire to see others succeed. Niki understands that property can feel overwhelming, and that is precisely why having the right person in your corner changes everything. He is not just your buyer's agent. He is someone who has walked the path himself and is invested in your outcome.
-  </span>
-</div>
-
-{/* READ MORE BUTTON */}
-<button
-  className="team-read-more"
-  onClick={() => setNikiExpanded(!nikiExpanded)}
->
-  {nikiExpanded ? "Show less" : "Read more"}
-</button>
+            {/* BIO */}
+            <div className="team-bio-wrap">
+              <span className="team-bio">
+                Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement. His approach is grounded in data, sharpened by years of on-the-ground market knowledge, and guided by a genuine desire to
+                {!nikiExpanded ? (
+                  <>
+                    <button
+                      className="team-read-more"
+                      onClick={() => setNikiExpanded(true)}
+                    >
+                      ..Read more
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    {" "}see others succeed. Niki understands that property can feel overwhelming, and that is precisely why having the right person in your corner changes everything. He is not just your buyer's agent. He is someone who has walked the path himself and is invested in your outcome.
+                    <button
+                      className="team-read-more"
+                      onClick={() => setNikiExpanded(false)}
+                      style={{ marginLeft: '8px' }}
+                    >
+                      Show less
+                    </button>
+                  </>
+                )}
+              </span>
+            </div>
               {/* BUTTON: calls Niki's number */}
               <a href="tel:0431158233" className="team-contact-btn">
                 Contact Niki
