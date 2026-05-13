@@ -483,7 +483,7 @@ gap: 10px;
 
         /* Text Styles */
         .section-title {
-          font-family: "CX80BOLD", sans-serif;
+          font-family: "CX80BOLD";
           font-size: 18px;
           font-weight: 150;
           line-height: 18px;
@@ -491,6 +491,8 @@ gap: 10px;
           color: #F9F9F9;
           // padding: 10px 0;
           text-transform: uppercase;
+          margin-bottom: 10px;
+          margin-top: 10px;
         }
 
         .footer-row {
@@ -508,7 +510,7 @@ gap: 10px;
         }
         .footer-link { text-decoration: underline; }
 
-        .contact-label { margin-right: 8px; }
+        .contact-label { margin-right: 8px; font-family: "SohneBuch";}
 
         .btn-book {
           display: flex;
@@ -593,7 +595,7 @@ gap: 10px;
             </div>
             <div className="footer-row">
               <span className="contact-label">E</span>
-              <a className="footer-link" href="mailto:niki@findandsignba.com.au">niki@findandsignba.com.au</a>
+              <a className="footer-link" href="mailto:niki@findandsignba.com.au">info@findandsignba.com.au </a>
             </div>
             <div style={{width:"93px" ,display: "flex" ,padding:" 10px",alignItems: "center" ,gap: "10px"
 }}>
