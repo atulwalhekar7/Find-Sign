@@ -215,6 +215,8 @@ export default function ClientOutcomes() {
   const outcomesTimerRef  = useRef<ReturnType<typeof setInterval> | null>(null);
   const outcomesTrackRef  = useRef<HTMLDivElement>(null);
   const outcomesRafRef    = useRef<number | null>(null);
+  const outcomesTouchStartX = useRef<number | null>(null);
+  const outcomesTouchEndX = useRef<number | null>(null);
 
   const outcomesVisibleCount = isMobile ? 1 : isTablet ? 2 : 3;
   const outcomesSliderCards  = cards.slice(0, 10);
@@ -288,6 +290,24 @@ export default function ClientOutcomes() {
     resetOutcomesTimer();
   }, [outcomesMaxIdx, resetOutcomesTimer]);
 
+  const handleOutcomesTouchStart = (e: React.TouchEvent) => {
+    outcomesTouchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleOutcomesTouchMove = (e: React.TouchEvent) => {
+    outcomesTouchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleOutcomesTouchEnd = () => {
+    if (!outcomesTouchStartX.current || !outcomesTouchEndX.current) return;
+    const diff = outcomesTouchStartX.current - outcomesTouchEndX.current;
+    const threshold = 50;
+    if (diff > threshold) gotoOutcome(outcomesCur + 1);
+    if (diff < -threshold) gotoOutcome(outcomesCur - 1);
+    outcomesTouchStartX.current = null;
+    outcomesTouchEndX.current = null;
+  };
+
   const outcomesCardFlexBasis = isMobile
     ? `calc(100% - ${CARD_GAP}px - ${PEEK}px)`
     : `calc((100% - ${CARD_GAP}px * ${outcomesVisibleCount - 1}) / ${outcomesVisibleCount})`;
@@ -301,6 +321,8 @@ export default function ClientOutcomes() {
   const reviewTrackRef                       = useRef<HTMLDivElement>(null);
   const reviewRafRef                         = useRef<number | null>(null);
   const reviewButtonContainerRef             = useRef<HTMLDivElement>(null);
+  const reviewTouchStartX                    = useRef<number | null>(null);
+  const reviewTouchEndX                      = useRef<number | null>(null);
   const testimonialsSectionRef               = useRef<HTMLElement | null>(null);
   const outcomesSectionRef                   = useRef<HTMLDivElement | null>(null);
 
@@ -339,6 +361,24 @@ export default function ClientOutcomes() {
   const nextReview = useCallback(() => {
     setReviewIdx(prev => (prev >= maxReviewIdx ? 0 : prev + 1));
   }, [maxReviewIdx]);
+
+  const handleReviewTouchStart = (e: React.TouchEvent) => {
+    reviewTouchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleReviewTouchMove = (e: React.TouchEvent) => {
+    reviewTouchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleReviewTouchEnd = () => {
+    if (!reviewTouchStartX.current || !reviewTouchEndX.current) return;
+    const diff = reviewTouchStartX.current - reviewTouchEndX.current;
+    const threshold = 50;
+    if (diff > threshold) setReviewIdx(prev => Math.min(maxReviewIdx, prev + 1));
+    if (diff < -threshold) setReviewIdx(prev => Math.max(0, prev - 1));
+    reviewTouchStartX.current = null;
+    reviewTouchEndX.current = null;
+  };
 
   useEffect(() => {
     const t = setInterval(nextReview, 6000);
@@ -583,6 +623,7 @@ export default function ClientOutcomes() {
           gap: ${CARD_GAP}px;
           transition: transform 0.55s cubic-bezier(0.77, 0, 0.18, 1);
           will-change: transform;
+          touch-action: pan-y;
         }
         .co-dots { display: flex; gap: 12px; align-items: center; margin-bottom: 24px; }
         .co-dot {
@@ -644,6 +685,7 @@ export default function ClientOutcomes() {
           gap: ${CARD_GAP}px;
           transition: transform 0.55s cubic-bezier(0.77,0,0.18,1);
           will-change: transform;
+          touch-action: pan-y;
         }
 
         /* ══ TESTIMONIAL CARD ══ */
@@ -965,6 +1007,9 @@ export default function ClientOutcomes() {
                         transform: `translateX(-${outcomesOffset}px)`,
                         "--card-flex-basis": outcomesCardFlexBasis,
                       } as React.CSSProperties}
+                      onTouchStart={handleOutcomesTouchStart}
+                      onTouchMove={handleOutcomesTouchMove}
+                      onTouchEnd={handleOutcomesTouchEnd}
                     >
                       {outcomesSliderCards.map((card, i) => (
                         <PropertyCard key={card.id} card={card} index={i} />
@@ -1042,6 +1087,9 @@ export default function ClientOutcomes() {
                           transform: `translateX(-${reviewOffset}px)`,
                           "--card-flex-basis": reviewCardFlexBasis,
                         } as React.CSSProperties}
+                        onTouchStart={handleReviewTouchStart}
+                        onTouchMove={handleReviewTouchMove}
+                        onTouchEnd={handleReviewTouchEnd}
                       >
                         {formattedReviews.map((t, i) => (
                           <TestimonialCard
