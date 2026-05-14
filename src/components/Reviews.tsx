@@ -51,6 +51,8 @@ const Testimonials = () => {
   const [offset, setOffset]       = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
   const rafRef   = useRef<number | null>(null);
 
   const visibleCount = isMobile ? 1 : isTablet ? 2 : 3;
@@ -111,6 +113,24 @@ const Testimonials = () => {
     goTo(reviewIdx + dir);
     resetTimer();
   }, [reviewIdx, goTo, resetTimer]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const diff = touchStartX.current - touchEndX.current;
+    const threshold = 50; // minimum distance to be considered a swipe
+    if (diff > threshold) handleNav(1);
+    if (diff < -threshold) handleNav(-1);
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
 
   const cardFlexBasis = isMobile
     ? `calc(100% - ${CARD_GAP}px - ${PEEK}px)`
@@ -211,6 +231,7 @@ const Testimonials = () => {
           gap: ${CARD_GAP}px;
           transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
           will-change: transform;
+          touch-action: pan-y;
         }
 
         .npb-card {
@@ -383,6 +404,9 @@ const Testimonials = () => {
                     transform: `translateX(-${offset}px)`,
                     "--card-flex-basis": cardFlexBasis,
                   } as React.CSSProperties}
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleTouchEnd}
                 >
                   {formattedReviews.map((review, i) => (
                     <ReviewCard key={i} review={review} />
