@@ -19,7 +19,7 @@ const Image1: React.FC = () => {
           <Box
             component="img"
             src={heroImage}
-            alt="Hero"
+            alt="Strategic property buying consultation showing expertise on the ground"
             sx={{
               width: "100%",
               height: "100%",
@@ -44,6 +44,7 @@ const Image1: React.FC = () => {
   <Box
     component="h2"
     className="image7-hero-title"
+    tabIndex={0}
     sx={{
       color: "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
       textAlign: "center",

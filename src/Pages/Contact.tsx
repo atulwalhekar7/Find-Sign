@@ -19,6 +19,7 @@ export default function Contact() {
         paddingRight: "196px", // Matching Services.tsx padding
       }}>
         <h1
+          tabIndex={0}
           style={{
             color: "var(--FS-RACING-GREEN, #073B2F)",
             textAlign: "center",

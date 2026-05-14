@@ -345,8 +345,8 @@ const Testimonials = () => {
 
             {/* HEADER */}
             <div className="rev-header-wrap">
-              <h2 className="rev-heading">What Clients Say</h2>
-              <p className="rev-subheading">
+              <h2 className="rev-heading" tabIndex={0}>What Clients Say</h2>
+              <p className="rev-subheading" tabIndex={0}>
                 In their own words, following their experience with Find & Sign.
               </p>
             </div>
@@ -443,7 +443,7 @@ interface ReviewCardProps {
 const ReviewCard = ({ review }: ReviewCardProps) => (
   <div className="npb-card">
 
-    <div style={{
+    <div tabIndex={0} style={{
       display: "inline-flex",
       padding: "8px 16px",
       alignItems: "center",
@@ -474,7 +474,7 @@ const ReviewCard = ({ review }: ReviewCardProps) => (
       />
     </div>
 
-    <p style={{
+    <p tabIndex={0} style={{
       width: "100%",
       color: "#000",
       fontFamily: "SohneBuch",
@@ -528,10 +528,10 @@ const ReviewCard = ({ review }: ReviewCardProps) => (
         )}
       </div>
       <div>
-        <h4 style={{ fontSize: "0.875rem", fontWeight: 400, color: "#111827", margin: 0, fontFamily: "SohneBuch" }}>
+        <h4 tabIndex={0} style={{ fontSize: "0.875rem", fontWeight: 400, color: "#111827", margin: 0, fontFamily: "SohneBuch" }}>
           {review.name}
         </h4>
-        <p style={{
+        <p tabIndex={0} style={{
           fontSize: "9px",
           fontWeight: 500,
           color: "#000",

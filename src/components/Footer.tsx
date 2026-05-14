@@ -588,13 +588,13 @@ gap: 10px;
 
           {/* Contact */}
           <div className="footer-contact">
-            <div className="section-title">Contact</div>
+            <div className="section-title" tabIndex={0}>Contact</div>
             <div className="footer-row">
-              <span className="contact-label">T</span>
+              <span className="contact-label" tabIndex={0}>T</span>
               <a className="footer-link" href="tel:0431158233">0431 158 233</a>
             </div>
             <div className="footer-row">
-              <span className="contact-label">E</span>
+              <span className="contact-label" tabIndex={0}>E</span>
               <a className="footer-link" href="mailto:niki@findandsignba.com.au">info@findandsignba.com.au </a>
             </div>
             <div style={{width:"93px" ,display: "flex" ,padding:" 10px",alignItems: "center" ,gap: "10px"
@@ -608,7 +608,7 @@ gap: 10px;
 
           {/* Explore */}
           <div className="footer-explore">
-            <div className="section-title">Explore</div>
+            <div className="section-title" tabIndex={0}>Explore</div>
             {exploreLinks.map(({ label, to }) => (
               <div className="footer-row" key={label}>
                 <NavLink to={to} className="footer-text">{label}</NavLink>
@@ -621,23 +621,23 @@ gap: 10px;
 
           {/* Legal */}
           <div className="footer-legal">
-            <div className="section-title">Legal</div>
+            <div className="section-title" tabIndex={0}>Legal</div>
 <div className="footer-row">
   <NavLink to="/privacy-policy" className="footer-text">
     Privacy Policy
   </NavLink>
 </div>            <div className="footer-row"><a href="#" className="footer-text">Terms & Conditions</a></div>
-            <div className="footer-legal-text">
+            <div className="footer-legal-text" tabIndex={0}>
               Licensed Real Estate Agent <br/>
               RA86202 / RA84411
             </div>
-            <div className="footer-legal-text">ABN 29 691 543 914</div>
+            <div className="footer-legal-text" tabIndex={0}>ABN 29 691 543 914</div>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="footer-bottom">
-          <span className="footer-copyright">© 2026 Find and Sign Buyer Advocate</span>
+          <span className="footer-copyright" tabIndex={0}>© 2026 Find and Sign Buyer Advocate</span>
         </div>
       </footer>
     </>

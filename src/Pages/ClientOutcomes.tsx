@@ -141,11 +141,11 @@ const formattedReviews = reviews.map(r => ({
 function TestimonialCard({ testimonial, style }: { testimonial: any; style?: React.CSSProperties }) {
   return (
     <div className="testimonial-card" style={style}>
-      <div className="tc-pill">{testimonial.title}</div>
+      <div className="tc-pill" tabIndex={0}>{testimonial.title}</div>
       <div className="tc-stars">
         <img src={starIcon} alt="5 stars" style={{ width: 177, height: 32.336, objectFit: "contain" }} />
       </div>
-      <p className="tc-body">{testimonial.body}</p>
+      <p className="tc-body" tabIndex={0}>{testimonial.body}</p>
       <div className="tc-footer">
         <div className="avatar-circle">
           {testimonial.image ? (
@@ -158,8 +158,8 @@ function TestimonialCard({ testimonial, style }: { testimonial: any; style?: Rea
           )}
         </div>
         <div>
-          <h4 className="tc-name">{testimonial.name}</h4>
-          <p className="tc-date">{testimonial.date}</p>
+          <h4 className="tc-name" tabIndex={0}>{testimonial.name}</h4>
+          <p className="tc-date" tabIndex={0}>{testimonial.date}</p>
         </div>
       </div>
     </div>
@@ -171,10 +171,11 @@ function PropertyCard({ card, index }: { card: typeof cards[0]; index: number })
   return (
     <div className="property-card" style={{ animationDelay: `${index * 80}ms` }}>
       <div className="card-image-wrap">
-        <img src={card.image} alt="Property" className="card-image" />
+        <img src={card.image} alt={`Property outcome for ${card.address}`} className="card-image" />
       </div>
       <div
         className="growth-circle-container"
+        tabIndex={0}
         style={{ backgroundImage: `url(${ellipseImage})`, backgroundSize: "cover", backgroundPosition: "center" }}
       >
         <span className="growth-label">Growth</span>
@@ -187,7 +188,7 @@ function PropertyCard({ card, index }: { card: typeof cards[0]; index: number })
           { label: "Timeframe",      val: card.timeframe     },
           { label: "Rental yield",   val: card.rentalYield   },
         ].map(({ label, val }, i, arr) => (
-          <div key={label} className="card-row" style={{ borderBottom: i < arr.length - 1 ? "1px dashed #846F58" : "none" }}>
+          <div key={label} tabIndex={0} className="card-row" style={{ borderBottom: i < arr.length - 1 ? "1px dashed #846F58" : "none" }}>
             <span className="row-label">{label}</span>
             <span className="row-val">{val}</span>
           </div>
@@ -907,7 +908,7 @@ export default function ClientOutcomes() {
             padding: "60px 20px", borderRadius: 12,
             animation: "heroFadeIn 0.8s ease both",
           }}>
-            <h1 className="hero-h1">Client Outcomes</h1>
+            <h1 className="hero-h1" tabIndex={0}>Client Outcomes</h1>
           </div>
         </section>
 
@@ -924,8 +925,8 @@ export default function ClientOutcomes() {
         <div className="outcomes-section-wrap">
           <div ref={outcomesSectionRef} id="outcomes" className="outcomes-section">
             <div className="outcomes-head">
-              <h2 className="outcomes-h2">Client Outcomes</h2>
-              <p className="outcomes-subtitle">Explore more about client outcomes.</p>
+              <h2 className="outcomes-h2" tabIndex={0}>Client Outcomes</h2>
+              <p className="outcomes-subtitle" tabIndex={0}>Explore more about client outcomes.</p>
             </div>
 
             {!showAllCards ? (
@@ -1004,8 +1005,8 @@ export default function ClientOutcomes() {
         <div className="testimonials-section-wrap">
           <section ref={testimonialsSectionRef} id="testimonials" className="testimonials-section">
             <div className="testimonials-head">
-              <h2 className="testimonials-h2">What Clients Say</h2>
-              <p className="testimonials-subtitle">In their own words, following their experience with Find &amp; Sign.</p>
+              <h2 className="testimonials-h2" tabIndex={0}>What Clients Say</h2>
+              <p className="testimonials-subtitle" tabIndex={0}>In their own words, following their experience with Find &amp; Sign.</p>
             </div>
 
             <div className="testimonials-slider-col">

@@ -36,6 +36,7 @@ export default function SettlementAgent() {
           }}
         >
           <h1
+            tabIndex={0}
             style={{
               alignSelf: "stretch",
               color: "var(--FS-WHITE, var(--Brand-Utility-FS-WHITE, #FFF))",

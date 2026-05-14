@@ -56,6 +56,7 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
         }}
       >
         <div
+          tabIndex={0}
           style={{
             color: "#000",
             fontVariantNumeric: "lining-nums proportional-nums",
@@ -72,6 +73,7 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
         </div>
 
         <div
+          tabIndex={0}
           style={{
             color: "var(--FS-BURNT-GOLD, var(--Brand-Signature-FS-BURNT-GOLD, #6C5843))",
             fontFamily: 'CX80BOLD',
@@ -86,6 +88,7 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
         </div>
 
         <p
+          tabIndex={0}
           style={{
             margin: "0px",
             color: "rgb(117, 117, 117)",
@@ -100,6 +103,7 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
         </p>
 
         <button
+          aria-label={`Read blog post about ${post.title}`}
           style={{
             display: "flex",
             height: "48px",
@@ -192,7 +196,9 @@ export default function Insights() {
             animation: "heroFadeIn 0.8s ease both",
           }}
         >
-<h1 style={{ 
+          <h1 
+            tabIndex={0}
+            style={{ 
             fontFamily: 'GT Super Display Medium',
             fontSize: "64px",
             fontWeight: 500,
@@ -218,7 +224,9 @@ export default function Insights() {
 
       {/* ── SECTION 3: Blogs ────────────────────────────────────────────── */}
       <section className="blogs-container" style={{ maxWidth: "1200px", margin: "0 auto ", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <h2 style={{  
+        <h2 
+          tabIndex={0}
+          style={{  
           margin: " auto 24px",
   color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
   fontFamily: "GT Super Display Medium",
@@ -235,7 +243,9 @@ export default function Insights() {
     Blogs
     <div style={{ width: "160px", height: "1px", background: "#073B2F" }} />
   </h2>
-  <p style={{
+  <p 
+    tabIndex={0}
+    style={{
     color: "#000",
     fontFamily: "Sohne",
     fontSize: "24px",

@@ -102,10 +102,11 @@ function PropertyCard({ card }: { card: (typeof cards)[0] }) {
   return (
     <div className="property-card">
       <div className="card-image-wrap">
-        <img src={card.image} alt="Property" className="card-image" />
+        <img src={card.image} alt={`Property outcome for ${card.address}`} className="card-image" />
       </div>
       <div
         className="growth-circle-container"
+        tabIndex={0}
         style={{
           backgroundImage: `url(${ellipseImage})`,
           backgroundSize: "cover",
@@ -124,6 +125,7 @@ function PropertyCard({ card }: { card: (typeof cards)[0] }) {
         ].map(({ label, val }, i, arr) => (
           <div
             key={label}
+            tabIndex={0}
             className="card-row"
             style={{ borderBottom: i < arr.length - 1 ? "1px dashed #846F58" : "none" }}
           >
@@ -551,8 +553,8 @@ export default function ClientOutcomes() {
           <div className="co-head">
             <div className="co-header">
               <div className="co-title-group">
-                <h2 className="co-h2">Client Outcomes</h2>
-                <p className="co-subtitle">
+                <h2 className="co-h2" tabIndex={0}>Client Outcomes</h2>
+                <p className="co-subtitle" tabIndex={0}>
                   Growth achieved through early access and informed decisions.
                 </p>
               </div>
@@ -620,6 +622,7 @@ export default function ClientOutcomes() {
             <button
               className="view-btn"
               onClick={() => navigate("/client-outcomes#outcomes")}
+              aria-label="View more client outcomes"
             >
               View More Outcomes
             </button>

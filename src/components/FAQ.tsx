@@ -244,8 +244,8 @@ export default function FindSignFAQ() {
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
             
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <h2 className="faq-title">FAQs</h2>
-              <p className="faq-subtitle">
+              <h2 className="faq-title" tabIndex={0}>FAQs</h2>
+              <p className="faq-subtitle" tabIndex={0}>
                 Answers to common questions about buyers agents and how they work.
               </p>
             </Box>
@@ -261,7 +261,7 @@ export default function FindSignFAQ() {
                     onMouseLeave={() => setActiveId(null)}
                   >
                     <div className="faq-question-area">
-                      <span className="faq-question-text">{faq.question}</span>
+                      <span className="faq-question-text" tabIndex={0}>{faq.question}</span>
                       <svg
                         className={`faq-chevron ${isOpen ? "open" : ""}`}
                         viewBox="0 0 20 20"
@@ -281,7 +281,7 @@ export default function FindSignFAQ() {
                     <div className={`faq-drawer ${isOpen ? "open" : ""}`}>
                       <div className="faq-drawer-inner">
                         <div className="faq-answer">
-                          <p className="faq-answer-text">{faq.answer}</p>
+                          <p className="faq-answer-text" tabIndex={0}>{faq.answer}</p>
                         </div>
                       </div>
                     </div>

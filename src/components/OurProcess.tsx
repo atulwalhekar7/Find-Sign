@@ -395,6 +395,7 @@ function StepRow({ step, index, isLast }: { step: Step; index: number; isLast: b
         {/* Content */}
         <div style={s.content}>
           <p
+            tabIndex={0}
             className="op-item-title"
             style={{
               ...s.itemTitle,
@@ -406,6 +407,7 @@ function StepRow({ step, index, isLast }: { step: Step; index: number; isLast: b
             {step.title}
           </p>
           <p
+            tabIndex={0}
             className="op-item-desc"
             style={{
               ...s.itemDesc,
@@ -448,6 +450,7 @@ export default function OurProcess({ visible = true }: { visible?: boolean }) {
         <div className="op-head" ref={headRef as React.Ref<HTMLDivElement>}>
           <h2
             className="op-title-text"
+            tabIndex={0}
             style={{
               ...s.title,
               opacity: headVisible ? 1 : 0,
@@ -456,10 +459,12 @@ export default function OurProcess({ visible = true }: { visible?: boolean }) {
             }}
           >
             How the Buying Process Works
+
             <div style={s.titleUnderline} />
           </h2>
           <p
             className="op-subtitle-text"
+            tabIndex={0}
             style={{
               ...s.subtitle,
               opacity: headVisible ? 1 : 0,

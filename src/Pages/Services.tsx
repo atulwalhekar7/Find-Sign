@@ -131,6 +131,7 @@ const ServiceCard = ({
         }}
       >
         <h3
+          tabIndex={0}
           style={{
             color: "#000",
             textAlign: "center",
@@ -146,7 +147,7 @@ const ServiceCard = ({
         >
           {title}
         </h3>
-        <p style={{
+        <p tabIndex={0} style={{
           color: "#757575",
           textAlign: "center",
           fontFamily: "SohneBuch",
@@ -211,6 +212,7 @@ const OtherServiceCard = ({
         }}
       >
         <h3
+          tabIndex={0}
           style={{
             color: "#000",
             textAlign: "center",
@@ -226,7 +228,7 @@ const OtherServiceCard = ({
         >
           {title}
         </h3>
-        <p style={{
+        <p tabIndex={0} style={{
           color: "#757575",
           textAlign: "center",
           fontFamily: 'SohneBuch',
@@ -324,6 +326,7 @@ export default function Services() {
           }}
         >
           <h1
+            tabIndex={0}
             style={{
               fontFamily: "GT Super Display Medium",
               fontSize: "64px",
@@ -363,6 +366,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
         <FadeUp>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             <h2
+              tabIndex={0}
               style={{
                 color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
                 textAlign: "center",
@@ -384,6 +388,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
               <div style={{ width: "160px", height: "1px", background: "#073B2F" }} />
             </h2>
             <p
+              tabIndex={0}
               style={{
                 color: "#000",
                 fontFamily: "Sohne",
@@ -414,6 +419,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
         <FadeUp style={{ marginBottom: "16px" }}>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
             <h2
+              tabIndex={0}
               style={{
                 margin: "56px 0 0",
                 color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
@@ -435,6 +441,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
               <div style={{ width: "160px", height: "1px", background: "#073B2F" }} />
             </h2>
             <p
+              tabIndex={0}
               style={{
                 color: "#000",
                 fontFamily: "Sohne",
@@ -449,6 +456,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
               People we trust. Services you may need.
             </p>
             <p
+              tabIndex={0}
               className="services-desc"
               style={{
                 color: "var(--FS-System-Grey-1, #757575)",
@@ -506,6 +514,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
           >
             {/* Label */}
             <p
+              tabIndex={0}
               style={{
                 color: "var(--FS-System-Grey-1, #757575)",
                 textAlign: "center",
@@ -522,6 +531,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
 
             {/* Body */}
             <p
+              tabIndex={0}
               style={{
                 alignSelf: "stretch",
                 color: "var(--FS-System-Grey-1, #757575)",

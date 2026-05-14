@@ -52,7 +52,7 @@ export default function About() {
       <section className="hero-banner">
         <div className="banner-overlay" />
         <div className="hero-box">
-          <h1 className="hero-title">About Us</h1>
+          <h1 className="hero-title" tabIndex={0}>About Us</h1>
         </div>
       </section>
 <div style={{ background: "#fff" }}>
@@ -432,8 +432,8 @@ Find & Sign we find with confidence you sign with certainty.
         <div className="team-container">
 
           <div className="team-header">
-            <h2>Meet the team</h2>
-            <p>Explore more about our team.</p>
+            <h2 tabIndex={0}>Meet the team</h2>
+            <p tabIndex={0}>Explore more about our team.</p>
           </div>
 
           <div className="team-grid">
@@ -447,8 +447,8 @@ Find & Sign we find with confidence you sign with certainty.
                   <img src={niki} alt="Niki Nakrani" />
                 </div>
                 <div className="team-name-block">
-                  <h3 className="team-name">Niki Nakrani</h3>
-                  <p className="team-role">CEO &amp; Founder</p>
+                  <h3 className="team-name" tabIndex={0}>Niki Nakrani</h3>
+                  <p className="team-role" tabIndex={0}>CEO &amp; Founder</p>
                   {/* Social icons */}
                   <div className="team-socials">
                     <a href="https://www.facebook.com/nakranipropertybuyers/" target="_blank" rel="noreferrer" aria-label="Facebook">
@@ -472,7 +472,7 @@ Find & Sign we find with confidence you sign with certainty.
 
             {/* BIO */}
             <div className="team-bio-wrap">
-              <span className="team-bio">
+              <span className="team-bio" tabIndex={0}>
                 Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement. His approach is grounded in data, sharpened by years of on-the-ground market knowledge, and guided by a genuine desire to
                 {!nikiExpanded ? (
                   <>
@@ -512,8 +512,8 @@ Find & Sign we find with confidence you sign with certainty.
                   <img src={Bec} alt="Rebecca Nakrani" style={{ objectPosition: "center" }} />
                 </div>
                 <div className="team-name-block">
-                  <h3 className="team-name">Rebecca </h3>
-                  <p className="team-role">Client Operations Manager</p>
+                  <h3 className="team-name" tabIndex={0}>Rebecca </h3>
+                  <p className="team-role" tabIndex={0}>Client Operations Manager</p>
                   {/* Social icons */}
                   <div className="team-socials">
                     <a href="https://www.facebook.com/nakranipropertybuyers/" target="_blank" rel="noreferrer" aria-label="Facebook">
@@ -532,7 +532,7 @@ Find & Sign we find with confidence you sign with certainty.
 
               {/* BIO */}
               <div className="team-bio-wrap expanded">
-                <span className="team-bio">
+                <span className="team-bio" tabIndex={0}>
                   Rebecca keeps every purchase moving with precision and care. Her attention to detail and deep process knowledge means nothing is missed and clients always know exactly where they stand. She has a gift for making the complex feel simple, and takes genuine pride in delivering a seamless experience from start to settlement.
                 </span>
               </div>

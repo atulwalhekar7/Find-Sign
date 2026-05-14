@@ -918,6 +918,7 @@ width: 297px;
           <div className="contact-left">
             {!hideInternalHeading && (
 <h2
+  tabIndex={0}
   style={{
     fontFamily:"GT Super Display Medium",
     fontSize:"44px",
@@ -934,7 +935,7 @@ width: 297px;
   Get in touch
 </h2>
             )}
-            <p className="description-text">
+            <p className="description-text" tabIndex={0}>
               Tell us what you’re looking for, and we’ll come back with next steps.
             </p>
             
@@ -947,7 +948,7 @@ width: 297px;
               BOOK A CALL
             </a>
 
-            <div className="nikki-info" style={{ color: '#000' }}>
+            <div className="nikki-info" tabIndex={0} style={{ color: '#000' }}>
               Contact Niki <br />
               T: 0431 158 233
             </div>
@@ -956,32 +957,32 @@ width: 297px;
           {/* RIGHT SIDE */}
           <div className="contact-right">
             {submitted ? (
-              <div className="nikki-info">Thank you! We will be in touch.</div>
+              <div className="nikki-info" tabIndex={0}>Thank you! We will be in touch.</div>
             ) : (
               <form ref={form} onSubmit={handleSubmit} style={{ width: "100%", display: "flex", flexDirection: "column", gap: "16px" }}>
                 <div className="form-group">
-                  <label className="contact_label">First name</label>
+                  <label className="contact_label" tabIndex={0}>First name</label>
                   <input name="first_name" className="contact-input" placeholder="e.g. Sarah" required />
                 </div>
 
                 <div className="form-group">
-                  <label className="contact_label">Last name</label>
+                  <label className="contact_label" tabIndex={0}>Last name</label>
                   <input name="last_name" className="contact-input" placeholder="e.g. Smith" required />
                 </div>
 
                 <div className="form-group">
-                  <label className="contact_label">Phone number</label>
+                  <label className="contact_label" tabIndex={0}>Phone number</label>
                   <input name="phone_number" className="contact-input" placeholder="e.g. 0441 123 123" />
                 </div>
 
                 <div className="form-group">
-                  <label className="contact_label">Email</label>
+                  <label className="contact_label" tabIndex={0}>Email</label>
                   <input name="user_email" className="contact-input" type="email" placeholder="e.g. sarah@gmail.com" required />
                 </div>
 
                 {showService ? (
                   <div className="form-group">
-                    <label className="contact_label">Service</label>
+                    <label className="contact_label" tabIndex={0}>Service</label>
                     <select 
                       name="service" 
                       className="contact-input" 
@@ -1001,7 +1002,7 @@ width: 297px;
                 )}
 
                <div className="contact-field-row">
-  <label className="contact_label">
+  <label className="contact_label" tabIndex={0}>
     Would you prefer to be contacted by phone or email?
   </label>
   
@@ -1027,7 +1028,7 @@ width: 297px;
 </div>
 
                 <div className="form-group">
-                  <label className="contact_label">Message</label>
+                  <label className="contact_label" tabIndex={0}>Message</label>
                   <textarea name="message" className="contact-textarea" placeholder="What are you looking for?" required />
                 </div>
 
@@ -1065,10 +1066,10 @@ width: 297px;
           }}>
             <img src={checkIcon} alt="Success" style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
           </Box>
-          <Typography sx={{ fontFamily: 'GT Super Display', fontSize: '32px', color: '#073B2F', fontWeight: 500 }}>
+          <Typography tabIndex={0} sx={{ fontFamily: 'GT Super Display', fontSize: '32px', color: '#073B2F', fontWeight: 500 }}>
             Success!
           </Typography>
-          <Typography sx={{ fontFamily: 'sohneBuch', fontSize: '18px', color: '#000', fontWeight: 300, lineHeight: '28px' }}>
+          <Typography tabIndex={0} sx={{ fontFamily: 'sohneBuch', fontSize: '18px', color: '#000', fontWeight: 300, lineHeight: '28px' }}>
             Your message has been sent successfully. We will get back to you shortly.
           </Typography>
           <button

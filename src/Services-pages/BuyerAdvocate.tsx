@@ -29,7 +29,7 @@ export default function BuyerAdvocate() {
         }}
       >
         <div style={{ position: "relative", zIndex: 2, animation: "heroFadeIn 0.8s ease both", width: "100%" }}>
-          <h1 style={{
+          <h1 tabIndex={0} style={{
             alignSelf: "stretch",
             color: "var(--FS-WHITE, var(--Brand-Utility-FS-WHITE, #FFF))",
             textAlign: "center",

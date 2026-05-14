@@ -33,7 +33,7 @@ const SideBySideSection = ({
     <div style={{ flex: "1 1 450px" }}>
       <img src={image} alt={title} style={{ width: "100%", borderRadius: "16px", objectFit: "cover", aspectRatio: "4/3", boxShadow: "0 20px 40px rgba(0,0,0,0.05)" }} />
     </div>
-    <div style={{ flex: "1 1 450px" }}>
+    <div tabIndex={0} style={{ flex: "1 1 450px" }}>
       <h2 style={{ 
         fontFamily: "'GT Super Display Medium'", 
         fontSize: "44px", 
@@ -43,7 +43,7 @@ const SideBySideSection = ({
         letterSpacing: "-0.48px",
         marginBottom: "24px" 
       }}>{title}</h2>
-      <div style={{ 
+      <div tabIndex={0} style={{ 
         fontFamily: "'Söhne', sans-serif", 
         fontSize: "18px", 
         lineHeight: "1.6", 
@@ -105,7 +105,7 @@ export default function BuyerAgentPerthBlog() {
           }}>
             Your Ultimate Guide to Hiring a Buyer’s Agent in Perth
           </h1>
-          <p style={{ color: "#FFFFFF", fontSize: "24px", fontWeight: 300, marginTop: "24px", opacity: 0.9 }}>
+          <p tabIndex={0} style={{ color: "#FFFFFF", fontSize: "24px", fontWeight: 300, marginTop: "24px", opacity: 0.9 }}>
             Find & Sign Buyer Advocate
           </p>
         </div>
@@ -115,10 +115,10 @@ export default function BuyerAgentPerthBlog() {
         
         {/* ── INTRO ────────────────────────────────────────────────── */}
         <section style={{ padding: "60px 0 40px", textAlign: "center", maxWidth: "850px", margin: "0 auto" }}>
-          <p style={{ fontSize: "24px", lineHeight: "1.5", color: "#111", fontWeight: 300, marginBottom: "30px" }}>
+          <p tabIndex={0} style={{ fontSize: "24px", lineHeight: "1.5", color: "#111", fontWeight: 300, marginBottom: "30px" }}>
             Buying property in Perth is one of the biggest financial decisions you’ll ever make. Whether you're a first-home buyer, upgrading your family home, or building an investment portfolio, the process can feel overwhelming.
           </p>
-          <p style={{ fontSize: "18px", lineHeight: "1.8", color: "#666" }}>
+          <p tabIndex={0} style={{ fontSize: "18px", lineHeight: "1.8", color: "#666" }}>
             From searching listings and attending inspections to negotiating prices and bidding at auctions, there’s a lot to manage. That’s where a buyer’s agent in Perth becomes your greatest asset. At Find and Sign Buyer Advocate, we specialise in helping property buyers and investors make confident, strategic decisions—while saving time, stress, and money.
           </p>
         </section>
@@ -129,15 +129,15 @@ export default function BuyerAgentPerthBlog() {
           image={agentImg}
           content={
             <>
-              <p>A buyer’s agent (also known as a buyer’s advocate) represents the buyer—not the seller—throughout the property purchasing process.</p>
-              <p style={{ marginTop: "15px" }}>Unlike real estate agents who work for sellers, buyer’s agents work exclusively for you to:</p>
+              <p tabIndex={0}>A buyer’s agent (also known as a buyer’s advocate) represents the buyer—not the seller—throughout the property purchasing process.</p>
+              <p tabIndex={0} style={{ marginTop: "15px" }}>Unlike real estate agents who work for sellers, buyer’s agents work exclusively for you to:</p>
               <ul style={{ paddingLeft: "20px", marginTop: "10px", display: "flex", flexDirection: "column", gap: "8px" }}>
-                <li>Find the right property</li>
-                <li>Negotiate the best price</li>
-                <li>Provide expert market insights</li>
-                <li>Secure off-market opportunities</li>
+                <li tabIndex={0}>Find the right property</li>
+                <li tabIndex={0}>Negotiate the best price</li>
+                <li tabIndex={0}>Provide expert market insights</li>
+                <li tabIndex={0}>Secure off-market opportunities</li>
               </ul>
-              <p style={{ marginTop: "20px" }}>In competitive markets like Perth, having a professional on your side can make a significant difference.</p>
+              <p tabIndex={0} style={{ marginTop: "20px" }}>In competitive markets like Perth, having a professional on your side can make a significant difference.</p>
             </>
           }
         />
@@ -149,10 +149,10 @@ export default function BuyerAgentPerthBlog() {
           reverse
           content={
             <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-              <p><strong>First Home Buyers:</strong> Simplify the entry into the market and avoid costly first-timer mistakes.</p>
-              <p><strong>Property Investors:</strong> Leverage data-driven strategies to identify high-growth suburbs and maximise returns.</p>
-              <p><strong>Busy Professionals:</strong> Save time while we manage inspections, research, and negotiations for you.</p>
-              <p><strong>Interstate & Overseas Buyers:</strong> Secure Perth property with local expertise without being physically present.</p>
+              <p tabIndex={0}><strong>First Home Buyers:</strong> Simplify the entry into the market and avoid costly first-timer mistakes.</p>
+              <p tabIndex={0}><strong>Property Investors:</strong> Leverage data-driven strategies to identify high-growth suburbs and maximise returns.</p>
+              <p tabIndex={0}><strong>Busy Professionals:</strong> Save time while we manage inspections, research, and negotiations for you.</p>
+              <p tabIndex={0}><strong>Interstate & Overseas Buyers:</strong> Secure Perth property with local expertise without being physically present.</p>
             </div>
           }
         />
@@ -163,8 +163,8 @@ export default function BuyerAgentPerthBlog() {
           image={servicesImg}
           content={
             <ul style={{ display: "flex", flexDirection: "column", gap: "15px", paddingLeft: "20px" }}>
-              <li><strong>Buyer Advocate:</strong> This is our complete service for buyers who want the right property secured from the very first search through to settlement. We manage the process on your behalf, with clear guidance at each stage so you understand what's happening, what to expect, and where the opportunity lies. You're involved at every key moment, with decisions made together and no uncertainty around what comes next.</li>
-              <li><strong>Advisory :</strong> Sometimes you don't need someone to manage the entire process. You want the right guidance to make informed decisions from the first search through to securing a property. We guide you with clear advice at each stage so you understand what's happening, what to consider, and where risks and opportunities sit.</li>
+              <li tabIndex={0}><strong>Buyer Advocate:</strong> This is our complete service for buyers who want the right property secured from the very first search through to settlement. We manage the process on your behalf, with clear guidance at each stage so you understand what's happening, what to expect, and where the opportunity lies. You're involved at every key moment, with decisions made together and no uncertainty around what comes next.</li>
+              <li tabIndex={0}><strong>Advisory :</strong> Sometimes you don't need someone to manage the entire process. You want the right guidance to make informed decisions from the first search through to securing a property. We guide you with clear advice at each stage so you understand what's happening, what to consider, and where risks and opportunities sit.</li>
               
             </ul>
           }
@@ -177,10 +177,10 @@ export default function BuyerAgentPerthBlog() {
           reverse
           content={
             <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
-              <p><strong>Save Time:</strong> We handle the heavy lifting, shortlisting properties and managing paperwork.</p>
-              <p><strong>Access Off-Market Deals:</strong> Connect with exclusive opportunities that never reach public platforms.</p>
-              <p><strong>Avoid Overpaying:</strong> Expert negotiation ensures you buy at the fair market price or better.</p>
-              <p><strong>Expert Local Knowledge:</strong> Deep understanding of Perth's growth areas and investment hotspots.</p>
+              <p tabIndex={0}><strong>Save Time:</strong> We handle the heavy lifting, shortlisting properties and managing paperwork.</p>
+              <p tabIndex={0}><strong>Access Off-Market Deals:</strong> Connect with exclusive opportunities that never reach public platforms.</p>
+              <p tabIndex={0}><strong>Avoid Overpaying:</strong> Expert negotiation ensures you buy at the fair market price or better.</p>
+              <p tabIndex={0}><strong>Expert Local Knowledge:</strong> Deep understanding of Perth's growth areas and investment hotspots.</p>
             </div>
           }
         />
@@ -198,10 +198,10 @@ export default function BuyerAgentPerthBlog() {
               paddingBottom: "8px",
               width: "fit-content",
               margin: "0 auto 24px"
-            }}>Why Choose Find and Sign Buyer Advocate?</h2>
-            <p style={{ fontSize: "20px", marginBottom: "40px", opacity: 0.9 }}>Selecting the right agent is the key difference between a successful purchase and a costly mistake.</p>
+            }} tabIndex={0}>Why Choose Find and Sign Buyer Advocate?</h2>
+            <p tabIndex={0} style={{ fontSize: "20px", marginBottom: "40px", opacity: 0.9 }}>Selecting the right agent is the key difference between a successful purchase and a costly mistake.</p>
             <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "20px" }}>
-              {["Local Perth Market Expertise", "Strong Negotiation Track Record", "Access to Off-Market Properties", "Tailored Investment Strategies", "Client-Focused Approach"].map((item, i) => (
+              {["Local Perth Market Expertise", "Strong Negotiation Track Record", "Access to Off-Market Properties", "Tailored Investment Strategies", "Client-Focused Approach"].map((item, i) => ( // Changed to div for tabIndex
                 <div key={i} style={{ padding: "10px 20px", border: "1px solid rgba(255,255,255,0.3)", borderRadius: "100px", fontSize: "16px" }}>{item}</div>
               ))}
             </div>
@@ -218,7 +218,7 @@ export default function BuyerAgentPerthBlog() {
             borderBottom: "2px solid #073B2F",
             paddingBottom: "8px",
             width: "fit-content"
-          }}>Service Areas in Perth</h2>
+          }} tabIndex={0}>Service Areas in Perth</h2>
           <p style={{ fontSize: "20px", color: "#555", maxWidth: "800px", margin: "0 auto", lineHeight: "1.7" }}>
             We serve clients across the Perth CBD, Western Suburbs, Northern Suburbs, Southern Suburbs, and surrounding metropolitan areas.
           </p>
@@ -235,7 +235,7 @@ export default function BuyerAgentPerthBlog() {
             borderBottom: "2px solid #073B2F",
             paddingBottom: "8px",
             width: "fit-content"
-          }}>Frequently Asked Questions</h2>
+          }} tabIndex={0}>Frequently Asked Questions</h2>
           <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "24px", maxWidth: "900px", margin: "0 auto" }}>
             {[
               { q: "What does a buyer’s agent do?", a: "A buyer’s agent represents property buyers, helping them find, evaluate, and purchase properties at the best price." },
@@ -253,8 +253,8 @@ export default function BuyerAgentPerthBlog() {
                   border: "1px solid #F0F0F0" 
                 }}
               >
-                <h4 style={{ fontSize: "22px", color: "#073B2F", marginBottom: "16px", fontFamily: "GT Super Display Medium", fontWeight: 500 }}>{faq.q}</h4>
-                <p style={{ color: "#555", fontSize: "18px", lineHeight: "1.6", margin: 0 }}>{faq.a}</p>
+                <h4 tabIndex={0} style={{ fontSize: "22px", color: "#073B2F", marginBottom: "16px", fontFamily: "GT Super Display Medium", fontWeight: 500 }}>{faq.q}</h4>
+                <p tabIndex={0} style={{ color: "#555", fontSize: "18px", lineHeight: "1.6", margin: 0 }}>{faq.a}</p>
               </div>
             ))}
           </div>

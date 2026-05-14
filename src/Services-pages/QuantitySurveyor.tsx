@@ -35,6 +35,7 @@ export default function QuantitySurveyor() {
           }}
         >
           <h1
+            tabIndex={0}
             style={{
               alignSelf: "stretch",
               color: "var(--FS-WHITE, var(--Brand-Utility-FS-WHITE, #FFF))",

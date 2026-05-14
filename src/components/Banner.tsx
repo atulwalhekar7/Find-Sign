@@ -258,11 +258,11 @@ export default function App() {
           <div className="hero-overlay" />
 
           <div className="content-wrap">
-            <h1 className="hero-title">
+            <h1 className="hero-title" tabIndex={0}>
               The advantage of being first.
             </h1>
 
-            <button className="watch-btn" onClick={openVideo}>
+            <button className="watch-btn" onClick={openVideo} aria-label="Watch the introductory video">
               <svg width="9" height="11" viewBox="0 0 9 11" fill="none">
                 <path d="M9 5.5L0 11V0L9 5.5Z" fill="currentColor" />
               </svg>
@@ -272,12 +272,13 @@ export default function App() {
         </section>
 
         <section className="hero-bottom">
-          <p className="description">
+          <p className="description" tabIndex={0}>
             Find &amp; Sign is a property buyer's advocate. We represent clients Australia-wide,
             identifying the right properties and securing them before they reach the wider market.
           </p>
           <button
             className="find-out-btn"
+            aria-label="Find out more about Find and Sign"
             onClick={() => navigate("/about")}
           >
             Find Out More

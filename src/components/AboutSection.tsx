@@ -68,8 +68,8 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
         {/* Heading — full 12 cols always */}
         <FadeUp className="as-heading-col">
           <div className="about-heading-block">
-            <h2>{heading}</h2>
-            {subheading && <p className="sub">{subheading}</p>}
+            <h2 tabIndex={0}>{heading}</h2>
+            {subheading && <p className="sub" tabIndex={0}>{subheading}</p>}
           </div>
         </FadeUp>
 
@@ -87,13 +87,13 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
               ?.split("\n")
               .filter((p: string) => p.trim() !== "")
               .map((p: string, i: number) => (
-                <p key={`b1-${i}`} className="body">{p}</p>
+                <p key={`b1-${i}`} className="body" tabIndex={0}>{p}</p>
               ))}
             {body2
               ?.split("\n")
               .filter((p: string) => p.trim() !== "")
               .map((p: string, i: number) => (
-                <p key={`b2-${i}`} className="body">{p}</p>
+                <p key={`b2-${i}`} className="body" tabIndex={0}>{p}</p>
               ))}
           </div>
         </FadeUp>
