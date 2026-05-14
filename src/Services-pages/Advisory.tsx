@@ -37,7 +37,7 @@ export default function Advisory() {
             fontStyle: "normal",
             fontWeight: 500,
             lineHeight: "64px",
-            letterSpacing: "-1.12px",
+            letterSpacing: "1px",
             margin: 0
           }}>
             Advisory

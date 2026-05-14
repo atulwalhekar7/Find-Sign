@@ -441,7 +441,7 @@ export default function ClientOutcomes() {
           font-weight: 500;
           color: #FFF;
           line-height: 1.1;
-          letter-spacing: -1.28px;
+          letter-spacing: 1px;
           font-variant-numeric: lining-nums proportional-nums;
           margin: 0;
         }

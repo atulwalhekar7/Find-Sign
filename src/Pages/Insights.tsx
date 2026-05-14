@@ -204,7 +204,7 @@ export default function Insights() {
             fontWeight: 500,
             color: "#FFF",
             lineHeight: "1.1",
-            letterSpacing: "-1.28px",
+            letterSpacing: "1px",
             fontVariantNumeric: "lining-nums proportional-nums",
             margin: 0 
           }}>
