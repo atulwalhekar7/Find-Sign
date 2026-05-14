@@ -148,6 +148,8 @@ export default function ClientOutcomes() {
   const timerRef  = useRef<ReturnType<typeof setInterval> | null>(null);
   const trackRef  = useRef<HTMLDivElement>(null);
   const rafRef    = useRef<number | null>(null);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
   const visibleCount = isMobile ? 1 : isTablet ? 2 : 3;
   const sliderCards  = cards.slice(0, 10);
@@ -221,6 +223,24 @@ export default function ClientOutcomes() {
   const goto = (idx: number) => {
     setCur(Math.max(0, Math.min(idx, maxIdx)));
     resetTimer();
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const diff = touchStartX.current - touchEndX.current;
+    const threshold = 50; 
+    if (diff > threshold) goto(cur + 1);
+    if (diff < -threshold) goto(cur - 1);
+    touchStartX.current = null;
+    touchEndX.current = null;
   };
 
   // ── Card width ────────────────────────────────────────────────────────────
@@ -336,6 +356,7 @@ export default function ClientOutcomes() {
           gap: ${CARD_GAP}px;
           transition: transform 0.55s cubic-bezier(0.77, 0, 0.18, 1);
           will-change: transform;
+          touch-action: pan-y;
         }
 
         .property-card {
@@ -600,6 +621,9 @@ export default function ClientOutcomes() {
                     transform: `translateX(-${offset}px)`,
                     "--card-flex-basis": cardFlexBasis,
                   } as React.CSSProperties}
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleTouchEnd}
                 >
                   {sliderCards.map((card) => (
                     <PropertyCard key={card.id} card={card} />

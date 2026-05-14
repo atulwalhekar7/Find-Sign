@@ -119,17 +119,17 @@ const reviews = [
   { name: "Amit Bhardwaj",        date: "2 months ago",  title: "One of the best decisions we made",       body: "Having Niki as our buyer's agent was one of the best decisions we made. From the very start, he genuinely cared about finding the right home for us. He listened, guided us with confidence, and made what could have been a stressful process feel calm and manageable." },
   { name: "Rinzin Wangchuk",      date: "3 months ago",  title: "Goes way above your needs",               body: "Niki is very professional and goes way above your needs. I was looking for my first home in Perth and didn't know where to begin.", image: rinzinWangchukImg },
   { name: "dayna bechar",         date: "5 months ago",  title: "Absolute pleasure to work",               body: "Niki was an absolute pleasure to work with. His market knowledge and clear communication gave us total confidence throughout the process. He was always available to answer questions and offer advice. Thanks to Niki, we found our dream home without any stress. Highly recommend!" },
-  { name: "Jay DASS",             date: "4 months ago",  title: "Seamless, well-managed",                  body: "Niki from Nakrani Property Buyers was an absolute pleasure to work with. From our first conversation through to completion, the process was seamless, well-managed and communicated clearly at every step." },
-  { name: "Zed A",                date: "5 months ago",  title: "Massive asset, highly recommend",         body: "My team and I have worked with Nikki from Nakrani Property on many transactions. He excels at educating his clients and securing the best deals. Having Nikki on your side is a massive asset, and I highly recommend him to anyone buying a property in Perth.", image: zedAImg },
-  { name: "Josh Mezger",          date: "3 months ago",  title: "A Bespoke, High-Touch Experience",        body: "What truly defines Nakrani Property Buyers is the white-glove service. Niki is: Proactive: He anticipates hurdles before they arise. Transparent: You are never left wondering where a deal stands; his communication is frequent, clear, and honest." },
-  { name: "salam ishikura",       date: "5 months ago",  title: "Fantastic professional, proactive",       body: "I recently worked with Niki, and he was fantastic professional, proactive, and incredibly easy to communicate with. He genuinely looks after his clients and makes the whole process smooth and stress free." },
-  { name: "Kumar Vasinda Comara", date: "7 months ago",  title: "Great experience from start to finish",   body: "As the seller's agent, I had the pleasure of working with Niki from Nakrani Property, and it was a great experience from start to finish.", image: kumarVasindaImg },
+  { name: "Gian Ottavio",             date: "3 months ago",  title: "professional in all",                  body: "Niki has been nothing but professional in all my dealings with him. I never have to think twice about how my clients will be handled as I've had nothing but amazing feedback from everyone I have referred his way." },
+  { name: "Karen Rowley",                date: "6 months ago",  title: " fantastic experience working with Niki",         body: "We had an absolutely fantastic experience working with Niki as a Buyer’s agent. He was very professional and always communicated well with ourselves and his clients throughout the process." },
+  { name: "Kush Hirani",          date: "5 months ago",  title: "Quick responses",        body: "Very pleased with Niki & Rebecca’s service. Quick responses and always going above and beyond to make sure I found the right property. " },
+  { name: "Vince Collova",       date: "4 months ago",  title: "Right from the start there communication",       body: "Right from the start there communication was amazing and prompt. The whole team were very friendly and professional. They understood what we were after and made sure we got the deal of the century." },
+  { name: "Afsal Mansuri", date: "a Year ago",  title: "From our very first meeting",   body: "We had the pleasure of working with Niki and the team as my buyer's agent, and I cannot recommend them enough!From our very first meeting." },
   { name: "Subho Ghosh",          date: "2 months ago",  title: "Absolute legends",                        body: "Niki and Bec were absolute legends. They really listened, stayed patient, and went the extra mile to help us find our dream home. Honest advice, great communication, and zero pressure. Couldn't have asked for better agents to guide us through the process. Highly recommend them." },
-  { name: "Jasmine cheema",       date: "6 months ago",  title: "Truly exceptional at what he does",      body: "I recently had the opportunity to work with Niki, and I must say he is truly exceptional at what he does. He consistently puts his clients first and goes above and beyond to ensure they feel supported throughout the entire process." },
-  { name: "Gurinder Singh",       date: "4 months ago",  title: "Great experience working with Niki",      body: "Great experience working with Niki on this transaction. Everything ran smoothly from start to finish. Niki has a strong understanding of the market, communicated clearly, and was professional throughout. A pleasure to deal with.", image: gurinderSinghImg },
+  { name: "Bhaskara M",       date: "8 months ago",  title: " negotiated a great deal",      body: "We had the pleasure of working with Niki Nakrani Property Buyers during our recent property purchase. Their market knowledge, attention to detail, and genuine care made the entire process seamless. They listened to our needs, found us the perfect property, and negotiated a great deal." },
+  { name: "jigar faldu",       date: "a Year ago",  title: "services to purchase their",      body: "My wife and I don't understand real estate and are definitely not negotiators. We met Niki through a friend who used his services to purchase their first home. As first home buyers, we had been in the market for a few months without success." },
   { name: "P Y",                  date: "4 months ago",  title: "Hands-on approach and professionalism",   body: "What really stood out about Niki compared to other buyer's agents I spoke with was his hands-on approach and professionalism from the very beginning. I was unsure about using a buyer's agent at first, but after our first call it was clear." },
-  { name: "Travis Ranieri",       date: "10 months ago", title: "Ongoing support journey",                 body: "As a Buyers Agent Niki provided ongoing support through our property investment journey, delivering insights and become a trusted advisor for our family. Seamless process, highly recommend leveraging Niki and his team." },
-  { name: "Kien Lam",             date: "8 months ago",  title: "Best in the business",                   body: "Niki is the best in the business. He has the best negotiating skills and can get you the best price for the property.", image: kienLamImg },
+  { name: "Frank Boitano",       date: "8 months ago", title: "Niki is the man you need",                 body: "Niki is the man you need if you want to get things done He is connected and knows the Perth Market.He works tirelessly to get results for his clients and delivers." },
+  { name: "SUDHIR KHUT",             date: "10 months ago",  title: " I've opted for a buyers agent",                   body: "Well its true that good things comes in small packages. As a property investor this is the first time I've opted for a buyers agent. Right from beginning value addition was seen; some key highlights of Niki's service was property insites." },
 ];
 
 const formattedReviews = reviews.map(r => ({
@@ -215,6 +215,8 @@ export default function ClientOutcomes() {
   const outcomesTimerRef  = useRef<ReturnType<typeof setInterval> | null>(null);
   const outcomesTrackRef  = useRef<HTMLDivElement>(null);
   const outcomesRafRef    = useRef<number | null>(null);
+  const outcomesTouchStartX = useRef<number | null>(null);
+  const outcomesTouchEndX = useRef<number | null>(null);
 
   const outcomesVisibleCount = isMobile ? 1 : isTablet ? 2 : 3;
   const outcomesSliderCards  = cards.slice(0, 10);
@@ -288,6 +290,24 @@ export default function ClientOutcomes() {
     resetOutcomesTimer();
   }, [outcomesMaxIdx, resetOutcomesTimer]);
 
+  const handleOutcomesTouchStart = (e: React.TouchEvent) => {
+    outcomesTouchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleOutcomesTouchMove = (e: React.TouchEvent) => {
+    outcomesTouchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleOutcomesTouchEnd = () => {
+    if (!outcomesTouchStartX.current || !outcomesTouchEndX.current) return;
+    const diff = outcomesTouchStartX.current - outcomesTouchEndX.current;
+    const threshold = 50;
+    if (diff > threshold) gotoOutcome(outcomesCur + 1);
+    if (diff < -threshold) gotoOutcome(outcomesCur - 1);
+    outcomesTouchStartX.current = null;
+    outcomesTouchEndX.current = null;
+  };
+
   const outcomesCardFlexBasis = isMobile
     ? `calc(100% - ${CARD_GAP}px - ${PEEK}px)`
     : `calc((100% - ${CARD_GAP}px * ${outcomesVisibleCount - 1}) / ${outcomesVisibleCount})`;
@@ -301,6 +321,8 @@ export default function ClientOutcomes() {
   const reviewTrackRef                       = useRef<HTMLDivElement>(null);
   const reviewRafRef                         = useRef<number | null>(null);
   const reviewButtonContainerRef             = useRef<HTMLDivElement>(null);
+  const reviewTouchStartX                    = useRef<number | null>(null);
+  const reviewTouchEndX                      = useRef<number | null>(null);
   const testimonialsSectionRef               = useRef<HTMLElement | null>(null);
   const outcomesSectionRef                   = useRef<HTMLDivElement | null>(null);
 
@@ -339,6 +361,24 @@ export default function ClientOutcomes() {
   const nextReview = useCallback(() => {
     setReviewIdx(prev => (prev >= maxReviewIdx ? 0 : prev + 1));
   }, [maxReviewIdx]);
+
+  const handleReviewTouchStart = (e: React.TouchEvent) => {
+    reviewTouchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleReviewTouchMove = (e: React.TouchEvent) => {
+    reviewTouchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleReviewTouchEnd = () => {
+    if (!reviewTouchStartX.current || !reviewTouchEndX.current) return;
+    const diff = reviewTouchStartX.current - reviewTouchEndX.current;
+    const threshold = 50;
+    if (diff > threshold) setReviewIdx(prev => Math.min(maxReviewIdx, prev + 1));
+    if (diff < -threshold) setReviewIdx(prev => Math.max(0, prev - 1));
+    reviewTouchStartX.current = null;
+    reviewTouchEndX.current = null;
+  };
 
   useEffect(() => {
     const t = setInterval(nextReview, 6000);
@@ -401,7 +441,7 @@ export default function ClientOutcomes() {
           font-weight: 500;
           color: #FFF;
           line-height: 1.1;
-          letter-spacing: -1.28px;
+          letter-spacing: 1px;
           font-variant-numeric: lining-nums proportional-nums;
           margin: 0;
         }
@@ -583,6 +623,7 @@ export default function ClientOutcomes() {
           gap: ${CARD_GAP}px;
           transition: transform 0.55s cubic-bezier(0.77, 0, 0.18, 1);
           will-change: transform;
+          touch-action: pan-y;
         }
         .co-dots { display: flex; gap: 12px; align-items: center; margin-bottom: 24px; }
         .co-dot {
@@ -644,6 +685,7 @@ export default function ClientOutcomes() {
           gap: ${CARD_GAP}px;
           transition: transform 0.55s cubic-bezier(0.77,0,0.18,1);
           will-change: transform;
+          touch-action: pan-y;
         }
 
         /* ══ TESTIMONIAL CARD ══ */
@@ -965,6 +1007,9 @@ export default function ClientOutcomes() {
                         transform: `translateX(-${outcomesOffset}px)`,
                         "--card-flex-basis": outcomesCardFlexBasis,
                       } as React.CSSProperties}
+                      onTouchStart={handleOutcomesTouchStart}
+                      onTouchMove={handleOutcomesTouchMove}
+                      onTouchEnd={handleOutcomesTouchEnd}
                     >
                       {outcomesSliderCards.map((card, i) => (
                         <PropertyCard key={card.id} card={card} index={i} />
@@ -1042,6 +1087,9 @@ export default function ClientOutcomes() {
                           transform: `translateX(-${reviewOffset}px)`,
                           "--card-flex-basis": reviewCardFlexBasis,
                         } as React.CSSProperties}
+                        onTouchStart={handleReviewTouchStart}
+                        onTouchMove={handleReviewTouchMove}
+                        onTouchEnd={handleReviewTouchEnd}
                       >
                         {formattedReviews.map((t, i) => (
                           <TestimonialCard

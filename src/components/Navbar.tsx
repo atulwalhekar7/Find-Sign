@@ -42,6 +42,8 @@ export default function Navbar() {
           height: 59px !important;
   object-fit: contain;
   display: block;
+  /* Premium Modern Animation: Elegant Bounce, Glow, and Shimmer pulse */
+  animation: logo-premium-fx 6s ease-in-out infinite;
 }
 
         .nav-actions {
@@ -174,6 +176,25 @@ export default function Navbar() {
         @keyframes rotate-border {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
+        }
+
+        @keyframes logo-premium-fx {
+          0%, 100% {
+            transform: translateY(0) scale(1);
+            filter: drop-shadow(0 0 2px rgba(105, 228, 220, 0.1)) brightness(1);
+          }
+          /* Lighting/Shimmer spike pulse */
+          25% {
+            filter: drop-shadow(0 0 5px rgba(105, 228, 220, 0.3)) brightness(1.4);
+          }
+          30% {
+            filter: drop-shadow(0 0 2px rgba(105, 228, 220, 0.1)) brightness(1);
+          }
+          /* Attractive Bounce Peak + Glowing Effect */
+          50% {
+            transform: translateY(-10px) scale(1.05);
+            filter: drop-shadow(0 15px 35px rgba(105, 228, 220, 0.7)) brightness(1.1);
+          }
         }
 
         .vibrate-icon {
@@ -403,3 +424,5 @@ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
     </>
   );
 }
+
+

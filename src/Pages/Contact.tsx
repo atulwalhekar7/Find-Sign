@@ -29,7 +29,7 @@ export default function Contact() {
             fontStyle: "normal",
             fontWeight: 500,
             lineHeight: "54px",
-            letterSpacing: "-0.88px",
+            letterSpacing: "1px",
             margin: "0",
             display: "flex",
             flexDirection: "column",
