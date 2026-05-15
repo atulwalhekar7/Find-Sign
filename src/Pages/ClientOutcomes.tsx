@@ -7,7 +7,7 @@ import Image5 from "../components/Image5";
 import Image6 from "../components/Image6";
 
 import bannerImg from "../assets/client-outcomes-banner-find-and-sign-buyers-agent-australia.jpg";
-import AboutClientOutcomesImg from "../assets/find-and-sign-about-client-outcomes-property-experts-australia.png";
+import AboutClientOutcomesImg from "../assets/About Find&Sign.jpg";
 
 import id1 from "../assets/Client Outcomes/id1.webp";
 import id2 from "../assets/Client Outcomes/id2.webp";
@@ -130,6 +130,7 @@ const reviews = [
 
 const formattedReviews = reviews.map(r => ({
   ...r,
+  title: r.title.trim(),
   body: r.body.endsWith("…More") ? r.body.slice(0, -5).trim() : r.body,
 }));
 
@@ -712,7 +713,8 @@ export default function ClientOutcomes() {
           font-size: 16px;
           font-weight: 400;
           font-family: SohneBuch;
-          line-height: 24px;
+          line-height: 1.1;
+          text-transform: capitalize;
           max-width: 100%;
           white-space: normal;
           word-break: break-word;
@@ -951,13 +953,14 @@ export default function ClientOutcomes() {
         </section>
 
         {/* ══ ABOUT ══ */}
-        <div className="client-outcomes-about">
-          <AboutSection
-            imageSrc={AboutClientOutcomesImg}
-            heading="About Client Outcomes"
-            body1="These are outcomes we have achieved for our clients. Real properties, real numbers, and measurable growth. When you engage Find and Sign Buyer Advocate, you are not simply purchasing a property; you are entering a strategy built for long-term performance. These examples show what is possible when the right property is identified and secured early."
-          />
-        </div>
+      <div className="client-outcomes-about">
+  <AboutSection
+    imageSrc={AboutClientOutcomesImg}
+    heading="About Client Outcomes"
+    body1="These are outcomes we have achieved for our clients. Real properties, real numbers, and measurable growth. When you engage Find and Sign Buyer Advocate, you are not simply purchasing a property; you are entering a strategy built for long-term performance. These examples show what is possible when the right property is identified and secured early."
+    imageStyle={{ height: "250px", width: "auto" }}
+  />
+</div>
 
         {/* ══ CLIENT OUTCOMES GRID ══ */}
         <div className="outcomes-section-wrap">

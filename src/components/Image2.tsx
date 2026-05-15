@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
-import heroImage from "../assets/niki-nakrani-buyers-agent-image3-australia-find-and-sign.png";
+import heroImage from "../assets/niki-nakrani-buyers-agent-image2-australia-find-and-sign.jpg";
 
 const Image1: React.FC = () => {
   return (
@@ -37,7 +37,7 @@ const Image1: React.FC = () => {
     inset: 0,
     display: "flex",
     justifyContent: "center",
-    alignItems: { xs: "flex-end", sm: "center" }, // vertically centered
+    alignItems: { xs: "center", sm: "center" }, // vertically centered
     padding: { xs: "20px", md: "40px" },
     transform: "none",    // 👈 remove the translateY offset
   }}
@@ -79,8 +79,8 @@ const Image1: React.FC = () => {
       <style>{`
         @media (max-width: 599px) {
           .image2-overlay-container {
-            align-items: flex-end !important;
-            padding-bottom: 60px !important;
+            align-items: center !important;
+            padding-bottom: 0px !important;
           }
           .image2-hero-title {
             font-size: 18px !important;
