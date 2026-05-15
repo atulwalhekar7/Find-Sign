@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useTheme } from "../components/ThemeContext";
 import aboutContentImg from "../assets/happy-home-buyers-australia-find-and-sign.jpg";
 import aboutVideo from "../assets/Interview Draft (2).mp4";
 import AboutSection from "../components/AboutSection";
@@ -17,7 +18,41 @@ import liIcon from "../assets/icon/LinkedIn.svg";
 import tiIcon from "../assets/icon/Tiktok.svg";
 import goIcon from "../assets/icon/Google.svg";
 
+const THEMES = {
+  dark: {
+    pageBg:        "#121212",
+    sectionBg:     "#121212",
+    teamSectionBg: "#1A1A1A",
+    cardBg:        "#1E1E1E",
+    cardBorder:    "#69E4DC",
+    headingColor:  "#F9F9F9",
+    nameColor:     "#F9F9F9",
+    roleColor:     "#EAE5DF",
+    bioColor:      "#A0A0A0",
+    btnColor:      "#69E4DC",
+    btnBorder:     "#69E4DC",
+    iconFilter:    "brightness(0) invert(1)",
+  },
+  light: {
+    pageBg:        "#FFFFFF",
+    sectionBg:     "#FFFFFF",
+    teamSectionBg: "#FFFFFF",
+    cardBg:        "#FFFFFF",
+    cardBorder:    "#69E4DC",
+    headingColor:  "#073B2F",
+    nameColor:     "#000000",
+    roleColor:     "#000000",
+    bioColor:      "#757575",
+    btnColor:      "#073B2F",
+    btnBorder:     "#69E4DC",
+    iconFilter:    "brightness(0)",
+  },
+};
+
 export default function About() {
+  const { theme } = useTheme();
+  const t = THEMES[theme];
+
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
@@ -25,20 +60,19 @@ export default function About() {
   const [nikiExpanded, setNikiExpanded] = useState(false);
 
   const togglePlayPause = () => {
-  const vid = videoRef.current;
-  if (!vid) return;
+    const vid = videoRef.current;
+    if (!vid) return;
+    if (vid.paused) {
+      vid.muted = false;
+      setIsMuted(false);
+      vid.play();
+      setIsPlaying(true);
+    } else {
+      vid.pause();
+      setIsPlaying(false);
+    }
+  };
 
-  if (vid.paused) {
-    vid.muted = false;        // 👈 AUTO UNMUTE ON PLAY
-    setIsMuted(false);
-
-    vid.play();
-    setIsPlaying(true);
-  } else {
-    vid.pause();
-    setIsPlaying(false);
-  }
-};
   const toggleMute = () => {
     const vid = videoRef.current;
     if (!vid) return;
@@ -55,20 +89,17 @@ export default function About() {
           <h1 className="hero-title" tabIndex={0}>About Us</h1>
         </div>
       </section>
-<div style={{ background: "#fff" }}>
-      <AboutSection
-        imageSrc={AboutUsBanner}
-        heading="About Find & Sign"
-        // subheading="Explore more about Find & Sign."
-        body1="Find & Sign Buyer Advocate was built on the belief that every buyer should secure the right property to build equity, choice and financial freedom.
+
+      <div style={{ background: t.sectionBg, transition: "background 0.3s ease" }}>
+        <AboutSection
+          imageSrc={AboutUsBanner}
+          heading="About Find & Sign"
+          body1="Find & Sign Buyer Advocate was built on the belief that every buyer should secure the right property to build equity, choice and financial freedom.
 Founder Niki learnt through experience that the right guidance is critical in securing the outcome. It is identified through local knowledge, experience and direct relationships, then secured before it reaches the wider market.
-We are a boutique buyers' agency operating nationwide, acting exclusively for buyers. Not agents.Not developers we are intentionally selective about the number of clients we take on to give each brief our full attention and expert advice. 
-"
-        body2="
-We assess every opportunity in person by walking the property, the street, and the surrounding area. Decisions are never made from photos or data alone. Because it's about identifying the opportunity and securing it early. The advantage of being first
-Find & Sign we find with confidence you sign with certainty.
-"
-      />
+We are a boutique buyers' agency operating nationwide, acting exclusively for buyers. Not agents. Not developers we are intentionally selective about the number of clients we take on to give each brief our full attention and expert advice."
+          body2="We assess every opportunity in person by walking the property, the street, and the surrounding area. Decisions are never made from photos or data alone. Because it's about identifying the opportunity and securing it early. The advantage of being first.
+Find & Sign we find with confidence you sign with certainty."
+        />
       </div>
 
       {/* SECTION 3 — Video */}
@@ -105,14 +136,14 @@ Find & Sign we find with confidence you sign with certainty.
               {isMuted ? (
                 <svg viewBox="0 0 24 24" fill="white" width="22" height="22">
                   <path d="M11 5L6 9H2v6h4l5 4V5z" />
-                  <line x1="23" y1="9" x2="17" y2="15" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                  <line x1="17" y1="9" x2="23" y2="15" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                  <line x1="23" y1="9" x2="17" y2="15" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                  <line x1="17" y1="9" x2="23" y2="15" stroke="white" strokeWidth="2" strokeLinecap="round" />
                 </svg>
               ) : (
                 <svg viewBox="0 0 24 24" fill="white" width="22" height="22">
                   <path d="M11 5L6 9H2v6h4l5 4V5z" />
-                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round"/>
-                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round"/>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" />
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" />
                 </svg>
               )}
             </button>
@@ -125,18 +156,12 @@ Find & Sign we find with confidence you sign with certainty.
 
         /* ── HERO ── */
         .hero-banner {
-          position: relative;
-          width: 100%;
-          min-height: 60vh;
-          aspect-ratio: 16 / 7;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          position: relative; width: 100%; min-height: 60vh;
+          aspect-ratio: 16 / 7; display: flex;
+          align-items: center; justify-content: center;
           background-image: url(${Banner});
-          background-size: cover;
-          background-position: center 30%;
-          background-repeat: no-repeat;
-          background-attachment: scroll;
+          background-size: cover; background-position: center 30%;
+          background-repeat: no-repeat; background-attachment: scroll;
         }
         .banner-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.35); z-index: 1; }
         .hero-box {
@@ -150,8 +175,7 @@ Find & Sign we find with confidence you sign with certainty.
         .hero-title {
           font-family: 'GT Super Display Medium';
           font-size: 64px; font-weight: 500; color: #FFF;
-          line-height: 1.1; letter-spacing: 1px;
-          font-variant-numeric: lining-nums proportional-nums; margin: 0;
+          line-height: 1.1; letter-spacing: 1px; margin: 0;
         }
 
         /* ── VIDEO ── */
@@ -184,243 +208,34 @@ Find & Sign we find with confidence you sign with certainty.
         .mute-btn:hover { background: rgba(255,255,255,0.25); transform: scale(1.08); }
         .mute-btn:active { transform: scale(0.96); }
 
-        /* ── TEAM SECTION ── */
-       .team-section {
-  width: 100%;
-  padding: 64px 32px;
-  background: #fff;   /* ← add this */
-}
-        .team-container { max-width: 1200px; margin: 0 auto; }
-
-        .team-header {
-          display: flex; flex-direction: column; align-items: center; margin-bottom: 48px;
-        }
-        .team-header h2 {
-          color: #073B2F; font-family: 'GT Super Display Medium';
-          font-size: 44px; font-weight: 500; line-height: 120%; letter-spacing: -0.88px;
-          display: flex; flex-direction: column; align-items: center; gap: 24px;
-          text-align: center; margin: 0;
-        }
-        .team-header h2::after { content: ""; width: 160px; height: 1px; background: #073B2F; }
-        .team-header p {
-          color: #000; font-family: 'Sohne'; font-size: 24px;
-          font-weight: 300; line-height: 1.5; margin-top: 24px; text-align: center;
-        }
-
-        .team-grid {
-          display: flex; justify-content: center; flex-wrap: wrap; gap: 32px; width: 100%;
-        }
-
-        /* ── CARD: exact Figma values ── */
-        .team-card {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          width: 392px;
-          padding: 24px;
-          gap: 31px;
-          border-radius: 24px;
-          border: 1px solid #69E4DC;
-          background: #FFF;
-          box-sizing: border-box;
-          transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
-        }
+        /* ── TEAM CARD HOVER ── */
         .team-card:hover {
           transform: translateY(-10px);
           box-shadow: 0 10px 28px rgba(105, 228, 220, 0.55);
         }
-
-        /* Top row: image (142×174, radius 20px) + name/role beside it */
-        .team-card-top {
-          display: flex;
-          align-items: flex-start;
-          gap: 16px;
-          align-self: stretch;
-        }
-        .team-img-wrap {
-          width: 142px;
-          height: 174px;
-          min-width: 142px;
-          border-radius: 20px;
-          overflow: hidden;
-          flex-shrink: 0;
-          background: #dcdcdc;
-        }
-        .team-img-wrap img {
-          width: 100%; height: 100%;
-          object-fit: cover; object-position: top center; display: block;
-        }
-        .team-name-block {
-          display: flex; flex-direction: column; justify-content: flex-start;
-          gap: 4px; padding-top: 4px; flex: 1;
-        }
-        .team-name {
-          color: #000;
-          font-variant-numeric: lining-nums proportional-nums;
-          font-family: 'GT Super Display', 'GT Super Display Medium', Georgia, serif;
-          font-size: 32px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 40px;
-          letter-spacing: -0.64px;
-          margin: 0;
-        }
-        .team-role {
-          color: #000;
-          font-family: 'Söhne', 'Sohne', sans-serif;
-          font-size: 20px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: 28px;
-          margin: 0;
-        }
-
-        /* Bio: 8-line clamp, grey text */
-       .team-bio-wrap {
-  align-self: stretch;
-}
-
-.team-bio-wrap.clamped {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 8;
-}
-
-.team-bio-wrap.expanded {
-  display: block;
-}
-
-.team-read-more {
-  display: inline-block;
-  color: #69E4DC;
-  font-family: 'Söhne', 'Sohne', sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-}
-
-.team-read-more:hover {
-  text-decoration: underline;
-}
-          .team-bio {
-          color: #757575;
-          font-family: 'Söhne', 'Sohne', sans-serif;
-          font-size: 16px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: 24px;
-          margin: 0;
-          display: inline;
-        }
-       
-
-        /* Social icons row */
-        .team-socials {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          margin-top: 10px;
-        }
-        .team-socials a {
-          display: flex;
-          align-items: center;
-          transition: opacity 0.2s;
-        }
+        .team-contact-btn:hover { background: #69E4DC; color: #073B2F; }
+        .team-read-more:hover { text-decoration: underline; }
         .team-socials a:hover { opacity: 0.65; }
-.team-card-content {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-        /* Contact button: exact Figma — border aqua, text colour inherit */
-        .team-contact-btn {
-          margin-top: auto;
 
-  display: inline-flex;
-  height: 48px;
-  padding: 12px 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 8px;
-  border: 1px solid #69E4DC;
-  background: transparent;
-  color: #073B2F;
-  font-family: 'CX80';
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 3.9px;
-  text-transform: uppercase;
-  cursor: pointer;
-  width: fit-content; /* 👈 shrinks to text width */
-  align-self: flex-start; /* 👈 pins to left */
-  box-sizing: border-box;
-  flex-shrink: 0;
-  transition: background 0.2s, color 0.2s;
-  text-decoration: none;
-}
-        .team-contact-btn:hover {
-          background: #69E4DC;
-          color: #073B2F;
-        }
-
-        .team-bio-wrap {
-  align-self: stretch;
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-.team-bio {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-.team-read-more {
-  margin-top: -6px !important;
-  display: inline-block;
-  line-height: 18px;
-}
-
-        /* Animations */
+        /* ── ANIMATIONS ── */
         @keyframes heroFadeIn {
           from { opacity: 0; transform: translateY(30px); }
           to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive */
+        /* ── RESPONSIVE ── */
         @media (max-width: 900px) {
           .hero-box { padding: 60px 20px; width: 92%; }
           .hero-title { font-size: 56px !important; line-height: 1.2 !important; }
-          .hero-banner {
-            aspect-ratio: 4 / 5;
-            min-height: unset;
-          }
+          .hero-banner { aspect-ratio: 4 / 5; min-height: unset; }
           .video-inner { height: 400px; }
           .play-btn, .mute-btn { width: 42px; height: 42px; }
-          .team-card { width: 100%; max-width: 480px; }
         }
         @media (max-width: 600px) {
           .hero-box { padding: 60px 20px; width: 94%; border-radius: 8px; }
           .hero-title { font-size: 56px !important; }
           .video-inner { height: 260px; }
           .play-btn, .mute-btn { width: 36px; height: 36px; }
-          .team-section { padding: 60px 20px; }
-          .team-header h2 { font-size: 42px; }
-          .team-header p { font-size: 18px; }
-          .team-card { width: 100%; padding: 20px; gap: 20px; }
-          .team-img-wrap { width: 110px; height: 134px; min-width: 110px; }
-          .team-name { font-size: 32px; line-height: 30px; }
-          .team-role { font-size: 16px; line-height: 22px; }
-          .team-socials { flex-wrap: wrap; gap: 12px; }
-            .team-read-more {
-    margin-top: -10px !important;
-  }
         }
         @media (max-width: 768px) {
           .hero-banner { background-attachment: scroll; }
@@ -428,124 +243,150 @@ Find & Sign we find with confidence you sign with certainty.
       `}</style>
 
       {/* SECTION 4 — Meet the Team */}
-      <section className="team-section">
-        <div className="team-container">
+      <section style={{ width: "100%", padding: "64px 32px", background: t.teamSectionBg, transition: "background 0.3s ease" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
 
-          <div className="team-header">
-            <h2 tabIndex={0}>Meet the team</h2>
-            <p tabIndex={0}>Explore more about our team.</p>
+          {/* Header */}
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: "48px" }}>
+            <h2
+              tabIndex={0}
+              style={{
+                color: t.headingColor,
+                fontFamily: "GT Super Display Medium",
+                fontSize: "44px",
+                fontWeight: 500,
+                lineHeight: "120%",
+                letterSpacing: "-0.88px",
+                textAlign: "center",
+                margin: 0,
+                transition: "color 0.3s ease",
+              }}
+            >
+              Meet the team
+            </h2>
+            <div style={{ width: "160px", height: "1px", background: t.headingColor, margin: "24px 0" }} />
+            <p
+              tabIndex={0}
+              style={{
+                color: t.roleColor,
+                fontFamily: "Sohne",
+                fontSize: "24px",
+                fontWeight: 300,
+                lineHeight: "1.5",
+                textAlign: "center",
+                transition: "color 0.3s ease",
+              }}
+            >
+              Explore more about our team.
+            </p>
           </div>
 
-          <div className="team-grid">
+          {/* Cards Grid */}
+          <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "32px" }}>
 
             {/* ── Card: Niki ── */}
-            <div className="team-card">
-
-              {/* TOP: image + name / role / socials */}
-              <div className="team-card-top">
-                <div className="team-img-wrap">
-                  <img src={niki} alt="Niki Nakrani" />
+            <div
+              className="team-card"
+              style={{
+                display: "flex", flexDirection: "column", alignItems: "flex-start",
+                width: "392px", padding: "24px", gap: "31px",
+                borderRadius: "24px", border: `1px solid ${t.cardBorder}`,
+                background: t.cardBg, boxSizing: "border-box",
+                transition: "transform 0.4s cubic-bezier(0.165,0.84,0.44,1), box-shadow 0.4s ease, background 0.3s ease",
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "flex-start", gap: "16px", width: "100%" }}>
+                <div style={{ width: "142px", height: "174px", minWidth: "142px", borderRadius: "20px", overflow: "hidden", flexShrink: 0, background: "#dcdcdc" }}>
+                  <img src={niki} alt="Niki Nakrani" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", display: "block" }} />
                 </div>
-                <div className="team-name-block">
-                  <h3 className="team-name" tabIndex={0}>Niki Nakrani</h3>
-                  <p className="team-role" tabIndex={0}>CEO &amp; Founder</p>
-                  {/* Social icons */}
-                  <div className="team-socials">
-                    <a href="https://www.facebook.com/nakranipropertybuyers/" target="_blank" rel="noreferrer" aria-label="Facebook">
-                      <img src={fbIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Facebook" />
-                    </a>
-                    <a href="https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" target="_blank" rel="noreferrer" aria-label="Instagram">
-                      <img src={igIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Instagram" />
-                    </a>
-                    <a href="https://www.linkedin.com/in/niki-nakrani-13b269237/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                      <img src={liIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="LinkedIn" />
-                    </a>
-                    <a href=" https://www.tiktok.com/@findandsignba/" target="_blank" rel="noreferrer" aria-label="Tiktok">
-                      <img src={tiIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Tiktok" />
-                    </a>
-                    <a href="https://www.google.com/search?kgmid=/g/11vyhyd916&hl=en-IN&q=Find+and+Sign+Buyer+Advocate" target="_blank" rel="noreferrer" aria-label="Google">
-                      <img src={goIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Google" />
-                    </a>
+                <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start", gap: "4px", paddingTop: "4px", flex: 1 }}>
+                  <h3 tabIndex={0} style={{ color: t.nameColor, fontFamily: "GT Super Display Medium", fontSize: "32px", fontWeight: 500, lineHeight: "40px", letterSpacing: "-0.64px", margin: 0, transition: "color 0.3s ease" }}>
+                    Niki Nakrani
+                  </h3>
+                  <p tabIndex={0} style={{ color: t.roleColor, fontFamily: "Söhne, sans-serif", fontSize: "20px", fontWeight: 400, lineHeight: "28px", margin: 0, transition: "color 0.3s ease" }}>
+                    CEO &amp; Founder
+                  </p>
+                  <div style={{ display: "flex", alignItems: "center", gap: "16px", marginTop: "10px" }}>
+                    <a href="https://www.facebook.com/nakranipropertybuyers/" target="_blank" rel="noreferrer"><img src={fbIcon} width="16" height="16" style={{ display: "block", filter: t.iconFilter }} alt="Facebook" /></a>
+                    <a href="https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" target="_blank" rel="noreferrer"><img src={igIcon} width="16" height="16" style={{ display: "block", filter: t.iconFilter }} alt="Instagram" /></a>
+                    <a href="https://www.linkedin.com/in/niki-nakrani-13b269237/" target="_blank" rel="noreferrer"><img src={liIcon} width="16" height="16" style={{ display: "block", filter: t.iconFilter }} alt="LinkedIn" /></a>
+                    <a href="https://www.tiktok.com/@findandsignba/" target="_blank" rel="noreferrer"><img src={tiIcon} width="16" height="16" style={{ display: "block", filter: t.iconFilter }} alt="Tiktok" /></a>
+                    <a href="https://www.google.com/search?kgmid=/g/11vyhyd916&hl=en-IN&q=Find+and+Sign+Buyer+Advocate" target="_blank" rel="noreferrer"><img src={goIcon} width="16" height="16" style={{ display: "block", filter: t.iconFilter }} alt="Google" /></a>
                   </div>
                 </div>
               </div>
 
-            {/* BIO */}
-            <div className="team-bio-wrap">
-              <span className="team-bio" tabIndex={0}>
-                Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement. His approach is grounded in data, sharpened by years of on-the-ground market knowledge, and guided by a genuine desire to
-                {!nikiExpanded ? (
-                  <>
-                    <button
-                      className="team-read-more"
-                      onClick={() => setNikiExpanded(true)}
-                    >
+              {/* Bio */}
+              <div style={{ alignSelf: "stretch" }}>
+                <span tabIndex={0} style={{ color: t.bioColor, fontFamily: "Söhne, sans-serif", fontSize: "16px", fontWeight: 400, lineHeight: "24px", margin: 0, transition: "color 0.3s ease" }}>
+                  Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement. His approach is grounded in data, sharpened by years of on-the-ground market knowledge, and guided by a genuine desire to
+                  {!nikiExpanded ? (
+                    <button onClick={() => setNikiExpanded(true)} style={{ display: "inline-block", color: "#69E4DC", fontFamily: "Söhne, sans-serif", fontSize: "16px", fontWeight: 500, lineHeight: "24px", cursor: "pointer", background: "none", border: "none", padding: 0, margin: 0 }}>
                       ..Read more
                     </button>
-                  </>
-                ) : (
-                  <>
-                    {" "}see others succeed. Niki understands that property can feel overwhelming, and that is precisely why having the right person in your corner changes everything. He is not just your buyer's agent. He is someone who has walked the path himself and is invested in your outcome.
-                    <button
-                      className="team-read-more"
-                      onClick={() => setNikiExpanded(false)}
-                      style={{ marginLeft: '8px' }}
-                    >
-                      Show less
-                    </button>
-                  </>
-                )}
-              </span>
-            </div>
-              {/* BUTTON: calls Niki's number */}
-              <a href="tel:0431158233" className="team-contact-btn">
+                  ) : (
+                    <>
+                      {" "}see others succeed. Niki understands that property can feel overwhelming, and that is precisely why having the right person in your corner changes everything. He is not just your buyer's agent. He is someone who has walked the path himself and is invested in your outcome.
+                      <button onClick={() => setNikiExpanded(false)} style={{ display: "inline-block", color: "#69E4DC", fontFamily: "Söhne, sans-serif", fontSize: "16px", fontWeight: 500, cursor: "pointer", background: "none", border: "none", padding: 0, marginLeft: "8px" }}>
+                        Show less
+                      </button>
+                    </>
+                  )}
+                </span>
+              </div>
+
+              <a href="tel:0431158233" className="team-contact-btn"
+                style={{ display: "inline-flex", height: "48px", padding: "12px 16px", justifyContent: "center", alignItems: "center", gap: "10px", borderRadius: "8px", border: `1px solid ${t.btnBorder}`, background: "transparent", color: t.btnColor, fontFamily: "CX80", fontSize: "14px", fontWeight: 700, letterSpacing: "3.9px", textTransform: "uppercase", cursor: "pointer", textDecoration: "none", transition: "background 0.2s, color 0.2s" }}>
                 Contact Niki
               </a>
             </div>
 
             {/* ── Card: Rebecca ── */}
-            <div className="team-card">
-
-              {/* TOP: image + name / role / socials */}
-              <div className="team-card-top">
-                <div className="team-img-wrap">
-                  <img src={Bec} alt="Rebecca Nakrani" style={{ objectPosition: "center" }} />
+            <div
+              className="team-card"
+              style={{
+                display: "flex", flexDirection: "column", alignItems: "flex-start",
+                width: "392px", padding: "24px", gap: "31px",
+                borderRadius: "24px", border: `1px solid ${t.cardBorder}`,
+                background: t.cardBg, boxSizing: "border-box",
+                transition: "transform 0.4s cubic-bezier(0.165,0.84,0.44,1), box-shadow 0.4s ease, background 0.3s ease",
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "flex-start", gap: "16px", width: "100%" }}>
+                <div style={{ width: "142px", height: "174px", minWidth: "142px", borderRadius: "20px", overflow: "hidden", flexShrink: 0, background: "#dcdcdc" }}>
+                  <img src={Bec} alt="Rebecca" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
                 </div>
-                <div className="team-name-block">
-                  <h3 className="team-name" tabIndex={0}>Rebecca </h3>
-                  <p className="team-role" tabIndex={0}>Client Operations Manager</p>
-                  {/* Social icons */}
-                  <div className="team-socials">
-                    <a href="https://www.facebook.com/nakranipropertybuyers/" target="_blank" rel="noreferrer" aria-label="Facebook">
-                      <img src={fbIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Facebook" />
-                    </a>
-                    <a href="https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" target="_blank" rel="noreferrer" aria-label="Instagram">
-                      <img src={igIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="Instagram" />
-                    </a>
-                    <a href="https://www.linkedin.com/in/niki-nakrani-13b269237/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                      <img src={liIcon} width="16" height="16" style={{ display: "block", filter: "brightness(0)" }} alt="LinkedIn" />
-                    </a>
-                    
+                <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start", gap: "4px", paddingTop: "4px", flex: 1 }}>
+                  <h3 tabIndex={0} style={{ color: t.nameColor, fontFamily: "GT Super Display Medium", fontSize: "32px", fontWeight: 500, lineHeight: "40px", letterSpacing: "-0.64px", margin: 0, transition: "color 0.3s ease" }}>
+                    Rebecca
+                  </h3>
+                  <p tabIndex={0} style={{ color: t.roleColor, fontFamily: "Söhne, sans-serif", fontSize: "20px", fontWeight: 400, lineHeight: "28px", margin: 0, transition: "color 0.3s ease" }}>
+                    Client Operations Manager
+                  </p>
+                  <div style={{ display: "flex", alignItems: "center", gap: "16px", marginTop: "10px" }}>
+                    <a href="https://www.facebook.com/nakranipropertybuyers/" target="_blank" rel="noreferrer"><img src={fbIcon} width="16" height="16" style={{ display: "block", filter: t.iconFilter }} alt="Facebook" /></a>
+                    <a href="https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" target="_blank" rel="noreferrer"><img src={igIcon} width="16" height="16" style={{ display: "block", filter: t.iconFilter }} alt="Instagram" /></a>
+                    <a href="https://www.linkedin.com/in/niki-nakrani-13b269237/" target="_blank" rel="noreferrer"><img src={liIcon} width="16" height="16" style={{ display: "block", filter: t.iconFilter }} alt="LinkedIn" /></a>
                   </div>
                 </div>
               </div>
 
-              {/* BIO */}
-              <div className="team-bio-wrap expanded">
-                <span className="team-bio" tabIndex={0}>
+              {/* Bio */}
+              <div style={{ alignSelf: "stretch" }}>
+                <span tabIndex={0} style={{ color: t.bioColor, fontFamily: "Söhne, sans-serif", fontSize: "16px", fontWeight: 400, lineHeight: "24px", margin: 0, transition: "color 0.3s ease" }}>
                   Rebecca keeps every purchase moving with precision and care. Her attention to detail and deep process knowledge means nothing is missed and clients always know exactly where they stand. She has a gift for making the complex feel simple, and takes genuine pride in delivering a seamless experience from start to settlement.
                 </span>
               </div>
 
-              {/* BUTTON: emails Rebecca */}
-              <a 
-  href="https://mail.google.com/mail/?view=cm&to=info@findandsignba.com.au&su=Website+Enquiry"
-  className="team-contact-btn"
-  target="_blank"
-  rel="noreferrer"
->
-  Contact Rebecca
-</a>
+              <a
+                href="https://mail.google.com/mail/?view=cm&to=info@findandsignba.com.au&su=Website+Enquiry"
+                className="team-contact-btn"
+                target="_blank"
+                rel="noreferrer"
+                style={{ display: "inline-flex", height: "48px", padding: "12px 16px", justifyContent: "center", alignItems: "center", gap: "10px", borderRadius: "8px", border: `1px solid ${t.btnBorder}`, background: "transparent", color: t.btnColor, fontFamily: "CX80", fontSize: "14px", fontWeight: 700, letterSpacing: "3.9px", textTransform: "uppercase", cursor: "pointer", textDecoration: "none", transition: "background 0.2s, color 0.2s" }}
+              >
+                Contact Rebecca
+              </a>
             </div>
 
           </div>

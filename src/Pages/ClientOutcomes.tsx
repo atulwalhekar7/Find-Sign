@@ -5,6 +5,7 @@ import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
 import Image5 from "../components/Image5";
 import Image6 from "../components/Image6";
+import { useTheme } from "../components/ThemeContext";
 
 import bannerImg from "../assets/client-outcomes-banner-find-and-sign-buyers-agent-australia.jpg";
 import AboutClientOutcomesImg from "../assets/find-and-sign-about-client-outcomes-property-experts-australia.png";
@@ -54,9 +55,52 @@ import starIcon from "../assets/Union.png";
 import roksonImg from "../assets/testomonials/Rokson.png";
 import rinzinWangchukImg from "../assets/testomonials/Rinzin Wangchuk.png";
 
+// ── Theme ─────────────────────────────────────────────────────────────────────
+const THEMES = {
+  dark: {
+    pageBg:           "#121212",
+    outcomesBg:       "#1A1A1A",
+    testimonialsBg:   "#1E1E1E",
+    cardBg:           "#1E1E1E",
+    cardBorder:       "#69E4DC",
+    headingColor:     "#F9F9F9",
+    dividerColor:     "#F9F9F9",
+    subtitleColor:    "#EAE5DF",
+    rowLabelColor:    "#F9F9F9",
+    rowValColor:      "#A0A0A0",
+    tcBodyColor:      "#EAE5DF",
+    tcNameColor:      "#F9F9F9",
+    tcDateColor:      "#A0A0A0",
+    navArrowBg:       "#1E1E1E",
+    navArrowColor:    "#69E4DC",
+    dotInactive:      "#444",
+    viewMoreBg:       "#1E1E1E",
+    viewMoreColor:    "#69E4DC",
+  },
+  light: {
+    pageBg:           "#FFFFFF",
+    outcomesBg:       "#F9F9F9",
+    testimonialsBg:   "#EAE5DF",
+    cardBg:           "#FFFFFF",
+    cardBorder:       "#69E4DC",
+    headingColor:     "#073B2F",
+    dividerColor:     "#073B2F",
+    subtitleColor:    "#000000",
+    rowLabelColor:    "#000000",
+    rowValColor:      "#757575",
+    tcBodyColor:      "#000000",
+    tcNameColor:      "#111827",
+    tcDateColor:      "#000000",
+    navArrowBg:       "#FFFFFF",
+    navArrowColor:    "#073B2F",
+    dotInactive:      "#D0C9C0",
+    viewMoreBg:       "#FFFFFF",
+    viewMoreColor:    "#073B2F",
+  },
+};
+
 // ── CONSTANTS ────────────────────────────────────────
 const AQUA         = "#69E4DC";
-const WHITE        = "#FFFFFF";
 const RACING_GREEN = "#073B2F";
 const CARD_GAP     = 32;
 const PEEK         = 56;
@@ -115,17 +159,17 @@ const reviews = [
   { name: "Amit Bhardwaj",        date: "2 months ago",  title: "One of the best decisions we made",       body: "Having Niki as our buyer's agent was one of the best decisions we made. From the very start, he genuinely cared about finding the right home for us. He listened, guided us with confidence, and made what could have been a stressful process feel calm and manageable." },
   { name: "Rinzin Wangchuk",      date: "3 months ago",  title: "Goes way above your needs",               body: "Niki is very professional and goes way above your needs. I was looking for my first home in Perth and didn't know where to begin.", image: rinzinWangchukImg },
   { name: "dayna bechar",         date: "5 months ago",  title: "Absolute pleasure to work",               body: "Niki was an absolute pleasure to work with. His market knowledge and clear communication gave us total confidence throughout the process. He was always available to answer questions and offer advice. Thanks to Niki, we found our dream home without any stress. Highly recommend!" },
-  { name: "Gian Ottavio",             date: "3 months ago",  title: "professional in all",                  body: "Niki has been nothing but professional in all my dealings with him. I never have to think twice about how my clients will be handled as I've had nothing but amazing feedback from everyone I have referred his way." },
-  { name: "Karen Rowley",                date: "6 months ago",  title: " fantastic experience working with Niki",         body: "We had an absolutely fantastic experience working with Niki as a Buyer’s agent. He was very professional and always communicated well with ourselves and his clients throughout the process." },
-  { name: "Kush Hirani",          date: "5 months ago",  title: "Quick responses",        body: "Very pleased with Niki & Rebecca’s service. Quick responses and always going above and beyond to make sure I found the right property. " },
-  { name: "Vince Collova",       date: "4 months ago",  title: "Right from the start there communication",       body: "Right from the start there communication was amazing and prompt. The whole team were very friendly and professional. They understood what we were after and made sure we got the deal of the century." },
-  { name: "Afsal Mansuri", date: "a Year ago",  title: "From our very first meeting",   body: "We had the pleasure of working with Niki and the team as my buyer's agent, and I cannot recommend them enough!From our very first meeting." },
+  { name: "Gian Ottavio",         date: "3 months ago",  title: "professional in all",                     body: "Niki has been nothing but professional in all my dealings with him. I never have to think twice about how my clients will be handled as I've had nothing but amazing feedback from everyone I have referred his way." },
+  { name: "Karen Rowley",         date: "6 months ago",  title: "fantastic experience working with Niki",  body: "We had an absolutely fantastic experience working with Niki as a Buyer's agent. He was very professional and always communicated well with ourselves and his clients throughout the process." },
+  { name: "Kush Hirani",          date: "5 months ago",  title: "Quick responses",                         body: "Very pleased with Niki & Rebecca's service. Quick responses and always going above and beyond to make sure I found the right property." },
+  { name: "Vince Collova",        date: "4 months ago",  title: "Right from the start there communication",body: "Right from the start there communication was amazing and prompt. The whole team were very friendly and professional. They understood what we were after and made sure we got the deal of the century." },
+  { name: "Afsal Mansuri",        date: "a Year ago",    title: "From our very first meeting",             body: "We had the pleasure of working with Niki and the team as my buyer's agent, and I cannot recommend them enough!From our very first meeting." },
   { name: "Subho Ghosh",          date: "2 months ago",  title: "Absolute legends",                        body: "Niki and Bec were absolute legends. They really listened, stayed patient, and went the extra mile to help us find our dream home. Honest advice, great communication, and zero pressure. Couldn't have asked for better agents to guide us through the process. Highly recommend them." },
-  { name: "Bhaskara M",       date: "8 months ago",  title: " negotiated a great deal",      body: "We had the pleasure of working with Niki Nakrani Property Buyers during our recent property purchase. Their market knowledge, attention to detail, and genuine care made the entire process seamless. They listened to our needs, found us the perfect property, and negotiated a great deal." },
-  { name: "jigar faldu",       date: "a Year ago",  title: "services to purchase their",      body: "My wife and I don't understand real estate and are definitely not negotiators. We met Niki through a friend who used his services to purchase their first home. As first home buyers, we had been in the market for a few months without success." },
+  { name: "Bhaskara M",           date: "8 months ago",  title: "negotiated a great deal",                 body: "We had the pleasure of working with Niki Nakrani Property Buyers during our recent property purchase. Their market knowledge, attention to detail, and genuine care made the entire process seamless. They listened to our needs, found us the perfect property, and negotiated a great deal." },
+  { name: "jigar faldu",          date: "a Year ago",    title: "services to purchase their",              body: "My wife and I don't understand real estate and are definitely not negotiators. We met Niki through a friend who used his services to purchase their first home. As first home buyers, we had been in the market for a few months without success." },
   { name: "P Y",                  date: "4 months ago",  title: "Hands-on approach and professionalism",   body: "What really stood out about Niki compared to other buyer's agents I spoke with was his hands-on approach and professionalism from the very beginning. I was unsure about using a buyer's agent at first, but after our first call it was clear." },
-  { name: "Frank Boitano",       date: "8 months ago", title: "Niki is the man you need",                 body: "Niki is the man you need if you want to get things done He is connected and knows the Perth Market.He works tirelessly to get results for his clients and delivers." },
-  { name: "SUDHIR KHUT",             date: "10 months ago",  title: " I've opted for a buyers agent",                   body: "Well its true that good things comes in small packages. As a property investor this is the first time I've opted for a buyers agent. Right from beginning value addition was seen; some key highlights of Niki's service was property insites." },
+  { name: "Frank Boitano",        date: "8 months ago",  title: "Niki is the man you need",                body: "Niki is the man you need if you want to get things done He is connected and knows the Perth Market.He works tirelessly to get results for his clients and delivers." },
+  { name: "SUDHIR KHUT",          date: "10 months ago", title: "I've opted for a buyers agent",           body: "Well its true that good things comes in small packages. As a property investor this is the first time I've opted for a buyers agent. Right from beginning value addition was seen; some key highlights of Niki's service was property insites." },
 ];
 
 const formattedReviews = reviews.map(r => ({
@@ -134,14 +178,22 @@ const formattedReviews = reviews.map(r => ({
 }));
 
 // ── TESTIMONIAL CARD ─────────────────────────────────
-function TestimonialCard({ testimonial, style }: { testimonial: any; style?: React.CSSProperties }) {
+function TestimonialCard({
+  testimonial,
+  style,
+  t,
+}: {
+  testimonial: any;
+  style?: React.CSSProperties;
+  t: typeof THEMES["light"];
+}) {
   return (
-    <div className="testimonial-card" style={style}>
+    <div className="testimonial-card" style={{ ...style, background: t.cardBg, borderColor: t.cardBorder }}>
       <div className="tc-pill" tabIndex={0}>{testimonial.title}</div>
       <div className="tc-stars">
         <img src={starIcon} alt="5 stars" style={{ width: 177, height: 32.336, objectFit: "contain" }} />
       </div>
-      <p className="tc-body" tabIndex={0}>{testimonial.body}</p>
+      <p className="tc-body" tabIndex={0} style={{ color: t.tcBodyColor }}>{testimonial.body}</p>
       <div className="tc-footer">
         <div className="avatar-circle">
           {testimonial.image ? (
@@ -154,8 +206,8 @@ function TestimonialCard({ testimonial, style }: { testimonial: any; style?: Rea
           )}
         </div>
         <div>
-          <h4 className="tc-name" tabIndex={0}>{testimonial.name}</h4>
-          <p className="tc-date" tabIndex={0}>{testimonial.date}</p>
+          <h4 className="tc-name" tabIndex={0} style={{ color: t.tcNameColor }}>{testimonial.name}</h4>
+          <p className="tc-date" tabIndex={0} style={{ color: t.tcDateColor }}>{testimonial.date}</p>
         </div>
       </div>
     </div>
@@ -163,9 +215,24 @@ function TestimonialCard({ testimonial, style }: { testimonial: any; style?: Rea
 }
 
 // ── PROPERTY CARD ─────────────────────────────────────
-function PropertyCard({ card, index }: { card: typeof cards[0]; index: number }) {
+function PropertyCard({
+  card,
+  index,
+  t,
+}: {
+  card: typeof cards[0];
+  index: number;
+  t: typeof THEMES["light"];
+}) {
   return (
-    <div className="property-card" style={{ animationDelay: `${index * 80}ms` }}>
+    <div
+      className="property-card"
+      style={{
+        animationDelay: `${index * 80}ms`,
+        background: t.cardBg,
+        borderColor: t.cardBorder,
+      }}
+    >
       <div className="card-image-wrap">
         <img src={card.image} alt={`Property outcome for ${card.address}`} className="card-image" />
       </div>
@@ -185,8 +252,8 @@ function PropertyCard({ card, index }: { card: typeof cards[0]; index: number })
           { label: "Rental yield",   val: card.rentalYield   },
         ].map(({ label, val }, i, arr) => (
           <div key={label} tabIndex={0} className="card-row" style={{ borderBottom: i < arr.length - 1 ? "1px dashed #846F58" : "none" }}>
-            <span className="row-label">{label}</span>
-            <span className="row-val">{val}</span>
+            <span className="row-label" style={{ color: t.rowLabelColor }}>{label}</span>
+            <span className="row-val" style={{ color: t.rowValColor }}>{val}</span>
           </div>
         ))}
       </div>
@@ -197,6 +264,8 @@ function PropertyCard({ card, index }: { card: typeof cards[0]; index: number })
 // ── MAIN COMPONENT ────────────────────────────────────
 export default function ClientOutcomes() {
   const { hash } = useLocation();
+  const { theme } = useTheme();
+  const t = THEMES[theme];
 
   const [showAllCards, setShowAllCards] = useState(false);
   const buttonContainerRef              = useRef<HTMLDivElement>(null);
@@ -204,7 +273,6 @@ export default function ClientOutcomes() {
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
 
-  // Outcomes Slider State
   const [outcomesCur, setOutcomesCur]       = useState(0);
   const [outcomesPaused, setOutcomesPaused] = useState(false);
   const [outcomesOffset, setOutcomesOffset] = useState(0);
@@ -228,41 +296,32 @@ export default function ClientOutcomes() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  // Clamp outcomes index on resize
   useEffect(() => {
     if (outcomesCur > outcomesMaxIdx) setOutcomesCur(outcomesMaxIdx);
   }, [outcomesMaxIdx]);
 
-  // Recalculate outcomes scroll offset
   useEffect(() => {
     if (showAllCards) return;
-
     const recalc = () => {
       if (outcomesRafRef.current) cancelAnimationFrame(outcomesRafRef.current);
-
       outcomesRafRef.current = requestAnimationFrame(() => {
         if (!outcomesTrackRef.current) return;
         const first = outcomesTrackRef.current.querySelector<HTMLElement>(".property-card");
         if (!first) return;
-
         const cardW = first.getBoundingClientRect().width;
         if (cardW === 0) return;
-
         setOutcomesOffset(outcomesCur * (cardW + CARD_GAP));
       });
     };
-
     recalc();
     const ro = new ResizeObserver(recalc);
     if (outcomesTrackRef.current) ro.observe(outcomesTrackRef.current);
-
     return () => {
       ro.disconnect();
       if (outcomesRafRef.current) cancelAnimationFrame(outcomesRafRef.current);
     };
   }, [outcomesCur, isMobile, isTablet, showAllCards]);
 
-  // Outcomes Auto-play
   const resetOutcomesTimer = useCallback(() => {
     if (outcomesTimerRef.current) clearInterval(outcomesTimerRef.current);
     outcomesTimerRef.current = setInterval(() => {
@@ -286,20 +345,13 @@ export default function ClientOutcomes() {
     resetOutcomesTimer();
   }, [outcomesMaxIdx, resetOutcomesTimer]);
 
-  const handleOutcomesTouchStart = (e: React.TouchEvent) => {
-    outcomesTouchStartX.current = e.targetTouches[0].clientX;
-  };
-
-  const handleOutcomesTouchMove = (e: React.TouchEvent) => {
-    outcomesTouchEndX.current = e.targetTouches[0].clientX;
-  };
-
+  const handleOutcomesTouchStart = (e: React.TouchEvent) => { outcomesTouchStartX.current = e.targetTouches[0].clientX; };
+  const handleOutcomesTouchMove  = (e: React.TouchEvent) => { outcomesTouchEndX.current = e.targetTouches[0].clientX; };
   const handleOutcomesTouchEnd = () => {
     if (!outcomesTouchStartX.current || !outcomesTouchEndX.current) return;
     const diff = outcomesTouchStartX.current - outcomesTouchEndX.current;
-    const threshold = 50;
-    if (diff > threshold) gotoOutcome(outcomesCur + 1);
-    if (diff < -threshold) gotoOutcome(outcomesCur - 1);
+    if (diff > 50) gotoOutcome(outcomesCur + 1);
+    if (diff < -50) gotoOutcome(outcomesCur - 1);
     outcomesTouchStartX.current = null;
     outcomesTouchEndX.current = null;
   };
@@ -308,9 +360,7 @@ export default function ClientOutcomes() {
     ? `calc(100% - ${CARD_GAP}px - ${PEEK}px)`
     : `calc((100% - ${CARD_GAP}px * ${outcomesVisibleCount - 1}) / ${outcomesVisibleCount})`;
 
-  // ── FIX: visibleReviewCount — desktop always shows exactly 3 ──
   const visibleReviewCount = isMobile ? 1 : isTablet ? 2 : 3;
-
   const [reviewIdx, setReviewIdx]           = useState(0);
   const [showAllReviews, setShowAllReviews] = useState(false);
   const [reviewOffset, setReviewOffset]     = useState(0);
@@ -322,13 +372,10 @@ export default function ClientOutcomes() {
   const testimonialsSectionRef               = useRef<HTMLElement | null>(null);
   const outcomesSectionRef                   = useRef<HTMLDivElement | null>(null);
 
-
-  // dots step: desktop=3, tablet=2, mobile=2 → ceil(15/2)=8 dots on mobile
   const dotsStep     = isMobile ? 2 : visibleReviewCount;
   const totalPages   = Math.ceil(formattedReviews.length / dotsStep);
   const maxReviewIdx = Math.max(0, totalPages - 1);
 
-  // offset: each page jumps dotsStep cards
   useEffect(() => {
     const recalc = () => {
       if (reviewRafRef.current) cancelAnimationFrame(reviewRafRef.current);
@@ -350,35 +397,26 @@ export default function ClientOutcomes() {
     };
   }, [reviewIdx, isMobile, isTablet, visibleReviewCount, dotsStep]);
 
-  useEffect(() => {
-    setReviewIdx(prev => Math.min(prev, maxReviewIdx));
-  }, [visibleReviewCount, maxReviewIdx]);
+  useEffect(() => { setReviewIdx(prev => Math.min(prev, maxReviewIdx)); }, [visibleReviewCount, maxReviewIdx]);
 
   const nextReview = useCallback(() => {
     setReviewIdx(prev => (prev >= maxReviewIdx ? 0 : prev + 1));
   }, [maxReviewIdx]);
 
-  const handleReviewTouchStart = (e: React.TouchEvent) => {
-    reviewTouchStartX.current = e.targetTouches[0].clientX;
-  };
-
-  const handleReviewTouchMove = (e: React.TouchEvent) => {
-    reviewTouchEndX.current = e.targetTouches[0].clientX;
-  };
-
+  const handleReviewTouchStart = (e: React.TouchEvent) => { reviewTouchStartX.current = e.targetTouches[0].clientX; };
+  const handleReviewTouchMove  = (e: React.TouchEvent) => { reviewTouchEndX.current = e.targetTouches[0].clientX; };
   const handleReviewTouchEnd = () => {
     if (!reviewTouchStartX.current || !reviewTouchEndX.current) return;
     const diff = reviewTouchStartX.current - reviewTouchEndX.current;
-    const threshold = 50;
-    if (diff > threshold) setReviewIdx(prev => Math.min(maxReviewIdx, prev + 1));
-    if (diff < -threshold) setReviewIdx(prev => Math.max(0, prev - 1));
+    if (diff > 50) setReviewIdx(prev => Math.min(maxReviewIdx, prev + 1));
+    if (diff < -50) setReviewIdx(prev => Math.max(0, prev - 1));
     reviewTouchStartX.current = null;
     reviewTouchEndX.current = null;
   };
 
   useEffect(() => {
-    const t = setInterval(nextReview, 6000);
-    return () => clearInterval(t);
+    const timer = setInterval(nextReview, 6000);
+    return () => clearInterval(timer);
   }, [nextReview]);
 
   useEffect(() => {
@@ -389,7 +427,6 @@ export default function ClientOutcomes() {
     }
   }, [hash]);
 
-  // ── FIX: card flex-basis — desktop fills exactly 1/3 of track width ──
   const reviewCardFlexBasis = isMobile
     ? `calc(100vw - 24px - ${CARD_GAP}px - ${PEEK}px)`
     : `calc((100% - ${CARD_GAP}px * ${visibleReviewCount - 1}) / ${visibleReviewCount})`;
@@ -417,7 +454,6 @@ export default function ClientOutcomes() {
       <style>{`
         *, *::before, *::after { box-sizing: border-box; }
 
-        /* ── Animations ── */
         @keyframes heroFadeIn {
           from { opacity: 0; transform: translateY(24px); }
           to   { opacity: 1; transform: translateY(0); }
@@ -433,693 +469,250 @@ export default function ClientOutcomes() {
 
         .hero-h1 {
           font-family: "GT Super Display Medium";
-          font-size: 56px;
-          font-weight: 500;
-          color: #FFF;
-          line-height: 1.1;
-          letter-spacing: 1px;
-          font-variant-numeric: lining-nums proportional-nums;
-          margin: 0;
+          font-size: 56px; font-weight: 500; color: #FFF;
+          line-height: 1.1; letter-spacing: 1px;
+          font-variant-numeric: lining-nums proportional-nums; margin: 0;
         }
-
-        .outcomes-h2,
-        .testimonials-h2 {
-          color: ${RACING_GREEN};
+        .outcomes-h2, .testimonials-h2 {
           font-family: "GT Super Display Medium";
-          font-size: 42px;
-          font-weight: 500;
-          line-height: 120%;
+          font-size: 42px; font-weight: 500; line-height: 120%;
           letter-spacing: -0.48px;
           font-variant-numeric: lining-nums proportional-nums;
-          margin: 0;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 24px;
+          margin: 0; display: flex; flex-direction: column;
+          align-items: center; gap: 24px;
         }
-        .outcomes-h2::after,
-        .testimonials-h2::after {
-          content: "";
-          width: 160px; height: 1px;
-          background: ${RACING_GREEN};
-        }
-
-        .section-h3 {
-          font-family: "GT Super Display Medium";
-          font-size: 32px;
-          font-weight: 500;
-          color: ${RACING_GREEN};
-          line-height: 1.2;
-          letter-spacing: -0.4px;
-          margin: 0;
-        }
-
-        .outcomes-subtitle,
-        .testimonials-subtitle {
-          color: #000;
-          font-family: Sohne;
-          font-size: 24px;
-          font-weight: 300;
-          line-height: 36px;
-          margin-top: 24px;
+        .outcomes-subtitle, .testimonials-subtitle {
+          font-family: Sohne; font-size: 24px;
+          font-weight: 300; line-height: 36px; margin-top: 24px;
         }
 
         /* ══ PROPERTY CARD ══ */
         .property-card {
           flex: 0 0 var(--card-flex-basis, 100%);
-          min-width: 0;
-          height: 440px;
-          background: ${WHITE};
-          border: 2px solid ${AQUA};
-          border-radius: 16px;
+          min-width: 0; height: 440px;
+          border: 2px solid ${AQUA}; border-radius: 16px;
           box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          transition: transform 0.4s cubic-bezier(0.165,0.84,0.44,1), box-shadow 0.4s ease;
-          cursor: pointer;
-          overflow: hidden;
+          position: relative; display: flex; flex-direction: column;
+          transition: transform 0.4s cubic-bezier(0.165,0.84,0.44,1), box-shadow 0.4s ease, background 0.3s ease;
+          cursor: pointer; overflow: hidden;
         }
-        .property-card:hover {
-          transform: translateY(-12px);
-          box-shadow: 0 10px 22px rgba(105,228,220,0.96);
-        }
-        .card-image-wrap {
-          width: 100%; height: 200px;
-          border-radius: 16px 16px 0 0;
-          overflow: hidden; flex-shrink: 0;
-        }
-        .card-image {
-          width: 100%; height: 100%;
-          object-fit: cover;
-          filter: blur(3px) brightness(80%);
-          transition: transform 0.3s ease;
-          display: block;
-        }
+        .property-card:hover { transform: translateY(-12px); box-shadow: 0 10px 22px rgba(105,228,220,0.96); }
+        .card-image-wrap { width: 100%; height: 200px; border-radius: 16px 16px 0 0; overflow: hidden; flex-shrink: 0; }
+        .card-image { width: 100%; height: 100%; object-fit: cover; filter: blur(3px) brightness(80%); transition: transform 0.3s ease; display: block; }
         .property-card:hover .card-image { transform: scale(1.08); }
-
         .growth-circle-container {
-          position: absolute;
-          bottom: 185px; right: 1px;
-          width: 130px; height: 130px;
-          border-radius: 50%;
-          background: ${AQUA};
-          z-index: 10;
+          position: absolute; bottom: 185px; right: 1px;
+          width: 130px; height: 130px; border-radius: 50%;
+          background: ${AQUA}; z-index: 10;
           display: flex; flex-direction: column;
-          align-items: center; justify-content: center;
-          text-align: center;
+          align-items: center; justify-content: center; text-align: center;
           transition: filter 0.3s ease, background 0.3s ease;
         }
         .growth-circle-container:hover { animation: heartbeatFloat 4s ease-in-out infinite; }
-        .property-card:hover .growth-circle-container {
-          background: ${WHITE};
-          filter: brightness(1.1) drop-shadow(0 4px 15px rgba(105,228,220,0.5));
-        }
-        .growth-label {
-          color: ${RACING_GREEN};
-          font-family: "SohneBuch"; font-size: 20px; font-weight: 400; line-height: 28px;
-          width: 81px; text-align: center;
-          display: flex; align-items: center; justify-content: center;
-        }
-        .growth-value {
-          color: ${RACING_GREEN};
-          font-family: "GT Super Display Medium";
-          font-size: 37px; font-weight: 500; line-height: 40px; letter-spacing: -0.74px;
-          width: 123px; text-align: center;
-          display: flex; align-items: center; justify-content: center;
-          margin-bottom: 4px;
-        }
+        .property-card:hover .growth-circle-container { background: white; filter: brightness(1.1) drop-shadow(0 4px 15px rgba(105,228,220,0.5)); }
+        .growth-label { color: ${RACING_GREEN}; font-family: "SohneBuch"; font-size: 20px; font-weight: 400; line-height: 28px; width: 81px; text-align: center; display: flex; align-items: center; justify-content: center; }
+        .growth-value { color: ${RACING_GREEN}; font-family: "GT Super Display Medium"; font-size: 37px; font-weight: 500; line-height: 40px; letter-spacing: -0.74px; width: 123px; text-align: center; display: flex; align-items: center; justify-content: center; margin-bottom: 4px; }
         .card-data { padding: 55px 18px 20px; flex: 1; }
-        .card-row {
-          display: flex; justify-content: space-between;
-          align-items: center; padding: 10px 0;
-        }
-        .row-label { font-family: "SohneBuch"; font-size: 16px; color: #000; font-weight: 400; }
-        .row-val   { font-family: "SohneBuch"; font-size: 16px; color: #757575; font-weight: 400; margin-left: auto; }
+        .card-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; }
+        .row-label { font-family: "SohneBuch"; font-size: 16px; font-weight: 400; }
+        .row-val   { font-family: "SohneBuch"; font-size: 16px; font-weight: 400; margin-left: auto; }
 
         /* ══ OUTCOMES SECTION ══ */
-        .outcomes-section-wrap {
-          background: #F9F9F9;
-          width: 100%;
-          overflow-x: clip;
-        }
-        .outcomes-section {
-          width: 100%;
-          max-width: 1512px;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: repeat(12, 1fr);
-          column-gap: 32px;
-          padding: 64px 130px;
-        }
-        .outcomes-head {
-          grid-column: 1 / -1;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-          margin-bottom: 48px;
-        }
-        .outcomes-grid-container {
-          grid-column: 1 / -1;
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: ${CARD_GAP}px;
-          padding: 20px 0 40px;
-        }
-        .outcomes-btn-row {
-          grid-column: 1 / -1;
-          display: flex;
-          justify-content: center;
-          margin-top: 8px;
-        }
-
-        /* ══ OUTCOMES SLIDER ══ */
-        .outcomes-slider-outer {
-          grid-column: 1 / -1;
-          display: flex;
-          flex-direction: column;
-          gap: 40px;
-          align-items: center;
-          overflow: visible;
-        }
-        .outcomes-slider-wrapper {
-          position: relative;
-          width: 100%;
-          overflow: visible;
-        }
-        .outcomes-slider-viewport {
-          width: 100%;
-          overflow: hidden;
-          padding: 20px 0;
-          margin: -20px 0;
-        }
-        .outcomes-slider-track {
-          display: flex;
-          gap: ${CARD_GAP}px;
-          transition: transform 0.55s cubic-bezier(0.77, 0, 0.18, 1);
-          will-change: transform;
-          touch-action: pan-y;
-        }
+        .outcomes-section-wrap { width: 100%; overflow-x: clip; transition: background 0.3s ease; }
+        .outcomes-section { width: 100%; max-width: 1512px; margin: 0 auto; display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 32px; padding: 64px 130px; }
+        .outcomes-head { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 48px; }
+        .outcomes-grid-container { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: ${CARD_GAP}px; padding: 20px 0 40px; }
+        .outcomes-btn-row { grid-column: 1 / -1; display: flex; justify-content: center; margin-top: 8px; }
+        .outcomes-slider-outer { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 40px; align-items: center; overflow: visible; }
+        .outcomes-slider-wrapper { position: relative; width: 100%; overflow: visible; }
+        .outcomes-slider-viewport { width: 100%; overflow: hidden; padding: 20px 0; margin: -20px 0; }
+        .outcomes-slider-track { display: flex; gap: ${CARD_GAP}px; transition: transform 0.55s cubic-bezier(0.77,0,0.18,1); will-change: transform; touch-action: pan-y; }
         .co-dots { display: flex; gap: 12px; align-items: center; margin-bottom: 24px; }
-        .co-dot {
-          width: 8px; height: 8px;
-          border-radius: 50%;
-          background: #D0C9C0;
-          border: none; padding: 0;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          flex-shrink: 0;
-        }
-        .co-dot.active { background: #073B2F; width: 24px; border-radius: 4px; }
+        .co-dot { width: 8px; height: 8px; border-radius: 50%; border: none; padding: 0; cursor: pointer; transition: all 0.3s ease; flex-shrink: 0; }
+        .co-dot.active { width: 24px; border-radius: 4px; background: ${RACING_GREEN} !important; }
 
         /* ══ TESTIMONIALS SECTION ══ */
-        .testimonials-section-wrap {
-          background: #EAE5DF;
-          width: 100%;
-          position: relative;
-        }
-        .testimonials-section {
-          width: 100%;
-          max-width: 1512px;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: repeat(12, 1fr);
-          column-gap: 32px;
-          padding: 64px 130px;
-        }
-        .testimonials-head {
-          grid-column: 1 / -1;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-          margin-bottom: 48px;
-        }
-        .testimonials-slider-col {
-          grid-column: 1 / -1;
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 40px;
-        }
-        .testimonials-slider-wrapper {
-          position: relative;
-          width: 100%;
-        }
-
-        /* ── FIX: viewport clips overflow so only 3 cards show on desktop ── */
-        .testimonials-slider-viewport {
-          width: 100%;
-          overflow: hidden;
-          padding: 20px 0;
-          margin: -20px 0;
-        }
-        .testimonials-slider-track {
-          display: flex;
-          gap: ${CARD_GAP}px;
-          transition: transform 0.55s cubic-bezier(0.77,0,0.18,1);
-          will-change: transform;
-          touch-action: pan-y;
-        }
+        .testimonials-section-wrap { width: 100%; position: relative; transition: background 0.3s ease; }
+        .testimonials-section { width: 100%; max-width: 1512px; margin: 0 auto; display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 32px; padding: 64px 130px; }
+        .testimonials-head { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 48px; }
+        .testimonials-slider-col { grid-column: 1 / -1; position: relative; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+        .testimonials-slider-wrapper { position: relative; width: 100%; }
+        .testimonials-slider-viewport { width: 100%; overflow: hidden; padding: 20px 0; margin: -20px 0; }
+        .testimonials-slider-track { display: flex; gap: ${CARD_GAP}px; transition: transform 0.55s cubic-bezier(0.77,0,0.18,1); will-change: transform; touch-action: pan-y; }
 
         /* ══ TESTIMONIAL CARD ══ */
-        .testimonial-card {
-          flex-shrink: 0;
-          background: ${WHITE};
-          border-radius: 24px;
-          padding: 20px;
-          display: flex;
-          flex-direction: column;
-          min-height: 407px;
-          height: auto;
-          border: 1px solid ${AQUA};
-          transition: all 0.5s;
-        }
-        .testimonial-card:hover {
-          transform: translateY(-12px);
-          box-shadow: 0 10px 22px rgba(105,228,220,0.96);
-        }
+        .testimonial-card { flex-shrink: 0; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; min-height: 407px; height: auto; border: 1px solid ${AQUA}; transition: all 0.5s; }
+        .testimonial-card:hover { transform: translateY(-12px); box-shadow: 0 10px 22px rgba(105,228,220,0.96); }
+        .tc-pill { display: inline-flex; padding: 8px 16px; align-items: center; border-radius: 12px; background: ${AQUA}; color: ${RACING_GREEN}; font-size: 16px; font-weight: 400; font-family: SohneBuch; line-height: 24px; max-width: 100%; white-space: normal; word-break: break-word; align-self: flex-start; margin-bottom: 10px; flex-shrink: 0; }
+        .tc-stars { display: flex; align-items: center; margin-top: 12px; flex-shrink: 0; margin-bottom: 10px; }
+        .tc-body { width: 100%; font-family: SohneBuch; font-size: 16px; font-weight: 400; line-height: 24px; margin-top: 12px; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; flex: 1; }
+        .tc-footer { display: flex; align-items: center; gap: 12px; border-top: 1px solid #f3f4f6; padding-top: 12px; margin-top: auto; flex-shrink: 0; }
+        .avatar-circle { width: 40px; height: 40px; border-radius: 50%; background: #D9D9D9; display: flex; align-items: center; justify-content: center; border: 2px solid white; overflow: hidden; flex-shrink: 0; transition: all 0.3s ease; }
+        .testimonial-card:hover .avatar-circle { box-shadow: 0 4px 15px rgba(105,228,220,0.6); border-color: ${AQUA} !important; transform: scale(1.05); }
+        .tc-name { font-size: 0.875rem; font-weight: 400; margin: 0; font-family: SohneBuch; }
+        .tc-date { font-size: 9px; font-weight: 500; text-transform: uppercase; letter-spacing: 2.88px; margin-top: 2px; font-family: CX80; line-height: 15px; }
 
-        .tc-pill {
-          display: inline-flex;
-          padding: 8px 16px;
-          align-items: center;
-          border-radius: 12px;
-          background: ${AQUA};
-          color: ${RACING_GREEN};
-          font-size: 16px;
-          font-weight: 400;
-          font-family: SohneBuch;
-          line-height: 24px;
-          max-width: 100%;
-          white-space: normal;
-          word-break: break-word;
-          overflow: visible;
-          text-overflow: unset;
-          align-self: flex-start;
-          margin-bottom: 10px;
-          flex-shrink: 0;
-        }
-        .tc-stars {
-          display: flex; align-items: center;
-          margin-top: 12px; flex-shrink: 0; margin-bottom: 10px;
-        }
-        .tc-body {
-          width: 100%;
-          color: #000;
-          font-family: SohneBuch;
-          font-size: 16px; font-weight: 400; line-height: 24px;
-          margin-top: 12px;
-          display: -webkit-box;
-          -webkit-line-clamp: 5;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-          flex: 1;
-        }
-        .tc-footer {
-          display: flex; align-items: center; gap: 12px;
-          border-top: 1px solid #f3f4f6;
-          padding-top: 12px; margin-top: auto; flex-shrink: 0;
-        }
-        .avatar-circle {
-          width: 40px; height: 40px;
-          border-radius: 50%; background: #D9D9D9;
-          display: flex; align-items: center; justify-content: center;
-          border: 2px solid white;
-          overflow: hidden; flex-shrink: 0;
-          transition: all 0.3s ease;
-        }
-        .testimonial-card:hover .avatar-circle {
-          box-shadow: 0 4px 15px rgba(105,228,220,0.6);
-          border-color: ${AQUA} !important;
-          transform: scale(1.05);
-        }
-        .tc-name {
-          font-size: 0.875rem; font-weight: 400;
-          color: #111827; margin: 0; font-family: SohneBuch;
-        }
-        .tc-date {
-          font-size: 9px; font-weight: 500; color: #000;
-          text-transform: uppercase; letter-spacing: 2.88px;
-          margin-top: 2px; font-family: CX80; line-height: 15px;
-        }
-
-        /* ══ EXPANDED ALL-REVIEWS GRID ══ */
-        .reviews-all-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: ${CARD_GAP}px;
-          width: 100%;
-        }
+        /* ══ EXPANDED GRID ══ */
+        .reviews-all-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: ${CARD_GAP}px; width: 100%; }
 
         /* ══ DOTS ══ */
         .t-dots { display: flex; gap: 12px; align-items: center; }
-        .t-dot {
-          width: 8px; height: 8px; border-radius: 50%;
-          background: #D0C9C0; border: none; padding: 0;
-          cursor: pointer; transition: all 0.3s ease; flex-shrink: 0;
-        }
-        .t-dot.active { background: ${RACING_GREEN}; width: 24px; border-radius: 4px; }
+        .t-dot { width: 8px; height: 8px; border-radius: 50%; border: none; padding: 0; cursor: pointer; transition: all 0.3s ease; flex-shrink: 0; }
+        .t-dot.active { width: 24px; border-radius: 4px; background: ${RACING_GREEN} !important; }
 
         /* ══ NAV ARROWS ══ */
-        .nav-arrow {
-          position: absolute; top: 50%; transform: translateY(-50%);
-          width: 44px; height: 44px; border-radius: 50%;
-          border: 1.5px solid rgba(11,215,205,0.96);
-          background: white; cursor: pointer;
-          display: flex; align-items: center; justify-content: center;
-          color: ${RACING_GREEN}; padding: 0;
-          transition: all 0.25s ease; flex-shrink: 0; z-index: 20;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
+        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid rgba(11,215,205,0.96); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; transition: all 0.25s ease; flex-shrink: 0; z-index: 20; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .nav-arrow.prev { left: -60px; }
         .nav-arrow.next { right: -60px; }
-        .nav-arrow:hover:not(:disabled) {
-          transform: translateY(-50%) scale(1.05);
-          background: ${RACING_GREEN}; color: white; border-color: ${RACING_GREEN};
-        }
+        .nav-arrow:hover:not(:disabled) { transform: translateY(-50%) scale(1.05); background: ${RACING_GREEN} !important; color: white !important; border-color: ${RACING_GREEN}; }
         .nav-arrow:disabled { opacity: 0.2; cursor: default; }
 
         /* ══ VIEW MORE BTN ══ */
-        .view-more-btn {
-          display: flex; height: 48px; padding: 12px 16px;
-          justify-content: center; align-items: center; gap: 10px;
-          border-radius: 8px; border: 1px solid ${AQUA};
-          background: ${WHITE}; color: ${RACING_GREEN};
-          font-family: CX80; font-size: 15px; font-weight: 700;
-          line-height: 15px; letter-spacing: 4.8px; text-transform: uppercase;
-          cursor: pointer; transition: background 0.2s ease, transform 0.2s ease;
-        }
-        .view-more-btn:hover { background: ${AQUA}; transform: scale(1.05); }
+        .view-more-btn { display: flex; height: 48px; padding: 12px 16px; justify-content: center; align-items: center; gap: 10px; border-radius: 8px; border: 1px solid ${AQUA}; font-family: CX80; font-size: 15px; font-weight: 700; line-height: 15px; letter-spacing: 4.8px; text-transform: uppercase; cursor: pointer; transition: background 0.2s ease, transform 0.2s ease; }
+        .view-more-btn:hover { background: ${AQUA} !important; color: ${RACING_GREEN} !important; transform: scale(1.05); }
 
-        /* ══ TABLET (768–1199px) ══ */
         @media (max-width: 1199px) {
-          .outcomes-section,
-          .testimonials-section {
-            column-gap: 24px;
-            padding: 48px 48px 64px;
-          }
-          .hero-h1 { font-size: 44px; letter-spacing: -0.9px; }
-          .outcomes-h2,
-  .testimonials-h2 {
-    font-size: 48px;
-    line-height: 56px;
-    letter-spacing: -0.4px;
-  }
-          .section-h3 { font-size: 28px; }
-          .outcomes-subtitle,
-          .testimonials-subtitle { font-size: 20px; line-height: 32px; }
+          .outcomes-section, .testimonials-section { column-gap: 24px; padding: 48px 48px 64px; }
+          .hero-h1 { font-size: 44px; }
           .outcomes-grid-container { grid-template-columns: repeat(2, 1fr); }
           .reviews-all-grid        { grid-template-columns: repeat(2, 1fr); }
           .nav-arrow.prev { left: -44px; }
           .nav-arrow.next { right: -44px; }
-          .growth-circle-container { width: 120px; height: 120px; bottom: 182px; }
-          .growth-label { font-size: 18px; }
-          .growth-value { font-size: 32px; }
         }
-
-        /* ══ MOBILE (<768px) ══ */
         @media (max-width: 767px) {
-          .hero-h1 { font-size: 56px; letter-spacing: -0.6px; line-height: 1.15; }
-          .outcomes-h2,
-  .testimonials-h2 {
-    font-size: 42px;
-    line-height: 48px; /* change this */
-    letter-spacing: -0.2px;
-  }
-          .outcomes-h2::after,
-          .testimonials-h2::after { width: 100px; }
-          .section-h3 { font-size: 32px; }
-          .outcomes-subtitle,
-          .testimonials-subtitle { font-size: 15px; line-height: 24px; margin-top: 14px; }
-
-          .outcomes-section {
-            grid-template-columns: repeat(12, 1fr);
-            column-gap: 16px;
-            padding: 40px 24px 56px 24px;
-          }
-
+          .hero-h1 { font-size: 56px; }
+          .outcomes-section { grid-template-columns: repeat(12, 1fr); column-gap: 16px; padding: 40px 24px 56px 24px; }
           .testimonials-section-wrap { overflow: hidden; }
-          .testimonials-section {
-            grid-template-columns: repeat(12, 1fr);
-            column-gap: 16px;
-            padding: 40px 0 56px 24px;
-          }
-
-          .outcomes-head  { padding-right: 24px; }
+          .testimonials-section { grid-template-columns: repeat(12, 1fr); column-gap: 16px; padding: 40px 0 56px 24px; }
+          .outcomes-head { padding-right: 24px; }
           .testimonials-head { padding-right: 24px; }
-
           .outcomes-grid-container { grid-template-columns: 1fr; }
-          .reviews-all-grid {
-            grid-template-columns: 1fr;
-            padding-right: 24px;
-          }
-
-          .outcomes-slider-viewport {
-            overflow: visible;
-            padding: 0;
-            margin: 0;
-          }
-
-          /* Mobile: restore overflow:visible + clip-path for peek effect */
-          .testimonials-slider-viewport {
-            overflow: visible;
-            padding: 12px 0;
-            margin: -12px 0;
-            clip-path: none;
-            -webkit-clip-path: none;
-          }
-
-          .testimonials-slider-wrapper { width: 100%; }
+          .reviews-all-grid { grid-template-columns: 1fr; padding-right: 24px; }
+          .outcomes-slider-viewport { overflow: visible; padding: 0; margin: 0; }
+          .testimonials-slider-viewport { overflow: visible; padding: 12px 0; margin: -12px 0; }
           .nav-arrow { display: none !important; }
-          .t-dots        { padding-right: 24px; }
+          .t-dots { padding-right: 24px; }
           .view-more-btn { margin-right: 24px; }
-          .testimonials-slider-col > div:last-child {
-            padding-right: 24px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-          }
-
-          .growth-circle-container { width: 110px; height: 110px; bottom: 185px; }
-          .growth-label { font-size: 16px; }
-          .growth-value { font-size: 28px; width: 100px; }
-          .row-label, .row-val { font-size: 14px; }
-          .testimonial-card { min-height: unset; height: auto; }
           .tc-body { display: block; -webkit-line-clamp: unset; overflow: visible; }
-          .tc-pill { font-size: 13px; line-height: 19px; padding: 6px 12px; border-radius: 10px; }
-          .tc-stars img { width: 130px !important; height: auto !important; }
-          .tc-body { font-size: 14px; line-height: 22px; }
         }
-
-        /* ══ SMALL MOBILE (<480px) ══ */
         @media (max-width: 480px) {
           .hero-h1 { font-size: 56px; }
-           .outcomes-h2,
-  .testimonials-h2 {
-    font-size: 42px;
-    line-height: 48px; /* change this */
-  }
-          .section-h3 { font-size: 32px; }
-          .outcomes-subtitle,
-          .testimonials-subtitle { font-size: 14px; line-height: 22px; }
-          .tc-pill { font-size: 12px; padding: 5px 10px; }
         }
       `}</style>
 
-      <div style={{ backgroundColor: WHITE, fontFamily: "Sohne, sans-serif" }}>
+      <div style={{ backgroundColor: t.pageBg, fontFamily: "Sohne, sans-serif", transition: "background 0.3s ease" }}>
 
         {/* ══ HERO ══ */}
-        <section style={{
-          minHeight: "80vh",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          backgroundImage: `url(${bannerImg})`,
-          backgroundSize: "cover", backgroundPosition: "center",
-          position: "relative", padding: "0 20px",
-        }}>
+        <section style={{ minHeight: "80vh", display: "flex", alignItems: "center", justifyContent: "center", backgroundImage: `url(${bannerImg})`, backgroundSize: "cover", backgroundPosition: "center", position: "relative", padding: "0 20px" }}>
           <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.35)" }} />
-          <div style={{
-            position: "relative", zIndex: 2,
-            textAlign: "center", maxWidth: 900, margin: "0 auto",
-            padding: "60px 20px", borderRadius: 12,
-            animation: "heroFadeIn 0.8s ease both",
-          }}>
+          <div style={{ position: "relative", zIndex: 2, textAlign: "center", maxWidth: 900, margin: "0 auto", padding: "60px 20px", borderRadius: 12, animation: "heroFadeIn 0.8s ease both" }}>
             <h1 className="hero-h1" tabIndex={0}>Client Outcomes</h1>
           </div>
         </section>
 
         {/* ══ ABOUT ══ */}
-        <div className="client-outcomes-about">
-          <AboutSection
-            imageSrc={AboutClientOutcomesImg}
-            heading="About Client Outcomes"
-            body1="These are outcomes we have achieved for our clients. Real properties, real numbers, and measurable growth. When you engage Find and Sign Buyer Advocate, you are not simply purchasing a property; you are entering a strategy built for long-term performance. These examples show what is possible when the right property is identified and secured early."
-          />
-        </div>
+        <AboutSection
+          imageSrc={AboutClientOutcomesImg}
+          heading="About Client Outcomes"
+          body1="These are outcomes we have achieved for our clients. Real properties, real numbers, and measurable growth. When you engage Find and Sign Buyer Advocate, you are not simply purchasing a property; you are entering a strategy built for long-term performance. These examples show what is possible when the right property is identified and secured early."
+        />
 
         {/* ══ CLIENT OUTCOMES GRID ══ */}
-        <div className="outcomes-section-wrap">
+        <div className="outcomes-section-wrap" style={{ background: t.outcomesBg }}>
           <div ref={outcomesSectionRef} id="outcomes" className="outcomes-section">
             <div className="outcomes-head">
-              <h2 className="outcomes-h2" tabIndex={0}>Client Outcomes</h2>
-              <p className="outcomes-subtitle" tabIndex={0}>Explore more about client outcomes.</p>
+              <h2 className="outcomes-h2" tabIndex={0} style={{ color: t.headingColor }}>
+                Client Outcomes
+                <div style={{ width: "160px", height: "1px", background: t.dividerColor }} />
+              </h2>
+              <p className="outcomes-subtitle" tabIndex={0} style={{ color: t.subtitleColor }}>Explore more about client outcomes.</p>
             </div>
 
             {!showAllCards ? (
               <div className="outcomes-slider-outer">
                 <div className="outcomes-slider-wrapper">
-                  <button
-                    className="nav-arrow prev"
-                    onClick={() => gotoOutcome(outcomesCur - 1)}
-                    disabled={outcomesCur === 0}
-                    aria-label="Previous"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M19 12H5M12 19l-7-7 7-7" />
-                    </svg>
+                  <button className="nav-arrow prev" onClick={() => gotoOutcome(outcomesCur - 1)} disabled={outcomesCur === 0} aria-label="Previous" style={{ background: t.navArrowBg, color: t.navArrowColor }}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
                   </button>
-                  <button
-                    className="nav-arrow next"
-                    onClick={() => gotoOutcome(outcomesCur + 1)}
-                    disabled={outcomesCur === outcomesMaxIdx}
-                    aria-label="Next"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
+                  <button className="nav-arrow next" onClick={() => gotoOutcome(outcomesCur + 1)} disabled={outcomesCur === outcomesMaxIdx} aria-label="Next" style={{ background: t.navArrowBg, color: t.navArrowColor }}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                   </button>
-
-                  <div
-                    className="outcomes-slider-viewport"
-                    onMouseEnter={() => setOutcomesPaused(true)}
-                    onMouseLeave={() => setOutcomesPaused(false)}
-                  >
-                    <div
-                      ref={outcomesTrackRef}
-                      className="outcomes-slider-track"
-                      style={{
-                        transform: `translateX(-${outcomesOffset}px)`,
-                        "--card-flex-basis": outcomesCardFlexBasis,
-                      } as React.CSSProperties}
-                      onTouchStart={handleOutcomesTouchStart}
-                      onTouchMove={handleOutcomesTouchMove}
-                      onTouchEnd={handleOutcomesTouchEnd}
-                    >
+                  <div className="outcomes-slider-viewport" onMouseEnter={() => setOutcomesPaused(true)} onMouseLeave={() => setOutcomesPaused(false)}>
+                    <div ref={outcomesTrackRef} className="outcomes-slider-track" style={{ transform: `translateX(-${outcomesOffset}px)`, "--card-flex-basis": outcomesCardFlexBasis } as React.CSSProperties} onTouchStart={handleOutcomesTouchStart} onTouchMove={handleOutcomesTouchMove} onTouchEnd={handleOutcomesTouchEnd}>
                       {outcomesSliderCards.map((card, i) => (
-                        <PropertyCard key={card.id} card={card} index={i} />
+                        <PropertyCard key={card.id} card={card} index={i} t={t} />
                       ))}
                     </div>
                   </div>
                 </div>
-
                 <div className="co-dots">
                   {Array.from({ length: Math.min(8, outcomesMaxIdx + 1) }).map((_, i) => (
-                    <button
-                      key={i}
-                      className={`co-dot${outcomesCur === i ? " active" : ""}`}
-                      onClick={() => gotoOutcome(i)}
-                      aria-label={`Go to slide ${i + 1}`}
-                    />
+                    <button key={i} className={`co-dot${outcomesCur === i ? " active" : ""}`} onClick={() => gotoOutcome(i)} aria-label={`Go to slide ${i + 1}`} style={{ background: outcomesCur === i ? RACING_GREEN : t.dotInactive }} />
                   ))}
                 </div>
               </div>
             ) : (
               <div className="outcomes-grid-container">
                 {cards.map((card, i) => (
-                  <PropertyCard key={card.id} card={card} index={i} />
+                  <PropertyCard key={card.id} card={card} index={i} t={t} />
                 ))}
               </div>
             )}
 
             <div className="outcomes-btn-row" ref={buttonContainerRef}>
-              <button className="view-more-btn" onClick={handleToggleCards}>
+              <button className="view-more-btn" onClick={handleToggleCards} style={{ background: t.viewMoreBg, color: t.viewMoreColor }}>
                 {showAllCards ? "View Less" : "View More"}
               </button>
             </div>
           </div>
         </div>
-        <Image5/>
+
+        <Image5 />
 
         {/* ══ TESTIMONIALS ══ */}
-        <div className="testimonials-section-wrap">
+        <div className="testimonials-section-wrap" style={{ background: t.testimonialsBg }}>
           <section ref={testimonialsSectionRef} id="testimonials" className="testimonials-section">
             <div className="testimonials-head">
-              <h2 className="testimonials-h2" tabIndex={0}>What Clients Say</h2>
-              <p className="testimonials-subtitle" tabIndex={0}>In their own words, following their experience with Find &amp; Sign.</p>
+              <h2 className="testimonials-h2" tabIndex={0} style={{ color: t.headingColor }}>
+                What Clients Say
+                <div style={{ width: "160px", height: "1px", background: t.dividerColor }} />
+              </h2>
+              <p className="testimonials-subtitle" tabIndex={0} style={{ color: t.subtitleColor }}>In their own words, following their experience with Find &amp; Sign.</p>
             </div>
 
             <div className="testimonials-slider-col">
               {!showAllReviews ? (
                 <>
                   <div className="testimonials-slider-wrapper">
-                    <button
-                      className="nav-arrow prev"
-                      onClick={() => setReviewIdx(prev => Math.max(0, prev - 1))}
-                      disabled={reviewIdx === 0}
-                      aria-label="Previous"
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M19 12H5M12 19l-7-7 7-7" />
-                      </svg>
+                    <button className="nav-arrow prev" onClick={() => setReviewIdx(prev => Math.max(0, prev - 1))} disabled={reviewIdx === 0} aria-label="Previous" style={{ background: t.navArrowBg, color: t.navArrowColor }}>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
                     </button>
-                    <button
-                      className="nav-arrow next"
-                      onClick={() => setReviewIdx(prev => Math.min(maxReviewIdx, prev + 1))}
-                      disabled={reviewIdx === maxReviewIdx}
-                      aria-label="Next"
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                      </svg>
+                    <button className="nav-arrow next" onClick={() => setReviewIdx(prev => Math.min(maxReviewIdx, prev + 1))} disabled={reviewIdx === maxReviewIdx} aria-label="Next" style={{ background: t.navArrowBg, color: t.navArrowColor }}>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                     </button>
-
                     <div className="testimonials-slider-viewport">
-                      <div
-                        ref={reviewTrackRef}
-                        className="testimonials-slider-track"
-                        style={{
-                          transform: `translateX(-${reviewOffset}px)`,
-                          "--card-flex-basis": reviewCardFlexBasis,
-                        } as React.CSSProperties}
-                        onTouchStart={handleReviewTouchStart}
-                        onTouchMove={handleReviewTouchMove}
-                        onTouchEnd={handleReviewTouchEnd}
-                      >
-                        {formattedReviews.map((t, i) => (
-                          <TestimonialCard
-                            key={i}
-                            testimonial={t}
-                            style={{ flex: `0 0 var(--card-flex-basis)`, minWidth: 0 }}
-                          />
+                      <div ref={reviewTrackRef} className="testimonials-slider-track" style={{ transform: `translateX(-${reviewOffset}px)`, "--card-flex-basis": reviewCardFlexBasis } as React.CSSProperties} onTouchStart={handleReviewTouchStart} onTouchMove={handleReviewTouchMove} onTouchEnd={handleReviewTouchEnd}>
+                        {formattedReviews.map((rv, i) => (
+                          <TestimonialCard key={i} testimonial={rv} t={t} style={{ flex: `0 0 var(--card-flex-basis)`, minWidth: 0 }} />
                         ))}
                       </div>
                     </div>
                   </div>
-
-                  {/* ── FIX: dots count = totalPages (groups of visibleReviewCount) ── */}
                   <div className="t-dots">
                     {Array.from({ length: totalPages }).map((_, i) => (
-                      <button
-                        key={i}
-                        className={`t-dot${i === reviewIdx ? " active" : ""}`}
-                        onClick={() => setReviewIdx(i)}
-                        aria-label={`Go to slide ${i + 1}`}
-                      />
+                      <button key={i} className={`t-dot${i === reviewIdx ? " active" : ""}`} onClick={() => setReviewIdx(i)} aria-label={`Go to slide ${i + 1}`} style={{ background: i === reviewIdx ? RACING_GREEN : t.dotInactive }} />
                     ))}
                   </div>
                 </>
               ) : (
                 <div className="reviews-all-grid">
-                  {formattedReviews.map((t, i) => (
-                    <TestimonialCard key={i} testimonial={t} />
+                  {formattedReviews.map((rv, i) => (
+                    <TestimonialCard key={i} testimonial={rv} t={t} />
                   ))}
                 </div>
               )}
-
               <div ref={reviewButtonContainerRef}>
-                <button className="view-more-btn" onClick={handleToggleReviews}>
+                <button className="view-more-btn" onClick={handleToggleReviews} style={{ background: t.viewMoreBg, color: t.viewMoreColor }}>
                   {showAllReviews ? "View Less" : "View More"}
                 </button>
               </div>
@@ -1127,7 +720,6 @@ export default function ClientOutcomes() {
           </section>
         </div>
 
-        {/* ══ GET IN TOUCH + FOOTER ══ */}
         <Image6 />
         <SimpleGetInTouch />
         <SimpleFooter />
