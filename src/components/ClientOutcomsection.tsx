@@ -655,5 +655,6 @@ export default function ClientOutcomes() {
         </div>
       </div>
     </>
+    
   );
 }

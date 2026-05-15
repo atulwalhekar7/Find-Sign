@@ -113,7 +113,7 @@ export default function Navbar() {
           height: 96px;
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          justify-content: flex-start;
           box-sizing: border-box;
           padding: 24px 130px;
         }
@@ -129,15 +129,17 @@ export default function Navbar() {
         .nav-actions {
           display: flex;
           align-items: center;
-          gap: 68px;
+          gap: 32px;
+          margin-left: auto;
         }
 
         /* Desktop nav */
         .nav-links {
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          width: 558px;
+          justify-content: flex-end;
+          gap: 4px;
+          width: auto;
           list-style: none;
           margin: 0;
           padding: 0;
