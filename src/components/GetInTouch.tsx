@@ -375,6 +375,7 @@ import { useState, useRef, useEffect } from "react";
 import { Box, Dialog, DialogContent, Typography } from "@mui/material";
 import emailjs from '@emailjs/browser';
 import checkIcon from "../assets/check.png";
+import callIcon from "../assets/Icon.png";
 
 const COLORS = {
   racingGreen: "#073B2F",
@@ -519,17 +520,26 @@ export default function GetInTouch({ initialService = "", showService = false, h
   color: #073B2F;
   text-decoration: none;
 
-  font-family: "CX80BOLD";
-  font-size: 14px;
+  font-family: "CX80";
+  font-size: 15px;
   font-weight: 700;
-  letter-spacing: 4.8px;
+  line-height: 15px;
+  letter-spacing: 4.48px;
   text-transform: uppercase;
 
   transition: all 0.25s ease;
   white-space: nowrap;
+  gap: 10px;
 }
 
-
+        @keyframes call-vibrate {
+          0%, 20%, 100% { transform: rotate(0deg); }
+          3%, 9%, 15% { transform: rotate(-12deg); }
+          6%, 12%, 18% { transform: rotate(12deg); }
+        }
+        .vibrate-icon {
+          animation: call-vibrate 3s infinite ease-in-out;
+        }
 
 .contact-cta:hover {
   transform: translateY(-1px);
@@ -945,7 +955,8 @@ width: 297px;
               rel="noopener noreferrer"
               className="contact-cta"
             >
-              BOOK A CALL
+              <img src={callIcon} className="vibrate-icon" width="20" height="20" alt="" />
+              Book a Call
             </a>
 
             <div className="nikki-info" tabIndex={0} style={{ color: '#000' }}>

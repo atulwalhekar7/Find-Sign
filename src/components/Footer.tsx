@@ -363,6 +363,7 @@
 import { NavLink } from "react-router-dom";
 
 import logo from "../assets/FS Primary Lockup_Gold.png";
+import callIcon from "../assets/Icon.png";
 
 import fbIcon from "../assets/icon/fb.svg";
 import igIcon from "../assets/icon/Instagram.svg";
@@ -424,11 +425,11 @@ export default function Footer() {
 
         /* ── MAIN CONTENT GRID ── */
         .footer-grid {
-          display: inline-flex;
+          display: flex;
           align-items: flex-start;
           align-content: flex-start;
           gap: 55px 32px; 
-          // flex-wrap: wrap;
+          flex-wrap: wrap;
           width: 100%;
         }
 
@@ -522,15 +523,25 @@ gap: 10px;
           border-radius: 8px;
           border: none;
           text-decoration: none;
-          font-family: "CX80BOLD";
-          font-size: 14px;
+          font-family: "CX80";
+          font-size: 15px;
+          font-weight: 700;
+          line-height: 15px;
           letter-spacing: 4.48px;
           color: #073B2F;
           text-transform: uppercase;
           margin-top: 8px;
+          gap: 10px;
         }
 
-   
+        @keyframes call-vibrate {
+          0%, 20%, 100% { transform: rotate(0deg); }
+          3%, 9%, 15% { transform: rotate(-12deg); }
+          6%, 12%, 18% { transform: rotate(12deg); }
+        }
+        .vibrate-icon {
+          animation: call-vibrate 3s infinite ease-in-out;
+        }
 
 
         .footer-legal-text {
@@ -554,10 +565,17 @@ gap: 10px;
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1200px) {
-          .footer { padding: 56px 76px !important}
+          .footer { padding: 56px 76px !important; }
+          .footer-grid { gap: 40px 24px; }
+          .footer-contact { margin-left: 0; }
+          .desktop-only { display: none; }
+        }
+        @media (max-width: 1024px) {
+          .footer { padding: 56px 40px !important; }
+          .footer-grid { justify-content: space-between; }
         }
         @media (max-width: 768px) {
-          .footer { padding: 48px 20px !important; }
+          .footer { padding: 48px 20px !important; gap: 40px; }
           .footer-grid { flex-direction: column; }
           .desktop-only { display: none; }
           .footer-contact, .footer-explore, .footer-legal { width: 100%; margin-left: 0; }
@@ -601,8 +619,9 @@ gap: 10px;
 }}>
 
             </div>
-            <a href="https://calendly.com/..." target="_blank" rel="noopener noreferrer" className="btn-book">
-              Book a call
+            <a href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc" target="_blank" rel="noopener noreferrer" className="btn-book">
+              <img src={callIcon} className="vibrate-icon" width="20" height="20" alt="" />
+              Book a Call
             </a>
           </div>
 
