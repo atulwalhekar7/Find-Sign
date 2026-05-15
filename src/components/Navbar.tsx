@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/FS Primary Lockup_Gold.png";
 import callIcon from "../assets/Icon.png";
+import { useTheme } from "./ThemeContext"; // ✅ add this
 
 const COLORS = {
   racingGreen: "#073B2F",
@@ -17,6 +18,72 @@ const NAV_ITEMS = [
   { label: "Insights", to: "/insights" },
   { label: "Contact", to: "/contact" },
 ];
+
+/* ── Animated Sun/Moon toggle icon ── */
+function ThemeToggle() {
+  const { theme, toggleTheme } = useTheme();
+  const isDark = theme === "dark";
+
+  return (
+    <button
+      onClick={toggleTheme}
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "40px",
+        height: "40px",
+        borderRadius: "50%",
+        border: `1.5px solid ${isDark ? "rgba(105,228,220,0.5)" : "rgba(7,59,47,0.2)"}`,
+        background: isDark ? "rgba(105,228,220,0.08)" : "rgba(7,59,47,0.04)",
+        cursor: "pointer",
+        flexShrink: 0,
+        transition: "all 0.35s cubic-bezier(0.34,1.56,0.64,1)",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <span
+        style={{
+          position: "absolute",
+          inset: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          transition: "opacity 0.3s ease, transform 0.4s cubic-bezier(0.34,1.56,0.64,1)",
+          opacity: isDark ? 0 : 1,
+          transform: isDark ? "rotate(90deg) scale(0.5)" : "rotate(0deg) scale(1)",
+        }}
+      >
+        {/* Sun icon */}
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="4" stroke={COLORS.racingGreen} strokeWidth="2" strokeLinecap="round"/>
+          <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+            stroke={COLORS.racingGreen} strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+      </span>
+      <span
+        style={{
+          position: "absolute",
+          inset: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          transition: "opacity 0.3s ease, transform 0.4s cubic-bezier(0.34,1.56,0.64,1)",
+          opacity: isDark ? 1 : 0,
+          transform: isDark ? "rotate(0deg) scale(1)" : "rotate(-90deg) scale(0.5)",
+        }}
+      >
+        {/* Moon icon */}
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+            stroke="#69E4DC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </span>
+    </button>
+  );
+}
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -42,7 +109,6 @@ export default function Navbar() {
           height: 59px !important;
   object-fit: contain;
   display: block;
-  /* Premium Modern Animation: Elegant Bounce, Glow, and Shimmer pulse */
   animation: logo-premium-fx 6s ease-in-out infinite;
 }
 
@@ -183,14 +249,12 @@ export default function Navbar() {
             transform: translateY(0) scale(1);
             filter: drop-shadow(0 0 2px rgba(105, 228, 220, 0.1)) brightness(1);
           }
-          /* Lighting/Shimmer spike pulse */
           25% {
             filter: drop-shadow(0 0 5px rgba(105, 228, 220, 0.3)) brightness(1.4);
           }
           30% {
             filter: drop-shadow(0 0 2px rgba(105, 228, 220, 0.1)) brightness(1);
           }
-          /* Attractive Bounce Peak + Glowing Effect */
           50% {
             transform: translateY(-10px) scale(1.05);
             filter: drop-shadow(0 15px 35px rgba(105, 228, 220, 0.7)) brightness(1.1);
@@ -263,7 +327,7 @@ export default function Navbar() {
           background: COLORS.white,
           width: "100%",
           transition: "all 0.4s ease",
-boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
         }}
       >
         {/* ───── Top Bar ───── */}
@@ -271,8 +335,8 @@ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
           {/* Logo */}
           <NavLink to="/" style={{ display: "flex", alignItems: "center" }}>
             <img
-              src={logo} // The logo image source
-              alt="Find & Sign Buyer Advocate Logo" // Descriptive alt text for the logo
+              src={logo}
+              alt="Find & Sign Buyer Advocate Logo"
               className="nav-logo"
             />
           </NavLink>
@@ -290,7 +354,10 @@ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
               ))}
             </ul>
 
-            {/* Mobile Call Icon (outside drawer, near hamburger) */}
+            {/* ── Theme Toggle ── inserted here, zero layout disruption ── */}
+            <ThemeToggle />
+
+            {/* Mobile Call Icon */}
             <a
               href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
               target="_blank"
@@ -302,23 +369,23 @@ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
             </a>
 
             {/* CTA */}
-           <a
-  href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="nav-cta" // The "Book a Call" button for desktop
->
-  <img src={callIcon} className="vibrate-icon" width="20" height="20" alt="" />
-  Book a Call
-</a>
+            <a
+              href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-cta"
+            >
+              <img src={callIcon} className="vibrate-icon" width="20" height="20" alt="" />
+              Book a Call
+            </a>
 
             {/* Hamburger */}
             <button
               className="nav-hamburger"
               onClick={() => setMenuOpen((v) => !v)}
-              aria-label={menuOpen ? "Close menu" : "Open menu"} // Dynamic aria-label for screen readers
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
             >
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"> {/* Hide decorative SVG from screen readers */}
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
                 {menuOpen ? (
                   <path
                     d="M5 5l12 12M5 17L17 5"
@@ -328,33 +395,9 @@ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
                   />
                 ) : (
                   <>
-                    <line
-                      x1="3"
-                      y1="6"
-                      x2="19"
-                      y2="6"
-                      stroke={COLORS.racingGreen}
-                      strokeWidth="1.4"
-                      strokeLinecap="round"
-                    />
-                    <line
-                      x1="3"
-                      y1="11"
-                      x2="19"
-                      y2="11"
-                      stroke={COLORS.racingGreen}
-                      strokeWidth="1.4"
-                      strokeLinecap="round"
-                    />
-                    <line
-                      x1="3"
-                      y1="16"
-                      x2="19"
-                      y2="16"
-                      stroke={COLORS.racingGreen}
-                      strokeWidth="1.4"
-                      strokeLinecap="round"
-                    />
+                    <line x1="3" y1="6" x2="19" y2="6" stroke={COLORS.racingGreen} strokeWidth="1.4" strokeLinecap="round"/>
+                    <line x1="3" y1="11" x2="19" y2="11" stroke={COLORS.racingGreen} strokeWidth="1.4" strokeLinecap="round"/>
+                    <line x1="3" y1="16" x2="19" y2="16" stroke={COLORS.racingGreen} strokeWidth="1.4" strokeLinecap="round"/>
                   </>
                 )}
               </svg>
@@ -371,58 +414,56 @@ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
                 to={item.to}
                 className="nav-drawer-link"
                 onClick={() => setMenuOpen(false)}
-               style={({ isActive }) => ({
-  display: "block",
-  width: "100%",
-  boxSizing: "border-box",
-  fontFamily: "'SohneBuch'",
-  fontSize: "15px",
-  color: isActive ? COLORS.aqua : COLORS.racingGreen,
-  fontWeight: isActive ? 500 : 400,
-  textDecoration: "none",
-  padding: "10px 12px",
-  borderBottom: "1px solid rgba(27,67,50,0.06)",
-})}
+                style={({ isActive }) => ({
+                  display: "block",
+                  width: "100%",
+                  boxSizing: "border-box",
+                  fontFamily: "'SohneBuch'",
+                  fontSize: "15px",
+                  color: isActive ? COLORS.aqua : COLORS.racingGreen,
+                  fontWeight: isActive ? 500 : 400,
+                  textDecoration: "none",
+                  padding: "10px 12px",
+                  borderBottom: "1px solid rgba(27,67,50,0.06)",
+                })}
               >
                 {item.label}
               </NavLink>
             ))}
 
-           <a
-  href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Book a Call" // Accessible label for the link
-  onClick={() => setMenuOpen(false)}
- style={{
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  gap: "10px",
-  marginTop: "16px",
-  height: "48px",
-  padding: "12px 24px",
-  borderRadius: "8px",
-  background: COLORS.aqua,
-  color: COLORS.racingGreen,
-  fontFamily: "CX80",
-  fontSize: "15px",
-  fontWeight: 700,
-  lineHeight: "15px",
-  letterSpacing: "4.8px",
-  textDecoration: "none",
-  textTransform: "uppercase",
-  whiteSpace: "nowrap",
-}}
->
-  <img src={callIcon} className="vibrate-icon" width="18" height="18" alt="" aria-hidden="true" />
-  Book a Call
-</a>
+            <a
+              href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Book a Call"
+              onClick={() => setMenuOpen(false)}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "10px",
+                marginTop: "16px",
+                height: "48px",
+                padding: "12px 24px",
+                borderRadius: "8px",
+                background: COLORS.aqua,
+                color: COLORS.racingGreen,
+                fontFamily: "CX80",
+                fontSize: "15px",
+                fontWeight: 700,
+                lineHeight: "15px",
+                letterSpacing: "4.8px",
+                textDecoration: "none",
+                textTransform: "uppercase",
+                whiteSpace: "nowrap",
+              }}
+            >
+              <img src={callIcon} className="vibrate-icon" width="18" height="18" alt="" aria-hidden="true" />
+              Book a Call
+            </a>
           </div>
         )}
       </nav>
     </>
   );
 }
-
-

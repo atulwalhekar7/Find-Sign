@@ -1,3 +1,250 @@
+/* ══════════════════════════════════════════════════════════════════
+   DARK / LIGHT MODE THEME VARIABLES
+   These are prepended at the top — all existing styles are unchanged.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── Light (default) ── */
+:root {
+  --bg-primary:     #ffffff;
+  --bg-secondary:   #F9F9F9;
+  --bg-tertiary:    #EAE5DF;
+  --bg-process:     rgb(255, 254, 253);
+
+  --text-primary:   #000000;
+  --text-secondary: #757575;
+  --text-heading:   #073B2F;
+
+  --card-bg:        #ffffff;
+  --card-border:    #69E4DC;
+
+  --nav-bg:         #ffffff;
+  --drawer-bg:      #ffffff;
+  --nav-link-color: #000000;
+  --nav-hover-bg:   #EAE5DF;
+  --nav-drawer-border: rgba(27,67,50,0.06);
+}
+
+/* ── Dark ── */
+[data-theme="dark"] {
+  --bg-primary:     #0d0d0d;
+  --bg-secondary:   #111111;
+  --bg-tertiary:    #1a1a1a;
+  --bg-process:     #0d0d0d;
+
+  --text-primary:   #e8e8e8;
+  --text-secondary: #a0a0a0;
+  --text-heading:   #69E4DC;
+
+  --card-bg:        #1a1a1a;
+  --card-border:    #69E4DC;
+
+  --nav-bg:         #0d0d0d;
+  --drawer-bg:      #0d0d0d;
+  --nav-link-color: #e8e8e8;
+  --nav-hover-bg:   #1a1a1a;
+  --nav-drawer-border: rgba(105,228,220,0.08);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   DARK MODE OVERRIDES
+   Only background & text colours. Zero layout/spacing/animation changes.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── Navbar ── */
+[data-theme="dark"] nav {
+  background: var(--nav-bg) !important;
+}
+[data-theme="dark"] .nav-link {
+  color: var(--nav-link-color) !important;
+}
+[data-theme="dark"] .nav-link:hover,
+[data-theme="dark"] .nav-link.active {
+  background: var(--nav-hover-bg) !important;
+}
+[data-theme="dark"] .nav-drawer {
+  background: var(--drawer-bg) !important;
+  border-top-color: rgba(105,228,220,0.1) !important;
+}
+[data-theme="dark"] .nav-drawer-link {
+  border-bottom-color: var(--nav-drawer-border) !important;
+}
+[data-theme="dark"] .nav-drawer-link:hover,
+[data-theme="dark"] .nav-drawer-link.active {
+  background: var(--nav-hover-bg) !important;
+}
+
+/* ── Hero bottom ── */
+[data-theme="dark"] .hero-bottom {
+  background: var(--bg-secondary) !important;
+}
+[data-theme="dark"] .description {
+  color: var(--text-primary) !important;
+}
+[data-theme="dark"] .find-out-btn {
+  background: var(--card-bg) !important;
+  color: var(--text-heading) !important;
+}
+
+/* ── Our Process section ── */
+[data-theme="dark"] .op-section {
+  background: var(--bg-primary) !important;
+}
+[data-theme="dark"] .op-title-text {
+  color: var(--text-heading) !important;
+}
+[data-theme="dark"] .op-subtitle-text {
+  color: var(--text-primary) !important;
+}
+[data-theme="dark"] .op-num {
+  color: var(--text-heading) !important;
+}
+[data-theme="dark"] .op-item-title {
+  color: var(--text-primary) !important;
+}
+[data-theme="dark"] .op-item-desc {
+  color: var(--text-secondary) !important;
+}
+[data-theme="dark"] .op-row:hover {
+  background: var(--bg-tertiary) !important;
+  border-color: rgba(105,228,220,0.15) !important;
+}
+[data-theme="dark"] .op-divider {
+  background: var(--text-heading) !important;
+}
+[data-theme="dark"] .op-btn {
+  background: var(--card-bg) !important;
+  color: var(--text-heading) !important;
+}
+
+/* ── Client Outcomes ── */
+[data-theme="dark"] .co-wrapper {
+  background: var(--bg-secondary) !important;
+}
+[data-theme="dark"] .co-section {
+  background: var(--bg-secondary) !important;
+}
+[data-theme="dark"] .co-h2 {
+  color: var(--text-heading) !important;
+}
+[data-theme="dark"] .co-h2::after {
+  background: var(--text-heading) !important;
+}
+[data-theme="dark"] .co-subtitle {
+  color: var(--text-primary) !important;
+}
+[data-theme="dark"] .property-card {
+  background: var(--card-bg) !important;
+  border-color: var(--card-border) !important;
+}
+[data-theme="dark"] .card-data {
+  background: var(--card-bg) !important;
+}
+[data-theme="dark"] .row-label {
+  color: var(--text-primary) !important;
+}
+[data-theme="dark"] .view-btn {
+  background: var(--card-bg) !important;
+  color: var(--text-heading) !important;
+}
+[data-theme="dark"] .rev-arrow-btn {
+  background: var(--bg-tertiary) !important;
+  border-color: rgba(105,228,220,0.3) !important;
+  color: var(--text-heading) !important;
+}
+[data-theme="dark"] .co-dot {
+  background: #333 !important;
+}
+[data-theme="dark"] .co-dot.active {
+  background: var(--text-heading) !important;
+}
+
+/* ── Testimonials ── */
+[data-theme="dark"] .rev-outer-wrapper {
+  background: var(--bg-tertiary) !important;
+}
+[data-theme="dark"] .rev-bg-section {
+  background: var(--bg-tertiary) !important;
+}
+[data-theme="dark"] .rev-heading {
+  color: var(--text-heading) !important;
+}
+[data-theme="dark"] .rev-heading::after {
+  background: var(--text-heading) !important;
+}
+[data-theme="dark"] .rev-subheading {
+  color: var(--text-primary) !important;
+}
+[data-theme="dark"] .npb-card {
+  background: var(--card-bg) !important;
+  border-color: var(--card-border) !important;
+}
+[data-theme="dark"] .npb-card p {
+  color: var(--text-primary) !important;
+}
+[data-theme="dark"] .rev-cta-btn {
+  background: var(--card-bg) !important;
+  color: var(--text-heading) !important;
+}
+[data-theme="dark"] .rev-dot {
+  background: #333 !important;
+}
+[data-theme="dark"] .rev-dot.active {
+  background: var(--text-heading) !important;
+}
+
+/* ── FAQ ── */
+[data-theme="dark"] .faq-item {
+  background: var(--card-bg) !important;
+  border-color: #2a2a2a !important;
+}
+[data-theme="dark"] .faq-item.active {
+  border-color: var(--text-heading) !important;
+  border-left-color: var(--text-heading) !important;
+  box-shadow:
+    -15px 15px 40px rgba(105,228,220,0.08),
+    -5px 5px 15px rgba(105,228,220,0.05) !important;
+}
+[data-theme="dark"] .faq-question-text {
+  color: var(--text-primary) !important;
+}
+[data-theme="dark"] .faq-answer-text {
+  color: var(--text-secondary) !important;
+}
+[data-theme="dark"] .faq-title {
+  color: var(--text-heading) !important;
+}
+[data-theme="dark"] .faq-title::after {
+  background: var(--text-heading) !important;
+}
+[data-theme="dark"] .faq-subtitle {
+  color: var(--text-primary) !important;
+}
+[data-theme="dark"] .faq-chevron {
+  color: var(--text-heading) !important;
+}
+
+/* ── MUI Box wrappers (FAQ section uses MUI) ── */
+[data-theme="dark"] .MuiBox-root:not(.no-theme):not(.no-theme *) {
+  background: var(--bg-secondary) !important;
+}
+
+/* ── Page / body background ── */
+[data-theme="dark"] body {
+  background: var(--bg-primary) !important;
+}
+[data-theme="dark"] #root {
+  background: var(--bg-primary) !important;
+}
+
+/* ── Footer stays racing green in both modes ── */
+[data-theme="dark"] footer.footer {
+  background: #073B2F !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   ORIGINAL index.css — untouched below this line
+   ══════════════════════════════════════════════════════════════════ */
+
 :root {
   --sds-size-radius-200: 8px;
   --sds-size-space-200: 8px;
