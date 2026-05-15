@@ -6,7 +6,35 @@ import AboutSection from "../components/AboutSection";
 import bannerImg from "../assets/service-banner-find-and-sign-buyers-australia.jpg";
 import AboutServiceImg from "../assets/about-service-find-and-sign.jpg";
 import Image4 from "../components/Image4";
+import { useTheme } from "../components/ThemeContext";
 
+// ── Theme ─────────────────────────────────────────────────────────────────────
+const THEMES = {
+  dark: {
+    pageBg:        "#121212",
+    sectionBg:     "#1A1A1A",
+    cardBg:        "#1E1E1E",
+    cardBorder:    "#69E4DC",
+    headingColor:  "#F9F9F9",
+    dividerColor:  "#F9F9F9",
+    subTextColor:  "#EAE5DF",
+    bodyTextColor: "#A0A0A0",
+    titleColor:    "#F9F9F9",
+    disclosureColor: "#A0A0A0",
+  },
+  light: {
+    pageBg:        "#FFFFFF",
+    sectionBg:     "#F9F9F9",
+    cardBg:        "#FFFFFF",
+    cardBorder:    "#69E4DC",
+    headingColor:  "#073B2F",
+    dividerColor:  "#073B2F",
+    subTextColor:  "#000000",
+    bodyTextColor: "#757575",
+    titleColor:    "#000000",
+    disclosureColor: "#757575",
+  },
+};
 
 // ── Animation hook ────────────────────────────────────────────────────────────
 import type { RefObject } from 'react';
@@ -52,7 +80,16 @@ function FadeUp({ children, delay = 0, style = {} }: FadeUpProps) {
 }
 
 // ── Outline Button ────────────────────────────────────────────────────────────
-const OutlineButton = ({ children, onClick }: { children: React.ReactNode; onClick?: () => void }) => {
+const OutlineButton = ({
+  children,
+  onClick,
+  theme,
+}: {
+  children: React.ReactNode;
+  onClick?: () => void;
+  theme: keyof typeof THEMES;
+}) => {
+  const t = THEMES[theme];
   const [btnHover, setBtnHover] = useState(false);
   return (
     <button
@@ -74,13 +111,9 @@ const OutlineButton = ({ children, onClick }: { children: React.ReactNode; onCli
         fontWeight: 700,
         letterSpacing: "4.8px",
         background: btnHover ? "#69E4DC" : "transparent",
-        color: "#073B2F",
+        color: btnHover ? "#073B2F" : t.headingColor,
         cursor: "pointer",
-        transform: "none",
-        boxShadow: "none",
-        opacity: 1,
-        transition: "background 0.35s, color 0.35s, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s, opacity 0.8s 0.3s",
-        animation: "btnPulse 2s ease 1s 2",
+        transition: "background 0.35s, color 0.35s",
         width: "fit-content",
       }}
     >
@@ -96,13 +129,16 @@ const ServiceCard = ({
   hasButton = false,
   delay = 0,
   onBookCall,
+  theme,
 }: {
   title: string;
   body: string;
   hasButton?: boolean;
   delay?: number;
   onBookCall?: (service: string) => void;
+  theme: keyof typeof THEMES;
 }) => {
+  const t = THEMES[theme];
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -120,9 +156,9 @@ const ServiceCard = ({
           flex: "1 0 0",
           boxSizing: "border-box",
           borderRadius: "16px",
-          border: "2px solid var(--Brand-Contrast-FS-AQUA, #69E4DC)",
-          background: "var(--Brand-Utility-FS-WHITE, #FFF)",
-          transition: "transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease",
+          border: `2px solid ${t.cardBorder}`,
+          background: t.cardBg,
+          transition: "transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, background 0.3s ease",
           transform: hovered ? "translateY(-12px)" : "translateY(0)",
           boxShadow: hovered
             ? "0 10px 22px rgba(105, 228, 220, 0.96)"
@@ -133,7 +169,7 @@ const ServiceCard = ({
         <h3
           tabIndex={0}
           style={{
-            color: "#000",
+            color: t.titleColor,
             textAlign: "center",
             fontVariantNumeric: "lining-nums proportional-nums",
             fontFamily: "GT Super Display Medium",
@@ -143,12 +179,13 @@ const ServiceCard = ({
             lineHeight: "40px",
             letterSpacing: "-0.64px",
             margin: 0,
+            transition: "color 0.3s ease",
           }}
         >
           {title}
         </h3>
         <p tabIndex={0} style={{
-          color: "#757575",
+          color: t.bodyTextColor,
           textAlign: "center",
           fontFamily: "SohneBuch",
           fontSize: "16px",
@@ -157,11 +194,12 @@ const ServiceCard = ({
           lineHeight: "24px",
           margin: 0,
           flex: 1,
+          transition: "color 0.3s ease",
         }}>
           {body}
         </p>
         {hasButton && (
-          <OutlineButton onClick={() => onBookCall?.(title)}>
+          <OutlineButton onClick={() => onBookCall?.(title)} theme={theme}>
             Learn More
           </OutlineButton>
         )}
@@ -177,13 +215,16 @@ const OtherServiceCard = ({
   hasButton = false,
   delay = 0,
   onBookCall,
+  theme,
 }: {
   title: string;
   body: string;
   hasButton?: boolean;
   delay?: number;
   onBookCall?: (service: string) => void;
+  theme: keyof typeof THEMES;
 }) => {
+  const t = THEMES[theme];
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -201,9 +242,9 @@ const OtherServiceCard = ({
           flex: "1 0 0",
           boxSizing: "border-box",
           borderRadius: "16px",
-          border: "2px solid var(--Brand-Contrast-FS-AQUA, #69E4DC)",
-          background: "var(--Brand-Utility-FS-WHITE, #FFF)",
-          transition: "transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease",
+          border: `2px solid ${t.cardBorder}`,
+          background: t.cardBg,
+          transition: "transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, background 0.3s ease",
           transform: hovered ? "translateY(-12px)" : "translateY(0)",
           boxShadow: hovered
             ? "0 10px 22px rgba(105, 228, 220, 0.96)"
@@ -214,7 +255,7 @@ const OtherServiceCard = ({
         <h3
           tabIndex={0}
           style={{
-            color: "#000",
+            color: t.titleColor,
             textAlign: "center",
             fontVariantNumeric: "lining-nums proportional-nums",
             fontFamily: "GT Super Display Medium",
@@ -224,25 +265,27 @@ const OtherServiceCard = ({
             lineHeight: "40px",
             letterSpacing: "-0.64px",
             margin: 0,
+            transition: "color 0.3s ease",
           }}
         >
           {title}
         </h3>
         <p tabIndex={0} style={{
-          color: "#757575",
+          color: t.bodyTextColor,
           textAlign: "center",
-          fontFamily: 'SohneBuch',
+          fontFamily: "SohneBuch",
           fontSize: "16px",
           fontStyle: "normal",
           fontWeight: 400,
           lineHeight: "24px",
           margin: 0,
           flex: 1,
+          transition: "color 0.3s ease",
         }}>
           {body}
         </p>
         {hasButton && (
-          <OutlineButton onClick={() => onBookCall?.(title)}>
+          <OutlineButton onClick={() => onBookCall?.(title)} theme={theme}>
             Learn More
           </OutlineButton>
         )}
@@ -256,41 +299,25 @@ export default function Services() {
   const navigate = useNavigate();
   const formRef = useRef<HTMLDivElement>(null);
   const [selectedService] = useState("");
+  const { theme } = useTheme();
+  const t = THEMES[theme];
 
-  
-
-  // ── Handler: navigate to the service's dedicated page ──────────────────────
   const handleBookCall = (serviceName: string) => {
-    const slug = serviceName.toLowerCase().replace(/\s+/g, "-"); ;
+    const slug = serviceName.toLowerCase().replace(/\s+/g, "-");
     navigate(`/services/${slug}`);
   };
 
-  const body1 =
-    "This is our complete service for buyers who want the right property secured from the very first search through to settlement.  We manage the process on your behalf, with clear guidance at each stage so you understand what's happening, what to expect, and where the opportunity lies.  You're involved at every key moment, with decisions made together and no uncertainty around what comes next.  Every engagement is tailored to your situation, your goals and your timeline.";
-
-  const body2 =
-    "Sometimes you don't need someone to manage the entire process. You want the right guidance to make informed decisions from the first search through to securing a property. We guide you with clear advice at each stage so you understand what's happening, what to consider, and where risks and opportunities sit. You're supported throughout, with decisions made together and no uncertainty around what comes next. Every engagement is tailored to your situation, your goals and your timeline.";
-
-  const body3 =
-    "Before the right money is in the right place, nothing else can move. A great mortgage broker cuts through the noise, secures the right finance structure for your situation, and ensures you are set up correctly from the very beginning of your purchase journey.";
-
-  const body4 =
-    "The legal side of purchasing a property involves more moving parts than most people realise. A skilled settlement agent ensures your contracts are handled correctly, your deadlines are met, and your purchase is transferred smoothly and securely.";
-
-  const body5 =
-    "Never skip this step. A thorough building inspection gives you an honest picture of the property's condition before you commit, protecting you from costly surprises down the track.";
-
-  const body6 =
-    "Once you have secured your investment, you need someone who will look after it as carefully as you do. A great property manager protects your asset, manages your tenants, and keeps your investment performing.";
-
-  const body7 =
-    "Two of the most overlooked yet most valuable members of your investment team. The right accountant and quantity surveyor ensure your structure is correct, your depreciation is maximised, and every financial entitlement available to you is working in your favour.";
-
-  const body8 =
-    "Whether you are selling before you buy or planning an exit strategy on an investment, having a trusted sales agent in your network means you are never starting from scratch when it matters most.";
+  const body1 = "This is our complete service for buyers who want the right property secured from the very first search through to settlement.  We manage the process on your behalf, with clear guidance at each stage so you understand what's happening, what to expect, and where the opportunity lies.  You're involved at every key moment, with decisions made together and no uncertainty around what comes next.  Every engagement is tailored to your situation, your goals and your timeline.";
+  const body2 = "Sometimes you don't need someone to manage the entire process. You want the right guidance to make informed decisions from the first search through to securing a property. We guide you with clear advice at each stage so you understand what's happening, what to consider, and where risks and opportunities sit. You're supported throughout, with decisions made together and no uncertainty around what comes next. Every engagement is tailored to your situation, your goals and your timeline.";
+  const body3 = "Before the right money is in the right place, nothing else can move. A great mortgage broker cuts through the noise, secures the right finance structure for your situation, and ensures you are set up correctly from the very beginning of your purchase journey.";
+  const body4 = "The legal side of purchasing a property involves more moving parts than most people realise. A skilled settlement agent ensures your contracts are handled correctly, your deadlines are met, and your purchase is transferred smoothly and securely.";
+  const body5 = "Never skip this step. A thorough building inspection gives you an honest picture of the property's condition before you commit, protecting you from costly surprises down the track.";
+  const body6 = "Once you have secured your investment, you need someone who will look after it as carefully as you do. A great property manager protects your asset, manages your tenants, and keeps your investment performing.";
+  const body7 = "Two of the most overlooked yet most valuable members of your investment team. The right accountant and quantity surveyor ensure your structure is correct, your depreciation is maximised, and every financial entitlement available to you is working in your favour.";
+  const body8 = "Whether you are selling before you buy or planning an exit strategy on an investment, having a trusted sales agent in your network means you are never starting from scratch when it matters most.";
 
   return (
-    <div style={{ color: "#111", background: "#fff", margin: 0, padding: 0 }}>
+    <div style={{ color: t.subTextColor, background: t.pageBg, margin: 0, padding: 0, transition: "background 0.3s ease, color 0.3s ease" }}>
 
       {/* ── SECTION 1: Hero ─────────────────────────────────────────────── */}
       <section
@@ -360,7 +387,8 @@ From the first conversation to settlement and beyond, we are in your corner. You
           flexDirection: "column",
           alignItems: "center",
           alignSelf: "stretch",
-          background: "var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9)",
+          background: t.sectionBg,
+          transition: "background 0.3s ease",
         }}
       >
         <FadeUp>
@@ -368,7 +396,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
             <h2
               tabIndex={0}
               style={{
-                color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+                color: t.headingColor,
                 textAlign: "center",
                 fontVariantNumeric: "lining-nums proportional-nums",
                 fontFamily: "GT Super Display Medium",
@@ -382,15 +410,16 @@ From the first conversation to settlement and beyond, we are in your corner. You
                 flexDirection: "column",
                 alignItems: "center",
                 gap: "24px",
+                transition: "color 0.3s ease",
               }}
             >
               Our Services
-              <div style={{ width: "160px", height: "1px", background: "#073B2F" }} />
+              <div style={{ width: "160px", height: "1px", background: t.dividerColor, transition: "background 0.3s ease" }} />
             </h2>
             <p
               tabIndex={0}
               style={{
-                color: "#000",
+                color: t.subTextColor,
                 fontFamily: "Sohne",
                 fontSize: "24px",
                 fontWeight: 300,
@@ -398,6 +427,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
                 marginTop: "24px",
                 textAlign: "center",
                 marginBottom: "56px",
+                transition: "color 0.3s ease",
               }}
             >
               Explore more about our services
@@ -405,13 +435,13 @@ From the first conversation to settlement and beyond, we are in your corner. You
           </div>
         </FadeUp>
 
-        {/* Top row: Buyer Advocate + Advisory — 12-col: 6/6 → 12/12 on mobile */}
+        {/* Top row: Buyer Advocate + Advisory */}
         <div className="top-grid grid-12">
           <div className="col-6 col-sm-12">
-            <ServiceCard title="Buyer Advocate" body={body1} hasButton delay={0} onBookCall={handleBookCall} />
+            <ServiceCard title="Buyer Advocate" body={body1} hasButton delay={0} onBookCall={handleBookCall} theme={theme} />
           </div>
           <div className="col-6 col-sm-12">
-            <ServiceCard title="Advisory" body={body2} hasButton delay={0.12} onBookCall={handleBookCall} />
+            <ServiceCard title="Advisory" body={body2} hasButton delay={0.12} onBookCall={handleBookCall} theme={theme} />
           </div>
         </div>
 
@@ -422,7 +452,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
               tabIndex={0}
               style={{
                 margin: "56px 0 0",
-                color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+                color: t.headingColor,
                 textAlign: "center",
                 fontVariantNumeric: "lining-nums proportional-nums",
                 fontFamily: "GT Super Display Medium",
@@ -435,15 +465,16 @@ From the first conversation to settlement and beyond, we are in your corner. You
                 flexDirection: "column",
                 alignItems: "center",
                 gap: "24px",
+                transition: "color 0.3s ease",
               }}
             >
               Affiliated Services
-              <div style={{ width: "160px", height: "1px", background: "#073B2F" }} />
+              <div style={{ width: "160px", height: "1px", background: t.dividerColor, transition: "background 0.3s ease" }} />
             </h2>
             <p
               tabIndex={0}
               style={{
-                color: "#000",
+                color: t.subTextColor,
                 fontFamily: "Sohne",
                 fontSize: "24px",
                 fontWeight: 300,
@@ -451,6 +482,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
                 marginTop: "24px",
                 marginBottom: "56px",
                 textAlign: "center",
+                transition: "color 0.3s ease",
               }}
             >
               People we trust. Services you may need.
@@ -459,7 +491,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
               tabIndex={0}
               className="services-desc"
               style={{
-                color: "var(--FS-System-Grey-1, #757575)",
+                color: t.bodyTextColor,
                 textAlign: "center",
                 fontFamily: "SohneBuch",
                 fontSize: "20px",
@@ -468,6 +500,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
                 lineHeight: "28px",
                 marginTop: "0px",
                 marginBottom: "86px",
+                transition: "color 0.3s ease",
               }}
             >
               At Find and Sign Buyer Advocate, securing the right property is only part of the process. We work with trusted professionals at each stage and can introduce them where relevant. You're never required to use these services. The choice is always yours.
@@ -476,28 +509,28 @@ From the first conversation to settlement and beyond, we are in your corner. You
         </FadeUp>
 
         {/* Row 1: 3 affiliated cards */}
-        <div className="grid-12" style={{ marginBottom:"86px" }}>
+        <div className="grid-12" style={{ marginBottom: "86px" }}>
           <div className="col-4 col-md-6 col-sm-12">
-            <OtherServiceCard title="Mortgage Broker" body={body3} hasButton delay={0} onBookCall={() => navigate("/services/accounting")} />
+            <OtherServiceCard title="Mortgage Broker" body={body3} hasButton delay={0} onBookCall={() => navigate("/services/accounting")} theme={theme} />
           </div>
           <div className="col-4 col-md-6 col-sm-12">
-            <OtherServiceCard title="Settlement Agent" body={body4} hasButton delay={0.1} onBookCall={handleBookCall} />
+            <OtherServiceCard title="Settlement Agent" body={body4} hasButton delay={0.1} onBookCall={handleBookCall} theme={theme} />
           </div>
           <div className="col-4 col-md-6 col-sm-12">
-            <OtherServiceCard title="Building Inspection" body={body5} hasButton delay={0.2} onBookCall={handleBookCall} />
+            <OtherServiceCard title="Building Inspection" body={body5} hasButton delay={0.2} onBookCall={handleBookCall} theme={theme} />
           </div>
         </div>
 
-       {/* Row 2: 3 affiliated cards */}
+        {/* Row 2: 3 affiliated cards */}
         <div className="grid-12" style={{ marginBottom: "64px" }}>
           <div className="col-4 col-md-6 col-sm-12">
-            <OtherServiceCard title="Property Management" body={body6} hasButton delay={0} onBookCall={handleBookCall} />
+            <OtherServiceCard title="Property Management" body={body6} hasButton delay={0} onBookCall={handleBookCall} theme={theme} />
           </div>
           <div className="col-4 col-md-6 col-sm-12">
-            <OtherServiceCard title="Accounting / Quantity Surveyor" body={body7} hasButton delay={0.1} onBookCall={() => navigate("/services/quantity-surveyor")} />
+            <OtherServiceCard title="Accounting / Quantity Surveyor" body={body7} hasButton delay={0.1} onBookCall={() => navigate("/services/quantity-surveyor")} theme={theme} />
           </div>
           <div className="col-4 col-md-6 col-sm-12">
-            <OtherServiceCard title="Sales Agent" body={body8} hasButton delay={0.2} onBookCall={handleBookCall} />
+            <OtherServiceCard title="Sales Agent" body={body8} hasButton delay={0.2} onBookCall={handleBookCall} theme={theme} />
           </div>
         </div>
 
@@ -512,29 +545,10 @@ From the first conversation to settlement and beyond, we are in your corner. You
               gap: "8px",
             }}
           >
-            {/* Label */}
             <p
               tabIndex={0}
               style={{
-                color: "var(--FS-System-Grey-1, #757575)",
-                textAlign: "center",
-                fontFamily: " SohneBuch",
-                fontSize: "16px",
-                fontStyle: "normal",
-                fontWeight: 400,
-                lineHeight: "24px",
-                margin: 0,
-              }}
-            >
-              Affiliated Services Disclosure
-            </p>
-
-            {/* Body */}
-            <p
-              tabIndex={0}
-              style={{
-                alignSelf: "stretch",
-                color: "var(--FS-System-Grey-1, #757575)",
+                color: t.disclosureColor,
                 textAlign: "center",
                 fontFamily: "SohneBuch",
                 fontSize: "16px",
@@ -542,7 +556,25 @@ From the first conversation to settlement and beyond, we are in your corner. You
                 fontWeight: 400,
                 lineHeight: "24px",
                 margin: 0,
-                maxWidth: "1158px", // This was the line before the duplicate
+                transition: "color 0.3s ease",
+              }}
+            >
+              Affiliated Services Disclosure
+            </p>
+            <p
+              tabIndex={0}
+              style={{
+                alignSelf: "stretch",
+                color: t.disclosureColor,
+                textAlign: "center",
+                fontFamily: "SohneBuch",
+                fontSize: "16px",
+                fontStyle: "normal",
+                fontWeight: 400,
+                lineHeight: "24px",
+                margin: 0,
+                maxWidth: "1158px",
+                transition: "color 0.3s ease",
               }}
             >
               The affiliated services listed on this page are independent businesses and professionals that Find and Sign Buyer Advocate has developed relationships with over time. While we may refer or introduce these services, we do so based on our genuine belief in the quality of their work. Please note that Find and Sign Buyer Advocate may receive a commission or referral fee in some instances. We are not responsible for the advice, outcomes, or conduct of any third party service provider. All decisions regarding the engagement of any affiliated service remain entirely at your discretion.
@@ -561,15 +593,12 @@ From the first conversation to settlement and beyond, we are in your corner. You
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap');
 
-        /* ── 12-column grid system ───────────────────────────────────────── */
         .grid-12 {
           display: grid;
           grid-template-columns: repeat(12, 1fr);
           gap: 24px;
           width: 100%;
         }
-
-        /* Column spans — desktop */
         .col-1  { grid-column: span 1; }
         .col-2  { grid-column: span 2; }
         .col-3  { grid-column: span 3; }
@@ -583,55 +612,27 @@ From the first conversation to settlement and beyond, we are in your corner. You
         .col-11 { grid-column: span 11; }
         .col-12 { grid-column: span 12; }
 
-        /* Column spans — tablet (md: 900px) */
-        .col-3  { grid-column: span 3; }
-        .col-4  { grid-column: span 4; }
-        .col-5  { grid-column: span 5; }
-        .col-6  { grid-column: span 6; }
-        .col-7  { grid-column: span 7; }
-        .col-8  { grid-column: span 8; }
-        .col-9  { grid-column: span 9; }
-        .col-10 { grid-column: span 10; }
-        .col-11 { grid-column: span 11; }
-        .col-12 { grid-column: span 12; }
+        .grid-12 > [class*="col-"] > div { height: 100%; }
 
-        /* Ensure FadeUp wrappers inside grid cells stretch full height */
-        .grid-12 > [class*="col-"] > div {
-          height: 100%;
-        }
-
-        .services-section {
-          padding: 64px 130px 64px;
-        }
-
-        .services-desc {
-          width: 100%;
-          max-width: 1158px;
-        }
+        .services-section { padding: 64px 130px 64px; }
+        .services-desc { width: 100%; max-width: 1158px; }
 
         @keyframes heroFadeIn {
           from { opacity: 0; transform: translateY(20px); }
           to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* ── xl: 1200px ──────────────────────────────────────────────────── */
         @media (max-width: 1200px) {
           .services-section { padding: 64px 40px 64px; }
         }
 
-        /* ── md: 900px — tablet ──────────────────────────────────────────── */
         @media (max-width: 900px) {
           .services-section { padding: 64px 20px 64px; }
-
           h1 { font-size: 56px !important; line-height: 1.2 !important; }
           h2 { font-size: 42px !important; line-height: 40px !important; }
           h3 { font-size: 32px !important; }
           .services-section p { font-size: 18px !important; line-height: 28px !important; }
-
-          /* top-grid: each col-6 card full-width on tablet */
           .top-grid.grid-12 .col-6 { grid-column: span 12; }
-
-          /* Generic col-md-X for tablet */
           .col-md-1  { grid-column: span 1; }
           .col-md-2  { grid-column: span 2; }
           .col-md-3  { grid-column: span 3; }
@@ -646,11 +647,8 @@ From the first conversation to settlement and beyond, we are in your corner. You
           .col-md-12 { grid-column: span 12; }
         }
 
-        /* ── sm: 600px — mobile ──────────────────────────────────────────── */
         @media (max-width: 600px) {
           h1 { font-size: 56px !important; }
-
-          /* all cards go full-width on small screens */
           .grid-12 [class*="col-"] { grid-column: span 12 !important; }
         }
       `}</style>
