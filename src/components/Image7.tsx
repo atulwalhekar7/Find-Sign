@@ -36,7 +36,7 @@ const Image1: React.FC = () => {
     inset: 0,
     display: "flex",
     justifyContent: "center",
-    alignItems: { xs: "flex-end", sm: "center" }, // vertically centered
+    alignItems: { xs: "center", sm: "center" }, // vertically centered
     padding: { xs: "20px", md: "40px" },
     transform: "none",    // 👈 remove the translateY offset
   }}
@@ -78,8 +78,8 @@ const Image1: React.FC = () => {
       <style>{`
         @media (max-width: 599px) {
           .image7-overlay-container {
-            align-items: flex-end !important;
-            padding-bottom: 60px !important;
+            align-items: center !important;
+            padding-bottom: 0px !important;
           }
           .image7-hero-title {
             font-size: 18px !important;

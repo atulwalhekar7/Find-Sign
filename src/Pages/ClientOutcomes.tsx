@@ -130,6 +130,7 @@ const reviews = [
 
 const formattedReviews = reviews.map(r => ({
   ...r,
+  title: r.title.trim(),
   body: r.body.endsWith("…More") ? r.body.slice(0, -5).trim() : r.body,
 }));
 
@@ -712,7 +713,8 @@ export default function ClientOutcomes() {
           font-size: 16px;
           font-weight: 400;
           font-family: SohneBuch;
-          line-height: 24px;
+          line-height: 1.1;
+          text-transform: capitalize;
           max-width: 100%;
           white-space: normal;
           word-break: break-word;

@@ -30,6 +30,7 @@ const formatReviewBody = (text: string) => {
 
 const formattedReviews = reviewsData.map(review => ({
   ...review,
+  title: review.title.trim(),
   body: formatReviewBody(review.body),
 }));
 
@@ -478,7 +479,8 @@ const ReviewCard = ({ review }: ReviewCardProps) => (
       whiteSpace: "normal",
       wordBreak: "break-word",
       fontFamily: "SohneBuch",
-      lineHeight: "22px",
+      lineHeight: "1.1",
+      textTransform: "capitalize",
       marginBottom: "10px",
       alignSelf: "flex-start",
     }}>

@@ -51,7 +51,7 @@ const Image1: React.FC = () => {
               display: "flex",
               justifyContent: "center",
               alignItems: {
-                xs: "flex-end",
+                xs: "center",
                 sm: "center",
                 md: "center",
               },
@@ -84,7 +84,7 @@ const Image1: React.FC = () => {
                   md: "nowrap",
                 },
                 paddingBottom: {
-                  xs: "30px",
+                  xs: "0px",
                   sm: "0px",
                   md: "0px",
                 },
@@ -105,8 +105,8 @@ const Image1: React.FC = () => {
             letter-spacing: -0.3px !important;
           }
           .image4-overlay-container {
-            align-items: flex-end !important;
-            padding-bottom: 40px !important;
+            align-items: center !important;
+            padding-bottom: 0px !important;
           }
         }
 
