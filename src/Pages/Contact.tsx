@@ -134,7 +134,7 @@ export default function Contact() {
 
         @media (max-width: 600px) {
           .contact-hero-banner h1 {
-            font-size: 56px !important;
+            font-size: 48px !important;
             text-align: center !important;
           }
         }
