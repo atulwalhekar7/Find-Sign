@@ -7,7 +7,8 @@ import Image7 from "../components/Image7";
 
 // import aboutInsightsImg from "../assets/About Insights.jpg";
 import bannerImg from "../assets/Insights-banner-find-and-sign-buyers-agent-australia.jpg";
-import perthBlogImg from "../assets/Blogs/DSC06286.jpg";
+import perthBlogImg from "../assets/niki.jpg";
+import Blog2 from "../assets/niki.jpg";
 
 // --- Helper Components ---
 
@@ -152,7 +153,7 @@ const blogPosts = [
     date: "01 april 2026",
     description:
       "Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement.",
-    image: bannerImg,
+    image: Blog2,
     path: "/blog/buyers-agent-perth",
   },
 ];

@@ -19,7 +19,16 @@ export default function Contact() {
           padding: "0 20px",
         }}
       >
-        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.35)" }} />
+        {/* Overlay */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "rgba(0,0,0,0.35)",
+          }}
+        />
+
+        {/* Content */}
         <div
           className="contact-hero-content"
           style={{
@@ -37,10 +46,10 @@ export default function Contact() {
             animation: "heroFadeIn 0.8s ease both",
           }}
         >
-        <h1
-          tabIndex={0}
-          style={{
-              fontFamily: 'GT Super Display Medium',
+          <h1
+            tabIndex={0}
+            style={{
+              fontFamily: "GT Super Display Medium",
               fontSize: "64px",
               fontWeight: 500,
               color: "#FFF",
@@ -48,18 +57,28 @@ export default function Contact() {
               letterSpacing: "1px",
               fontVariantNumeric: "lining-nums proportional-nums",
               margin: 0,
-            }}>
+              textAlign: "center",
+              width: "100%",
+            }}
+          >
             Contact Us
           </h1>
         </div>
       </section>
+
       <GetInTouch hideInternalHeading={true} />
       <SimpleFooter />
 
       <style>{`
         @keyframes heroFadeIn {
-          from { opacity: 0; transform: translateY(30px); }
-          to   { opacity: 1; transform: translateY(0); }
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
 
         .contact-hero-banner {
@@ -68,26 +87,56 @@ export default function Contact() {
         }
 
         @media (max-width: 1200px) {
-          .contact-hero-banner { min-height: 50vh; }
-          .contact-hero-banner h1 { font-size: 56px !important; }
+          .contact-hero-banner {
+            min-height: 50vh;
+          }
+
+          .contact-hero-banner h1 {
+            font-size: 56px !important;
+          }
         }
 
-
-
         @media (max-width: 900px) {
-          .contact-page-heading-section {
-            padding-left: 20px !important;
-            padding-right: 20px !important;
-            padding-top: 40px !important;
-            padding-bottom: 20px !important;
+          .contact-hero-banner h1 {
+            font-size: 56px !important;
+            line-height: 1.2 !important;
+            text-align: center !important;
           }
-          .contact-page-heading-section h1 { font-size: 48px !important; line-height: 58px !important; }
-          h2 { font-size: 38px !important; line-height: 48px !important; }
-          h3 { font-size: 28px !important; line-height: 38px !important; }
+
+          h2 {
+            font-size: 42px !important;
+            line-height: 40px !important;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .contact-hero-banner {
+            aspect-ratio: 4 / 5;
+            min-height: unset;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .contact-hero-content {
+            width: 100%;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .contact-hero-banner h1 {
+            text-align: center !important;
+            width: 100%;
+            margin: 0 auto;
+          }
         }
 
         @media (max-width: 600px) {
-          .contact-page-heading-section h1 { font-size: 48px !important; line-height: 58px !important; }
+          .contact-hero-banner h1 {
+            font-size: 56px !important;
+            text-align: center !important;
+          }
         }
       `}</style>
     </>
