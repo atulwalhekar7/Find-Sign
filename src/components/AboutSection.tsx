@@ -37,32 +37,9 @@ const FadeUp = ({ children, delay = 0, style = {}, className = "" }: any) => {
 };
 
 /* ================= ABOUT SECTION ================= */
-/**
- * 12-Column Grid Breakdown
- * ─────────────────────────────────────────────────
- * ≥1200px  Desktop     pad:196px  gap:24px
- *   Heading → 1/-1  (12 cols)
- *   Image   → 1/6   (5 cols)
- *   Text    → 6/13  (7 cols)
- *
- * 900–1199px  Tablet    pad:40px   gap:20px
- *   same column spans as desktop
- *
- * 768–899px  Tablet S   pad:24px   gap:16px   row-gap:32px
- *   Heading → 1/-1
- *   Image   → 1/-1  (stacked, h:340px)
- *   Text    → 1/-1
- *
- * 480–767px  Mobile L   pad:20px   gap:16px   row-gap:24px
- *   all → 1/-1   image h:280px
- *
- * <480px    Mobile S    pad:16px   gap:12px   row-gap:20px
- *   all → 1/-1   image h:220px
- * ─────────────────────────────────────────────────
- */
 const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
   return (
-    <div style={{ background: "#fff", width: "100%" }}>
+    <div style={{ background: "var(--bg-primary)", width: "100%" }}>
       <section className="as-grid">
 
         {/* Heading — full 12 cols always */}
@@ -76,7 +53,7 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
         {/* Image — 5 cols desktop → 12 cols tablet-S and below */}
         <FadeUp className="as-image-col" style={{ display: "flex" }}>
           <div className="about-image">
-            <img  src={imageSrc || AboutBanner} alt="" />
+            <img src={imageSrc || AboutBanner} alt="" />
           </div>
         </FadeUp>
 
@@ -110,7 +87,7 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
           max-width: 1100px;
           margin: 0 auto;
           padding: 64px 32px;
-          background-color: #fff;
+          background-color: var(--bg-primary);
           box-sizing: border-box;
         }
 
@@ -131,7 +108,7 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
           font-weight: 500;
           line-height: 120%;
           letter-spacing: -0.48px;
-          color: #073B2F;
+          color: var(--text-heading);
           margin: 0 0 4px;
           display: flex;
           flex-direction: column;
@@ -143,7 +120,7 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
           content: "";
           width: 160px;
           height: 1px;
-          background: #073B2F;
+          background: var(--text-heading);
           display: block;
         }
 
@@ -152,7 +129,7 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
           font-size: 24px;
           font-weight: 300;
           line-height: 36px;
-          color: #000;
+          color: var(--text-primary);
           margin: 24px 0 0;
         }
 
@@ -180,7 +157,7 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
 
         .body {
           align-self: stretch;
-          color: var(--FS-System-Grey-1, #757575);
+          color: var(--text-secondary);
           font-family: 'SohneBuch';
           font-size: 20px;
           font-style: normal;

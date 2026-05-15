@@ -8,108 +8,62 @@ interface Step {
 
 /* ================= DATA ================= */
 const steps: Step[] = [
-  {
-    id: 1,
-    title: "Initial Consultation",
-    description:
-      "Defining your goals and budget.",
-  },
-  {
-    id: 2,
-    title: "Find & Inspect",
-    description:
-      "Identifying and inspecting suitable properties.",
-  },
-  {
-    id: 3,
-    title: "Due Diligence",
-    description:
-      "Evaluating value and growth potential.",
-  },
-  {
-    id: 4,
-    title: "Negotiation",
-    description:
-      "Securing the best possible price.",
-  },
-  {
-    id: 5,
-    title: "Secure and Sign",
-    description:
-      "Guiding the process and connecting you with trusted partners.",
-  },
-  {
-    id: 6,
-    title: "Settlement",
-    description:
-      "Supporting you through to ownership.",
-},
+  { id: 1, title: "Initial Consultation", description: "Defining your goals and budget." },
+  { id: 2, title: "Find & Inspect", description: "Identifying and inspecting suitable properties." },
+  { id: 3, title: "Due Diligence", description: "Evaluating value and growth potential." },
+  { id: 4, title: "Negotiation", description: "Securing the best possible price." },
+  { id: 5, title: "Secure and Sign", description: "Guiding the process and connecting you with trusted partners." },
+  { id: 6, title: "Settlement", description: "Supporting you through to ownership." },
 ];
 
-/* ── Design tokens ── */
-const BG         = "rgb(255, 254, 253)";
-const GREEN      = "#003327";
-const DARK_GREEN = "#073B2F";
-
-/* ── Global CSS ── */
+/* ── Global CSS — all hardcoded colors replaced with CSS vars ── */
 const globalCSS = `
-  /* ── Entrance animations ── */
   @keyframes btnPulse {
     0%   { box-shadow: 0 0 0 0 rgba(105,228,220,0.4); }
     70%  { box-shadow: 0 0 0 10px rgba(105,228,220,0); }
     100% { box-shadow: 0 0 0 0 rgba(105,228,220,0); }
   }
-
-  /* ── Hover pop: row lifts and breathes ── */
   @keyframes popLift {
-    0%   { transform: translateY(0)   scale(1); }
+    0%   { transform: translateY(0)    scale(1); }
     40%  { transform: translateY(-6px) scale(1.012); }
     70%  { transform: translateY(-4px) scale(1.009); }
     100% { transform: translateY(-5px) scale(1.010); }
   }
-
   @keyframes popDown {
     0%   { transform: translateY(-5px) scale(1.010); }
     100% { transform: translateY(0)    scale(1); }
   }
-
-  /* ── Number subtle float on hover ── */
   @keyframes numFloat {
     0%, 100% { transform: translateY(0); }
     50%       { transform: translateY(-6px); }
   }
-
-  /* ── Shimmer line sweep ── */
   @keyframes shimmerSweep {
     from { background-position: -200% center; }
     to   { background-position:  200% center; }
   }
 
-  /* ── Section grid ── */
-
   .op-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    max-width: 100%;
+    height: 48px;
+    padding: 12px 24px;
+    font-family: CX80;
+    font-weight: 700;
+    letter-spacing: 4px;
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    background: var(--card-bg);
+    color: var(--text-heading);
+    border: 1px solid #69E4DC;
+  }
 
-  width: fit-content;
-  max-width: 100%;
-
-  height: 48px;
-  padding: 12px 24px;
-
-  font-family: CX80;
-  font-weight: 700;
-
-  letter-spacing: 4px;
-  border-radius: 8px;
-  cursor: pointer;
-  white-space: nowrap;
-
-  transition: all 0.3s ease;
-}
   .op-section {
-    background: ${BG};
+    background: var(--bg-primary);
     width: 100%;
     max-width: 1512px;
     margin: 0 auto;
@@ -120,17 +74,16 @@ const globalCSS = `
     padding: 64px 130px 64px;
   }
 
-  .op-head { 
-    grid-column: 1 / -1; 
-    margin-bottom: 48px; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    text-align: center; 
+  .op-head {
+    grid-column: 1 / -1;
+    margin-bottom: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
   .op-list { grid-column: 1 / -1; list-style: none; padding: 0; margin: 0; }
 
-  /* ── Row base ── */
   .op-row {
     display: grid;
     grid-template-columns: 2fr 10fr;
@@ -141,25 +94,20 @@ const globalCSS = `
     cursor: pointer;
     position: relative;
     overflow: visible;
-
-    /* base state */
     background: transparent;
     box-shadow: none;
     transform: translateY(0) scale(1);
-
     transition:
       background   0.32s ease,
       box-shadow   0.32s ease,
       transform    0.42s cubic-bezier(0.34, 1.56, 0.64, 1),
       border-color 0.32s ease;
-
     border: 1px solid transparent;
   }
 
-  /* Hover: pop lift + card feel */
   .op-row:hover {
-    background: #fff;
-    border-color: rgba(7,59,47,0.10);
+    background: var(--card-bg);
+    border-color: var(--nav-drawer-border);
     box-shadow:
       0 8px 24px rgba(7,59,47,0.08),
       0 2px 8px  rgba(7,59,47,0.05),
@@ -168,24 +116,20 @@ const globalCSS = `
     z-index: 2;
   }
 
-  /* Number deepens on hover */
   .op-row:hover .op-num {
-    color: ${GREEN};
+    color: var(--text-heading);
     animation: numFloat 2.4s ease-in-out infinite;
   }
 
-  /* Title sharpens */
   .op-row:hover .op-item-title {
-    color: ${DARK_GREEN};
+    color: var(--text-heading);
     letter-spacing: -0.5px;
   }
 
-  /* Desc lightens slightly */
   .op-row:hover .op-item-desc {
-    color: #444;
+    color: var(--text-primary);
   }
 
-  /* Shimmer accent line at bottom of hovered row */
   .op-row::after {
     content: '';
     position: absolute;
@@ -211,20 +155,18 @@ const globalCSS = `
     animation: shimmerSweep 1.6s ease infinite;
   }
 
-  /* ── Divider ── */
   .op-divider-wrap { width: 100%; overflow: hidden; }
 
   .op-divider {
     width: 100%;
     height: 1px;
-    background: ${DARK_GREEN};
+    background: var(--text-heading);
     transform-origin: left center;
     transform: scaleX(0);
     transition: transform 0.55s cubic-bezier(0.77,0,0.18,1);
   }
   .op-divider.visible { transform: scaleX(1); }
 
-  /* ── Footer ── */
   .op-footer {
     grid-column: 1 / -1;
     margin-top: 56px;
@@ -232,95 +174,49 @@ const globalCSS = `
     justify-content: center;
   }
 
-  /* ── TABLET ── */
   @media (max-width: 1199px) {
-    .op-section { column-gap: 32px; padding: 64px 48px 64px; }
+    .op-section { column-gap: 32px; padding: 48px 48px 64px; }
     .op-row     { grid-template-columns: 1.5fr 10.5fr; column-gap: 24px; }
     .op-num           { font-size: 120px !important; line-height: 108px !important; letter-spacing: -3.6px !important; }
-    .op-section { column-gap: 32px; padding: 48px 48px 64px; }
-@media (max-width: 767px) {
-  .op-row {
-    grid-template-columns: 60px 1fr;
-    column-gap: 12px;
-    align-items: flex-start;
-  }
-}    .op-num           { font-size: 120px !important; line-height: 108px !important; letter-spacing: -3.6px !important; }
     .op-title-text    { font-size: 36px  !important; }
     .op-subtitle-text { font-size: 20px  !important; }
     .op-item-title    { font-size: 26px  !important; }
     .op-item-desc     { font-size: 18px  !important; }
   }
 
-  /* ── MOBILE ── */
   @media (max-width: 767px) {
-
-   /* H1 */
-  h1,
-  .h1 {
-    font-size: 56px !important;
-    line-height: 64px !important;
-  }
-
-  /* H2 */
-  h2,
-  .h2,
-  .op-title-text {
-    font-size: 42px !important;
-    line-height: 50px !important;
-  }
-
-  /* H3 */
-  h3,
-  .h3,
-  .op-item-title {
-    font-size: 32px !important;
-    line-height: 40px !important;
-  }
+    h1, .h1 { font-size: 56px !important; line-height: 64px !important; }
+    h2, .h2, .op-title-text { font-size: 42px !important; line-height: 50px !important; }
+    h3, .h3, .op-item-title { font-size: 32px !important; line-height: 40px !important; }
 
     .op-section { grid-template-columns: repeat(4,1fr); column-gap: 16px; padding: 40px 20px 56px; }
     .op-head    { margin-bottom: 32px; }
-   .op-row {
-    display: grid;
-    grid-template-columns: 64px 1fr;
-    column-gap: 12px;
-    align-items: flex-start;
-    padding: 14px 12px;
+    .op-row {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      column-gap: 12px;
+      align-items: flex-start;
+      padding: 14px 12px;
+    }
+    .op-row:hover { transform: translateY(-3px) scale(1.005); }
+    .op-num {
+      font-size: 64px !important;
+      line-height: 64px !important;
+      height: auto !important;
+      width: 64px !important;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      transform: translateY(2px);
+    }
+    .op-title-text  { font-size: 42px !important; line-height: 50px !important; }
+    .op-item-title  { font-size: 32px !important; line-height: 40px !important; }
+    .op-subtitle-text { font-size: 16px !important; line-height: 26px !important; }
+    .op-item-desc   { margin-top: 6px; line-height: 22px; }
+    .op-btn { width: 100%; max-width: 320px; height: 44px; font-size: 13px; letter-spacing: 3px; }
   }
-       .op-row:hover { transform: translateY(-3px) scale(1.005); }
-  .op-num {
-    font-size: 64px !important;
-    line-height: 64px !important;
-    height: auto !important;
-    width: 64px !important;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    transform: translateY(2px); /* 👈 key fix */
-  }
-.op-title-text {
-  font-size: 42px !important;
-  line-height: 50px !important;
-}
-
-.op-item-title {
-  font-size: 32px !important;
-  line-height: 40px !important;
-}    .op-subtitle-text { font-size: 16px !important; line-height: 26px  !important; }
-   
-  .op-item-desc {
-    margin-top: 6px;
-    line-height: 22px;
-  }
- .op-btn {
-    width: 100%;
-    max-width: 320px;
-    height: 44px;
-    font-size: 13px;
-    letter-spacing: 3px;
-  }  }
 `;
 
-/* ── useInView ── */
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLElement | null>(null);
   const [inView, setInView] = useState(false);
@@ -337,7 +233,6 @@ function useInView(threshold = 0.15) {
   return { ref, inView };
 }
 
-/* ── useCountUp ── */
 function useCountUp(target: number, active: boolean, duration = 700) {
   const [count, setCount] = useState(0);
   useEffect(() => {
@@ -354,7 +249,6 @@ function useCountUp(target: number, active: boolean, duration = 700) {
   return count;
 }
 
-/* ── StepRow ── */
 function StepRow({ step, index, isLast }: { step: Step; index: number; isLast: boolean }) {
   const { ref, inView } = useInView(0.12);
   const count = useCountUp(step.id, inView, 600);
@@ -373,7 +267,6 @@ function StepRow({ step, index, isLast }: { step: Step; index: number; isLast: b
             `box-shadow 0.32s ease`,
             `border-color 0.32s ease`,
           ].join(", "),
-          /* entrance slide handled via opacity only — transform managed by CSS hover */
         }}
       >
         {/* Number */}
@@ -431,13 +324,12 @@ function StepRow({ step, index, isLast }: { step: Step; index: number; isLast: b
   );
 }
 
-/* ── Main export ── */
 const OurProcessBlog = ({ visible = true }: { visible?: boolean }) => {
-  const { ref: headRef,   inView: headVisible   } = useInView(0.1);
+  const { ref: headRef, inView: headVisible } = useInView(0.1);
   const { ref: footerRef } = useInView(0.1);
 
   return (
-    <div style={{ background: BG, width: "100%" }}>
+    <div style={{ background: "var(--bg-primary)", width: "100%" }}>
       <style>{globalCSS}</style>
 
       <section className="op-section">
@@ -479,54 +371,22 @@ const OurProcessBlog = ({ visible = true }: { visible?: boolean }) => {
         </ul>
 
         {visible && (
-          /* ── Footer CTA ── */
-          <div className="op-footer" ref={footerRef as React.Ref<HTMLDivElement>}>
-        {/* <button
-  className="op-btn"
-  style={{
-    ...s.btn,
-    background: btnHovered ? "#69E4DC" : "transparent",
-    color:      btnHovered ? "#073B2F" : DARK_GREEN,
-   transform: btnClicked ? "scale(0.97)" : "none",
-    boxShadow: btnHovered ? "0 8px 28px rgba(0,51,39,0.22)" : "none",
-    opacity:   footerVisible ? 1 : 0,
-    transition: [
-      "background 0.35s ease",
-      "color 0.35s ease",
-      "transform 0.35s cubic-bezier(0.34,1.56,0.64,1)",
-      "box-shadow 0.35s ease",
-      "opacity 0.8s ease 0.3s",
-    ].join(", "),
-    animation: footerVisible ? "btnPulse 2s ease 1s 2" : "none",
-  }}
-  onMouseEnter={() => setBtnHovered(true)}
-  onMouseLeave={() => setBtnHovered(false)}
-  onMouseDown={() => setBtnClicked(true)}
-  onMouseUp={() => setBtnClicked(false)}
-  onClick={() => {
-    setBtnClicked(true);
-    setTimeout(() => setBtnClicked(false), 400);
-    navigate("/about");
-  }}
->
-  How it works
-</button> */}
-        </div>
-      )}
+          <div className="op-footer" ref={footerRef as React.Ref<HTMLDivElement>} />
+        )}
 
       </section>
     </div>
   );
-}
+};
 
-/* ── Static styles — all Figma values preserved exactly ── */
+/* ── Static styles ── */
 const s: Record<string, React.CSSProperties> = {
   title: {
     fontFamily: "GT Super Display Medium",
     fontSize: "44px",
     fontStyle: "normal",
     fontWeight: 500,
-    color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
+    color: "var(--text-heading)",
     lineHeight: "54px",
     letterSpacing: "-0.88px",
     fontVariantNumeric: "lining-nums proportional-nums",
@@ -539,13 +399,13 @@ const s: Record<string, React.CSSProperties> = {
     alignItems: "center",
     gap: "24px",
   },
-  titleUnderline: { width: "160px", height: "1px", background: "#073B2F" },
+  titleUnderline: { width: "160px", height: "1px", background: "var(--text-heading)" } as React.CSSProperties,
   subtitle: {
     fontFamily: "Sohne",
     fontSize: "24px",
     fontStyle: "normal",
     fontWeight: 300,
-    color: "#000",
+    color: "var(--text-primary)",
     lineHeight: "36px",
     margin: "24px auto 0",
     maxWidth: "100%",
@@ -558,7 +418,7 @@ const s: Record<string, React.CSSProperties> = {
     fontSize: "168px",
     fontStyle: "normal",
     fontWeight: 500,
-    color: "var(--FS-RACING-GREEN, #073B2F)",
+    color: "var(--text-heading)",
     lineHeight: "148px",
     letterSpacing: "-5.04px",
     fontVariantNumeric: "lining-nums proportional-nums",
@@ -573,7 +433,7 @@ const s: Record<string, React.CSSProperties> = {
     fontSize: "32px",
     fontStyle: "normal",
     fontWeight: 500,
-    color: "#000",
+    color: "var(--text-primary)",
     lineHeight: "40px",
     letterSpacing: "-0.64px",
     fontVariantNumeric: "lining-nums proportional-nums",
@@ -585,35 +445,29 @@ const s: Record<string, React.CSSProperties> = {
     fontSize: "24px",
     fontStyle: "normal",
     fontWeight: 300,
-    color: "var(--FS-System-Grey-1, #757575)",
+    color: "var(--text-secondary)",
     lineHeight: "36px",
     margin: 0,
     transition: "color 0.3s ease",
   },
   btn: {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-
-  width: "fit-content",
-  maxWidth: "100%",
-
-  height: "48px",
-  padding: "12px 16px",
-
-  fontFamily: "CX80",
-  fontSize: "15px",
-  fontWeight: 700,
-
-  letterSpacing: "4.8px",
-  whiteSpace: "nowrap",
-
-  borderRadius: "8px",
-  border: "1px solid #69E4DC",
-
-  cursor: "pointer",
-  transition: "all 0.3s ease",
-},
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "fit-content",
+    maxWidth: "100%",
+    height: "48px",
+    padding: "12px 16px",
+    fontFamily: "CX80",
+    fontSize: "15px",
+    fontWeight: 700,
+    letterSpacing: "4.8px",
+    whiteSpace: "nowrap",
+    borderRadius: "8px",
+    border: "1px solid #69E4DC",
+    cursor: "pointer",
+    transition: "all 0.3s ease",
+  },
 };
 
 export default OurProcessBlog;
