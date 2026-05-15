@@ -5,26 +5,44 @@ import heroImage from "../assets/niki-nakrani-buyers-agent-image4-australia-find
 const Image1: React.FC = () => {
   return (
     <>
-      <Box sx={{ width: "100%" }}>
+      <Box
+        className="no-theme"
+        sx={{
+          width: "100%",
+          display: "block",
+          lineHeight: 0,
+          fontSize: 0,
+        }}
+      >
         {/* HERO */}
         <Box
+          className="no-theme"
           sx={{
             position: "relative",
             width: "100%",
             aspectRatio: {
-              xs: "4 / 5",
+              xs: "3 / 4",
               sm: "16 / 9",
               md: "16 / 7",
             },
             overflow: "hidden",
+            display: "block",
+            lineHeight: 0,
+            fontSize: 0,
+            margin: 0,
+            padding: 0,
           }}
         >
           {/* IMAGE */}
           <Box
             component="img"
+            className="no-theme"
             src={heroImage}
-            alt="Hero"
+            alt="Buyer representation built on judgement, not volume"
             sx={{
+              position: "absolute",
+              top: 0,
+              left: 0,
               width: "100%",
               height: "100%",
               objectFit: "cover",
@@ -39,12 +57,15 @@ const Image1: React.FC = () => {
                 md: "scale(1.08)",
               },
               display: "block",
+              verticalAlign: "top",
+              margin: 0,
+              padding: 0,
             }}
           />
 
           {/* OVERLAY */}
           <Box
-            className="image4-overlay-container"
+            className="no-theme image4-overlay-container"
             sx={{
               position: "absolute",
               inset: 0,
@@ -64,9 +85,11 @@ const Image1: React.FC = () => {
           >
             <Box
               component="h2"
-              className="image4-hero-title"
+              className="no-theme image4-hero-title"
+              tabIndex={0}
               sx={{
-                color: "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
+                color:
+                  "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
                 textAlign: "center",
                 fontVariantNumeric: "lining-nums proportional-nums",
                 fontFamily: "GT Super Display Medium",
@@ -97,6 +120,11 @@ const Image1: React.FC = () => {
       </Box>
 
       <style>{`
+        /* ✅ Prevent dark mode from affecting this component */
+        [data-theme="dark"] .no-theme {
+          background: transparent !important;
+        }
+
         /* MOBILE - max 599px */
         @media (max-width: 599px) {
           .image4-hero-title {
@@ -104,6 +132,7 @@ const Image1: React.FC = () => {
             line-height: 24px !important;
             letter-spacing: -0.3px !important;
           }
+
           .image4-overlay-container {
             align-items: flex-end !important;
             padding-bottom: 40px !important;
@@ -146,26 +175,31 @@ const Image1: React.FC = () => {
           cursor: pointer;
           transition: all 0.25s ease;
         }
+
         .book-btn:hover {
           background: rgba(105, 228, 220, 0.15);
           transform: translateY(-1px);
         }
+
         .book-btn svg {
           width: 14px;
           height: 14px;
           stroke: #fff;
         }
+
         @media (max-width: 600px) {
           .book-btn {
             font-size: 10px;
             letter-spacing: 2px;
             padding: 8px 12px;
           }
+
           .book-btn svg {
             width: 12px;
             height: 12px;
           }
         }
+
         @media (min-width: 601px) and (max-width: 1024px) {
           .book-btn {
             font-size: 11px;
@@ -173,6 +207,7 @@ const Image1: React.FC = () => {
             padding: 10px 14px;
           }
         }
+
         @media (min-width: 1200px) {
           .book-btn {
             font-size: 13px;
