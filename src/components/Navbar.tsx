@@ -271,7 +271,7 @@ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
 
             {/* Mobile Call Icon (outside drawer, near hamburger) */}
             <a
-              href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
+              href="https://calendly.com/findandsignba-info"
               target="_blank"
               rel="noopener noreferrer"
               className="mobile-call-icon"
@@ -282,7 +282,7 @@ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
 
             {/* CTA */}
            <a
-  href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
+  href="https://calendly.com/findandsignba-info"
   target="_blank"
   rel="noopener noreferrer"
   className="nav-cta" // The "Book a Call" button for desktop
@@ -368,7 +368,7 @@ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
             ))}
 
            <a
-  href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
+  href="https://calendly.com/findandsignba-info"
   target="_blank"
   rel="noopener noreferrer"
   aria-label="Book a Call" // Accessible label for the link

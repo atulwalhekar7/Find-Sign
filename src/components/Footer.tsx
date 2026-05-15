@@ -619,7 +619,7 @@ gap: 10px;
 }}>
 
             </div>
-            <a href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc" target="_blank" rel="noopener noreferrer" className="btn-book">
+            <a href="https://calendly.com/findandsignba-info" target="_blank" rel="noopener noreferrer" className="btn-book">
               <img src={callIcon} className="vibrate-icon" width="20" height="20" alt="" />
               Book a Call
             </a>
