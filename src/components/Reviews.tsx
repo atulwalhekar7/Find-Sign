@@ -341,7 +341,9 @@ const Testimonials = () => {
           .rev-dots-row     { padding-right: ${MOBILE_LEFT_PAD}px; }
           .rev-cta-row      { padding-right: ${MOBILE_LEFT_PAD}px; }
 
-          .rev-heading    { font-size: 28px; line-height: 38px; letter-spacing: -0.5px; }
+          h1, .h1 { font-size: 48px !important; line-height: 58px !important; }
+          h2, .h2, .rev-heading { font-size: 38px !important; line-height: 48px !important; letter-spacing: -0.5px; }
+          h3, .h3 { font-size: 28px !important; line-height: 38px !important; }
           .rev-subheading { font-size: 16px; line-height: 26px; }
 
           /* CRITICAL: Do NOT clip on mobile — lets peek card show through */

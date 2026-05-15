@@ -208,13 +208,17 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
           }
         }
 
-        /* ── 768px ── stack: image + text go full width ───────────────── */
-        @media (max-width: 768px) {
+        /* ── 767px ── stack: image + text go full width ───────────────── */
+        @media (max-width: 767px) {
           .as-grid {
             padding: 40px 20px;
             column-gap: 16px;
             row-gap: 32px;
           }
+
+          h1, .h1 { font-size: 48px !important; line-height: 58px !important; }
+          h2, .h2, .about-heading-block h2 { font-size: 38px !important; line-height: 48px !important; }
+          h3, .h3 { font-size: 28px !important; line-height: 38px !important; }
 
           .as-image-col,
           .as-text-col { grid-column: 1 / -1; }
@@ -222,7 +226,6 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
           .about-image  { min-height: unset; height: auto; aspect-ratio: 4 / 5; }
 
           .about-heading-block { margin-bottom: 32px; }
-          .about-heading-block h2 { font-size: 42px; }
           .sub  { font-size: 18px; line-height: 28px; }
           .body { font-size: 18px; }
         }
@@ -237,7 +240,6 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
 
           .about-image { height: 220px; }
 
-          .about-heading-block h2 { font-size: 42px; gap: 16px; }
           .sub  { font-size: 16px; line-height: 24px; }
           .body { font-size: 16px; line-height: 24px; }
         }

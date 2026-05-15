@@ -67,6 +67,18 @@ export default function SalesAgent() {
 
       <GetInTouch initialService="Sales Agent" showService={true} />
       <SimpleFooter />
+
+      <style>{`
+        @keyframes heroFadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 767px) {
+          h1, .h1 { font-size: 48px !important; line-height: 58px !important; }
+          h2, .h2 { font-size: 38px !important; line-height: 48px !important; }
+          h3, .h3 { font-size: 28px !important; line-height: 38px !important; }
+        }
+      `}</style>
     </div>
   );
 }

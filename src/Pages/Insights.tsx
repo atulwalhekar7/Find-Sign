@@ -302,8 +302,8 @@ export default function Insights() {
           .about-grid > div {
             width: 100% !important;
           }
-          h1 { font-size: 56px !important; line-height: 1.2 !important; }
-          h2 { font-size: 42px !important; line-height: 40px !important; }
+          h1 { font-size: 48px !important; line-height: 58px !important; }
+          h2 { font-size: 38px !important; line-height: 48px !important; }
           section p { font-size: 18px !important; line-height: 28px !important; }
         }
 
@@ -321,13 +321,13 @@ export default function Insights() {
         /* Ensuring blog titles (H3) are 32px on mobile */
         @media (max-width: 768px) {
           .blog-card > div > div:first-child {
-             font-size: 32px !important;
+             font-size: 28px !important;
           }
         }
 
 
         @media (max-width: 600px) {
-          h1 { font-size: 56px !important; }
+          h1 { font-size: 48px !important; }
         }
       `}</style>
     </div>

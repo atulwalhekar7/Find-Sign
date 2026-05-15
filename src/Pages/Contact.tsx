@@ -59,13 +59,13 @@ export default function Contact() {
             padding-top: 40px !important;
             padding-bottom: 20px !important;
           }
-          .contact-page-heading-section h1 { font-size: 56px !important; line-height: 1.1 !important; }
-          h2 { font-size: 42px !important; }
-          h3 { font-size: 32px !important; }
+          .contact-page-heading-section h1 { font-size: 48px !important; line-height: 58px !important; }
+          h2 { font-size: 38px !important; line-height: 48px !important; }
+          h3 { font-size: 28px !important; line-height: 38px !important; }
         }
 
         @media (max-width: 600px) {
-          .contact-page-heading-section h1 { font-size: 56px !important; line-height: 1.1 !important; }
+          .contact-page-heading-section h1 { font-size: 48px !important; line-height: 58px !important; }
         }
       `}</style>
     </>

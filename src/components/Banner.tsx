@@ -228,13 +228,15 @@ export default function App() {
   .description { font-size: 20px; line-height: 32px; }
   .hero-bottom { padding: 0 6%; }
 }
-       @media (max-width: 768px) {
-  .hero-title   { font-size: 36px; line-height: 44px; letter-spacing: 1px; }
+       @media (max-width: 767px) {
+  .hero-title   { font-size: 48px !important; line-height: 58px !important; letter-spacing: 1px; }
+  h2            { font-size: 38px !important; line-height: 48px !important; }
+  h3            { font-size: 28px !important; line-height: 38px !important; }
   .description  { font-size: 18px; line-height: 28px; }
   .hero-top     { height: auto; aspect-ratio: 16 / 9; min-height: unset; }
 }
         @media (max-width: 480px) {
-          .hero-title  { font-size: 28px; line-height: 36px; }
+          .hero-title  { font-size: 48px !important; line-height: 58px !important; }
           .description { font-size: 16px; line-height: 26px; }
           .hero-top    { height: auto; aspect-ratio: 4 / 5; min-height: unset; }
         }

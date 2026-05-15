@@ -623,9 +623,9 @@ From the first conversation to settlement and beyond, we are in your corner. You
         @media (max-width: 900px) {
           .services-section { padding: 64px 20px 64px; }
 
-          h1 { font-size: 56px !important; line-height: 1.2 !important; }
-          h2 { font-size: 42px !important; line-height: 40px !important; }
-          h3 { font-size: 32px !important; }
+          h1 { font-size: 48px !important; line-height: 58px !important; }
+          h2 { font-size: 38px !important; line-height: 48px !important; }
+          h3 { font-size: 28px !important; line-height: 38px !important; }
           .services-section p { font-size: 18px !important; line-height: 28px !important; }
 
           /* top-grid: each col-6 card full-width on tablet */
@@ -646,10 +646,14 @@ From the first conversation to settlement and beyond, we are in your corner. You
           .col-md-12 { grid-column: span 12; }
         }
 
+        @media (max-width: 767px) {
+          h1, .h1 { font-size: 48px !important; line-height: 58px !important; }
+          h2, .h2 { font-size: 38px !important; line-height: 48px !important; }
+          h3, .h3 { font-size: 28px !important; line-height: 38px !important; }
+        }
+
         /* ── sm: 600px — mobile ──────────────────────────────────────────── */
         @media (max-width: 600px) {
-          h1 { font-size: 56px !important; }
-
           /* all cards go full-width on small screens */
           .grid-12 [class*="col-"] { grid-column: span 12 !important; }
         }

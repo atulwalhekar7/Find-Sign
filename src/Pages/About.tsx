@@ -394,9 +394,13 @@ Find & Sign we find with confidence you sign with certainty.
         }
 
         /* Responsive */
+        @media (max-width: 767px) {
+          h1, .h1, .hero-title { font-size: 48px !important; line-height: 58px !important; }
+          h2, .h2, .team-header h2 { font-size: 38px !important; line-height: 48px !important; }
+          h3, .h3, .team-name { font-size: 28px !important; line-height: 38px !important; }
+        }
         @media (max-width: 900px) {
           .hero-box { padding: 60px 20px; width: 92%; }
-          .hero-title { font-size: 56px !important; line-height: 1.2 !important; }
           .hero-banner {
             aspect-ratio: 4 / 5;
             min-height: unset;
@@ -407,15 +411,12 @@ Find & Sign we find with confidence you sign with certainty.
         }
         @media (max-width: 600px) {
           .hero-box { padding: 60px 20px; width: 94%; border-radius: 8px; }
-          .hero-title { font-size: 56px !important; }
           .video-inner { height: 260px; }
           .play-btn, .mute-btn { width: 36px; height: 36px; }
           .team-section { padding: 60px 20px; }
-          .team-header h2 { font-size: 42px; }
           .team-header p { font-size: 18px; }
           .team-card { width: 100%; padding: 20px; gap: 20px; }
           .team-img-wrap { width: 110px; height: 134px; min-width: 110px; }
-          .team-name { font-size: 32px; line-height: 30px; }
           .team-role { font-size: 16px; line-height: 22px; }
           .team-socials { flex-wrap: wrap; gap: 12px; }
             .team-read-more {
