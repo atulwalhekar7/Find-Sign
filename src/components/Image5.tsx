@@ -163,4 +163,4 @@ const Image1: React.FC = () => {
   );
 };
 
-export default Image1;made change
+export default Image1;
