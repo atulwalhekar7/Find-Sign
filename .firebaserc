@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "find-sign-figma"
+    "default": "find-sign"
   },
   "targets": {},
   "etags": {}
