@@ -950,7 +950,7 @@ width: 297px;
             </p>
             
             <a
-              href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
+              href="https://calendly.com/findandsignba-info"
               target="_blank"
               rel="noopener noreferrer"
               className="contact-cta"
