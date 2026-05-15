@@ -1,56 +1,78 @@
 import GetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
+import bannerImg from "../assets/family-home-buyers-image2-australia-find-and-sign.png";
 
 export default function Contact() {
   return (
     <>
-      <div className="contact-page-heading-section" style={{
-        backgroundColor: "#ebe6de", // Matching the background of GetInTouch
-        paddingTop: "64px", // Top padding for the section
-        paddingBottom: "40px", // Bottom padding before the GetInTouch component
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        width: "100%",
-        maxWidth: "1512px", // Max width for content alignment
-        margin: "0 auto", // Center the content
-        boxSizing: "border-box", // Include padding in width
-        paddingLeft: "196px", // Matching Services.tsx padding
-        paddingRight: "196px", // Matching Services.tsx padding
-      }}>
-        <h1
-          tabIndex={0}
+      <section
+        className="contact-hero-banner"
+        style={{
+          minHeight: "60vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundImage: `url(${bannerImg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          position: "relative",
+          padding: "0 20px",
+        }}
+      >
+        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.35)" }} />
+        <div
+          className="contact-hero-content"
           style={{
-            color: "var(--FS-RACING-GREEN, #073B2F)",
-            textAlign: "center",
-            fontVariantNumeric: "lining-nums proportional-nums",
-            fontFamily: "GT Super Display Medium",
-            fontSize: "44px", // Consistent with other main section headings (H2s)
-            fontStyle: "normal",
-            fontWeight: 500,
-            lineHeight: "54px",
-            letterSpacing: "1px",
-            margin: "0",
+            position: "relative",
+            zIndex: 2,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "24px", // Gap for the underline
+            justifyContent: "center",
+            textAlign: "center",
+            width: "90%",
+            maxWidth: "900px",
+            margin: "0 auto",
+            padding: "60px 20px",
+            animation: "heroFadeIn 0.8s ease both",
           }}
         >
-          Contact Us
-          <div style={{ width: "160px", height: "1px", background: "#073B2F" }} />
-        </h1>
-      </div>
+        <h1
+          tabIndex={0}
+          style={{
+              fontFamily: 'GT Super Display Medium',
+              fontSize: "64px",
+              fontWeight: 500,
+              color: "#FFF",
+              lineHeight: "1.1",
+              letterSpacing: "1px",
+              fontVariantNumeric: "lining-nums proportional-nums",
+              margin: 0,
+            }}>
+            Contact Us
+          </h1>
+        </div>
+      </section>
       <GetInTouch hideInternalHeading={true} />
       <SimpleFooter />
 
       <style>{`
-        @media (max-width: 1200px) {
-          .contact-page-heading-section {
-            padding-left: 40px !important;
-            padding-right: 40px !important;
-          }
+        @keyframes heroFadeIn {
+          from { opacity: 0; transform: translateY(30px); }
+          to   { opacity: 1; transform: translateY(0); }
         }
+
+        .contact-hero-banner {
+          aspect-ratio: 16 / 7;
+          min-height: 60vh;
+        }
+
+        @media (max-width: 1200px) {
+          .contact-hero-banner { min-height: 50vh; }
+          .contact-hero-banner h1 { font-size: 56px !important; }
+        }
+
+
 
         @media (max-width: 900px) {
           .contact-page-heading-section {
