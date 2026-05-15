@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/FS Primary Lockup_Gold.png";
 import callIcon from "../assets/Icon.png";
-import { useTheme } from "./ThemeContext"; // ✅ add this
+import { useTheme } from "./ThemeContext";
 
 const COLORS = {
   racingGreen: "#073B2F",
@@ -87,30 +87,44 @@ function ThemeToggle() {
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  // ✅ Pull theme so we can react to dark/light in inline styles
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
+  // ── Semantic color tokens that flip per theme ──
+  const navBg       = isDark ? "#0a1f1a" : COLORS.white;
+  const textColor   = isDark ? COLORS.aqua : COLORS.black;
+  const drawerBg    = isDark ? "#0d2b23" : COLORS.white;
+  const drawerBorder= isDark ? "rgba(105,228,220,0.12)" : "rgba(27,67,50,0.07)";
+  // Hamburger lines: white in dark mode so they're visible on dark nav
+  const hamburgerStroke = isDark ? COLORS.white : COLORS.racingGreen;
+  // Drawer link text: aqua highlight in dark, racing-green in light
+  const drawerLinkColor = isDark ? "#c8f5f2" : COLORS.racingGreen;
+  const drawerActiveBg  = isDark ? "rgba(105,228,220,0.12)" : "#EAE5DF";
 
   return (
     <>
       <style>{`
         /* ───────── NAV LAYOUT ───────── */
         .nav-inner {
-  width: 100%;
-  max-width: 1512px;
-  margin: 0 auto;
-  height: 96px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  padding: 24px 130px;
-}
+          width: 100%;
+          max-width: 1512px;
+          margin: 0 auto;
+          height: 96px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          box-sizing: border-box;
+          padding: 24px 130px;
+        }
 
-     .nav-logo {
-   width: 159px !important;
+        .nav-logo {
+          width: 159px !important;
           height: 59px !important;
-  object-fit: contain;
-  display: block;
-  animation: logo-premium-fx 6s ease-in-out infinite;
-}
+          object-fit: contain;
+          display: block;
+          animation: logo-premium-fx 6s ease-in-out infinite;
+        }
 
         .nav-actions {
           display: flex;
@@ -134,7 +148,6 @@ export default function Navbar() {
           align-items: center;
           justify-content: center;
           padding: 10px 8px;
-          color: ${COLORS.black};
           font-family: "SohneBuch";
           font-size: 20px;
           font-weight: 400;
@@ -142,19 +155,20 @@ export default function Navbar() {
           letter-spacing: 0;
           text-decoration: none;
           white-space: nowrap;
-          transition: color 0.2s ease;
+          transition: color 0.2s ease, background 0.2s ease;
+          /* ✅ color is now set via inline style per theme */
         }
 
         .nav-link:hover,
         .nav-link:active,
         .nav-link.active {
-          border-radius: var(--sds-size-radius-200);
-          background: #EAE5DF;
+          border-radius: var(--sds-size-radius-200, 8px);
+          background: ${isDark ? "rgba(105,228,220,0.12)" : "#EAE5DF"};
           display: inline-flex;
-          padding: var(--sds-size-space-200);
+          padding: var(--sds-size-space-200, 8px);
           justify-content: center;
           align-items: center;
-          gap: var(--sds-size-space-200);
+          gap: var(--sds-size-space-200, 8px);
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
         }
 
@@ -221,27 +235,27 @@ export default function Navbar() {
         /* Mobile drawer */
         .nav-drawer {
           display: none;
-          background: ${COLORS.white};
           padding: 12px 20px 24px;
-          border-top: 1px solid rgba(27,67,50,0.07);
+          border-top: 1px solid ${drawerBorder};
         }
 
-       .nav-drawer-link:hover,
-.nav-drawer-link:active,
-.nav-drawer-link.active {
-  background: #EAE5DF !important;
-  border-radius: 8px !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
-}
+        .nav-drawer-link:hover,
+        .nav-drawer-link:active,
+        .nav-drawer-link.active {
+          background: ${drawerActiveBg} !important;
+          border-radius: 8px !important;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+        }
+
         @keyframes call-vibrate {
           0%, 20%, 100% { transform: rotate(0deg); }
-          3%, 9%, 15% { transform: rotate(-12deg); }
-          6%, 12%, 18% { transform: rotate(12deg); }
+          3%, 9%, 15%   { transform: rotate(-12deg); }
+          6%, 12%, 18%  { transform: rotate(12deg); }
         }
 
         @keyframes rotate-border {
           from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+          to   { transform: rotate(360deg); }
         }
 
         @keyframes logo-premium-fx {
@@ -270,11 +284,9 @@ export default function Navbar() {
           .nav-inner {
             padding: 24px 48px;
           }
-
           .nav-actions {
             gap: 36px;
           }
-
           .nav-links {
             width: auto;
             gap: 20px;
@@ -287,32 +299,25 @@ export default function Navbar() {
             height: 80px;
             padding: 24px 20px;
           }
-
           .nav-logo {
             width: 128px;
             height: 47px !important;
           }
-
           .nav-links {
             display: none !important;
           }
-
           .nav-actions {
             gap: 12px;
           }
-
           .nav-cta {
             display: none !important;
           }
-
           .mobile-call-icon {
             display: flex !important;
           }
-
           .nav-hamburger {
             display: block !important;
           }
-
           .nav-drawer {
             display: block;
           }
@@ -324,10 +329,11 @@ export default function Navbar() {
           position: "sticky",
           top: 0,
           zIndex: 1000,
-          background: COLORS.white,
+          // ✅ Flips between dark and light background
+          background: navBg,
           width: "100%",
-          transition: "all 0.4s ease",
-          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
+          transition: "background 0.4s ease, box-shadow 0.4s ease",
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)",
         }}
       >
         {/* ───── Top Bar ───── */}
@@ -341,20 +347,24 @@ export default function Navbar() {
             />
           </NavLink>
 
-          {/* CTA + Hamburger */}
+          {/* Actions */}
           <div className="nav-actions">
             {/* Desktop Links */}
             <ul className="nav-links">
               {NAV_ITEMS.map((item) => (
                 <li key={item.label}>
-                  <NavLink to={item.to} className="nav-link">
+                  {/* ✅ color applied inline so it reacts to theme state */}
+                  <NavLink
+                    to={item.to}
+                    className="nav-link"
+                    style={{ color: textColor }}
+                  >
                     {item.label}
                   </NavLink>
                 </li>
               ))}
             </ul>
 
-            {/* ── Theme Toggle ── inserted here, zero layout disruption ── */}
             <ThemeToggle />
 
             {/* Mobile Call Icon */}
@@ -379,7 +389,7 @@ export default function Navbar() {
               Book a Call
             </a>
 
-            {/* Hamburger */}
+            {/* ✅ Hamburger — stroke now uses hamburgerStroke (white in dark, green in light) */}
             <button
               className="nav-hamburger"
               onClick={() => setMenuOpen((v) => !v)}
@@ -389,15 +399,15 @@ export default function Navbar() {
                 {menuOpen ? (
                   <path
                     d="M5 5l12 12M5 17L17 5"
-                    stroke={COLORS.racingGreen}
+                    stroke={hamburgerStroke}
                     strokeWidth="1.4"
                     strokeLinecap="round"
                   />
                 ) : (
                   <>
-                    <line x1="3" y1="6" x2="19" y2="6" stroke={COLORS.racingGreen} strokeWidth="1.4" strokeLinecap="round"/>
-                    <line x1="3" y1="11" x2="19" y2="11" stroke={COLORS.racingGreen} strokeWidth="1.4" strokeLinecap="round"/>
-                    <line x1="3" y1="16" x2="19" y2="16" stroke={COLORS.racingGreen} strokeWidth="1.4" strokeLinecap="round"/>
+                    <line x1="3" y1="6"  x2="19" y2="6"  stroke={hamburgerStroke} strokeWidth="1.4" strokeLinecap="round"/>
+                    <line x1="3" y1="11" x2="19" y2="11" stroke={hamburgerStroke} strokeWidth="1.4" strokeLinecap="round"/>
+                    <line x1="3" y1="16" x2="19" y2="16" stroke={hamburgerStroke} strokeWidth="1.4" strokeLinecap="round"/>
                   </>
                 )}
               </svg>
@@ -407,7 +417,11 @@ export default function Navbar() {
 
         {/* ───── Mobile Drawer ───── */}
         {menuOpen && (
-          <div className="nav-drawer">
+          <div
+            className="nav-drawer"
+            // ✅ Drawer background also flips with theme
+            style={{ background: drawerBg }}
+          >
             {NAV_ITEMS.map((item) => (
               <NavLink
                 key={item.label}
@@ -420,11 +434,12 @@ export default function Navbar() {
                   boxSizing: "border-box",
                   fontFamily: "'SohneBuch'",
                   fontSize: "15px",
-                  color: isActive ? COLORS.aqua : COLORS.racingGreen,
+                  // ✅ Text color now readable in both modes
+                  color: isActive ? COLORS.aqua : drawerLinkColor,
                   fontWeight: isActive ? 500 : 400,
                   textDecoration: "none",
                   padding: "10px 12px",
-                  borderBottom: "1px solid rgba(27,67,50,0.06)",
+                  borderBottom: `1px solid ${drawerBorder}`,
                 })}
               >
                 {item.label}
