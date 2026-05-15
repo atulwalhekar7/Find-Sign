@@ -1,13 +1,13 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { Star, Quote } from "lucide-react";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
-import Image1 from "../components/Image1";
+import Image5 from "../components/Image5";
+import Image6 from "../components/Image6";
 
-import bannerImg from "../assets/Client Outcomes_Banner.jpg";
-import AboutClientOutcomesImg from "../assets/About Client Outcomes.png";
+import bannerImg from "../assets/client-outcomes-banner-find-and-sign-buyers-agent-australia.jpg";
+import AboutClientOutcomesImg from "../assets/find-and-sign-about-client-outcomes-property-experts-australia.png";
 
 import id1 from "../assets/Client Outcomes/id1.webp";
 import id2 from "../assets/Client Outcomes/id2.webp";
@@ -49,725 +49,142 @@ import id37 from "../assets/Client Outcomes/id37.webp";
 import id38 from "../assets/Client Outcomes/id38.webp";
 import id39 from "../assets/Client Outcomes/id39.webp";
 import ellipseImage from "../assets/Ellipse 1.png";
+import starIcon from "../assets/Union.png";
 
 import roksonImg from "../assets/testomonials/Rokson.png";
-import sahilSainiImg from "../assets/testomonials/Sahil Saini.png";
 import rinzinWangchukImg from "../assets/testomonials/Rinzin Wangchuk.png";
-import prashanthNayarImg from "../assets/testomonials/Prashanth Nayar.png";
-import zedAImg from "../assets/testomonials/Zed A.png";
-import kumarVasindaImg from "../assets/testomonials/Kumar Vasinda Comara.png";
-import fatemaManasawalaImg from "../assets/testomonials/fatema manasawala.png";
-import gurinderSinghImg from "../assets/testomonials/Gurinder Singh.png";
-import kienLamImg from "../assets/testomonials/Kien Lam.png";
 
-
-// ── DATA ─────────────────────────────────────────────
-const AQUA = "#69E4DC";
-const RACING_GREEN = "#003327";
-const WHITE = "#FFFFFF";
-
-// const CARD_GAP = 24;
+// ── CONSTANTS ────────────────────────────────────────
+const AQUA         = "#69E4DC";
+const WHITE        = "#FFFFFF";
+const RACING_GREEN = "#073B2F";
+const CARD_GAP     = 32;
+const PEEK         = 56;
 
 const images = {
   id1, id2, id3, id4, id5, id6, id7, id8, id9, id10,
   id11, id12, id13, id14, id15, id16, id17, id18, id19, id20,
   id21, id22, id23, id24, id25, id26, id27, id28, id29, id30,
-  id31, id32, id33, id34, id35, id36, id37, id38, id39
+  id31, id32, id33, id34, id35, id36, id37, id38, id39,
 };
 
 const cards = [
-  {
-    id: 1,
-    image: images.id1,
-    growth: "101.7%",
-    purchasePrice: "$290k",
-    currentValue: "$585k",
-    timeframe: "2 yrs 4 mths",
-    rentalYield: "Owner Occ",
-    address: "8/15 Debenham St, Thornlie WA 6108",
-  },
-  {
-    id: 2,
-    image: images.id2,
-    growth: "41.3%",
-    purchasePrice: "$630k",
-    currentValue: "$890k",
-    timeframe: "2 years",
-    rentalYield: "6.2%",
-    address: "27 Willard Circuit, Banksia Grove WA 6031",
-  },
-  {
-    id: 3,
-    image: images.id3,
-    growth: "29.9%",
-    purchasePrice: "$654k",
-    currentValue: "$850k",
-    timeframe: "2 years",
-    rentalYield: "5.4%",
-    address: "105 Surf Drive, Secret Harbour WA 6173",
-  },
-  {
-    id: 4,
-    image: images.id4,
-    growth: "30.0%",
-    purchasePrice: "$862k",
-    currentValue: "$1.12M",
-    timeframe: "2 years",
-    rentalYield: "Owner Occ",
-    address: "7 Limerick Loop, Wattle Grove WA 6107",
-  },
-  {
-    id: 5,
-    image: images.id5,
-    growth: "41.9%",
-    purchasePrice: "$620k",
-    currentValue: "$880k",
-    timeframe: "1 yr 10 mths",
-    rentalYield: "Owner Occ",
-    address: "34 Sawmill Road, Whitby WA 6123",
-  },
-  {
-    id: 6,
-    image: images.id6,
-    growth: "34.5%",
-    purchasePrice: "$550k",
-    currentValue: "$740k",
-    timeframe: "1 yr 10 mths",
-    rentalYield: "6.1%",
-    address: "32 Breccia Parade, Wellard WA 6170",
-  },
-  {
-    id: 7,
-    image: images.id7,
-    growth: "16.4%",
-    purchasePrice: "$670k",
-    currentValue: "$780k",
-    timeframe: "8 months",
-    rentalYield: "5.2%",
-    address: "42 Timperley Road, South Bunbury WA 6230",
-  },
-  {
-    id: 8,
-    image: images.id8,
-    growth: "15.2%",
-    purchasePrice: "$820k",
-    currentValue: "$945k",
-    timeframe: "5 months",
-    rentalYield: "7.6%",
-    address: "130B&C Gabriel St, Cloverdale WA 6105",
-  },
-  {
-    id: 9,
-    image: images.id9,
-    growth: "14.9%",
-    purchasePrice: "$870k",
-    currentValue: "$1M",
-    timeframe: "8 months",
-    rentalYield: "5.4%",
-    address: "40 Keane Street, Kewdale WA 6105",
-  },
-  {
-    id: 10,
-    image: images.id10,
-    growth: "12.1%",
-    purchasePrice: "$580k",
-    currentValue: "$650k",
-    timeframe: "3 months",
-    rentalYield: "6.3%",
-    address: "10/61 Hardey Road, Belmont WA 6104",
-  },
-  {
-    id: 11,
-    image: images.id11,
-    growth: "11.9%",
-    purchasePrice: "$670k",
-    currentValue: "$750k",
-    timeframe: "6 months",
-    rentalYield: "5.8%",
-    address: "12/158 George St, Queens Park WA 6107",
-  },
-  {
-    id: 12,
-    image: images.id12,
-    growth: "12.6%",
-    purchasePrice: "$870k",
-    currentValue: "$980k",
-    timeframe: "6 months",
-    rentalYield: "5.1%",
-    address: "278 Adelaide St, High Wycombe WA 6057",
-  },
-  {
-    id: 13,
-    image: images.id13,
-    growth: "6.3%",
-    purchasePrice: "$1.28M",
-    currentValue: "$1.36M",
-    timeframe: "1 month",
-    rentalYield: "6.5%",
-    address: "124 Lakeside Drive, Joondalup WA 6027",
-  },
-  {
-    id: 14,
-    image: images.id14,
-    growth: "36.7%",
-    purchasePrice: "$695k",
-    currentValue: "$950k",
-    timeframe: "1 yr 8 mths",
-    rentalYield: "6.4%",
-    address: "10 Wilbury Road, Bullsbrook WA 6084",
-  },
-  {
-    id: 15,
-    image: images.id15,
-    growth: "31.1%",
-    purchasePrice: "$610k",
-    currentValue: "$800k",
-    timeframe: "1 yr 7 mths",
-    rentalYield: "5.5%",
-    address: "26 Mainsheet Way, Alkimos WA 6038",
-  },
-  {
-    id: 16,
-    image: images.id16,
-    growth: "6.2%",
-    purchasePrice: "$650k",
-    currentValue: "$690k",
-    timeframe: "1 month",
-    rentalYield: "5.9%",
-    address: "6 Lofter Way, Yanchep WA 6035",
-  },
-  {
-    id: 17,
-    image: images.id17,
-    growth: "25.7%",
-    purchasePrice: "$875k",
-    currentValue: "$1.1M",
-    timeframe: "1 yr 4 mths",
-    rentalYield: "Owner Occ",
-    address: "4 Newhaven Place, Canning Vale WA 6155",
-  },
-  {
-    id: 18,
-    image: images.id18,
-    growth: "11.1%",
-    purchasePrice: "$1.26M",
-    currentValue: "$1.4M",
-    timeframe: "8 months",
-    rentalYield: "Owner Occ",
-    address: "4 Congressional Cres, Connolly WA 6027",
-  },
-  {
-    id: 19,
-    image: images.id19,
-    growth: "10.0%",
-    purchasePrice: "$850k",
-    currentValue: "$935k",
-    timeframe: "4 months",
-    rentalYield: "Owner Occ",
-    address: "99 The Promenade, Wattle Grove WA 6107",
-  },
-  {
-    id: 20,
-    image: images.id20,
-    growth: "9.5%",
-    purchasePrice: "$630k",
-    currentValue: "$690k",
-    timeframe: "6 months",
-    rentalYield: "6.0%",
-    address: "2/168 Sydenham St, Kewdale WA 6105",
-  },
-  {
-    id: 21,
-    image: images.id21,
-    growth: "31.9%",
-    purchasePrice: "$690k",
-    currentValue: "$910k",
-    timeframe: "4 months",
-    rentalYield: "6.4%",
-    address: "64 Connemara Drive, Thornlie WA 6108",
-  },
-  {
-    id: 22,
-    image: images.id22,
-    growth: "4.9%",
-    purchasePrice: "$810k",
-    currentValue: "$850k",
-    timeframe: "1 month",
-    rentalYield: "Owner Occ",
-    address: "11 Kelton Way, Thornlie WA 6108",
-  },
-  {
-    id: 23,
-    image: images.id23,
-    growth: "13.2%",
-    purchasePrice: "$680k",
-    currentValue: "$770k",
-    timeframe: "7 months",
-    rentalYield: "6.11%",
-    address: "6 Fresco Way, Alkimos WA 6038",
-  },
-  {
-    id: 24,
-    image: images.id24,
-    growth: "16.4%",
-    purchasePrice: "$730k",
-    currentValue: "$850k",
-    timeframe: "6 months",
-    rentalYield: "Owner Occ",
-    address: "15C Wardong Road, Westminster WA 6061",
-  },
-  {
-    id: 25,
-    image: images.id25,
-    growth: "33.3%",
-    purchasePrice: "$705k",
-    currentValue: "$940k",
-    timeframe: "1 yr 6 mths",
-    rentalYield: "5.5%",
-    address: "31 Ranella Street, Jindalee WA 6036",
-  },
-  {
-    id: 26,
-    image: images.id26,
-    growth: "21.4%",
-    purchasePrice: "$865k",
-    currentValue: "$1.05M",
-    timeframe: "10 months",
-    rentalYield: "8.11%",
-    address: "9A Humphry Street, St James WA 6102",
-  },
-  {
-    id: 27,
-    image: images.id27,
-    growth: "47.1%",
-    purchasePrice: "$544k",
-    currentValue: "$800k",
-    timeframe: "2 years",
-    rentalYield: "Owner Occ",
-    address: "565 Farrall Road, Midvale WA 6056",
-  },
-  {
-    id: 28,
-    image: images.id28,
-    growth: "28.8%",
-    purchasePrice: "$854k",
-    currentValue: "$1.1M",
-    timeframe: "1 yr 8 mths",
-    rentalYield: "Owner Occ",
-    address: "11 Pissaro Crescent, Ashby WA 6065",
-  },
-  {
-    id: 29,
-    image: images.id29,
-    growth: "3.1%",
-    purchasePrice: "$1.27M",
-    currentValue: "$1.31M",
-    timeframe: "5 months",
-    rentalYield: "Owner Occ",
-    address: "9 Templar Place, Currambine WA 6028",
-  },
-  {
-    id: 30,
-    image: images.id30,
-    growth: "23.6%",
-    purchasePrice: "$700k",
-    currentValue: "$865k",
-    timeframe: "11 months",
-    rentalYield: "Owner Occ",
-    address: "37 Seminole Gardens, Seville Grove WA 6112",
-  },
-  {
-    id: 31,
-    image: images.id31,
-    growth: "3.2%",
-    purchasePrice: "$775k",
-    currentValue: "$800k",
-    timeframe: "4 months",
-    rentalYield: "Owner Occ",
-    address: "7 Cherrytree Chase, Maddington WA 6109",
-  },
-  {
-    id: 32,
-    image: images.id32,
-    growth: "6.3%",
-    purchasePrice: "$790k",
-    currentValue: "$840k",
-    timeframe: "2 months",
-    rentalYield: "5.1%",
-    address: "86A Gosnells Road West, Maddington WA 6109",
-  },
-  {
-    id: 33,
-    image: images.id33,
-    growth: "8.3%",
-    purchasePrice: "$720k",
-    currentValue: "$780k",
-    timeframe: "4 months",
-    rentalYield: "Owner Occ",
-    address: "51 Beckwith Loop, Haynes WA 6112",
-  },
-  {
-    id: 34,
-    image: images.id34,
-    growth: "15.3%",
-    purchasePrice: "$685k",
-    currentValue: "$790k",
-    timeframe: "9 months",
-    rentalYield: "5.3%",
-    address: "23 Ellen Brook Drive, The Vines WA 6069",
-  },
-  {
-    id: 35,
-    image: images.id35,
-    growth: "32.4%",
-    purchasePrice: "$740k",
-    currentValue: "$980k",
-    timeframe: "1 yr 5 mths",
-    rentalYield: "Owner Occ",
-    address: "3 Robson Avenue, Hilbert WA 6112",
-  },
-  {
-    id: 36,
-    image: images.id36,
-    growth: "13.6%",
-    purchasePrice: "$810k",
-    currentValue: "$920k",
-    timeframe: "7 months",
-    rentalYield: "5.1%",
-    address: "13 Bright Street, Haynes WA 6112",
-  },
-  {
-    id: 37,
-    image: images.id37,
-    growth: "33.3%",
-    purchasePrice: "$630k",
-    currentValue: "$840k",
-    timeframe: "1 yr 4 mths",
-    rentalYield: "6.1%",
-    address: "89 Cheriton Avenue, Ellenbrook WA 6069",
-  },
-  {
-    id: 38,
-    image: images.id38,
-    growth: "17.8%",
-    purchasePrice: "$730k",
-    currentValue: "$860k",
-    timeframe: "1 yr 5 mths",
-    rentalYield: "Owner Occ",
-    address: "7 Gippsland Way, Ellenbrook WA 6069",
-  },
-  {
-    id: 39,
-    image: images.id39,
-    growth: "25.5%",
-    purchasePrice: "$765k",
-    currentValue: "$960k",
-    timeframe: "1 yr 3 mths",
-    rentalYield: "Owner Occ",
-    address: "225 Maida Vale Road, High Wycombe WA 6057",
-  },
+  { id: 1,  image: images.id1,  growth: "101.7%", purchasePrice: "$290k",  currentValue: "$585k",  timeframe: "2 yrs 4 mths", rentalYield: "Owner Occ", address: "8/15 Debenham St, Thornlie WA 6108" },
+  { id: 2,  image: images.id2,  growth: "41.3%",  purchasePrice: "$630k",  currentValue: "$890k",  timeframe: "2 years",       rentalYield: "6.2%",      address: "27 Willard Circuit, Banksia Grove WA 6031" },
+  { id: 3,  image: images.id3,  growth: "29.9%",  purchasePrice: "$654k",  currentValue: "$850k",  timeframe: "2 years",       rentalYield: "5.4%",      address: "105 Surf Drive, Secret Harbour WA 6173" },
+  { id: 4,  image: images.id4,  growth: "30.0%",  purchasePrice: "$862k",  currentValue: "$1.12M", timeframe: "2 years",       rentalYield: "Owner Occ", address: "7 Limerick Loop, Wattle Grove WA 6107" },
+  { id: 5,  image: images.id5,  growth: "41.9%",  purchasePrice: "$620k",  currentValue: "$880k",  timeframe: "1 yr 10 mths",  rentalYield: "Owner Occ", address: "34 Sawmill Road, Whitby WA 6123" },
+  { id: 6,  image: images.id6,  growth: "34.5%",  purchasePrice: "$550k",  currentValue: "$740k",  timeframe: "1 yr 10 mths",  rentalYield: "6.1%",      address: "32 Breccia Parade, Wellard WA 6170" },
+  { id: 7,  image: images.id7,  growth: "16.4%",  purchasePrice: "$670k",  currentValue: "$780k",  timeframe: "8 months",      rentalYield: "5.2%",      address: "42 Timperley Road, South Bunbury WA 6230" },
+  { id: 8,  image: images.id8,  growth: "15.2%",  purchasePrice: "$820k",  currentValue: "$945k",  timeframe: "5 months",      rentalYield: "7.6%",      address: "130B&C Gabriel St, Cloverdale WA 6105" },
+  { id: 9,  image: images.id9,  growth: "14.9%",  purchasePrice: "$870k",  currentValue: "$1M",    timeframe: "8 months",      rentalYield: "5.4%",      address: "40 Keane Street, Kewdale WA 6105" },
+  { id: 10, image: images.id10, growth: "12.1%",  purchasePrice: "$580k",  currentValue: "$650k",  timeframe: "3 months",      rentalYield: "6.3%",      address: "10/61 Hardey Road, Belmont WA 6104" },
+  { id: 11, image: images.id11, growth: "11.9%",  purchasePrice: "$670k",  currentValue: "$750k",  timeframe: "6 months",      rentalYield: "5.8%",      address: "12/158 George St, Queens Park WA 6107" },
+  { id: 12, image: images.id12, growth: "12.6%",  purchasePrice: "$870k",  currentValue: "$980k",  timeframe: "6 months",      rentalYield: "5.1%",      address: "278 Adelaide St, High Wycombe WA 6057" },
+  { id: 13, image: images.id13, growth: "6.3%",   purchasePrice: "$1.28M", currentValue: "$1.36M", timeframe: "1 month",       rentalYield: "6.5%",      address: "124 Lakeside Drive, Joondalup WA 6027" },
+  { id: 14, image: images.id14, growth: "36.7%",  purchasePrice: "$695k",  currentValue: "$950k",  timeframe: "1 yr 8 mths",   rentalYield: "6.4%",      address: "10 Wilbury Road, Bullsbrook WA 6084" },
+  { id: 15, image: images.id15, growth: "31.1%",  purchasePrice: "$610k",  currentValue: "$800k",  timeframe: "1 yr 7 mths",   rentalYield: "5.5%",      address: "26 Mainsheet Way, Alkimos WA 6038" },
+  { id: 16, image: images.id16, growth: "6.2%",   purchasePrice: "$650k",  currentValue: "$690k",  timeframe: "1 month",       rentalYield: "5.9%",      address: "6 Lofter Way, Yanchep WA 6035" },
+  { id: 17, image: images.id17, growth: "25.7%",  purchasePrice: "$875k",  currentValue: "$1.1M",  timeframe: "1 yr 4 mths",   rentalYield: "Owner Occ", address: "4 Newhaven Place, Canning Vale WA 6155" },
+  { id: 18, image: images.id18, growth: "11.1%",  purchasePrice: "$1.26M", currentValue: "$1.4M",  timeframe: "8 months",      rentalYield: "Owner Occ", address: "4 Congressional Cres, Connolly WA 6027" },
+  { id: 19, image: images.id19, growth: "10.0%",  purchasePrice: "$850k",  currentValue: "$935k",  timeframe: "4 months",      rentalYield: "Owner Occ", address: "99 The Promenade, Wattle Grove WA 6107" },
+  { id: 20, image: images.id20, growth: "9.5%",   purchasePrice: "$630k",  currentValue: "$690k",  timeframe: "6 months",      rentalYield: "6.0%",      address: "2/168 Sydenham St, Kewdale WA 6105" },
+  { id: 21, image: images.id21, growth: "31.9%",  purchasePrice: "$690k",  currentValue: "$910k",  timeframe: "4 months",      rentalYield: "6.4%",      address: "64 Connemara Drive, Thornlie WA 6108" },
+  { id: 22, image: images.id22, growth: "4.9%",   purchasePrice: "$810k",  currentValue: "$850k",  timeframe: "1 month",       rentalYield: "Owner Occ", address: "11 Kelton Way, Thornlie WA 6108" },
+  { id: 23, image: images.id23, growth: "13.2%",  purchasePrice: "$680k",  currentValue: "$770k",  timeframe: "7 months",      rentalYield: "6.11%",     address: "6 Fresco Way, Alkimos WA 6038" },
+  { id: 24, image: images.id24, growth: "16.4%",  purchasePrice: "$730k",  currentValue: "$850k",  timeframe: "6 months",      rentalYield: "Owner Occ", address: "15C Wardong Road, Westminster WA 6061" },
+  { id: 25, image: images.id25, growth: "33.3%",  purchasePrice: "$705k",  currentValue: "$940k",  timeframe: "1 yr 6 mths",   rentalYield: "5.5%",      address: "31 Ranella Street, Jindalee WA 6036" },
+  { id: 26, image: images.id26, growth: "21.4%",  purchasePrice: "$865k",  currentValue: "$1.05M", timeframe: "10 months",     rentalYield: "8.11%",     address: "9A Humphry Street, St James WA 6102" },
+  { id: 27, image: images.id27, growth: "47.1%",  purchasePrice: "$544k",  currentValue: "$800k",  timeframe: "2 years",       rentalYield: "Owner Occ", address: "565 Farrall Road, Midvale WA 6056" },
+  { id: 28, image: images.id28, growth: "28.8%",  purchasePrice: "$854k",  currentValue: "$1.1M",  timeframe: "1 yr 8 mths",   rentalYield: "Owner Occ", address: "11 Pissaro Crescent, Ashby WA 6065" },
+  { id: 29, image: images.id29, growth: "3.1%",   purchasePrice: "$1.27M", currentValue: "$1.31M", timeframe: "5 months",      rentalYield: "Owner Occ", address: "9 Templar Place, Currambine WA 6028" },
+  { id: 30, image: images.id30, growth: "23.6%",  purchasePrice: "$700k",  currentValue: "$865k",  timeframe: "11 months",     rentalYield: "Owner Occ", address: "37 Seminole Gardens, Seville Grove WA 6112" },
+  { id: 31, image: images.id31, growth: "3.2%",   purchasePrice: "$775k",  currentValue: "$800k",  timeframe: "4 months",      rentalYield: "Owner Occ", address: "7 Cherrytree Chase, Maddington WA 6109" },
+  { id: 32, image: images.id32, growth: "6.3%",   purchasePrice: "$790k",  currentValue: "$840k",  timeframe: "2 months",      rentalYield: "5.1%",      address: "86A Gosnells Road West, Maddington WA 6109" },
+  { id: 33, image: images.id33, growth: "8.3%",   purchasePrice: "$720k",  currentValue: "$780k",  timeframe: "4 months",      rentalYield: "Owner Occ", address: "51 Beckwith Loop, Haynes WA 6112" },
+  { id: 34, image: images.id34, growth: "15.3%",  purchasePrice: "$685k",  currentValue: "$790k",  timeframe: "9 months",      rentalYield: "5.3%",      address: "23 Ellen Brook Drive, The Vines WA 6069" },
+  { id: 35, image: images.id35, growth: "32.4%",  purchasePrice: "$740k",  currentValue: "$980k",  timeframe: "1 yr 5 mths",   rentalYield: "Owner Occ", address: "3 Robson Avenue, Hilbert WA 6112" },
+  { id: 36, image: images.id36, growth: "13.6%",  purchasePrice: "$810k",  currentValue: "$920k",  timeframe: "7 months",      rentalYield: "5.1%",      address: "13 Bright Street, Haynes WA 6112" },
+  { id: 37, image: images.id37, growth: "33.3%",  purchasePrice: "$630k",  currentValue: "$840k",  timeframe: "1 yr 4 mths",   rentalYield: "6.1%",      address: "89 Cheriton Avenue, Ellenbrook WA 6069" },
+  { id: 38, image: images.id38, growth: "17.8%",  purchasePrice: "$730k",  currentValue: "$860k",  timeframe: "1 yr 5 mths",   rentalYield: "Owner Occ", address: "7 Gippsland Way, Ellenbrook WA 6069" },
+  { id: 39, image: images.id39, growth: "25.5%",  purchasePrice: "$765k",  currentValue: "$960k",  timeframe: "1 yr 3 mths",   rentalYield: "Owner Occ", address: "225 Maida Vale Road, High Wycombe WA 6057" },
 ];
 
 const reviews = [
-  {
-    name: "Rok Son",
-    date: "5 months ago",
-    title: "Absolute pleasure from start to finish",
-    body: "Working with Niki was an absolute pleasure from start to finish. He’s professional, knowledgeable, and genuinely invested in finding the perfect property for his clients. From our first meeting, Niki took the time to understand exactly what I was looking for — my budget. ",
-    image: roksonImg,
-  },
-  {
-    name: "Amit Bhardwaj",
-    date: "2 months ago",
-    title: "One of the best decisions we made",
-    body: "Having Niki as our buyer’s agent was one of the best decisions we made. From the very start, he genuinely cared about finding the right home for us. He listened, guided us with confidence, and made what could have been a stressful process feel calm and manageable. ",
-  },
-  {
-    name: "Raveen Liyanage",
-    date: "a month ago",
-    title: "Pleasure doing business with you",
-    body: "Hi Niki, It was a pleasure doing business with you. Your genuine commitment to looking after your clients, while also ensuring the process runs smoothly for everyone involved, truly stands out. You consistently strive to find practical.",
-  },
-  {
-    name: "Sahil Saini",
-    date: "4 months ago",
-    title: "Professional and great to work with",
-    body: "Niki is professional and great to work with. His communication has been great for one of our clients to source a property before Christmas and met all deadlines. Not to mention the bargain he was able to secure for the property.",
-    image: sahilSainiImg,
-  },
-  {
-    name: "Rinzin Wangchuk",
-    date: "3 months ago",
-    title: "Very professional and goes way above your needs",
-    body: "Niki is very professional and goes way above your needs. I was looking for my first home in Perth and didn’t know where to begin.",
-    image: rinzinWangchukImg,
-  },
-  {
-    name: "Prashanth Nayar",
-    date: "5 months ago",
-    title: "Thorough market insights and dedicated due-diligence",
-    body: "As a selling-agent based in Perth, I've found that Niki brings thorough market insights, dedicated due-diligence and a genuine commitment to finding the right property for his clients. ",
-    image: prashanthNayarImg,
-  },
-  {
-    name: "Gian Ottavio",
-    date: "2 months ago",
-    title: "Nothing but professional",
-    body: "Niki has been nothing but professional in all my dealings with him. I never have to think twice about how my clients will be handled as I've had nothing but amazing feedback from everyone I have referred his way.",
-  },
-  {
-    name: "Karen Rowley",
-    date: "5 months ago",
-    title: "Absolutely fantastic experience",
-    body: "We had an absolutely fantastic experience working with Niki as a Buyer’s agent. He was very professional and always communicated well with ourselves and his clients throughout the process. ",
-  },
-  {
-    name: "dayna bechar",
-    date: "5 months ago",
-    title: "Absolute pleasure to work with",
-    body: "Niki was an absolute pleasure to work with. His market knowledge and clear communication gave us total confidence throughout the process. He was always available to answer questions and offer advice. Thanks to Niki, we found our dream home without any stress. Highly recommend!",
-  },
-  {
-    name: "Jay DASS",
-    date: "4 months ago",
-    title: "Seamless, well-managed and clearly communicated",
-    body: "Niki from Nakrani Property Buyers was an absolute pleasure to work with. From our first conversation through to completion, the process was seamless, well-managed and communicated clearly at every step.",
-  },
-  {
-    name: "Zed A",
-    date: "5 months ago",
-    title: "Massive asset, highly recommend",
-    body: "My team and I have worked with Nikki from Nakrani Property on many transactions. He excels at educating his clients and securing the best deals. Having Nikki on your side is a massive asset, and I highly recommend him to anyone buying a property in Perth",
-    image: zedAImg,
-  },
-  {
-    name: "Josh Mezger",
-    date: "3 months ago",
-    title: "A Bespoke, High-Touch Experience",
-    body: "What truly defines Nakrani Property Buyers is the white-glove service. Niki is: Proactive: He anticipates hurdles before they arise. Transparent: You are never left wondering where a deal stands; his communication is frequent, clear, and honest. ",
-  },
-  {
-    name: "salam ishikura",
-    date: "5 months ago",
-    title: "Fantastic professional, proactive",
-    body: "I recently worked with Niki, and he was fantastic professional, proactive, and incredibly easy to communicate with. He genuinely looks after his clients and makes the whole process smooth and stress free.",
-  },
-  {
-    name: "Kumar Vasinda Comara",
-    date: "7 months ago",
-    title: "Great experience from start to finish",
-    body: "As the seller's agent, I had the pleasure of working with Niki from Nakrani Property, and it was a great experience from start to finish.",
-    image: kumarVasindaImg,
-  },
-  {
-    name: "Subho Ghosh",
-    date: "2 months ago",
-    title: "Absolute legends",
-    body: "Niki and Bec were absolute legends. They really listened, stayed patient, and went the extra mile to help us find our dream home. Honest advice, great communication, and zero pressure. Couldn’t have asked for better agents to guide us through the process. Highly recommend them.",
-  },
-  {
-    name: "Jasmine cheema",
-    date: "6 months ago",
-    title: "Truly exceptional at what he does",
-    body: "I recently had the opportunity to work with Niki, and I must say he is truly exceptional at what he does. He consistently puts his clients first and goes above and beyond to ensure they feel supported throughout the entire process.",
-  },
-  {
-    name: "fatema manasawala",
-    date: "4 months ago",
-    title: "Professionalism speaks for himself",
-    body: "I have had the pleasure to work with Niki at various occassiona for his clients. His work and professionalism speaks for himself. I highly recommend him to local /overseas and interstae investors & owner as a reputable Buyers agent in Perth.",
-    image: fatemaManasawalaImg,
-  },
-  {
-    name: "Gurinder Singh",
-    date: "4 months ago",
-    title: "Great experience working with Niki",
-    body: "Great experience working with Niki on this transaction. Everything ran smoothly from start to finish. Niki has a strong understanding of the market, communicated clearly, and was professional throughout. A pleasure to deal with.",
-    image: gurinderSinghImg,
-  },
-  {
-    name: "P Y",
-    date: "4 months ago",
-    title: "Hands-on approach and professionalism",
-    body: "What really stood out about Niki compared to other buyer’s agents I spoke with was his hands-on approach and professionalism from the very beginning. I was unsure about using a buyer’s agent at first, but after our first call it was clear.",
-  },
-  {
-    name: "Julie",
-    date: "7 months ago",
-    title: "Absolute professional to deal with",
-    body: "I had the pleasure of working with Niki recently when he brought a buyer through one of our home opens. He was an absolute professional to deal with—clearly dedicated to his clients’ best interests while also ensuring the process remained.",
-  },
-  {
-    name: "Tom Miszczak",
-    date: "5 months ago",
-    title: "Excellent from start to finish",
-    body: "Niki and the Nakrani team were excellent from start to finish. As a Selling Agent, it's great to see such professionalism from a Buyers Agent in the WA market. We look forward to working together in the future.",
-  },
-  {
-    name: "Kathy Moore",
-    date: "7 months ago",
-    title: "High level of professionalism, communication and efficiency",
-    body: "I recently dealt with Niki for a property I was selling in Connolly, where he was representing the buyers. The whole process went smoothly, due to Niki’s high level of professionalism, communication and efficiency. I hope to have the opportunity to work with him again in the future. It’s been a pleasure.",
-  },
-  {
-    name: "Oshi Thilakarathna",
-    date: "5 months ago",
-    title: "Fantastic—professional, proactive, and got the deal done smoothly.",
-    body: "Niki was fantastic—professional, proactive, and got the deal done smoothly. He made the whole process easy, and settlement was stress-free. Highly recommend!",
-  },
-  {
-    name: "Travis Ranieri",
-    date: "10 months ago",
-    title: "Ongoing support through our property investment journey",
-    body: "As a Buyers Agent Niki provided ongoing support through our property investment journey, delivering insights and become a trusted advisor for our family. Seamless process, highly recommend leveraging Niki and his team.",
-  },
-  {
-    name: "Kien Lam",
-    date: "8 months ago",
-    title: "Best in the business",
-    body: "Niki is the best in the business. He has the best negotiating skills and can get you the best price for the property.",
-    image: kienLamImg,
-  },
-  {
-    name: "Kush Hirani",
-    date: "4 months ago",
-    title: "Very pleased with Niki & Rebecca’s service",
-    body: "Very pleased with Niki & Rebecca’s service. Quick responses and always going above and beyond to make sure I found the right property. Niki is thorough on all the home opens to point out any potential issues and doesn’t pressure you at all",
-  },
+  { name: "Rok Son",              date: "5 months ago",  title: "Absolute pleasure from start to finish", body: "Working with Niki was an absolute pleasure from start to finish. He's professional, knowledgeable, and genuinely invested in finding the perfect property for his clients. From our first meeting, Niki took the time to understand exactly what I was looking for — my budget.", image: roksonImg },
+  { name: "Amit Bhardwaj",        date: "2 months ago",  title: "One of the best decisions we made",       body: "Having Niki as our buyer's agent was one of the best decisions we made. From the very start, he genuinely cared about finding the right home for us. He listened, guided us with confidence, and made what could have been a stressful process feel calm and manageable." },
+  { name: "Rinzin Wangchuk",      date: "3 months ago",  title: "Goes way above your needs",               body: "Niki is very professional and goes way above your needs. I was looking for my first home in Perth and didn't know where to begin.", image: rinzinWangchukImg },
+  { name: "dayna bechar",         date: "5 months ago",  title: "Absolute pleasure to work",               body: "Niki was an absolute pleasure to work with. His market knowledge and clear communication gave us total confidence throughout the process. He was always available to answer questions and offer advice. Thanks to Niki, we found our dream home without any stress. Highly recommend!" },
+  { name: "Gian Ottavio",             date: "3 months ago",  title: "professional in all",                  body: "Niki has been nothing but professional in all my dealings with him. I never have to think twice about how my clients will be handled as I've had nothing but amazing feedback from everyone I have referred his way." },
+  { name: "Karen Rowley",                date: "6 months ago",  title: " fantastic experience working with Niki",         body: "We had an absolutely fantastic experience working with Niki as a Buyer’s agent. He was very professional and always communicated well with ourselves and his clients throughout the process." },
+  { name: "Kush Hirani",          date: "5 months ago",  title: "Quick responses",        body: "Very pleased with Niki & Rebecca’s service. Quick responses and always going above and beyond to make sure I found the right property. " },
+  { name: "Vince Collova",       date: "4 months ago",  title: "Right from the start there communication",       body: "Right from the start there communication was amazing and prompt. The whole team were very friendly and professional. They understood what we were after and made sure we got the deal of the century." },
+  { name: "Afsal Mansuri", date: "a Year ago",  title: "From our very first meeting",   body: "We had the pleasure of working with Niki and the team as my buyer's agent, and I cannot recommend them enough!From our very first meeting." },
+  { name: "Subho Ghosh",          date: "2 months ago",  title: "Absolute legends",                        body: "Niki and Bec were absolute legends. They really listened, stayed patient, and went the extra mile to help us find our dream home. Honest advice, great communication, and zero pressure. Couldn't have asked for better agents to guide us through the process. Highly recommend them." },
+  { name: "Bhaskara M",       date: "8 months ago",  title: " negotiated a great deal",      body: "We had the pleasure of working with Niki Nakrani Property Buyers during our recent property purchase. Their market knowledge, attention to detail, and genuine care made the entire process seamless. They listened to our needs, found us the perfect property, and negotiated a great deal." },
+  { name: "jigar faldu",       date: "a Year ago",  title: "services to purchase their",      body: "My wife and I don't understand real estate and are definitely not negotiators. We met Niki through a friend who used his services to purchase their first home. As first home buyers, we had been in the market for a few months without success." },
+  { name: "P Y",                  date: "4 months ago",  title: "Hands-on approach and professionalism",   body: "What really stood out about Niki compared to other buyer's agents I spoke with was his hands-on approach and professionalism from the very beginning. I was unsure about using a buyer's agent at first, but after our first call it was clear." },
+  { name: "Frank Boitano",       date: "8 months ago", title: "Niki is the man you need",                 body: "Niki is the man you need if you want to get things done He is connected and knows the Perth Market.He works tirelessly to get results for his clients and delivers." },
+  { name: "SUDHIR KHUT",             date: "10 months ago",  title: " I've opted for a buyers agent",                   body: "Well its true that good things comes in small packages. As a property investor this is the first time I've opted for a buyers agent. Right from beginning value addition was seen; some key highlights of Niki's service was property insites." },
 ];
 
-// Helper to truncate body text if it ends with "...More"
-const formatReviewBody = (text: string) => {
-  if (text.endsWith("…More")) {
-    return text.substring(0, text.length - 5).trim();
-  }
-  return text;
-};
+const formattedReviews = reviews.map(r => ({
+  ...r,
+  body: r.body.endsWith("…More") ? r.body.slice(0, -5).trim() : r.body,
+}));
 
+// ── TESTIMONIAL CARD ─────────────────────────────────
 function TestimonialCard({ testimonial, style }: { testimonial: any; style?: React.CSSProperties }) {
   return (
-    <div 
-      className="testimonial-card"
-      style={{ ...style, display: 'flex', flexDirection: 'column' }}
-    >
-      <div style={{ 
-        position: 'absolute', 
-        top: '-16px', 
-        left: '24px', 
-        background: '#69E4DC', 
-        color: '#073B2F', 
-        fontSize: '12px', 
-        fontWeight: 'bold', 
-        padding: '8px 20px', 
-        borderRadius: '9999px', 
-        boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)', 
-        zIndex: 10,
-        maxWidth: '85%', 
-        overflow: 'hidden', 
-        textOverflow: 'ellipsis', 
-        whiteSpace: 'nowrap'
-      }}>
-         {testimonial.title}
+    <div className="testimonial-card" style={style}>
+      <div className="tc-pill" tabIndex={0}>{testimonial.title}</div>
+      <div className="tc-stars">
+        <img src={starIcon} alt="5 stars" style={{ width: 177, height: 32.336, objectFit: "contain" }} />
       </div>
-      
-      <Quote style={{ color: 'rgba(11, 215, 205, 0.1)', position: 'absolute', top: '20px', right: '20px' }} size={48} />
-
-      <div style={{ position: 'relative', zIndex: 10, display: 'flex', flexDirection: 'column', flex: 1, paddingTop: '24px' }}>
-        <div style={{ display: 'flex', gap: '4px', marginBottom: '16px' }}>
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} style={{ color: '#fbbf24', fill: '#fbbf24' }} size={14} />
-          ))}
+      <p className="tc-body" tabIndex={0}>{testimonial.body}</p>
+      <div className="tc-footer">
+        <div className="avatar-circle">
+          {testimonial.image ? (
+            <img src={testimonial.image} alt={testimonial.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+          ) : (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="8" r="4" stroke="#aaa" strokeWidth="1.5" />
+              <path d="M4 20c0-4 3.58-7 8-7s8 3 8 7" stroke="#aaa" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+          )}
         </div>
-
-        <p style={{ 
-          color: '#374151', 
-          marginBottom: '20px', 
-          lineHeight: 1.5, 
-          fontStyle: 'italic', 
-          fontSize: '0.9rem', 
-          fontFamily: 'Sohne', 
-          fontWeight: 300,
-          flex: 1,
-          display: '-webkit-box', WebkitLineClamp: 5, WebkitBoxOrient: 'vertical', overflow: 'hidden'
-        }}>
-          "{testimonial.body}"
-        </p>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', borderTop: '1px solid #f3f4f6', paddingTop: '16px' }}>
-          <div className="avatar-circle" style={{ width: 48, height: 48, borderRadius: "50%", backgroundColor: "#D9D9D9", display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid white", overflow: 'hidden' }}>
-            {testimonial.image ? (
-              <img src={testimonial.image} alt={testimonial.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-            ) : (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="8" r="4" stroke="#aaa" strokeWidth="1.5"/>
-                <path d="M4 20c0-4 3.58-7 8-7s8 3 8 7" stroke="#aaa" strokeWidth="1.5" strokeLinecap="round"/>
-              </svg>
-            )}
-          </div>
-          <div>
-            <h4 style={{ fontSize: '0.875rem', fontWeight: 'bold', color: '#111827', margin: 0, fontFamily: 'Sohne' }}>
-              {testimonial.name}
-            </h4>
-            <p style={{ fontSize: '11px', fontWeight: 500, color: '#073B2F', textTransform: 'uppercase', letterSpacing: '0.05em', marginTop: '2px', fontFamily: 'Sohne' }}>
-              {testimonial.date}
-            </p>
-          </div>
+        <div>
+          <h4 className="tc-name" tabIndex={0}>{testimonial.name}</h4>
+          <p className="tc-date" tabIndex={0}>{testimonial.date}</p>
         </div>
       </div>
     </div>
   );
 }
 
-// Map the reviews to include the formatted body
-const formattedReviews = reviews.map(review => ({
-  ...review,
-  body: formatReviewBody(review.body),
-}));
-
-// Use formattedReviews in the component
-// ── SUB-COMPONENT ───────────────────────────────────
+// ── PROPERTY CARD ─────────────────────────────────────
 function PropertyCard({ card, index }: { card: typeof cards[0]; index: number }) {
   return (
-    <div
-      className="property-card"
-      style={{
-        animationDelay: `${index * 80}ms`,
-      }}
-    >
+    <div className="property-card" style={{ animationDelay: `${index * 80}ms` }}>
       <div className="card-image-wrap">
-        <img src={card.image} alt="Property" className="card-image" />
+        <img src={card.image} alt={`Property outcome for ${card.address}`} className="card-image" />
       </div>
-
       <div
         className="growth-circle-container"
-        style={{
-          animationDelay: `${index * 150}ms`,
-          backgroundImage: `url(${ellipseImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
+        tabIndex={0}
+        style={{ backgroundImage: `url(${ellipseImage})`, backgroundSize: "cover", backgroundPosition: "center" }}
+      >
         <span className="growth-label">Growth</span>
         <span className="growth-value">{card.growth}</span>
       </div>
-
       <div className="card-data">
         {[
           { label: "Purchase price", val: card.purchasePrice },
-          { label: "Current value", val: card.currentValue },
-          { label: "Timeframe", val: card.timeframe },
-          { label: "Rental yield", val: card.rentalYield },
+          { label: "Current value",  val: card.currentValue  },
+          { label: "Timeframe",      val: card.timeframe     },
+          { label: "Rental yield",   val: card.rentalYield   },
         ].map(({ label, val }, i, arr) => (
-          <div
-            key={label}
-            className="card-row"
-            style={{
-              borderBottom: i < arr.length - 1 ? "1px dashed #846F58" : "none",
-            }}
-          >
+          <div key={label} tabIndex={0} className="card-row" style={{ borderBottom: i < arr.length - 1 ? "1px dashed #846F58" : "none" }}>
             <span className="row-label">{label}</span>
             <span className="row-val">{val}</span>
           </div>
@@ -777,93 +194,210 @@ function PropertyCard({ card, index }: { card: typeof cards[0]; index: number })
   );
 }
 
-// ── MAIN COMPONENT ───────────────────────────────────
+// ── MAIN COMPONENT ────────────────────────────────────
 export default function ClientOutcomes() {
   const { hash } = useLocation();
-  const [reviewIdx, setReviewIdx] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(3);
 
   const [showAllCards, setShowAllCards] = useState(false);
-  const [showAllReviews, setShowAllReviews] = useState(false); // New state for reviews
+  const buttonContainerRef              = useRef<HTMLDivElement>(null);
 
-  const INITIAL_CARDS_COUNT = 21;
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
 
-  const [reviewContainerWidth, setReviewContainerWidth] = useState(0);
+  // Outcomes Slider State
+  const [outcomesCur, setOutcomesCur]       = useState(0);
+  const [outcomesPaused, setOutcomesPaused] = useState(false);
+  const [outcomesOffset, setOutcomesOffset] = useState(0);
+  const outcomesTimerRef  = useRef<ReturnType<typeof setInterval> | null>(null);
+  const outcomesTrackRef  = useRef<HTMLDivElement>(null);
+  const outcomesRafRef    = useRef<number | null>(null);
+  const outcomesTouchStartX = useRef<number | null>(null);
+  const outcomesTouchEndX = useRef<number | null>(null);
 
-  const reviewContainerRef = useRef<HTMLDivElement>(null);
-  const testimonialsSectionRef = useRef<HTMLElement>(null);
-  const outcomesSectionRef = useRef<HTMLElement>(null);
-  const buttonContainerRef = useRef<HTMLDivElement>(null);
-  const reviewButtonContainerRef = useRef<HTMLDivElement>(null); // New ref for review button
-
-  useEffect(() => {
-    if (hash === "#testimonials") {
-      setTimeout(() => {
-        testimonialsSectionRef.current?.scrollIntoView({ behavior: "smooth" });
-      }, 100);
-    } else if (hash === "#outcomes") {
-      setTimeout(() => {
-        outcomesSectionRef.current?.scrollIntoView({ behavior: "smooth" });
-      }, 100);
-    }
-  }, [hash]);
+  const outcomesVisibleCount = isMobile ? 1 : isTablet ? 2 : 3;
+  const outcomesSliderCards  = cards.slice(0, 10);
+  const outcomesMaxIdx       = Math.max(0, outcomesSliderCards.length - outcomesVisibleCount);
 
   useEffect(() => {
     const update = () => {
-      const w = window.innerWidth;
-      if (w < 768) setVisibleCount(1);
-      else if (w < 1100) setVisibleCount(2);
-      else setVisibleCount(3);
+      setIsMobile(window.innerWidth < 768);
+      setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1200);
     };
     update();
     window.addEventListener("resize", update);
-
-    const obs = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.target === reviewContainerRef.current) {
-          setReviewContainerWidth(entry.contentRect.width);
-        }
-      }
-    });
-
-    if (reviewContainerRef.current) obs.observe(reviewContainerRef.current);
-
-    return () => {
-      window.removeEventListener("resize", update);
-      obs.disconnect();
-    };
+    return () => window.removeEventListener("resize", update);
   }, []);
 
-  const maxReviewIdx = Math.max(0, formattedReviews.length - visibleCount);
+  // Clamp outcomes index on resize
+  useEffect(() => {
+    if (outcomesCur > outcomesMaxIdx) setOutcomesCur(outcomesMaxIdx);
+  }, [outcomesMaxIdx]);
+
+  // Recalculate outcomes scroll offset
+  useEffect(() => {
+    if (showAllCards) return;
+
+    const recalc = () => {
+      if (outcomesRafRef.current) cancelAnimationFrame(outcomesRafRef.current);
+
+      outcomesRafRef.current = requestAnimationFrame(() => {
+        if (!outcomesTrackRef.current) return;
+        const first = outcomesTrackRef.current.querySelector<HTMLElement>(".property-card");
+        if (!first) return;
+
+        const cardW = first.getBoundingClientRect().width;
+        if (cardW === 0) return;
+
+        setOutcomesOffset(outcomesCur * (cardW + CARD_GAP));
+      });
+    };
+
+    recalc();
+    const ro = new ResizeObserver(recalc);
+    if (outcomesTrackRef.current) ro.observe(outcomesTrackRef.current);
+
+    return () => {
+      ro.disconnect();
+      if (outcomesRafRef.current) cancelAnimationFrame(outcomesRafRef.current);
+    };
+  }, [outcomesCur, isMobile, isTablet, showAllCards]);
+
+  // Outcomes Auto-play
+  const resetOutcomesTimer = useCallback(() => {
+    if (outcomesTimerRef.current) clearInterval(outcomesTimerRef.current);
+    outcomesTimerRef.current = setInterval(() => {
+      setOutcomesCur((c) => (c >= outcomesMaxIdx ? 0 : c + 1));
+    }, 3000);
+  }, [outcomesMaxIdx]);
+
+  useEffect(() => {
+    if (showAllCards) {
+      if (outcomesTimerRef.current) clearInterval(outcomesTimerRef.current);
+      return;
+    }
+    outcomesTimerRef.current = setInterval(() => {
+      if (!outcomesPaused) setOutcomesCur((c) => (c >= outcomesMaxIdx ? 0 : c + 1));
+    }, 3000);
+    return () => { if (outcomesTimerRef.current) clearInterval(outcomesTimerRef.current); };
+  }, [outcomesPaused, outcomesMaxIdx, showAllCards]);
+
+  const gotoOutcome = useCallback((idx: number) => {
+    setOutcomesCur(Math.max(0, Math.min(idx, outcomesMaxIdx)));
+    resetOutcomesTimer();
+  }, [outcomesMaxIdx, resetOutcomesTimer]);
+
+  const handleOutcomesTouchStart = (e: React.TouchEvent) => {
+    outcomesTouchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleOutcomesTouchMove = (e: React.TouchEvent) => {
+    outcomesTouchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleOutcomesTouchEnd = () => {
+    if (!outcomesTouchStartX.current || !outcomesTouchEndX.current) return;
+    const diff = outcomesTouchStartX.current - outcomesTouchEndX.current;
+    const threshold = 50;
+    if (diff > threshold) gotoOutcome(outcomesCur + 1);
+    if (diff < -threshold) gotoOutcome(outcomesCur - 1);
+    outcomesTouchStartX.current = null;
+    outcomesTouchEndX.current = null;
+  };
+
+  const outcomesCardFlexBasis = isMobile
+    ? `calc(100% - ${CARD_GAP}px - ${PEEK}px)`
+    : `calc((100% - ${CARD_GAP}px * ${outcomesVisibleCount - 1}) / ${outcomesVisibleCount})`;
+
+  // ── FIX: visibleReviewCount — desktop always shows exactly 3 ──
+  const visibleReviewCount = isMobile ? 1 : isTablet ? 2 : 3;
+
+  const [reviewIdx, setReviewIdx]           = useState(0);
+  const [showAllReviews, setShowAllReviews] = useState(false);
+  const [reviewOffset, setReviewOffset]     = useState(0);
+  const reviewTrackRef                       = useRef<HTMLDivElement>(null);
+  const reviewRafRef                         = useRef<number | null>(null);
+  const reviewButtonContainerRef             = useRef<HTMLDivElement>(null);
+  const reviewTouchStartX                    = useRef<number | null>(null);
+  const reviewTouchEndX                      = useRef<number | null>(null);
+  const testimonialsSectionRef               = useRef<HTMLElement | null>(null);
+  const outcomesSectionRef                   = useRef<HTMLDivElement | null>(null);
+
+
+  // dots step: desktop=3, tablet=2, mobile=2 → ceil(15/2)=8 dots on mobile
+  const dotsStep     = isMobile ? 2 : visibleReviewCount;
+  const totalPages   = Math.ceil(formattedReviews.length / dotsStep);
+  const maxReviewIdx = Math.max(0, totalPages - 1);
+
+  // offset: each page jumps dotsStep cards
+  useEffect(() => {
+    const recalc = () => {
+      if (reviewRafRef.current) cancelAnimationFrame(reviewRafRef.current);
+      reviewRafRef.current = requestAnimationFrame(() => {
+        if (!reviewTrackRef.current) return;
+        const first = reviewTrackRef.current.querySelector<HTMLElement>(".testimonial-card");
+        if (!first) return;
+        const cardW = first.getBoundingClientRect().width;
+        if (cardW === 0) return;
+        setReviewOffset(reviewIdx * dotsStep * (cardW + CARD_GAP));
+      });
+    };
+    recalc();
+    const ro = new ResizeObserver(recalc);
+    if (reviewTrackRef.current) ro.observe(reviewTrackRef.current);
+    return () => {
+      ro.disconnect();
+      if (reviewRafRef.current) cancelAnimationFrame(reviewRafRef.current);
+    };
+  }, [reviewIdx, isMobile, isTablet, visibleReviewCount, dotsStep]);
+
+  useEffect(() => {
+    setReviewIdx(prev => Math.min(prev, maxReviewIdx));
+  }, [visibleReviewCount, maxReviewIdx]);
 
   const nextReview = useCallback(() => {
     setReviewIdx(prev => (prev >= maxReviewIdx ? 0 : prev + 1));
   }, [maxReviewIdx]);
 
+  const handleReviewTouchStart = (e: React.TouchEvent) => {
+    reviewTouchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleReviewTouchMove = (e: React.TouchEvent) => {
+    reviewTouchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleReviewTouchEnd = () => {
+    if (!reviewTouchStartX.current || !reviewTouchEndX.current) return;
+    const diff = reviewTouchStartX.current - reviewTouchEndX.current;
+    const threshold = 50;
+    if (diff > threshold) setReviewIdx(prev => Math.min(maxReviewIdx, prev + 1));
+    if (diff < -threshold) setReviewIdx(prev => Math.max(0, prev - 1));
+    reviewTouchStartX.current = null;
+    reviewTouchEndX.current = null;
+  };
+
   useEffect(() => {
-    const timer = setInterval(nextReview, 6000);
-    return () => clearInterval(timer);
+    const t = setInterval(nextReview, 6000);
+    return () => clearInterval(t);
   }, [nextReview]);
 
   useEffect(() => {
-    setReviewIdx(prev => Math.min(prev, maxReviewIdx));
-  }, [visibleCount, maxReviewIdx]);
+    if (hash === "#testimonials") {
+      setTimeout(() => testimonialsSectionRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
+    } else if (hash === "#outcomes") {
+      setTimeout(() => outcomesSectionRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
+    }
+  }, [hash]);
 
-  const reviewCardWidth = reviewContainerWidth 
-    ? (reviewContainerWidth - 32 * (visibleCount - 1)) / visibleCount 
-    : 350;
+  // ── FIX: card flex-basis — desktop fills exactly 1/3 of track width ──
+  const reviewCardFlexBasis = isMobile
+    ? `calc(100vw - 24px - ${CARD_GAP}px - ${PEEK}px)`
+    : `calc((100% - ${CARD_GAP}px * ${visibleReviewCount - 1}) / ${visibleReviewCount})`;
 
   const handleToggleCards = () => {
     if (showAllCards) {
       setShowAllCards(false);
-      // Scroll to the button container instead of the section top.
-      // Using a small timeout ensures the height of the grid has updated before we scroll.
-      setTimeout(() => {
-        buttonContainerRef.current?.scrollIntoView({ 
-          behavior: "smooth", 
-          block: "center" 
-        });
-      }, 100);
+      setTimeout(() => buttonContainerRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }), 100);
     } else {
       setShowAllCards(true);
     }
@@ -872,520 +406,732 @@ export default function ClientOutcomes() {
   const handleToggleReviews = () => {
     if (showAllReviews) {
       setShowAllReviews(false);
-      // Scroll to the review button container when collapsing reviews
-      setTimeout(() => {
-        reviewButtonContainerRef.current?.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-        });
-      }, 100);
+      setTimeout(() => reviewButtonContainerRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }), 100);
     } else {
       setShowAllReviews(true);
     }
   };
 
   return (
-    <div style={{ backgroundColor: "#FFFFFF", fontFamily: "Sohne, sans-serif" }}>
-      
-      {/* ── HERO ───────────────────────────────── */}
-      <section
-        style={{
-          minHeight: "80vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundImage: `url(${bannerImg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          position: "relative",
-          padding: "0 20px",
-        }}
-      >
-        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.35)" }} />
-
-        <div
-          style={{
-            position: "relative",
-            zIndex: 2,
-            textAlign: "center",
-            maxWidth: "900px",
-            margin: "0 auto",
-            padding: "60px 20px",
-            borderRadius: "12px",
-            animation: "heroFadeIn 0.8s ease both",
-          }}
-        >
-<h1 style={{ 
-            fontFamily: "'GT Super Display Medium'",
-            fontSize: "64px",
-            fontWeight: 500,
-            color: "#FFF",
-            lineHeight: "1.1",
-            letterSpacing: "-1.28px",
-            fontVariantNumeric: "lining-nums proportional-nums",
-            margin: 0 
-          }}>
-            Client Outcomes
-          </h1>
-        </div>
-      </section>
-
-      {/* ── ABOUT ───────────────────────────────── */}
-      <AboutSection
-        imageSrc={AboutClientOutcomesImg}
-        heading="About Client Outcomes"
-          subheading=" Explore more about client outcomes."
-
-        body1="Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look."
-        body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."
-      />
-
-      {/* ── CLIENT OUTCOMES GRID ───────────────────────────────── */}
-      <section ref={outcomesSectionRef} id="outcomes" style={{ background: '#F9F9F9', padding: "80px 0" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
-          
-          <div style={{ marginBottom: 48, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <h2 style={{ 
-              fontFamily: "'GT Super Display Medium'",
-              fontSize: "44px",
-              fontWeight: 500,
-              color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
-              lineHeight: "120%",
-              letterSpacing: "-0.48px",
-              fontVariantNumeric: "lining-nums proportional-nums",
-              margin: "0",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "24px"
-            }}>
-              Client Outcomes
-              <div style={{ width: "160px", height: "1px", background: "#073B2F" }} />
-            </h2>
-            <p style={{
-              color: "#000",
-              fontFamily: "Sohne",
-              fontSize: "24px",
-              fontWeight: 300,
-              lineHeight: "36px",
-              marginTop: "24px",
-              textAlign: "center"
-            }}>
-               Explore more about client outcomes.
-            </p>
-          </div>
-
-          <div className="outcomes-grid">
-            {(showAllCards ? cards : cards.slice(0, INITIAL_CARDS_COUNT)).map((card, i) => (
-              <PropertyCard key={card.id} card={card} index={i} />
-            ))}
-          </div>
-
-          {cards.length > INITIAL_CARDS_COUNT && (
-            <div 
-              ref={buttonContainerRef}
-              style={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}
-            >
-              <button 
-                className="view-more-outcomes-btn" 
-                onClick={handleToggleCards}
-              >
-                {showAllCards ? "View Less" : "View More Outcomes"}
-              </button>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* ── WHAT OUR CLIENTS ARE SAYING ───────────────────────────────── */}
+    <>
       <style>{`
-        @keyframes scroll-infinite {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+        *, *::before, *::after { box-sizing: border-box; }
+
+        /* ── Animations ── */
+        @keyframes heroFadeIn {
+          from { opacity: 0; transform: translateY(24px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes heartbeatFloat {
+          0%   { transform: translateY(0)    scale(1);    box-shadow: 0 4px 12px rgba(105,228,220,0.3); }
+          14%  { transform: translateY(-3px) scale(1.06); box-shadow: 0 8px 20px rgba(105,228,220,0.4); }
+          28%  { transform: translateY(0)    scale(1); }
+          42%  { transform: translateY(-3px) scale(1.06); box-shadow: 0 8px 20px rgba(105,228,220,0.4); }
+          70%  { transform: translateY(-8px) scale(1); }
+          100% { transform: translateY(0)    scale(1); }
         }
 
-        .animate-scroll-infinite {
-          animation: scroll-infinite 30s linear infinite;
+        .hero-h1 {
+          font-family: "GT Super Display Medium";
+          font-size: 56px;
+          font-weight: 500;
+          color: #FFF;
+          line-height: 1.1;
+          letter-spacing: 1px;
+          font-variant-numeric: lining-nums proportional-nums;
+          margin: 0;
         }
 
-        .testimonial-card {
-          position: relative;
-          background: #FFFFFF;
+        .outcomes-h2,
+        .testimonials-h2 {
+          color: ${RACING_GREEN};
+          font-family: "GT Super Display Medium";
+          font-size: 42px;
+          font-weight: 500;
+          line-height: 120%;
+          letter-spacing: -0.48px;
+          font-variant-numeric: lining-nums proportional-nums;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 24px;
+        }
+        .outcomes-h2::after,
+        .testimonials-h2::after {
+          content: "";
+          width: 160px; height: 1px;
+          background: ${RACING_GREEN};
+        }
+
+        .section-h3 {
+          font-family: "GT Super Display Medium";
+          font-size: 32px;
+          font-weight: 500;
+          color: ${RACING_GREEN};
+          line-height: 1.2;
+          letter-spacing: -0.4px;
+          margin: 0;
+        }
+
+        .outcomes-subtitle,
+        .testimonials-subtitle {
+          color: #000;
+          font-family: Sohne;
+          font-size: 24px;
+          font-weight: 300;
+          line-height: 36px;
+          margin-top: 24px;
+        }
+
+        /* ══ PROPERTY CARD ══ */
+        .property-card {
+          flex: 0 0 var(--card-flex-basis, 100%);
+          min-width: 0;
+          height: 440px;
+          background: ${WHITE};
+          border: 2px solid ${AQUA};
           border-radius: 16px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          transition: transform 0.4s cubic-bezier(0.165,0.84,0.44,1), box-shadow 0.4s ease;
+          cursor: pointer;
+          overflow: hidden;
+        }
+        .property-card:hover {
+          transform: translateY(-12px);
+          box-shadow: 0 10px 22px rgba(105,228,220,0.96);
+        }
+        .card-image-wrap {
+          width: 100%; height: 200px;
+          border-radius: 16px 16px 0 0;
+          overflow: hidden; flex-shrink: 0;
+        }
+        .card-image {
+          width: 100%; height: 100%;
+          object-fit: cover;
+          filter: blur(3px) brightness(80%);
+          transition: transform 0.3s ease;
+          display: block;
+        }
+        .property-card:hover .card-image { transform: scale(1.08); }
+
+        .growth-circle-container {
+          position: absolute;
+          bottom: 185px; right: 1px;
+          width: 130px; height: 130px;
+          border-radius: 50%;
+          background: ${AQUA};
+          z-index: 10;
+          display: flex; flex-direction: column;
+          align-items: center; justify-content: center;
+          text-align: center;
+          transition: filter 0.3s ease, background 0.3s ease;
+        }
+        .growth-circle-container:hover { animation: heartbeatFloat 4s ease-in-out infinite; }
+        .property-card:hover .growth-circle-container {
+          background: ${WHITE};
+          filter: brightness(1.1) drop-shadow(0 4px 15px rgba(105,228,220,0.5));
+        }
+        .growth-label {
+          color: ${RACING_GREEN};
+          font-family: "SohneBuch"; font-size: 20px; font-weight: 400; line-height: 28px;
+          width: 81px; text-align: center;
+          display: flex; align-items: center; justify-content: center;
+        }
+        .growth-value {
+          color: ${RACING_GREEN};
+          font-family: "GT Super Display Medium";
+          font-size: 37px; font-weight: 500; line-height: 40px; letter-spacing: -0.74px;
+          width: 123px; text-align: center;
+          display: flex; align-items: center; justify-content: center;
+          margin-bottom: 4px;
+        }
+        .card-data { padding: 55px 18px 20px; flex: 1; }
+        .card-row {
+          display: flex; justify-content: space-between;
+          align-items: center; padding: 10px 0;
+        }
+        .row-label { font-family: "SohneBuch"; font-size: 16px; color: #000; font-weight: 400; }
+        .row-val   { font-family: "SohneBuch"; font-size: 16px; color: #757575; font-weight: 400; margin-left: auto; }
+
+        /* ══ OUTCOMES SECTION ══ */
+        .outcomes-section-wrap {
+          background: #F9F9F9;
+          width: 100%;
+          overflow-x: clip;
+        }
+        .outcomes-section {
+          width: 100%;
+          max-width: 1512px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          column-gap: 32px;
+          padding: 64px 130px;
+        }
+        .outcomes-head {
+          grid-column: 1 / -1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          margin-bottom: 48px;
+        }
+        .outcomes-grid-container {
+          grid-column: 1 / -1;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: ${CARD_GAP}px;
+          padding: 20px 0 40px;
+        }
+        .outcomes-btn-row {
+          grid-column: 1 / -1;
+          display: flex;
+          justify-content: center;
+          margin-top: 8px;
+        }
+
+        /* ══ OUTCOMES SLIDER ══ */
+        .outcomes-slider-outer {
+          grid-column: 1 / -1;
+          display: flex;
+          flex-direction: column;
+          gap: 40px;
+          align-items: center;
+          overflow: visible;
+        }
+        .outcomes-slider-wrapper {
+          position: relative;
+          width: 100%;
+          overflow: visible;
+        }
+        .outcomes-slider-viewport {
+          width: 100%;
+          overflow: hidden;
+          padding: 20px 0;
+          margin: -20px 0;
+        }
+        .outcomes-slider-track {
+          display: flex;
+          gap: ${CARD_GAP}px;
+          transition: transform 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+          will-change: transform;
+          touch-action: pan-y;
+        }
+        .co-dots { display: flex; gap: 12px; align-items: center; margin-bottom: 24px; }
+        .co-dot {
+          width: 8px; height: 8px;
+          border-radius: 50%;
+          background: #D0C9C0;
+          border: none; padding: 0;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          flex-shrink: 0;
+        }
+        .co-dot.active { background: #073B2F; width: 24px; border-radius: 4px; }
+
+        /* ══ TESTIMONIALS SECTION ══ */
+        .testimonials-section-wrap {
+          background: #EAE5DF;
+          width: 100%;
+          position: relative;
+        }
+        .testimonials-section {
+          width: 100%;
+          max-width: 1512px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          column-gap: 32px;
+          padding: 64px 130px;
+        }
+        .testimonials-head {
+          grid-column: 1 / -1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          margin-bottom: 48px;
+        }
+        .testimonials-slider-col {
+          grid-column: 1 / -1;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 40px;
+        }
+        .testimonials-slider-wrapper {
+          position: relative;
+          width: 100%;
+        }
+
+        /* ── FIX: viewport clips overflow so only 3 cards show on desktop ── */
+        .testimonials-slider-viewport {
+          width: 100%;
+          overflow: hidden;
+          padding: 20px 0;
+          margin: -20px 0;
+        }
+        .testimonials-slider-track {
+          display: flex;
+          gap: ${CARD_GAP}px;
+          transition: transform 0.55s cubic-bezier(0.77,0,0.18,1);
+          will-change: transform;
+          touch-action: pan-y;
+        }
+
+        /* ══ TESTIMONIAL CARD ══ */
+        .testimonial-card {
+          flex-shrink: 0;
+          background: ${WHITE};
+          border-radius: 24px;
           padding: 20px;
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
-          height: 320px; /* Uniform height for testimonial cards */
-          border: 2px solid ${AQUA};
-          box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+          min-height: 407px;
+          height: auto;
+          border: 1px solid ${AQUA};
           transition: all 0.5s;
         }
         .testimonial-card:hover {
           transform: translateY(-12px);
-          border-color: #69E4DC;
-          box-shadow: 0 10px 22px rgba(105, 228, 220, 0.96);
+          box-shadow: 0 10px 22px rgba(105,228,220,0.96);
         }
 
+        .tc-pill {
+          display: inline-flex;
+          padding: 8px 16px;
+          align-items: center;
+          border-radius: 12px;
+          background: ${AQUA};
+          color: ${RACING_GREEN};
+          font-size: 16px;
+          font-weight: 400;
+          font-family: SohneBuch;
+          line-height: 24px;
+          max-width: 100%;
+          white-space: normal;
+          word-break: break-word;
+          overflow: visible;
+          text-overflow: unset;
+          align-self: flex-start;
+          margin-bottom: 10px;
+          flex-shrink: 0;
+        }
+        .tc-stars {
+          display: flex; align-items: center;
+          margin-top: 12px; flex-shrink: 0; margin-bottom: 10px;
+        }
+        .tc-body {
+          width: 100%;
+          color: #000;
+          font-family: SohneBuch;
+          font-size: 16px; font-weight: 400; line-height: 24px;
+          margin-top: 12px;
+          display: -webkit-box;
+          -webkit-line-clamp: 5;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          flex: 1;
+        }
+        .tc-footer {
+          display: flex; align-items: center; gap: 12px;
+          border-top: 1px solid #f3f4f6;
+          padding-top: 12px; margin-top: auto; flex-shrink: 0;
+        }
         .avatar-circle {
+          width: 40px; height: 40px;
+          border-radius: 50%; background: #D9D9D9;
+          display: flex; align-items: center; justify-content: center;
+          border: 2px solid white;
+          overflow: hidden; flex-shrink: 0;
           transition: all 0.3s ease;
         }
         .testimonial-card:hover .avatar-circle {
-          box-shadow: 0 4px 15px rgba(105, 228, 220, 0.6);
-          border-color: #69E4DC !important;
+          box-shadow: 0 4px 15px rgba(105,228,220,0.6);
+          border-color: ${AQUA} !important;
           transform: scale(1.05);
         }
+        .tc-name {
+          font-size: 0.875rem; font-weight: 400;
+          color: #111827; margin: 0; font-family: SohneBuch;
+        }
+        .tc-date {
+          font-size: 9px; font-weight: 500; color: #000;
+          text-transform: uppercase; letter-spacing: 2.88px;
+          margin-top: 2px; font-family: CX80; line-height: 15px;
+        }
 
-        .reviews-grid {
+        /* ══ EXPANDED ALL-REVIEWS GRID ══ */
+        .reviews-all-grid {
           display: grid;
-          grid-template-columns: repeat(1, 1fr);
-          gap: 32px;
-          margin-bottom: 48px;
+          grid-template-columns: repeat(3, 1fr);
+          gap: ${CARD_GAP}px;
+          width: 100%;
         }
 
-        .slider-track {
-          display: flex;
-          align-items: stretch; /* Ensures all cards in a row have same height */
+        /* ══ DOTS ══ */
+        .t-dots { display: flex; gap: 12px; align-items: center; }
+        .t-dot {
+          width: 8px; height: 8px; border-radius: 50%;
+          background: #D0C9C0; border: none; padding: 0;
+          cursor: pointer; transition: all 0.3s ease; flex-shrink: 0;
         }
+        .t-dot.active { background: ${RACING_GREEN}; width: 24px; border-radius: 4px; }
 
+        /* ══ NAV ARROWS ══ */
         .nav-arrow {
-          width: 44px; height: 44px;
-          border-radius: 50%;
-          border: 1.5px solid rgba(11, 215, 205, 0.96);
-          background: white;
-          cursor: pointer;
+          position: absolute; top: 50%; transform: translateY(-50%);
+          width: 44px; height: 44px; border-radius: 50%;
+          border: 1.5px solid rgba(11,215,205,0.96);
+          background: white; cursor: pointer;
           display: flex; align-items: center; justify-content: center;
-          color: #073B2F;
-          padding: 0;
-          transition: all 0.25s ease;
-          flex-shrink: 0;
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          z-index: 20;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          color: ${RACING_GREEN}; padding: 0;
+          transition: all 0.25s ease; flex-shrink: 0; z-index: 20;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         .nav-arrow.prev { left: -60px; }
         .nav-arrow.next { right: -60px; }
-        .nav-arrow:hover:not(:disabled) { 
+        .nav-arrow:hover:not(:disabled) {
           transform: translateY(-50%) scale(1.05);
-          background: #073B2F;
-          color: white;
-          border-color: #073B2F;
+          background: ${RACING_GREEN}; color: white; border-color: ${RACING_GREEN};
         }
         .nav-arrow:disabled { opacity: 0.2; cursor: default; }
 
+        /* ══ VIEW MORE BTN ══ */
+        .view-more-btn {
+          display: flex; height: 48px; padding: 12px 16px;
+          justify-content: center; align-items: center; gap: 10px;
+          border-radius: 8px; border: 1px solid ${AQUA};
+          background: ${WHITE}; color: ${RACING_GREEN};
+          font-family: CX80; font-size: 15px; font-weight: 700;
+          line-height: 15px; letter-spacing: 4.8px; text-transform: uppercase;
+          cursor: pointer; transition: background 0.2s ease, transform 0.2s ease;
+        }
+        .view-more-btn:hover { background: ${AQUA}; transform: scale(1.05); }
+
+        /* ══ TABLET (768–1199px) ══ */
         @media (max-width: 1199px) {
+          .outcomes-section,
+          .testimonials-section {
+            column-gap: 24px;
+            padding: 48px 48px 64px;
+          }
+          .hero-h1 { font-size: 44px; letter-spacing: -0.9px; }
+          .outcomes-h2,
+  .testimonials-h2 {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.4px;
+  }
+          .section-h3 { font-size: 28px; }
+          .outcomes-subtitle,
+          .testimonials-subtitle { font-size: 20px; line-height: 32px; }
+          .outcomes-grid-container { grid-template-columns: repeat(2, 1fr); }
+          .reviews-all-grid        { grid-template-columns: repeat(2, 1fr); }
           .nav-arrow.prev { left: -44px; }
           .nav-arrow.next { right: -44px; }
-        }
-        @media (max-width: 767px) {
-          .nav-arrow { display: none; }
+          .growth-circle-container { width: 120px; height: 120px; bottom: 182px; }
+          .growth-label { font-size: 18px; }
+          .growth-value { font-size: 32px; }
         }
 
-        @media (min-width: 768px) {
-          .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+        /* ══ MOBILE (<768px) ══ */
+        @media (max-width: 767px) {
+          .hero-h1 { font-size: 56px; letter-spacing: -0.6px; line-height: 1.15; }
+          .outcomes-h2,
+  .testimonials-h2 {
+    font-size: 42px;
+    line-height: 48px; /* change this */
+    letter-spacing: -0.2px;
+  }
+          .outcomes-h2::after,
+          .testimonials-h2::after { width: 100px; }
+          .section-h3 { font-size: 32px; }
+          .outcomes-subtitle,
+          .testimonials-subtitle { font-size: 15px; line-height: 24px; margin-top: 14px; }
+
+          .outcomes-section {
+            grid-template-columns: repeat(12, 1fr);
+            column-gap: 16px;
+            padding: 40px 24px 56px 24px;
+          }
+
+          .testimonials-section-wrap { overflow: hidden; }
+          .testimonials-section {
+            grid-template-columns: repeat(12, 1fr);
+            column-gap: 16px;
+            padding: 40px 0 56px 24px;
+          }
+
+          .outcomes-head  { padding-right: 24px; }
+          .testimonials-head { padding-right: 24px; }
+
+          .outcomes-grid-container { grid-template-columns: 1fr; }
+          .reviews-all-grid {
+            grid-template-columns: 1fr;
+            padding-right: 24px;
+          }
+
+          .outcomes-slider-viewport {
+            overflow: visible;
+            padding: 0;
+            margin: 0;
+          }
+
+          /* Mobile: restore overflow:visible + clip-path for peek effect */
+          .testimonials-slider-viewport {
+            overflow: visible;
+            padding: 12px 0;
+            margin: -12px 0;
+            clip-path: none;
+            -webkit-clip-path: none;
+          }
+
+          .testimonials-slider-wrapper { width: 100%; }
+          .nav-arrow { display: none !important; }
+          .t-dots        { padding-right: 24px; }
+          .view-more-btn { margin-right: 24px; }
+          .testimonials-slider-col > div:last-child {
+            padding-right: 24px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+          }
+
+          .growth-circle-container { width: 110px; height: 110px; bottom: 185px; }
+          .growth-label { font-size: 16px; }
+          .growth-value { font-size: 28px; width: 100px; }
+          .row-label, .row-val { font-size: 14px; }
+          .testimonial-card { min-height: unset; height: auto; }
+          .tc-body { display: block; -webkit-line-clamp: unset; overflow: visible; }
+          .tc-pill { font-size: 13px; line-height: 19px; padding: 6px 12px; border-radius: 10px; }
+          .tc-stars img { width: 130px !important; height: auto !important; }
+          .tc-body { font-size: 14px; line-height: 22px; }
         }
-        @media (min-width: 1024px) {
-          .reviews-grid { grid-template-columns: repeat(3, 1fr); }
+
+        /* ══ SMALL MOBILE (<480px) ══ */
+        @media (max-width: 480px) {
+          .hero-h1 { font-size: 56px; }
+           .outcomes-h2,
+  .testimonials-h2 {
+    font-size: 42px;
+    line-height: 48px; /* change this */
+  }
+          .section-h3 { font-size: 32px; }
+          .outcomes-subtitle,
+          .testimonials-subtitle { font-size: 14px; line-height: 22px; }
+          .tc-pill { font-size: 12px; padding: 5px 10px; }
         }
       `}</style>
 
-      <section ref={testimonialsSectionRef} id="testimonials" className="testimonials-section" style={{ position: 'relative', padding: '80px 0', background: '#F9F9F9' }}>
-        <div style={{ position: 'relative', maxWidth: '1200px', margin: '0 auto', padding: '0 32px' }}>
-          <div style={{ 
-            display: 'flex', 
-            flexDirection: 'column', 
-            alignItems: 'center', 
-            marginBottom: '48px', 
-            textAlign: 'center' 
+      <div style={{ backgroundColor: WHITE, fontFamily: "Sohne, sans-serif" }}>
+
+        {/* ══ HERO ══ */}
+        <section style={{
+          minHeight: "80vh",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          backgroundImage: `url(${bannerImg})`,
+          backgroundSize: "cover", backgroundPosition: "center",
+          position: "relative", padding: "0 20px",
+        }}>
+          <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.35)" }} />
+          <div style={{
+            position: "relative", zIndex: 2,
+            textAlign: "center", maxWidth: 900, margin: "0 auto",
+            padding: "60px 20px", borderRadius: 12,
+            animation: "heroFadeIn 0.8s ease both",
           }}>
-            <h2 style={{ 
-              fontFamily: "GT Super Display Medium",
-  fontSize: "44px",
-  fontWeight: 500,
-  color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
-  lineHeight: "120%",
-  letterSpacing: "-0.48px",
-  fontVariantNumeric: "lining-nums proportional-nums",
-  margin: "0",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  gap: "24px"
-            }}>
-              What our clients are saying
-              <div style={{ width: "160px", height: "1px", background: "#073B2F" }} />
-            </h2>
-            <p style={{
-              color: "#000",
-              fontFamily: "Sohne",
-              fontSize: "24px",
-              fontWeight: 300,
-              lineHeight: "36px",
-              marginTop: "24px",
-              textAlign: "center"
-            }}>
-                 Explore more about What our clients are saying.
-            </p>
+            <h1 className="hero-h1" tabIndex={0}>Client Outcomes</h1>
           </div>
+        </section>
 
-          <div style={{ position: 'relative' }}>
-            {!showAllReviews && (
-              <>
-                <button
-                  className="nav-arrow prev"
-                  onClick={() => setReviewIdx(prev => Math.max(0, prev - 1))}
-                  disabled={reviewIdx === 0}
-                  aria-label="Previous slide"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M19 12H5M12 19l-7-7 7-7" />
-                  </svg>
-                </button>
-                <button
-                  className="nav-arrow next"
-                  onClick={() => setReviewIdx(prev => Math.min(maxReviewIdx, prev + 1))}
-                  disabled={reviewIdx === maxReviewIdx}
-                  aria-label="Next slide"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </button>
-              </>
-            )}
+        {/* ══ ABOUT ══ */}
+        <div className="client-outcomes-about">
+          <AboutSection
+            imageSrc={AboutClientOutcomesImg}
+            heading="About Client Outcomes"
+            body1="These are outcomes we have achieved for our clients. Real properties, real numbers, and measurable growth. When you engage Find and Sign Buyer Advocate, you are not simply purchasing a property; you are entering a strategy built for long-term performance. These examples show what is possible when the right property is identified and secured early."
+          />
+        </div>
 
-            <div ref={reviewContainerRef} style={{ overflow: "hidden", padding: "40px 0", margin: "-40px 0" }}>
-              {showAllReviews ? (
-                <div className="reviews-grid">
-                  {formattedReviews.map((testimonial, index) => (
-                    <TestimonialCard key={index} testimonial={testimonial} />
-                  ))}
+        {/* ══ CLIENT OUTCOMES GRID ══ */}
+        <div className="outcomes-section-wrap">
+          <div ref={outcomesSectionRef} id="outcomes" className="outcomes-section">
+            <div className="outcomes-head">
+              <h2 className="outcomes-h2" tabIndex={0}>Client Outcomes</h2>
+              <p className="outcomes-subtitle" tabIndex={0}>Explore more about client outcomes.</p>
+            </div>
+
+            {!showAllCards ? (
+              <div className="outcomes-slider-outer">
+                <div className="outcomes-slider-wrapper">
+                  <button
+                    className="nav-arrow prev"
+                    onClick={() => gotoOutcome(outcomesCur - 1)}
+                    disabled={outcomesCur === 0}
+                    aria-label="Previous"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  <button
+                    className="nav-arrow next"
+                    onClick={() => gotoOutcome(outcomesCur + 1)}
+                    disabled={outcomesCur === outcomesMaxIdx}
+                    aria-label="Next"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </button>
+
+                  <div
+                    className="outcomes-slider-viewport"
+                    onMouseEnter={() => setOutcomesPaused(true)}
+                    onMouseLeave={() => setOutcomesPaused(false)}
+                  >
+                    <div
+                      ref={outcomesTrackRef}
+                      className="outcomes-slider-track"
+                      style={{
+                        transform: `translateX(-${outcomesOffset}px)`,
+                        "--card-flex-basis": outcomesCardFlexBasis,
+                      } as React.CSSProperties}
+                      onTouchStart={handleOutcomesTouchStart}
+                      onTouchMove={handleOutcomesTouchMove}
+                      onTouchEnd={handleOutcomesTouchEnd}
+                    >
+                      {outcomesSliderCards.map((card, i) => (
+                        <PropertyCard key={card.id} card={card} index={i} />
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              ) : (
-                <div 
-                  className="slider-track"
-                  style={{
-                    display: "flex",
-                    gap: 32,
-                    transition: "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
-                    transform: `translateX(-${reviewIdx * (reviewCardWidth + 32)}px)`,
-                  }}
-                > 
-                  {formattedReviews.map((testimonial, index) => (
-                    <TestimonialCard 
-                      key={index} 
-                      testimonial={testimonial} 
-                      style={{ flex: `0 0 ${reviewCardWidth}px`, width: `${reviewCardWidth}px` }}
+
+                <div className="co-dots">
+                  {Array.from({ length: Math.min(8, outcomesMaxIdx + 1) }).map((_, i) => (
+                    <button
+                      key={i}
+                      className={`co-dot${outcomesCur === i ? " active" : ""}`}
+                      onClick={() => gotoOutcome(i)}
+                      aria-label={`Go to slide ${i + 1}`}
                     />
                   ))}
                 </div>
-              )}
+              </div>
+            ) : (
+              <div className="outcomes-grid-container">
+                {cards.map((card, i) => (
+                  <PropertyCard key={card.id} card={card} index={i} />
+                ))}
+              </div>
+            )}
+
+            <div className="outcomes-btn-row" ref={buttonContainerRef}>
+              <button className="view-more-btn" onClick={handleToggleCards}>
+                {showAllCards ? "View Less" : "View More"}
+              </button>
             </div>
           </div>
-
-          {formattedReviews.length > visibleCount && ( // Only show button if there are more reviews than initially visible
-            <div ref={reviewButtonContainerRef} style={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}>
-              <button
-              className="view-more-outcomes-btn"
-              onClick={handleToggleReviews}
-            >
-              {showAllReviews ? "View Less Feedback" : "View More Feedback"}
-            </button>
-          </div>
-          )}
         </div>
-      </section>
+        <Image5/>
 
-      {/* ── GET IN TOUCH ───────────────────────────────── */}
-      <Image1/>
-      <SimpleGetInTouch />
+        {/* ══ TESTIMONIALS ══ */}
+        <div className="testimonials-section-wrap">
+          <section ref={testimonialsSectionRef} id="testimonials" className="testimonials-section">
+            <div className="testimonials-head">
+              <h2 className="testimonials-h2" tabIndex={0}>What Clients Say</h2>
+              <p className="testimonials-subtitle" tabIndex={0}>In their own words, following their experience with Find &amp; Sign.</p>
+            </div>
 
-      {/* ── FOOTER ───────────────────────────────── */}
-      <SimpleFooter />
+            <div className="testimonials-slider-col">
+              {!showAllReviews ? (
+                <>
+                  <div className="testimonials-slider-wrapper">
+                    <button
+                      className="nav-arrow prev"
+                      onClick={() => setReviewIdx(prev => Math.max(0, prev - 1))}
+                      disabled={reviewIdx === 0}
+                      aria-label="Previous"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                      </svg>
+                    </button>
+                    <button
+                      className="nav-arrow next"
+                      onClick={() => setReviewIdx(prev => Math.min(maxReviewIdx, prev + 1))}
+                      disabled={reviewIdx === maxReviewIdx}
+                      aria-label="Next"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </button>
 
-      {/* ── RESPONSIVE ───────────────────────────────── */}
-      <style>{`
-        @keyframes cardReveal {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
+                    <div className="testimonials-slider-viewport">
+                      <div
+                        ref={reviewTrackRef}
+                        className="testimonials-slider-track"
+                        style={{
+                          transform: `translateX(-${reviewOffset}px)`,
+                          "--card-flex-basis": reviewCardFlexBasis,
+                        } as React.CSSProperties}
+                        onTouchStart={handleReviewTouchStart}
+                        onTouchMove={handleReviewTouchMove}
+                        onTouchEnd={handleReviewTouchEnd}
+                      >
+                        {formattedReviews.map((t, i) => (
+                          <TestimonialCard
+                            key={i}
+                            testimonial={t}
+                            style={{ flex: `0 0 var(--card-flex-basis)`, minWidth: 0 }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
 
-        @keyframes heartbeatFloat {
-          0% {
-            transform: translateY(0) scale(1);
-            box-shadow: 0 4px 12px rgba(105, 228, 220, 0.3);
-          }
-          14% {
-            transform: translateY(-3px) scale(1.06);
-            box-shadow: 0 8px 20px rgba(105, 228, 220, 0.4);
-          }
-          28% {
-            transform: translateY(0) scale(1);
-          }
-          42% {
-            transform: translateY(-3px) scale(1.06);
-            box-shadow: 0 8px 20px rgba(105, 228, 220, 0.4);
-          }
-          70% {
-            transform: translateY(-8px) scale(1);
-          }
-          100% {
-            transform: translateY(0) scale(1);
-          }
-        }
+                  {/* ── FIX: dots count = totalPages (groups of visibleReviewCount) ── */}
+                  <div className="t-dots">
+                    {Array.from({ length: totalPages }).map((_, i) => (
+                      <button
+                        key={i}
+                        className={`t-dot${i === reviewIdx ? " active" : ""}`}
+                        onClick={() => setReviewIdx(i)}
+                        aria-label={`Go to slide ${i + 1}`}
+                      />
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <div className="reviews-all-grid">
+                  {formattedReviews.map((t, i) => (
+                    <TestimonialCard key={i} testimonial={t} />
+                  ))}
+                </div>
+              )}
 
-        .outcomes-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: clamp(16px, 2.11vw, 32px);
-          padding: 40px 0;
-        }
+              <div ref={reviewButtonContainerRef}>
+                <button className="view-more-btn" onClick={handleToggleReviews}>
+                  {showAllReviews ? "View Less" : "View More"}
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
 
-        @media (max-width: 1023px) {
-          .outcomes-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-
-        @media (max-width: 639px) {
-          .outcomes-grid {
-            grid-template-columns: 1fr;
-          }
-        }
-
-        .property-card {
-          background: ${WHITE};
-          border: 2px solid ${AQUA};
-          border-radius: 16px;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          animation: cardReveal 0.5s ease both;
-          transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
-          cursor: pointer;
-          overflow: hidden;
-        }
-        
-        .property-card:hover {
-          transform: translateY(-12px);
-          box-shadow: 0 10px 22px rgba(105, 228, 220, 0.96);
-        }
-
-        .card-image-wrap {
-          width: 100%;
-          height: 200px;
-          border-radius: 16px 16px 0 0;
-          overflow: hidden;
-          position: relative;
-        }
-        
-        .card-image { 
-          width: 100%; 
-          height: 100%; 
-          object-fit: cover; 
-          transition: 0.3s;
-          filter: blur(3px) brightness(80%);
-        }
-
-        .property-card:hover .card-image {
-          transform: scale(1.08);
-        }
-
-        /* Growth Circle Container with Heartbeat Animation */
-        .growth-circle-container {
-          position: absolute;
-          bottom: 160px; /* Position at the bottom */
-          right: 1px;
-          width: 130px; /* Increased size */
-          height: 130px; /* Increased size */
-          border-radius: 50%;
-          background: ${AQUA};
-          background-image: url(${ellipseImage}); /* Overlay the image if it's a pattern/texture */
-          background-size: cover;
-          background-position: center;
-          object-fit: cover;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          z-index: 10;
-          animation: heartbeatFloat 4s ease-in-out infinite;
-          transition: filter 0.3s ease, background 0.3s ease; /* Add background to transition */
-          text-align: center;
-        }
-
-        .property-card:hover .growth-circle-container {
-          background: ${WHITE};
-          filter: brightness(1.1) drop-shadow(0 4px 15px rgba(105, 228, 220, 0.5));
-        }
-
-        .growth-circle-container .growth-label {
-          font-family: 'Sohne', sans-serif;
-          font-size: 12px;
-          color: ${RACING_GREEN};
-          opacity: 0.8;
-        }
-        .growth-circle-container .growth-value {
-          font-family: 'GT Super Display Medium';
-          font-size: 24px;
-          font-weight: 700;
-          line-height: 1.2;
-          color: ${RACING_GREEN};
-          margin-bottom: 4px;
-        }
-
-        .card-data { padding: 55px 18px 20px; flex: 1; }
-        .card-row { display: flex; justify-content: space-between; padding: 10px 0; }
-        .row-label { font-family: 'Sohne'; font-size: 13px; color: #000; }
-        .row-val { font-family: 'Sohne'; font-size: 13px; color: #757575; font-variant-numeric: lining-nums proportional-nums; margin-right: 50px;}
-
-        @media (max-width: 900px) {
-          .grid-3 {
-            grid-template-columns: 1fr 1fr !important;
-          }
-          h1 { font-size: 44px !important; line-height: 1.2 !important; }
-        }
-
-        @media (max-width: 500px) {
-          .grid-3 {
-            grid-template-columns: 1fr !important;
-          }
-          h1 {
-            font-size: 36px !important;
-          }
-        }
-
-       .view-more-outcomes-btn {
-  display: flex;
-  height: 48px;
-  padding: 12px 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-
-  border-radius: 8px;
-  border: 1px solid #69E4DC;
-  background: #ffffff;
-
-  color: #073B2F;
-  font-family: 'CX80';
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 15px;
-  letter-spacing: 4.8px;
-
-  text-transform: uppercase;
-  cursor: pointer;
-  text-decoration: none;
-
-  transition: background 0.2s ease, color 0.2s ease;
-}
-        .view-more-outcomes-btn:hover { background: ${AQUA}; transform: scale(1.05); }
-      `}</style>
-    </div>
+        {/* ══ GET IN TOUCH + FOOTER ══ */}
+        <Image6 />
+        <SimpleGetInTouch />
+        <SimpleFooter />
+      </div>
+    </>
   );
 }

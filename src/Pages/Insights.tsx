@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
 // import AboutSection from "../components/AboutSection";
-import Image1 from "../components/Image1";
+import Image7 from "../components/Image7";
 
 // import aboutInsightsImg from "../assets/About Insights.jpg";
-import bannerImg from "../assets/Insights_Banner.jpg";
+import bannerImg from "../assets/Insights-banner-find-and-sign-buyers-agent-australia.jpg";
 import perthBlogImg from "../assets/Blogs/DSC06286.jpg";
 
 // --- Helper Components ---
@@ -17,6 +17,7 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
 
   return (
     <div
+      className="blog-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={() => navigate(post.path)}
@@ -34,18 +35,28 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
         cursor: "pointer",
       }}
     >
-      <img
-        src={post.image}
-        alt={post.title}
+      <div
+        className="blog-card-img"
         style={{
-          width: "160px",
-          height: "160px",
-          objectFit: "cover",
-          borderRadius: "8px",
+          width: "145px",
+          flexShrink: 0,
+          alignSelf: "stretch",
+          borderRadius: "20px",
+          background: `url(${post.image}) lightgray 50% / cover no-repeat`,
         }}
       />
-      <div style={{ flex: 1 }}>
-        <h3
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          gap: "16px",
+          flex: 1,
+        }}
+      >
+        <div
+          tabIndex={0}
           style={{
             color: "#000",
             fontVariantNumeric: "lining-nums proportional-nums",
@@ -59,11 +70,27 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
           }}
         >
           {post.title}
-        </h3>
+        </div>
+
+        <div
+          tabIndex={0}
+          style={{
+            color: "var(--FS-BURNT-GOLD, var(--Brand-Signature-FS-BURNT-GOLD, #6C5843))",
+            fontFamily: 'CX80BOLD',
+            fontSize: "14px",
+            fontStyle: "normal",
+            fontWeight: 700,
+            lineHeight: "14px", /* 100% */
+            letterSpacing: "4.48px",
+          }}
+        >
+          {post.date}
+        </div>
+
         <p
+          tabIndex={0}
           style={{
             margin: "0px",
-            marginBottom: "20px",
             color: "rgb(117, 117, 117)",
             fontFamily: "Söhne, sans-serif",
             fontSize: "16px",
@@ -74,31 +101,35 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
         >
           {post.description}
         </p>
+
         <button
+          aria-label={`Read blog post about ${post.title}`}
           style={{
             display: "flex",
             height: "48px",
             padding: "12px 16px",
-            justifyContent: "center",
+            justifyContent: "center", // Matched rev-cta-btn
             alignItems: "center",
             gap: "10px",
             flexShrink: 0,
-            borderRadius: "8px",
+            borderRadius: "8px", // Matched rev-cta-btn
             border: "1px solid #69E4DC",
             backgroundColor: hovered ? "#69E4DC" : "#ffffff",
             color: "#073B2F",
             fontFamily: "CX80",
             fontSize: "15px",
             fontWeight: 700,
-            lineHeight: "15px",
-            letterSpacing: "4.8px",
+            lineHeight: "15px", // Matched rev-cta-btn
+            letterSpacing: "4.8px", // Matched rev-cta-btn
             textTransform: "uppercase",
             cursor: "pointer",
             textDecoration: "none",
-            transition: "background 0.2s ease, color 0.2s ease",
+            transition: "all 0.2s ease",
+            transform: hovered ? "translateY(-1px)" : "none",
+            margin: "0", // Aligned to left
           }}
         >
-          View more
+          Read Blog
         </button>
       </div>
     </div>
@@ -109,19 +140,22 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
 
 const blogPosts = [
   {
-    title: "Best Suburbs in Perth for Property Investment in 2026",
-    description: "Discover the best suburbs in Perth for property investment in 2026. Learn where to invest for high growth, rental yield, and long-term returns.",
+    title: "Blog Post One",
+    date: "01 march 2026",
+    description:
+      "Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement.",
     image: perthBlogImg,
-    path: "/blog/best-suburbs-perth"
+    path: "/blog/best-suburbs-perth",
   },
   {
-    title: "Your Ultimate Guide to Hiring a Buyer’s Agent in Perth",
-    description: "Buying property in Perth is one of the biggest financial decisions you’ll ever make. Whether you're a first-home buyer, upgrading your family home, or building an investment portfolio, the process can feel overwhelming.",
-    image:bannerImg,
-    path: "/blog/buyers-agent-perth"
-  }
+    title: "Blog Post Two",
+    date: "01 april 2026",
+    description:
+      "Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement.",
+    image: bannerImg,
+    path: "/blog/buyers-agent-perth",
+  },
 ];
-
 
 export default function Insights() {
 
@@ -130,8 +164,9 @@ export default function Insights() {
       
       {/* ── SECTION 1: Hero ─────────────────────────────────────────────── */}
       <section
+        className="page-hero-banner"
         style={{
-          minHeight: "80vh",
+          width: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -161,13 +196,15 @@ export default function Insights() {
             animation: "heroFadeIn 0.8s ease both",
           }}
         >
-<h1 style={{ 
+          <h1 
+            tabIndex={0}
+            style={{ 
             fontFamily: 'GT Super Display Medium',
             fontSize: "64px",
             fontWeight: 500,
             color: "#FFF",
             lineHeight: "1.1",
-            letterSpacing: "-1.28px",
+            letterSpacing: "1px",
             fontVariantNumeric: "lining-nums proportional-nums",
             margin: 0 
           }}>
@@ -186,9 +223,11 @@ export default function Insights() {
      /> */}
 
       {/* ── SECTION 3: Blogs ────────────────────────────────────────────── */}
-      <section style={{ maxWidth: "1200px", margin: "0 auto 80px", padding: "0 40px", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <h2 style={{  
-          margin: "40px auto 24px",
+      <section className="blogs-container" style={{ maxWidth: "1200px", margin: "0 auto ", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <h2 
+          tabIndex={0}
+          style={{  
+          margin: " auto 24px",
   color: "var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F))",
   fontFamily: "GT Super Display Medium",
   fontSize: "44px",
@@ -204,7 +243,9 @@ export default function Insights() {
     Blogs
     <div style={{ width: "160px", height: "1px", background: "#073B2F" }} />
   </h2>
-  <p style={{
+  <p 
+    tabIndex={0}
+    style={{
     color: "#000",
     fontFamily: "Sohne",
     fontSize: "24px",
@@ -214,7 +255,7 @@ export default function Insights() {
     textAlign: "center",
     marginBottom: "48px"
   }}>
-     Explore more about blogs.
+     Industry insights, Australia-wide expertise and more.
   </p>
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           {blogPosts.map((post, index) => (
@@ -222,7 +263,7 @@ export default function Insights() {
           ))}
         </div>
       </section>
-          <Image1/>
+          <Image7/>
       <SimpleGetInTouch />
       
       <SimpleFooter />
@@ -234,18 +275,59 @@ export default function Insights() {
           to   { opacity: 1; transform: translateY(0); }
         }
 
+        .page-hero-banner {
+          aspect-ratio: 16 / 7;
+          min-height: 60vh;
+        }
+        @media (max-width: 768px) {
+          .page-hero-banner {
+            aspect-ratio: 4 / 5;
+            min-height: unset;
+          }
+        }
+
+        .blogs-container {
+          padding: 64px 
+        }
+
+        .blog-card {
+          flex-direction: row;
+        }
+
         @media (max-width: 900px) {
+          .blogs-container { padding: 64px 20px; }
           .about-grid {
             flex-direction: column !important;
           }
           .about-grid > div {
             width: 100% !important;
           }
-          h1 { font-size: 44px !important; line-height: 1.2 !important; }
+          h1 { font-size: 56px !important; line-height: 1.2 !important; }
+          h2 { font-size: 42px !important; line-height: 40px !important; }
+          section p { font-size: 18px !important; line-height: 28px !important; }
         }
 
+        @media (max-width: 768px) {
+          .blog-card {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+          }
+          .blog-card-img {
+            width: 100% !important;
+            height: 200px !important;
+          }
+        }
+        
+        /* Ensuring blog titles (H3) are 32px on mobile */
+        @media (max-width: 768px) {
+          .blog-card > div > div:first-child {
+             font-size: 32px !important;
+          }
+        }
+
+
         @media (max-width: 600px) {
-          h1 { font-size: 36px !important; }
+          h1 { font-size: 56px !important; }
         }
       `}</style>
     </div>

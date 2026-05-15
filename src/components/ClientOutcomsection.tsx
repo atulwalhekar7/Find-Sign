@@ -41,7 +41,6 @@ import id38 from "../assets/Client Outcomes/id38.webp";
 import id39 from "../assets/Client Outcomes/id39.webp";
 import ellipseImage from "../assets/Ellipse 1.png";
 
-
 const AQUA = "#69E4DC";
 const RACING_GREEN = "#003327";
 const WHITE = "#FFFFFF";
@@ -50,456 +49,85 @@ const images = {
   id1, id2, id3, id4, id5, id6, id7, id8, id9, id10,
   id11, id12, id13, id14, id15, id16, id17, id18, id19, id20,
   id21, id22, id23, id24, id25, id26, id27, id28, id29, id30,
-  id31, id32, id33, id34, id35, id36, id37, id38, id39
+  id31, id32, id33, id34, id35, id36, id37, id38, id39,
 };
 
-
 const cards = [
-  {
-    id: 1,
-    image: images.id1,
-    growth: "101.7%",
-    purchasePrice: "$290k",
-    currentValue: "$585k",
-    timeframe: "2 yrs 4 mths",
-    rentalYield: "Owner Occ",
-    address: "8/15 Debenham St, Thornlie WA 6108",
-  },
-  {
-    id: 2,
-    image: images.id2,
-    growth: "41.3%",
-    purchasePrice: "$630k",
-    currentValue: "$890k",
-    timeframe: "2 years",
-    rentalYield: "6.2%",
-    address: "27 Willard Circuit, Banksia Grove WA 6031",
-  },
-  {
-    id: 3,
-    image: images.id3,
-    growth: "29.9%",
-    purchasePrice: "$654k",
-    currentValue: "$850k",
-    timeframe: "2 years",
-    rentalYield: "5.4%",
-    address: "105 Surf Drive, Secret Harbour WA 6173",
-  },
-  {
-    id: 4,
-    image: images.id4,
-    growth: "30.0%",
-    purchasePrice: "$862k",
-    currentValue: "$1.12M",
-    timeframe: "2 years",
-    rentalYield: "Owner Occ",
-    address: "7 Limerick Loop, Wattle Grove WA 6107",
-  },
-  {
-    id: 5,
-    image: images.id5,
-    growth: "41.9%",
-    purchasePrice: "$620k",
-    currentValue: "$880k",
-    timeframe: "1 yr 10 mths",
-    rentalYield: "Owner Occ",
-    address: "34 Sawmill Road, Whitby WA 6123",
-  },
-  {
-    id: 6,
-    image: images.id6,
-    growth: "34.5%",
-    purchasePrice: "$550k",
-    currentValue: "$740k",
-    timeframe: "1 yr 10 mths",
-    rentalYield: "6.1%",
-    address: "32 Breccia Parade, Wellard WA 6170",
-  },
-  {
-    id: 7,
-    image: images.id7,
-    growth: "16.4%",
-    purchasePrice: "$670k",
-    currentValue: "$780k",
-    timeframe: "8 months",
-    rentalYield: "5.2%",
-    address: "42 Timperley Road, South Bunbury WA 6230",
-  },
-  {
-    id: 8,
-    image: images.id8,
-    growth: "15.2%",
-    purchasePrice: "$820k",
-    currentValue: "$945k",
-    timeframe: "5 months",
-    rentalYield: "7.6%",
-    address: "130B&C Gabriel St, Cloverdale WA 6105",
-  },
-  {
-    id: 9,
-    image: images.id9,
-    growth: "14.9%",
-    purchasePrice: "$870k",
-    currentValue: "$1M",
-    timeframe: "8 months",
-    rentalYield: "5.4%",
-    address: "40 Keane Street, Kewdale WA 6105",
-  },
-  {
-    id: 10,
-    image: images.id10,
-    growth: "12.1%",
-    purchasePrice: "$580k",
-    currentValue: "$650k",
-    timeframe: "3 months",
-    rentalYield: "6.3%",
-    address: "10/61 Hardey Road, Belmont WA 6104",
-  },
-  {
-    id: 11,
-    image: images.id11,
-    growth: "11.9%",
-    purchasePrice: "$670k",
-    currentValue: "$750k",
-    timeframe: "6 months",
-    rentalYield: "5.8%",
-    address: "12/158 George St, Queens Park WA 6107",
-  },
-  {
-    id: 12,
-    image: images.id12,
-    growth: "12.6%",
-    purchasePrice: "$870k",
-    currentValue: "$980k",
-    timeframe: "6 months",
-    rentalYield: "5.1%",
-    address: "278 Adelaide St, High Wycombe WA 6057",
-  },
-  {
-    id: 13,
-    image: images.id13,
-    growth: "6.3%",
-    purchasePrice: "$1.28M",
-    currentValue: "$1.36M",
-    timeframe: "1 month",
-    rentalYield: "6.5%",
-    address: "124 Lakeside Drive, Joondalup WA 6027",
-  },
-  {
-    id: 14,
-    image: images.id14,
-    growth: "36.7%",
-    purchasePrice: "$695k",
-    currentValue: "$950k",
-    timeframe: "1 yr 8 mths",
-    rentalYield: "6.4%",
-    address: "10 Wilbury Road, Bullsbrook WA 6084",
-  },
-  {
-    id: 15,
-    image: images.id15,
-    growth: "31.1%",
-    purchasePrice: "$610k",
-    currentValue: "$800k",
-    timeframe: "1 yr 7 mths",
-    rentalYield: "5.5%",
-    address: "26 Mainsheet Way, Alkimos WA 6038",
-  },
-  {
-    id: 16,
-    image: images.id16,
-    growth: "6.2%",
-    purchasePrice: "$650k",
-    currentValue: "$690k",
-    timeframe: "1 month",
-    rentalYield: "5.9%",
-    address: "6 Lofter Way, Yanchep WA 6035",
-  },
-  {
-    id: 17,
-    image: images.id17,
-    growth: "25.7%",
-    purchasePrice: "$875k",
-    currentValue: "$1.1M",
-    timeframe: "1 yr 4 mths",
-    rentalYield: "Owner Occ",
-    address: "4 Newhaven Place, Canning Vale WA 6155",
-  },
-  {
-    id: 18,
-    image: images.id18,
-    growth: "11.1%",
-    purchasePrice: "$1.26M",
-    currentValue: "$1.4M",
-    timeframe: "8 months",
-    rentalYield: "Owner Occ",
-    address: "4 Congressional Cres, Connolly WA 6027",
-  },
-  {
-    id: 19,
-    image: images.id19,
-    growth: "10.0%",
-    purchasePrice: "$850k",
-    currentValue: "$935k",
-    timeframe: "4 months",
-    rentalYield: "Owner Occ",
-    address: "99 The Promenade, Wattle Grove WA 6107",
-  },
-  {
-    id: 20,
-    image: images.id20,
-    growth: "9.5%",
-    purchasePrice: "$630k",
-    currentValue: "$690k",
-    timeframe: "6 months",
-    rentalYield: "6.0%",
-    address: "2/168 Sydenham St, Kewdale WA 6105",
-  },
-  {
-    id: 21,
-    image: images.id21,
-    growth: "31.9%",
-    purchasePrice: "$690k",
-    currentValue: "$910k",
-    timeframe: "4 months",
-    rentalYield: "6.4%",
-    address: "64 Connemara Drive, Thornlie WA 6108",
-  },
-  {
-    id: 22,
-    image: images.id22,
-    growth: "4.9%",
-    purchasePrice: "$810k",
-    currentValue: "$850k",
-    timeframe: "1 month",
-    rentalYield: "Owner Occ",
-    address: "11 Kelton Way, Thornlie WA 6108",
-  },
-  {
-    id: 23,
-    image: images.id23,
-    growth: "13.2%",
-    purchasePrice: "$680k",
-    currentValue: "$770k",
-    timeframe: "7 months",
-    rentalYield: "6.11%",
-    address: "6 Fresco Way, Alkimos WA 6038",
-  },
-  {
-    id: 24,
-    image: images.id24,
-    growth: "16.4%",
-    purchasePrice: "$730k",
-    currentValue: "$850k",
-    timeframe: "6 months",
-    rentalYield: "Owner Occ",
-    address: "15C Wardong Road, Westminster WA 6061",
-  },
-  {
-    id: 25,
-    image: images.id25,
-    growth: "33.3%",
-    purchasePrice: "$705k",
-    currentValue: "$940k",
-    timeframe: "1 yr 6 mths",
-    rentalYield: "5.5%",
-    address: "31 Ranella Street, Jindalee WA 6036",
-  },
-  {
-    id: 26,
-    image: images.id26,
-    growth: "21.4%",
-    purchasePrice: "$865k",
-    currentValue: "$1.05M",
-    timeframe: "10 months",
-    rentalYield: "8.11%",
-    address: "9A Humphry Street, St James WA 6102",
-  },
-  {
-    id: 27,
-    image: images.id27,
-    growth: "47.1%",
-    purchasePrice: "$544k",
-    currentValue: "$800k",
-    timeframe: "2 years",
-    rentalYield: "Owner Occ",
-    address: "565 Farrall Road, Midvale WA 6056",
-  },
-  {
-    id: 28,
-    image: images.id28,
-    growth: "28.8%",
-    purchasePrice: "$854k",
-    currentValue: "$1.1M",
-    timeframe: "1 yr 8 mths",
-    rentalYield: "Owner Occ",
-    address: "11 Pissaro Crescent, Ashby WA 6065",
-  },
-  {
-    id: 29,
-    image: images.id29,
-    growth: "3.1%",
-    purchasePrice: "$1.27M",
-    currentValue: "$1.31M",
-    timeframe: "5 months",
-    rentalYield: "Owner Occ",
-    address: "9 Templar Place, Currambine WA 6028",
-  },
-  {
-    id: 30,
-    image: images.id30,
-    growth: "23.6%",
-    purchasePrice: "$700k",
-    currentValue: "$865k",
-    timeframe: "11 months",
-    rentalYield: "Owner Occ",
-    address: "37 Seminole Gardens, Seville Grove WA 6112",
-  },
-  {
-    id: 31,
-    image: images.id31,
-    growth: "3.2%",
-    purchasePrice: "$775k",
-    currentValue: "$800k",
-    timeframe: "4 months",
-    rentalYield: "Owner Occ",
-    address: "7 Cherrytree Chase, Maddington WA 6109",
-  },
-  {
-    id: 32,
-    image: images.id32,
-    growth: "6.3%",
-    purchasePrice: "$790k",
-    currentValue: "$840k",
-    timeframe: "2 months",
-    rentalYield: "5.1%",
-    address: "86A Gosnells Road West, Maddington WA 6109",
-  },
-  {
-    id: 33,
-    image: images.id33,
-    growth: "8.3%",
-    purchasePrice: "$720k",
-    currentValue: "$780k",
-    timeframe: "4 months",
-    rentalYield: "Owner Occ",
-    address: "51 Beckwith Loop, Haynes WA 6112",
-  },
-  {
-    id: 34,
-    image: images.id34,
-    growth: "15.3%",
-    purchasePrice: "$685k",
-    currentValue: "$790k",
-    timeframe: "9 months",
-    rentalYield: "5.3%",
-    address: "23 Ellen Brook Drive, The Vines WA 6069",
-  },
-  {
-    id: 35,
-    image: images.id35,
-    growth: "32.4%",
-    purchasePrice: "$740k",
-    currentValue: "$980k",
-    timeframe: "1 yr 5 mths",
-    rentalYield: "Owner Occ",
-    address: "3 Robson Avenue, Hilbert WA 6112",
-  },
-  {
-    id: 36,
-    image: images.id36,
-    growth: "13.6%",
-    purchasePrice: "$810k",
-    currentValue: "$920k",
-    timeframe: "7 months",
-    rentalYield: "5.1%",
-    address: "13 Bright Street, Haynes WA 6112",
-  },
-  {
-    id: 37,
-    image: images.id37,
-    growth: "33.3%",
-    purchasePrice: "$630k",
-    currentValue: "$840k",
-    timeframe: "1 yr 4 mths",
-    rentalYield: "6.1%",
-    address: "89 Cheriton Avenue, Ellenbrook WA 6069",
-  },
-  {
-    id: 38,
-    image: images.id38,
-    growth: "17.8%",
-    purchasePrice: "$730k",
-    currentValue: "$860k",
-    timeframe: "1 yr 5 mths",
-    rentalYield: "Owner Occ",
-    address: "7 Gippsland Way, Ellenbrook WA 6069",
-  },
-  {
-    id: 39,
-    image: images.id39,
-    growth: "25.5%",
-    purchasePrice: "$765k",
-    currentValue: "$960k",
-    timeframe: "1 yr 3 mths",
-    rentalYield: "Owner Occ",
-    address: "225 Maida Vale Road, High Wycombe WA 6057",
-  },
+  { id: 1,  image: images.id1,  growth: "101.7%", purchasePrice: "$290k",  currentValue: "$585k",  timeframe: "2 yrs 4 mths", rentalYield: "Owner Occ", address: "8/15 Debenham St, Thornlie WA 6108" },
+  { id: 2,  image: images.id2,  growth: "41.3%",  purchasePrice: "$630k",  currentValue: "$890k",  timeframe: "2 years",       rentalYield: "6.2%",      address: "27 Willard Circuit, Banksia Grove WA 6031" },
+  { id: 3,  image: images.id3,  growth: "29.9%",  purchasePrice: "$654k",  currentValue: "$850k",  timeframe: "2 years",       rentalYield: "5.4%",      address: "105 Surf Drive, Secret Harbour WA 6173" },
+  { id: 4,  image: images.id4,  growth: "30.0%",  purchasePrice: "$862k",  currentValue: "$1.12M", timeframe: "2 years",       rentalYield: "Owner Occ", address: "7 Limerick Loop, Wattle Grove WA 6107" },
+  { id: 5,  image: images.id5,  growth: "41.9%",  purchasePrice: "$620k",  currentValue: "$880k",  timeframe: "1 yr 10 mths",  rentalYield: "Owner Occ", address: "34 Sawmill Road, Whitby WA 6123" },
+  { id: 6,  image: images.id6,  growth: "34.5%",  purchasePrice: "$550k",  currentValue: "$740k",  timeframe: "1 yr 10 mths",  rentalYield: "6.1%",      address: "32 Breccia Parade, Wellard WA 6170" },
+  { id: 7,  image: images.id7,  growth: "16.4%",  purchasePrice: "$670k",  currentValue: "$780k",  timeframe: "8 months",      rentalYield: "5.2%",      address: "42 Timperley Road, South Bunbury WA 6230" },
+  { id: 8,  image: images.id8,  growth: "15.2%",  purchasePrice: "$820k",  currentValue: "$945k",  timeframe: "5 months",      rentalYield: "7.6%",      address: "130B&C Gabriel St, Cloverdale WA 6105" },
+  { id: 9,  image: images.id9,  growth: "14.9%",  purchasePrice: "$870k",  currentValue: "$1M",    timeframe: "8 months",      rentalYield: "5.4%",      address: "40 Keane Street, Kewdale WA 6105" },
+  { id: 10, image: images.id10, growth: "12.1%",  purchasePrice: "$580k",  currentValue: "$650k",  timeframe: "3 months",      rentalYield: "6.3%",      address: "10/61 Hardey Road, Belmont WA 6104" },
+  { id: 11, image: images.id11, growth: "11.9%",  purchasePrice: "$670k",  currentValue: "$750k",  timeframe: "6 months",      rentalYield: "5.8%",      address: "12/158 George St, Queens Park WA 6107" },
+  { id: 12, image: images.id12, growth: "12.6%",  purchasePrice: "$870k",  currentValue: "$980k",  timeframe: "6 months",      rentalYield: "5.1%",      address: "278 Adelaide St, High Wycombe WA 6057" },
+  { id: 13, image: images.id13, growth: "6.3%",   purchasePrice: "$1.28M", currentValue: "$1.36M", timeframe: "1 month",       rentalYield: "6.5%",      address: "124 Lakeside Drive, Joondalup WA 6027" },
+  { id: 14, image: images.id14, growth: "36.7%",  purchasePrice: "$695k",  currentValue: "$950k",  timeframe: "1 yr 8 mths",   rentalYield: "6.4%",      address: "10 Wilbury Road, Bullsbrook WA 6084" },
+  { id: 15, image: images.id15, growth: "31.1%",  purchasePrice: "$610k",  currentValue: "$800k",  timeframe: "1 yr 7 mths",   rentalYield: "5.5%",      address: "26 Mainsheet Way, Alkimos WA 6038" },
+  { id: 16, image: images.id16, growth: "6.2%",   purchasePrice: "$650k",  currentValue: "$690k",  timeframe: "1 month",       rentalYield: "5.9%",      address: "6 Lofter Way, Yanchep WA 6035" },
+  { id: 17, image: images.id17, growth: "25.7%",  purchasePrice: "$875k",  currentValue: "$1.1M",  timeframe: "1 yr 4 mths",   rentalYield: "Owner Occ", address: "4 Newhaven Place, Canning Vale WA 6155" },
+  { id: 18, image: images.id18, growth: "11.1%",  purchasePrice: "$1.26M", currentValue: "$1.4M",  timeframe: "8 months",      rentalYield: "Owner Occ", address: "4 Congressional Cres, Connolly WA 6027" },
+  { id: 19, image: images.id19, growth: "10.0%",  purchasePrice: "$850k",  currentValue: "$935k",  timeframe: "4 months",      rentalYield: "Owner Occ", address: "99 The Promenade, Wattle Grove WA 6107" },
+  { id: 20, image: images.id20, growth: "9.5%",   purchasePrice: "$630k",  currentValue: "$690k",  timeframe: "6 months",      rentalYield: "6.0%",      address: "2/168 Sydenham St, Kewdale WA 6105" },
+  { id: 21, image: images.id21, growth: "31.9%",  purchasePrice: "$690k",  currentValue: "$910k",  timeframe: "4 months",      rentalYield: "6.4%",      address: "64 Connemara Drive, Thornlie WA 6108" },
+  { id: 22, image: images.id22, growth: "4.9%",   purchasePrice: "$810k",  currentValue: "$850k",  timeframe: "1 month",       rentalYield: "Owner Occ", address: "11 Kelton Way, Thornlie WA 6108" },
+  { id: 23, image: images.id23, growth: "13.2%",  purchasePrice: "$680k",  currentValue: "$770k",  timeframe: "7 months",      rentalYield: "6.11%",     address: "6 Fresco Way, Alkimos WA 6038" },
+  { id: 24, image: images.id24, growth: "16.4%",  purchasePrice: "$730k",  currentValue: "$850k",  timeframe: "6 months",      rentalYield: "Owner Occ", address: "15C Wardong Road, Westminster WA 6061" },
+  { id: 25, image: images.id25, growth: "33.3%",  purchasePrice: "$705k",  currentValue: "$940k",  timeframe: "1 yr 6 mths",   rentalYield: "5.5%",      address: "31 Ranella Street, Jindalee WA 6036" },
+  { id: 26, image: images.id26, growth: "21.4%",  purchasePrice: "$865k",  currentValue: "$1.05M", timeframe: "10 months",     rentalYield: "8.11%",     address: "9A Humphry Street, St James WA 6102" },
+  { id: 27, image: images.id27, growth: "47.1%",  purchasePrice: "$544k",  currentValue: "$800k",  timeframe: "2 years",       rentalYield: "Owner Occ", address: "565 Farrall Road, Midvale WA 6056" },
+  { id: 28, image: images.id28, growth: "28.8%",  purchasePrice: "$854k",  currentValue: "$1.1M",  timeframe: "1 yr 8 mths",   rentalYield: "Owner Occ", address: "11 Pissaro Crescent, Ashby WA 6065" },
+  { id: 29, image: images.id29, growth: "3.1%",   purchasePrice: "$1.27M", currentValue: "$1.31M", timeframe: "5 months",      rentalYield: "Owner Occ", address: "9 Templar Place, Currambine WA 6028" },
+  { id: 30, image: images.id30, growth: "23.6%",  purchasePrice: "$700k",  currentValue: "$865k",  timeframe: "11 months",     rentalYield: "Owner Occ", address: "37 Seminole Gardens, Seville Grove WA 6112" },
+  { id: 31, image: images.id31, growth: "3.2%",   purchasePrice: "$775k",  currentValue: "$800k",  timeframe: "4 months",      rentalYield: "Owner Occ", address: "7 Cherrytree Chase, Maddington WA 6109" },
+  { id: 32, image: images.id32, growth: "6.3%",   purchasePrice: "$790k",  currentValue: "$840k",  timeframe: "2 months",      rentalYield: "5.1%",      address: "86A Gosnells Road West, Maddington WA 6109" },
+  { id: 33, image: images.id33, growth: "8.3%",   purchasePrice: "$720k",  currentValue: "$780k",  timeframe: "4 months",      rentalYield: "Owner Occ", address: "51 Beckwith Loop, Haynes WA 6112" },
+  { id: 34, image: images.id34, growth: "15.3%",  purchasePrice: "$685k",  currentValue: "$790k",  timeframe: "9 months",      rentalYield: "5.3%",      address: "23 Ellen Brook Drive, The Vines WA 6069" },
+  { id: 35, image: images.id35, growth: "32.4%",  purchasePrice: "$740k",  currentValue: "$980k",  timeframe: "1 yr 5 mths",   rentalYield: "Owner Occ", address: "3 Robson Avenue, Hilbert WA 6112" },
+  { id: 36, image: images.id36, growth: "13.6%",  purchasePrice: "$810k",  currentValue: "$920k",  timeframe: "7 months",      rentalYield: "5.1%",      address: "13 Bright Street, Haynes WA 6112" },
+  { id: 37, image: images.id37, growth: "33.3%",  purchasePrice: "$630k",  currentValue: "$840k",  timeframe: "1 yr 4 mths",   rentalYield: "6.1%",      address: "89 Cheriton Avenue, Ellenbrook WA 6069" },
+  { id: 38, image: images.id38, growth: "17.8%",  purchasePrice: "$730k",  currentValue: "$860k",  timeframe: "1 yr 5 mths",   rentalYield: "Owner Occ", address: "7 Gippsland Way, Ellenbrook WA 6069" },
+  { id: 39, image: images.id39, growth: "25.5%",  purchasePrice: "$765k",  currentValue: "$960k",  timeframe: "1 yr 3 mths",   rentalYield: "Owner Occ", address: "225 Maida Vale Road, High Wycombe WA 6057" },
 ];
 
 const INTERVAL = 3000;
+const CARD_GAP = 32;
+const PEEK = 56; // px of next card visible on right edge (mobile only)
 
-/* ── Property Card ── */
-function PropertyCard({
-  card,
-  index,
-}: {
-  card: (typeof cards)[0];
-  index: number;
-}) {
+function PropertyCard({ card }: { card: (typeof cards)[0] }) {
   return (
-    <div
-      className="property-card"
-      style={{
-        animationDelay: `${index * 80}ms`,
-      }}
-    >
+    <div className="property-card">
       <div className="card-image-wrap">
-        <img src={card.image} alt="Property" className="card-image" />
+        <img src={card.image} alt={`Property outcome for ${card.address}`} className="card-image" />
       </div>
-
-      {/* Growth image replacing circle */}
       <div
         className="growth-circle-container"
+        tabIndex={0}
         style={{
-          animationDelay: `${index * 150}ms`,
           backgroundImage: `url(${ellipseImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
         <span className="growth-label">Growth</span>
         <span className="growth-value">{card.growth}</span>
-        {/* <span className="current-value-label">Current Value</span>
-        <span className="current-value">{card.currentValue}</span> */}
       </div>
       <div className="card-data">
         {[
           { label: "Purchase price", val: card.purchasePrice },
-          { label: "Current value", val: card.currentValue },
-          { label: "Timeframe", val: card.timeframe },
-          { label: "Rental yield", val: card.rentalYield },
+          { label: "Current value",  val: card.currentValue  },
+          { label: "Timeframe",      val: card.timeframe     },
+          { label: "Rental yield",   val: card.rentalYield   },
         ].map(({ label, val }, i, arr) => (
           <div
             key={label}
+            tabIndex={0}
             className="card-row"
-            style={{
-              borderBottom: i < arr.length - 1 ? "1px dashed #846F58" : "none",
-            }}
+            style={{ borderBottom: i < arr.length - 1 ? "1px dashed #846F58" : "none" }}
           >
             <span className="row-label">{label}</span>
             <span className="row-val">{val}</span>
@@ -512,97 +140,132 @@ function PropertyCard({
 
 export default function ClientOutcomes() {
   const navigate = useNavigate();
-  const [cur, setCur] = useState(0);
+  const [cur, setCur]       = useState(0);
   const [paused, setPaused] = useState(false);
-  const [animKey, setAnimKey] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(3);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+  const [offset, setOffset] = useState(0);
+  const timerRef  = useRef<ReturnType<typeof setInterval> | null>(null);
+  const trackRef  = useRef<HTMLDivElement>(null);
+  const rafRef    = useRef<number | null>(null);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
-  const sliderCards = cards.slice(0, 10);
+  const visibleCount = isMobile ? 1 : isTablet ? 2 : 3;
+  const sliderCards  = cards.slice(0, 10);
+  const maxIdx       = Math.max(0, sliderCards.length - visibleCount);
 
+  // ── Breakpoint detection ──────────────────────────────────────────────────
   useEffect(() => {
     const update = () => {
-      const w = window.innerWidth;
-      if (w < 640) setVisibleCount(1);
-      else if (w < 1024) setVisibleCount(2);
-      else setVisibleCount(3);
+      setIsMobile(window.innerWidth < 768);
+      setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1200);
     };
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  const maxIdx = Math.max(0, sliderCards.length - visibleCount);
-
-  const goto = (idx: number) => {
-    const next = Math.max(0, Math.min(idx, maxIdx));
-    setCur(next);
-    setAnimKey((k) => k + 1);
-  };
-
-  const resetTimer = () => {
-    if (timerRef.current) clearInterval(timerRef.current);
-    timerRef.current = setInterval(() => {
-      setCur((c) => {
-        const next = c >= maxIdx ? 0 : c + 1;
-        setAnimKey((k) => k + 1);
-        return next;
-      });
-    }, INTERVAL);
-  };
-
-  useEffect(() => {
-    timerRef.current = setInterval(() => {
-      if (!paused) {
-        setCur((c) => {
-          const next = c >= maxIdx ? 0 : c + 1;
-          setAnimKey((k) => k + 1);
-          return next;
-        });
-      }
-    }, INTERVAL);
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [paused, maxIdx]);
-
+  // ── Clamp index on resize ─────────────────────────────────────────────────
   useEffect(() => {
     if (cur > maxIdx) setCur(maxIdx);
   }, [maxIdx]);
+
+  // ── Recalculate scroll offset (FIXED) ────────────────────────────────────
+  // Uses getBoundingClientRect for accurate width after render,
+  // wrapped in requestAnimationFrame so DOM has fully painted,
+  // and observed via ResizeObserver so any layout shift is caught.
+  useEffect(() => {
+    const recalc = () => {
+      // Cancel any pending RAF before scheduling a new one
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+
+      rafRef.current = requestAnimationFrame(() => {
+        if (!trackRef.current) return;
+        const first = trackRef.current.querySelector<HTMLElement>(".property-card");
+        if (!first) return;
+
+        // getBoundingClientRect is accurate even before offsetWidth settles
+        const cardW = first.getBoundingClientRect().width;
+        if (cardW === 0) return; // guard: not yet laid out
+
+        setOffset(cur * (cardW + CARD_GAP));
+      });
+    };
+
+    recalc();
+
+    // Watch for any size changes on the track (orientation change, font load, etc.)
+    const ro = new ResizeObserver(recalc);
+    if (trackRef.current) ro.observe(trackRef.current);
+
+    return () => {
+      ro.disconnect();
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [cur, isMobile, isTablet]);
+
+  // ── Auto-play ─────────────────────────────────────────────────────────────
+  const resetTimer = () => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setCur((c) => (c >= maxIdx ? 0 : c + 1));
+    }, INTERVAL);
+  };
+
+  useEffect(() => {
+    timerRef.current = setInterval(() => {
+      if (!paused) setCur((c) => (c >= maxIdx ? 0 : c + 1));
+    }, INTERVAL);
+    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+  }, [paused, maxIdx]);
+
+  const goto = (idx: number) => {
+    setCur(Math.max(0, Math.min(idx, maxIdx)));
+    resetTimer();
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const diff = touchStartX.current - touchEndX.current;
+    const threshold = 50; 
+    if (diff > threshold) goto(cur + 1);
+    if (diff < -threshold) goto(cur - 1);
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  // ── Card width ────────────────────────────────────────────────────────────
+  const cardFlexBasis = isMobile
+    ? `calc(100% - ${CARD_GAP}px - ${PEEK}px)`
+    : `calc((100% - ${CARD_GAP}px * ${visibleCount - 1}) / ${visibleCount})`;
 
   return (
     <>
       <style>{`
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        @keyframes cardReveal {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
+        @keyframes heartbeatFloat {
+          0%   { transform: translateY(0)    scale(1);    box-shadow: 0 4px 12px rgba(105,228,220,0.3); }
+          14%  { transform: translateY(-3px) scale(1.06); box-shadow: 0 8px 20px rgba(105,228,220,0.4); }
+          28%  { transform: translateY(0)    scale(1); }
+          42%  { transform: translateY(-3px) scale(1.06); box-shadow: 0 8px 20px rgba(105,228,220,0.4); }
+          70%  { transform: translateY(-8px) scale(1); }
+          100% { transform: translateY(0)    scale(1); }
         }
 
-        /* Continuous Heartbeat + Float Animation */
-        @keyframes heartbeatFloat {
-          0% {
-            transform: translateY(0) scale(1);
-            box-shadow: 0 4px 12px rgba(105, 228, 220, 0.3);
-          }
-          14% {
-            transform: translateY(-3px) scale(1.06);
-            box-shadow: 0 8px 20px rgba(105, 228, 220, 0.4);
-          }
-          28% {
-            transform: translateY(0) scale(1);
-          }
-          42% {
-            transform: translateY(-3px) scale(1.06);
-            box-shadow: 0 8px 20px rgba(105, 228, 220, 0.4);
-          }
-          70% {
-            transform: translateY(-8px) scale(1);
-          }
-          100% {
-            transform: translateY(0) scale(1);
-          }
+        .co-wrapper {
+          width: 100%;
+          background: #F9F9F9;
+          overflow-x: clip;
         }
 
         .co-section {
@@ -613,13 +276,11 @@ export default function ClientOutcomes() {
           display: grid;
           grid-template-columns: repeat(12, 1fr);
           column-gap: 64px;
-          padding: 64px 196px 80px;
+          padding: 64px 130px;
+          overflow: visible;
         }
 
-        .co-head {
-          grid-column: 1 / -1;
-          margin-bottom: 48px;
-        }
+        .co-head { grid-column: 1 / -1; margin-bottom: 48px; }
 
         .co-slider-outer {
           grid-column: 1 / -1;
@@ -627,6 +288,7 @@ export default function ClientOutcomes() {
           flex-direction: column;
           gap: 40px;
           align-items: center;
+          overflow: visible;
         }
 
         .co-header {
@@ -637,31 +299,21 @@ export default function ClientOutcomes() {
           align-items: flex-start;
         }
 
-        .co-title-group { 
-          grid-column: 1 / -1; 
-          display: flex; 
-          flex-direction: column; 
-          align-items: center; 
-          text-align: center; 
-        }
-        .co-arrows {
+        .co-title-group {
+          grid-column: 1 / -1;
           display: flex;
-          gap: 10px;
+          flex-direction: column;
           align-items: center;
-          justify-content: center;
+          text-align: center;
         }
 
         .co-h2 {
-          color: var(--FS-RACING-GREEN, var(--Brand-Foundation-FS-RACING-GREEN, #073B2F));
-          font-variant-numeric: lining-nums proportional-nums;
-          /* FS—H2 */
+          color: var(--FS-RACING-GREEN, #073B2F);
           font-family: "GT Super Display Medium";
           font-size: 44px;
-          font-style: normal;
           font-weight: 500;
-          line-height: 54px; /* 122.727% */
+          line-height: 54px;
           letter-spacing: -0.88px;
-          flex-shrink: 0;
           margin: 0 auto;
           display: flex;
           flex-direction: column;
@@ -677,52 +329,40 @@ export default function ClientOutcomes() {
         }
 
         .co-subtitle {
-        color: #000;
-        font-family: Sohne;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 300;
-        line-height: 36px;
-        margin-top: 24px;
+          color: #000;
+          font-family: Sohne;
+          font-size: 24px;
+          font-weight: 300;
+          line-height: 36px;
+          margin-top: 24px;
         }
 
-        @media (max-width: 1199px) {
-          .co-section { padding: 48px 48px 64px; column-gap: 32px; }
-          .co-h2 { 
-            font-size: 36px;
-            width: 288px;
-            height: 46px;
-            line-height: 44px;
-            letter-spacing: -0.72px;
-          }
-          .co-subtitle { font-size: 20px; }
-          .rev-arrow-btn.prev { left: -44px; }
-          .rev-arrow-btn.next { right: -44px; }
+        .co-slider-wrapper {
+          position: relative;
+          width: 100%;
+          overflow: visible;
         }
 
-        @media (max-width: 767px) {
-          .co-section { grid-template-columns: repeat(4, 1fr); padding: 40px 20px 56px; }
-          .co-header { grid-template-columns: 1fr; }
-          .co-title-group, .co-arrows { grid-column: 1 / -1; }
-          .co-h2 { 
-            font-size: 32px;
-            width: 100%;
-            height: auto;
-            line-height: 38px;
-            letter-spacing: -0.64px;
-            flex-shrink: 1;
-          }
+        /* Desktop/Tablet: clip so cards don't overflow outside the viewport */
+        .co-slider-viewport {
+          width: 100%;
+          overflow: hidden;
+          padding: 20px 0;
+          margin: -20px 0;
         }
 
-        .co-slider-viewport { width: 100%; overflow: hidden; padding: 20px 0; margin: -20px 0; }
         .co-slider-track {
           display: flex;
-          gap: clamp(16px, 2.11vw, 32px);
-          transition: transform 0.6s cubic-bezier(0.77,0,0.18,1);
+          gap: ${CARD_GAP}px;
+          transition: transform 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+          will-change: transform;
+          touch-action: pan-y;
         }
 
         .property-card {
-          flex: 0 0 calc((100% - clamp(16px, 2.11vw, 32px) * 2) / 3);
+          flex: 0 0 var(--card-flex-basis);
+          min-width: 0;
+          height: 440px;
           background: ${WHITE};
           border: 2px solid ${AQUA};
           border-radius: 16px;
@@ -730,130 +370,104 @@ export default function ClientOutcomes() {
           position: relative;
           display: flex;
           flex-direction: column;
-          animation: cardReveal 0.5s ease both;
-          transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
-          cursor: pointer;
           overflow: hidden;
+          cursor: pointer;
+          transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+                      box-shadow 0.4s ease;
         }
-        
-        /* HOVER ANIMATION: Card lifts and glows */
         .property-card:hover {
           transform: translateY(-12px);
-          box-shadow: 0 10px 22px rgba(105, 228, 220, 0.96);
+          box-shadow: 0 10px 22px rgba(105,228,220,0.96);
         }
-
-        @media (max-width: 1023px) { .property-card { flex: 0 0 calc((100% - 32px) / 2); } }
-        @media (max-width: 639px) { .property-card { flex: 0 0 100%; } }
 
         .card-image-wrap {
           width: 100%;
           height: 200px;
-          border-radius: 16px 16px 0 0;
           overflow: hidden;
-          position: relative;
+          flex-shrink: 0;
         }
-        
-        .card-image { 
-          width: 100%; 
-          height: 100%; 
-          object-fit: cover; 
-          transition: 0.3s;
+        .card-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
           filter: blur(3px) brightness(80%);
+          transition: transform 0.3s ease;
+          display: block;
         }
+        .property-card:hover .card-image { transform: scale(1.08); }
 
-        /* HOVER ANIMATION: Image subtle zoom */
-        .property-card:hover .card-image {
-          transform: scale(1.08);
-        }
-
-        /* Growth Circle Container with Heartbeat Animation */
         .growth-circle-container {
           position: absolute;
-          bottom: 160px; /* Position at the bottom */
+          bottom: 175px;
           right: 1px;
-          width: 130px; /* Increased size */
-          height: 130px; /* Increased size */
+          width: 152px;
+          height: 152px;
           border-radius: 50%;
-          background: ${AQUA}; /* Ensure it's blue */
-          background-image: url(${ellipseImage}); /* Overlay the image if it's a pattern/texture */
-          background-size: cover;
-          background-position: center;
-          object-fit: cover;
           z-index: 10;
-          animation: heartbeatFloat 4s ease-in-out infinite;
-          transition: filter 0.3s ease, background 0.3s ease; /* Add background to transition */
+          transition: filter 0.3s ease, background 0.3s ease;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           text-align: center;
         }
-
+        .growth-circle-container:hover {
+          animation: heartbeatFloat 4s ease-in-out infinite;
+        }
         .property-card:hover .growth-circle-container {
-          background: ${WHITE}; /* Change background on hover */
-          filter: brightness(1.1) drop-shadow(0 4px 15px rgba(105, 228, 220, 0.5));
+          background: ${WHITE};
+          filter: brightness(1.1) drop-shadow(0 4px 15px rgba(105,228,220,0.5));
         }
 
-        .growth-circle-container .growth-label {
-          font-family: 'Sohne', sans-serif;
-          font-size: 12px;
-          color: ${RACING_GREEN};
-          opacity: 0.8;
+        .growth-label {
+          width: 81.102px;
+          height: 28px;
+          color: var(--FS-RACING-GREEN, #073B2F);
+          text-align: center;
+          font-family: "SohneBuch";
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 28px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
-        .growth-circle-container .growth-value {
-          font-family: 'GT Super Display Medium';
-          font-size: 24px;
-          font-weight: 700;
-          line-height: 1.2;
-          color: ${RACING_GREEN};
+        .growth-value {
+          width: 123px;
+          color: var(--FS-RACING-GREEN, #073B2F);
+          text-align: center;
+          font-family: "GT Super Display Medium";
+          font-size: 37px;
+          font-weight: 500;
+          line-height: 40px;
+          letter-spacing: -0.74px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           margin-bottom: 4px;
         }
-        // .growth-circle-container .current-value-label {
-        //   font-family: 'Sohne';
-        //   font-size: 10px;
-        //   text-transform: uppercase;
-        //   color: ${RACING_GREEN};
-        //   opacity: 0.7;
-        // }
-        // .growth-circle-container .current-value {
-        //   font-family: 'Sohne', sans-serif;
-        //   font-size: 16px;
-        //   font-weight: 500;
-        //   color: ${RACING_GREEN};
-        // }
+
         .card-data { padding: 55px 18px 20px; flex: 1; }
-        .card-row { display: flex; justify-content: space-between; padding: 10px 0; }
-        .row-label { font-family: 'Sohne';font-size: 13px; color: #000; }
-        .row-val { font-size: 13px; color: #757575;margin-right: 50px; }
+        .card-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 0;
+        }
+        .row-label {
+          font-family: "SohneBuch";
+          font-size: 16px;
+          color: #000;
+          font-weight: 400;
+        }
+        .row-val {
+          font-family: "SohneBuch";
+          font-size: 16px;
+          color: #757575;
+          font-weight: 400;
+          margin-left: auto;
+        }
 
-        .view-btn {
-  display: flex;
-  height: 48px;
-  padding: 12px 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-
-  border-radius: 8px;
-  border: 1px solid ${AQUA};
-  background: ${WHITE};
-
-  color: ${RACING_GREEN};
-  font-family: 'CX80';
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 15px;
-  letter-spacing: 4.8px;
-
-  
-  cursor: pointer;
-
-  transition: background 0.2s, color 0.2s;
-}
-        .view-btn:hover { background: ${AQUA}; transform: scale(1.05); }
-
-        /* ── DOTS (REVIEWS STYLE) ── */
         .co-dots { display: flex; gap: 12px; align-items: center; margin-bottom: 24px; }
         .co-dot {
           width: 8px; height: 8px;
@@ -866,85 +480,178 @@ export default function ClientOutcomes() {
         }
         .co-dot.active { background: #073B2F; width: 24px; border-radius: 4px; }
 
+        .view-btn {
+          display: flex;
+          height: 48px;
+          padding: 12px 16px;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          border-radius: 8px;
+          border: 1px solid ${AQUA};
+          background: ${WHITE};
+          color: ${RACING_GREEN};
+          font-family: 'CX80';
+          font-size: 15px;
+          font-weight: 700;
+          line-height: 15px;
+          letter-spacing: 4.8px;
+          cursor: pointer;
+          transition: background 0.2s, transform 0.2s;
+        }
+        .view-btn:hover { background: ${AQUA}; transform: scale(1.05); }
+
+        .rev-arrow-btn {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 40px; height: 40px;
+          border-radius: 50%;
+          border: 1px solid #D0C9C0;
+          background: ${WHITE};
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 20;
+          transition: background 0.2s, border-color 0.2s;
+        }
+        .rev-arrow-btn:hover { background: ${AQUA}; border-color: ${AQUA}; }
+        .rev-arrow-btn:disabled { opacity: 0.3; cursor: default; }
+        .rev-arrow-btn.prev { left: -52px; }
+        .rev-arrow-btn.next { right: -52px; }
+
+        /* ── Tablet ── */
+        @media (max-width: 1199px) {
+          .co-section { column-gap: 32px; padding: 48px 48px 64px; }
+          .co-header { column-gap: 32px; }
+          .co-h2 { font-size: 36px; line-height: 44px; letter-spacing: -0.72px; }
+          .co-subtitle { font-size: 20px; }
+          .rev-arrow-btn.prev { left: -44px; }
+          .rev-arrow-btn.next { right: -44px; }
+        }
+
+        /* ── Mobile ── */
         @media (max-width: 767px) {
+          .co-section {
+            grid-template-columns: repeat(4, 1fr);
+            column-gap: 16px;
+            padding: 40px 0 56px 24px;
+          }
+          .co-head { padding-right: 24px; }
+          .co-header { grid-template-columns: repeat(4, 1fr); column-gap: 16px; }
+          .co-h2 { font-size: 32px; line-height: 38px; letter-spacing: -0.64px; }
+          .co-subtitle { font-size: 18px; line-height: 28px; }
+
+          /*
+           * KEY FIX: On mobile, the viewport must NOT clip.
+           * Remove the padding/margin trick that was masking the card shadow
+           * and potentially interfering with layout measurements.
+           */
+          .co-slider-viewport {
+            overflow: visible;
+            padding: 0;
+            margin: 0;
+          }
+
+          /* Hide arrows on mobile — peek + dots handle navigation */
           .rev-arrow-btn { display: none; }
+
+          /* Keep dots & button centred within the padded area */
+          .co-dots  { padding-right: 24px; }
+          .view-btn { margin-right: 24px; }
+
+          .growth-circle-container { width: 120px; height: 120px; bottom: 180px; }
+          .growth-label { font-size: 16px; }
+          .growth-value { font-size: 28px; width: 100px; }
+          .row-label, .row-val { font-size: 14px; }
         }
       `}</style>
 
-      <div className="co-section">
-        <div className="co-head">
-          <div className="co-header">
-            <div className="co-title-group">
-              <h2 className="co-h2">Client outcomes</h2>
-              <p className="co-subtitle">
-                Growth achieved through early access and informed decisions.
-              </p>
+      <div className="co-wrapper">
+        <div className="co-section">
+
+          <div className="co-head">
+            <div className="co-header">
+              <div className="co-title-group">
+                <h2 className="co-h2" tabIndex={0}>Client Outcomes</h2>
+                <p className="co-subtitle" tabIndex={0}>
+                  Growth achieved through early access and informed decisions.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="co-slider-outer">
-          <div style={{ position: "relative", width: "100%" }}>
-            <button
-              className="rev-arrow-btn prev"
-              onClick={() => { goto(cur - 1); resetTimer(); }}
-              disabled={cur === 0}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M19 12H5M12 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button
-              className="rev-arrow-btn next"
-              onClick={() => { goto(cur + 1); resetTimer(); }}
-              disabled={cur === maxIdx}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </button>
+          <div className="co-slider-outer">
+            <div className="co-slider-wrapper">
 
-            <div
-              className="co-slider-viewport"
-              onMouseEnter={() => setPaused(true)}
-              onMouseLeave={() => setPaused(false)}
-            >
-            <div
-              className="co-slider-track"
-              style={{
-                transform: `translateX(calc(-${cur} * (100% / ${visibleCount} + clamp(16px, 2.11vw, 32px) / ${visibleCount})))`,
-              }}
-            >
-              {sliderCards.map((card, i) => (
-                <PropertyCard
-                  key={`${card.id}-${animKey}`}
-                  card={card}
-                  index={i}
+              <button
+                className="rev-arrow-btn prev"
+                onClick={() => goto(cur - 1)}
+                disabled={cur === 0}
+                aria-label="Previous"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              <button
+                className="rev-arrow-btn next"
+                onClick={() => goto(cur + 1)}
+                disabled={cur === maxIdx}
+                aria-label="Next"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </button>
+
+              <div
+                className="co-slider-viewport"
+                onMouseEnter={() => setPaused(true)}
+                onMouseLeave={() => setPaused(false)}
+              >
+                <div
+                  ref={trackRef}
+                  className="co-slider-track"
+                  style={{
+                    transform: `translateX(-${offset}px)`,
+                    "--card-flex-basis": cardFlexBasis,
+                  } as React.CSSProperties}
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleTouchEnd}
+                >
+                  {sliderCards.map((card) => (
+                    <PropertyCard key={card.id} card={card} />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="co-dots">
+              {Array.from({ length: Math.min(8, maxIdx + 1) }).map((_, i) => (
+                <button
+                  key={i}
+                  className={`co-dot${cur === i ? " active" : ""}`}
+                  onClick={() => goto(i)}
+                  aria-label={`Go to slide ${i + 1}`}
                 />
               ))}
             </div>
-          </div>
+
+            <button
+              className="view-btn"
+              onClick={() => navigate("/client-outcomes#outcomes")}
+              aria-label="View more client outcomes"
+            >
+              View More Outcomes
+            </button>
           </div>
 
-          <div className="co-dots">
-            {Array.from({ length: Math.min(8, maxIdx + 1) }).map((_, i) => (
-              <button
-                key={i}
-                className={`co-dot${cur === i ? " active" : ""}`}
-                onClick={() => {
-                  goto(i);
-                  resetTimer();
-                }}
-              />
-            ))}
-          </div>
-
-          <button 
-            className="view-btn" 
-            onClick={() => navigate("/client-outcomes#outcomes")}
-          >
-            View More Outcomes
-          </button>
         </div>
       </div>
     </>

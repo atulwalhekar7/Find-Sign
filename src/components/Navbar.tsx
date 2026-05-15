@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/FS Primary Lockup_Gold.png";
+import callIcon from "../assets/Icon.png";
 
 const COLORS = {
   racingGreen: "#073B2F",
@@ -25,25 +26,25 @@ export default function Navbar() {
       <style>{`
         /* ───────── NAV LAYOUT ───────── */
         .nav-inner {
-          width: 100%;
-          max-width: 1512px;
-          margin: 0 auto;
-          height: 96px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          box-sizing: border-box;
-padding: 24px 130px;
-align-items: flex-start;
-align-self: stretch;
-        }
+  width: 100%;
+  max-width: 1512px;
+  margin: 0 auto;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 24px 130px;
+}
 
-        .nav-logo {
-          width: 128px;
-          height: 47px;
-          object-fit: contain;
-          display: block;
-        }
+     .nav-logo {
+   width: 159px !important;
+          height: 59px !important;
+  object-fit: contain;
+  display: block;
+  /* Premium Modern Animation: Elegant Bounce, Glow, and Shimmer pulse */
+  animation: logo-premium-fx 6s ease-in-out infinite;
+}
 
         .nav-actions {
           display: flex;
@@ -68,7 +69,7 @@ align-self: stretch;
           justify-content: center;
           padding: 10px 8px;
           color: ${COLORS.black};
-          font-family: "Sohne";
+          font-family: "SohneBuch";
           font-size: 20px;
           font-weight: 400;
           line-height: 28px;
@@ -82,7 +83,7 @@ align-self: stretch;
         .nav-link:active,
         .nav-link.active {
           border-radius: var(--sds-size-radius-200);
-          background: #F5F5F5;
+          background: #EAE5DF;
           display: inline-flex;
           padding: var(--sds-size-space-200);
           justify-content: center;
@@ -105,11 +106,41 @@ align-self: stretch;
           font-size: 15px;
           font-weight: 700;
           line-height: 15px;
-          letter-spacing: 4.8px;
+          letter-spacing: 4.48px;
           text-decoration: none;
           text-transform: uppercase;
           white-space: nowrap;
           gap: 10px;
+        }
+
+        .mobile-call-icon {
+          display: none;
+          align-items: center;
+          justify-content: center;
+          text-decoration: none;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background: ${COLORS.white};
+          position: relative;
+          box-sizing: border-box;
+          border: 1px solid rgba(105, 228, 220, 0.3);
+        }
+
+        .mobile-call-icon::before {
+          content: "";
+          position: absolute;
+          inset: -2px;
+          border-radius: 50%;
+          padding: 2px;
+          background: conic-gradient(from 0deg, transparent, ${COLORS.aqua}, transparent 40%);
+          -webkit-mask: 
+            linear-gradient(#fff 0 0) content-box, 
+            linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          animation: rotate-border 2s linear infinite;
+          pointer-events: none;
         }
 
         /* Hamburger */
@@ -129,22 +160,41 @@ align-self: stretch;
           border-top: 1px solid rgba(27,67,50,0.07);
         }
 
-        .nav-drawer-link:hover,
-        .nav-drawer-link:active {
-          border-radius: var(--sds-size-radius-200) !important;
-          background: var(--sds-color-background-brand-tertiary) !important;
-          display: inline-flex !important;
-          padding: var(--sds-size-space-200) !important;
-          justify-content: center !important;
-          align-items: center !important;
-          gap: var(--sds-size-space-200) !important;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
-        }
-
+       .nav-drawer-link:hover,
+.nav-drawer-link:active,
+.nav-drawer-link.active {
+  background: #EAE5DF !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+}
         @keyframes call-vibrate {
           0%, 20%, 100% { transform: rotate(0deg); }
           3%, 9%, 15% { transform: rotate(-12deg); }
           6%, 12%, 18% { transform: rotate(12deg); }
+        }
+
+        @keyframes rotate-border {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+
+        @keyframes logo-premium-fx {
+          0%, 100% {
+            transform: translateY(0) scale(1);
+            filter: drop-shadow(0 0 2px rgba(105, 228, 220, 0.1)) brightness(1);
+          }
+          /* Lighting/Shimmer spike pulse */
+          25% {
+            filter: drop-shadow(0 0 5px rgba(105, 228, 220, 0.3)) brightness(1.4);
+          }
+          30% {
+            filter: drop-shadow(0 0 2px rgba(105, 228, 220, 0.1)) brightness(1);
+          }
+          /* Attractive Bounce Peak + Glowing Effect */
+          50% {
+            transform: translateY(-10px) scale(1.05);
+            filter: drop-shadow(0 15px 35px rgba(105, 228, 220, 0.7)) brightness(1.1);
+          }
         }
 
         .vibrate-icon {
@@ -175,8 +225,8 @@ align-self: stretch;
           }
 
           .nav-logo {
-            width: 108px;
-            height: auto;
+            width: 128px;
+            height: 47px !important;
           }
 
           .nav-links {
@@ -189,6 +239,10 @@ align-self: stretch;
 
           .nav-cta {
             display: none !important;
+          }
+
+          .mobile-call-icon {
+            display: flex !important;
           }
 
           .nav-hamburger {
@@ -209,6 +263,7 @@ align-self: stretch;
           background: COLORS.white,
           width: "100%",
           transition: "all 0.4s ease",
+boxShadow: "0 4px 20px rgba(0, 0, 0, 0.10)"
         }}
       >
         {/* ───── Top Bar ───── */}
@@ -216,8 +271,8 @@ align-self: stretch;
           {/* Logo */}
           <NavLink to="/" style={{ display: "flex", alignItems: "center" }}>
             <img
-              src={logo}
-              alt="Logo"
+              src={logo} // The logo image source
+              alt="Find & Sign Buyer Advocate Logo" // Descriptive alt text for the logo
               className="nav-logo"
             />
           </NavLink>
@@ -235,16 +290,25 @@ align-self: stretch;
               ))}
             </ul>
 
+            {/* Mobile Call Icon (outside drawer, near hamburger) */}
+            <a
+              href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mobile-call-icon"
+              aria-label="Book a Call"
+            >
+              <img src={callIcon} className="vibrate-icon" width="16" height="16" alt="" />
+            </a>
+
             {/* CTA */}
            <a
   href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
   target="_blank"
   rel="noopener noreferrer"
-  className="nav-cta"
+  className="nav-cta" // The "Book a Call" button for desktop
 >
-  <svg className="vibrate-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.6-.35-.12-.73-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 2 3.2 2.45 3.2 2.99 3.2 12.37 10.83 20 20.21 20c.54 0 .99-.45.99-.99v-2.64c0-.54-.45-.99-.99-.99z" />
-  </svg>
+  <img src={callIcon} className="vibrate-icon" width="20" height="20" alt="" />
   Book a Call
 </a>
 
@@ -252,8 +316,9 @@ align-self: stretch;
             <button
               className="nav-hamburger"
               onClick={() => setMenuOpen((v) => !v)}
+              aria-label={menuOpen ? "Close menu" : "Open menu"} // Dynamic aria-label for screen readers
             >
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"> {/* Hide decorative SVG from screen readers */}
                 {menuOpen ? (
                   <path
                     d="M5 5l12 12M5 17L17 5"
@@ -306,18 +371,18 @@ align-self: stretch;
                 to={item.to}
                 className="nav-drawer-link"
                 onClick={() => setMenuOpen(false)}
-                style={({ isActive }) => ({
-                  display: "block",
-                  fontFamily: "'Söhne', 'DM Sans', sans-serif",
-                  fontSize: "15px",
-                  color: isActive
-                    ? COLORS.aqua
-                    : COLORS.racingGreen,
-                  fontWeight: isActive ? 500 : 400,
-                  textDecoration: "none",
-                  padding: "10px 0",
-                  borderBottom: "1px solid rgba(27,67,50,0.06)",
-                })}
+               style={({ isActive }) => ({
+  display: "block",
+  width: "100%",
+  boxSizing: "border-box",
+  fontFamily: "'SohneBuch'",
+  fontSize: "15px",
+  color: isActive ? COLORS.aqua : COLORS.racingGreen,
+  fontWeight: isActive ? 500 : 400,
+  textDecoration: "none",
+  padding: "10px 12px",
+  borderBottom: "1px solid rgba(27,67,50,0.06)",
+})}
               >
                 {item.label}
               </NavLink>
@@ -327,28 +392,30 @@ align-self: stretch;
   href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
   target="_blank"
   rel="noopener noreferrer"
+  aria-label="Book a Call" // Accessible label for the link
   onClick={() => setMenuOpen(false)}
-  style={{
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "8px",
-    marginTop: "16px",
-    fontFamily: "'Söhne', 'DM Sans', sans-serif",
-    fontWeight: 600,
-    fontSize: "11px",
-    letterSpacing: "0.14em",
-    textTransform: "uppercase",
-    color: COLORS.white,
-    background: COLORS.aqua,
-    padding: "11px 24px",
-    borderRadius: "2px",
-    textDecoration: "none",
-  }}
+ style={{
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "10px",
+  marginTop: "16px",
+  height: "48px",
+  padding: "12px 24px",
+  borderRadius: "8px",
+  background: COLORS.aqua,
+  color: COLORS.racingGreen,
+  fontFamily: "CX80",
+  fontSize: "15px",
+  fontWeight: 700,
+  lineHeight: "15px",
+  letterSpacing: "4.8px",
+  textDecoration: "none",
+  textTransform: "uppercase",
+  whiteSpace: "nowrap",
+}}
 >
-  <svg className="vibrate-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.6-.35-.12-.73-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 2 3.2 2.45 3.2 2.99 3.2 12.37 10.83 20 20.21 20c.54 0 .99-.45.99-.99v-2.64c0-.54-.45-.99-.99-.99z" />
-  </svg>
+  <img src={callIcon} className="vibrate-icon" width="18" height="18" alt="" aria-hidden="true" />
   Book a Call
 </a>
           </div>
@@ -357,3 +424,5 @@ align-self: stretch;
     </>
   );
 }
+
+

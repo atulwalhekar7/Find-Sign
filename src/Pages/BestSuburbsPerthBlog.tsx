@@ -25,7 +25,7 @@ const SideBySideSection = ({
     display: "flex", 
     flexDirection: reverse ? "row-reverse" : "row", 
     alignItems: "center", 
-    gap: "80px", 
+    gap: "64px", 
     padding: "60px 0",
     flexWrap: "wrap"
   }}>
@@ -33,7 +33,7 @@ const SideBySideSection = ({
       <img src={image} alt={title} style={{ width: "100%", borderRadius: "16px", objectFit: "cover", aspectRatio: "4/3", boxShadow: "0 20px 40px rgba(0,0,0,0.05)" }} />
     </div>
     <div style={{ flex: "1 1 450px" }}>
-      <h2 style={{ 
+      <h2 tabIndex={0} style={{ 
         fontFamily: "'GT Super Display Medium'", 
         fontSize: "44px", 
         fontWeight: 500,
@@ -42,7 +42,7 @@ const SideBySideSection = ({
         letterSpacing: "-0.48px",
         marginBottom: "24px" 
       }}>{title}</h2>
-      <div style={{ 
+      <div tabIndex={0} style={{ 
         fontFamily: "'Söhne', sans-serif", 
         fontSize: "18px", 
         lineHeight: "1.6", 
@@ -69,8 +69,10 @@ export default function BestSuburbsPerthBlog() {
       
       {/* ── Hero ── */}
       <section
+        className="blog-hero-banner"
         style={{
           minHeight: "80vh",
+          width: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -92,18 +94,20 @@ export default function BestSuburbsPerthBlog() {
             padding: "60px 20px",
           }}
         >
-          <h1 style={{ 
+          <h1 
+            tabIndex={0}
+            style={{ 
             fontFamily: "'GT Super Display Medium'",
             fontSize: "64px",
             fontWeight: 500,
             color: "#FFF",
             lineHeight: "1.1",
-            letterSpacing: "-1.28px",
+            letterSpacing: "1px",
             margin: 0 
           }}>
             Best Suburbs in Perth for Property Investment in 2026
           </h1>
-          <p style={{ color: "#FFFFFF", fontSize: "24px", fontWeight: 300, marginTop: "24px", opacity: 0.9 }}>
+          <p tabIndex={0} style={{ color: "#FFFFFF", fontSize: "24px", fontWeight: 300, marginTop: "24px", opacity: 0.9 }}>
             Discover top suburbs for high growth, rental yield, and long-term returns
           </p>
         </div>
@@ -145,7 +149,7 @@ export default function BestSuburbsPerthBlog() {
 
         {/* ── Top Suburbs ── */}
         <section style={{ padding: "60px 0" }}>
-          <h2 style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", color: "#073B2F", textAlign: "center", marginBottom: "50px" }}>
+          <h2 tabIndex={0} style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", color: "#073B2F", textAlign: "center", marginBottom: "50px" }}>
             Top Suburbs in Perth for Property Investment
           </h2>
           <div className="top-suburbs-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0" }}>
@@ -158,10 +162,10 @@ export default function BestSuburbsPerthBlog() {
               { name: "Rockingham", why: ["Affordable entry", "Lifestyle demand", "Growth potential"] }
             ].map((suburb, i) => (
               <div key={i} style={{ padding: "32px 40px", borderBottom: "1px solid #E8E4DC", borderRight: i % 2 === 0 ? "1px solid #E8E4DC" : "none" }}>
-                <h3 style={{ fontFamily: "GT Super Display Medium", fontSize: "28px", color: "#073B2F", marginBottom: "16px" }}>{suburb.name}</h3>
+                <h3 tabIndex={0} style={{ fontFamily: "GT Super Display Medium", fontSize: "28px", color: "#073B2F", marginBottom: "16px" }}>{suburb.name}</h3>
                 <ul style={{ display: "flex", flexDirection: "column", gap: "8px", padding: 0, margin: 0, listStyle: "none" }}>
                   {suburb.why.map((item, j) => (
-                    <li key={j} style={{ fontSize: "18px", color: "#555", display: "flex", alignItems: "center", gap: "10px" }}>
+                    <li key={j} tabIndex={0} style={{ fontSize: "18px", color: "#555", display: "flex", alignItems: "center", gap: "10px" }}>
                       <span style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#69E4DC", flexShrink: 0 }} />
                       {item}
                     </li>
@@ -174,10 +178,10 @@ export default function BestSuburbsPerthBlog() {
 
         {/* ── Emerging ── */}
         <section style={{ padding: "60px 0", backgroundColor: "#F9F9F9" }}>
-          <h2 style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", color: "#073B2F", textAlign: "center", marginBottom: "50px" }}>
+          <h2 tabIndex={0} style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", color: "#073B2F", textAlign: "center", marginBottom: "50px" }}>
             Emerging Suburbs to Watch in 2026
           </h2>
-          <p style={{ fontSize: "20px", textAlign: "center", maxWidth: "800px", margin: "0 auto 50px", color: "#555" }}>
+          <p tabIndex={0} style={{ fontSize: "20px", textAlign: "center", maxWidth: "800px", margin: "0 auto 50px", color: "#555" }}>
             Smart investors don't just look at current hotspots—they identify future growth areas.
           </p>
           <div className="emerging-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "40px" }}>
@@ -190,8 +194,8 @@ export default function BestSuburbsPerthBlog() {
                 <div style={{ width: "48px", height: "48px", borderRadius: "50%", border: "2px solid #69E4DC", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px", fontFamily: "GT Super Display Medium", fontSize: "20px", color: "#073B2F" }}>
                   {i + 1}
                 </div>
-                <h3 style={{ fontFamily: "GT Super Display Medium", fontSize: "24px", color: "#073B2F", marginBottom: "12px" }}>{suburb.name}</h3>
-                <p style={{ fontSize: "18px", color: "#555", margin: 0, lineHeight: "1.6" }}>{suburb.desc}</p>
+                <h3 tabIndex={0} style={{ fontFamily: "GT Super Display Medium", fontSize: "24px", color: "#073B2F", marginBottom: "12px" }}>{suburb.name}</h3>
+                <p tabIndex={0} style={{ fontSize: "18px", color: "#555", margin: 0, lineHeight: "1.6" }}>{suburb.desc}</p>
               </div>
             ))}
           </div>
@@ -216,8 +220,8 @@ export default function BestSuburbsPerthBlog() {
 
         {/* ── Mistakes ── */}
         <section style={{ padding: "60px 0", borderTop: "1px solid #EEE" }}>
-          <h2 style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", color: "#073B2F", marginBottom: "40px", textAlign: "center" }}>Common Mistakes Investors Make</h2>
-          <p style={{ fontSize: "20px", textAlign: "center", maxWidth: "800px", margin: "0 auto 50px", color: "#666" }}>
+          <h2 tabIndex={0} style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", color: "#073B2F", marginBottom: "40px", textAlign: "center" }}>Common Mistakes Investors Make</h2>
+          <p tabIndex={0} style={{ fontSize: "20px", textAlign: "center", maxWidth: "800px", margin: "0 auto 50px", color: "#666" }}>
             Even in a strong market like Perth, mistakes can be costly.
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: "0", maxWidth: "900px", margin: "0 auto" }}>
@@ -229,8 +233,8 @@ export default function BestSuburbsPerthBlog() {
               "Skipping professional advice"
             ].map((mistake, i) => (
               <div key={i} style={{ display: "flex", alignItems: "center", gap: "20px", padding: "24px 0", borderBottom: "1px solid #E8E4DC" }}>
-                <span style={{ fontFamily: "GT Super Display Medium", fontSize: "28px", color: "#073B2F", lineHeight: 1, minWidth: "36px" }}>{String(i + 1).padStart(2, "0")}</span>
-                <p style={{ margin: 0, fontSize: "18px", color: "#444" }}>{mistake}</p>
+                <span tabIndex={0} style={{ fontFamily: "GT Super Display Medium", fontSize: "28px", color: "#073B2F", lineHeight: 1, minWidth: "36px" }}>{String(i + 1).padStart(2, "0")}</span>
+                <p tabIndex={0} style={{ margin: 0, fontSize: "18px", color: "#444" }}>{mistake}</p>
               </div>
             ))}
           </div>
@@ -260,11 +264,11 @@ export default function BestSuburbsPerthBlog() {
         {/* ── Trends ── */}
         <section style={{ padding: "60px 0", backgroundColor: "#073B2F", borderRadius: "24px", color: "#FFF", marginBottom: "60px" }}>
           <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
-            <h2 style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", marginBottom: "32px" }}>Perth Property Market Trends in 2026</h2>
-            <p style={{ fontSize: "20px", marginBottom: "40px", opacity: 0.9 }}>Understanding current trends helps you stay ahead of the market.</p>
+            <h2 tabIndex={0} style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", marginBottom: "32px" }}>Perth Property Market Trends in 2026</h2>
+            <p tabIndex={0} style={{ fontSize: "20px", marginBottom: "40px", opacity: 0.9 }}>Understanding current trends helps you stay ahead of the market.</p>
             <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "20px", maxWidth: "800px", margin: "0 auto" }}>
               {["Increased interstate migration", "Rising rental demand", "Limited housing supply", "Growth in outer suburbs"].map((item, i) => (
-                <div key={i} style={{ padding: "12px 24px", backgroundColor: "rgba(255,255,255,0.1)", borderRadius: "100px", fontSize: "18px" }}>
+                <div key={i} tabIndex={0} style={{ padding: "12px 24px", backgroundColor: "rgba(255,255,255,0.1)", borderRadius: "100px", fontSize: "18px" }}>
                   {item}
                 </div>
               ))}
@@ -276,8 +280,8 @@ export default function BestSuburbsPerthBlog() {
         {/* ── Final Thoughts ── */}
         <section style={{ padding: "40px 0", borderTop: "1px solid #EEE", backgroundColor: "#F9FAF9", textAlign: "center" }}>
           <div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 40px" }}>
-            <h2 style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", color: "#073B2F", marginBottom: "32px" }}>Final Thoughts</h2>
-            <p style={{ fontSize: "20px", color: "#444", lineHeight: "1.7", maxWidth: "800px", margin: "0 auto 40px" }}>
+            <h2 tabIndex={0} style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", color: "#073B2F", marginBottom: "32px" }}>Final Thoughts</h2>
+            <p tabIndex={0} style={{ fontSize: "20px", color: "#444", lineHeight: "1.7", maxWidth: "800px", margin: "0 auto 40px" }}>
               Perth offers incredible opportunities for property investors—but only if you choose the right suburb. Whether you're looking for capital growth, rental income, or long-term wealth, suburb selection is the key to success. Working with a trusted find and sign buyer advocate in Perth ensures you invest with confidence and clarity.
             </p>
           </div>
@@ -285,7 +289,7 @@ export default function BestSuburbsPerthBlog() {
 
         {/* ── FAQs ── */}
         <section style={{ padding: "60px 0", borderTop: "1px solid #EEE" }}>
-          <h2 style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", color: "#073B2F", marginBottom: "40px", textAlign: "center" }}>FAQs</h2>
+          <h2 tabIndex={0} style={{ fontFamily: "GT Super Display Medium", fontSize: "44px", color: "#073B2F", marginBottom: "40px", textAlign: "center" }}>FAQs</h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "16px", maxWidth: "900px", margin: "0 auto" }}>
             {[
               { q: "Which suburb in Perth has the highest growth potential?", a: "Suburbs with strong infrastructure development and population growth tend to offer the best potential." },
@@ -322,7 +326,7 @@ export default function BestSuburbsPerthBlog() {
                       gap: "24px",
                     }}
                   >
-                    <span style={{ fontSize: "20px", color: open ? "#073B2F" : "#000", fontFamily: "'Sohne', sans-serif", fontWeight: open ? 500 : 400, flex: 1, transition: "color 0.3s ease" }}>
+                    <span tabIndex={0} style={{ fontSize: "20px", color: open ? "#073B2F" : "#000", fontFamily: "'Sohne', sans-serif", fontWeight: open ? 500 : 400, flex: 1, transition: "color 0.3s ease" }}>
                       {faq.q}
                     </span>
                     <svg
@@ -342,7 +346,7 @@ export default function BestSuburbsPerthBlog() {
                   </button>
                   {open && (
                     <div style={{ padding: "0 32px 24px", borderTop: "1px solid #F5F2ED" }}>
-                      <p style={{ color: "#757575", fontSize: "18px", lineHeight: "1.6", margin: 0, paddingTop: "16px" }}>
+                      <p tabIndex={0} style={{ color: "#757575", fontSize: "18px", lineHeight: "1.6", margin: 0, paddingTop: "16px" }}>
                         {faq.a}
                       </p>
                     </div>
@@ -362,6 +366,17 @@ export default function BestSuburbsPerthBlog() {
         @keyframes heroFadeIn {
           from { opacity: 0; transform: translateY(30px); }
           to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .blog-hero-banner {
+          aspect-ratio: 16 / 7;
+          min-height: 60vh;
+        }
+        @media (max-width: 768px) {
+          .blog-hero-banner {
+            aspect-ratio: 4 / 5;
+            min-height: unset;
+          }
         }
         @media (max-width: 900px) {
           h1 { font-size: 44px !important; line-height: 1.2 !important; }

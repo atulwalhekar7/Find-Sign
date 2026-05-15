@@ -53,7 +53,7 @@ body {
 }
 
 @font-face {
-  font-family: 'CX80';
+  font-family: 'CX80BOLD';
   src: url('./assets/fonts/CX80/CX80Trial-Bold.otf') format('opentype');
   font-weight: 700;
 }
@@ -112,6 +112,13 @@ body {
 
 @font-face {
   font-family: 'Sohne';
+  src: url('./assets/fonts/Söhne/woff2/Sohne-Regular.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SohneBuch';
   src: url('./assets/fonts/Söhne/otf/Söhne-Buch.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
@@ -131,7 +138,7 @@ body {
 }
 
 @font-face {
-  font-family: 'CX80L1';
+  font-family: 'CX80BOLD';
   src: url('./assets/Fonts/CX80/CX80Trial-Bold.otf') format('opentype');
   font-weight: 700;
 }
@@ -218,7 +225,7 @@ body {
 }
 
 @font-face {
-  font-family: 'Sohne';
+  font-family: 'SohneBuch';
   src: url('./assets/fonts/Söhne/otf/Söhne-Buch.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
@@ -247,7 +254,7 @@ button {
 }
 
 @font-face {
-  font-family: 'CX80';
+  font-family: 'CX80BOLD';
   src: url('./assets/fonts/CX80/CX80Trial-Bold.otf') format('opentype');
   font-weight: 700;
 }

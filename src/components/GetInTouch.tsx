@@ -1,14 +1,409 @@
-import { useState, useEffect, useRef } from "react";
-import emailjs from '@emailjs/browser';
+// import { useState } from "react";
+// import { Box } from "@mui/material";
+
+// export default function NakraniContact() {
+//   const [submitted, setSubmitted] = useState(false);
+
+//   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+//     e.preventDefault();
+//     setSubmitted(true);
+//   };
+
+//   return (
+//     <>
+//       <style>{`
+//         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap');
+
+//         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+//         .contact-page {
+//           display: flex;
+//           padding: 64px 196px;
+//           flex-direction: column;
+//           align-items: flex-start;
+//           gap: 10px;
+//           background:var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9);
+//         }
+
+//         /* 🔥 animation only */
+//         .contact-row {
+//           animation: fadeSlideUp 0.8s ease forwards;
+//           opacity: 0;
+//         }
+
+//         @keyframes fadeSlideUp {
+//           from { opacity: 0; transform: translateY(30px); }
+//           to { opacity: 1; transform: translateY(0); }
+//         }
+
+//         .contact-left {
+//           display: flex;
+//           flex-direction: column;
+//           align-items: flex-start;
+//           gap: 64px;
+//           flex: 0 0 350px;
+//         }
+
+//        .contact-left h2 {
+//   color: #073B2F;
+//   font-family: 'GT Super Display Medium';
+//   font-size: 44px;
+//   font-weight: 500;
+//   line-height: 54px;
+//   letter-spacing: -0.88px;
+
+//   position: relative;
+//   display: inline-block;
+// }
+
+// .contact-left h2::after {
+//   content: "";
+//   display: block;
+//   width: 230px; /* adjust as needed */
+//   height: 2px;
+//   background: #073B2F;
+//   margin-top: 8px;
+// }
+
+//         .contact-left p {
+//           color: #000;
+//           font-family: 'sohne';;
+//           font-size: 18px;
+//           font-weight: 300;
+//           line-height: 28px;
+//           max-width: 220px;
+//         }
+
+//         .contact-cta {
+//           display: flex;
+//           align-items: center;
+//           justify-content: center;
+//           height: 48px;
+//           padding: 12px 24px;
+//           border-radius: 8px;
+//           background: #69E4DC;
+//           color: #073B2F;
+//           font-family: "CX80";
+//           font-size: 15px;
+//           font-weight: 700;
+//           line-height: 15px;
+//           letter-spacing: 4.8px;
+//           text-decoration: none;
+//           text-transform: uppercase;
+//           white-space: nowrap;
+//           gap: 10px;
+//           transition: transform 0.2s ease, background 0.2s ease;
+//           width: fit-content;
+//         }
+
+//         .contact-cta:hover {
+//           background: #3DD6CC;
+//           transform: translateY(-2px);
+//         }
+
+//         .contact-cta:active {
+//           transform: scale(0.98);
+//         }
+
+//         .vibrate-icon {
+//           animation: call-vibrate 3s infinite ease-in-out;
+//         }
+
+//         @keyframes call-vibrate {
+//           0%, 20%, 100% { transform: rotate(0deg); }
+//           3%, 9%, 15% { transform: rotate(-12deg); }
+//           6%, 12%, 18% { transform: rotate(12deg); }
+//         }
+
+//         .contact-right {
+//           flex: 1;
+//           display: flex;
+//           flex-direction: column;
+//           gap: 16px;
+//           min-width: 0;
+//         }
+
+//         .contact-right form {
+//           display: flex;
+//           width: 100%;
+//           flex-direction: column;
+//           align-items: flex-start;
+//           gap: 16px;
+//         }
+
+//         /* 🔥 stagger animation */
+//         .contact-field {
+//           display: flex;
+//           flex-direction: column;
+//           gap: 16px;
+//           width: 100%;
+
+//           opacity: 0;
+//           transform: translateY(20px);
+//           animation: fadeItem 0.5s ease forwards;
+//         }
+
+//         .contact-field:nth-child(1) { animation-delay: 0.1s; }
+//         .contact-field:nth-child(2) { animation-delay: 0.2s; }
+//         .contact-field:nth-child(3) { animation-delay: 0.3s; }
+//         .contact-field:nth-child(4) { animation-delay: 0.4s; }
+//         .contact-field:nth-child(5) { animation-delay: 0.5s; }
+
+//         @keyframes fadeItem {
+//           to {
+//             opacity: 1;
+//             transform: translateY(0);
+//           }
+//         }
+
+//         .contact_label {
+//           color: #000;
+//           font-family: 'DM Sans';
+//           font-size: 20px;
+//           font-weight: 400;
+//           line-height: 28px;
+//         }
+
+//         .contact-input {
+//           height: 48px;
+//           padding: 8px 16px;
+//           width: 100%;
+//           border-radius: 8px;
+//           background: #FFF;
+//           border: none;
+//           outline: none;
+//           font-family: 'Sohne';
+//            font-weight: 400;
+//           font-size: 20px;
+//         }
+
+//         .contact-input::placeholder, .contact-textarea::placeholder { color: #BDBDBD; }
+//         .contact-input:focus { outline: 1.5px solid #69E4DC; }
+
+//         .contact-textarea {
+//           height: 112px;
+//           padding: 8px 16px;
+//           width: 100%;
+//           border-radius: 8px;
+//           background: #FFF;
+//           border: none;
+//           outline: none;
+//           font-family: 'Sohne';
+//           font-weight: 400;
+//           font-size: 20px;
+//           resize: none;
+//         }
+
+//         .contact-textarea:focus { outline: 1.5px solid #69E4DC; }
+
+//         .contact-btn {
+//           width: 100%;
+//           height: 48px;
+//           border-radius: 8px;
+//           background: #69E4DC;
+//           border: none;
+//           cursor: pointer;
+//           color: #073B2F;
+//            font-family: 'CX80';
+//           font-size: 15px;
+//           font-weight: 700;
+//           letter-spacing: 4.8px;
+//           text-transform: uppercase;
+
+//           /* 🔥 animation only */
+//           transition: transform 0.2s ease;
+//         }
+
+//         .contact-btn:hover { 
+//           background: #3DD6CC;
+//           transform: translateY(-2px);
+//         }
+
+//         .contact-btn:active {
+//           transform: scale(0.98);
+//         }
+
+//         .contact-success {
+//           width: 100%;
+//           display: flex;
+//           flex-direction: column;
+//           align-items: center;
+//           justify-content: center;
+//           gap: 14px;
+//           text-align: center;
+
+//           /* 🔥 animation */
+//           opacity: 0;
+//           animation: fadeIn 0.5s ease forwards;
+//         }
+
+//         @keyframes fadeIn {
+//           to { opacity: 1; }
+//         }
+
+//         .contact-success-icon {
+//           width: 52px;
+//           height: 52px;
+//           border-radius: 50%;
+//           background: #CCFBF1;
+//           display: flex;
+//           align-items: center;
+//           justify-content: center;
+
+//           animation: pop 0.4s ease;
+//         }
+
+//         @keyframes pop {
+//           0% { transform: scale(0.6); }
+//           100% { transform: scale(1); }
+//         }
+
+//         .contact-success-title {
+//           font-size: 20px;
+//           font-weight: 500;
+//           color: #073B2F;
+//         }
+
+//         .contact-success-sub {
+//           font-size: 16px;
+//           font-weight: 300;
+//           color: #757575;
+//         }
+
+//         @media (max-width: 900px) {
+//           .contact-page { padding: 40px 20px; }
+
+//           .contact-row {
+//             flex-direction: column !important;
+//             gap: 24px !important;
+//           }
+
+//           .contact-left {
+//             flex: none !important;
+//             width: 100% !important;
+//             gap: 16px;
+//           }
+
+//           .contact-left h2 {
+//             width: 100%;
+//             font-size: 32px;
+//             line-height: 42px;
+//           }
+
+//           .contact-left p {
+//             width: 100%;
+//             max-width: 100%;
+//             font-size: 18px;
+//           }
+
+//           .contact-right {
+//             width: 100% !important;
+//           }
+//         }
+//       `}</style>
+
+//       <div id="contact-form" className="contact-page">
+//         <Box sx={{ width: "100%", maxWidth: "1120px", margin: "0 auto" }}>
+//           <Box
+//             className="contact-row"
+//             sx={{
+//               display: "flex",
+//               flexDirection: "row",
+//               alignItems: "flex-start",
+//               columnGap: "120px",
+//               width: "100%",
+//             }}
+//           >
+//             <div className="contact-left">
+//               <h2>Get in touch</h2>
+//               <p>Tell us what you're looking for, and we'll come back with next steps.</p>
+//               <a
+//                 href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
+//                 target="_blank"
+//                 rel="noopener noreferrer"
+//                 className="contact-cta"
+//               >
+//                 <svg className="vibrate-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+//                   <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.6-.35-.12-.73-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 2 3.2 2.45 3.2 2.99 3.2 12.37 10.83 20 20.21 20c.54 0 .99-.45.99-.99v-2.64c0-.54-.45-.99-.99-.99z" />
+//                 </svg>
+//                 Book a Call
+//               </a>
+//             </div>
+
+//             <div className="contact-right">
+//               {submitted ? (
+//                 <div className="contact-success">
+//                   <div className="contact-success-icon">
+//                     ✓
+//                   </div>
+//                   <span className="contact-success-title">Message sent!</span>
+//                   <span className="contact-success-sub">We'll be in touch soon.</span>
+//                 </div>
+//               ) : (
+//                 <form onSubmit={handleSubmit}>
+//                   <div className="contact-field">
+//                     <label className="contact_label">First name</label>
+//                     <input className="contact-input" placeholder="e.g. Sarah" required />
+//                   </div>
+
+//                   <div className="contact-field">
+//                     <label className="contact_label">Last name</label>
+//                     <input className="contact-input" placeholder="e.g. Smith" required />
+//                   </div>
+
+//                   <div className="contact-field">
+//                     <label className="contact_label">Email</label>
+//                     <input className="contact-input" type="email" placeholder="e.g. sarah@gmail.com" required />
+//                   </div>
+
+//                   <div className="contact-field">
+//                     <label className="contact_label">Message</label>
+//                     <textarea className="contact-textarea" placeholder="What are you looking for?" required />
+//                   </div>
+
+//                   <button type="submit" className="contact-btn">Submit</button>
+//                 </form>
+//               )}
+//             </div>
+//           </Box>
+//         </Box>
+//       </div>
+//     </>
+//   );
+// }
+import { useState, useRef, useEffect } from "react";
 import { Box, Dialog, DialogContent, Typography } from "@mui/material";
+import emailjs from '@emailjs/browser';
+import checkIcon from "../assets/check.png";
+
+const COLORS = {
+  racingGreen: "#073B2F",
+  aqua: "#69E4DC",
+  black: "#000000",
+  white: "#FFFFFF",
+};
+
+const SERVICES = [
+  "Buyer Advocate",
+  "Advisory",
+  "Property Management",
+  "Settlement Agent",
+  "Building Inspection",
+  "Sales Agent",
+  "Accounting / Quantity Surveyor",
+  "Mortgage Broker",
+];
 
 interface NakraniContactProps {
   initialService?: string;
+  showService?: boolean;
+  hideInternalHeading?: boolean; // New prop to hide the internal heading
 }
 
-export default function NakraniContact({ initialService = "" }: NakraniContactProps) {
+export default function GetInTouch({ initialService = "", showService = false, hideInternalHeading = false }: NakraniContactProps) {
   const [submitted, setSubmitted] = useState(false);
-  const [isSending, setIsSending] = useState(false);
+  const [contactMethod, setContactMethod] = useState("");
+  const [isSending, setIsSending] = useState(false); // Keep isSending for button disabled state
   const [selectedService, setSelectedService] = useState(initialService);
   const form = useRef<HTMLFormElement>(null);
 
@@ -20,23 +415,22 @@ export default function NakraniContact({ initialService = "" }: NakraniContactPr
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSending(true);
-
+    setIsSending(true); // Set sending state to true
     if (form.current) {
-      // Replace with your actual Service ID, Template ID, and Public Key
       emailjs
-        .sendForm('service_tv2a04i', 'template_ketly2h', form.current, {
-          publicKey: 'kwf46-RLsvGZDJMhR',
+        .sendForm('service_78mscvf', 'template_gy6jf2o', form.current, {
+          publicKey: 'LxY_G536CLzBbrRV-',
         })
         .then(
           () => {
             setSubmitted(true);
-            setIsSending(false);
+            setIsSending(false); // Reset sending state
             form.current?.reset();
+            setContactMethod("");
             setSelectedService(initialService);
           },
-          (error) => {
-            setIsSending(false);
+          (error: any) => {
+            setIsSending(false); // Reset sending state on error
             console.error('EmailJS Error:', error.text);
             alert("Failed to send message. Please try again later.");
           },
@@ -47,375 +441,641 @@ export default function NakraniContact({ initialService = "" }: NakraniContactPr
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap');
+         url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap');
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-        .contact-page {
-          display: flex;
-          padding: 64px 196px;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 10px;
-          background:var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9);
-        }
+.contact-page {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  padding: 64px 130px;
+  flex-direction: column;
+  align-items: center;
+  background: #ebe6de;
+}
 
-        /* 🔥 animation only */
-        .contact-row {
-          animation: fadeSlideUp 0.8s ease forwards;
-          opacity: 0;
-        }
+.main-container {
+  display: flex;
+  width: 100%;
+  max-width: 1164px;
+  align-items: flex-start;
+  gap: 36px;
+  margin: 0 auto;
+}
 
-        @keyframes fadeSlideUp {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
+/* LEFT SIDE */
 
-        .contact-left {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 64px;
-          flex: 0 0 350px;
-        }
+.contact-left {
+  display: flex;
+  width: 32%;
+  min-width: 300px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 36px;
+}
 
-       .contact-left h2 {
-  color: #073B2F;
-  font-family: 'GT Super Display Medium';
+.contact-left h2 {
+  width: 100%;
+  color: #073b2f;
+  font-family: "GT Super Display", Georgia, serif;
   font-size: 44px;
   font-weight: 500;
   line-height: 54px;
   letter-spacing: -0.88px;
-  margin: 0;
+}
+
+.description-text {
+  width: 100%;
+  max-width: 297px;
+  color: #000;
+  font-family: 'sohne';
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 36px;
+}
+
+.contact-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 48px;
+  padding: 0 28px;
+
+  background: #69E4DC;
+  border: 1px solid #69E4DC;
+  border-radius: 8px;
+
+  width: fit-content;   /* IMPORTANT */
+  max-width: fit-content;
+
+  color: #073B2F;
+  text-decoration: none;
+
+  font-family: "CX80BOLD";
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 4.8px;
+  text-transform: uppercase;
+
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+
+
+.contact-cta:hover {
+  transform: translateY(-1px);
+  background: #69E4DC;
+  border-color: #69E4DC;
+}
+
+.nikki-info {
+  width: 100%;
+  max-width: 297px;
+  color: #000;
+  font-family: 'sohneBuch';
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 30px;
+}
+
+/* RIGHT SIDE */
+
+.contact-right {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.contact-form {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  text-align: center;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   width: 100%;
 }
 
-.contact-left h2::after {
-  content: "";
-  width: 160px;
-  height: 1px;
-  background: #073B2F;
+.contact_label {
+  color: #000;
+  font-family: 'sohneBuch';
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
 }
 
-        .contact-left p {
-          color: #000;
-          font-family: 'sohne';;
-          font-size: 24px;
-          font-weight: 300;
-          line-height: 28px;
-         text-align: center;
-          width: 100%;
-          
-        }
+.contact-input {
+  display: flex;
+  height: 52px;
+  width: 100%;
+  padding: 8px 16px;
+  align-items: center;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid transparent;
+  font-family: 'sohneBuch';
+  font-size: 18px;
+  outline: none;
+  transition: all 0.2s ease;
+}
 
-        .contact-cta {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 48px;
-          padding: 12px 24px;
-          border-radius: 8px;
-          background: #69E4DC;
-          color: #073B2F;
-          font-family: "CX80";
-          font-size: 15px;
-          font-weight: 700;
-          line-height: 15px;
-          letter-spacing: 4.8px;
-          text-decoration: none;
-          text-transform: uppercase;
-          white-space: nowrap;
-          gap: 10px;
-          transition: transform 0.2s ease, background 0.2s ease;
-          width: fit-content;
-          margin-left: 70px;
-        }
+.contact-input:focus {
+  border-color: #69e4dc;
+}
 
-        .contact-cta:hover {
-          background: #3DD6CC;
-          transform: translateY(-2px);
-        }
+.contact-textarea {
+  display: flex;
+  width: 100%;
+  min-height: 140px;
+  padding: 16px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid transparent;
+  font-family: "Söhne", sans-serif;
+  font-size: 18px;
+  resize: none;
+  outline: none;
+  transition: all 0.2s ease;
+}
 
-        .contact-cta:active {
-          transform: scale(0.98);
-        }
+.contact-textarea:focus {
+  border-color: #69e4dc;
+}
 
-        .vibrate-icon {
-          animation: call-vibrate 3s infinite ease-in-out;
-        }
+.contact-field-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  margin-top: 8px;
+}
 
-        @keyframes call-vibrate {
-          0%, 20%, 100% { transform: rotate(0deg); }
-          3%, 9%, 15% { transform: rotate(-12deg); }
-          6%, 12%, 18% { transform: rotate(12deg); }
-        }
+.toggle-group {
+  display: flex;
+  gap: 12px;
+ 
+}
 
-        .contact-right {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-          min-width: 0;
-        }
+.toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* min-width: 120px; // Removed to match rev-cta-btn */
+  height: 48px; /* Matched rev-cta-btn */
+  padding: 12px 16px; /* Matched rev-cta-btn */
+  background: white;
+  border-radius: 8px; /* Matched rev-cta-btn */
+  border: 1px solid #69e4dc;
+  color: #073b2f;
+  font-family: "CX80BOLD"; /* Kept existing, similar to rev-cta-btn's font-weight */
+  font-size: 15px; /* Matched rev-cta-btn */
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 15px; /* Matched rev-cta-btn */
+  letter-spacing: 4.8px; /* Matched rev-cta-btn */
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s; /* Enhanced transition */
+}
 
-        .contact-right form {
-          display: flex;
-          width: 100%;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 16px;
-        }
+.toggle-btn:hover {
+  background: #69E4DC; /* Matched rev-cta-btn hover */
+  color: #073B2F; /* Matched rev-cta-btn hover */
+  border-color: #69E4DC; /* Matched rev-cta-btn hover */
+  transform: translateY(-1px); /* Added subtle hover effect */
+}
 
-        /* 🔥 stagger animation */
-        .contact-field {
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-          width: 100%;
+.toggle-btn.selected {
+  background: #69E4DC; /* Matched rev-cta-btn hover */
+  color: #073B2F; /* Matched rev-cta-btn hover */
+  border-color: #69e4dc; /* Kept existing */
+}
 
-          opacity: 0;
-          transform: translateY(20px);
-          animation: fadeItem 0.5s ease forwards;
-        }
+.submit-btn {
+  display: flex;
+  width: 100%;
+  height: 52px;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: #073b2f;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: "CX80BOLD";
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 4.8px;
+  margin-top: 12px;
+  transition: all 0.25s ease;
+}
 
-        .contact-field:nth-child(1) { animation-delay: 0.1s; }
-        .contact-field:nth-child(2) { animation-delay: 0.2s; }
-        .contact-field:nth-child(3) { animation-delay: 0.3s; }
-        .contact-field:nth-child(4) { animation-delay: 0.4s; }
-        .contact-field:nth-child(5) { animation-delay: 0.5s; }
+.submit-btn:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
 
-        @keyframes fadeItem {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
+.submit-btn:disabled {
+  background: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
 
-        .contact_label {
-          color: #000;
-          font-family: 'Sohne';
-          font-size: 20px;
-          font-weight: 400;
-          line-height: 28px;
-        }
+/* =========================
+   LARGE LAPTOPS
+========================= */
 
-        .contact-input {
-          height: 48px;
-          padding: 8px 16px;
-          width: 100%;
-          border-radius: 8px;
-          background: #FFF;
-          border: none;
-          outline: none;
-          font-family: 'Sohne';
-           font-weight: 400;
-          font-size: 20px;
-        }
+@media (max-width: 1440px) {
+  .contact-page {
+    // padding: 56px 72px;
+  }
 
-        .contact-input::placeholder, .contact-textarea::placeholder { color: #BDBDBD; }
-        .contact-input:focus { outline: 1.5px solid #69E4DC; }
+  .contact-left h2 {
+    font-size: 40px;
+    line-height: 48px;
+  }
 
-        select.contact-input {
-          appearance: none;
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23BDBDBD' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-          background-repeat: no-repeat;
-          background-position: right 16px center;
-          background-size: 16px;
-          cursor: pointer;
-        }
+  .description-text {
+    font-size: 24px;
+    line-height: 36px;
+    font-weight:300;
+    color: #000;
+width: 297px;
+  }
+}
 
-        select.contact-input:invalid { color: #BDBDBD; }
-        select.contact-input option { color: #000; }
+/* =========================
+   LAPTOPS
+========================= */
 
-        .contact-textarea {
-          height: 112px;
-          padding: 8px 16px;
-          width: 100%;
-          border-radius: 8px;
-          background: #FFF;
-          border: none;
-          outline: none;
-          font-family: 'Sohne';
-          font-weight: 400;
-          font-size: 20px;
-          resize: none;
-        }
+@media (max-width: 1200px) {
+  .contact-page {
+    // padding: 48px 40px;
+  }
 
-        .contact-textarea:focus { outline: 1.5px solid #69E4DC; }
+  .main-container {
+    gap: 32px;
+  }
 
-        .contact-btn {
-          width: 100%;
-          height: 48px;
-          border-radius: 8px;
-          background: #69E4DC;
-          border: none;
-          cursor: pointer;
-          color: #073B2F;
-           font-family: 'CX80';
-          font-size: 15px;
-          font-weight: 700;
-          letter-spacing: 4.8px;
-          text-transform: uppercase;
+  .contact-left {
+    min-width: 260px;
+  }
 
-          /* 🔥 animation only */
-          transition: transform 0.2s ease;
-        }
+  .contact-left h2 {
+    font-size: 38px;
+    line-height: 46px;
+  }
 
-        .contact-btn:hover { 
-          background: #3DD6CC;
-          transform: translateY(-2px);
-        }
+  .description-text {
+     font-size: 24px;
+    line-height: 36px;
+    font-weight:300;
+    color: #000;
+width: 297px;
+  }
 
-        .contact-btn:active {
-          transform: scale(0.98);
-        }
+  .contact_label {
+    font-size: 18px;
+  }
 
-        @media (max-width: 900px) {
-          .contact-page { padding: 40px 20px; }
+  .contact-input,
+  .contact-textarea {
+    font-size: 16px;
+  }
+}
 
-          .contact-row {
-            flex-direction: column !important;
-            gap: 24px !important;
-          }
+/* =========================
+   TABLETS
+========================= */
 
-          .contact-left {
-            flex: none !important;
-            width: 100% !important;
-            gap: 16px;
-          }
+@media (max-width: 992px) {
+  .contact-page {
+    // padding: 40px 32px;
+  }
 
-          .contact-left h2 {
-            width: 100%;
-            font-size: 32px;
-            line-height: 42px;
-          }
+  .main-container {
+    flex-direction: column;
+    gap: 48px;
+  }
 
-          .contact-left p {
-            width: 100%;
-            max-width: 100%;
-            font-size: 18px;
-          }
+  .contact-left,
+  .contact-right {
+    width: 100%;
+    max-width: 100%;
+  }
 
-          .contact-right {
-            width: 100% !important;
-          }
-        }
+  .description-text,
+  .nikki-info {
+    max-width: 100%;
+  }
+
+  .contact-field-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .toggle-group {
+    width: 100%;
+    
+  }
+}
+
+//* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+    .contact-cta {
+    width: fit-content;
+    max-width: fit-content;
+    padding: 0 24px;
+    font-size: 13px;
+    letter-spacing: 3px;
+  }
+.contact-page {
+    padding: 32px 20px;
+    overflow-x: hidden;
+  }
+
+  .main-container {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .contact-left,
+  .contact-right {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .contact-left h2 {
+    width: 100% !important;
+    max-width: 100%;
+  }
+ 
+
+  .description-text {
+    font-size: 20px;
+    line-height: 30px;
+    width: 100%;
+  }
+
+  .nikki-info {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .contact_label {
+    font-size: 17px;
+    line-height: 26px;
+  }
+
+  .contact-input {
+    height: 50px;
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .contact-textarea {
+    font-size: 16px;
+    min-height: 120px;
+    width: 100%;
+  }
+
+  .toggle-group {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .toggle-btn {
+    width: 100%;
+  }
+
+  .submit-btn {
+    height: 50px;
+    letter-spacing: 3px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+  .contact-page {
+    padding: 24px 20px; /* increased from 16px */
+  }
+
+  .main-container {
+    width: 100%;
+  }
+
+  .contact-left h2 {
+    font-size: 30px;
+    line-height: 38px;
+    width: 100%;
+  }
+
+  .description-text {
+    font-size: 18px;
+    line-height: 28px;
+    width: 100%;
+  }
+
+  .contact-cta {
+    width: 100%;
+  }
+
+  .submit-btn {
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+}
       `}</style>
 
-      <div id="contact-form" className="contact-page">
-        <Box sx={{ width: "100%", maxWidth: "1120px", margin: "0 auto" }}>
-          <Box
-            className="contact-row"
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "flex-start",
-              columnGap: "120px",
-              width: "100%",
-            }}
-          >
-            <div className="contact-left">
-              <h2>Get in touch</h2>
-              <p>Tell us what you're looking for, and we'll come back with next steps.</p>
-              <a
-                href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact-cta"
-              >
-                <svg className="vibrate-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.6-.35-.12-.73-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 2 3.2 2.45 3.2 2.99 3.2 12.37 10.83 20 20.21 20c.54 0 .99-.45.99-.99v-2.64c0-.54-.45-.99-.99-.99z" />
-                </svg>
-                Book a Call
-              </a>
+      <div className="contact-page">
+        <div className="main-container">
+          {/* LEFT SIDE */}
+          <div className="contact-left">
+            {!hideInternalHeading && (
+<h2
+  tabIndex={0}
+  style={{
+    fontFamily:"GT Super Display Medium",
+    fontSize:"44px",
+    fontWeight:"500",
+    letterSpacing:"-0.88px",
+    lineHeight:"54px",
+    color:"#073B2F",
+    fontStyle:"normal",
+    marginBottom:"26px",
+    width:"100%",
+    maxWidth:"350px"
+  }}
+>
+  Get in touch
+</h2>
+            )}
+            <p className="description-text" tabIndex={0}>
+              Tell us what you’re looking for, and we’ll come back with next steps.
+            </p>
+            
+            <a
+              href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-cta"
+            >
+              BOOK A CALL
+            </a>
+
+            <div className="nikki-info" tabIndex={0} style={{ color: '#000' }}>
+              Contact Niki <br />
+              T: 0431 158 233
             </div>
+          </div>
 
-            <div className="contact-right">
-              <form ref={form} onSubmit={handleSubmit}>
-                <div className="contact-field">
-                  <label className="contact_label">First name</label>
-                  <input className="contact-input" name="first_name" placeholder="e.g. Sarah" required />
+          {/* RIGHT SIDE */}
+          <div className="contact-right">
+            {submitted ? (
+              <div className="nikki-info" tabIndex={0}>Thank you! We will be in touch.</div>
+            ) : (
+              <form ref={form} onSubmit={handleSubmit} style={{ width: "100%", display: "flex", flexDirection: "column", gap: "16px" }}>
+                <div className="form-group">
+                  <label className="contact_label" tabIndex={0}>First name</label>
+                  <input name="first_name" className="contact-input" placeholder="e.g. Sarah" required />
                 </div>
 
-                <div className="contact-field">
-                  <label className="contact_label">Last name</label>
-                  <input className="contact-input" name="last_name" placeholder="e.g. Smith" required />
+                <div className="form-group">
+                  <label className="contact_label" tabIndex={0}>Last name</label>
+                  <input name="last_name" className="contact-input" placeholder="e.g. Smith" required />
                 </div>
 
-                <div className="contact-field">
-                  <label className="contact_label">Email</label>
-                  <input className="contact-input" name="user_email" type="email" placeholder="e.g. sarah@gmail.com" required />
+                <div className="form-group">
+                  <label className="contact_label" tabIndex={0}>Phone number</label>
+                  <input name="phone_number" className="contact-input" placeholder="e.g. 0441 123 123" />
                 </div>
 
-                <div className="contact-field">
-                  <label className="contact_label">Select Services</label>
-                  <select 
-                    className="contact-input" 
-                    name="service"
-                    required 
-                    value={selectedService}
-                    onChange={(e) => setSelectedService(e.target.value)}
-                  >
-                    <option value="" disabled>Select a service</option>
-                    <option value="Buyer Advocate">Buyer Advocate</option>
-                    <option value="Advisory">Advisory</option>
-                    <option value="Property Management">Property Management</option>
-                    <option value="Settlement Agent">Settlement Agent</option>
-                    <option value="Building Inspection">Building Inspection</option>
-                    <option value="Sales Agent">Sales Agent</option>
-                    <option value="Quantity Surveyor">Quantity Surveyor</option>
-                    <option value="Accounting">Accounting</option>
-                  </select>
+                <div className="form-group">
+                  <label className="contact_label" tabIndex={0}>Email</label>
+                  <input name="user_email" className="contact-input" type="email" placeholder="e.g. sarah@gmail.com" required />
                 </div>
 
-                <div className="contact-field">
-                  <label className="contact_label">Message</label>
-                  <textarea className="contact-textarea" name="message" placeholder="What are you looking for?" required />
+                {showService ? (
+                  <div className="form-group">
+                    <label className="contact_label" tabIndex={0}>Service</label>
+                    <select 
+                      name="service" 
+                      className="contact-input" 
+                      value={selectedService}
+                      onChange={(e) => setSelectedService(e.target.value)}
+                      required
+                      style={{ appearance: "none", background: "#fff url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23073B2F%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E') no-repeat right 16px center" }}
+                    >
+                      <option value="" disabled>Select a service</option>
+                      {SERVICES.map((s) => (
+                        <option key={s} value={s}>{s}</option>
+                      ))}
+                    </select>
+                  </div>
+                ) : (
+                  <input type="hidden" name="service" value={selectedService || "NA"} />
+                )}
+
+               <div className="contact-field-row">
+  <label className="contact_label" tabIndex={0}>
+    Would you prefer to be contacted by phone or email?
+  </label>
+  
+  {/* Hidden input to pass contactMethod state to EmailJS */}
+  <input type="hidden" name="contact_preference" value={contactMethod} />
+
+  <div className="toggle-group">
+    <button 
+      type="button" 
+      className={`toggle-btn ${contactMethod === "phone" ? "selected" : ""}`}
+      onClick={() => setContactMethod("phone")}
+    >
+      PHONE
+    </button>
+    <button 
+      type="button" 
+      className={`toggle-btn ${contactMethod === "email" ? "selected" : ""}`}
+      onClick={() => setContactMethod("email")}
+    >
+      EMAIL
+    </button>
+  </div>
+</div>
+
+                <div className="form-group">
+                  <label className="contact_label" tabIndex={0}>Message</label>
+                  <textarea name="message" className="contact-textarea" placeholder="What are you looking for?" required />
                 </div>
 
-                <button type="submit" className="contact-btn" disabled={isSending}>
-                  {isSending ? "Sending..." : "Submit"}
+                <button 
+                  type="submit" 
+                  className="submit-btn" 
+                  disabled={!contactMethod || (showService && !selectedService) || isSending}
+                >
+                  {isSending ? "SENDING..." : "SUBMIT"}
                 </button>
               </form>
-            </div>
-          </Box>
-        </Box>
+            )}
+          </div>
+        </div>
       </div>
 
-      <Dialog 
-        open={submitted} 
+      <Dialog
+        open={submitted}
         onClose={() => setSubmitted(false)}
+        maxWidth="xs"
+        fullWidth
         sx={{
           "& .MuiDialog-paper": {
             borderRadius: '16px',
             padding: '24px',
             backgroundColor: '#F9F9F9',
-            border: '2px solid #69E4DC'
+            border: `2px solid ${COLORS.aqua}`
           }
         }}
       >
         <DialogContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 2 }}>
-          <Box sx={{ 
-            width: 64, height: 64, borderRadius: '50%', backgroundColor: '#69E4DC', 
-            display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '32px', color: '#073B2F' 
+          <Box sx={{
+            width: 64, height: 64, borderRadius: '50%', backgroundColor: '#69E4DC',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>
-            ✓
+            <img src={checkIcon} alt="Success" style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
           </Box>
-          <Typography sx={{ fontFamily: 'GT Super Display Medium', fontSize: '32px', color: '#073B2F', fontWeight: 500 }}>
+          <Typography tabIndex={0} sx={{ fontFamily: 'GT Super Display', fontSize: '32px', color: '#073B2F', fontWeight: 500 }}>
             Success!
           </Typography>
-          <Typography sx={{ fontFamily: 'Sohne', fontSize: '18px', color: '#000', fontWeight: 300, lineHeight: '28px' }}>
+          <Typography tabIndex={0} sx={{ fontFamily: 'sohneBuch', fontSize: '18px', color: '#000', fontWeight: 300, lineHeight: '28px' }}>
             Your message has been sent successfully. We will get back to you shortly.
           </Typography>
-          <button 
-            className="contact-btn" 
+          <button
+            className="contact-cta"
             onClick={() => setSubmitted(false)}
-            style={{ marginTop: '16px', width: 'auto', padding: '12px 48px' }}
+            style={{ marginTop: '16px' }}
           >
             Close
           </button>
