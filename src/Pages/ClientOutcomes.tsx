@@ -951,13 +951,14 @@ export default function ClientOutcomes() {
         </section>
 
         {/* ══ ABOUT ══ */}
-        <div className="client-outcomes-about">
-          <AboutSection
-            imageSrc={AboutClientOutcomesImg}
-            heading="About Client Outcomes"
-            body1="These are outcomes we have achieved for our clients. Real properties, real numbers, and measurable growth. When you engage Find and Sign Buyer Advocate, you are not simply purchasing a property; you are entering a strategy built for long-term performance. These examples show what is possible when the right property is identified and secured early."
-          />
-        </div>
+      <div className="client-outcomes-about">
+  <AboutSection
+    imageSrc={AboutClientOutcomesImg}
+    heading="About Client Outcomes"
+    body1="These are outcomes we have achieved for our clients. Real properties, real numbers, and measurable growth. When you engage Find and Sign Buyer Advocate, you are not simply purchasing a property; you are entering a strategy built for long-term performance. These examples show what is possible when the right property is identified and secured early."
+    imageStyle={{ height: "250px", width: "auto" }}
+  />
+</div>
 
         {/* ══ CLIENT OUTCOMES GRID ══ */}
         <div className="outcomes-section-wrap">
