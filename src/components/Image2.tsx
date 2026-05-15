@@ -5,9 +5,10 @@ import heroImage from "../assets/niki-nakrani-buyers-agent-image3-australia-find
 const Image1: React.FC = () => {
   return (
     <>
-      <Box sx={{ width: "100%" }}>
+      <Box className="no-theme" sx={{ width: "100%" }}>
         {/* HERO */}
         <Box
+          className="no-theme"
           sx={{
             position: "relative",
             width: "100%",
@@ -18,6 +19,7 @@ const Image1: React.FC = () => {
           {/* IMAGE */}
           <Box
             component="img"
+            className="no-theme"
             src={heroImage}
             alt="Expert property buying guidance and professional advocate services"
             sx={{
@@ -30,53 +32,57 @@ const Image1: React.FC = () => {
           />
 
           {/* OVERLAY */}
-<Box
-  className="image2-overlay-container"
-  sx={{
-    position: "absolute",
-    inset: 0,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: { xs: "flex-end", sm: "center" }, // vertically centered
-    padding: { xs: "20px", md: "40px" },
-    transform: "none",    // 👈 remove the translateY offset
-  }}
->
-  <Box
-    component="h2"
-    className="image2-hero-title"
-    tabIndex={0}
-    sx={{
-      color: "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
-      textAlign: "center",
-      fontVariantNumeric: "lining-nums proportional-nums",
-      fontFamily: 'GT Super Display Medium',
-      fontSize: {
-        xs: "18px",
-        sm: "32px",
-        md: "44px",
-      },
-      fontStyle: "normal",
-      fontWeight: 500,
-      lineHeight: {
-        xs: "1.2",
-        sm: "40px",
-        md: "54px",
-      },
-      letterSpacing: "-0.88px",
-      margin: 0,
-      maxWidth: { xs: "800px", sm: "none" },
-      whiteSpace: { xs: "normal", sm: "nowrap" },
-    }}
-  >
-    Expert guidance that shapes better outcomes.
-  </Box>
-</Box>
+          <Box
+            className="no-theme image2-overlay-container"
+            sx={{
+              position: "absolute",
+              inset: 0,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: { xs: "flex-end", sm: "center" },
+              padding: { xs: "20px", md: "40px" },
+              transform: "none",
+            }}
+          >
+            <Box
+              component="h2"
+              className="no-theme image2-hero-title"
+              tabIndex={0}
+              sx={{
+                color: "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
+                textAlign: "center",
+                fontVariantNumeric: "lining-nums proportional-nums",
+                fontFamily: "GT Super Display Medium",
+                fontSize: {
+                  xs: "18px",
+                  sm: "32px",
+                  md: "44px",
+                },
+                fontStyle: "normal",
+                fontWeight: 500,
+                lineHeight: {
+                  xs: "1.2",
+                  sm: "40px",
+                  md: "54px",
+                },
+                letterSpacing: "-0.88px",
+                margin: 0,
+                maxWidth: { xs: "800px", sm: "none" },
+                whiteSpace: { xs: "normal", sm: "nowrap" },
+              }}
+            >
+              Expert guidance that shapes better outcomes.
+            </Box>
+          </Box>
         </Box>
       </Box>
 
-      {/* STYLES */}
       <style>{`
+        /* ✅ Prevent dark mode from affecting this component */
+        [data-theme="dark"] .no-theme {
+          background: transparent !important;
+        }
+
         @media (max-width: 599px) {
           .image2-overlay-container {
             align-items: flex-end !important;
@@ -87,6 +93,7 @@ const Image1: React.FC = () => {
             line-height: 24px !important;
           }
         }
+
         .book-btn {
           display: flex;
           align-items: center;

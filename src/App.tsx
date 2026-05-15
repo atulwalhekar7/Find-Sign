@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "./components/ThemeContext";
 import MainLayout from "./Layouts/MainLayout";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
@@ -29,34 +30,37 @@ document.head.appendChild(link);
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<MainLayout />}>
+    // ── ThemeProvider wraps everything so all pages inherit the theme ──
+    <ThemeProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<MainLayout />}>
 
-          {/* ── Existing Routes ── */}
-          <Route path="/"                element={<Home />}           />
-          <Route path="/about"           element={<About />}          />
-          <Route path="/services"        element={<Services />}       />
-          <Route path="/client-outcomes" element={<ClientOutcomes />} />
-          <Route path="/insights"        element={<Insights />}       />
-          <Route path="/contact"         element={<Contact />}        />
-          <Route path="/blog/buyers-agent-perth" element={<BuyerAgentPerthBlog />} />
-          <Route path="/blog/best-suburbs-perth" element={<BestSuburbsPerthBlog />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            {/* ── Existing Routes ── */}
+            <Route path="/"                element={<Home />}           />
+            <Route path="/about"           element={<About />}          />
+            <Route path="/services"        element={<Services />}       />
+            <Route path="/client-outcomes" element={<ClientOutcomes />} />
+            <Route path="/insights"        element={<Insights />}       />
+            <Route path="/contact"         element={<Contact />}        />
+            <Route path="/blog/buyers-agent-perth" element={<BuyerAgentPerthBlog />} />
+            <Route path="/blog/best-suburbs-perth" element={<BestSuburbsPerthBlog />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
-          {/* ── 8 Service Pages ── */}
-          <Route path="/services/buyer-advocate"      element={<BuyerAdvocate />}      />
-          <Route path="/services/advisory"            element={<Advisory />}            />
-          <Route path="/services/property-management" element={<PropertyManagement />}  />
-          <Route path="/services/settlement-agent"    element={<SettlementAgent />}     />
-          <Route path="/services/building-inspection" element={<BuildingInspection />}  />
-          <Route path="/services/sales-agent"         element={<SalesAgent />}          />
-          <Route path="/services/quantity-surveyor"   element={<QuantitySurveyor />}    />
-          <Route path="/services/accounting"          element={<Accounting />}          />
+            {/* ── 8 Service Pages ── */}
+            <Route path="/services/buyer-advocate"      element={<BuyerAdvocate />}      />
+            <Route path="/services/advisory"            element={<Advisory />}            />
+            <Route path="/services/property-management" element={<PropertyManagement />}  />
+            <Route path="/services/settlement-agent"    element={<SettlementAgent />}     />
+            <Route path="/services/building-inspection" element={<BuildingInspection />}  />
+            <Route path="/services/sales-agent"         element={<SalesAgent />}          />
+            <Route path="/services/quantity-surveyor"   element={<QuantitySurveyor />}    />
+            <Route path="/services/accounting"          element={<Accounting />}          />
 
-        </Route>
-      </Routes>
-    </BrowserRouter>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

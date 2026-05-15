@@ -6,6 +6,7 @@ const Image1: React.FC = () => {
   return (
     <>
       <Box
+        className="no-theme"
         sx={{
           width: "100%",
           display: "block",
@@ -15,6 +16,7 @@ const Image1: React.FC = () => {
       >
         {/* HERO */}
         <Box
+          className="no-theme"
           sx={{
             position: "relative",
             width: "100%",
@@ -34,6 +36,7 @@ const Image1: React.FC = () => {
           {/* IMAGE */}
           <Box
             component="img"
+            className="no-theme"
             src={heroImage}
             alt="Professional property buyer advocate services by Niki Nakrani"
             sx={{
@@ -57,7 +60,7 @@ const Image1: React.FC = () => {
 
           {/* OVERLAY */}
           <Box
-            className="image1-overlay-container"
+            className="no-theme image1-overlay-container"
             sx={{
               position: "absolute",
               inset: 0,
@@ -77,7 +80,7 @@ const Image1: React.FC = () => {
           >
             <Box
               component="h2"
-              className="image1-hero-title"
+              className="no-theme image1-hero-title"
               tabIndex={0}
               sx={{
                 color: "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
@@ -111,6 +114,11 @@ const Image1: React.FC = () => {
       </Box>
 
       <style>{`
+        /* ✅ Prevent dark mode from affecting this component */
+        [data-theme="dark"] .no-theme {
+          background: transparent !important;
+        }
+
         /* MOBILE - max 599px */
         @media (max-width: 599px) {
           .image1-hero-title {
