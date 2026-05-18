@@ -29,7 +29,7 @@ export default function Accounting() {
       >
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
         <div style={{ position: "relative", zIndex: 2, textAlign: "center", padding: "0 20px", animation: "heroFadeIn 0.8s ease both" }}>
-          <h1 tabIndex={0} style={{ fontFamily: "GT Super Display Medium", fontSize: "clamp(36px, 6vw, 64px)", fontWeight: 500, color: "#fff", letterSpacing: "-2%", lineHeight: 1.1, margin: 0 }}>
+          <h1 tabIndex={0} style={{ fontFamily: "GT Super Display Medium", fontSize: "clamp(36px, 6vw, 56px)", fontWeight: 500, color: "#fff", letterSpacing: "-0.02em", lineHeight: 1.1, margin: 0 }}>
             Mortgage Broker
           </h1>
         </div>
@@ -54,7 +54,7 @@ export default function Accounting() {
           to   { opacity: 1; transform: translateY(0); }
         }
         @media (max-width: 767px) {
-          h1, .h1 { font-size: 48px !important; line-height: 58px !important; }
+          h1, .h1 { font-size: 48px !important; line-height: 58px !important; letter-spacing: -0.02em !important; }
           h2, .h2 { font-size: 38px !important; line-height: 48px !important; }
           h3, .h3 { font-size: 28px !important; line-height: 38px !important; }
         }

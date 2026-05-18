@@ -39,7 +39,7 @@ export default function BuyerAdvocate() {
             fontStyle: "normal",
             fontWeight: 500,
             lineHeight: "64px",
-            letterSpacing: "-2%",
+            letterSpacing: "-0.02em",
             margin: 0
           }}>
             Buyer Advocacy
@@ -73,7 +73,7 @@ From the first conversation to settlement day and beyond, we are by your side ev
         }
 
         @media (max-width: 767px) {
-          h1, .h1 { font-size: 48px !important; line-height: 58px !important; }
+          h1, .h1 { font-size: 48px !important; line-height: 58px !important; letter-spacing: -0.02em !important; }
           h2, .h2 { font-size: 38px !important; line-height: 48px !important; }
           h3, .h3 { font-size: 28px !important; line-height: 38px !important; }
         }

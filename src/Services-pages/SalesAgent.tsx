@@ -46,7 +46,7 @@ export default function SalesAgent() {
               fontStyle: "normal",
               fontWeight: 500,
               lineHeight: "64px",
-              letterSpacing: "-2%",
+              letterSpacing:  "-0.02em",
               margin: 0,
             }}
           >

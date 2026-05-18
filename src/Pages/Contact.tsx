@@ -50,11 +50,11 @@ export default function Contact() {
             tabIndex={0}
             style={{
               fontFamily: "GT Super Display Medium",
-              fontSize: "64px",
+              fontSize: "56px",
               fontWeight: 500,
               color: "#FFF",
               lineHeight: "1.1",
-              letterSpacing: "-2%",
+              letterSpacing: "-0.02em",
               fontVariantNumeric: "lining-nums proportional-nums",
               margin: 0,
               textAlign: "center",
@@ -129,6 +129,7 @@ export default function Contact() {
             text-align: center !important;
             width: 100%;
             margin: 0 auto;
+            letter-spacing: -0.02em;
           }
         }
 

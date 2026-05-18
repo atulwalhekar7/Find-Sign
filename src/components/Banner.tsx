@@ -209,7 +209,7 @@ export default function App() {
           font-weight:          500;
           color:                #FFF;
           line-height:          64px;
-          letter-spacing:       -2%;
+letter-spacing: -0.02em;
           font-variant-numeric: lining-nums proportional-nums;
         }
         .watch-btn {
@@ -286,12 +286,12 @@ export default function App() {
        @media (max-width: 1024px) {
   .hero-top    { aspect-ratio: 16 / 7; min-height: unset; height: auto; margin-top: 0; }
   .page-wrapper { padding-bottom: 0; }
-  .hero-title  { font-size: 44px; line-height: 54px; letter-spacing: -2%; }
+  .hero-title  { font-size: 44px; line-height: 54px; letter-spacing: -0.02em; }
   .description { font-size: 20px; line-height: 32px; }
   .hero-bottom { padding: 0 6%; }
 }
        @media (max-width: 768px) {
-  .hero-title   { font-size: 36px; line-height: 44px; letter-spacing: 1px; }
+  .hero-title   { font-size: 36px; line-height: 44px; letter-spacing: -0.02em; }
   .description  { font-size: 18px; line-height: 28px; }
   .hero-top     { height: auto; aspect-ratio: 16 / 9; min-height: unset; }
 }
