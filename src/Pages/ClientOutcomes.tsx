@@ -7,7 +7,7 @@ import Image5 from "../components/Image5";
 import Image6 from "../components/Image6";
 
 import bannerImg from "../assets/happy-home-buyers-australia-Clientoutcomes-banner-find-and-sign.jpg";
-import AboutClientOutcomesImg from "../assets/About Find&Sign.jpg";
+import AboutClientOutcomesImg from "../assets/About Find&Sign-clientoutcomes-aboutsection-image.jpg";
 
 import id1 from "../assets/Client Outcomes/id1.webp";
 import id2 from "../assets/Client Outcomes/id2.webp";
