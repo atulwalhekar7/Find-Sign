@@ -24,7 +24,7 @@ export default function Contact() {
           style={{
             position: "absolute",
             inset: 0,
-            background: "rgba(0,0,0,0.35)",
+            background: "rgba(0,0,0,0.45)",
           }}
         />
 

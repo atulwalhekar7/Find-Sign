@@ -138,7 +138,7 @@ Find & Sign we find with confidence you sign with certainty.
           background-repeat: no-repeat;
           background-attachment: scroll;
         }
-        .banner-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.35); z-index: 1; }
+        .banner-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.45); z-index: 1; }
         .hero-box {
           position: relative; z-index: 2;
           display: flex; flex-direction: column; align-items: center;

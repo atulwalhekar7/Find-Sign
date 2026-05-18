@@ -37,6 +37,8 @@ const Image1: React.FC = () => {
     inset: 0,
     display: "flex",
     justifyContent: "center",
+                                background: "rgba(0,0,0,0.45)",
+
     alignItems: { xs: "center", sm: "center" }, // vertically centered
     padding: { xs: "20px", md: "40px" },
     transform: "none",    // 👈 remove the translateY offset

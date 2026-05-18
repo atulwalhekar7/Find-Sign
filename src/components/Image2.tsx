@@ -37,6 +37,8 @@ const Image1: React.FC = () => {
     inset: 0,
     display: "flex",
     justifyContent: "center",
+     background: "rgba(0,0,0,0.45)",
+
     alignItems: { xs: "center", sm: "center" }, // vertically centered
     padding: { xs: "20px", md: "40px" },
     transform: "none",    // 👈 remove the translateY offset
@@ -51,6 +53,7 @@ const Image1: React.FC = () => {
       textAlign: "center",
       fontVariantNumeric: "lining-nums proportional-nums",
       fontFamily: 'GT Super Display Medium',
+      
       fontSize: {
         xs: "18px",
         sm: "32px",

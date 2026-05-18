@@ -941,7 +941,7 @@ export default function ClientOutcomes() {
           backgroundSize: "cover", backgroundPosition: "center",
           position: "relative", padding: "0 20px",
         }}>
-          <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.35)" }} />
+          <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
           <div style={{
             position: "relative", zIndex: 2,
             textAlign: "center", maxWidth: 900, margin: "0 auto",

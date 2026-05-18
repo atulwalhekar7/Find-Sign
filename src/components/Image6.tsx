@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
-import heroImage from "../assets/niki-nakrani-buyers-agent-image6-australia-find-and-sign.png";
+import heroImage from "../assets/niki-nakrani-buyers-agent-australia-clientoutcomes-banner3-find-and-sign.jpg";
 
 const Image1: React.FC = () => {
   return (
@@ -37,6 +37,8 @@ const Image1: React.FC = () => {
     inset: 0,
     display: "flex",
     justifyContent: "center",
+                                background: "rgba(0,0,0,0.45)",
+
     alignItems: { xs: "center", sm: "center" }, // vertically centered
     padding: { xs: "20px", md: "40px" },
     transform: "none",    // 👈 remove the translateY offset
