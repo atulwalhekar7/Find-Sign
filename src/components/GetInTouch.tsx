@@ -5,12 +5,7 @@ import checkIcon from "../assets/check.png";
 import callIcon from "../assets/Icon.png";
 import { useTheme } from "./ThemeContext";
 
-const COLORS = {
-  racingGreen: "#073B2F",
-  aqua: "#69E4DC",
-  black: "#000000",
-  white: "#FFFFFF",
-};
+
 
 const SERVICES = [
   "Buyer Advocate",

@@ -26,7 +26,7 @@ const exploreLinks = [
   { label: "Contact", to: "/contact" },
 ];
 
-const CALENDLY = "https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc";
+
 
 const THEMES = {
   dark: {

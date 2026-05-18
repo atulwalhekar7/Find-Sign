@@ -1,24 +1,13 @@
 import GetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
-import { useTheme } from "../components/ThemeContext";
-
-const THEMES = {
-  dark: {
-    sectionBg:   "#1A1A1A",
-    headingColor: "#F9F9F9",
-    dividerColor: "#F9F9F9",
-  },
-  light: {
-    sectionBg:   "#ebe6de",
-    headingColor: "#073B2F",
-    dividerColor: "#073B2F",
-  },
-};
 import bannerImg from "../assets/family-home-buyers-image2-australia-find-and-sign.png";
 
+
+
+
 export default function Contact() {
-  const { theme } = useTheme();
-  const t = THEMES[theme];
+
+
 
   return (
     <>

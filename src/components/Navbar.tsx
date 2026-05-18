@@ -99,8 +99,9 @@ export default function Navbar() {
   // Hamburger lines: white in dark mode so they're visible on dark nav
   const hamburgerStroke = isDark ? COLORS.white : COLORS.racingGreen;
   // Drawer link text: aqua highlight in dark, racing-green in light
-  const drawerLinkColor = isDark ? "#c8f5f2" : COLORS.racingGreen;
+
   const drawerActiveBg  = isDark ? "rgba(105,228,220,0.12)" : "#EAE5DF";
+
 
   return (
     <>
