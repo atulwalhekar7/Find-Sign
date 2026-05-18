@@ -57,14 +57,14 @@ const Image1: React.FC = () => {
       fontSize: {
         xs: "18px",
         sm: "32px",
-        md: "30px",
+        md: "44px",
       },
       fontStyle: "normal",
       fontWeight: 500,
       lineHeight: {
         xs: "1.2",
         sm: "40px",
-        md: "38px",
+        md: "50px",
       },
       letterSpacing: "-0.88px",
       margin: 0,
