@@ -857,6 +857,11 @@ export default function ClientOutcomes() {
           .outcomes-subtitle,
           .testimonials-subtitle { font-size: 15px; line-height: 24px; margin-top: 14px; }
 
+          .client-outcomes-hero-banner {
+            aspect-ratio: 4 / 5 !important;
+            min-height: unset !important;
+          }
+
           .outcomes-section {
             grid-template-columns: repeat(12, 1fr);
             column-gap: 16px;
@@ -934,13 +939,16 @@ export default function ClientOutcomes() {
       <div style={{ backgroundColor: WHITE, fontFamily: "Sohne, sans-serif" }}>
 
         {/* ══ HERO ══ */}
-        <section style={{
-          minHeight: "80vh",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          backgroundImage: `url(${bannerImg})`,
-          backgroundSize: "cover", backgroundPosition: "center",
-          position: "relative", padding: "0 20px",
-        }}>
+        <section 
+          className="client-outcomes-hero-banner"
+          style={{
+            minHeight: "60vh",
+            aspectRatio: "16 / 7",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            backgroundImage: `url(${bannerImg})`,
+            backgroundSize: "cover", backgroundPosition: "center",
+            position: "relative", padding: "0 20px",
+          }}>
           <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
           <div style={{
             position: "relative", zIndex: 2,

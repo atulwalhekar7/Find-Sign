@@ -294,8 +294,10 @@ export default function Services() {
 
       {/* ── SECTION 1: Hero ─────────────────────────────────────────────── */}
       <section
+        className="services-hero-banner"
         style={{
-          minHeight: "80vh",
+          minHeight: "60vh",
+          aspectRatio: "16 / 7",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -622,6 +624,11 @@ From the first conversation to settlement and beyond, we are in your corner. You
         /* ── md: 900px — tablet ──────────────────────────────────────────── */
         @media (max-width: 900px) {
           .services-section { padding: 64px 20px 64px; }
+
+          .services-hero-banner {
+            aspect-ratio: 4 / 5 !important;
+            min-height: unset !important;
+          }
 
           h1 { font-size: 48px !important; line-height: 58px !important; }
           h2 { font-size: 38px !important; line-height: 48px !important; }
