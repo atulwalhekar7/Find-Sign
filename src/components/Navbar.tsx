@@ -38,8 +38,8 @@ export default function Navbar() {
 }
 
      .nav-logo {
-   width: 159px !important;
-          height: 59px !important;
+   width: 128px !important;
+          height: 47px !important;
   object-fit: contain;
   display: block;
 }

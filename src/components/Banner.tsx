@@ -147,7 +147,7 @@ export default function App() {
           font-weight:          500;
           color:                #FFF;
           line-height:          64px;
-          letter-spacing:       1px;
+          letter-spacing:       -2%;
           font-variant-numeric: lining-nums proportional-nums;
         }
         .watch-btn {
@@ -224,12 +224,12 @@ export default function App() {
        @media (max-width: 1024px) {
   .hero-top    { aspect-ratio: 16 / 7; min-height: unset; height: auto; margin-top: 0; }
   .page-wrapper { padding-bottom: 0; }
-  .hero-title  { font-size: 44px; line-height: 54px; letter-spacing: 1px; }
+  .hero-title  { font-size: 44px; line-height: 54px; letter-spacing: -2%; }
   .description { font-size: 20px; line-height: 32px; }
   .hero-bottom { padding: 0 6%; }
 }
        @media (max-width: 767px) {
-  .hero-title   { font-size: 48px !important; line-height: 58px !important; letter-spacing: 1px; }
+  .hero-title   { font-size: 48px !important; line-height: 58px !important; letter-spacing: -2%; }
   h2            { font-size: 38px !important; line-height: 48px !important; }
   h3            { font-size: 28px !important; line-height: 38px !important; }
   .description  { font-size: 18px; line-height: 28px; }

@@ -113,7 +113,7 @@ export default function PrivacyPolicy() {
               fontWeight: 500,
               color: "#FFF",
               lineHeight: "1.1",
-              letterSpacing: "1px",
+              letterSpacing: "-2%",
               margin: 0,
             }}
           >

@@ -54,7 +54,7 @@ export default function Contact() {
               fontWeight: 500,
               color: "#FFF",
               lineHeight: "1.1",
-              letterSpacing: "1px",
+              letterSpacing: "-2%",
               fontVariantNumeric: "lining-nums proportional-nums",
               margin: 0,
               textAlign: "center",

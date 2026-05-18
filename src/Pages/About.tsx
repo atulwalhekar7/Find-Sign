@@ -150,7 +150,7 @@ Find & Sign we find with confidence you sign with certainty.
         .hero-title {
           font-family: 'GT Super Display Medium';
           font-size: 64px; font-weight: 500; color: #FFF;
-          line-height: 1.1; letter-spacing: 1px;
+          line-height: 1.1; letter-spacing: -2%;
           font-variant-numeric: lining-nums proportional-nums; margin: 0;
         }
 

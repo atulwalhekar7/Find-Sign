@@ -47,7 +47,7 @@ export default function SettlementAgent() {
               fontStyle: "normal",
               fontWeight: 500,
               lineHeight: "64px",
-              letterSpacing: "1px",
+              letterSpacing: "-2%",
               margin: 0,
             }}
           >

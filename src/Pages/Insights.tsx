@@ -66,7 +66,7 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
             fontStyle: "normal",
             fontWeight: 500,
             lineHeight: "40px",
-            letterSpacing: "-0.64px",
+            letterSpacing: "-2%",
             margin: "0px",
           }}
         >
@@ -205,7 +205,7 @@ export default function Insights() {
             fontWeight: 500,
             color: "#FFF",
             lineHeight: "1.1",
-            letterSpacing: "1px",
+            letterSpacing: "-2%",
             fontVariantNumeric: "lining-nums proportional-nums",
             margin: 0 
           }}>

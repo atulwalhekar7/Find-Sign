@@ -100,7 +100,7 @@ export default function BuyerAgentPerthBlog() {
             fontWeight: 500,
             color: "#FFF",
             lineHeight: "1.1",
-            letterSpacing: "1px",
+            letterSpacing: "-2%",
             margin: 0 
           }}>
             Your Ultimate Guide to Hiring a Buyer’s Agent in Perth
