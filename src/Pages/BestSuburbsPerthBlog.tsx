@@ -55,6 +55,8 @@ const SideBySideSection = ({
 );
 
 export default function BestSuburbsPerthBlog() {
+  const [isBannerLoading, setIsBannerLoading] = useState(true);
+
   useEffect(() => {
     // SEO Metadata
     document.title = "Best Suburbs in Perth for Property Investment 2026";
@@ -62,6 +64,15 @@ export default function BestSuburbsPerthBlog() {
     if (metaDescription) {
       metaDescription.setAttribute("content", "Discover the best suburbs in Perth for property investment in 2026. Learn where to invest for high growth, rental yield, and long-term returns.");
     }
+
+    const timer = setTimeout(() => setIsBannerLoading(false), 1200);
+    const img = new Image();
+    img.src = bannerImg;
+    img.onload = () => setIsBannerLoading(false);
+    return () => {
+      clearTimeout(timer);
+      img.onload = null;
+    };
   }, []);
 
   return (
@@ -83,17 +94,24 @@ export default function BestSuburbsPerthBlog() {
           padding: "0 20px",
         }}
       >
+        <div className={`video-loader-container ${!isBannerLoading ? "hidden" : ""}`} />
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.35)" }} />
         <div
           style={{
             position: "relative",
-            zIndex: 2,
+            zIndex: 3,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
             textAlign: "center",
             maxWidth: "900px",
             margin: "0 auto",
             padding: "60px 20px",
+            animation: "heroFadeIn 0.8s ease both",
           }}
         >
+          <div className={`attractive-loader ${!isBannerLoading ? "hidden" : ""}`} aria-hidden="true" />
           <h1 
             tabIndex={0}
             style={{ 
@@ -367,6 +385,33 @@ export default function BestSuburbsPerthBlog() {
           from { opacity: 0; transform: translateY(30px); }
           to   { opacity: 1; transform: translateY(0); }
         }
+        .video-loader-container {
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          background: #073B2F; 
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+        }
+        .video-loader-container.hidden {
+          opacity: 0;
+        }
+        .attractive-loader {
+          width: 40px;
+          height: 40px;
+          border: 3px solid rgba(105, 228, 220, 0.2);
+          border-radius: 50%;
+          border-top-color: #69E4DC;
+          animation: spin 1s infinite linear;
+          transition: opacity 0.3s ease;
+          opacity: 1;
+          margin-bottom: 8px;
+        }
+        .attractive-loader.hidden {
+          opacity: 0;
+          pointer-events: none;
+        }
+        @keyframes spin { to { transform: rotate(1turn); } }
 
         .blog-hero-banner {
           aspect-ratio: 16 / 7;

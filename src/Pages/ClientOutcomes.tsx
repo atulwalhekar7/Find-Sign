@@ -205,6 +205,18 @@ export default function ClientOutcomes() {
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
 
+  const [isBannerLoading, setIsBannerLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsBannerLoading(false), 1200);
+    const img = new Image();
+    img.src = bannerImg;
+    img.onload = () => setIsBannerLoading(false);
+    return () => {
+      clearTimeout(timer);
+      img.onload = null;
+    };
+  }, []);
   // Outcomes Slider State
   const [outcomesCur, setOutcomesCur]       = useState(0);
   const [outcomesPaused, setOutcomesPaused] = useState(false);
@@ -949,16 +961,52 @@ letterSpacing: "-0.02em",
             backgroundSize: "cover", backgroundPosition: "center",
             position: "relative", padding: "0 20px",
           }}>
+          <div className={`video-loader-container ${!isBannerLoading ? "hidden" : ""}`} />
           <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
           <div style={{
-            position: "relative", zIndex: 2,
+            position: "relative", zIndex: 3,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
             textAlign: "center", maxWidth: 900, margin: "0 auto",
             padding: "60px 20px", borderRadius: 12,
             animation: "heroFadeIn 0.8s ease both",
           }}>
+            <div className={`attractive-loader ${!isBannerLoading ? "hidden" : ""}`} aria-hidden="true" />
             <h1 className="hero-h1" tabIndex={0}>Client Outcomes</h1>
           </div>
         </section>
+
+        <style>{`
+        .video-loader-container {
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          background: #073B2F; 
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+        }
+        .video-loader-container.hidden {
+          opacity: 0;
+        }
+        .attractive-loader {
+          width: 40px;
+          height: 40px;
+          border: 3px solid rgba(105, 228, 220, 0.2);
+          border-radius: 50%;
+          border-top-color: #69E4DC;
+          animation: spin 1s infinite linear;
+          transition: opacity 0.3s ease;
+          opacity: 1;
+          margin-bottom: 8px;
+        }
+        .attractive-loader.hidden {
+          opacity: 0;
+          pointer-events: none;
+        }
+        @keyframes spin { to { transform: rotate(1turn); } }
+        `}</style>
 
         {/* ══ ABOUT ══ */}
       <div className="client-outcomes-about">
