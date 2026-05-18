@@ -7,8 +7,8 @@ import Image7 from "../components/Image7";
 
  import aboutInsightsImg from "../assets/niki-nakrani-buyers-agent-perth-property-expert-about-insights-find-and-sign.jpg";
 import bannerImg from "../assets/client-outcomes-banner-find-and-sign-buyers-agent-australia.jpg";
-import perthBlogImg from "../assets/niki.jpg";
-import Blog2 from "../assets/niki.jpg";
+import perthBlogImg from "../assets/1_Banner_Scarborough.jpg";
+import Blog2 from "../assets/2_Banner 2_Scarborough.jpg";
 
 // --- Helper Components ---
 
