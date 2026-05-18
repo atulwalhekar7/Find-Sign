@@ -396,11 +396,11 @@ export default function Footer() {
         .footer {
           background: #073B2F;
           color: white;
-          width: 1556px;
-          max-width: 100%;
+          width: 100%;
+          max-width: 1556px;
           margin: 0 auto;
           display: flex;
-          height: 682px;
+          min-height: 682px;
           padding: 96px 196px;
           flex-direction: column;
           align-items: flex-start;
@@ -439,20 +439,20 @@ export default function Footer() {
 
         /* Logo Column */
         .footer-logo-container {
-          width: 167px !important;
-          height: 79px !important;
+          width: 167px;
+          height: 79px;
           flex-shrink: 0;
           aspect-ratio: 159/59;
           padding: 8px 0;
 flex-direction: column;
 align-items: flex-start;
 gap: 10px;
-          margin-left: -50px; /* Shift logo slightly to the left */
+          margin-left: -60px; /* Shift logo further to the left */
         }
 
         .footer-logo {
-           width: 159px !important;
-          height: 59px !important;
+           width: 128px;
+          height: 47px;
           object-fit: contain;
         }
 
@@ -569,21 +569,23 @@ gap: 10px;
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1200px) {
-          .footer { padding: 56px 76px !important; }
+          .footer { padding: 56px 76px; height: auto; min-height: auto; }
           .footer-extra-frame { padding-left: 0; margin-top: 0; }
-          .footer-grid { gap: 40px 24px; flex-wrap: wrap; }
-          .footer-logo-container { margin-left: 0; }
-          .footer-contact { margin-left: 0; }
+          .footer-grid { gap: 40px 24px; flex-wrap: wrap; height: auto; }
+          .footer-logo-container, .footer-contact, .footer-legal { margin-left: 0; }
         }
         @media (max-width: 1024px) {
-          .footer { padding: 56px 40px !important; }
+          .footer { padding: 56px 40px; }
           .footer-grid { justify-content: flex-start; }
-          .footer-logo-container { margin-left: 0; }
         }
         @media (max-width: 768px) {
-          .footer { padding: 48px 20px !important; gap: 40px; height: auto !important; min-height: auto; }
+          .footer { padding: 48px 20px; gap: 40px; }
           .footer-grid { flex-direction: column; }
-          .footer-contact, .footer-explore, .footer-legal { width: 100%; margin-left: 0; }
+          .footer-contact, .footer-explore, .footer-legal, .footer-logo-container { 
+            width: 100%; 
+            margin-left: 0; 
+            height: auto;
+          }
         }
       `}</style>
 
