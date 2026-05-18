@@ -229,8 +229,10 @@ export default function FindSignFAQ() {
   border-color: #69E4DC;
 }
 
-        @media (max-width: 600px) {
-          .faq-title { font-size: 32px; }
+        @media (max-width: 767px) {
+          h1, .h1 { font-size: 48px !important; line-height: 58px !important; }
+          h2, .h2, .faq-title { font-size: 38px !important; line-height: 48px !important; }
+          h3, .h3 { font-size: 28px !important; line-height: 38px !important; }
           .faq-item.active { transform: translateX(6px); }
           .faq-question-area { padding: 20px; }
         }

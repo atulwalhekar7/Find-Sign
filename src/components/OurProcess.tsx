@@ -258,24 +258,24 @@ const globalCSS = `
    /* H1 */
   h1,
   .h1 {
-    font-size: 56px !important;
-    line-height: 64px !important;
+    font-size: 48px !important;
+    line-height: 58px !important;
   }
 
   /* H2 */
   h2,
   .h2,
   .op-title-text {
-    font-size: 42px !important;
-    line-height: 50px !important;
+    font-size: 36px !important;
+    line-height: 48px !important;
   }
 
   /* H3 */
   h3,
   .h3,
   .op-item-title {
-    font-size: 32px !important;
-    line-height: 40px !important;
+    font-size: 28px !important;
+    line-height: 38px !important;
   }
 
     .op-section { grid-template-columns: repeat(4,1fr); column-gap: 16px; padding: 40px 20px 56px; }
@@ -299,7 +299,7 @@ const globalCSS = `
     transform: translateY(2px); /* 👈 key fix */
   }
 .op-title-text {
-  font-size: 42px !important;
+  font-size: 38px !important;
   line-height: 50px !important;
 }
 

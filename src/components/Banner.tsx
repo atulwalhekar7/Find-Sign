@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
  
@@ -65,7 +65,35 @@ function VideoModal({ onClose }: { onClose: () => void }) {
 /* ─── Page ─── */
 export default function App() {
   const [videoOpen, setVideoOpen] = useState(false);
+  const [isVideoLoading, setIsVideoLoading] = useState(true);
   const bgVideoRef = useRef<HTMLVideoElement>(null);
+
+  // Listen for Vimeo's playback events to hide the loader only when video starts running
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (!event.origin.includes("vimeo.com")) return;
+      
+      try {
+        const data = JSON.parse(event.data);
+        // 'play' or 'playing' signals that frames are actually being rendered
+        if (data.event === "play" || data.event === "playing" || data.event === "loaded" || data.event === "ready") {
+          setIsVideoLoading(false);
+        }
+      } catch (err) {
+        // Ignore non-JSON messages from other sources
+      }
+    };
+
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, []);
+
+  useEffect(() => {
+    // Primary fallback: Force hide loader after 1.2s to ensure the page feels fast
+    // even if Vimeo events are delayed.
+    const timer = setTimeout(() => setIsVideoLoading(false), 1200);
+    return () => clearTimeout(timer);
+  }, []);
 
   function openVideo() {
     bgVideoRef.current?.pause();
@@ -105,6 +133,7 @@ export default function App() {
           position: absolute;
           inset: 0;
           overflow: hidden;
+          background: #073B2F;
           z-index: 0;
         }
         .hero-bg-video {
@@ -115,6 +144,39 @@ export default function App() {
           height: 100vh;
           transform: translate(-50%, -50%);
           pointer-events: none;
+        }
+
+        .video-loader-container {
+          position: absolute;
+          inset: 0;
+          z-index: 2; /* Sits above the hero-overlay */
+          background: #073B2F; 
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+        }
+        .video-loader-container.hidden {
+          opacity: 0;
+        }
+
+        /* ── Simple Single Loader ── */
+        .attractive-loader {
+          width: 40px;
+          height: 40px;
+          border: 3px solid rgba(105, 228, 220, 0.2);
+          border-radius: 50%;
+          border-top-color: #69E4DC;
+          animation: spin 1s infinite linear;
+          transition: opacity 0.3s ease;
+          opacity: 1;
+          margin-bottom: 8px; /* Alignment spacing */
+        }
+        .attractive-loader.hidden {
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        @keyframes spin {
+          to { transform: rotate(1turn); }
         }
 
         @media (min-aspect-ratio: 16/9) {
@@ -132,7 +194,7 @@ export default function App() {
         }
         .content-wrap {
           position:        relative;
-          z-index:         2;
+          z-index:         3; /* Above loader background */
           display:         flex;
           flex-direction:  column;
           align-items:     center;
@@ -147,7 +209,7 @@ export default function App() {
           font-weight:          500;
           color:                #FFF;
           line-height:          64px;
-          letter-spacing:       1px;
+letter-spacing: -0.02em;
           font-variant-numeric: lining-nums proportional-nums;
         }
         .watch-btn {
@@ -224,12 +286,12 @@ export default function App() {
        @media (max-width: 1024px) {
   .hero-top    { aspect-ratio: 16 / 7; min-height: unset; height: auto; margin-top: 0; }
   .page-wrapper { padding-bottom: 0; }
-  .hero-title  { font-size: 44px; line-height: 54px; letter-spacing: 1px; }
+  .hero-title  { font-size: 44px; line-height: 54px; letter-spacing: -0.02em; }
   .description { font-size: 20px; line-height: 32px; }
   .hero-bottom { padding: 0 6%; }
 }
        @media (max-width: 768px) {
-  .hero-title   { font-size: 36px; line-height: 44px; letter-spacing: 1px; }
+  .hero-title   { font-size: 36px; line-height: 44px; letter-spacing: -0.02em; }
   .description  { font-size: 18px; line-height: 28px; }
   .hero-top     { height: auto; aspect-ratio: 16 / 9; min-height: unset; }
 }
@@ -246,18 +308,23 @@ export default function App() {
         <section className="hero-top">
           <div className="video-wrapper">
             <iframe
-              src="https://player.vimeo.com/video/1189023931?autoplay=1&muted=1&loop=1&background=1&playsinline=1"
+              src="https://player.vimeo.com/video/1189023931?autoplay=1&muted=1&loop=1&background=1&playsinline=1&api=1"
               className="hero-bg-video"
               frameBorder="0"
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
-              loading="lazy"
+              onLoad={() => {
+                setIsVideoLoading(false);
+              }}
+              loading="eager"
             />
           </div>
 
+          <div className={`video-loader-container ${!isVideoLoading ? "hidden" : ""}`} />
           <div className="hero-overlay" />
 
           <div className="content-wrap">
+            <div className={`attractive-loader ${!isVideoLoading ? "hidden" : ""}`} aria-hidden="true" />
             <h1 className="hero-title" tabIndex={0}>
               The advantage of being first.
             </h1>

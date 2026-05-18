@@ -118,13 +118,12 @@ export default function Navbar() {
           padding: 24px 130px;
         }
 
-        .nav-logo {
-          width: 159px !important;
-          height: 59px !important;
-          object-fit: contain;
-          display: block;
-          animation: logo-premium-fx 6s ease-in-out infinite;
-        }
+     .nav-logo {
+   width: 128px;
+          height: 47px;
+  object-fit: contain;
+  display: block;
+}
 
         .nav-actions {
           display: flex;
@@ -249,6 +248,13 @@ export default function Navbar() {
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
         }
 
+       .nav-drawer-link:hover,
+.nav-drawer-link:active,
+.nav-drawer-link.active {
+  background: #EAE5DF;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
         @keyframes call-vibrate {
           0%, 20%, 100% { transform: rotate(0deg); }
           3%, 9%, 15%   { transform: rotate(-12deg); }
@@ -258,23 +264,6 @@ export default function Navbar() {
         @keyframes rotate-border {
           from { transform: rotate(0deg); }
           to   { transform: rotate(360deg); }
-        }
-
-        @keyframes logo-premium-fx {
-          0%, 100% {
-            transform: translateY(0) scale(1);
-            filter: drop-shadow(0 0 2px rgba(105, 228, 220, 0.1)) brightness(1);
-          }
-          25% {
-            filter: drop-shadow(0 0 5px rgba(105, 228, 220, 0.3)) brightness(1.4);
-          }
-          30% {
-            filter: drop-shadow(0 0 2px rgba(105, 228, 220, 0.1)) brightness(1);
-          }
-          50% {
-            transform: translateY(-10px) scale(1.05);
-            filter: drop-shadow(0 15px 35px rgba(105, 228, 220, 0.7)) brightness(1.1);
-          }
         }
 
         .vibrate-icon {
@@ -303,22 +292,22 @@ export default function Navbar() {
           }
           .nav-logo {
             width: 128px;
-            height: 47px !important;
+            height: 47px;
           }
           .nav-links {
-            display: none !important;
+            display: none;
           }
           .nav-actions {
             gap: 12px;
           }
           .nav-cta {
-            display: none !important;
+            display: none;
           }
           .mobile-call-icon {
-            display: flex !important;
+            display: flex;
           }
           .nav-hamburger {
-            display: block !important;
+            display: block;
           }
           .nav-drawer {
             display: block;
@@ -371,7 +360,7 @@ export default function Navbar() {
 
             {/* Mobile Call Icon */}
             <a
-              href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
+              href="https://calendly.com/findandsignba-info"
               target="_blank"
               rel="noopener noreferrer"
               className="mobile-call-icon"
@@ -381,15 +370,15 @@ export default function Navbar() {
             </a>
 
             {/* CTA */}
-            <a
-              href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nav-cta"
-            >
-              <img src={callIcon} className="vibrate-icon" width="20" height="20" alt="" />
-              Book a Call
-            </a>
+           <a
+  href="https://calendly.com/findandsignba-info"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="nav-cta" // The "Book a Call" button for desktop
+>
+  <img src={callIcon} className="vibrate-icon" width="20" height="20" alt="" />
+  Book a Call
+</a>
 
             {/* ✅ Hamburger — stroke now uses hamburgerStroke (white in dark, green in light) */}
             <button
@@ -430,54 +419,53 @@ export default function Navbar() {
                 to={item.to}
                 className="nav-drawer-link"
                 onClick={() => setMenuOpen(false)}
-                style={({ isActive }) => ({
-                  display: "block",
-                  width: "100%",
-                  boxSizing: "border-box",
-                  fontFamily: "'SohneBuch'",
-                  fontSize: "15px",
-                  // ✅ Text color now readable in both modes
-                  color: isActive ? COLORS.aqua : drawerLinkColor,
-                  fontWeight: isActive ? 500 : 400,
-                  textDecoration: "none",
-                  padding: "10px 12px",
-                  borderBottom: `1px solid ${drawerBorder}`,
-                })}
+               style={({ isActive }) => ({
+  display: "block",
+  width: "100%",
+                 boxSizing: "border-box",
+                 fontFamily: "'SohneBuch'",
+                 fontSize: "15px",
+                 color: COLORS.black, // Changed to match desktop view text color
+                 fontWeight: isActive ? 500 : 400,
+                 textDecoration: "none",
+                 padding: "10px 12px",
+                 borderBottom: "1px solid rgba(27,67,50,0.06)",
+})}
               >
                 {item.label}
               </NavLink>
             ))}
 
-            <a
-              href="https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Book a Call"
-              onClick={() => setMenuOpen(false)}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "10px",
-                marginTop: "16px",
-                height: "48px",
-                padding: "12px 24px",
-                borderRadius: "8px",
-                background: COLORS.aqua,
-                color: COLORS.racingGreen,
-                fontFamily: "CX80",
-                fontSize: "15px",
-                fontWeight: 700,
-                lineHeight: "15px",
-                letterSpacing: "4.8px",
-                textDecoration: "none",
-                textTransform: "uppercase",
-                whiteSpace: "nowrap",
-              }}
-            >
-              <img src={callIcon} className="vibrate-icon" width="18" height="18" alt="" aria-hidden="true" />
-              Book a Call
-            </a>
+           <a
+  href="https://calendly.com/findandsignba-info"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Book a Call" // Accessible label for the link
+  onClick={() => setMenuOpen(false)}
+ style={{
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "10px",
+  marginTop: "16px",
+  height: "48px",
+  padding: "12px 24px",
+  borderRadius: "8px",
+  background: COLORS.aqua,
+  color: COLORS.racingGreen,
+  fontFamily: "CX80",
+  fontSize: "15px",
+  fontWeight: 700,
+  lineHeight: "15px",
+  letterSpacing: "4.8px",
+  textDecoration: "none",
+  textTransform: "uppercase",
+  whiteSpace: "nowrap",
+}}
+>
+  <img src={callIcon} className="vibrate-icon" width="18" height="18" alt="" aria-hidden="true" />
+  Book a Call
+</a>
           </div>
         )}
       </nav>

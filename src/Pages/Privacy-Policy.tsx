@@ -94,11 +94,11 @@ export default function PrivacyPolicy() {
             tabIndex={0}
             style={{
               fontFamily: "'GT Super Display Medium'",
-              fontSize: "64px",
+              fontSize: "56px",
               fontWeight: 500,
               color: "#FFF",
               lineHeight: "1.1",
-              letterSpacing: "1px",
+              letterSpacing: "0.02em",
               margin: 0,
             }}
           >
@@ -236,10 +236,24 @@ export default function PrivacyPolicy() {
           h2 { font-size: 38px !important; }
         }
         @media (max-width: 768px) {
-          .privacy-hero-banner { aspect-ratio: 4 / 5; min-height: unset; }
-          h1 { font-size: 42px !important; line-height: 1.2 !important; }
-          h2 { font-size: 32px !important; }
-          main { padding: 60px 24px !important; }
+          .privacy-hero-banner {
+            aspect-ratio: 4 / 5;
+            min-height: unset;
+          }
+
+          h1 {
+            font-size: 42px !important;
+            line-height: 1.2 !important;
+            letter-spacing: 0.02em !important;
+          }
+
+          h2 {
+            font-size: 32px !important;
+          }
+
+          main {
+            padding: 60px 24px !important;
+          }
         }
         @media (max-width: 480px) {
           h1 { font-size: 36px !important; }

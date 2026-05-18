@@ -2,9 +2,15 @@ import { useState, useRef, useEffect } from "react";
 import { Box, Dialog, DialogContent, Typography } from "@mui/material";
 import emailjs from '@emailjs/browser';
 import checkIcon from "../assets/check.png";
+import callIcon from "../assets/Icon.png";
 import { useTheme } from "./ThemeContext";
 
-const CALENDLY = "https://calendly.com/nakranipropertybuyers?text_color=003327&primary_color=69e4dc";
+const COLORS = {
+  racingGreen: "#073B2F",
+  aqua: "#69E4DC",
+  black: "#000000",
+  white: "#FFFFFF",
+};
 
 const SERVICES = [
   "Buyer Advocate",
@@ -141,32 +147,131 @@ export default function GetInTouch({
           border-color: #69e4dc !important;
         }
 
-        .contact-cta {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          height: 48px;
-          padding: 0 28px;
-          background: #69E4DC;
-          border: 1px solid #69E4DC;
-          border-radius: 8px;
-          width: fit-content;
-          color: #073B2F;
-          text-decoration: none;
-          font-family: "CX80BOLD";
-          font-size: 14px;
-          font-weight: 700;
-          letter-spacing: 4.8px;
-          text-transform: uppercase;
-          transition: all 0.25s ease;
-          white-space: nowrap;
-          cursor: pointer;
+.contact-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 48px;
+  padding: 0 28px;
+
+  background: #69E4DC;
+  border: 1px solid #69E4DC;
+  border-radius: 8px;
+
+  width: fit-content;   /* IMPORTANT */
+  max-width: fit-content;
+
+  color: #073B2F;
+  text-decoration: none;
+
+  font-family: "CX80";
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 4.48px;
+  text-transform: uppercase;
+
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  gap: 10px;
+}
+
+        @keyframes call-vibrate {
+          0%, 20%, 100% { transform: rotate(0deg); }
+          3%, 9%, 15% { transform: rotate(-12deg); }
+          6%, 12%, 18% { transform: rotate(12deg); }
+        }
+        .vibrate-icon {
+          animation: call-vibrate 3s infinite ease-in-out;
         }
 
-        .contact-cta:hover { transform: translateY(-1px); opacity: 0.9; }
+.contact-cta:hover {
+  transform: translateY(-1px);
+  background: #69E4DC;
+  border-color: #69E4DC;
+}
 
-        .submit-btn:hover { opacity: 0.88; transform: translateY(-1px); }
-        .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.nikki-info {
+  width: 100%;
+  max-width: 297px;
+  color: #000;
+  font-family: 'sohneBuch';
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 30px;
+}
+
+/* RIGHT SIDE */
+
+.contact-right {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.contact-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.contact_label {
+  color: #000;
+  font-family: 'sohneBuch';
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.contact-input {
+  display: flex;
+  height: 52px;
+  width: 100%;
+  padding: 8px 16px;
+  align-items: center;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid transparent;
+  font-family: 'sohneBuch';
+  font-size: 18px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.contact-input:focus {
+  border-color: #69e4dc;
+}
+
+.contact-textarea {
+  display: flex;
+  width: 100%;
+  min-height: 140px;
+  padding: 16px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid transparent;
+  font-family: "Söhne", sans-serif;
+  font-size: 18px;
+  resize: none;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.contact-textarea:focus {
+  border-color: #69e4dc;
+}
 
         .contact-field-row {
           display: flex;
@@ -253,24 +358,18 @@ export default function GetInTouch({
                 Get in touch
               </h2>
             )}
-
-            <p
-              tabIndex={0}
-              style={{
-                color: t.textColor,
-                fontFamily: "sohne",
-                fontSize: "24px",
-                fontWeight: 300,
-                lineHeight: "36px",
-                maxWidth: "297px",
-                transition: "color 0.3s ease",
-              }}
-            >
-              Tell us what you're looking for, and we'll come back with next steps.
+            <p className="description-text" tabIndex={0}>
+              Tell us what you’re looking for, and we’ll come back with next steps.
             </p>
-
-            <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="contact-cta">
-              BOOK A CALL
+            
+            <a
+              href="https://calendly.com/findandsignba-info"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-cta"
+            >
+              <img src={callIcon} className="vibrate-icon" width="20" height="20" alt="" />
+              Book a Call
             </a>
 
             <div

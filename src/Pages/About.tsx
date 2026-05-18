@@ -163,7 +163,7 @@ Find & Sign we find with confidence you sign with certainty."
           background-size: cover; background-position: center 30%;
           background-repeat: no-repeat; background-attachment: scroll;
         }
-        .banner-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.35); z-index: 1; }
+        .banner-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.45); z-index: 1; }
         .hero-box {
           position: relative; z-index: 2;
           display: flex; flex-direction: column; align-items: center;
@@ -174,8 +174,9 @@ Find & Sign we find with confidence you sign with certainty."
         }
         .hero-title {
           font-family: 'GT Super Display Medium';
-          font-size: 64px; font-weight: 500; color: #FFF;
-          line-height: 1.1; letter-spacing: 1px; margin: 0;
+          font-size: 56px; font-weight: 500; color: #FFF;
+          line-height: 1.1;letter-spacing: -0.02em;;
+          font-variant-numeric: lining-nums proportional-nums; margin: 0;
         }
 
         /* ── VIDEO ── */
@@ -223,19 +224,34 @@ Find & Sign we find with confidence you sign with certainty."
           to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* ── RESPONSIVE ── */
+        /* Responsive */
+        @media (max-width: 767px) {
+          h1, .h1, .hero-title { font-size: 48px !important; line-height: 58px !important;letter-spacing: -0.02em; }
+          h2, .h2, .team-header h2 { font-size: 38px !important; line-height: 48px !important; }
+          h3, .h3, .team-name { font-size: 28px !important; line-height: 38px !important; }
+        }
         @media (max-width: 900px) {
           .hero-box { padding: 60px 20px; width: 92%; }
-          .hero-title { font-size: 56px !important; line-height: 1.2 !important; }
-          .hero-banner { aspect-ratio: 4 / 5; min-height: unset; }
+          .hero-banner {
+            aspect-ratio: 4 / 5;
+            min-height: unset;
+          }
           .video-inner { height: 400px; }
           .play-btn, .mute-btn { width: 42px; height: 42px; }
         }
         @media (max-width: 600px) {
           .hero-box { padding: 60px 20px; width: 94%; border-radius: 8px; }
-          .hero-title { font-size: 56px !important; }
           .video-inner { height: 260px; }
           .play-btn, .mute-btn { width: 36px; height: 36px; }
+          .team-section { padding: 60px 20px; }
+          .team-header p { font-size: 18px; }
+          .team-card { width: 100%; padding: 20px; gap: 20px; }
+          .team-img-wrap { width: 110px; height: 134px; min-width: 110px; }
+          .team-role { font-size: 16px; line-height: 22px; }
+          .team-socials { flex-wrap: wrap; gap: 12px; }
+            .team-read-more {
+    margin-top: -10px !important;
+  }
         }
         @media (max-width: 768px) {
           .hero-banner { background-attachment: scroll; }
