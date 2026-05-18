@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
 
-import bannerImg from "../assets/Blogs/Blog 1_Image.jpg";
+// --- Assets ---
+import bannerImg from "../assets/1_Banner_Scarborough.jpg";
 import agentImg from "../assets/Blogs/DSC06286.jpg";
 import servicesImg from "../assets/About.jpg";
 import benefitsImg from "../assets/Blogs/Blog 1_Image.jpg";
@@ -116,16 +117,15 @@ export default function BestSuburbsPerthBlog() {
         >
           <h1
             tabIndex={0}
-            style={{
-              fontFamily: "'GT Super Display Medium'",
-              fontSize: "64px",
-              fontWeight: 500,
-              color: "#FFF",
-              lineHeight: "1.1",
-              letterSpacing: "1px",
-              margin: 0,
-            }}
-          >
+            style={{ 
+            fontFamily: "'GT Super Display Medium'",
+            fontSize: "64px",
+            fontWeight: 500,
+            color: "#FFF",
+            lineHeight: "1.1",
+            letterSpacing: "-2%",
+            margin: 0 
+          }}>
             Best Suburbs in Perth for Property Investment in 2026
           </h1>
           <p tabIndex={0} style={{ color: "#FFFFFF", fontSize: "24px", fontWeight: 300, marginTop: "24px", opacity: 0.9 }}>

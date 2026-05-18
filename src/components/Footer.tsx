@@ -2,6 +2,8 @@ import { NavLink } from "react-router-dom";
 import { useTheme } from "./ThemeContext";
 
 import logo from "../assets/FS Primary Lockup_Gold.png";
+import callIcon from "../assets/Icon.png";
+
 import fbIcon from "../assets/icon/fb.svg";
 import igIcon from "../assets/icon/Instagram.svg";
 import liIcon from "../assets/icon/LinkedIn.svg";
@@ -57,23 +59,194 @@ export default function Footer() {
     <>
       {/* Only keep layout/responsive CSS here — no color styles */}
       <style>{`
-        .footer-grid {
-          display: inline-flex;
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        .footer {
+          background: #073B2F;
+          color: white;
+          width: 100%;
+          display: flex;
+          min-height: 589px;
+          padding: 24px 130px !important;
+          flex-direction: column;
           align-items: flex-start;
-          gap: 55px 32px;
+          gap: 66px; 
+          align-self: stretch;
+        }
+
+        /* ── SOCIAL ICONS ROW (Top) ── */
+        .footer-social {
+          display: flex;
+          width: 258px;
+          padding: 10px 0;
+          align-items: center;
+          gap: 32px;
+          flex-wrap: wrap;
+        }
+
+        .social-link {
+          display: flex;
+          transition: opacity 0.2s;
+        }
+        .social-link:hover { opacity: 0.6; }
+        .social-link img { width: 24px; height: 24px; }
+
+        /* ── MAIN CONTENT GRID ── */
+        .footer-grid {
+          display: flex;
+          align-items: flex-start;
+          align-content: flex-start;
+          gap: 55px 32px; 
+          flex-wrap: wrap;
           width: 100%;
         }
-        .footer-link-hover:hover { opacity: 0.75; }
-        .social-link:hover { opacity: 0.6; }
-        .btn-book:hover { opacity: 0.85; }
+
+        /* Logo Column */
+        .footer-logo-container {
+          width: 167px !important;
+          height: 79px !important;
+          flex-shrink: 0;
+          aspect-ratio: 159/59;
+          padding: 8px 0;
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+        }
+
+        .footer-logo {
+           width: 159px !important;
+          height: 59px !important;
+          object-fit: contain;
+        }
+
+        /* Contact Column */
+        .footer-contact {
+          display: flex;
+          width: 267px;
+          padding: 10px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+          margin-left: 32px; /* Space from logo */
+        }
+
+        /* Explore Column */
+        .footer-explore {
+          display: flex;
+          width: 167px;
+          padding: 10px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+        }
+
+        /* Legal Column */
+        .footer-legal {
+          display: flex;
+          width: 168px;
+          padding: 10px 10px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+        }
+
+        /* Text Styles */
+        .section-title {
+          font-family: "CX80BOLD";
+          font-size: 18px;
+          font-weight: 150;
+          line-height: 18px;
+          letter-spacing: 5.76px;
+          color: #F9F9F9;
+          // padding: 10px 0;
+          text-transform: uppercase;
+          margin-bottom: 10px;
+          margin-top: 10px;
+        }
+
+        .footer-row {
+          display: flex;
+          align-items: center;
+          padding: 6px 0;
+        }
+
+        .footer-text, .footer-link {
+          font-family: "Söhne", sans-serif;
+          font-size: 16px;
+          line-height: 24px;
+          color: #EAE5DF;
+          text-decoration: none;
+        }
+        .footer-link { text-decoration: underline; }
+
+        .contact-label { margin-right: 8px; font-family: "SohneBuch";}
+
+        .btn-book {
+          display: flex;
+          height: 48px;
+          padding: 12px 16px;
+          justify-content: center;
+          align-items: center;
+          background: #69E4DC;
+          border-radius: 8px;
+          border: none;
+          text-decoration: none;
+          font-family: "CX80";
+          font-size: 15px;
+          font-weight: 700;
+          line-height: 15px;
+          letter-spacing: 4.48px;
+          color: #073B2F;
+          text-transform: uppercase;
+          margin-top: 8px;
+          gap: 10px;
+        }
+
+        @keyframes call-vibrate {
+          0%, 20%, 100% { transform: rotate(0deg); }
+          3%, 9%, 15% { transform: rotate(-12deg); }
+          6%, 12%, 18% { transform: rotate(12deg); }
+        }
+        .vibrate-icon {
+          animation: call-vibrate 3s infinite ease-in-out;
+        }
+
+
+        .footer-legal-text {
+          font-family: "Söhne", sans-serif;
+          font-size: 16px;
+          line-height: 24px;
+          color: #EAE5DF;
+          padding: 4px 0;
+          white-space: nowrap;
+        }
+
+        .footer-bottom {
+          margin-top: auto;
+          width: 100%;
+        }
+        .footer-copyright {
+          font-family: "Söhne", sans-serif;
+          font-size: 16px;
+          color: #846F58;
+        }
+
+        /* ── RESPONSIVE ── */
         @media (max-width: 1200px) {
-          .footer-wrap { padding: 56px 76px !important; }
+          .footer { padding: 56px 76px !important; }
+          .footer-grid { gap: 40px 24px; }
+          .footer-contact { margin-left: 0; }
+          .desktop-only { display: none; }
+        }
+        @media (max-width: 1024px) {
+          .footer { padding: 56px 40px !important; }
+          .footer-grid { justify-content: space-between; }
         }
         @media (max-width: 768px) {
-          .footer-wrap { padding: 48px 20px !important; }
-          .footer-grid { flex-direction: column !important; }
-          .desktop-only { display: none !important; }
-          .footer-contact-col, .footer-explore-col, .footer-legal-col { width: 100% !important; margin-left: 0 !important; }
+          .footer { padding: 48px 20px !important; gap: 40px; }
+          .footer-grid { flex-direction: column; }
+          .desktop-only { display: none; }
+          .footer-contact, .footer-explore, .footer-legal { width: 100%; margin-left: 0; }
         }
       `}</style>
 
@@ -131,10 +304,9 @@ export default function Footer() {
                 info@findandsignba.com.au
               </a>
             </div>
-            <a href={CALENDLY} target="_blank" rel="noopener noreferrer"
-              className="btn-book"
-              style={{ display: "flex", height: "48px", padding: "12px 16px", justifyContent: "center", alignItems: "center", background: t.btnBg, borderRadius: "8px", border: "none", textDecoration: "none", fontFamily: "CX80BOLD", fontSize: "14px", letterSpacing: "4.48px", color: t.btnColor, textTransform: "uppercase", marginTop: "8px", cursor: "pointer", transition: "background 0.3s ease" }}>
-              Book a call
+            <a href="https://calendly.com/findandsignba-info" target="_blank" rel="noopener noreferrer" className="btn-book">
+              <img src={callIcon} className="vibrate-icon" width="20" height="20" alt="" />
+              Book a Call
             </a>
           </div>
 

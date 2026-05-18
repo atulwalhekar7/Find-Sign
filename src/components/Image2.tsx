@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
-import heroImage from "../assets/niki-nakrani-buyers-agent-image3-australia-find-and-sign.png";
+import heroImage from "../assets/niki-nakrani-buyers-agent-image2-australia-find-and-sign.jpg";
 
 const Image1: React.FC = () => {
   return (
@@ -74,6 +74,51 @@ const Image1: React.FC = () => {
               Expert guidance that shapes better outcomes.
             </Box>
           </Box>
+<Box
+  className="image2-overlay-container"
+  sx={{
+    position: "absolute",
+    inset: 0,
+    display: "flex",
+    justifyContent: "center",
+     background: "rgba(0,0,0,0.45)",
+
+    alignItems: { xs: "center", sm: "center" }, // vertically centered
+    padding: { xs: "20px", md: "40px" },
+    transform: "none",    // 👈 remove the translateY offset
+  }}
+>
+  <Box
+    component="h2"
+    className="image2-hero-title"
+    tabIndex={0}
+    sx={{
+      color: "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
+      textAlign: "center",
+      fontVariantNumeric: "lining-nums proportional-nums",
+      fontFamily: 'GT Super Display Medium',
+      
+      fontSize: {
+        xs: "18px",
+        sm: "32px",
+        md: "44px",
+      },
+      fontStyle: "normal",
+      fontWeight: 500,
+      lineHeight: {
+        xs: "1.2",
+        sm: "40px",
+        md: "50px",
+      },
+      letterSpacing: "-0.88px",
+      margin: 0,
+      maxWidth: { xs: "800px", sm: "none" },
+      whiteSpace: { xs: "normal", sm: "nowrap" },
+    }}
+  >
+    Expert guidance that shapes better outcomes.
+  </Box>
+</Box>
         </Box>
       </Box>
 
@@ -85,8 +130,8 @@ const Image1: React.FC = () => {
 
         @media (max-width: 599px) {
           .image2-overlay-container {
-            align-items: flex-end !important;
-            padding-bottom: 60px !important;
+            align-items: center !important;
+            padding-bottom: 0px !important;
           }
           .image2-hero-title {
             font-size: 18px !important;

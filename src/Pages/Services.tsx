@@ -321,8 +321,10 @@ export default function Services() {
 
       {/* ── SECTION 1: Hero ─────────────────────────────────────────────── */}
       <section
+        className="services-hero-banner"
         style={{
-          minHeight: "80vh",
+          minHeight: "60vh",
+          aspectRatio: "16 / 7",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -334,7 +336,7 @@ export default function Services() {
           padding: "0 20px",
         }}
       >
-        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.35)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
         <div
           style={{
             position: "relative",
@@ -360,7 +362,7 @@ export default function Services() {
               fontWeight: 500,
               color: "#FFF",
               lineHeight: "1.1",
-              letterSpacing: "1px",
+              letterSpacing: "-2%",
               fontVariantNumeric: "lining-nums proportional-nums",
               margin: 0,
             }}
@@ -628,9 +630,15 @@ From the first conversation to settlement and beyond, we are in your corner. You
 
         @media (max-width: 900px) {
           .services-section { padding: 64px 20px 64px; }
-          h1 { font-size: 56px !important; line-height: 1.2 !important; }
-          h2 { font-size: 42px !important; line-height: 40px !important; }
-          h3 { font-size: 32px !important; }
+
+          .services-hero-banner {
+            aspect-ratio: 4 / 5 !important;
+            min-height: unset !important;
+          }
+
+          h1 { font-size: 48px !important; line-height: 58px !important; }
+          h2 { font-size: 38px !important; line-height: 48px !important; }
+          h3 { font-size: 28px !important; line-height: 38px !important; }
           .services-section p { font-size: 18px !important; line-height: 28px !important; }
           .top-grid.grid-12 .col-6 { grid-column: span 12; }
           .col-md-1  { grid-column: span 1; }
@@ -647,8 +655,15 @@ From the first conversation to settlement and beyond, we are in your corner. You
           .col-md-12 { grid-column: span 12; }
         }
 
+        @media (max-width: 767px) {
+          h1, .h1 { font-size: 48px !important; line-height: 58px !important; }
+          h2, .h2 { font-size: 38px !important; line-height: 48px !important; }
+          h3, .h3 { font-size: 28px !important; line-height: 38px !important; }
+        }
+
+        /* ── sm: 600px — mobile ──────────────────────────────────────────── */
         @media (max-width: 600px) {
-          h1 { font-size: 56px !important; }
+          /* all cards go full-width on small screens */
           .grid-12 [class*="col-"] { grid-column: span 12 !important; }
         }
       `}</style>

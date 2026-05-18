@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
 
-import bannerImg from "../assets/Blogs/Blog 1_Image.jpg";
+// --- Assets (Assuming these exist in the Blogs folder as per instructions) ---
+import bannerImg from "../assets/2_Banner 2_Scarborough.jpg";
 import agentImg from "../assets/Blogs/DSC06286.jpg";
 import servicesImg from "../assets/About.jpg";
 import benefitsImg from "../assets/Blogs/Blog 1_Image.jpg";
@@ -107,18 +108,16 @@ export default function BuyerAgentPerthBlog() {
             animation: "heroFadeIn 0.8s ease both",
           }}
         >
-          <h1
-            style={{
-              fontFamily: "'GT Super Display Medium'",
-              fontSize: "64px",
-              fontWeight: 500,
-              color: "#FFF",
-              lineHeight: "1.1",
-              letterSpacing: "1px",
-              margin: 0,
-            }}
-          >
-            Your Ultimate Guide to Hiring a Buyer's Agent in Perth
+          <h1 style={{ 
+            fontFamily: "'GT Super Display Medium'",
+            fontSize: "64px",
+            fontWeight: 500,
+            color: "#FFF",
+            lineHeight: "1.1",
+            letterSpacing: "-2%",
+            margin: 0 
+          }}>
+            Your Ultimate Guide to Hiring a Buyer’s Agent in Perth
           </h1>
           <p tabIndex={0} style={{ color: "#FFFFFF", fontSize: "24px", fontWeight: 300, marginTop: "24px", opacity: 0.9 }}>
             Find & Sign Buyer Advocate

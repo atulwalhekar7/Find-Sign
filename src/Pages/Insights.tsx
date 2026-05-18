@@ -2,11 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
+import AboutSection from "../components/AboutSection";
 import Image7 from "../components/Image7";
 import { useTheme } from "../components/ThemeContext";
 
-import bannerImg from "../assets/Insights-banner-find-and-sign-buyers-agent-australia.jpg";
-import perthBlogImg from "../assets/Blogs/DSC06286.jpg";
+ import aboutInsightsImg from "../assets/niki-nakrani-buyers-agent-perth-property-expert-about-insights-find-and-sign.jpg";
+import bannerImg from "../assets/client-outcomes-banner-find-and-sign-buyers-agent-australia.jpg";
+import perthBlogImg from "../assets/niki.jpg";
+import Blog2 from "../assets/niki.jpg";
 
 // ── Theme ─────────────────────────────────────────────────────────────────────
 const THEMES = {
@@ -95,7 +98,7 @@ const BlogCard = ({
             fontStyle: "normal",
             fontWeight: 500,
             lineHeight: "40px",
-            letterSpacing: "-0.64px",
+            letterSpacing: "-2%",
             margin: "0px",
             transition: "color 0.3s ease",
           }}
@@ -168,8 +171,9 @@ const BlogCard = ({
     </div>
   );
 };
+  
+// --- Main Component ---
 
-// ── Blog posts data ───────────────────────────────────────────────────────────
 const blogPosts = [
   {
     title: "Blog Post One",
@@ -181,8 +185,9 @@ const blogPosts = [
   {
     title: "Blog Post Two",
     date: "01 april 2026",
-    description: "Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement.",
-    image: bannerImg,
+    description:
+      "Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement.",
+    image: Blog2,
     path: "/blog/buyers-agent-perth",
   },
 ];
@@ -210,7 +215,7 @@ export default function Insights() {
           padding: "0 20px",
         }}
       >
-        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.35)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
         <div
           style={{
             position: "relative",
@@ -229,25 +234,31 @@ export default function Insights() {
         >
           <h1
             tabIndex={0}
-            style={{
-              fontFamily: "GT Super Display Medium",
-              fontSize: "64px",
-              fontWeight: 500,
-              color: "#FFF",
-              lineHeight: "1.1",
-              letterSpacing: "1px",
-              fontVariantNumeric: "lining-nums proportional-nums",
-              margin: 0,
-            }}
-          >
+            style={{ 
+            fontFamily: 'GT Super Display Medium',
+            fontSize: "64px",
+            fontWeight: 500,
+            color: "#FFF",
+            lineHeight: "1.1",
+            letterSpacing: "-2%",
+            fontVariantNumeric: "lining-nums proportional-nums",
+            margin: 0 
+          }}>
             Insights
           </h1>
         </div>
       </section>
 
-      {/* ── SECTION 2: Blogs ────────────────────────────────────────────── */}
-      <section className="blogs-container" style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center" }}>
-        <h2
+      <AboutSection
+       imageSrc={aboutInsightsImg}
+       heading="About Find & Sign"
+       body1="These are insights drawn from our experience in the market. Real observations, informed perspectives, and practical guidance. When you engage with Find and Sign Buyer Advocate, you are gaining access to knowledge built through direct involvement and on-the-ground expertise. These articles are designed to help you understand the process, assess opportunities, and make more informed decisions."
+      //  body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."
+     /> 
+
+      {/* ── SECTION 3: Blogs ────────────────────────────────────────────── */}
+      <section className="blogs-container" style={{ maxWidth: "1200px", margin: "0 auto ", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <h2 
           tabIndex={0}
           style={{
             margin: "auto 24px",
@@ -319,8 +330,14 @@ export default function Insights() {
 
         @media (max-width: 900px) {
           .blogs-container { padding: 64px 20px; }
-          h1 { font-size: 56px !important; line-height: 1.2 !important; }
-          h2 { font-size: 42px !important; line-height: 40px !important; }
+          .about-grid {
+            flex-direction: column !important;
+          }
+          .about-grid > div {
+            width: 100% !important;
+          }
+          h1 { font-size: 48px !important; line-height: 58px !important; }
+          h2 { font-size: 38px !important; line-height: 48px !important; }
           section p { font-size: 18px !important; line-height: 28px !important; }
         }
 
@@ -334,12 +351,12 @@ export default function Insights() {
             height: 200px !important;
           }
           .blog-card > div > div:first-child {
-            font-size: 32px !important;
+             font-size: 28px !important;
           }
         }
 
         @media (max-width: 600px) {
-          h1 { font-size: 56px !important; }
+          h1 { font-size: 48px !important; }
         }
       `}</style>
     </div>
