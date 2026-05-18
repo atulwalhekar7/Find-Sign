@@ -76,7 +76,7 @@ export default function App() {
       try {
         const data = JSON.parse(event.data);
         // 'play' or 'playing' signals that frames are actually being rendered
-        if (data.event === "play" || data.event === "playing") {
+        if (data.event === "play" || data.event === "playing" || data.event === "loaded" || data.event === "ready") {
           setIsVideoLoading(false);
         }
       } catch (err) {
@@ -86,6 +86,13 @@ export default function App() {
 
     window.addEventListener("message", handleMessage);
     return () => window.removeEventListener("message", handleMessage);
+  }, []);
+
+  useEffect(() => {
+    // Primary fallback: Force hide loader after 1.2s to ensure the page feels fast
+    // even if Vimeo events are delayed.
+    const timer = setTimeout(() => setIsVideoLoading(false), 1200);
+    return () => clearTimeout(timer);
   }, []);
 
   function openVideo() {
@@ -144,7 +151,7 @@ export default function App() {
           inset: 0;
           z-index: 2; /* Sits above the hero-overlay */
           background: #073B2F; 
-          transition: opacity 0.8s ease;
+          transition: opacity 0.3s ease;
           pointer-events: none;
         }
         .video-loader-container.hidden {
@@ -159,7 +166,7 @@ export default function App() {
           border-radius: 50%;
           border-top-color: #69E4DC;
           animation: spin 1s infinite linear;
-          transition: opacity 0.6s ease;
+          transition: opacity 0.3s ease;
           opacity: 1;
           margin-bottom: 8px; /* Alignment spacing */
         }
@@ -307,10 +314,9 @@ export default function App() {
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
               onLoad={() => {
-                // Fallback: hide loader after 8s if the play event is blocked or fails
-                setTimeout(() => setIsVideoLoading(false), 8000);
+                setIsVideoLoading(false);
               }}
-              loading="lazy"
+              loading="eager"
             />
           </div>
 
