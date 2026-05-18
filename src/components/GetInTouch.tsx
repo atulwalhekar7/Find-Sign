@@ -3,6 +3,7 @@ import { Box, Dialog, DialogContent, Typography } from "@mui/material";
 import emailjs from '@emailjs/browser';
 import checkIcon from "../assets/check.png";
 import callIcon from "../assets/Icon.png";
+import { useTheme } from "./ThemeContext";
 
 const COLORS = {
   racingGreen: "#073B2F",
