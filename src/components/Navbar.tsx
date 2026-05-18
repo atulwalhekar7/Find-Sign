@@ -119,8 +119,8 @@ export default function Navbar() {
         }
 
      .nav-logo {
-   width: 128px !important;
-          height: 47px !important;
+   width: 128px;
+          height: 47px;
   object-fit: contain;
   display: block;
 }
@@ -248,6 +248,13 @@ export default function Navbar() {
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
         }
 
+       .nav-drawer-link:hover,
+.nav-drawer-link:active,
+.nav-drawer-link.active {
+  background: #EAE5DF;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
         @keyframes call-vibrate {
           0%, 20%, 100% { transform: rotate(0deg); }
           3%, 9%, 15%   { transform: rotate(-12deg); }
@@ -285,22 +292,22 @@ export default function Navbar() {
           }
           .nav-logo {
             width: 128px;
-            height: 47px !important;
+            height: 47px;
           }
           .nav-links {
-            display: none !important;
+            display: none;
           }
           .nav-actions {
             gap: 12px;
           }
           .nav-cta {
-            display: none !important;
+            display: none;
           }
           .mobile-call-icon {
-            display: flex !important;
+            display: flex;
           }
           .nav-hamburger {
-            display: block !important;
+            display: block;
           }
           .nav-drawer {
             display: block;
