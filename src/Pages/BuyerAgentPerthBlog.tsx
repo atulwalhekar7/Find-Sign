@@ -110,11 +110,11 @@ export default function BuyerAgentPerthBlog() {
         >
           <h1 style={{ 
             fontFamily: "'GT Super Display Medium'",
-            fontSize: "64px",
+            fontSize: "56px",
             fontWeight: 500,
             color: "#FFF",
             lineHeight: "1.1",
-            letterSpacing: "-2%",
+            letterSpacing: "-0.02em",
             margin: 0 
           }}>
             Your Ultimate Guide to Hiring a Buyer’s Agent in Perth
@@ -286,11 +286,11 @@ export default function BuyerAgentPerthBlog() {
           to   { opacity: 1; transform: translateY(0); }
         }
         @media (max-width: 900px) {
-          h1 { font-size: 44px !important; line-height: 1.2 !important; }
+          h1 { font-size: 44px !important; line-height: 1.2 !important; letter-spacing: -0.02em !important; }
           h2 { font-size: 36px !important; }
         }
         @media (max-width: 600px) {
-          h1 { font-size: 36px !important; }
+          h1 { font-size: 36px !important; letter-spacing: -0.02em !important; }
           main { padding: 0 20px !important; }
         }
       `}</style>

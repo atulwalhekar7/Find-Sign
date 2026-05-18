@@ -8,8 +8,8 @@ import { useTheme } from "../components/ThemeContext";
 
  import aboutInsightsImg from "../assets/niki-nakrani-buyers-agent-perth-property-expert-about-insights-find-and-sign.jpg";
 import bannerImg from "../assets/client-outcomes-banner-find-and-sign-buyers-agent-australia.jpg";
-import perthBlogImg from "../assets/niki.jpg";
-import Blog2 from "../assets/niki.jpg";
+import perthBlogImg from "../assets/1_Banner_Scarborough.jpg";
+import Blog2 from "../assets/2_Banner 2_Scarborough.jpg";
 
 // ── Theme ─────────────────────────────────────────────────────────────────────
 const THEMES = {
@@ -98,7 +98,7 @@ const BlogCard = ({
             fontStyle: "normal",
             fontWeight: 500,
             lineHeight: "40px",
-            letterSpacing: "-2%",
+letterSpacing: "-0.02em",
             margin: "0px",
             transition: "color 0.3s ease",
           }}
@@ -236,11 +236,11 @@ export default function Insights() {
             tabIndex={0}
             style={{ 
             fontFamily: 'GT Super Display Medium',
-            fontSize: "64px",
+            fontSize: "56px",
             fontWeight: 500,
             color: "#FFF",
             lineHeight: "1.1",
-            letterSpacing: "-2%",
+            letterSpacing: "-0.02em",
             fontVariantNumeric: "lining-nums proportional-nums",
             margin: 0 
           }}>

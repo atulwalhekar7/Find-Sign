@@ -119,11 +119,11 @@ export default function BestSuburbsPerthBlog() {
             tabIndex={0}
             style={{ 
             fontFamily: "'GT Super Display Medium'",
-            fontSize: "64px",
+            fontSize: "56px",
             fontWeight: 500,
             color: "#FFF",
             lineHeight: "1.1",
-            letterSpacing: "-2%",
+            letterSpacing: "-0.02em",
             margin: 0 
           }}>
             Best Suburbs in Perth for Property Investment in 2026
@@ -417,7 +417,7 @@ export default function BestSuburbsPerthBlog() {
           .blog-hero-banner { aspect-ratio: 4 / 5; min-height: unset; }
         }
         @media (max-width: 900px) {
-          h1 { font-size: 44px !important; line-height: 1.2 !important; }
+          h1 { font-size: 44px !important; line-height: 1.2 !important; letter-spacing: -0.02em !important; }
           h2 { font-size: 36px !important; }
         }
         @media (max-width: 768px) {
@@ -426,7 +426,7 @@ export default function BestSuburbsPerthBlog() {
           .emerging-grid { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 600px) {
-          h1 { font-size: 36px !important; }
+          h1 { font-size: 36px !important; letter-spacing: -0.02em !important; }
           main { padding: 0 20px !important; }
         }
       `}</style>

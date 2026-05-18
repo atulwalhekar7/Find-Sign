@@ -474,7 +474,7 @@ export default function ClientOutcomes() {
           font-weight: 500;
           color: #FFF;
           line-height: 1.1;
-          letter-spacing: -2%;
+letterSpacing: "-0.02em",
           font-variant-numeric: lining-nums proportional-nums;
           margin: 0;
         }
@@ -652,7 +652,7 @@ export default function ClientOutcomes() {
             column-gap: 24px;
             padding: 48px 48px 64px;
           }
-          .hero-h1 { font-size: 44px; letter-spacing: -2%; }
+          .hero-h1 { font-size: 44px; letter-spacing: -0.02em; }
           .outcomes-h2,
   .testimonials-h2 {
     font-size: 38px;
@@ -668,7 +668,7 @@ export default function ClientOutcomes() {
           .nav-arrow.next { right: -44px; }
         }
         @media (max-width: 767px) {
-          .hero-h1 { font-size: 48px !important; letter-spacing: 2%; line-height: 58px !important; }
+          .hero-h1 { font-size: 48px !important; letter-spacing: 2%; line-height: 58px !important; letter-spacing: -0.02em; }
           .outcomes-h2,
   .testimonials-h2 {
     font-size: 38px !important;

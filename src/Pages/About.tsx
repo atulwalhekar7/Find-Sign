@@ -174,8 +174,8 @@ Find & Sign we find with confidence you sign with certainty."
         }
         .hero-title {
           font-family: 'GT Super Display Medium';
-          font-size: 64px; font-weight: 500; color: #FFF;
-          line-height: 1.1; letter-spacing: -2%;
+          font-size: 56px; font-weight: 500; color: #FFF;
+          line-height: 1.1;letter-spacing: -0.02em;;
           font-variant-numeric: lining-nums proportional-nums; margin: 0;
         }
 
@@ -226,7 +226,7 @@ Find & Sign we find with confidence you sign with certainty."
 
         /* Responsive */
         @media (max-width: 767px) {
-          h1, .h1, .hero-title { font-size: 48px !important; line-height: 58px !important; }
+          h1, .h1, .hero-title { font-size: 48px !important; line-height: 58px !important;letter-spacing: -0.02em; }
           h2, .h2, .team-header h2 { font-size: 38px !important; line-height: 48px !important; }
           h3, .h3, .team-name { font-size: 28px !important; line-height: 38px !important; }
         }
