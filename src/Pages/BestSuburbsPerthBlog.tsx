@@ -3,7 +3,7 @@ import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
 
 // --- Assets ---
-import bannerImg from "../assets/Blogs/Blog 1_Image.jpg";
+import bannerImg from "../assets/1_Banner_Scarborough.jpg";
 import agentImg from "../assets/Blogs/DSC06286.jpg";
 import servicesImg from "../assets/About.jpg";
 import benefitsImg from "../assets/Blogs/Blog 1_Image.jpg";

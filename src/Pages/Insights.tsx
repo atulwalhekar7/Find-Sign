@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
-// import AboutSection from "../components/AboutSection";
+import AboutSection from "../components/AboutSection";
 import Image7 from "../components/Image7";
 
-// import aboutInsightsImg from "../assets/About Insights.jpg";
-import bannerImg from "../assets/Insights-banner-find-and-sign-buyers-agent-australia.jpg";
+ import aboutInsightsImg from "../assets/niki-nakrani-buyers-agent-perth-property-expert-about-insights-find-and-sign.jpg";
+import bannerImg from "../assets/client-outcomes-banner-find-and-sign-buyers-agent-australia.jpg";
 import perthBlogImg from "../assets/niki.jpg";
 import Blog2 from "../assets/niki.jpg";
 
@@ -136,7 +136,7 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
     </div>
   );
 };
-
+  
 // --- Main Component ---
 
 const blogPosts = [
@@ -215,13 +215,12 @@ export default function Insights() {
         </div>
       </section>
 
-     {/* <AboutSection
+      <AboutSection
        imageSrc={aboutInsightsImg}
        heading="About Find & Sign"
-      
-       body1="Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page might look."
-       body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."
-     /> */}
+       body1="These are insights drawn from our experience in the market. Real observations, informed perspectives, and practical guidance. When you engage with Find and Sign Buyer Advocate, you are gaining access to knowledge built through direct involvement and on-the-ground expertise. These articles are designed to help you understand the process, assess opportunities, and make more informed decisions."
+      //  body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."
+     /> 
 
       {/* ── SECTION 3: Blogs ────────────────────────────────────────────── */}
       <section className="blogs-container" style={{ maxWidth: "1200px", margin: "0 auto ", display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

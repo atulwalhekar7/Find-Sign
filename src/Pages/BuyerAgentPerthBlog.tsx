@@ -3,7 +3,7 @@ import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
 
 // --- Assets (Assuming these exist in the Blogs folder as per instructions) ---
-import bannerImg from "../assets/Blogs/Blog 1_Image.jpg";
+import bannerImg from "../assets/2_Banner 2_Scarborough.jpg";
 import agentImg from "../assets/Blogs/DSC06286.jpg";
 import servicesImg from "../assets/About.jpg";
 import benefitsImg from "../assets/Blogs/Blog 1_Image.jpg";
