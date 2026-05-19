@@ -4,10 +4,10 @@ import SimpleFooter from "../components/Footer";
 
 // --- Assets ---
 import bannerImg from "../assets/1_Banner_Scarborough.jpg";
-import agentImg from "../assets/Blogs/DSC06286.jpg";
+import agentImg from "../assets/2_Banner 2_Scarborough.jpg";
 import servicesImg from "../assets/About.jpg";
-import benefitsImg from "../assets/Blogs/Blog 1_Image.jpg";
-import processImg from "../assets/DSC06057.jpg";
+import benefitsImg from "../assets/3_Banner 3_Joondalup-City-Centre.png";
+import processImg from "../assets/4_Banner 4_City-of-Rockingham-Summer.jpg";
 
 // --- Helper Components ---
 const SideBySideSection = ({ 
@@ -95,7 +95,7 @@ export default function BestSuburbsPerthBlog() {
         }}
       >
         <div className={`video-loader-container ${!isBannerLoading ? "hidden" : ""}`} />
-        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.35)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
         <div
           style={{
             position: "relative",

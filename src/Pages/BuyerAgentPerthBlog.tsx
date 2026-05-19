@@ -3,10 +3,10 @@ import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
 
 // --- Assets (Assuming these exist in the Blogs folder as per instructions) ---
-import bannerImg from "../assets/2_Banner 2_Scarborough.jpg";
+import bannerImg from "../assets/happy-home-buyers-blog2-banner-australia-find-and-sign.jpg";
 import agentImg from "../assets/Blogs/DSC06286.jpg";
 import servicesImg from "../assets/About.jpg";
-import benefitsImg from "../assets/Blogs/Blog 1_Image.jpg";
+import benefitsImg from "../assets/niki-nakrani-buyers-agent-australia-blog2-image-find-and-sign.jpg";
 import processImg from "../assets/DSC06057.jpg";
 import { useState } from "react";
 import OurProcessBlog from "./Our-Process-Post2";
@@ -95,7 +95,7 @@ export default function BuyerAgentPerthBlog() {
         }}
       >
         <div className={`video-loader-container ${!isBannerLoading ? "hidden" : ""}`} />
-        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.35)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
         <div
           style={{
             position: "relative",

@@ -8,7 +8,7 @@ import Image7 from "../components/Image7";
  import aboutInsightsImg from "../assets/niki-nakrani-buyers-agent-perth-property-expert-about-insights-find-and-sign.jpg";
 import bannerImg from "../assets/client-outcomes-banner-find-and-sign-buyers-agent-australia.jpg";
 import perthBlogImg from "../assets/1_Banner_Scarborough.jpg";
-import Blog2 from "../assets/2_Banner 2_Scarborough.jpg";
+import Blog2 from "../assets/happy-home-buyers-blog2-banner-australia-find-and-sign.jpg";
 
 // --- Helper Components ---
 
@@ -141,7 +141,7 @@ letterSpacing: "-0.02em",
 
 const blogPosts = [
   {
-    title: "Blog Post One",
+    title: "Best Suburbs in Perth for Property Investment in 2026",
     date: "01 march 2026",
     description:
       "Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement.",
@@ -149,7 +149,7 @@ const blogPosts = [
     path: "/blog/best-suburbs-perth",
   },
   {
-    title: "Blog Post Two",
+    title: "Your Ultimate Guide to Hiring a Buyer’s Agent in Perth",
     date: "01 april 2026",
     description:
       "Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement.",
