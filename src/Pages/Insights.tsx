@@ -65,7 +65,7 @@ const BlogCard = ({ post }: { post: (typeof blogPosts)[0] }) => {
             fontSize: "32px",
             fontStyle: "normal",
             fontWeight: 500,
-            lineHeight: "40px",
+            lineHeight: "34px",
 letterSpacing: "-0.02em",
             margin: "0px",
           }}

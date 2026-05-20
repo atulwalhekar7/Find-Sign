@@ -201,7 +201,7 @@ const Testimonials = () => {
         .rev-subheading {
           color: #000;
           font-family: 'Sohne';
-          font-size: 24px;
+          font-size: 16px;
           font-weight: 300;
           line-height: 36px;
           margin-top: 24px;

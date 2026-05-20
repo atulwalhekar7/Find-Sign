@@ -6,7 +6,6 @@ const Image1: React.FC = () => {
   return (
     <>
       <Box sx={{ width: "100%" }}>
-        {/* HERO */}
         <Box
           sx={{
             position: "relative",
@@ -39,9 +38,9 @@ const Image1: React.FC = () => {
     justifyContent: "center",
                   background: "rgba(0,0,0,0.45)",
 
-    alignItems: { xs: "center", sm: "center" }, // vertically centered
+    alignItems: { xs: "center", sm: "center" }, 
     padding: { xs: "20px", md: "40px" },
-    transform: "none",    // 👈 remove the translateY offset
+    transform: "none",   
   }}
 >
   <Box
@@ -65,7 +64,7 @@ const Image1: React.FC = () => {
         sm: "40px",
         md: "54px",
       },
-      letterSpacing: "-0.88px",
+      letterSpacing: "-0.05px !important",
       margin: 0,
       maxWidth: { xs: "800px", sm: "none" },
       whiteSpace: { xs: "normal", sm: "nowrap" },

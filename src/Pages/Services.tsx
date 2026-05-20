@@ -500,11 +500,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
           <div className="col-4 col-md-6 col-sm-12">
             <OtherServiceCard title="Building Inspection" body={body5} hasButton delay={0.2} onBookCall={handleBookCall} />
           </div>
-        </div>
-
-       {/* Row 2: 3 affiliated cards */}
-        <div className="grid-12" style={{ marginBottom: "64px" }}>
-          <div className="col-4 col-md-6 col-sm-12">
+                    <div className="col-4 col-md-6 col-sm-12">
             <OtherServiceCard title="Property Management" body={body6} hasButton delay={0} onBookCall={handleBookCall} />
           </div>
           <div className="col-4 col-md-6 col-sm-12">
@@ -533,10 +529,10 @@ From the first conversation to settlement and beyond, we are in your corner. You
                 color: "var(--FS-System-Grey-1, #757575)",
                 textAlign: "center",
                 fontFamily: " SohneBuch",
-                fontSize: "16px",
+                fontSize: "11px !important",
                 fontStyle: "normal",
                 fontWeight: 400,
-                lineHeight: "24px",
+                lineHeight: "22px !important",
                 margin: 0,
               }}
             >
@@ -551,10 +547,10 @@ From the first conversation to settlement and beyond, we are in your corner. You
                 color: "var(--FS-System-Grey-1, #757575)",
                 textAlign: "center",
                 fontFamily: "SohneBuch",
-                fontSize: "16px",
+                fontSize: "11px !important",
                 fontStyle: "normal",
                 fontWeight: 400,
-                lineHeight: "24px",
+                lineHeight: "22px !important",
                 margin: 0,
                 maxWidth: "1158px", // This was the line before the duplicate
               }}
@@ -672,7 +668,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
           h1 { font-size: 48px !important; line-height: 58px !important; }
           h2 { font-size: 38px !important; line-height: 48px !important; }
           h3 { font-size: 28px !important; line-height: 38px !important; }
-          .services-section p { font-size: 18px !important; line-height: 28px !important; }
+          .services-section p { font-size: 11px !important; line-height: 20px !important; }
 
           /* top-grid: each col-6 card full-width on tablet */
           .top-grid.grid-12 .col-6 { grid-column: span 12; }

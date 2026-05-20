@@ -363,6 +363,7 @@
 import { NavLink } from "react-router-dom";
 
 import logo from "../assets/FS Primary Lockup_Gold.png";
+import light from "../assets/Light Gold.svg"
 import callIcon from "../assets/Icon.png";
 
 import fbIcon from "../assets/icon/fb.svg";
@@ -397,7 +398,6 @@ export default function Footer() {
           background: #073B2F;
           color: white;
           width: 100%;
-          max-width: 1556px;
           margin: 0 auto;
           display: flex;
           min-height: 682px;
@@ -599,7 +599,7 @@ gap: 10px;
           {/* Logo */}
           <div className="footer-logo-container">
             <NavLink to="/">
-              <img src={logo} alt="Logo" className="footer-logo" />
+              <img src={light} alt="Logo" className="footer-logo" />
             </NavLink>
           </div>
 

@@ -99,27 +99,27 @@ body {
 /* ================= Sohne ================= */
 @font-face {
   font-family: 'Sohne';
-  src: url('./assets/fonts/Söhne/woff2/soehne-leicht.woff2') format('woff2');
+  src: url('./assets/Fonts/soehne-leicht.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Sohne';
-  src: url('./assets/fonts/Söhne/woff2/Sohne-Regular.woff2') format('woff2');
+  src: url('./assets/Fonts/soehne-leicht.woff2') format('woff2');
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'Sohne';
-  src: url('./assets/fonts/Söhne/woff2/Sohne-Regular.woff2') format('woff2');
+  src: url('./assets/Fonts/soehne-leicht.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'SohneBuch';
-  src: url('./assets/fonts/Söhne/otf/Söhne-Buch.otf') format('opentype');
+  src: url('./assets/Fonts/soehne-buch.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
 }
@@ -165,13 +165,13 @@ body {
 /* ================= Sohne ================= */
 @font-face {
   font-family: 'Sohne';
-  src: url('./assets/Fonts/Söhne/woff2/soehne-leicht.woff2') format('woff2');
+  src: url('./assets/Fonts/soehne-leicht.woff2') format('woff2');
   font-weight: 300;
 }
 
 @font-face {
   font-family: 'Sohne';
-  src: url('./assets/Fonts/Söhne/woff2/Sohne-Regular.woff2') format('woff2');
+  src: url('./assets/Fonts/soehne-leicht.woff2') format('woff2');
   font-weight: 400;
 }
 
@@ -213,20 +213,20 @@ body {
 
 @font-face {
   font-family: 'Sohne';
-  src: url('./assets/fonts/Söhne/woff2/soehne-leicht.woff2') format('woff2');
+  src: url('./assets/Fonts/soehne-leicht.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Sohne Regular';
-  src: url('./assets/fonts/Söhne/woff2/Sohne-Regular.woff2') format('woff2');
+  src: url('./assets/Fonts/soehne-leicht.woff2') format('woff2');
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'SohneBuch';
-  src: url('./assets/fonts/Söhne/otf/Söhne-Buch.otf') format('opentype');
+  src: url('./assets/Fonts/soehne-buch.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
 }
