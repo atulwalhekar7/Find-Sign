@@ -7,7 +7,12 @@ const Image1: React.FC = () => {
     <>
       <Box
         className="no-theme"
-        sx={{ width: "100%" }}
+        sx={{
+          width: "100%",
+          display: "block",
+          lineHeight: 0,
+          fontSize: 0,
+        }}
       >
         {/* HERO */}
         <Box
@@ -15,8 +20,16 @@ const Image1: React.FC = () => {
           sx={{
             position: "relative",
             width: "100%",
-            aspectRatio: { xs: "4 / 5", md: "16 / 7" },
+            aspectRatio: {
+              xs: "4 / 5",
+              md: "16 / 7",
+            },
             overflow: "hidden",
+            display: "block",
+            lineHeight: 0,
+            fontSize: 0,
+            margin: 0,
+            padding: 0,
           }}
         >
           {/* IMAGE */}
@@ -26,11 +39,20 @@ const Image1: React.FC = () => {
             src={heroImage}
             alt="Professional strategy development with real-time property market data"
             sx={{
+              position: "absolute",
+              top: 0,
+              left: 0,
               width: "100%",
               height: "100%",
               objectFit: "cover",
               objectPosition: "center 30%",
               display: "block",
+              verticalAlign: "top",
+              margin: 0,
+              padding: 0,
+
+              /* Dark image effect */
+              filter: "brightness(55%)",
             }}
           />
 
@@ -42,9 +64,16 @@ const Image1: React.FC = () => {
               inset: 0,
               display: "flex",
               justifyContent: "center",
-              alignItems: { xs: "flex-end", sm: "center" },
-              padding: { xs: "20px", md: "40px" },
-              transform: "none",
+              background: "rgba(0,0,0,0.45)",
+              alignItems: {
+                xs: "center",
+                sm: "center",
+                md: "center",
+              },
+              padding: {
+                xs: "20px",
+                md: "40px",
+              },
             }}
           >
             <Box
@@ -57,81 +86,35 @@ const Image1: React.FC = () => {
                 textAlign: "center",
                 fontVariantNumeric: "lining-nums proportional-nums",
                 fontFamily: "GT Super Display Medium",
-                fontSize: {
-                  xs: "18px",
-                  sm: "32px",
-                  md: "44px",
-                },
                 fontStyle: "normal",
                 fontWeight: 500,
-                lineHeight: {
-                  xs: "1.2",
-                  sm: "40px",
-                  md: "54px",
-                },
-                letterSpacing: "-0.88px",
                 margin: 0,
-                maxWidth: { xs: "800px", sm: "none" },
-                whiteSpace: { xs: "normal", sm: "nowrap" },
+                maxWidth: {
+                  xs: "320px",
+                  sm: "100%",
+                  md: "none",
+                },
+                whiteSpace: {
+                  xs: "normal",
+                  sm: "nowrap",
+                  md: "nowrap",
+                },
               }}
             >
               Strategy informed by timing, access and experience.
             </Box>
           </Box>
-<Box
-  className="image5-overlay-container"
-  sx={{
-    position: "absolute",
-    inset: 0,
-    display: "flex",
-    justifyContent: "center",
-                                background: "rgba(0,0,0,0.45)",
-
-    alignItems: { xs: "center", sm: "center" }, // vertically centered
-    padding: { xs: "20px", md: "40px" },
-    transform: "none",    // 👈 remove the translateY offset
-  }}
->
-  <Box
-    component="h2"
-    className="image5-hero-title"
-    tabIndex={0}
-    sx={{
-      color: "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
-      textAlign: "center",
-      fontVariantNumeric: "lining-nums proportional-nums",
-      fontFamily: 'GT Super Display Medium',
-      fontSize: {
-        xs: "18px",
-        sm: "32px",
-        md: "44px",
-      },
-      fontStyle: "normal",
-      fontWeight: 500,
-      lineHeight: {
-        xs: "1.2",
-        sm: "40px",
-        md: "54px",
-      },
-      letterSpacing: "-0.05px !important",
-      margin: 0,
-      maxWidth: { xs: "800px", sm: "none" },
-      whiteSpace: { xs: "normal", sm: "nowrap" },
-    }}
-  >
-    Strategy informed by timing, access and experience.
-  </Box>
-</Box>
         </Box>
       </Box>
 
       {/* STYLES */}
       <style>{`
-        /* ✅ Prevent dark mode from affecting this component */
+        /* ✅ Prevent dark mode issues */
         [data-theme="dark"] .no-theme {
           background: transparent !important;
         }
 
+        /* MOBILE */
         @media (max-width: 599px) {
           .image5-overlay-container {
             align-items: center !important;
@@ -141,6 +124,25 @@ const Image1: React.FC = () => {
           .image5-hero-title {
             font-size: 18px !important;
             line-height: 24px !important;
+            letter-spacing: -0.3px !important;
+          }
+        }
+
+        /* TABLET */
+        @media (min-width: 600px) and (max-width: 1024px) {
+          .image5-hero-title {
+            font-size: 32px !important;
+            line-height: 40px !important;
+            letter-spacing: -0.5px !important;
+          }
+        }
+
+        /* DESKTOP */
+        @media (min-width: 1025px) {
+          .image5-hero-title {
+            font-size: 44px !important;
+            line-height: 54px !important;
+            letter-spacing: -0.88px !important;
           }
         }
 

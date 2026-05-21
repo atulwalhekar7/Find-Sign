@@ -229,39 +229,43 @@ export default function Insights() {
       >
         <div className={`video-loader-container ${!isBannerLoading ? "hidden" : ""}`} />
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
-        <div
-          style={{
-            position: "relative",
-            zIndex: 3,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            textAlign: "center",
-            width: "90%",
-            maxWidth: "900px",
-            margin: "0 auto",
-            padding: "60px 20px",
-            animation: "heroFadeIn 0.8s ease both",
-          }}
-        >
-          <h1
-          <div className={`attractive-loader ${!isBannerLoading ? "hidden" : ""}`} aria-hidden="true" />
-          <h1 
-            tabIndex={0}
-            style={{ 
-            fontFamily: 'GT Super Display Medium',
-            fontSize: "56px",
-            fontWeight: 500,
-            color: "#FFF",
-            lineHeight: "1.1",
-            letterSpacing: "-0.02em",
-            fontVariantNumeric: "lining-nums proportional-nums",
-            margin: 0 
-          }}>
-            Insights
-          </h1>
-        </div>
+     <div
+  style={{
+    position: "relative",
+    zIndex: 3,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    width: "90%",
+    maxWidth: "900px",
+    margin: "0 auto",
+    padding: "60px 20px",
+    animation: "heroFadeIn 0.8s ease both",
+  }}
+>
+  <div
+    className={`attractive-loader ${!isBannerLoading ? "hidden" : ""}`}
+    aria-hidden="true"
+  />
+
+  <h1
+    tabIndex={0}
+    style={{
+      fontFamily: "GT Super Display Medium",
+      fontSize: "56px",
+      fontWeight: 500,
+      color: "#FFF",
+      lineHeight: "1.1",
+      letterSpacing: "-0.02em",
+      fontVariantNumeric: "lining-nums proportional-nums",
+      margin: 0,
+    }}
+  >
+    Insights
+  </h1>
+</div>
       </section>
 
       <AboutSection

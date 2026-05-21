@@ -2,8 +2,8 @@ import React from "react";
 import { Box } from "@mui/material";
 import heroImage from "../assets/niki-nakrani-buyers-agent-image3-australia-find-and-sign.png";
 
-const Image1: React.FC = () => {
-  return (
+const Image3: React.FC = () => {
+    return (
     <>
       <Box
         className="no-theme"
@@ -15,151 +15,109 @@ const Image1: React.FC = () => {
         }}
       >
         {/* HERO */}
-      <Box sx={{ width: "100%" }}>
-        <Box
-          className="no-theme"
-          sx={{
-            position: "relative",
-            width: "100%",
-            aspectRatio: {
-              xs: "3 / 4",
-              sm: "16 / 9",
-              md: "16 / 7",
-            },
-            overflow: "hidden",
-            display: "block",
-            lineHeight: 0,
-            fontSize: 0,
-            margin: 0,
-            padding: 0,
-          }}
-        >
-          {/* IMAGE */}
+        <Box sx={{ width: "100%" }}>
           <Box
-            component="img"
             className="no-theme"
-            src={heroImage}
-            alt="Happy family in front of their new home, secured through local property expertise"
             sx={{
-              position: "absolute",
-              top: 0,
-              left: 0,
+              position: "relative",
               width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: {
-                xs: "center 30%",
-                sm: "center top",
-                md: "center top",
+              aspectRatio: {
+                xs: "3 / 4",
+                sm: "16 / 9",
+                md: "16 / 7",
               },
+              overflow: "hidden",
               display: "block",
-              verticalAlign: "top",
+              lineHeight: 0,
+              fontSize: 0,
               margin: 0,
               padding: 0,
             }}
-          />
-
-          {/* OVERLAY */}
-          <Box
-            className="no-theme image3-overlay-container"
-            sx={{
-              position: "absolute",
-              inset: 0,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: {
-                xs: "flex-end",
-                sm: "center",
-                md: "center",
-              },
-              padding: {
-                xs: "20px",
-                sm: "30px",
-                md: "40px",
-              },
-            }}
           >
+            {/* IMAGE */}
             <Box
-              component="h2"
-              className="no-theme image3-hero-title"
-              tabIndex={0}
+              component="img"
+              className="no-theme"
+              src={heroImage}
+              alt="Happy family in front of their new home, secured through local property expertise"
               sx={{
-                color:
-                  "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
-                textAlign: "center",
-                fontVariantNumeric: "lining-nums proportional-nums",
-                fontFamily: "GT Super Display Medium",
-                fontStyle: "normal",
-                fontWeight: 500,
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: {
+                  xs: "center 30%",
+                  sm: "center top",
+                  md: "center top",
+                },
+                display: "block",
+                verticalAlign: "top",
                 margin: 0,
-                maxWidth: {
-                  xs: "320px",
-                  sm: "100%",
-                  md: "none",
+                padding: 0,
+              }}
+            />
+
+            {/* OVERLAY */}
+            <Box
+              className="no-theme image3-overlay-container"
+              sx={{
+                position: "absolute",
+                inset: 0,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: {
+                  xs: "flex-end",
+                  sm: "center",
+                  md: "center",
                 },
-                whiteSpace: {
-                  xs: "normal",
-                  sm: "nowrap",
-                  md: "nowrap",
-                },
-                paddingBottom: {
-                  xs: "30px",
-                  sm: "0px",
-                  md: "0px",
+                padding: {
+                  xs: "20px",
+                  sm: "30px",
+                  md: "40px",
                 },
               }}
             >
-              Local knowledge. Direct relationships. Earlier access.
+              <Box
+                component="h2"
+                className="no-theme image3-hero-title"
+                tabIndex={0}
+                sx={{
+                  color:
+                    "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
+                  textAlign: "center",
+                  fontVariantNumeric: "lining-nums proportional-nums",
+                  fontFamily: "GT Super Display Medium",
+                  fontStyle: "normal",
+                  fontWeight: 500,
+                  margin: 0,
+                  maxWidth: {
+                    xs: "320px",
+                    sm: "100%",
+                    md: "none",
+                  },
+                  whiteSpace: {
+                    xs: "normal",
+                    sm: "nowrap",
+                    md: "nowrap",
+                  },
+                  paddingBottom: {
+                    xs: "30px",
+                    sm: "0px",
+                    md: "0px",
+                  },
+                }}
+              >
+                Local knowledge. Direct relationships. Earlier access.
+              </Box>
             </Box>
           </Box>
-<Box
-  className="image3-overlay-container"
-  sx={{
-    position: "absolute",
-    inset: 0,
-    display: "flex",
-    justifyContent: "center",
-                  background: "rgba(0,0,0,0.45)",
-
-    alignItems: { xs: "center", sm: "center" }, 
-    padding: { xs: "20px", md: "40px" },
-    transform: "none",   
-  }}
->
-  <Box
-    component="h2"
-    className="image3-hero-title"
-    tabIndex={0}
-    sx={{
-      color: "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
-      textAlign: "center",
-      fontVariantNumeric: "lining-nums proportional-nums",
-      fontFamily: 'GT Super Display Medium',
-      fontSize: {
-        xs: "18px",
-        sm: "32px",
-        md: "44px",
-      },
-      fontStyle: "normal",
-      fontWeight: 500,
-      lineHeight: {
-        xs: "1.2",
-        sm: "40px",
-        md: "54px",
-      },
-      letterSpacing: "-0.05px !important",
-      margin: 0,
-      maxWidth: { xs: "800px", sm: "none" },
-      whiteSpace: { xs: "normal", sm: "nowrap" },
-    }}
-  >
-    Local knowledge. Direct relationships. Earlier access.
-  </Box>
-</Box>
         </Box>
       </Box>
 
       <style>{`
+
         /* ✅ Prevent dark mode from affecting this component */
         [data-theme="dark"] .no-theme {
           background: transparent !important;
@@ -264,4 +222,4 @@ const Image1: React.FC = () => {
   );
 };
 
-export default Image1;
+export default Image3;

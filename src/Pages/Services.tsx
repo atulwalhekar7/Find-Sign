@@ -539,21 +539,44 @@ From the first conversation to settlement and beyond, we are in your corner. You
           </div>
         </div>
 
-        {/* Row 2: 3 affiliated cards */}
-        <div className="grid-12" style={{ marginBottom: "64px" }}>
-          <div className="col-4 col-md-6 col-sm-12">
-            <OtherServiceCard title="Property Management" body={body6} hasButton delay={0} onBookCall={handleBookCall} theme={theme} />
-                    <div className="col-4 col-md-6 col-sm-12">
-            <OtherServiceCard title="Property Management" body={body6} hasButton delay={0} onBookCall={handleBookCall} />
-          </div>
-          <div className="col-4 col-md-6 col-sm-12">
-            <OtherServiceCard title="Accounting / Quantity Surveyor" body={body7} hasButton delay={0.1} onBookCall={() => navigate("/services/quantity-surveyor")} theme={theme} />
-          </div>
-          <div className="col-4 col-md-6 col-sm-12">
-            <OtherServiceCard title="Sales Agent" body={body8} hasButton delay={0.2} onBookCall={handleBookCall} theme={theme} />
-          </div>
-        </div>
+      {/* Row 2: 3 affiliated cards */}
 
+<div className="grid-12" style={{ marginBottom: "64px" }}>
+
+  <div className="col-4 col-md-6 col-sm-12">
+   <OtherServiceCard
+  title="Property Management"
+  body={body6}
+  hasButton
+  delay={0}
+  onBookCall={handleBookCall}
+  theme={theme}
+/>
+  </div>
+
+  <div className="col-4 col-md-6 col-sm-12">
+    <OtherServiceCard
+      title="Accounting / Quantity Surveyor"
+      body={body7}
+      hasButton
+      delay={0.1}
+      onBookCall={() => navigate("/services/quantity-surveyor")}
+      theme={theme}
+    />
+  </div>
+
+  <div className="col-4 col-md-6 col-sm-12">
+    <OtherServiceCard
+      title="Sales Agent"
+      body={body8}
+      hasButton
+      delay={0.2}
+      onBookCall={handleBookCall}
+      theme={theme}
+    />
+  </div>
+
+</div>
         {/* ── Affiliated Services Disclosure ─────────────────────────────── */}
         <FadeUp style={{ width: "100%" }}>
           <div
@@ -567,55 +590,54 @@ From the first conversation to settlement and beyond, we are in your corner. You
           >
             <p
               tabIndex={0}
-              style={{
-                color: t.disclosureColor,
-                color: "var(--FS-System-Grey-1, #757575)",
-                textAlign: "center",
-                fontFamily: " SohneBuch",
-                fontSize: "11px !important",
-                fontStyle: "normal",
-                fontWeight: 400,
-                lineHeight: "22px !important",
-                margin: 0,
-              }}
+             style={{
+  color: t.disclosureColor,
+  textAlign: "center",
+  fontFamily: "SohneBuch",
+  fontSize: "11px",
+  lineHeight: "22px",
+  fontStyle: "normal",
+  fontWeight: 400,
+  margin: 0,
+}}
             >
               Affiliated Services Disclosure
             </p>
 
             {/* Body */}
-            <p
-              tabIndex={0}
-              style={{
-                alignSelf: "stretch",
-                color: "var(--FS-System-Grey-1, #757575)",
-                textAlign: "center",
-                fontFamily: "SohneBuch",
-                fontSize: "11px !important",
-                fontStyle: "normal",
-                fontWeight: 400,
-                lineHeight: "22px !important",
-                margin: 0,
-                transition: "color 0.3s ease",
-              }}
-            >
+           {/* <p
+  tabIndex={0}
+  style={{
+    alignSelf: "stretch",
+    color: "var(--FS-System-Grey-1, #757575)",
+    textAlign: "center",
+    fontFamily: "SohneBuch",
+    fontSize: "11px",
+    fontStyle: "normal",
+    fontWeight: 400,
+    lineHeight: "22px",
+    margin: 0,
+    transition: "color 0.3s ease",
+  }}
+>
               Affiliated Services Disclosure
-            </p>
-            <p
-              tabIndex={0}
-              style={{
-                alignSelf: "stretch",
-                color: t.disclosureColor,
-                textAlign: "center",
-                fontFamily: "SohneBuch",
-                fontSize: "16px",
-                fontStyle: "normal",
-                fontWeight: 400,
-                lineHeight: "24px",
-                margin: 0,
-                maxWidth: "1158px",
-                transition: "color 0.3s ease",
-              }}
-            >
+            </p> */}
+          <p
+  tabIndex={0}
+  style={{
+    alignSelf: "stretch",
+    color: t.disclosureColor,
+    textAlign: "center",
+    fontFamily: "SohneBuch",
+    fontSize: "16px",
+    fontStyle: "normal",
+    fontWeight: 400,
+    lineHeight: "24px",
+    margin: "0 auto",   // 👈 important fix
+    maxWidth: "1158px",
+    transition: "color 0.3s ease",
+  }}
+>
               The affiliated services listed on this page are independent businesses and professionals that Find and Sign Buyer Advocate has developed relationships with over time. While we may refer or introduce these services, we do so based on our genuine belief in the quality of their work. Please note that Find and Sign Buyer Advocate may receive a commission or referral fee in some instances. We are not responsible for the advice, outcomes, or conduct of any third party service provider. All decisions regarding the engagement of any affiliated service remain entirely at your discretion.
             </p>
           </div>

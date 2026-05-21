@@ -187,6 +187,16 @@ export default function GetInTouch({
   border-color: #69E4DC;
 }
 
+.description-text {
+  font-family: "sohneBuch", sans-serif;
+  font-size: 24px;
+        line-height: 36px;
+        font-weight: 300;
+        color: #000;
+        width: 297px;
+  transition: color 0.3s ease;
+      }
+
 .nikki-info {
   width: 100%;
   max-width: 297px;
@@ -304,7 +314,7 @@ export default function GetInTouch({
           background: t.pageBg,
           display: "flex",
           width: "100%",
-          minHeight: "100vh",
+          // minHeight: "100vh",
           padding: "64px 130px",
           flexDirection: "column",
           alignItems: "center",

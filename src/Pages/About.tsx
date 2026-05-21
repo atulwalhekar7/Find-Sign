@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useTheme } from "../components/ThemeContext";
-import { useRef, useState, useEffect } from "react";
+import {  useEffect } from "react";
 import aboutContentImg from "../assets/happy-home-buyers-australia-find-and-sign.jpg";
 import aboutVideo from "../assets/Interview Draft (2).mp4";
 import AboutSection from "../components/AboutSection";
@@ -106,22 +106,15 @@ export default function About() {
       </section>
 
       <div style={{ background: t.sectionBg, transition: "background 0.3s ease" }}>
-        <AboutSection
-          imageSrc={AboutUsBanner}
-          heading="About Find & Sign"
-          body1="Find & Sign Buyer Advocate was built on the belief that every buyer should secure the right property to build equity, choice and financial freedom.
+       <AboutSection
+  imageSrc={AboutUsBanner}
+  heading="About Find & Sign"
+  body1="Find & Sign Buyer Advocate was built on the belief that every buyer should secure the right property to build equity, choice and financial freedom.
 Founder Niki learnt through experience that the right guidance is critical in securing the outcome. It is identified through local knowledge, experience and direct relationships, then secured before it reaches the wider market.
 We are a boutique buyers' agency operating nationwide, acting exclusively for buyers. Not agents. Not developers we are intentionally selective about the number of clients we take on to give each brief our full attention and expert advice."
-          body2="We assess every opportunity in person by walking the property, the street, and the surrounding area. Decisions are never made from photos or data alone. Because it's about identifying the opportunity and securing it early. The advantage of being first.
+  body2="We assess every opportunity in person by walking the property, the street, and the surrounding area. Decisions are never made from photos or data alone. Because it's about identifying the opportunity and securing it early. The advantage of being first.
 Find & Sign we find with confidence you sign with certainty."
-        />
-We are a boutique buyers' agency operating nationwide, acting exclusively for buyers. Not agents. Not developers we are intentionally selective about the number of clients we take on to give each brief our full attention and expert advice. 
-"
-        body2="
-We assess every opportunity in person by walking the property, the street, and the surrounding area. Decisions are never made from photos or data alone. Because it's about identifying the opportunity and securing it early. The advantage of being first
-Find & Sign we find with confidence you sign with certainty.
-"
-      />
+/>
       </div>
 
       {/* SECTION 3 — Video */}

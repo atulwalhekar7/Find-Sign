@@ -440,7 +440,7 @@ export default function OurProcess({ visible = true }: { visible?: boolean }) {
   const { ref: footerRef, inView: footerVisible } = useInView(0.1);
 
   return (
-    <div style={{ background: BG, width: "100%" }}>
+<div style={{ width: "100%" }}>
       <style>{globalCSS}</style>
 
       <section className="op-section">

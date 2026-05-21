@@ -551,7 +551,7 @@ const ReviewCard = ({ review }: ReviewCardProps) => (
         )}
       </div>
       <div>
-        <h4 tabIndex={0} style={{ fontSize: "0.875rem", fontWeight: 400, color: "#111827", margin: 0, fontFamily: "SohneBuch" }}>
+        <h4 tabIndex={0} style={{ fontSize: "0.875rem", fontWeight: 400, color: "#000", margin: 0, fontFamily: "SohneBuch" }}>
           {review.name}
         </h4>
         <p tabIndex={0} style={{

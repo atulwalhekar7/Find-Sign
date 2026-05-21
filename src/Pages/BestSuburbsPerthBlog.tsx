@@ -117,40 +117,54 @@ export default function BestSuburbsPerthBlog() {
       >
         <div className={`video-loader-container ${!isBannerLoading ? "hidden" : ""}`} />
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
-        <div
-          style={{
-            position: "relative",
-            zIndex: 3,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            textAlign: "center",
-            maxWidth: "900px",
-            margin: "0 auto",
-            padding: "60px 20px",
-            animation: "heroFadeIn 0.8s ease both",
-          }}
-        >
-          <h1
-          <div className={`attractive-loader ${!isBannerLoading ? "hidden" : ""}`} aria-hidden="true" />
-          <h1 
-            tabIndex={0}
-            style={{ 
-            fontFamily: "'GT Super Display Medium'",
-            fontSize: "56px",
-            fontWeight: 500,
-            color: "#FFF",
-            lineHeight: "1.1",
-            letterSpacing: "-0.02em",
-            margin: 0 
-          }}>
-            Best Suburbs in Perth for Property Investment in 2026
-          </h1>
-          <p tabIndex={0} style={{ color: "#FFFFFF", fontSize: "24px", fontWeight: 300, marginTop: "24px", opacity: 0.9 }}>
-            Discover top suburbs for high growth, rental yield, and long-term returns
-          </p>
-        </div>
+       <div
+  style={{
+    position: "relative",
+    zIndex: 3,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    maxWidth: "900px",
+    margin: "0 auto",
+    padding: "60px 20px",
+    animation: "heroFadeIn 0.8s ease both",
+  }}
+>
+  <div
+    className={`attractive-loader ${!isBannerLoading ? "hidden" : ""}`}
+    aria-hidden="true"
+  />
+
+  <h1
+    tabIndex={0}
+    style={{
+      fontFamily: "'GT Super Display Medium'",
+      fontSize: "56px",
+      fontWeight: 500,
+      color: "#FFF",
+      lineHeight: "1.1",
+      letterSpacing: "-0.02em",
+      margin: 0,
+    }}
+  >
+    Best Suburbs in Perth for Property Investment in 2026
+  </h1>
+
+  <p
+    tabIndex={0}
+    style={{
+      color: "#FFFFFF",
+      fontSize: "24px",
+      fontWeight: 300,
+      marginTop: "24px",
+      opacity: 0.9,
+    }}
+  >
+    Discover top suburbs for high growth, rental yield, and long-term returns
+  </p>
+</div>
       </section>
 
       <main style={{ maxWidth: "1300px", margin: "0 auto", padding: "0 40px" }}>
