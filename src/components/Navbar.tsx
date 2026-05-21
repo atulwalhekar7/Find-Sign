@@ -23,10 +23,13 @@ const NAV_ITEMS = [
 function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === "dark";
+  const [hovered, setHovered] = useState(false);
 
   return (
     <button
       onClick={toggleTheme}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       style={{
         display: "flex",
@@ -40,6 +43,8 @@ function ThemeToggle() {
         cursor: "pointer",
         flexShrink: 0,
         transition: "all 0.35s cubic-bezier(0.34,1.56,0.64,1)",
+        transform: hovered ? "translateY(-3px)" : "none",
+        boxShadow: hovered ? "0 8px 20px rgba(105, 228, 220, 0.4)" : "none",
         position: "relative",
         overflow: "hidden",
       }}
@@ -195,6 +200,11 @@ export default function Navbar() {
           text-transform: uppercase;
           white-space: nowrap;
           gap: 10px;
+          transition: all 0.3s ease;
+        }
+        .nav-cta:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 20px rgba(105, 228, 220, 0.4);
         }
 
         .mobile-call-icon {
@@ -208,6 +218,7 @@ export default function Navbar() {
           background: ${COLORS.white};
           position: relative;
           box-sizing: border-box;
+          transition: all 0.3s ease;
           border: 1px solid rgba(105, 228, 220, 0.3);
         }
 
@@ -225,6 +236,10 @@ export default function Navbar() {
           mask-composite: exclude;
           animation: rotate-border 2s linear infinite;
           pointer-events: none;
+        }
+        .mobile-call-icon:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 20px rgba(105, 228, 220, 0.4);
         }
 
         /* Hamburger */
@@ -288,20 +303,10 @@ export default function Navbar() {
         }
 
         /* Mobile */
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) { /* Adjusts layout for smaller laptops/large tablets */
           .nav-inner {
             height: 80px;
             padding: 24px 20px;
-          }
-          .nav-logo {
-            width: 128px;
-            height: 47px;
-          }
-          .nav-links {
-            display: none;
-          }
-          .nav-actions {
-            gap: 12px;
           }
           .nav-cta {
             display: none;
@@ -309,11 +314,21 @@ export default function Navbar() {
           .mobile-call-icon {
             display: flex;
           }
-          .nav-hamburger {
+        }
+
+        /* Smaller Mobile/Tablet (e.g., 991px and below) */
+        @media (max-width: 991px) {
+          .nav-links { /* Hide desktop links */
+            display: none;
+          }
+          .nav-hamburger { /* Show hamburger menu */
             display: block;
           }
-          .nav-drawer {
+          .nav-drawer { /* Show mobile drawer */
             display: block;
+          }
+          .nav-actions { /* Adjust gap for mobile */
+            gap: 12px;
           }
         }
       `}</style>

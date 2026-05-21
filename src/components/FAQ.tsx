@@ -220,13 +220,15 @@ export default function FindSignFAQ() {
   margin-top: 30px;
   cursor: pointer;
 
-  transition: background 0.2s, color 0.2s;
+  transition: all 0.3s ease;
 }
 
        .view-all-btn:hover {
   background: #69E4DC;
   color: #073B2F;
   border-color: #69E4DC;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(105, 228, 220, 0.4);
 }
 
         @media (max-width: 767px) {

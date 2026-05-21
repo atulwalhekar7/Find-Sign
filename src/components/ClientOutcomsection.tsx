@@ -497,9 +497,13 @@ export default function ClientOutcomes() {
           line-height: 15px;
           letter-spacing: 4.8px;
           cursor: pointer;
-          transition: background 0.2s, transform 0.2s;
+          transition: all 0.3s ease;
         }
-        .view-btn:hover { background: ${AQUA}; transform: scale(1.05); }
+        .view-btn:hover {
+          background: ${AQUA};
+          transform: translateY(-3px);
+          box-shadow: 0 8px 20px rgba(105, 228, 220, 0.4);
+        }
 
         .rev-arrow-btn {
           position: absolute;

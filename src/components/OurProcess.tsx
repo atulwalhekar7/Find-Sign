@@ -491,8 +491,8 @@ export default function OurProcess({ visible = true }: { visible?: boolean }) {
     ...s.btn,
     background: btnHovered ? "#69E4DC" : "transparent",
     color:      btnHovered ? "#073B2F" : DARK_GREEN,
-   transform: btnClicked ? "scale(0.97)" : "none",
-    boxShadow: btnHovered ? "0 8px 28px rgba(0,51,39,0.22)" : "none",
+   transform: btnClicked ? "scale(0.97)" : btnHovered ? "translateY(-3px)" : "none",
+    boxShadow: btnHovered ? "0 8px 28px rgba(105, 228, 220, 0.4)" : "none",
     opacity:   footerVisible ? 1 : 0,
     transition: [
       "background 0.35s ease",
