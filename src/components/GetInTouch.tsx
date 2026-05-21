@@ -488,7 +488,7 @@ export default function GetInTouch({ initialService = "", showService = false, h
 .contact-page {
   display: flex;
   width: 100%;
-  min-height: 100vh;
+  // min-height: 100vh;
   padding: 64px 130px;
   flex-direction: column;
   align-items: center;
