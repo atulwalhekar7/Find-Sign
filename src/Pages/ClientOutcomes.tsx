@@ -652,12 +652,23 @@ letterSpacing: "-0.02em",
         .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid rgba(11,215,205,0.96); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; transition: all 0.25s ease; flex-shrink: 0; z-index: 20; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .nav-arrow.prev { left: -60px; }
         .nav-arrow.next { right: -60px; }
-        .nav-arrow:hover:not(:disabled) { transform: translateY(-50%) scale(1.05); background: ${RACING_GREEN} !important; color: white !important; border-color: ${RACING_GREEN}; }
+        .nav-arrow:hover:not(:disabled) {
+          transform: translateY(-50%) scale(1.05);
+          background: ${RACING_GREEN} !important;
+          color: white !important;
+          border-color: ${RACING_GREEN};
+          box-shadow: 0 8px 20px rgba(105, 228, 220, 0.4);
+        }
         .nav-arrow:disabled { opacity: 0.2; cursor: default; }
 
         /* ══ VIEW MORE BTN ══ */
-        .view-more-btn { display: flex; height: 48px; padding: 12px 16px; justify-content: center; align-items: center; gap: 10px; border-radius: 8px; border: 1px solid ${AQUA}; font-family: CX80; font-size: 15px; font-weight: 700; line-height: 15px; letter-spacing: 4.8px; text-transform: uppercase; cursor: pointer; transition: background 0.2s ease, transform 0.2s ease; }
-        .view-more-btn:hover { background: ${AQUA} !important; color: ${RACING_GREEN} !important; transform: scale(1.05); }
+        .view-more-btn { display: flex; height: 48px; padding: 12px 16px; justify-content: center; align-items: center; gap: 10px; border-radius: 8px; border: 1px solid ${AQUA}; font-family: CX80; font-size: 15px; font-weight: 700; line-height: 15px; letter-spacing: 4.8px; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; }
+        .view-more-btn:hover {
+          background: ${AQUA} !important;
+          color: ${RACING_GREEN} !important;
+          transform: translateY(-3px);
+          box-shadow: 0 8px 20px rgba(105, 228, 220, 0.4);
+        }
 
         @media (max-width: 1199px) {
           .outcomes-section,

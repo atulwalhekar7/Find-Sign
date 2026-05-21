@@ -113,7 +113,9 @@ const OutlineButton = ({
         background: btnHover ? "#69E4DC" : "transparent",
         color: btnHover ? "#073B2F" : t.headingColor,
         cursor: "pointer",
-        transition: "background 0.35s, color 0.35s",
+        transition: "all 0.35s ease",
+        transform: btnHover ? "translateY(-3px)" : "translateY(0)",
+        boxShadow: btnHover ? "0 8px 20px rgba(105, 228, 220, 0.4)" : "none",
         width: "fit-content",
       }}
     >

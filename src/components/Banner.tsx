@@ -229,10 +229,12 @@ letter-spacing: -0.02em;
           background:      transparent;
           color:           white;
           cursor:          pointer;
-          transition:      background 0.2s, color 0.2s;
+          transition:      all 0.3s ease;
         }
         .watch-btn:hover {
           background: rgba(105, 228, 220, 0.15);
+          transform: translateY(-3px);
+          box-shadow: 0 8px 20px rgba(105, 228, 220, 0.4);
         }
 
         /* ── Hero bottom ── */
@@ -274,12 +276,14 @@ letter-spacing: -0.02em;
           margin-top:      30px;
           background:      white;
           cursor:          pointer;
-          transition:      background 0.2s, color 0.2s;
+          transition:      all 0.3s ease;
           margin-bottom:48px;
         }
         .find-out-btn:hover {
           background: #69E4DC;
           color: #073B2F;
+          transform: translateY(-3px);
+          box-shadow: 0 8px 20px rgba(105, 228, 220, 0.4);
         }
 
         /* ── Responsive ── */

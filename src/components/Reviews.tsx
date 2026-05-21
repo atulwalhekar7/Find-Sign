@@ -312,9 +312,13 @@ const Testimonials = () => {
           line-height: 15px;
           letter-spacing: 4.8px;
           cursor: pointer;
-          transition: background 0.2s, color 0.2s;
+          transition: all 0.3s ease;
         }
-        .rev-cta-btn:hover { background: #69E4DC; }
+        .rev-cta-btn:hover {
+          background: #69E4DC;
+          transform: translateY(-3px);
+          box-shadow: 0 8px 20px rgba(105, 228, 220, 0.4);
+        }
 
         /* ── Tablet ── */
         @media (max-width: 1100px) {

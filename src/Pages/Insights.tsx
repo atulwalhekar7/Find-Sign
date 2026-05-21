@@ -160,8 +160,9 @@ letterSpacing: "-0.02em",
             textTransform: "uppercase",
             cursor: "pointer",
             textDecoration: "none",
-            transition: "all 0.2s ease",
-            transform: hovered ? "translateY(-1px)" : "none",
+            transition: "all 0.3s ease",
+            transform: hovered ? "translateY(-3px)" : "none",
+            boxShadow: hovered ? "0 8px 20px rgba(105, 228, 220, 0.4)" : "none",
             margin: "0",
           }}
         >
