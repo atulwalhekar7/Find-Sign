@@ -14,18 +14,17 @@ export default function BuildingInspection() {
 
       {/* ── Hero ── */}
       <section
-        style={{
-          width: "100%",
-          maxWidth: "1556px",
-          height: "550px",
-          margin: "0 auto",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "var(--Brand-Foundation-FS-RACING-GREEN, #073B2F)",
-          position: "relative",
-        }}
-      >
+  style={{
+    width: "100%",
+    height: "550px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: "#073B2F",
+    position: "relative",
+    overflow: "hidden",
+  }}
+>
         <div
           style={{
             position: "relative",

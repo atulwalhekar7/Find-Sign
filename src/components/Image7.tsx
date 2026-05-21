@@ -8,6 +8,8 @@ const Image1: React.FC = () => {
       <Box sx={{ width: "100%" }}>
         {/* HERO */}
         <Box
+                className="no-theme"
+
           sx={{
             position: "relative",
             width: "100%",
@@ -17,6 +19,8 @@ const Image1: React.FC = () => {
         >
           {/* IMAGE */}
           <Box
+                  className="no-theme"
+
             component="img"
             src={heroImage}
             alt="Strategic property buying consultation showing expertise on the ground"
@@ -30,7 +34,7 @@ const Image1: React.FC = () => {
 
           {/* OVERLAY */}
 <Box
-  className="image7-overlay-container"
+  className="no-theme image7-overlay-container"
   sx={{
     position: "absolute",
     inset: 0,
@@ -45,7 +49,7 @@ const Image1: React.FC = () => {
 >
   <Box
     component="h2"
-    className="image7-hero-title"
+    className="no-theme image7-hero-title"
     tabIndex={0}
     sx={{
       color: "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
@@ -64,7 +68,7 @@ const Image1: React.FC = () => {
         sm: "40px",
         md: "54px",
       },
-      letterSpacing: "-0.05px !important",
+      letterSpacing: "-0.88px",
       margin: 0,
       maxWidth: { xs: "800px", sm: "none" },
       whiteSpace: { xs: "normal", sm: "nowrap" },
@@ -77,7 +81,11 @@ const Image1: React.FC = () => {
       </Box>
 
       {/* STYLES */}
+       
       <style>{`
+       [data-theme="dark"] .no-theme {
+          background: transparent !important;
+        }
         @media (max-width: 599px) {
           .image7-overlay-container {
             align-items: center !important;

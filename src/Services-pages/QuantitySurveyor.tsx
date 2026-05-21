@@ -13,19 +13,18 @@ export default function QuantitySurveyor() {
     <div style={{ background: "#fff", margin: 0, padding: 0, color: "#111" }}>
 
       {/* ── Hero ── */}
-      <section
-        style={{
-          width: "100%",
-          maxWidth: "1556px",
-          height: "550px",
-          margin: "0 auto",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "var(--Brand-Foundation-FS-RACING-GREEN, #073B2F)",
-          position: "relative",
-        }}
-      >
+     <section
+  style={{
+    width: "100%",
+    height: "550px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: "#073B2F",
+    position: "relative",
+    overflow: "hidden",
+  }}
+>
         <div
           style={{
             position: "relative",

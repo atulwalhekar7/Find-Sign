@@ -21,18 +21,17 @@ export default function Accounting() {
 
       {/* ── Hero ── */}
       <section
-        style={{
-          width: "100%",
-          maxWidth: "1556px",
-          height: "550px",
-          margin: "0 auto",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "var(--Brand-Foundation-FS-RACING-GREEN, #073B2F)",
-          position: "relative",
-        }}
-      >
+  style={{
+    width: "100%",
+    height: "550px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: "#073B2F",
+    position: "relative",
+    overflow: "hidden",
+  }}
+>
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
         <div style={{ position: "relative", zIndex: 2, textAlign: "center", padding: "0 20px", animation: "heroFadeIn 0.8s ease both" }}>
           <h1 tabIndex={0} style={{ fontFamily: "GT Super Display Medium", fontSize: "clamp(36px, 6vw, 56px)", fontWeight: 500, color: "#fff", letterSpacing: "-0.02em", lineHeight: 1.1, margin: 0 }}>
