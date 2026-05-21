@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { useTheme } from "../components/ThemeContext";
+import { useRef, useState, useEffect } from "react";
 import aboutContentImg from "../assets/happy-home-buyers-australia-find-and-sign.jpg";
 import aboutVideo from "../assets/Interview Draft (2).mp4";
 import AboutSection from "../components/AboutSection";
@@ -58,6 +59,18 @@ export default function About() {
   const [isMuted, setIsMuted] = useState(true);
   const [, setShowControls] = useState(false);
   const [nikiExpanded, setNikiExpanded] = useState(false);
+  const [isBannerLoading, setIsBannerLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsBannerLoading(false), 1200);
+    const img = new Image();
+    img.src = Banner;
+    img.onload = () => setIsBannerLoading(false);
+    return () => {
+      clearTimeout(timer);
+      img.onload = null;
+    };
+  }, []);
 
   const togglePlayPause = () => {
     const vid = videoRef.current;
@@ -84,8 +97,10 @@ export default function About() {
     <>
       {/* SECTION 1 — Hero Banner */}
       <section className="hero-banner">
+        <div className={`video-loader-container ${!isBannerLoading ? "hidden" : ""}`} />
         <div className="banner-overlay" />
         <div className="hero-box">
+          <div className={`attractive-loader ${!isBannerLoading ? "hidden" : ""}`} aria-hidden="true" />
           <h1 className="hero-title" tabIndex={0}>About Us</h1>
         </div>
       </section>
@@ -100,6 +115,13 @@ We are a boutique buyers' agency operating nationwide, acting exclusively for bu
           body2="We assess every opportunity in person by walking the property, the street, and the surrounding area. Decisions are never made from photos or data alone. Because it's about identifying the opportunity and securing it early. The advantage of being first.
 Find & Sign we find with confidence you sign with certainty."
         />
+We are a boutique buyers' agency operating nationwide, acting exclusively for buyers. Not agents. Not developers we are intentionally selective about the number of clients we take on to give each brief our full attention and expert advice. 
+"
+        body2="
+We assess every opportunity in person by walking the property, the street, and the surrounding area. Decisions are never made from photos or data alone. Because it's about identifying the opportunity and securing it early. The advantage of being first
+Find & Sign we find with confidence you sign with certainty.
+"
+      />
       </div>
 
       {/* SECTION 3 — Video */}
@@ -163,9 +185,37 @@ Find & Sign we find with confidence you sign with certainty."
           background-size: cover; background-position: center 30%;
           background-repeat: no-repeat; background-attachment: scroll;
         }
+        .video-loader-container {
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          background: #073B2F; 
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+        }
+        .video-loader-container.hidden {
+          opacity: 0;
+        }
+
+        .attractive-loader {
+          width: 40px;
+          height: 40px;
+          border: 3px solid rgba(105, 228, 220, 0.2);
+          border-radius: 50%;
+          border-top-color: #69E4DC;
+          animation: spin 1s infinite linear;
+          transition: opacity 0.3s ease;
+          opacity: 1;
+          margin-bottom: 8px;
+        }
+        .attractive-loader.hidden {
+          opacity: 0;
+          pointer-events: none;
+        }
+        @keyframes spin { to { transform: rotate(1turn); } }
         .banner-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.45); z-index: 1; }
         .hero-box {
-          position: relative; z-index: 2;
+          position: relative; z-index: 3;
           display: flex; flex-direction: column; align-items: center;
           justify-content: center; text-align: center;
           width: 90%; max-width: 900px; margin: 0 auto;

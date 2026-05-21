@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useTheme } from "./ThemeContext";
 
 import logo from "../assets/FS Primary Lockup_Gold.png";
+import light from "../assets/Light Gold.svg"
 import callIcon from "../assets/Icon.png";
 
 import fbIcon from "../assets/icon/fb.svg";
@@ -65,7 +66,6 @@ export default function Footer() {
           background: #073B2F;
           color: white;
           width: 100%;
-          max-width: 1556px;
           margin: 0 auto;
           display: flex;
           min-height: 682px;
@@ -232,15 +232,17 @@ gap: 10px;
         .footer-copyright {
           font-family: "Söhne", sans-serif;
           font-size: 16px;
-          color: #846F58;
+          color: white;
         }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1200px) {
           .footer { padding: 56px 76px; height: auto; min-height: auto; }
-          .footer-extra-frame { padding-left: 0; margin-top: 0; }
-          .footer-grid { gap: 40px 24px; flex-wrap: wrap; height: auto; }
-          .footer-logo-container, .footer-contact, .footer-legal { margin-left: 0; }
+          .footer-extra-frame { padding-left: 10px; margin-top: 0; }
+          .footer-grid { gap: 24px; flex-wrap: wrap; height: auto; }
+          .footer-logo-container, .footer-contact, .footer-legal { margin-left: 0; padding: 10px; }
+          .footer-logo-container { height: auto; aspect-ratio: auto; }
+          .footer-contact { gap: 8px; }
         }
         @media (max-width: 1024px) {
           .footer { padding: 56px 40px; }
@@ -248,11 +250,13 @@ gap: 10px;
         }
         @media (max-width: 768px) {
           .footer { padding: 48px 20px; gap: 40px; }
-          .footer-grid { flex-direction: column; }
+          .footer-grid { flex-direction: column; gap: 24px; }
           .footer-contact, .footer-explore, .footer-legal, .footer-logo-container { 
             width: 100%; 
             margin-left: 0; 
+            padding: 0 10px;
             height: auto;
+            aspect-ratio: auto;
           }
         }
       `}</style>
@@ -265,6 +269,7 @@ gap: 10px;
           <div style={{ width: "167px", flexShrink: 0, padding: "8px 0" }}>
             <NavLink to="/">
               <img src={logo} alt="Logo" style={{ width: "159px", height: "59px", objectFit: "contain" }} />
+              <img src={light} alt="Logo" className="footer-logo" />
             </NavLink>
           </div>
 

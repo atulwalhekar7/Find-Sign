@@ -7,7 +7,6 @@ interface Step {
   description: string;
 }
 
-/* ================= DATA ================= */
 const steps: Step[] = [
   {
     id: 1,
@@ -551,7 +550,7 @@ const s: Record<string, React.CSSProperties> = {
     fontStyle: "normal",
     fontWeight: 300,
     color: "#000",
-    lineHeight: "36px",
+    lineHeight: "28px",
     margin: "24px auto 0",
     maxWidth: "100%",
     width: "804px",

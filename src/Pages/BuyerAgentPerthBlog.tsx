@@ -3,11 +3,12 @@ import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
 
 // --- Assets (Assuming these exist in the Blogs folder as per instructions) ---
-import bannerImg from "../assets/2_Banner 2_Scarborough.jpg";
+import bannerImg from "../assets/happy-home-buyers-blog2-banner-australia-find-and-sign.jpg";
 import agentImg from "../assets/Blogs/DSC06286.jpg";
 import servicesImg from "../assets/About.jpg";
-import benefitsImg from "../assets/Blogs/Blog 1_Image.jpg";
+import benefitsImg from "../assets/niki-nakrani-buyers-agent-australia-blog2-image-find-and-sign.jpg";
 import processImg from "../assets/DSC06057.jpg";
+import { useState } from "react";
 import OurProcessBlog from "./Our-Process-Post2";
 
 const SideBySideSection = ({
@@ -68,6 +69,8 @@ const SideBySideSection = ({
 );
 
 export default function BuyerAgentPerthBlog() {
+  const [isBannerLoading, setIsBannerLoading] = useState(true);
+
   useEffect(() => {
     document.title = "Buyer's Agent Perth | Find & Sign Buyer Advocate Guide";
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -77,6 +80,15 @@ export default function BuyerAgentPerthBlog() {
         "Discover how a buyer's agent in Perth helps you secure the right property, save money, and access off-market deals. Expert guide for buyers & investors."
       );
     }
+
+    const timer = setTimeout(() => setIsBannerLoading(false), 1200);
+    const img = new Image();
+    img.src = bannerImg;
+    img.onload = () => setIsBannerLoading(false);
+    return () => {
+      clearTimeout(timer);
+      img.onload = null;
+    };
   }, []);
 
   return (
@@ -96,11 +108,16 @@ export default function BuyerAgentPerthBlog() {
           padding: "0 20px",
         }}
       >
-        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.35)" }} />
+        <div className={`video-loader-container ${!isBannerLoading ? "hidden" : ""}`} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
         <div
           style={{
             position: "relative",
-            zIndex: 2,
+            zIndex: 3,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
             textAlign: "center",
             maxWidth: "900px",
             margin: "0 auto",
@@ -108,6 +125,7 @@ export default function BuyerAgentPerthBlog() {
             animation: "heroFadeIn 0.8s ease both",
           }}
         >
+          <div className={`attractive-loader ${!isBannerLoading ? "hidden" : ""}`} aria-hidden="true" />
           <h1 style={{ 
             fontFamily: "'GT Super Display Medium'",
             fontSize: "56px",
@@ -285,6 +303,33 @@ export default function BuyerAgentPerthBlog() {
           from { opacity: 0; transform: translateY(30px); }
           to   { opacity: 1; transform: translateY(0); }
         }
+        .video-loader-container {
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          background: #073B2F; 
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+        }
+        .video-loader-container.hidden {
+          opacity: 0;
+        }
+        .attractive-loader {
+          width: 40px;
+          height: 40px;
+          border: 3px solid rgba(105, 228, 220, 0.2);
+          border-radius: 50%;
+          border-top-color: #69E4DC;
+          animation: spin 1s infinite linear;
+          transition: opacity 0.3s ease;
+          opacity: 1;
+          margin-bottom: 8px;
+        }
+        .attractive-loader.hidden {
+          opacity: 0;
+          pointer-events: none;
+        }
+        @keyframes spin { to { transform: rotate(1turn); } }
         @media (max-width: 900px) {
           h1 { font-size: 44px !important; line-height: 1.2 !important; letter-spacing: -0.02em !important; }
           h2 { font-size: 36px !important; }

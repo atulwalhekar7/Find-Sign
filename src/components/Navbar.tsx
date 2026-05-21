@@ -151,6 +151,8 @@ export default function Navbar() {
           justify-content: center;
           padding: 10px 8px;
           font-family: "SohneBuch";
+          color: ${COLORS.black};
+          font-family: "SohneBuch"!important;
           font-size: 20px;
           font-weight: 400;
           line-height: 28px;

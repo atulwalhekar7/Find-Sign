@@ -302,6 +302,20 @@ export default function Services() {
   const { theme } = useTheme();
   const t = THEMES[theme];
 
+  const [isBannerLoading, setIsBannerLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsBannerLoading(false), 1200);
+    const img = new Image();
+    img.src = bannerImg;
+    img.onload = () => setIsBannerLoading(false);
+    return () => {
+      clearTimeout(timer);
+      img.onload = null;
+    };
+  }, []);
+
+  // ── Handler: navigate to the service's dedicated page ──────────────────────
   const handleBookCall = (serviceName: string) => {
     const slug = serviceName.toLowerCase().replace(/\s+/g, "-");
     navigate(`/services/${slug}`);
@@ -336,11 +350,12 @@ export default function Services() {
           padding: "0 20px",
         }}
       >
+        <div className={`video-loader-container ${!isBannerLoading ? "hidden" : ""}`} />
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
         <div
           style={{
             position: "relative",
-            zIndex: 2,
+            zIndex: 3,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -354,6 +369,7 @@ export default function Services() {
             animation: "heroFadeIn 0.8s ease both",
           }}
         >
+          <div className={`attractive-loader ${!isBannerLoading ? "hidden" : ""}`} aria-hidden="true" />
           <h1
             tabIndex={0}
             style={{
@@ -527,6 +543,8 @@ From the first conversation to settlement and beyond, we are in your corner. You
         <div className="grid-12" style={{ marginBottom: "64px" }}>
           <div className="col-4 col-md-6 col-sm-12">
             <OtherServiceCard title="Property Management" body={body6} hasButton delay={0} onBookCall={handleBookCall} theme={theme} />
+                    <div className="col-4 col-md-6 col-sm-12">
+            <OtherServiceCard title="Property Management" body={body6} hasButton delay={0} onBookCall={handleBookCall} />
           </div>
           <div className="col-4 col-md-6 col-sm-12">
             <OtherServiceCard title="Accounting / Quantity Surveyor" body={body7} hasButton delay={0.1} onBookCall={() => navigate("/services/quantity-surveyor")} theme={theme} />
@@ -551,12 +569,31 @@ From the first conversation to settlement and beyond, we are in your corner. You
               tabIndex={0}
               style={{
                 color: t.disclosureColor,
+                color: "var(--FS-System-Grey-1, #757575)",
                 textAlign: "center",
-                fontFamily: "SohneBuch",
-                fontSize: "16px",
+                fontFamily: " SohneBuch",
+                fontSize: "11px !important",
                 fontStyle: "normal",
                 fontWeight: 400,
-                lineHeight: "24px",
+                lineHeight: "22px !important",
+                margin: 0,
+              }}
+            >
+              Affiliated Services Disclosure
+            </p>
+
+            {/* Body */}
+            <p
+              tabIndex={0}
+              style={{
+                alignSelf: "stretch",
+                color: "var(--FS-System-Grey-1, #757575)",
+                textAlign: "center",
+                fontFamily: "SohneBuch",
+                fontSize: "11px !important",
+                fontStyle: "normal",
+                fontWeight: 400,
+                lineHeight: "22px !important",
                 margin: 0,
                 transition: "color 0.3s ease",
               }}
@@ -594,6 +631,33 @@ From the first conversation to settlement and beyond, we are in your corner. You
       {/* ── Styles ───────────────────────────────────────────────────────── */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap');
+        .video-loader-container {
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          background: #073B2F; 
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+        }
+        .video-loader-container.hidden {
+          opacity: 0;
+        }
+        .attractive-loader {
+          width: 40px;
+          height: 40px;
+          border: 3px solid rgba(105, 228, 220, 0.2);
+          border-radius: 50%;
+          border-top-color: #69E4DC;
+          animation: spin 1s infinite linear;
+          transition: opacity 0.3s ease;
+          opacity: 1;
+          margin-bottom: 8px;
+        }
+        .attractive-loader.hidden {
+          opacity: 0;
+          pointer-events: none;
+        }
+        @keyframes spin { to { transform: rotate(1turn); } }
 
         .grid-12 {
           display: grid;
@@ -640,6 +704,9 @@ From the first conversation to settlement and beyond, we are in your corner. You
           h2 { font-size: 38px !important; line-height: 48px !important; }
           h3 { font-size: 28px !important; line-height: 38px !important; }
           .services-section p { font-size: 18px !important; line-height: 28px !important; }
+          .services-section p { font-size: 11px !important; line-height: 20px !important; }
+
+          /* top-grid: each col-6 card full-width on tablet */
           .top-grid.grid-12 .col-6 { grid-column: span 12; }
           .col-md-1  { grid-column: span 1; }
           .col-md-2  { grid-column: span 2; }

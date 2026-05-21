@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
@@ -9,7 +9,7 @@ import { useTheme } from "../components/ThemeContext";
  import aboutInsightsImg from "../assets/niki-nakrani-buyers-agent-perth-property-expert-about-insights-find-and-sign.jpg";
 import bannerImg from "../assets/client-outcomes-banner-find-and-sign-buyers-agent-australia.jpg";
 import perthBlogImg from "../assets/1_Banner_Scarborough.jpg";
-import Blog2 from "../assets/2_Banner 2_Scarborough.jpg";
+import Blog2 from "../assets/happy-home-buyers-blog2-banner-australia-find-and-sign.jpg";
 
 // ── Theme ─────────────────────────────────────────────────────────────────────
 const THEMES = {
@@ -97,7 +97,7 @@ const BlogCard = ({
             fontSize: "32px",
             fontStyle: "normal",
             fontWeight: 500,
-            lineHeight: "40px",
+            lineHeight: "34px",
 letterSpacing: "-0.02em",
             margin: "0px",
             transition: "color 0.3s ease",
@@ -176,14 +176,14 @@ letterSpacing: "-0.02em",
 
 const blogPosts = [
   {
-    title: "Blog Post One",
+    title: "Best Suburbs in Perth for Property Investment in 2026",
     date: "01 march 2026",
     description: "Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement.",
     image: perthBlogImg,
     path: "/blog/best-suburbs-perth",
   },
   {
-    title: "Blog Post Two",
+    title: "Your Ultimate Guide to Hiring a Buyer’s Agent in Perth",
     date: "01 april 2026",
     description:
       "Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement.",
@@ -196,6 +196,18 @@ const blogPosts = [
 export default function Insights() {
   const { theme } = useTheme();
   const t = THEMES[theme];
+  const [isBannerLoading, setIsBannerLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsBannerLoading(false), 1200);
+    const img = new Image();
+    img.src = bannerImg;
+    img.onload = () => setIsBannerLoading(false);
+    return () => {
+      clearTimeout(timer);
+      img.onload = null;
+    };
+  }, []);
 
   return (
     <div style={{ backgroundColor: t.pageBg, fontFamily: "Söhne, sans-serif", transition: "background 0.3s ease" }}>
@@ -215,11 +227,12 @@ export default function Insights() {
           padding: "0 20px",
         }}
       >
+        <div className={`video-loader-container ${!isBannerLoading ? "hidden" : ""}`} />
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
         <div
           style={{
             position: "relative",
-            zIndex: 2,
+            zIndex: 3,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -233,6 +246,8 @@ export default function Insights() {
           }}
         >
           <h1
+          <div className={`attractive-loader ${!isBannerLoading ? "hidden" : ""}`} aria-hidden="true" />
+          <h1 
             tabIndex={0}
             style={{ 
             fontFamily: 'GT Super Display Medium',
@@ -312,6 +327,33 @@ export default function Insights() {
           from { opacity: 0; transform: translateY(30px); }
           to   { opacity: 1; transform: translateY(0); }
         }
+        .video-loader-container {
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          background: #073B2F; 
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+        }
+        .video-loader-container.hidden {
+          opacity: 0;
+        }
+        .attractive-loader {
+          width: 40px;
+          height: 40px;
+          border: 3px solid rgba(105, 228, 220, 0.2);
+          border-radius: 50%;
+          border-top-color: #69E4DC;
+          animation: spin 1s infinite linear;
+          transition: opacity 0.3s ease;
+          opacity: 1;
+          margin-bottom: 8px;
+        }
+        .attractive-loader.hidden {
+          opacity: 0;
+          pointer-events: none;
+        }
+        @keyframes spin { to { transform: rotate(1turn); } }
 
         .page-hero-banner {
           aspect-ratio: 16 / 7;

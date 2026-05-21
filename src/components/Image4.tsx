@@ -132,7 +132,7 @@ const Image1: React.FC = () => {
           .image4-hero-title {
             font-size: 20px !important;
             line-height: 24px !important;
-            letter-spacing: -0.3px !important;
+            letter-spacing: -0.05px !important;
           }
 
           .image4-overlay-container {

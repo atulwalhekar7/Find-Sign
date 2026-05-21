@@ -110,7 +110,7 @@ const Image1: React.FC = () => {
         sm: "40px",
         md: "50px",
       },
-      letterSpacing: "-0.88px",
+      letterSpacing: "-0.05px !important",
       margin: 0,
       maxWidth: { xs: "800px", sm: "none" },
       whiteSpace: { xs: "normal", sm: "nowrap" },
