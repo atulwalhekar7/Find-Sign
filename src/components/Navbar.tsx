@@ -437,19 +437,21 @@ export default function Navbar() {
                 to={item.to}
                 className="nav-drawer-link"
                 onClick={() => setMenuOpen(false)}
-               style={({ isActive }) => ({
+              style={({ isActive }) => ({
   display: "block",
   width: "100%",
-                 boxSizing: "border-box",
-                 fontFamily: "'SohneBuch'",
-                 fontSize: "15px",
-                 color: COLORS.black, // Changed to match desktop view text color
-                 fontWeight: isActive ? 500 : 400,
-                 textDecoration: "none",
-                 padding: "10px 12px",
-                 borderBottom: "1px solid rgba(27,67,50,0.06)",
+  boxSizing: "border-box",
+  fontFamily: "'SohneBuch'",
+  fontSize: "15px",
+  color: isDark ? "#FFFFFF" : COLORS.black,
+  fontWeight: isActive ? 500 : 400,
+  textDecoration: "none",
+  padding: "10px 12px",
+  borderBottom: isDark
+    ? "1px solid rgba(255,255,255,0.08)"
+    : "1px solid rgba(27,67,50,0.06)",
 })}
-              >
+>
                 {item.label}
               </NavLink>
             ))}
