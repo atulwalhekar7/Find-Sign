@@ -108,18 +108,17 @@ const globalCSS = `
 
   transition: all 0.3s ease;
 }
-  .op-section {
-    background: ${BG};
-    width: 100%;
-    max-width: 1512px;
-    margin: 0 auto;
-    box-sizing: border-box;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 64px;
-    padding: 64px 130px 64px;
-  }
-
+ .op-section {
+  width: 100%;
+  max-width: 1512px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 64px;
+  padding: 64px 130px 64px;
+  background: transparent;
+}
   .op-head { 
     grid-column: 1 / -1; 
     margin-bottom: 48px; 
@@ -438,12 +437,16 @@ export default function OurProcess({ visible = true }: { visible?: boolean }) {
   const [btnClicked, setBtnClicked] = useState(false);
   const { ref: headRef,   inView: headVisible   } = useInView(0.1);
   const { ref: footerRef, inView: footerVisible } = useInView(0.1);
+return(
+  <div
+    style={{
+      width: "100%",
+      background: BG,
+    }}
+  >
+    <style>{globalCSS}</style>
 
-  return (
-<div style={{ width: "100%" }}>
-      <style>{globalCSS}</style>
-
-      <section className="op-section">
+    <section className="op-section">
 
         {/* ── Header ── */}
         <div className="op-head" ref={headRef as React.Ref<HTMLDivElement>}>

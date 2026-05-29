@@ -104,12 +104,7 @@ export default function PrivacyPolicy() {
           >
             Privacy Policy
           </h1>
-          <p
-            tabIndex={0}
-            style={{ color: "#FFFFFF", fontSize: "22px", fontWeight: 300, marginTop: "24px", opacity: 0.9 }}
-          >
-            Our commitment to protecting your personal information and privacy.
-          </p>
+         
         </div>
       </section>
 
