@@ -14,7 +14,7 @@ const THEMES = {
     dividerColor: "#073B2F",
   },
 };
-import bannerImg from "../assets/family-home-buyers-image2-australia-find-and-sign.png";
+import bannerImg from "../assets/buyer-advocate-australia-contact-property-consultation-banner.png";
 
 export default function Contact() {
   const { theme } = useTheme();
@@ -23,65 +23,85 @@ export default function Contact() {
   return (
     <>
       <section
-        className="contact-hero-banner"
-        style={{
-          minHeight: "60vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundImage: `url(${bannerImg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          position: "relative",
-          padding: "0 20px",
-        }}
-      >
-        {/* Overlay */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "rgba(0,0,0,0.45)",
-          }}
-        />
+  className="contact-hero-banner"
+  style={{
+    minHeight: "60vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundImage: `url(${bannerImg})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    position: "relative",
+    padding: "0 20px",
+  }}
+>
 
-        {/* Content */}
-        <div
-          className="contact-hero-content"
-          style={{
-            position: "relative",
-            zIndex: 2,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            textAlign: "center",
-            width: "90%",
-            maxWidth: "900px",
-            margin: "0 auto",
-            padding: "60px 20px",
-            animation: "heroFadeIn 0.8s ease both",
-          }}
-        >
-          <h1
-            tabIndex={0}
-            style={{
-              fontFamily: "GT Super Display Medium",
-              fontSize: "56px",
-              fontWeight: 500,
-              color: "#FFF",
-              lineHeight: "1.1",
-              letterSpacing: "-0.02em",
-              fontVariantNumeric: "lining-nums proportional-nums",
-              margin: 0,
-              textAlign: "center",
-              width: "100%",
-            }}
-          >
-            Contact Us
-          </h1>
-        </div>
-      </section>
+  {/* SEO fallback image for background */}
+  <img
+    src={bannerImg}
+    alt="Buyer Advocate Australia contact page for property consultation and enquiries"
+    title="Contact Find and Sign | Buyer’s Agent Australia"
+    loading="lazy"
+    decoding="async"
+    width="1920"
+    height="800"
+    style={{
+      position: "absolute",
+      width: "1px",
+      height: "1px",
+      opacity: 0,
+      overflow: "hidden",
+      pointerEvents: "none",
+    }}
+  />
+
+  {/* Overlay */}
+  <div
+    style={{
+      position: "absolute",
+      inset: 0,
+      background: "rgba(0,0,0,0.45)",
+    }}
+  />
+
+  {/* Content */}
+  <div
+    className="contact-hero-content"
+    style={{
+      position: "relative",
+      zIndex: 2,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      textAlign: "center",
+      width: "90%",
+      maxWidth: "900px",
+      margin: "0 auto",
+      padding: "60px 20px",
+      animation: "heroFadeIn 0.8s ease both",
+    }}
+  >
+    <h1
+      tabIndex={0}
+      style={{
+        fontFamily: "GT Super Display Medium",
+        fontSize: "56px",
+        fontWeight: 500,
+        color: "#FFF",
+        lineHeight: "1.1",
+        letterSpacing: "-0.02em",
+        fontVariantNumeric: "lining-nums proportional-nums",
+        margin: 0,
+        textAlign: "center",
+        width: "100%",
+      }}
+    >
+      Contact Us
+    </h1>
+  </div>
+</section>
 
       <GetInTouch hideInternalHeading={true} />
       <SimpleFooter />

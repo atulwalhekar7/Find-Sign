@@ -7,8 +7,8 @@ import Image5 from "../components/Image5";
 import Image6 from "../components/Image6";
 import { useTheme } from "../components/ThemeContext";
 
-import bannerImg from "../assets/happy-home-buyers-australia-Clientoutcomes-banner-find-and-sign.jpg";
-import AboutClientOutcomesImg from "../assets/About Find&Sign-clientoutcomes-aboutsection-image.jpg";
+import bannerImg from "../assets/buyer-advocate-australia-client-outcomes-banner.jpg";
+import AboutClientOutcomesImg from "../assets/buyer-advocate-australia-client-outcomes-property-results.jpg";
 
 import id1 from "../assets/Client Outcomes/id1.webp";
 import id2 from "../assets/Client Outcomes/id2.webp";
@@ -723,34 +723,69 @@ letterSpacing: "-0.02em",
 
         {/* ══ HERO ══ */}
         <section 
-          className="client-outcomes-hero-banner"
-          style={{
-            minHeight: "60vh",
-            aspectRatio: "16 / 7",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            backgroundImage: `url(${bannerImg})`,
-            backgroundSize: "cover", backgroundPosition: "center",
-            position: "relative", padding: "0 20px",
-          }}>
-          <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
-          <div style={{
-            position: "relative", zIndex: 2,
-            textAlign: "center", maxWidth: 900, margin: "0 auto",
-            padding: "60px 20px", borderRadius: 12,
-            animation: "heroFadeIn 0.8s ease both",
-          }}>
-            <h1 className="hero-h1" tabIndex={0}>Client Outcomes</h1>
-          </div>
-        </section>
+  className="client-outcomes-hero-banner"
+  style={{
+    minHeight: "60vh",
+    aspectRatio: "16 / 7",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundImage: `url(${bannerImg})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    position: "relative",
+    padding: "0 20px",
+  }}
+>
+
+  {/* SEO fallback image for background */}
+  <img
+    src={bannerImg}
+    alt="Buyer Advocate Australia delivering successful client property outcomes"
+    title="Client Outcomes | Buyer’s Agent Australia Success Stories"
+    loading="lazy"
+    decoding="async"
+    width="1920"
+    height="800"
+    style={{
+      position: "absolute",
+      width: "1px",
+      height: "1px",
+      opacity: 0,
+      overflow: "hidden",
+      pointerEvents: "none",
+    }}
+  />
+
+  <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
+
+  <div style={{
+    position: "relative",
+    zIndex: 2,
+    textAlign: "center",
+    maxWidth: 900,
+    margin: "0 auto",
+    padding: "60px 20px",
+    borderRadius: 12,
+    animation: "heroFadeIn 0.8s ease both",
+  }}>
+    <h1 className="hero-h1" tabIndex={0}>
+      Client Outcomes
+    </h1>
+  </div>
+
+</section>
 
         {/* ══ ABOUT ══ */}
       <div className="client-outcomes-about">
   <AboutSection
-    imageSrc={AboutClientOutcomesImg}
-    heading="About Client Outcomes"
-    body1="These are outcomes we have achieved for our clients. Real properties, real numbers, and measurable growth. When you engage Find and Sign Buyer Advocate, you are not simply purchasing a property; you are entering a strategy built for long-term performance. These examples show what is possible when the right property is identified and secured early."
-    imageStyle={{ height: "250px", width: "auto" }}
-  />
+  imageSrc={AboutClientOutcomesImg}
+  imageAlt="Buyer Advocate Australia showcasing real client property outcomes and investment growth results"
+  imageTitle="Client Outcomes | Buyer’s Agent Australia Results"
+  heading="About Client Outcomes"
+  body1="These are outcomes we have achieved for our clients. Real properties, real numbers, and measurable growth. When you engage Find and Sign Buyer Advocate, you are not simply purchasing a property; you are entering a strategy built for long-term performance. These examples show what is possible when the right property is identified and secured early."
+  imageStyle={{ height: "250px", width: "auto" }}
+/>
 </div>
 
         {/* ══ CLIENT OUTCOMES GRID ══ */}

@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
-import heroImage from "../assets/niki-nakrani-buyers-agent-image3-australia-find-and-sign.png";
+import heroImage from "../assets/buyers-agent-australia-about-find-sign-team.png";
 
 const Image1: React.FC = () => {
   return (
@@ -35,28 +35,36 @@ const Image1: React.FC = () => {
         >
           {/* IMAGE */}
           <Box
-            component="img"
-            className="no-theme"
-            src={heroImage}
-            alt="Happy family in front of their new home, secured through local property expertise"
-            sx={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: {
-                xs: "center 30%",
-                sm: "center top",
-                md: "center top",
-              },
-              display: "block",
-              verticalAlign: "top",
-              margin: 0,
-              padding: 0,
-            }}
-          />
+  component="img"
+  className="no-theme"
+  src={heroImage}
+  alt="Experienced Buyers Agent Australia team helping home buyers and property investors secure the right property nationwide"
+  title="Find and Sign Buyers Agent Australia Team"
+  loading="lazy"
+  decoding="async"
+  sx={{
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    objectPosition: {
+      xs: "center 20px",
+      sm: "center 40px",
+      md: "center 20px",
+    },
+    transform: {
+      xs: "scale(1.08)",
+      sm: "scale(1.12)",
+      md: "scale(1.08)",
+    },
+    display: "block",
+    verticalAlign: "top",
+    margin: 0,
+    padding: 0,
+  }}
+/>
 
           {/* OVERLAY */}
           <Box
