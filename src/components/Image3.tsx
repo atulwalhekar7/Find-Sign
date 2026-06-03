@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import heroImage from "../assets/buyers-agent-australia-about-find-sign-team.png";
 
 const Image3: React.FC = () => {
-    return (
+  return (
     <>
       <Box
         className="no-theme"
@@ -35,96 +35,94 @@ const Image3: React.FC = () => {
         >
           {/* IMAGE */}
           <Box
-  component="img"
-  className="no-theme"
-  src={heroImage}
-  alt="Experienced Buyers Agent Australia team helping home buyers and property investors secure the right property nationwide"
-  title="Find and Sign Buyers Agent Australia Team"
-  loading="lazy"
-  decoding="async"
-  sx={{
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    objectPosition: {
-      xs: "center 20px",
-      sm: "center 40px",
-      md: "center 20px",
-    },
-    transform: {
-      xs: "scale(1.08)",
-      sm: "scale(1.12)",
-      md: "scale(1.08)",
-    },
-    display: "block",
-    verticalAlign: "top",
-    margin: 0,
-    padding: 0,
-  }}
-/>
+            component="img"
+            className="no-theme"
+            src={heroImage}
+            alt="Experienced Buyers Agent Australia team helping home buyers and property investors secure the right property nationwide"
+            title="Find and Sign Buyers Agent Australia Team"
+            loading="lazy"
+            decoding="async"
+            sx={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: {
+                xs: "center 20px",
+                sm: "center 40px",
+                md: "center 20px",
+              },
+              transform: {
+                xs: "scale(1.08)",
+                sm: "scale(1.12)",
+                md: "scale(1.08)",
+              },
+              display: "block",
+              verticalAlign: "top",
+              margin: 0,
+              padding: 0,
+            }}
+          />
 
-            {/* OVERLAY */}
+          {/* OVERLAY */}
+          <Box
+            className="no-theme image3-overlay-container"
+            sx={{
+              position: "absolute",
+              inset: 0,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: {
+                xs: "flex-end",
+                sm: "center",
+                md: "center",
+              },
+              padding: {
+                xs: "20px",
+                sm: "30px",
+                md: "40px",
+              },
+            }}
+          >
             <Box
-              className="no-theme image3-overlay-container"
+              component="h2"
+              className="no-theme image3-hero-title"
+              tabIndex={0}
               sx={{
-                position: "absolute",
-                inset: 0,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: {
-                  xs: "flex-end",
-                  sm: "center",
-                  md: "center",
+                color:
+                  "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
+                textAlign: "center",
+                fontVariantNumeric: "lining-nums proportional-nums",
+                fontFamily: "GT Super Display Medium",
+                fontStyle: "normal",
+                fontWeight: 500,
+                margin: 0,
+                maxWidth: {
+                  xs: "320px",
+                  sm: "100%",
+                  md: "none",
                 },
-                padding: {
-                  xs: "20px",
-                  sm: "30px",
-                  md: "40px",
+                whiteSpace: {
+                  xs: "normal",
+                  sm: "nowrap",
+                  md: "nowrap",
+                },
+                paddingBottom: {
+                  xs: "30px",
+                  sm: "0px",
+                  md: "0px",
                 },
               }}
             >
-              <Box
-                component="h2"
-                className="no-theme image3-hero-title"
-                tabIndex={0}
-                sx={{
-                  color:
-                    "var(--FS-SALTBUSH, var(--Brand-Foundation-FS-SALTBUSH, #F9F9F9))",
-                  textAlign: "center",
-                  fontVariantNumeric: "lining-nums proportional-nums",
-                  fontFamily: "GT Super Display Medium",
-                  fontStyle: "normal",
-                  fontWeight: 500,
-                  margin: 0,
-                  maxWidth: {
-                    xs: "320px",
-                    sm: "100%",
-                    md: "none",
-                  },
-                  whiteSpace: {
-                    xs: "normal",
-                    sm: "nowrap",
-                    md: "nowrap",
-                  },
-                  paddingBottom: {
-                    xs: "30px",
-                    sm: "0px",
-                    md: "0px",
-                  },
-                }}
-              >
-                Local knowledge. Direct relationships. Earlier access.
-              </Box>
+              Local knowledge. Direct relationships. Earlier access.
             </Box>
           </Box>
         </Box>
       </Box>
 
       <style>{`
-
         /* ✅ Prevent dark mode from affecting this component */
         [data-theme="dark"] .no-theme {
           background: transparent !important;
@@ -142,6 +140,7 @@ const Image3: React.FC = () => {
             align-items: center !important;
             padding-bottom: 0px !important;
           }
+
           .image3-hero-title {
             font-size: 18px !important;
             line-height: 24px !important;
@@ -230,3 +229,4 @@ const Image3: React.FC = () => {
 };
 
 export default Image3;
+
