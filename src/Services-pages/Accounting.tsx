@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import SimpleFooter from "../components/SimpleFooter";
 import GetInTouch from "../components/GetInTouch";
-import AboutServiceImg from "../assets/About Find&Sign.jpg";
+import AboutServiceImg from "../assets/buyer-advocate-perth-australia-property-search.jpg";
 import AboutSection from "../components/AboutSection";
 
 export default function Accounting() {
@@ -49,8 +49,11 @@ export default function Accounting() {
       >
         <AboutSection
           imageSrc={AboutServiceImg}
-          heading="About Mortgage Broker"
-          subheading="Expert guidance for every step of your property journey."
+           imageAlt="Perth mortgage broker helping home buyers secure the right finance solution in Australia"
+  imageTitle="Mortgage Broker Perth Australia | Find and Sign"
+  imageCaption="Experienced Perth mortgage broker providing finance guidance and loan solutions for property buyers across Australia."
+  heading="About Mortgage Broker"
+  subheading="Expert guidance for every step of your property journey."
           body1="Before the right money is in the right place, nothing else can move. A great mortgage broker cuts through the noise, secures the right finance structure for your situation, and ensures you are set up correctly from the very beginning of your purchase journey."
         />
       </div>

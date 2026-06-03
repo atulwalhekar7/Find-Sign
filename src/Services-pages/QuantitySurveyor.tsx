@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import SimpleFooter from "../components/SimpleFooter";
 import GetInTouch from "../components/GetInTouch";
-import AboutServiceImg from "../assets/About Find&Sign.jpg";
+import AboutServiceImg from "../assets/buyer-advocate-perth-australia-property-search.jpg";
 import AboutSection from "../components/AboutSection";
 
 export default function QuantitySurveyor() {
@@ -57,8 +57,11 @@ export default function QuantitySurveyor() {
       {/* ── About ── */}
       <AboutSection
         imageSrc={AboutServiceImg}
-        heading="About Accounting / Quantity Surveyor"
-        subheading="Expert guidance for every step of your property journey."
+        imageAlt="Perth mortgage broker helping home buyers secure the right finance solution in Australia"
+  imageTitle="Mortgage Broker Perth Australia | Find and Sign"
+  imageCaption="Experienced Perth mortgage broker providing finance guidance and loan solutions for property buyers across Australia."
+  heading="About Mortgage Broker"
+  subheading="Expert guidance for every step of your property journey."
         body1="Two of the most overlooked yet most valuable members of your investment team. A quantity surveyor prepares a detailed depreciation schedule for your property, identifying every eligible asset that can be claimed as a tax deduction over time. This alone can significantly reduce your taxable income each financial year. Your accountant then takes that information and ensures your overall financial structure is working as efficiently as possible. From the way your investment is held to the deductions you are entitled to claim, a property savvy accountant ensures you are not leaving money on the table. Getting these two professionals involved early, ideally before you purchase, can have a meaningful impact on your long term returns."
 //         body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
 // From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market."

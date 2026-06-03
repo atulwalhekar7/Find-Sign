@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
 
-import bannerImg from "../assets/About.jpg";
+import bannerImg from "../assets/perth-property-investment-strategy.jpg";
 
 const TermsSection = ({
   title,

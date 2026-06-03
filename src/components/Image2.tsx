@@ -38,6 +38,10 @@ const Image1: React.FC = () => {
             className="no-theme"
             src={heroImage}
             alt="Expert property buying guidance and professional advocate services"
+            title="Perth Buyer Advocate Australia | Find and Sign"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             sx={{
               position: "absolute",
               top: 0,

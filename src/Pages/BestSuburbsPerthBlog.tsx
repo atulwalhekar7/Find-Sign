@@ -3,21 +3,27 @@ import SimpleGetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/Footer";
 
 // --- Assets ---
-import bannerImg from "../assets/1_Banner_Scarborough.jpg";
-import agentImg from "../assets/2_Banner 2_Scarborough.jpg";
-import servicesImg from "../assets/About.jpg";
-import benefitsImg from "../assets/3_Banner 3_Joondalup-City-Centre.png";
-import processImg from "../assets/4_Banner 4_City-of-Rockingham-Summer.jpg";
+import bannerImg from "../assets/best-suburbs-perth-property-investment-2026.jpg";
+import agentImg from "../assets/why-perth-is-a-property-investment-hotspot.jpg";
+import servicesImg from "../assets/perth-property-investment-strategy.jpg";
+import benefitsImg from "../assets/best-perth-suburbs-for-property-investment.png";
+import processImg from "../assets/how-to-choose-best-perth-investment-suburb.jpg";
 
 const SideBySideSection = ({
   title,
   content,
   image,
+  imageAlt,
+  imageTitle,
+  imageCaption,
   reverse = false,
 }: {
   title: string;
   content: React.ReactNode;
   image: string;
+  imageAlt?: string;
+  imageTitle?: string;
+  imageCaption?: string;
   reverse?: boolean;
 }) => (
   <section
@@ -101,20 +107,50 @@ export default function BestSuburbsPerthBlog() {
 
       {/* ── Hero ── */}
       <section
-        className="blog-hero-banner"
-        style={{
-          minHeight: "80vh",
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundImage: `url(${bannerImg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          position: "relative",
-          padding: "0 20px",
-        }}
-      >
+  className="blog-hero-banner"
+  style={{
+    minHeight: "80vh",
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    position: "relative",
+    overflow: "hidden",
+    padding: "0 20px",
+  }}
+>
+  <img
+    src={bannerImg}
+    alt="Perth buyer advocate sharing property market insights and investment guidance"
+    title="Perth Property Market Insights | Find and Sign"
+    loading="eager"
+    fetchPriority="high"
+    decoding="async"
+    width="1920"
+    height="1080"
+    style={{
+      position: "absolute",
+      inset: 0,
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      zIndex: 0,
+    }}
+  />
+
+
+
+  <span
+    style={{
+      position: "absolute",
+      left: "-9999px",
+    }}
+  >
+    Expert Perth property market insights, buying strategies and investment
+    guidance from Find and Sign Buyer Advocate.
+  </span>
+
+  
         <div className={`video-loader-container ${!isBannerLoading ? "hidden" : ""}`} />
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
        <div
@@ -173,6 +209,10 @@ export default function BestSuburbsPerthBlog() {
         <SideBySideSection
           title="Why Perth Is a Hotspot for Property Investment"
           image={agentImg}
+          imageAlt="Perth city skyline highlighting the growth and investment opportunities in the property market"
+          imageTitle="Why Perth is a Property Investment Hotspot | Find and Sign"
+          imageCaption="Perth's property market is booming with growth and investment opportunities for buyers and investors."
+
           content={
             <>
               <p>Perth has quickly become one of Australia's most attractive cities for property investors. With relatively affordable entry prices, strong rental demand, and growing population trends, it offers a unique opportunity for both new and experienced investors.</p>
@@ -186,6 +226,9 @@ export default function BestSuburbsPerthBlog() {
         <SideBySideSection
           title="What Makes a Suburb a Good Investment?"
           image={benefitsImg}
+          imageAlt="Key factors that make a suburb a good property investment opportunity in Perth"
+          imageTitle="What Makes a Suburb a Good Investment in Perth | Find and Sign"
+          imageCaption="Key factors that make a suburb a good property investment opportunity in Perth, including growth drivers and market trends."
           reverse
           content={
             <>
@@ -272,21 +315,38 @@ export default function BestSuburbsPerthBlog() {
         </section>
 
         {/* ── How to Choose ── */}
-        <SideBySideSection
-          title="How to Choose the Right Suburb for Your Goals"
-          image={processImg}
-          content={
-            <>
-              <p>Not all suburbs suit every investor. Your strategy should depend on your goals.</p>
-              <ul style={{ paddingLeft: "20px", marginTop: "20px", display: "flex", flexDirection: "column", gap: "12px" }}>
-                <li><strong>For Capital Growth:</strong> Focus on inner and middle-ring suburbs with strong demand.</li>
-                <li><strong>For Rental Yield:</strong> Look for affordable suburbs with high tenant demand.</li>
-                <li><strong>For Long-Term Investment:</strong> Choose areas with planned infrastructure and population growth.</li>
-              </ul>
-              <p style={{ marginTop: "20px" }}><strong>Working with a buyer agent Perth ensures your strategy aligns with the right suburb selection.</strong></p>
-            </>
-          }
-        />
+      <SideBySideSection
+  title="How to Choose the Right Suburb for Your Goals"
+  image={processImg}
+  imageAlt="Perth property investment suburbs compared for capital growth rental yield and long term investment goals"
+  imageTitle="How to Choose the Best Perth Suburb for Property Investment"
+  imageCaption="Comparing Perth suburbs based on capital growth, rental yield and long-term investment potential."
+  content={
+    <>
+      <p>Not all suburbs suit every investor. Your strategy should depend on your goals.</p>
+
+      <ul
+        style={{
+          paddingLeft: "20px",
+          marginTop: "20px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "12px",
+        }}
+      >
+        <li><strong>For Capital Growth:</strong> Focus on inner and middle-ring suburbs with strong demand.</li>
+        <li><strong>For Rental Yield:</strong> Look for affordable suburbs with high tenant demand.</li>
+        <li><strong>For Long-Term Investment:</strong> Choose areas with planned infrastructure and population growth.</li>
+      </ul>
+
+      <p style={{ marginTop: "20px" }}>
+        <strong>
+          Working with a buyer agent Perth ensures your strategy aligns with the right suburb selection.
+        </strong>
+      </p>
+    </>
+  }
+/>
 
         {/* ── Mistakes ── */}
         <section style={{ padding: "60px 0", borderTop: "1px solid var(--bg-tertiary)" }}>
@@ -318,7 +378,11 @@ export default function BestSuburbsPerthBlog() {
         <SideBySideSection
           title="How Find and Sign Buyer Advocate Helps Investors"
           image={servicesImg}
-          reverse
+           imageAlt="Perth buyer advocate helping property investors identify high growth opportunities and investment strategies"
+  imageTitle="Perth Buyer Advocate for Property Investors | Find and Sign"
+  imageCaption="Expert Perth buyer advocate helping investors identify growth opportunities, analyse market trends and secure the right properties."
+  reverse
+          
           content={
             <>
               <p>Finding the right suburb requires deep market knowledge and research.</p>

@@ -6,9 +6,9 @@ import AboutSection from "../components/AboutSection";
 import Image7 from "../components/Image7";
 import { useTheme } from "../components/ThemeContext";
 
- import aboutInsightsImg from "../assets/niki-nakrani-buyers-agent-perth-property-expert-about-insights-find-and-sign.jpg";
+ import aboutInsightsImg from "../assets/perth-buyer-advocate-property-insights.jpg";
 import bannerImg from "../assets/client-outcomes-banner-find-and-sign-buyers-agent-australia.jpg";
-import perthBlogImg from "../assets/1_Banner_Scarborough.jpg";
+import perthBlogImg from "../assets/best-suburbs-perth-property-investment-2026.jpg";
 import Blog2 from "../assets/happy-home-buyers-blog2-banner-australia-find-and-sign.jpg";
 
 // ── Theme ─────────────────────────────────────────────────────────────────────
@@ -177,20 +177,43 @@ letterSpacing: "-0.02em",
 
 const blogPosts = [
   {
-    title: "Best Suburbs in Perth for Property Investment in 2026",
-    date: "01 march 2026",
-    description: "Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement.",
-    image: perthBlogImg,
-    path: "/blog/best-suburbs-perth",
-  },
-  {
-    title: "Your Ultimate Guide to Hiring a Buyer’s Agent in Perth",
-    date: "01 april 2026",
-    description:
-      "Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement.",
-    image: Blog2,
-    path: "/blog/buyers-agent-perth",
-  },
+  title: "Best Suburbs in Perth for Property Investment in 2026",
+  date: "01 March 2026",
+  description:
+    "Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement.",
+  image: perthBlogImg,
+
+  imageAlt:
+    "Best suburbs in Perth for property investment in 2026 analysed by a Perth buyer advocate",
+
+  imageTitle:
+    "Best Suburbs in Perth for Property Investment 2026 | Find and Sign",
+
+  imageCaption:
+    "Discover the best Perth suburbs for property investment in 2026 based on growth potential, rental demand and market trends.",
+
+  path: "/blog/best-suburbs-perth",
+},
+ {
+  title: "Your Ultimate Guide to Hiring a Buyer’s Agent in Perth",
+  date: "01 April 2026",
+
+  description:
+    "Learn how a Perth buyers agent can simplify the property buying process, access off-market opportunities and negotiate the best outcome on your behalf.",
+
+  image: Blog2,
+
+  imageAlt:
+    "Guide to hiring a buyers agent in Perth for property purchases and investment opportunities",
+
+  imageTitle:
+    "Your Ultimate Guide to Hiring a Buyers Agent in Perth | Find and Sign",
+
+  imageCaption:
+    "Learn how a Perth buyers agent can help you find, evaluate and secure the right property while avoiding costly mistakes.",
+
+  path: "/blog/buyers-agent-perth",
+}
 ];
 
 // ── Main Component ────────────────────────────────────────────────────────────
@@ -215,19 +238,37 @@ export default function Insights() {
 
       {/* ── SECTION 1: Hero ─────────────────────────────────────────────── */}
       <section
-        className="page-hero-banner"
-        style={{
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundImage: `url(${bannerImg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          position: "relative",
-          padding: "0 20px",
-        }}
-      >
+  className="page-hero-banner"
+  style={{
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    position: "relative",
+    overflow: "hidden",
+    padding: "0 20px",
+  }}
+>
+  <img
+    src={bannerImg}
+    alt="Perth mortgage broker helping home buyers secure the right finance solution in Australia"
+    title="Mortgage Broker Perth Australia | Find and Sign"
+    loading="eager"
+    fetchPriority="high"
+    decoding="async"
+    style={{
+      position: "absolute",
+      inset: 0,
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      zIndex: 0,
+    }}
+  />
+
+  
+
+  {/* Existing hero content */}
         <div className={`video-loader-container ${!isBannerLoading ? "hidden" : ""}`} />
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
      <div
@@ -271,8 +312,10 @@ export default function Insights() {
 
       <AboutSection
        imageSrc={aboutInsightsImg}
-       heading="About Find & Sign"
-       body1="These are insights drawn from our experience in the market. Real observations, informed perspectives, and practical guidance. When you engage with Find and Sign Buyer Advocate, you are gaining access to knowledge built through direct involvement and on-the-ground expertise. These articles are designed to help you understand the process, assess opportunities, and make more informed decisions."
+ imageAlt="Perth buyer advocate sharing property market insights and buying guidance"
+  imageTitle="Perth Property Insights | Find and Sign Buyer Advocate"
+  imageCaption="Expert insights from a Perth buyer advocate helping property buyers make informed decisions."
+  heading="About Find & Sign"       body1="These are insights drawn from our experience in the market. Real observations, informed perspectives, and practical guidance. When you engage with Find and Sign Buyer Advocate, you are gaining access to knowledge built through direct involvement and on-the-ground expertise. These articles are designed to help you understand the process, assess opportunities, and make more informed decisions."
       //  body2="Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect consectetur."
      /> 
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
-import heroImage from "../assets/niki-nakrani-buyers-agent-image4-australia-find-and-sign.png";
+import heroImage from "../assets/buyer-advocate-perth-australia-property-services.png";
 
 const Image1: React.FC = () => {
   return (
@@ -36,9 +36,13 @@ const Image1: React.FC = () => {
           {/* IMAGE */}
           <Box
             component="img"
-            className="no-theme"
-            src={heroImage}
-            alt="Buyer representation built on judgement, not volume"
+ className="no-theme"
+  src={heroImage}
+  alt="Perth Buyer Advocate Australia helping home buyers and property investors secure the right property"
+  title="Perth Buyer Advocate Australia | Find and Sign"
+  loading="eager"
+  fetchPriority="high"
+  decoding="async"           
             sx={{
               position: "absolute",
               top: 0,

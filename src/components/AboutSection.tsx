@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import AboutBanner from "../assets/About Find&Sign.jpg";
+import AboutBanner from "../assets/buyer-advocate-perth-australia-property-search.jpg";
 
 /* ================= FADE UP ANIMATION ================= */
 const FadeUp = ({ children, delay = 0, style = {}, className = "" }: any) => {

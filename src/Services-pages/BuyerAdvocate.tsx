@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import AboutSection from "../components/AboutSection";
 import SimpleFooter from "../components/SimpleFooter";
 import GetInTouch from "../components/GetInTouch";
-import AboutServiceImg from "../assets/About Find&Sign.jpg";
+import AboutServiceImg from "../assets/buyer-advocate-perth-australia-property-search.jpg";
 
 export default function BuyerAdvocate() {
 
@@ -49,8 +49,11 @@ export default function BuyerAdvocate() {
       {/* ── What We Do ──────────────────────────────────────────────────── */}
         <AboutSection
         imageSrc={AboutServiceImg}
-        heading="About Buyer Advocacy"
-        subheading="Expert guidance for every step of your property journey."
+  imageAlt="Perth Buyer Advocate Australia helping clients secure residential and investment properties"
+  imageTitle="Buyer Advocate Perth Australia | Find and Sign"
+  imageCaption="Experienced Perth Buyer Advocate Australia providing expert property search, negotiation and acquisition services."
+  heading="About Buyer Advocacy"
+  subheading="Expert guidance for every step of your property journey."
         body1="Purchasing a property is one of the most significant financial decisions you will ever make. Our full buyers agent service is designed to ensure that every step of that journey is handled with the expertise, care, and attention it deserves.
 From the moment we begin working together, we take on the entire process on your behalf. We get to know your goals, your non-negotiables, and your timeline, and we build a strategy around them. We search both on-market listings and our off-market network, and every property we consider is physically inspected by us before it ever reaches you. We will never recommend a property we have not walked through ourselves. That is a standard we hold on every single engagement."
         body2="Once the right property is identified, we manage all due diligence, coordinate building inspections and necessary reports, and negotiate the price and contract terms firmly in your favour. You are kept informed and involved at every touch point, without ever being burdened by the complexity of the process.

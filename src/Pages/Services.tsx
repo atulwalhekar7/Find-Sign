@@ -4,7 +4,7 @@ import GetInTouch from "../components/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
 import bannerImg from "../assets/service-banner-find-and-sign-buyers-australia.jpg";
-import AboutServiceImg from "../assets/about-service-find-and-sign.jpg";
+import AboutServiceImg from "../assets/perth-buyer-advocate-services-australia.jpg";
 import Image4 from "../components/Image4";
 import { useTheme } from "../components/ThemeContext";
 
@@ -336,22 +336,51 @@ export default function Services() {
     <div style={{ color: t.subTextColor, background: t.pageBg, margin: 0, padding: 0, transition: "background 0.3s ease, color 0.3s ease" }}>
 
       {/* ── SECTION 1: Hero ─────────────────────────────────────────────── */}
-      <section
-        className="services-hero-banner"
-        style={{
-          minHeight: "60vh",
-          aspectRatio: "16 / 7",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundImage: `url(${bannerImg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          position: "relative",
-          padding: "0 20px",
-        }}
-      >
+     <section
+  className="services-hero-banner"
+  style={{
+    minHeight: "60vh",
+    aspectRatio: "16 / 7",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    position: "relative",
+    overflow: "hidden",
+    padding: "0 20px",
+  }}
+>
+  <img
+    src={bannerImg}
+    alt="Perth Buyer Advocate Australia helping home buyers and property investors secure the right property"
+    title="Perth Buyer Advocate Australia | Find and Sign"
+    loading="eager"
+    fetchPriority="high"
+    decoding="async"
+    width="1920"
+    height="840"
+    style={{
+      position: "absolute",
+      inset: 0,
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      zIndex: 0,
+    }}
+  />
+
+  <figcaption
+    style={{
+      position: "absolute",
+      left: "-9999px",
+    }}
+  >
+    Professional Perth Buyer Advocate Australia services helping buyers find,
+    negotiate and secure residential and investment properties.
+  </figcaption>
+
+  
+
+  {/* Existing content */}
         <div className={`video-loader-container ${!isBannerLoading ? "hidden" : ""}`} />
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
         <div
@@ -392,8 +421,11 @@ letterSpacing: "-0.02em",
 
       <AboutSection
         imageSrc={AboutServiceImg}
-        heading="About Our Services"
-        body1="Find and Sign Buyer Advocate is a boutique buyers agency based in Perth, representing buyers exclusively, whether you are purchasing the home you want to live in or building the portfolio you have always planned for.
+ imageAlt="Perth Buyer Advocate Australia helping clients secure residential and investment properties"
+  imageTitle="Buyer Advocate Perth Australia | Find and Sign"
+  imageCaption="Experienced Perth Buyer Advocate Australia providing expert property search, negotiation and acquisition services."
+  heading="About Buyer Advocacy"
+  subheading="Expert guidance for every step of your property journey."        body1="Find and Sign Buyer Advocate is a boutique buyers agency based in Perth, representing buyers exclusively, whether you are purchasing the home you want to live in or building the portfolio you have always planned for.
 We take on a select number of clients at any one time. Not because we have to, but because we believe a purchase of this size deserves our full attention."
         body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
 From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market."

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import SimpleFooter from "../components/SimpleFooter";
 import GetInTouch from "../components/GetInTouch";
-import AboutServiceImg from "../assets/About Find&Sign.jpg";
+import AboutServiceImg from "../assets/buyer-advocate-perth-australia-property-search.jpg";
 import AboutSection from "../components/AboutSection";
 
 export default function PropertyManagement() {
@@ -57,8 +57,11 @@ export default function PropertyManagement() {
       {/* ── About ── */}
       <AboutSection
         imageSrc={AboutServiceImg}
-        heading="About Property Management"
-        subheading="Expert guidance for every step of your property journey."
+       imageAlt="Perth mortgage broker helping home buyers secure the right finance solution in Australia"
+  imageTitle="Mortgage Broker Perth Australia | Find and Sign"
+  imageCaption="Experienced Perth mortgage broker providing finance guidance and loan solutions for property buyers across Australia."
+  heading="About Mortgage Broker"
+  subheading="Expert guidance for every step of your property journey."
         body1="Once your investment is secured, the work of protecting and growing it begins. A property manager acts as the professional link between you and your tenants, handling everything from tenant screening and lease agreements to rent collection, maintenance coordination, and routine inspections. A great property manager does not just keep your property occupied, they keep it performing. They understand the local rental market, know how to retain quality tenants, and ensure your investment is looked after with the same care and attention you would give it yourself. Choosing the right property manager from the outset sets the tone for your entire investment experience."
 //         body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
 // From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market."

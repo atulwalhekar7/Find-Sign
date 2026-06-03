@@ -4,10 +4,10 @@ import SimpleFooter from "../components/Footer";
 
 // --- Assets (Assuming these exist in the Blogs folder as per instructions) ---
 import bannerImg from "../assets/happy-home-buyers-blog2-banner-australia-find-and-sign.jpg";
-import agentImg from "../assets/Blogs/DSC06286.jpg";
-import servicesImg from "../assets/About.jpg";
-import benefitsImg from "../assets/niki-nakrani-buyers-agent-australia-blog2-image-find-and-sign.jpg";
-import processImg from "../assets/DSC06057.jpg";
+import agentImg from "../assets/buyers-agent-perth-guide.jpg";
+import servicesImg from "../assets/perth-property-investment-strategy.jpg";
+import benefitsImg from "../assets/benefits-of-using-a-buyers-agent-perth.jpg";
+import processImg from "../assets/what-is-a-buyers-agent-perth.jpg";
 import { useState } from "react";
 import OurProcessBlog from "./Our-Process-Post2";
 
@@ -15,13 +15,19 @@ const SideBySideSection = ({
   title,
   content,
   image,
+  imageAlt,
+  imageTitle,
+  imageCaption,
   reverse = false,
 }: {
   title: string;
   content: React.ReactNode;
   image: string;
+  imageAlt?: string;
+  imageTitle?: string;
+  imageCaption?: string;
   reverse?: boolean;
-}) => (
+})=> (
   <section
     style={{
       display: "flex",
@@ -156,10 +162,13 @@ export default function BuyerAgentPerthBlog() {
         </section>
 
         {/* ── What is a Buyer's Agent ── */}
-        <SideBySideSection
-          title="What is a Buyer's Agent and Why Do You Need One?"
-          image={agentImg}
-          content={
+       <SideBySideSection
+  title="What is a Buyer's Agent and Why Do You Need One?"
+  image={agentImg}
+  imageAlt="Perth buyers agent helping property buyers find negotiate and secure the right property"
+  imageTitle="What is a Buyers Agent in Perth | Find and Sign"
+  imageCaption="Learn how a Perth buyers agent helps buyers find properties, negotiate better outcomes and access expert market insights."
+  content={
             <>
               <p tabIndex={0}>A buyer's agent (also known as a buyer's advocate) represents the buyer—not the seller—throughout the property purchasing process.</p>
               <p tabIndex={0} style={{ marginTop: "15px" }}>Unlike real estate agents who work for sellers, buyer's agents work exclusively for you to:</p>
@@ -175,11 +184,14 @@ export default function BuyerAgentPerthBlog() {
         />
 
         {/* ── Who Should Use ── */}
-        <SideBySideSection
-          title="Who Should Use a Buyer's Agent?"
-          image={processImg}
-          reverse
-          content={
+       <SideBySideSection
+  title="Who Should Use a Buyer's Agent?"
+  image={processImg}
+  imageAlt="Perth buyers agent assisting first home buyers property investors and interstate property buyers"
+  imageTitle="Who Should Use a Buyers Agent in Perth"
+  imageCaption="A Perth buyers agent helping first home buyers, investors, busy professionals and interstate buyers secure the right property."
+  reverse
+  content={
             <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
               <p tabIndex={0}><strong>First Home Buyers:</strong> Simplify the entry into the market and avoid costly first-timer mistakes.</p>
               <p tabIndex={0}><strong>Property Investors:</strong> Leverage data-driven strategies to identify high-growth suburbs and maximise returns.</p>
@@ -193,6 +205,9 @@ export default function BuyerAgentPerthBlog() {
         <SideBySideSection
           title="Key Services Offered by Find and Sign"
           image={servicesImg}
+          imageAlt="Perth buyer advocate providing key services to property buyers"
+          imageTitle="Key Services of a Buyers Agent in Perth"
+          imageCaption="Find and Sign offers comprehensive buyer advocacy services to help you navigate the property market with confidence."
           content={
             <ul style={{ display: "flex", flexDirection: "column", gap: "15px", paddingLeft: "20px" }}>
               <li tabIndex={0}><strong>Buyer Advocate:</strong> This is our complete service for buyers who want the right property secured from the very first search through to settlement. We manage the process on your behalf, with clear guidance at each stage so you understand what's happening, what to expect, and where the opportunity lies.</li>
@@ -205,6 +220,9 @@ export default function BuyerAgentPerthBlog() {
         <SideBySideSection
           title="Benefits of Hiring a Buyer's Agent in Perth"
           image={benefitsImg}
+          imageAlt="Perth buyer advocate highlighting the benefits of hiring a buyers agent"
+          imageTitle="Benefits of Hiring a Buyers Agent in Perth | Find and Sign"
+          imageCaption="Discover the key benefits of hiring a buyer's agent in Perth to help you find, negotiate and secure the right property."
           reverse
           content={
             <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
