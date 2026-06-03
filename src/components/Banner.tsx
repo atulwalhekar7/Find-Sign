@@ -43,13 +43,14 @@ function VideoModal({ onClose }: { onClose: () => void }) {
         </button>
 
         <iframe
-          src="https://player.vimeo.com/video/1189029882?autoplay=0&loop=1&playsinline=1"
+          src="https://player.vimeo.com/video/1189029882?autoplay=1&loop=1&playsinline=1"
           style={{
             width:        "100%",
             aspectRatio:  "16/9",
             height:       "auto",
             borderRadius: "4px",
             display:      "block",
+            
           }}
           frameBorder="0"
           allow="autoplay; fullscreen; picture-in-picture"
@@ -66,7 +67,7 @@ function VideoModal({ onClose }: { onClose: () => void }) {
 export default function App() {
   const [videoOpen, setVideoOpen] = useState(false);
   const [isVideoLoading, setIsVideoLoading] = useState(true);
-  const bgVideoRef = useRef<HTMLVideoElement>(null);
+  const bgVideoRef = useRef<HTMLIFrameElement>(null);
 
   // Listen for Vimeo's playback events to hide the loader only when video starts running
   useEffect(() => {
@@ -96,13 +97,13 @@ export default function App() {
   }, []);
 
   function openVideo() {
-    bgVideoRef.current?.pause();
+    bgVideoRef.current?.contentWindow?.postMessage('{"method":"pause"}', '*');
     setVideoOpen(true);
   }
   const navigate = useNavigate();
   function closeVideo() {
     setVideoOpen(false);
-    bgVideoRef.current?.play();
+    bgVideoRef.current?.contentWindow?.postMessage('{"method":"play"}', '*');
   }
 
   return (
@@ -312,6 +313,7 @@ letter-spacing: -0.02em;
         <section className="hero-top">
           <div className="video-wrapper">
             <iframe
+              ref={bgVideoRef}
               src="https://player.vimeo.com/video/1189023931?autoplay=1&muted=1&loop=1&background=1&playsinline=1&api=1"
               className="hero-bg-video"
               frameBorder="0"
@@ -320,6 +322,7 @@ letter-spacing: -0.02em;
               onLoad={() => {
                 setIsVideoLoading(false);
               }}
+               title="Find and Sign property buyer advocate introduction video"
               loading="eager"
             />
           </div>
