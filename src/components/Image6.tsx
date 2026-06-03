@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
-import heroImage from "../assets/niki-nakrani-buyers-agent-australia-clientoutcomes-banner3-find-and-sign.jpg";
+import heroImage from "../assets/buyer-advocate-australia-property-buying-confidence-home-interior.jpg";
 
 const Image1: React.FC = () => {
   return (
@@ -35,28 +35,33 @@ const Image1: React.FC = () => {
         >
           {/* IMAGE */}
           <Box
-            component="img"
-            className="no-theme"
-            src={heroImage}
-            alt="Confidence and certainty in property buying represented by a modern home interior"
-            sx={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: {
-                xs: "center 30%",
-                sm: "center top",
-                md: "center top",
-              },
-              display: "block",
-              verticalAlign: "top",
-              margin: 0,
-              padding: 0,
-            }}
-          />
+  component="img"
+  className="no-theme"
+  src={heroImage}
+  alt="Confidence and certainty in property buying represented by a modern home interior"
+  title="Buyer Advocate Australia | Confident Property Buying"
+  loading="lazy"
+  decoding="async"
+  width="1920"
+  height="1080"
+  sx={{
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    objectPosition: {
+      xs: "center 30%",
+      sm: "center top",
+      md: "center top",
+    },
+    display: "block",
+    verticalAlign: "top",
+    margin: 0,
+    padding: 0,
+  }}
+/>
 
           {/* OVERLAY */}
           <Box

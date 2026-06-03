@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
-import heroImage from "../assets/niki-nakrani-buyers-agent-image5-australia-find-and-sign.png";
+import heroImage from "../assets/buyer-advocate-australia-property-strategy-data-insights.png";
 
 const Image1: React.FC = () => {
   return (
@@ -34,27 +34,23 @@ const Image1: React.FC = () => {
         >
           {/* IMAGE */}
           <Box
-            component="img"
-            className="no-theme"
-            src={heroImage}
-            alt="Professional strategy development with real-time property market data"
-            sx={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "center 30%",
-              display: "block",
-              verticalAlign: "top",
-              margin: 0,
-              padding: 0,
-
-              /* Dark image effect */
-              filter: "brightness(55%)",
-            }}
-          />
+  component="img"
+  className="no-theme"
+  src={heroImage}
+  alt="Professional strategy development with real-time property market data"
+  title="Buyer Advocate Australia | Property Strategy Insights"
+  loading="lazy"
+  decoding="async"
+  width="1920"
+  height="1080"
+  sx={{
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    objectPosition: "center 30%",
+    display: "block",
+  }}
+/>
 
           {/* OVERLAY */}
           <Box

@@ -96,18 +96,39 @@ export default function About() {
   return (
     <>
       {/* SECTION 1 — Hero Banner */}
-      <section className="hero-banner">
-        <div className={`video-loader-container ${!isBannerLoading ? "hidden" : ""}`} />
-        <div className="banner-overlay" />
-        <div className="hero-box">
-          <div className={`attractive-loader ${!isBannerLoading ? "hidden" : ""}`} aria-hidden="true" />
-          <h1 className="hero-title" tabIndex={0}>About Us</h1>
-        </div>
-      </section>
+     <section className="hero-banner">
+  {/* SEO image for background banner */}
+  <img
+    src={Banner}
+    alt="Find and Sign Buyer Advocate Australia team helping clients purchase property with confidence"
+    title="About Find and Sign | Buyer Advocate Australia"
+    loading="lazy"
+    width="1920"
+    height="800"
+    style={{
+      position: "absolute",
+      width: "1px",
+      height: "1px",
+      opacity: 0,
+      overflow: "hidden",
+      pointerEvents: "none",
+    }}
+  />
+
+  <div className="banner-overlay" />
+
+  <div className="hero-box">
+    <h1 className="hero-title" tabIndex={0}>
+      About Us
+    </h1>
+  </div>
+</section>
 
       <div style={{ background: t.sectionBg, transition: "background 0.3s ease" }}>
-       <AboutSection
+        <AboutSection
   imageSrc={AboutUsBanner}
+  imageAlt="Experienced Buyers Agent Australia team helping home buyers and property investors secure the right property nationwide"
+  imageTitle="Find and Sign Buyers Agent Australia Team"
   heading="About Find & Sign"
   body1="Find & Sign Buyer Advocate was built on the belief that every buyer should secure the right property to build equity, choice and financial freedom.
 Founder Niki learnt through experience that the right guidance is critical in securing the outcome. It is identified through local knowledge, experience and direct relationships, then secured before it reaches the wider market.
@@ -125,14 +146,16 @@ Find & Sign we find with confidence you sign with certainty."
           onMouseLeave={() => setShowControls(true)}
         >
           <video
-            ref={videoRef}
-            src={aboutVideo}
-            loop
-            muted
-            playsInline
-            poster={aboutContentImg}
-            className="video-el"
-          />
+  ref={videoRef}
+  src={aboutVideo}
+  loop
+  muted
+  playsInline
+  preload="metadata"
+  poster={aboutContentImg}
+  className="video-el"
+  title="Find and Sign Buyers Agent Australia Introduction Video"
+/>
           <div className="video-overlay" />
           <div className="video-controls">
             <button className="ctrl-btn play-btn" onClick={togglePlayPause} aria-label={isPlaying ? "Pause video" : "Play video"}>
@@ -356,8 +379,21 @@ Find & Sign we find with confidence you sign with certainty."
             >
               <div style={{ display: "flex", alignItems: "flex-start", gap: "16px", width: "100%" }}>
                 <div style={{ width: "142px", height: "174px", minWidth: "142px", borderRadius: "20px", overflow: "hidden", flexShrink: 0, background: "#dcdcdc" }}>
-                  <img src={niki} alt="Niki Nakrani" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", display: "block" }} />
-                </div>
+<img
+  src={niki}
+  alt="Niki Nakrani founder of Find and Sign Buyers Agent Australia"
+  title="Niki Nakrani | Buyers Agent Australia Founder"
+  loading="lazy"
+  width="142"
+  height="174"
+  style={{
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    objectPosition: "top center",
+    display: "block"
+  }}
+/>                </div>
                 <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start", gap: "4px", paddingTop: "4px", flex: 1 }}>
                   <h3 tabIndex={0} style={{ color: t.nameColor, fontFamily: "GT Super Display Medium", fontSize: "32px", fontWeight: 500, lineHeight: "40px", letterSpacing: "-0.64px", margin: 0, transition: "color 0.3s ease" }}>
                     Niki Nakrani
@@ -413,8 +449,21 @@ Find & Sign we find with confidence you sign with certainty."
             >
               <div style={{ display: "flex", alignItems: "flex-start", gap: "16px", width: "100%" }}>
                 <div style={{ width: "142px", height: "174px", minWidth: "142px", borderRadius: "20px", overflow: "hidden", flexShrink: 0, background: "#dcdcdc" }}>
-                  <img src={Bec} alt="Rebecca" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
-                </div>
+<img
+  src={Bec}
+  alt="Rebecca Client Operations Manager at Find and Sign Buyers Agent Australia"
+  title="Rebecca | Client Operations Manager"
+  loading="lazy"
+  width="142"
+  height="174"
+  style={{
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    objectPosition: "center",
+    display: "block"
+  }}
+/>                </div>
                 <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start", gap: "4px", paddingTop: "4px", flex: 1 }}>
                   <h3 tabIndex={0} style={{ color: t.nameColor, fontFamily: "GT Super Display Medium", fontSize: "32px", fontWeight: 500, lineHeight: "40px", letterSpacing: "-0.64px", margin: 0, transition: "color 0.3s ease" }}>
                     Rebecca
