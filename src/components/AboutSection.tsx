@@ -1,9 +1,16 @@
-import { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import AboutBanner from "../assets/buyer-advocate-perth-australia-property-search.jpg";
 
 /* ================= FADE UP ANIMATION ================= */
-const FadeUp = ({ children, delay = 0, style = {}, className = "" }: any) => {
-  const ref = useRef<HTMLDivElement>(null);
+interface FadeUpProps {
+  children: React.ReactNode;
+  delay?: number;
+  style?: React.CSSProperties;
+  className?: string;
+}
+
+const FadeUp: React.FC<FadeUpProps> = ({ children, delay = 0, style = {}, className = "" }) => {
+  const ref = useRef<HTMLDivElement>(null!);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -37,7 +44,17 @@ const FadeUp = ({ children, delay = 0, style = {}, className = "" }: any) => {
 };
 
 /* ================= ABOUT SECTION ================= */
-const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
+interface AboutSectionProps {
+  imageSrc?: string;
+  imageAlt?: string;
+  imageTitle?: string;
+  heading: string;
+  subheading?: string;
+  body1?: string;
+  body2?: string;
+}
+
+const AboutSection: React.FC<AboutSectionProps> = ({ imageSrc, imageAlt, imageTitle, heading, subheading, body1, body2 }) => {
   return (
     <div style={{ background: "var(--bg-primary)", width: "100%" }}>
       <section className="as-grid">
@@ -51,25 +68,30 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
         </FadeUp>
 
         {/* Image — 5 cols desktop → 12 cols tablet-S and below */}
-        <FadeUp className="as-image-col" style={{ display: "flex" }}>
+        <FadeUp className="as-image-col">
           <div className="about-image">
-            <img src={imageSrc || AboutBanner} alt="" />
+            <img
+              src={imageSrc || AboutBanner}
+              alt={imageAlt || heading}
+              title={imageTitle || heading}
+              loading="lazy"
+            />
           </div>
         </FadeUp>
 
-        {/* Text — 7 cols desktop → 12 cols tablet-S and below */}
-        <FadeUp delay={0.1} className="as-text-col" style={{ display: "flex" }}>
+        {/* Text — 6 cols desktop → 12 cols tablet-S and below */}
+        <FadeUp delay={0.1} className="as-text-col">
           <div className="about-text">
             {body1
               ?.split("\n")
               .filter((p: string) => p.trim() !== "")
-              .map((p: string, i: number) => (
+              .map((p, i) => (
                 <p key={`b1-${i}`} className="body" tabIndex={0}>{p}</p>
               ))}
             {body2
               ?.split("\n")
               .filter((p: string) => p.trim() !== "")
-              .map((p: string, i: number) => (
+              .map((p, i) => (
                 <p key={`b2-${i}`} className="body" tabIndex={0}>{p}</p>
               ))}
           </div>
@@ -93,8 +115,35 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
 
         /* ── Column spans — desktop default ──────────────────────────── */
         .as-heading-col { grid-column: 1 / -1; }
-        .as-image-col   { grid-column: 1 / 6;  align-self: stretch; }
-        .as-text-col    { grid-column: 6 / 13; align-self: stretch; }
+
+        .as-image-col {
+          grid-column: 1 / 7;
+          align-self: stretch;
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          overflow: hidden;
+          min-width: 0;
+        }
+
+        .as-text-col {
+          grid-column: 7 / 13;
+          align-self: stretch;
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          min-width: 0;
+        }
+
+        /* FadeUp wrapper div must stretch to pass height down */
+        .as-image-col > div,
+        .as-text-col  > div {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          position: relative;
+          min-width: 0;
+        }
 
         /* ── Heading block ────────────────────────────────────────────── */
         .about-heading-block {
@@ -136,15 +185,19 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
         /* ── Image ────────────────────────────────────────────────────── */
         .about-image {
           width: 100%;
-          height: 100%;
+          display: flex;
+          flex: 1;
+          overflow: hidden;
+          min-width: 0;
         }
 
         .about-image img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: center 20%;
+          object-position: center center;
           display: block;
+          min-width: 0;
         }
 
         /* ── Text ─────────────────────────────────────────────────────── */
@@ -152,7 +205,9 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
           width: 100%;
           display: flex;
           flex-direction: column;
-          height: 100%;
+          flex: 1;
+          justify-content: flex-start;
+          min-width: 0;
         }
 
         .body {
@@ -173,7 +228,7 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
         @media (max-width: 1200px) {
           .as-grid {
             padding: 64px 40px;
-            column-gap: 20px;
+            column-gap: 24px;
           }
         }
 
@@ -181,7 +236,7 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
         @media (max-width: 900px) {
           .as-grid {
             padding: 40px 24px;
-            column-gap: 16px;
+            column-gap: 20px;
           }
         }
 
@@ -200,7 +255,7 @@ const AboutSection = ({ imageSrc, heading, subheading, body1, body2 }: any) => {
           .as-image-col,
           .as-text-col { grid-column: 1 / -1; }
 
-          .about-image  { min-height: unset; height: auto; aspect-ratio: 4 / 5; }
+          .about-image { min-height: unset; height: auto; aspect-ratio: 4 / 5; }
 
           .about-heading-block { margin-bottom: 32px; }
           .sub  { font-size: 18px; line-height: 28px; }
