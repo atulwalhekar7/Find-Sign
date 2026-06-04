@@ -1,6 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
-import heroImage from "../assets/buyer-advocate-perth-australia-property-services.png";
+import heroImage from "../../assets/niki-nakrani-buyers-agent-image4-australia-find-and-sign.png";
+import "./Image4.css";
 
 const Image1: React.FC = () => {
   return (
@@ -124,104 +125,6 @@ const Image1: React.FC = () => {
           </Box>
         </Box>
       </Box>
-
-      <style>{`
-        /* ✅ Prevent dark mode from affecting this component */
-        [data-theme="dark"] .no-theme {
-          background: transparent !important;
-        }
-
-        /* MOBILE - max 599px */
-        @media (max-width: 599px) {
-          .image4-hero-title {
-            font-size: 20px !important;
-            line-height: 24px !important;
-            letter-spacing: -0.05px !important;
-          }
-
-          .image4-overlay-container {
-            align-items: center !important;
-            padding-bottom: 0px !important;
-          }
-        }
-
-        /* TABLET - 600px to 1024px */
-        @media (min-width: 600px) and (max-width: 1024px) {
-          .image4-hero-title {
-            font-size: 30px !important;
-            line-height: 38px !important;
-            letter-spacing: -0.5px !important;
-          }
-        }
-
-        /* DESKTOP - 1025px+ */
-        @media (min-width: 1025px) {
-          .image4-hero-title {
-            font-size: 44px !important;
-            line-height: 54px !important;
-            letter-spacing: -0.88px !important;
-          }
-        }
-
-        .book-btn {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
-          padding: 10px 14px;
-          font-family: 'CX80';
-          font-weight: 700;
-          font-size: 12px;
-          line-height: 1;
-          letter-spacing: 3px;
-          border-radius: 5px;
-          border: 1px solid #69E4DC;
-          background: transparent;
-          color: #fff;
-          cursor: pointer;
-          transition: all 0.25s ease;
-        }
-
-        .book-btn:hover {
-          background: rgba(105, 228, 220, 0.15);
-          transform: translateY(-1px);
-        }
-
-        .book-btn svg {
-          width: 14px;
-          height: 14px;
-          stroke: #fff;
-        }
-
-        @media (max-width: 600px) {
-          .book-btn {
-            font-size: 10px;
-            letter-spacing: 2px;
-            padding: 8px 12px;
-          }
-
-          .book-btn svg {
-            width: 12px;
-            height: 12px;
-          }
-        }
-
-        @media (min-width: 601px) and (max-width: 1024px) {
-          .book-btn {
-            font-size: 11px;
-            letter-spacing: 3px;
-            padding: 10px 14px;
-          }
-        }
-
-        @media (min-width: 1200px) {
-          .book-btn {
-            font-size: 13px;
-            letter-spacing: 5px;
-            padding: 12px 18px;
-          }
-        }
-      `}</style>
     </>
   );
 };

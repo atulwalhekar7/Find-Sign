@@ -1,10 +1,11 @@
 import { useEffect } from "react";
-import SimpleFooter from "../components/SimpleFooter";
-import GetInTouch from "../components/GetInTouch/GetInTouch";
-import AboutServiceImg from "../assets/buyer-advocate-perth-australia-property-search.jpg";
-import AboutSection from "../components/AboutSection";
+import SimpleFooter from "../../components/SimpleFooter";
+import GetInTouch from "../../components/GetInTouch";
+import AboutServiceImg from "../../assets/About Find&Sign.jpg";
+import AboutSection from "../../components/AboutSection";
+import "./QuantitySurveyor.css";
 
-export default function SalesAgent() {
+export default function QuantitySurveyor() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
@@ -13,7 +14,7 @@ export default function SalesAgent() {
     <div style={{ background: "#fff", margin: 0, padding: 0, color: "#111" }}>
 
       {/* ── Hero ── */}
-      <section
+     <section
   style={{
     width: "100%",
     height: "550px",
@@ -45,11 +46,11 @@ export default function SalesAgent() {
               fontStyle: "normal",
               fontWeight: 500,
               lineHeight: "64px",
-              letterSpacing:  "-0.02em",
+              letterSpacing: "-0.02em",
               margin: 0,
             }}
           >
-            Sales Agent
+            Accounting / Quantity Surveyor
           </h1>
         </div>
       </section>
@@ -62,25 +63,13 @@ export default function SalesAgent() {
   imageCaption="Experienced Perth mortgage broker providing finance guidance and loan solutions for property buyers across Australia."
   heading="About Mortgage Broker"
   subheading="Expert guidance for every step of your property journey."
-        body1="There will come a time in every property journey when you need to sell, whether that is moving on from your family home, exiting an investment, or repositioning your portfolio. A great sales agent understands how to present your property to the right buyers, price it strategically, and negotiate an outcome that reflects its true value. Having a trusted sales agent in your network before you need one means you are never starting from scratch at a critical moment. We refer only agents whose approach, integrity, and local knowledge we have seen firsthand."
+        body1="Two of the most overlooked yet most valuable members of your investment team. A quantity surveyor prepares a detailed depreciation schedule for your property, identifying every eligible asset that can be claimed as a tax deduction over time. This alone can significantly reduce your taxable income each financial year. Your accountant then takes that information and ensures your overall financial structure is working as efficiently as possible. From the way your investment is held to the deductions you are entitled to claim, a property savvy accountant ensures you are not leaving money on the table. Getting these two professionals involved early, ideally before you purchase, can have a meaningful impact on your long term returns."
 //         body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
 // From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market."
       />
 
-      <GetInTouch initialService="Sales Agent" showService={true} />
+      <GetInTouch initialService="Accounting / Quantity Surveyor" showService={true} />
       <SimpleFooter />
-
-      <style>{`
-        @keyframes heroFadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        @media (max-width: 767px) {
-          h1, .h1 { font-size: 48px !important; line-height: 58px !important; }
-          h2, .h2 { font-size: 38px !important; line-height: 48px !important; }
-          h3, .h3 { font-size: 28px !important; line-height: 38px !important; }
-        }
-      `}</style>
     </div>
   );
 }

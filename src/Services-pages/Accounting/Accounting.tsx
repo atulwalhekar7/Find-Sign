@@ -1,8 +1,9 @@
 import { useEffect } from "react";
-import SimpleFooter from "../components/SimpleFooter";
-import GetInTouch from "../components/GetInTouch/GetInTouch";
-import AboutServiceImg from "../assets/buyer-advocate-perth-australia-property-search.jpg";
-import AboutSection from "../components/AboutSection";
+import SimpleFooter from "../../components/SimpleFooter";
+import GetInTouch from "../../components/GetInTouch";
+import AboutServiceImg from "../../assets/About Find&Sign.jpg";
+import AboutSection from "../../components/AboutSection";
+import "./Accounting.css";
 
 export default function Accounting() {
   useEffect(() => {
@@ -64,18 +65,6 @@ export default function Accounting() {
       </div>
 
       <SimpleFooter />
-
-      <style>{`
-        @keyframes heroFadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        @media (max-width: 767px) {
-          h1, .h1 { font-size: 48px !important; line-height: 58px !important; letter-spacing: -0.02em !important; }
-          h2, .h2 { font-size: 38px !important; line-height: 48px !important; }
-          h3, .h3 { font-size: 28px !important; line-height: 38px !important; }
-        }
-      `}</style>
     </div>
   );
 }

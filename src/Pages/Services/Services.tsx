@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import GetInTouch from "../components/GetInTouch/GetInTouch";
-import SimpleFooter from "../components/SimpleFooter";
-import AboutSection from "../components/AboutSection";
-import bannerImg from "../assets/service-banner-find-and-sign-buyers-australia.jpg";
-import AboutServiceImg from "../assets/perth-buyer-advocate-services-australia.jpg";
-import Image4 from "../components/Image4";
-import { useTheme } from "../components/ThemeContext";
+import GetInTouch from "../../components/GetInTouch";
+import SimpleFooter from "../../components/SimpleFooter";
+import AboutSection from "../../components/AboutSection";
+import bannerImg from "../../assets/service-banner-find-and-sign-buyers-australia.jpg";
+import AboutServiceImg from "../../assets/about-service-find-and-sign.jpg";
+import Image4 from "../../components/Image4/Image4";
+import { useTheme } from "../../components/ThemeContext";
+import "./Services.css";
 
 // ── Theme ─────────────────────────────────────────────────────────────────────
 const THEMES = {
@@ -443,239 +444,199 @@ From the first conversation to settlement and beyond, we are in your corner. You
           transition: "background 0.3s ease",
         }}
       >
-        <FadeUp>
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <h2
-              tabIndex={0}
+        <div style={{ maxWidth: "1512px", width: "100%", margin: "0 auto" }}>
+          <FadeUp>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+              <h2
+                tabIndex={0}
+                style={{
+                  color: t.headingColor,
+                  textAlign: "center",
+                  fontVariantNumeric: "lining-nums proportional-nums",
+                  fontFamily: "GT Super Display Medium",
+                  fontSize: "44px",
+                  fontStyle: "normal",
+                  fontWeight: 500,
+                  lineHeight: "54px",
+                  letterSpacing: "-0.88px",
+                  margin: "0",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "24px",
+                  transition: "color 0.3s ease",
+                }}
+              >
+                Our Services
+                <div style={{ width: "160px", height: "1px", background: t.dividerColor, transition: "background 0.3s ease" }} />
+              </h2>
+              <p
+                tabIndex={0}
+                style={{
+                  color: t.subTextColor,
+                  fontFamily: "Sohne",
+                  fontSize: "24px",
+                  fontWeight: 300,
+                  lineHeight: "36px",
+                  marginTop: "24px",
+                  textAlign: "center",
+                  marginBottom: "56px",
+                  transition: "color 0.3s ease",
+                }}
+              >
+                Explore more about our services
+              </p>
+            </div>
+          </FadeUp>
+
+          {/* Top row: Buyer Advocate + Advisory */}
+          <div className="top-grid grid-12">
+            <div className="col-6 col-sm-12">
+              <ServiceCard title="Buyer Advocate" body={body1} hasButton delay={0} onBookCall={handleBookCall} theme={theme} />
+            </div>
+            <div className="col-6 col-sm-12">
+              <ServiceCard title="Advisory" body={body2} hasButton delay={0.12} onBookCall={handleBookCall} theme={theme} />
+            </div>
+          </div>
+
+          {/* Affiliated Services heading */}
+          <FadeUp style={{ marginBottom: "16px" }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
+              <h2
+                tabIndex={0}
+                style={{
+                  margin: "56px 0 0",
+                  color: t.headingColor,
+                  textAlign: "center",
+                  fontVariantNumeric: "lining-nums proportional-nums",
+                  fontFamily: "GT Super Display Medium",
+                  fontSize: "44px",
+                  fontStyle: "normal",
+                  fontWeight: 500,
+                  lineHeight: "54px",
+                  letterSpacing: "-0.88px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "24px",
+                  transition: "color 0.3s ease",
+                }}
+              >
+                Affiliated Services
+                <div style={{ width: "160px", height: "1px", background: t.dividerColor, transition: "background 0.3s ease" }} />
+              </h2>
+              <p
+                tabIndex={0}
+                style={{
+                  color: t.subTextColor,
+                  fontFamily: "Sohne",
+                  fontSize: "24px",
+                  fontWeight: 300,
+                  lineHeight: "36px",
+                  marginTop: "24px",
+                  marginBottom: "56px",
+                  textAlign: "center",
+                  transition: "color 0.3s ease",
+                }}
+              >
+                People we trust. Services you may need.
+              </p>
+              <p
+                tabIndex={0}
+                className="services-desc"
+                style={{
+                  color: t.bodyTextColor,
+                  textAlign: "center",
+                  fontFamily: "SohneBuch",
+                  fontSize: "20px",
+                  fontStyle: "normal",
+                  fontWeight: 400,
+                  lineHeight: "28px",
+                  marginTop: "0px",
+                  marginBottom: "86px",
+                  margin: "0 auto 86px",
+                  transition: "color 0.3s ease",
+                }}
+              >
+                At Find and Sign Buyer Advocate, securing the right property is only part of the process. We work with trusted professionals at each stage and can introduce them where relevant. You're never required to use these services. The choice is always yours.
+              </p>
+            </div>
+          </FadeUp>
+
+          {/* Row 1: 3 affiliated cards */}
+          <div className="grid-12" style={{ marginBottom: "86px" }}>
+            <div className="col-4 col-md-6 col-sm-12">
+              <OtherServiceCard title="Mortgage Broker" body={body3} hasButton delay={0} onBookCall={() => navigate("/services/accounting")} theme={theme} />
+            </div>
+            <div className="col-4 col-md-6 col-sm-12">
+              <OtherServiceCard title="Settlement Agent" body={body4} hasButton delay={0.1} onBookCall={handleBookCall} theme={theme} />
+            </div>
+            <div className="col-4 col-md-6 col-sm-12">
+              <OtherServiceCard title="Building Inspection" body={body5} hasButton delay={0.2} onBookCall={handleBookCall} theme={theme} />
+            </div>
+          </div>
+
+          {/* Row 2: 3 affiliated cards */}
+          <div className="grid-12" style={{ marginBottom: "64px" }}>
+            <div className="col-4 col-md-6 col-sm-12">
+              <OtherServiceCard title="Property Management" body={body6} hasButton delay={0} onBookCall={handleBookCall} theme={theme} />
+            </div>
+            <div className="col-4 col-md-6 col-sm-12">
+              <OtherServiceCard title="Accounting / Quantity Surveyor" body={body7} hasButton delay={0.1} onBookCall={() => navigate("/services/quantity-surveyor")} theme={theme} />
+            </div>
+            <div className="col-4 col-md-6 col-sm-12">
+              <OtherServiceCard title="Sales Agent" body={body8} hasButton delay={0.2} onBookCall={handleBookCall} theme={theme} />
+            </div>
+          </div>
+
+          {/* ── Affiliated Services Disclosure ─────────────────────────────── */}
+          <FadeUp style={{ width: "100%" }}>
+            <div
               style={{
-                color: t.headingColor,
-                textAlign: "center",
-                fontVariantNumeric: "lining-nums proportional-nums",
-                fontFamily: "GT Super Display Medium",
-                fontSize: "44px",
-                fontStyle: "normal",
-                fontWeight: 500,
-                lineHeight: "54px",
-                letterSpacing: "-0.88px",
-                margin: "0",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                gap: "24px",
-                transition: "color 0.3s ease",
+                alignSelf: "stretch",
+                gap: "8px",
               }}
             >
-              Our Services
-              <div style={{ width: "160px", height: "1px", background: t.dividerColor, transition: "background 0.3s ease" }} />
-            </h2>
-            <p
-              tabIndex={0}
-              style={{
-                color: t.subTextColor,
-                fontFamily: "Sohne",
-                fontSize: "24px",
-                fontWeight: 300,
-                lineHeight: "36px",
-                marginTop: "24px",
-                textAlign: "center",
-                marginBottom: "56px",
-                transition: "color 0.3s ease",
-              }}
-            >
-              Explore more about our services
-            </p>
-          </div>
-        </FadeUp>
-
-        {/* Top row: Buyer Advocate + Advisory */}
-        <div className="top-grid grid-12">
-          <div className="col-6 col-sm-12">
-            <ServiceCard title="Buyer Advocate" body={body1} hasButton delay={0} onBookCall={handleBookCall} theme={theme} />
-          </div>
-          <div className="col-6 col-sm-12">
-            <ServiceCard title="Advisory" body={body2} hasButton delay={0.12} onBookCall={handleBookCall} theme={theme} />
-          </div>
+              <p
+                tabIndex={0}
+                style={{
+                  color: t.disclosureColor,
+                  textAlign: "center",
+                  fontFamily: "SohneBuch",
+                  fontSize: "16px",
+                  fontStyle: "normal",
+                  fontWeight: 400,
+                  lineHeight: "24px",
+                  margin: 0,
+                  transition: "color 0.3s ease",
+                }}
+              >
+                Affiliated Services Disclosure
+              </p>
+              <p
+                tabIndex={0}
+                style={{
+                  alignSelf: "stretch",
+                  color: t.disclosureColor,
+                  textAlign: "center",
+                  fontFamily: "SohneBuch",
+                  fontSize: "16px",
+                  fontStyle: "normal",
+                  fontWeight: 400,
+                  lineHeight: "24px",
+                  margin: "0 auto",
+                  maxWidth: "1158px",
+                  transition: "color 0.3s ease",
+                }}
+              >
+                The affiliated services listed on this page are independent businesses and professionals that Find and Sign Buyer Advocate has developed relationships with over time. While we may refer or introduce these services, we do so based on our genuine belief in the quality of their work. Please note that Find and Sign Buyer Advocate may receive a commission or referral fee in some instances. We are not responsible for the advice, outcomes, or conduct of any third party service provider. All decisions regarding the engagement of any affiliated service remain entirely at your discretion.
+              </p>
+            </div>
+          </FadeUp>
         </div>
-
-        {/* Affiliated Services heading */}
-        <FadeUp style={{ marginBottom: "16px" }}>
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
-            <h2
-              tabIndex={0}
-              style={{
-                margin: "56px 0 0",
-                color: t.headingColor,
-                textAlign: "center",
-                fontVariantNumeric: "lining-nums proportional-nums",
-                fontFamily: "GT Super Display Medium",
-                fontSize: "44px",
-                fontStyle: "normal",
-                fontWeight: 500,
-                lineHeight: "54px",
-                letterSpacing: "-0.88px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: "24px",
-                transition: "color 0.3s ease",
-              }}
-            >
-              Affiliated Services
-              <div style={{ width: "160px", height: "1px", background: t.dividerColor, transition: "background 0.3s ease" }} />
-            </h2>
-            <p
-              tabIndex={0}
-              style={{
-                color: t.subTextColor,
-                fontFamily: "Sohne",
-                fontSize: "24px",
-                fontWeight: 300,
-                lineHeight: "36px",
-                marginTop: "24px",
-                marginBottom: "56px",
-                textAlign: "center",
-                transition: "color 0.3s ease",
-              }}
-            >
-              People we trust. Services you may need.
-            </p>
-            <p
-              tabIndex={0}
-              className="services-desc"
-              style={{
-                color: t.bodyTextColor,
-                textAlign: "center",
-                fontFamily: "SohneBuch",
-                fontSize: "20px",
-                fontStyle: "normal",
-                fontWeight: 400,
-                lineHeight: "28px",
-                marginTop: "0px",
-                marginBottom: "86px",
-                transition: "color 0.3s ease",
-              }}
-            >
-              At Find and Sign Buyer Advocate, securing the right property is only part of the process. We work with trusted professionals at each stage and can introduce them where relevant. You're never required to use these services. The choice is always yours.
-            </p>
-          </div>
-        </FadeUp>
-
-        {/* Row 1: 3 affiliated cards */}
-        <div className="grid-12" style={{ marginBottom: "86px" }}>
-          <div className="col-4 col-md-6 col-sm-12">
-            <OtherServiceCard title="Mortgage Broker" body={body3} hasButton delay={0} onBookCall={() => navigate("/services/accounting")} theme={theme} />
-          </div>
-          <div className="col-4 col-md-6 col-sm-12">
-            <OtherServiceCard title="Settlement Agent" body={body4} hasButton delay={0.1} onBookCall={handleBookCall} theme={theme} />
-          </div>
-          <div className="col-4 col-md-6 col-sm-12">
-            <OtherServiceCard title="Building Inspection" body={body5} hasButton delay={0.2} onBookCall={handleBookCall} theme={theme} />
-          </div>
-        </div>
-
-      {/* Row 2: 3 affiliated cards */}
-
-<div className="grid-12" style={{ marginBottom: "64px" }}>
-
-  <div className="col-4 col-md-6 col-sm-12">
-   <OtherServiceCard
-  title="Property Management"
-  body={body6}
-  hasButton
-  delay={0}
-  onBookCall={handleBookCall}
-  theme={theme}
-/>
-  </div>
-
-  <div className="col-4 col-md-6 col-sm-12">
-    <OtherServiceCard
-      title="Accounting / Quantity Surveyor"
-      body={body7}
-      hasButton
-      delay={0.1}
-      onBookCall={() => navigate("/services/quantity-surveyor")}
-      theme={theme}
-    />
-  </div>
-
-  <div className="col-4 col-md-6 col-sm-12">
-    <OtherServiceCard
-      title="Sales Agent"
-      body={body8}
-      hasButton
-      delay={0.2}
-      onBookCall={handleBookCall}
-      theme={theme}
-    />
-  </div>
-
-</div>
-        {/* ── Affiliated Services Disclosure ─────────────────────────────── */}
-        <FadeUp style={{ width: "100%" }}>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              alignSelf: "stretch",
-              gap: "8px",
-            }}
-          >
-            <p
-              tabIndex={0}
-             style={{
-  color: t.disclosureColor,
-  textAlign: "center",
-  fontFamily: "SohneBuch",
-  fontSize: "11px",
-  lineHeight: "22px",
-  fontStyle: "normal",
-  fontWeight: 400,
-  margin: 0,
-}}
-            >
-              Affiliated Services Disclosure
-            </p>
-
-            {/* Body */}
-           {/* <p
-  tabIndex={0}
-  style={{
-    alignSelf: "stretch",
-    color: "var(--FS-System-Grey-1, #757575)",
-    textAlign: "center",
-    fontFamily: "SohneBuch",
-    fontSize: "11px",
-    fontStyle: "normal",
-    fontWeight: 400,
-    lineHeight: "22px",
-    margin: 0,
-    transition: "color 0.3s ease",
-  }}
->
-              Affiliated Services Disclosure
-            </p> */}
-          <p
-  tabIndex={0}
-  style={{
-    alignSelf: "stretch",
-    color: t.disclosureColor,
-    textAlign: "center",
-    fontFamily: "SohneBuch",
-    fontSize: "16px",
-    fontStyle: "normal",
-    fontWeight: 400,
-    lineHeight: "24px",
-    margin: "0 auto",   // 👈 important fix
-    maxWidth: "1158px",
-    transition: "color 0.3s ease",
-  }}
->
-              The affiliated services listed on this page are independent businesses and professionals that Find and Sign Buyer Advocate has developed relationships with over time. While we may refer or introduce these services, we do so based on our genuine belief in the quality of their work. Please note that Find and Sign Buyer Advocate may receive a commission or referral fee in some instances. We are not responsible for the advice, outcomes, or conduct of any third party service provider. All decisions regarding the engagement of any affiliated service remain entirely at your discretion.
-            </p>
-          </div>
-        </FadeUp>
       </section>
 
       <Image4 />
@@ -684,112 +645,6 @@ From the first conversation to settlement and beyond, we are in your corner. You
       </div>
       <SimpleFooter />
 
-      {/* ── Styles ───────────────────────────────────────────────────────── */}
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap');
-        .video-loader-container {
-          position: absolute;
-          inset: 0;
-          z-index: 2;
-          background: #073B2F; 
-          transition: opacity 0.3s ease;
-          pointer-events: none;
-        }
-        .video-loader-container.hidden {
-          opacity: 0;
-        }
-        .attractive-loader {
-          width: 40px;
-          height: 40px;
-          border: 3px solid rgba(105, 228, 220, 0.2);
-          border-radius: 50%;
-          border-top-color: #69E4DC;
-          animation: spin 1s infinite linear;
-          transition: opacity 0.3s ease;
-          opacity: 1;
-          margin-bottom: 8px;
-        }
-        .attractive-loader.hidden {
-          opacity: 0;
-          pointer-events: none;
-        }
-        @keyframes spin { to { transform: rotate(1turn); } }
-
-        .grid-12 {
-          display: grid;
-          grid-template-columns: repeat(12, 1fr);
-          gap: 24px;
-          width: 100%;
-        }
-        .col-1  { grid-column: span 1; }
-        .col-2  { grid-column: span 2; }
-        .col-3  { grid-column: span 3; }
-        .col-4  { grid-column: span 4; }
-        .col-5  { grid-column: span 5; }
-        .col-6  { grid-column: span 6; }
-        .col-7  { grid-column: span 7; }
-        .col-8  { grid-column: span 8; }
-        .col-9  { grid-column: span 9; }
-        .col-10 { grid-column: span 10; }
-        .col-11 { grid-column: span 11; }
-        .col-12 { grid-column: span 12; }
-
-        .grid-12 > [class*="col-"] > div { height: 100%; }
-
-        .services-section { padding: 64px 130px 64px; }
-        .services-desc { width: 100%; max-width: 1158px; }
-
-        @keyframes heroFadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 1200px) {
-          .services-section { padding: 64px 40px 64px; }
-        }
-
-        @media (max-width: 900px) {
-          .services-section { padding: 64px 20px 64px; }
-
-          .services-hero-banner {
-            aspect-ratio: 4 / 5 !important;
-            min-height: unset !important;
-          }
-
-          h1 { font-size: 48px !important; line-height: 58px !important; }
-          h2 { font-size: 38px !important; line-height: 48px !important; }
-          h3 { font-size: 28px !important; line-height: 38px !important; }
-          .services-section p { font-size: 18px !important; line-height: 28px !important; }
-          .services-section p { font-size: 11px !important; line-height: 20px !important; }
-
-          /* top-grid: each col-6 card full-width on tablet */
-          .top-grid.grid-12 .col-6 { grid-column: span 12; }
-          .col-md-1  { grid-column: span 1; }
-          .col-md-2  { grid-column: span 2; }
-          .col-md-3  { grid-column: span 3; }
-          .col-md-4  { grid-column: span 4; }
-          .col-md-5  { grid-column: span 5; }
-          .col-md-6  { grid-column: span 6; }
-          .col-md-7  { grid-column: span 7; }
-          .col-md-8  { grid-column: span 8; }
-          .col-md-9  { grid-column: span 9; }
-          .col-md-10 { grid-column: span 10; }
-          .col-md-11 { grid-column: span 11; }
-          .col-md-12 { grid-column: span 12; }
-        }
-
-        @media (max-width: 767px) {
-          h1, .h1 { font-size: 48px !important; line-height: 58px !important; letter-spacing: -0.02em; }
-          h2, .h2 { font-size: 38px !important; line-height: 48px !important; }
-          h3, .h3 { font-size: 28px !important; line-height: 38px !important; }
-        }
-
-        /* ── sm: 600px — mobile ──────────────────────────────────────────── */
-        @media (max-width: 600px) {
-          /* all cards go full-width on small screens */
-          .grid-12 [class*="col-"] { grid-column: span 12 !important; }
-        }
-      `}</style>
     </div>
   );
 }

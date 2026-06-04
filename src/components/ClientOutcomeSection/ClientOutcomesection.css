@@ -1,0 +1,315 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+@keyframes heartbeatFloat {
+  0%   { transform: translateY(0)    scale(1);    box-shadow: 0 4px 12px rgba(105,228,220,0.3); }
+  14%  { transform: translateY(-3px) scale(1.06); box-shadow: 0 8px 20px rgba(105,228,220,0.4); }
+  28%  { transform: translateY(0)    scale(1); }
+  42%  { transform: translateY(-3px) scale(1.06); box-shadow: 0 8px 20px rgba(105,228,220,0.4); }
+  70%  { transform: translateY(-8px) scale(1); }
+  100% { transform: translateY(0)    scale(1); }
+}
+
+.co-wrapper {
+  width: 100%;
+  background: #F9F9F9;
+  overflow-x: clip;
+}
+
+.co-section {
+  background: #F9F9F9;
+  width: 100%;
+  max-width: 1512px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 64px;
+  padding: 64px 130px;
+  overflow: visible;
+}
+
+.co-head { grid-column: 1 / -1; margin-bottom: 48px; }
+
+.co-slider-outer {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  overflow: visible;
+}
+
+.co-header {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 64px;
+  align-items: flex-start;
+}
+
+.co-title-group {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.co-h2 {
+  color: var(--FS-RACING-GREEN, #073B2F);
+  font-family: "GT Super Display Medium";
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 54px;
+  letter-spacing: -0.88px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
+.co-h2::after {
+  content: "";
+  width: 160px;
+  height: 1px;
+  background: #073B2F;
+}
+
+.co-subtitle {
+  color: #000;
+  font-family: Sohne;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 36px;
+  margin-top: 24px;
+}
+
+.co-slider-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+}
+
+/* Desktop/Tablet: clip so cards don't overflow outside the viewport */
+.co-slider-viewport {
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+  margin: -20px 0;
+}
+
+.co-slider-track {
+  display: flex;
+  gap: 32px;
+  transition: transform 0.55s cubic-bezier(0.77, 0, 0.18, 1);
+  will-change: transform;
+  touch-action: pan-y;
+}
+
+.property-card {
+  flex: 0 0 var(--card-flex-basis);
+  min-width: 0;
+  height: 440px;
+  background: #FFFFFF;
+  border: 2px solid #69E4DC;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+              box-shadow 0.4s ease;
+}
+.property-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 10px 22px rgba(105,228,220,0.96);
+}
+
+.card-image-wrap {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(3px) brightness(80%);
+  transition: transform 0.3s ease;
+  display: block;
+}
+.property-card:hover .card-image { transform: scale(1.08); }
+
+.growth-circle-container {
+  position: absolute;
+  bottom: 175px;
+  right: 1px;
+  width: 152px;
+  height: 152px;
+  border-radius: 50%;
+  z-index: 10;
+  transition: filter 0.3s ease, background 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.growth-circle-container:hover {
+  animation: heartbeatFloat 4s ease-in-out infinite;
+}
+.property-card:hover .growth-circle-container {
+  background: #FFFFFF;
+  filter: brightness(1.1) drop-shadow(0 4px 15px rgba(105,228,220,0.5));
+}
+
+.growth-label {
+  width: 81.102px;
+  height: 28px;
+  color: var(--FS-RACING-GREEN, #073B2F);
+  text-align: center;
+  font-family: "SohneBuch";
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.growth-value {
+  width: 123px;
+  color: var(--FS-RACING-GREEN, #073B2F);
+  text-align: center;
+  font-family: "GT Super Display Medium";
+  font-size: 37px;
+  font-weight: 500;
+  line-height: 40px;
+  letter-spacing: -0.74px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.card-data { padding: 55px 18px 20px; flex: 1; }
+.card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+.row-label {
+  font-family: "SohneBuch";
+  font-size: 16px;
+  color: #000;
+  font-weight: 400;
+}
+.row-val {
+  font-family: "SohneBuch";
+  font-size: 16px;
+  color: #757575;
+  font-weight: 400;
+  margin-left: auto;
+}
+
+.co-dots { display: flex; gap: 12px; align-items: center; margin-bottom: 24px; }
+.co-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #D0C9C0;
+  border: none; padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+.co-dot.active { background: #073B2F; width: 24px; border-radius: 4px; }
+
+.view-btn {
+  display: flex;
+  height: 48px;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  border: 1px solid #69E4DC;
+  background: #FFFFFF;
+  color: #003327;
+  font-family: 'CX80';
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 4.8px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.view-btn:hover { background: #69E4DC; transform: scale(1.05); }
+
+.rev-arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1px solid #D0C9C0;
+  background: #FFFFFF;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  transition: background 0.2s, border-color 0.2s;
+}
+.rev-arrow-btn:hover { background: #69E4DC; border-color: #69E4DC; }
+.rev-arrow-btn:disabled { opacity: 0.3; cursor: default; }
+.rev-arrow-btn.prev { left: -52px; }
+.rev-arrow-btn.next { right: -52px; }
+
+/* ── Tablet ── */
+@media (max-width: 1199px) {
+  .co-section { column-gap: 32px; padding: 48px 48px 64px; }
+  .co-header { column-gap: 32px; }
+  .co-h2 { font-size: 36px; line-height: 44px; letter-spacing: -0.72px; }
+  .co-subtitle { font-size: 20px; }
+  .rev-arrow-btn.prev { left: -44px; }
+  .rev-arrow-btn.next { right: -44px; }
+}
+
+/* ── Mobile ── */
+@media (max-width: 767px) {
+  .co-section {
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 16px;
+    padding: 40px 0 56px 24px;
+  }
+  .co-head { padding-right: 24px; }
+  .co-header { grid-template-columns: repeat(4, 1fr); column-gap: 16px; }
+  .co-h2 { font-size: 32px; line-height: 38px; letter-spacing: -0.64px; }
+  .co-subtitle { font-size: 18px; line-height: 28px; }
+
+  /*
+   * KEY FIX: On mobile, the viewport must NOT clip.
+   * Remove the padding/margin trick that was masking the card shadow
+   * and potentially interfering with layout measurements.
+   */
+  .co-slider-viewport {
+    overflow: visible;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Hide arrows on mobile — peek + dots handle navigation */
+  .rev-arrow-btn { display: none; }
+
+  /* Keep dots & button centred within the padded area */
+  .co-dots  { padding-right: 24px; }
+  .view-btn { margin-right: 24px; }
+
+  .growth-circle-container { width: 120px; height: 120px; bottom: 180px; }
+  .growth-label { font-size: 16px; }
+  .growth-value { font-size: 28px; width: 100px; }
+  .row-label, .row-val { font-size: 14px; }
+}

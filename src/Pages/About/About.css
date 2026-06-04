@@ -1,0 +1,116 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── HERO ── */
+.hero-banner {
+  position: relative; width: 100%; min-height: 60vh;
+  aspect-ratio: 16 / 7; display: flex;
+  align-items: center; justify-content: center;
+  /* background-image set inline in TSX to use imported asset */
+  background-size: cover; background-position: center 30%;
+  background-repeat: no-repeat; background-attachment: scroll;
+}
+.banner-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.45); z-index: 1; }
+.hero-box {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center;
+  width: 90%; max-width: 900px; margin: 0 auto;
+  padding: 60px 20px; border-radius: 12px;
+  animation: heroFadeIn 0.8s ease both;
+}
+.hero-title {
+  font-family: 'GT Super Display Medium';
+  font-size: 56px; font-weight: 500; color: #FFF;
+  line-height: 1.1; letter-spacing: -0.02em;
+  font-variant-numeric: lining-nums proportional-nums; margin: 0;
+}
+
+/* ── VIDEO ── */
+.video-section { width: 100%; margin: 0; padding: 0; background: var(--bg-primary); }
+.video-inner { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; }
+.video-el { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.video-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.25); pointer-events: none; }
+.video-controls {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; z-index: 10;
+}
+.ctrl-btn {
+  display: flex; align-items: center; justify-content: center;
+  border: none; cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.play-btn {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(255,255,255,0.18); backdrop-filter: blur(6px);
+  border: 1.5px solid rgba(255,255,255,0.5);
+}
+.play-btn:hover { background: rgba(255,255,255,0.30); transform: scale(1.08); }
+.play-btn:active { transform: scale(0.96); }
+.mute-btn {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(255,255,255,0.14); backdrop-filter: blur(6px);
+  border: 1.5px solid rgba(255,255,255,0.4);
+}
+.mute-btn:hover { background: rgba(255,255,255,0.25); transform: scale(1.08); }
+.mute-btn:active { transform: scale(0.96); }
+
+/* ── TEAM CARD HOVER ── */
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 28px rgba(105, 228, 220, 0.55);
+}
+.team-contact-btn:hover { background: #69E4DC; color: #073B2F; }
+.team-read-more:hover { text-decoration: underline; }
+.team-socials a:hover { opacity: 0.65; }
+
+/* ── ANIMATIONS ── */
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  h1, .h1, .hero-title { font-size: 48px !important; line-height: 58px !important; letter-spacing: -0.02em; }
+  h2, .h2, .team-header h2 { font-size: 38px !important; line-height: 48px !important; }
+  h3, .h3, .team-name { font-size: 28px !important; line-height: 38px !important; }
+}
+@media (max-width: 900px) {
+  .hero-box { padding: 60px 20px; width: 92%; }
+  .hero-banner {
+    aspect-ratio: 4 / 5;
+    min-height: unset;
+  }
+  .video-inner { height: 400px; }
+  .play-btn, .mute-btn { width: 42px; height: 42px; }
+}
+@media (max-width: 600px) {
+  .hero-box { padding: 60px 20px; width: 94%; border-radius: 8px; }
+  .video-inner { height: 260px; }
+  .play-btn, .mute-btn { width: 36px; height: 36px; }
+  .team-section { padding: 60px 20px; }
+  .team-header p { font-size: 18px; }
+  .team-card { width: 100% !important; padding: 20px !important; gap: 20px !important; }
+  .team-card-header { flex-direction: column !important; align-items: center !important; gap: 16px !important; }
+  .team-img-wrap { width: 142px !important; height: 174px !important; min-width: 142px !important; margin: 0 auto; }
+  .team-card-info { align-items: center !important; text-align: center; width: 100%; }
+  .team-name { font-size: 28px !important; line-height: 36px !important; text-align: center !important; }
+  .team-role { font-size: 18px !important; line-height: 26px !important; text-align: center !important; }
+  .team-socials { justify-content: center !important; flex-wrap: wrap; gap: 12px; margin-top: 12px !important; }
+  .team-bio { text-align: center; display: block; }
+  .team-read-more {
+    margin-top: 8px !important;
+    display: inline-block !important;
+  }
+  .team-contact-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px !important;
+    text-align: center;
+    box-sizing: border-box;
+  }
+}
+@media (max-width: 768px) {
+  .hero-banner { background-attachment: scroll; }
+}

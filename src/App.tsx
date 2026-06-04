@@ -9,18 +9,24 @@ import Insights from "./Pages/Insights/Insights";
 import Contact from "./Pages/Contact/Contact";
 import BuyerAgentPerthBlog from "./Pages/Blogs/BestSuburbsPerthBlog/BestSuburbsPerthBlog";
 import BestSuburbsPerthBlog from "./Pages/Blogs/BestSuburbsPerthBlog/BestSuburbsPerthBlog";
+import About from "./Pages/About/About";
+import Services from "./Pages/Services/Services";
+import ClientOutcomes from "./Pages/ClientOutcomes";
+import Insights from "./Pages/Insights";
+import Contact from "./Pages/Contact";
+import BuyerAgentPerthBlog from "./Pages/BuyerAgentPerthBlog";
+import BestSuburbsPerthBlog from "./Pages/BestSuburbsPerthBlog";
 
 // ── 8 Service Pages ──
-import BuyerAdvocate      from "./Services-pages/BuyerAdvocate/BuyerAdvocate";
-import Advisory           from "./Services-pages/Advisory";
-import PropertyManagement from "./Services-pages/PropertyManagement";
-import SettlementAgent    from "./Services-pages/SettlementAgent";
-import BuildingInspection from "./Services-pages/BuildingInspection";
-import SalesAgent         from "./Services-pages/SalesAgent";
-import QuantitySurveyor   from "./Services-pages/QuantitySurveyor";
-import Accounting         from "./Services-pages/Accounting";
-import PrivacyPolicy from "./Pages/Privacy-Policy/Privacy-Policy";
-import TermsAndConditions from "./Pages/TermsAndConditions/TermsAndConditions";
+import BuyerAdvocate      from "./Services-pages/BuyerAdvocate";
+import Advisory           from "./Services-pages/Advisory/Advisory";
+import PropertyManagement from "./Services-pages/PropertyManagement/PropertyManagement";
+import SettlementAgent    from "./Services-pages/SettlementAgent/SettlementAgent";
+import BuildingInspection from "./Services-pages/BuildingInspection/BuildingInspection";
+import SalesAgent         from "./Services-pages/SalesAgent/SalesAgent";
+import QuantitySurveyor   from "./Services-pages/QuantitySurveyor/QuantitySurveyor";
+import Accounting         from "./Services-pages/Accounting/Accounting";
+import PrivacyPolicy from "./Pages/Privacy-Policy";
 import "./index.css";
 
 /* ── Google Fonts ── */
