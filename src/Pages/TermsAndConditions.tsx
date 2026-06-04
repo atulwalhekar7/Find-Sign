@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import SimpleGetInTouch from "../components/GetInTouch/GetInTouch";
-import SimpleFooter from "../../components/Footer/Footer";
+import SimpleFooter from "../components/SimpleFooter";
 
 import bannerImg from "../assets/perth-property-investment-strategy.jpg";
 
