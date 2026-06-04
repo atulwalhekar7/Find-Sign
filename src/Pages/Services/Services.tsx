@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import GetInTouch from "../../components/GetInTouch";
+import GetInTouch from "../../components/GetInTouch/GetInTouch";
 import SimpleFooter from "../../components/SimpleFooter";
 import AboutSection from "../../components/AboutSection";
 import bannerImg from "../../assets/service-banner-find-and-sign-buyers-australia.jpg";
-import AboutServiceImg from "../../assets/about-service-find-and-sign.jpg";
+import AboutServiceImg from "../../assets/perth-buyer-advocate-services-australia.jpg";
 import Image4 from "../../components/Image4/Image4";
 import { useTheme } from "../../components/ThemeContext";
 import "./Services.css";

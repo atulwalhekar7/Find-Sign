@@ -3,7 +3,7 @@ import { useTheme } from "../../components/ThemeContext";
 import aboutContentImg from "../../assets/happy-home-buyers-australia-find-and-sign.jpg";
 import aboutVideo from "../../assets/Interview Draft (2).mp4";
 import AboutSection from "../../components/AboutSection";
-import SimpleGetInTouch from "../../components/GetInTouch";
+import SimpleGetInTouch from "../../components/GetInTouch/GetInTouch";
 import SimpleFooter from "../../components/SimpleFooter";
 import OurProcess from "../../components/OurProcess/OurProcess";
 import Banner from "../../assets/About-us-Banner-find-and-sign-buyers-agent-australia.jpg";
@@ -59,18 +59,6 @@ export default function About() {
   const [isMuted, setIsMuted] = useState(true);
   const [, setShowControls] = useState(false);
   const [nikiExpanded, setNikiExpanded] = useState(false);
-  const [isBannerLoading, setIsBannerLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsBannerLoading(false), 1200);
-    const img = new Image();
-    img.src = Banner;
-    img.onload = () => setIsBannerLoading(false);
-    return () => {
-      clearTimeout(timer);
-      img.onload = null;
-    };
-  }, []);
 
   const togglePlayPause = () => {
     const vid = videoRef.current;
