@@ -205,7 +205,6 @@ export default function Insights() {
         imageSrc={aboutInsightsImg}
         imageAlt="Perth buyer advocate sharing property market insights and buying guidance"
         imageTitle="Perth Property Insights | Find and Sign Buyer Advocate"
-        imageCaption="Expert insights from a Perth buyer advocate helping property buyers make informed decisions."
         heading="About Find & Sign"
         body1="These are insights drawn from our experience in the market. Real observations, informed perspectives, and practical guidance. When you engage with Find and Sign Buyer Advocate, you are gaining access to knowledge built through direct involvement and on-the-ground expertise. These articles are designed to help you understand the process, assess opportunities, and make more informed decisions."
       />

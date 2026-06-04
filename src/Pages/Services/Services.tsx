@@ -424,7 +424,6 @@ letterSpacing: "-0.02em",
         imageSrc={AboutServiceImg}
  imageAlt="Perth Buyer Advocate Australia helping clients secure residential and investment properties"
   imageTitle="Buyer Advocate Perth Australia | Find and Sign"
-  imageCaption="Experienced Perth Buyer Advocate Australia providing expert property search, negotiation and acquisition services."
   heading="About Buyer Advocacy"
   subheading="Expert guidance for every step of your property journey."        body1="Find and Sign Buyer Advocate is a boutique buyers agency based in Perth, representing buyers exclusively, whether you are purchasing the home you want to live in or building the portfolio you have always planned for.
 We take on a select number of clients at any one time. Not because we have to, but because we believe a purchase of this size deserves our full attention."
