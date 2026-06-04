@@ -61,7 +61,6 @@ export default function SettlementAgent() {
         imageSrc={AboutServiceImg}
         imageAlt="Perth mortgage broker helping home buyers secure the right finance solution in Australia"
   imageTitle="Mortgage Broker Perth Australia | Find and Sign"
-  imageCaption="Experienced Perth mortgage broker providing finance guidance and loan solutions for property buyers across Australia."
   heading="About Mortgage Broker"
   subheading="Expert guidance for every step of your property journey."
         body1="A settlement agent, also known as a conveyancer, is the professional responsible for managing the legal transfer of a property from the seller to you. They prepare and review all necessary documentation, liaise with the seller's representatives, coordinate with your lender, and ensure every condition of the contract is met before settlement day. It is a role that requires precision and attention to detail, and the right settlement agent ensures the entire process moves smoothly, on time, and without complication. This is not a step to cut corners on."

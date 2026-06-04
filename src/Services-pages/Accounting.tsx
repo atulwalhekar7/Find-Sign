@@ -51,7 +51,6 @@ export default function Accounting() {
           imageSrc={AboutServiceImg}
            imageAlt="Perth mortgage broker helping home buyers secure the right finance solution in Australia"
   imageTitle="Mortgage Broker Perth Australia | Find and Sign"
-  imageCaption="Experienced Perth mortgage broker providing finance guidance and loan solutions for property buyers across Australia."
   heading="About Mortgage Broker"
   subheading="Expert guidance for every step of your property journey."
           body1="Before the right money is in the right place, nothing else can move. A great mortgage broker cuts through the noise, secures the right finance structure for your situation, and ensures you are set up correctly from the very beginning of your purchase journey."
