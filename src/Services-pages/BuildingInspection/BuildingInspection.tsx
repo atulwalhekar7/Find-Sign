@@ -1,10 +1,11 @@
 import { useEffect } from "react";
-import SimpleFooter from "../components/SimpleFooter";
-import GetInTouch from "../components/GetInTouch";
-import AboutServiceImg from "../assets/About Find&Sign.jpg";
-import AboutSection from "../components/AboutSection";
+import SimpleFooter from "../../components/SimpleFooter";
+import GetInTouch from "../../components/GetInTouch";
+import AboutServiceImg from "../../assets/About Find&Sign.jpg";
+import AboutSection from "../../components/AboutSection";
+import "./BuildingInspection.css";
 
-export default function QuantitySurveyor() {
+export default function BuildingInspection() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
@@ -50,7 +51,7 @@ export default function QuantitySurveyor() {
               margin: 0,
             }}
           >
-            Accounting / Quantity Surveyor
+            Building Inspection
           </h1>
         </div>
       </section>
@@ -58,27 +59,15 @@ export default function QuantitySurveyor() {
       {/* ── About ── */}
       <AboutSection
         imageSrc={AboutServiceImg}
-        heading="About Accounting / Quantity Surveyor"
+        heading="About Building Inspection"
         subheading="Expert guidance for every step of your property journey."
-        body1="Two of the most overlooked yet most valuable members of your investment team. A quantity surveyor prepares a detailed depreciation schedule for your property, identifying every eligible asset that can be claimed as a tax deduction over time. This alone can significantly reduce your taxable income each financial year. Your accountant then takes that information and ensures your overall financial structure is working as efficiently as possible. From the way your investment is held to the deductions you are entitled to claim, a property savvy accountant ensures you are not leaving money on the table. Getting these two professionals involved early, ideally before you purchase, can have a meaningful impact on your long term returns."
+        body1="A building inspection is one of the most important steps in the purchase process and one of the most commonly underestimated. A qualified building inspector will assess the property from top to bottom, identifying any structural issues, safety concerns, pest activity, or maintenance requirements that may not be visible to the untrained eye. The report they provide gives you a clear and honest picture of exactly what you are buying. It protects you from unexpected costs after settlement and gives you informed leverage going into final negotiations. We strongly recommend this step on every purchase, without exception."
 //         body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
 // From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market."
       />
 
-      <GetInTouch initialService="Accounting / Quantity Surveyor" showService={true} />
+      <GetInTouch initialService="Building Inspection" showService={true} />
       <SimpleFooter />
-
-      <style>{`
-        @keyframes heroFadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        @media (max-width: 767px) {
-          h1, .h1 { font-size: 48px !important; line-height: 58px !important; letter-spacing: -0.02em !important; }
-          h2, .h2 { font-size: 38px !important; line-height: 48px !important; }
-          h3, .h3 { font-size: 28px !important; line-height: 38px !important; }
-        }
-      `}</style>
     </div>
   );
 }

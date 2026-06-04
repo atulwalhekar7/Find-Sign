@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../assets/FS Primary Lockup_Gold.png";
-import callIcon from "../assets/Icon.png";
-import { useTheme } from "./ThemeContext";
+import logo from "../../assets/FS Primary Lockup_Gold.png";
+import callIcon from "../../assets/Icon.png";
+import { useTheme } from "../../components/ThemeContext";
+import "./Navbar.css";
 
 const COLORS = {
   racingGreen: "#073B2F",
@@ -95,226 +96,11 @@ export default function Navbar() {
   const navBg       = isDark ? "#0a1f1a" : COLORS.white;
   const textColor   = isDark ? COLORS.aqua : COLORS.black;
   const drawerBg    = isDark ? "#0d2b23" : COLORS.white;
-  const drawerBorder= isDark ? "rgba(105,228,220,0.12)" : "rgba(27,67,50,0.07)";
   // Hamburger lines: white in dark mode so they're visible on dark nav
   const hamburgerStroke = isDark ? COLORS.white : COLORS.racingGreen;
-  // Drawer link text: aqua highlight in dark, racing-green in light
-  const drawerLinkColor = isDark ? "#c8f5f2" : COLORS.racingGreen;
-  const drawerActiveBg  = isDark ? "rgba(105,228,220,0.12)" : "#EAE5DF";
 
   return (
     <>
-      <style>{`
-        /* ───────── NAV LAYOUT ───────── */
-        .nav-inner {
-          width: 100%;
-          max-width: 1512px;
-          margin: 0 auto;
-          height: 96px;
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          box-sizing: border-box;
-          padding: 24px 130px;
-        }
-
-     .nav-logo {
-   width: 128px;
-          height: 47px;
-  object-fit: contain;
-  display: block;
-}
-
-        .nav-actions {
-          display: flex;
-          align-items: center;
-          gap: 32px;
-          margin-left: auto;
-        }
-
-        /* Desktop nav */
-        .nav-links {
-          display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          gap: 4px;
-          width: auto;
-          list-style: none;
-          margin: 0;
-          padding: 0;
-        }
-
-        .nav-link {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 10px 8px;
-          font-family: "SohneBuch";
-          font-size: 20px;
-          font-weight: 400;
-          line-height: 28px;
-          letter-spacing: 0;
-          text-decoration: none;
-          white-space: nowrap;
-          transition: color 0.2s ease, background 0.2s ease;
-          /* ✅ color is now set via inline style per theme */
-        }
-
-        .nav-link:hover,
-        .nav-link:active,
-        .nav-link.active {
-          border-radius: var(--sds-size-radius-200, 8px);
-          background: ${isDark ? "rgba(105,228,220,0.12)" : "#EAE5DF"};
-          display: inline-flex;
-          padding: var(--sds-size-space-200, 8px);
-          justify-content: center;
-          align-items: center;
-          gap: var(--sds-size-space-200, 8px);
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-        }
-
-        /* CTA */
-        .nav-cta {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 48px;
-          padding: 12px 24px;
-          border-radius: 8px;
-          background: ${COLORS.aqua};
-          color: ${COLORS.racingGreen};
-          font-family: "CX80";
-          font-size: 15px;
-          font-weight: 700;
-          line-height: 15px;
-          letter-spacing: 4.48px;
-          text-decoration: none;
-          text-transform: uppercase;
-          white-space: nowrap;
-          gap: 10px;
-        }
-
-        .mobile-call-icon {
-          display: none;
-          align-items: center;
-          justify-content: center;
-          text-decoration: none;
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          background: ${COLORS.white};
-          position: relative;
-          box-sizing: border-box;
-          border: 1px solid rgba(105, 228, 220, 0.3);
-        }
-
-        .mobile-call-icon::before {
-          content: "";
-          position: absolute;
-          inset: -2px;
-          border-radius: 50%;
-          padding: 2px;
-          background: conic-gradient(from 0deg, transparent, ${COLORS.aqua}, transparent 40%);
-          -webkit-mask: 
-            linear-gradient(#fff 0 0) content-box, 
-            linear-gradient(#fff 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          animation: rotate-border 2s linear infinite;
-          pointer-events: none;
-        }
-
-        /* Hamburger */
-        .nav-hamburger {
-          display: none;
-          background: none;
-          border: none;
-          cursor: pointer;
-          padding: 4px;
-        }
-
-        /* Mobile drawer */
-        .nav-drawer {
-          display: none;
-          padding: 12px 20px 24px;
-          border-top: 1px solid ${drawerBorder};
-        }
-
-        .nav-drawer-link:hover,
-        .nav-drawer-link:active,
-        .nav-drawer-link.active {
-          background: ${drawerActiveBg} !important;
-          border-radius: 8px !important;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
-        }
-
-       .nav-drawer-link:hover,
-.nav-drawer-link:active,
-.nav-drawer-link.active {
-  background: #EAE5DF;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-        @keyframes call-vibrate {
-          0%, 20%, 100% { transform: rotate(0deg); }
-          3%, 9%, 15%   { transform: rotate(-12deg); }
-          6%, 12%, 18%  { transform: rotate(12deg); }
-        }
-
-        @keyframes rotate-border {
-          from { transform: rotate(0deg); }
-          to   { transform: rotate(360deg); }
-        }
-
-        .vibrate-icon {
-          animation: call-vibrate 3s infinite ease-in-out;
-        }
-
-        /* Tablet */
-        @media (max-width: 1199px) {
-          .nav-inner {
-            padding: 24px 48px;
-          }
-          .nav-actions {
-            gap: 36px;
-          }
-          .nav-links {
-            width: auto;
-            gap: 20px;
-          }
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-          .nav-inner {
-            height: 80px;
-            padding: 24px 20px;
-          }
-          .nav-logo {
-            width: 128px;
-            height: 47px;
-          }
-          .nav-links {
-            display: none;
-          }
-          .nav-actions {
-            gap: 12px;
-          }
-          .nav-cta {
-            display: none;
-          }
-          .mobile-call-icon {
-            display: flex;
-          }
-          .nav-hamburger {
-            display: block;
-          }
-          .nav-drawer {
-            display: block;
-          }
-        }
-      `}</style>
-
       <nav
         style={{
           position: "sticky",
@@ -425,7 +211,7 @@ export default function Navbar() {
                  boxSizing: "border-box",
                  fontFamily: "'SohneBuch'",
                  fontSize: "15px",
-                 color: COLORS.black, // Changed to match desktop view text color
+                 color: COLORS.white, // Changed to match desktop view text color
                  fontWeight: isActive ? 500 : 400,
                  textDecoration: "none",
                  padding: "10px 12px",

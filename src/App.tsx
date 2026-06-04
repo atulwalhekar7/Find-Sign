@@ -2,8 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./components/ThemeContext";
 import MainLayout from "./Layouts/MainLayout";
 import Home from "./Pages/Home";
-import About from "./Pages/About";
-import Services from "./Pages/Services";
+import About from "./Pages/About/About";
+import Services from "./Pages/Services/Services";
 import ClientOutcomes from "./Pages/ClientOutcomes";
 import Insights from "./Pages/Insights";
 import Contact from "./Pages/Contact";
@@ -12,13 +12,13 @@ import BestSuburbsPerthBlog from "./Pages/BestSuburbsPerthBlog";
 
 // ── 8 Service Pages ──
 import BuyerAdvocate      from "./Services-pages/BuyerAdvocate";
-import Advisory           from "./Services-pages/Advisory";
-import PropertyManagement from "./Services-pages/PropertyManagement";
-import SettlementAgent    from "./Services-pages/SettlementAgent";
-import BuildingInspection from "./Services-pages/BuildingInspection";
-import SalesAgent         from "./Services-pages/SalesAgent";
-import QuantitySurveyor   from "./Services-pages/QuantitySurveyor";
-import Accounting         from "./Services-pages/Accounting";
+import Advisory           from "./Services-pages/Advisory/Advisory";
+import PropertyManagement from "./Services-pages/PropertyManagement/PropertyManagement";
+import SettlementAgent    from "./Services-pages/SettlementAgent/SettlementAgent";
+import BuildingInspection from "./Services-pages/BuildingInspection/BuildingInspection";
+import SalesAgent         from "./Services-pages/SalesAgent/SalesAgent";
+import QuantitySurveyor   from "./Services-pages/QuantitySurveyor/QuantitySurveyor";
+import Accounting         from "./Services-pages/Accounting/Accounting";
 import PrivacyPolicy from "./Pages/Privacy-Policy";
 import "./index.css";
 
