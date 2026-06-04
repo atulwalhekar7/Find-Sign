@@ -1,0 +1,207 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.footer {
+  background: #073B2F;
+  color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 96px 0;
+  gap: 66px;
+}
+
+/* ── 4K FIX ONLY: inner wrapper caps content width to match navbar ── */
+.footer-inner {
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 196px;
+  display: flex;
+  flex-direction: column;
+  gap: 66px;
+}
+
+/* ── EXTRA CONTENT FRAME (SOCIAL + COPYRIGHT) ── */
+.footer-extra-frame {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 302px;
+  gap: 66px;
+}
+
+.footer-social { display: flex; align-items: center; gap: 32px; padding: 10px 0; }
+.social-link {
+  display: flex;
+  transition: opacity 0.2s;
+}
+.social-link:hover { opacity: 0.6; }
+.social-link img { width: 24px; height: 24px; }
+
+/* ── MAIN CONTENT GRID ── */
+.footer-grid {
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 55px;
+  margin: 0 auto;
+}
+
+/* Logo Column */
+.footer-logo-container {
+  width: 167px;
+  height: 79px;
+  flex-shrink: 0;
+  aspect-ratio: 159/59;
+  padding: 8px 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-left: -60px;
+}
+
+.footer-logo {
+  width: 128px;
+  height: 47px;
+  object-fit: contain;
+}
+
+/* Contact Column */
+.footer-contact {
+  display: flex;
+  width: 267px;
+  padding: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-left: 120px;
+}
+
+/* Explore Column */
+.footer-explore {
+  display: flex;
+  width: auto;
+  min-width: 167px;
+  padding: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* Legal Column */
+.footer-legal {
+  display: flex;
+  width: 168px;
+  padding: 10px 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-left: 70px;
+}
+
+/* Text Styles */
+.section-title {
+  font-family: "CX80BOLD";
+  font-size: 18px;
+  font-weight: 150;
+  line-height: 18px;
+  letter-spacing: 5.76px;
+  color: #F9F9F9;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.footer-row {
+  display: flex;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.footer-text, .footer-link {
+  font-family: "Söhne", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #EAE5DF;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.footer-link { text-decoration: underline; }
+
+.contact-label { margin-right: 8px; font-family: "SohneBuch"; }
+
+.btn-book {
+  display: flex;
+  height: 48px;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  background: #69E4DC;
+  border-radius: 8px;
+  border: none;
+  text-decoration: none;
+  font-family: "CX80";
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 4.48px;
+  color: #073B2F;
+  text-transform: uppercase;
+  margin-top: 12px;
+  gap: 10px;
+}
+
+@keyframes call-vibrate {
+  0%, 20%, 100% { transform: rotate(0deg); }
+  3%, 9%, 15% { transform: rotate(-12deg); }
+  6%, 12%, 18% { transform: rotate(12deg); }
+}
+.vibrate-icon {
+  animation: call-vibrate 3s infinite ease-in-out;
+}
+
+.footer-legal-text {
+  font-family: "Söhne", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #EAE5DF;
+  padding: 4px 0;
+  white-space: nowrap;
+}
+
+.footer-copyright {
+  font-family: "Söhne", sans-serif;
+  font-size: 16px;
+  color: white;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1200px) {
+  .footer { padding: 56px 76px; height: auto; min-height: auto; }
+  .footer-inner { padding: 0; }
+  .footer-extra-frame { padding-left: 10px; margin-top: 0; }
+  .footer-grid { gap: 24px; flex-wrap: wrap; height: auto; }
+  .footer-logo-container, .footer-contact, .footer-legal { margin-left: 0; padding: 10px; }
+  .footer-logo-container { height: auto; aspect-ratio: auto; }
+  .footer-contact { gap: 8px; }
+}
+@media (max-width: 1024px) {
+  .footer { padding: 56px 40px; }
+  .footer-inner { padding: 0; }
+  .footer-grid { justify-content: flex-start; }
+}
+@media (max-width: 768px) {
+  .footer { padding: 48px 20px; gap: 40px; }
+  .footer-inner { padding: 0; }
+  .footer-grid { flex-direction: column; gap: 24px; }
+  .footer-contact, .footer-explore, .footer-legal, .footer-logo-container {
+    width: 100%;
+    margin-left: 0;
+    padding: 0 10px;
+    height: auto;
+    aspect-ratio: auto;
+  }
+}

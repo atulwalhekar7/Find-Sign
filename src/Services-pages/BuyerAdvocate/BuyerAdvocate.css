@@ -1,0 +1,83 @@
+.buyer-advocate-page {
+  background: #fff;
+  margin: 0;
+  padding: 0;
+  color: #111;
+}
+
+/* Hero */
+.buyer-advocate-hero {
+  width: 100%;
+  height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #073b2f;
+  position: relative;
+  overflow: hidden;
+}
+
+.buyer-advocate-hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  animation: heroFadeIn 0.8s ease both;
+}
+
+.buyer-advocate-title {
+  align-self: stretch;
+  color: var(--FS-WHITE, var(--Brand-Utility-FS-WHITE, #fff));
+  text-align: center;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: "GT Super Display Medium";
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 64px;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* Animation */
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .buyer-advocate-title,
+  h1,
+  .h1 {
+    font-size: 48px !important;
+    line-height: 58px !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  h2,
+  .h2 {
+    font-size: 38px !important;
+    line-height: 48px !important;
+  }
+
+  h3,
+  .h3 {
+    font-size: 28px !important;
+    line-height: 38px !important;
+  }
+}
+
+/* Desktop */
+@media (min-width: 769px) {
+  .about-image {
+    width: 564px !important;
+    height: 744px !important;
+  }
+}

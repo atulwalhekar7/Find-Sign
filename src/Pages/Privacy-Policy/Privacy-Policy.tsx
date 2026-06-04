@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import SimpleGetInTouch from "../components/GetInTouch";
-import SimpleFooter from "../components/Footer";
-
-import bannerImg from "../assets/perth-property-investment-strategy.jpg";
+import SimpleGetInTouch from "../../components/GetInTouch/GetInTouch";
+import SimpleFooter from "../../components/Footer/Footer";
+import bannerImg from "../../assets/perth-property-investment-strategy.jpg";
+import "./Privacy-Policy.css";
 
 const PolicySection = ({
   title,
@@ -11,40 +11,11 @@ const PolicySection = ({
   title: string;
   children: React.ReactNode;
 }) => (
-  <section
-    style={{
-      padding: "48px 0",
-      borderBottom: "1px solid var(--bg-tertiary)",
-    }}
-  >
-    <h2
-      tabIndex={0}
-      style={{
-        fontFamily: "'GT Super Display Medium'",
-        fontSize: "44px",
-        fontWeight: 500,
-        color: "var(--text-heading)",
-        lineHeight: "1.2",
-        letterSpacing: "-0.48px",
-        marginBottom: "24px",
-      }}
-    >
+  <section className="policy-section">
+    <h2 className="policy-section-title" tabIndex={0}>
       {title}
     </h2>
-
-    <div
-      style={{
-        fontFamily: "'Söhne', sans-serif",
-        fontSize: "18px",
-        lineHeight: "1.8",
-        color: "var(--text-secondary)",
-        display: "flex",
-        flexDirection: "column",
-        gap: "18px",
-      }}
-    >
-      {children}
-    </div>
+    <div className="policy-section-body">{children}</div>
   </section>
 );
 
@@ -61,55 +32,23 @@ export default function PrivacyPolicy() {
   }, []);
 
   return (
-    <div style={{ backgroundColor: "var(--bg-primary)", fontFamily: "'Söhne', sans-serif", color: "var(--text-primary)" }}>
+    <div className="policy-page">
 
       {/* ── Hero ── */}
       <section
-        className="privacy-hero-banner"
-        style={{
-          minHeight: "70vh",
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundImage: `url(${bannerImg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          position: "relative",
-          padding: "0 20px",
-        }}
+        className="policy-hero-section privacy-hero-banner"
+        style={{ backgroundImage: `url(${bannerImg})` }}
       >
-        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
-        <div
-          style={{
-            position: "relative",
-            zIndex: 2,
-            textAlign: "center",
-            maxWidth: "900px",
-            margin: "0 auto",
-            padding: "60px 20px",
-          }}
-        >
-          <h1
-            tabIndex={0}
-            style={{
-              fontFamily: "'GT Super Display Medium'",
-              fontSize: "56px",
-              fontWeight: 500,
-              color: "#FFF",
-              lineHeight: "1.1",
-              letterSpacing: "0.02em",
-              margin: 0,
-            }}
-          >
+        <div className="policy-hero-overlay" />
+        <div className="policy-hero-content">
+          <h1 className="policy-hero-title" tabIndex={0}>
             Privacy Policy
           </h1>
-         
         </div>
       </section>
 
       {/* ── Main Content ── */}
-      <main style={{ maxWidth: "1100px", margin: "0 auto", padding: "80px 40px" }}>
+      <main className="policy-main">
 
         <PolicySection title="Our Commitment to Your Privacy">
           <p tabIndex={0}>Nakrani Group Pty Ltd trading as Find and Sign Buyer Advocate is committed to protecting the privacy of our clients and website visitors.</p>
@@ -118,7 +57,7 @@ export default function PrivacyPolicy() {
         </PolicySection>
 
         <PolicySection title="What Information We Collect">
-          <ul style={{ paddingLeft: "22px", display: "flex", flexDirection: "column", gap: "14px" }}>
+          <ul className="policy-list">
             <li tabIndex={0}>Your full name, email address, phone number, and postal address.</li>
             <li tabIndex={0}>Financial information relevant to your property purchase including budget, borrowing capacity, and investment goals.</li>
             <li tabIndex={0}>Property preferences and requirements shared with us during our engagement.</li>
@@ -129,7 +68,7 @@ export default function PrivacyPolicy() {
         </PolicySection>
 
         <PolicySection title="How We Collect Your Information">
-          <ul style={{ paddingLeft: "22px", display: "flex", flexDirection: "column", gap: "14px" }}>
+          <ul className="policy-list">
             <li tabIndex={0}>Directly from you through forms, phone calls, emails, and service engagements.</li>
             <li tabIndex={0}>Automatically through third-party tools including Google Analytics and Meta Pixel.</li>
             <li tabIndex={0}>Through cookies and similar tracking technologies on our website.</li>
@@ -137,7 +76,7 @@ export default function PrivacyPolicy() {
         </PolicySection>
 
         <PolicySection title="Why We Collect Your Information">
-          <ul style={{ paddingLeft: "22px", display: "flex", flexDirection: "column", gap: "14px" }}>
+          <ul className="policy-list">
             <li tabIndex={0}>To provide our buyers advocacy services.</li>
             <li tabIndex={0}>To respond to your enquiries and communications.</li>
             <li tabIndex={0}>To tailor our services to your property goals.</li>
@@ -162,7 +101,7 @@ export default function PrivacyPolicy() {
 
         <PolicySection title="Sharing Your Information">
           <p tabIndex={0}>We only share your information in limited circumstances including:</p>
-          <ul style={{ paddingLeft: "22px", display: "flex", flexDirection: "column", gap: "14px" }}>
+          <ul className="policy-list">
             <li tabIndex={0}>With affiliated service providers relevant to your property journey.</li>
             <li tabIndex={0}>With third-party business platforms including CRM and analytics providers.</li>
             <li tabIndex={0}>Where required or permitted by law or regulatory obligations.</li>
@@ -203,14 +142,7 @@ export default function PrivacyPolicy() {
         </PolicySection>
 
         <PolicySection title="Contact Us">
-          <div
-            style={{
-              background: "var(--bg-secondary)",
-              borderRadius: "16px",
-              padding: "32px",
-              border: "1px solid var(--bg-tertiary)",
-            }}
-          >
+          <div className="policy-contact-box">
             <p tabIndex={0}><strong>Nakrani Group Pty Ltd trading as Find and Sign Buyer Advocate</strong></p>
             <p tabIndex={0}>Email: info@findandsignba.com.au</p>
             <p tabIndex={0}>Website: www.findandsignba.com.au</p>
@@ -221,40 +153,6 @@ export default function PrivacyPolicy() {
 
       <SimpleGetInTouch />
       <SimpleFooter />
-
-      <style>{`
-        .privacy-hero-banner {
-          aspect-ratio: 16 / 7;
-        }
-        @media (max-width: 1024px) {
-          h1 { font-size: 56px !important; }
-          h2 { font-size: 38px !important; }
-        }
-        @media (max-width: 768px) {
-          .privacy-hero-banner {
-            aspect-ratio: 4 / 5;
-            min-height: unset;
-          }
-
-          h1 {
-            font-size: 42px !important;
-            line-height: 1.2 !important;
-            letter-spacing: 0.02em !important;
-          }
-
-          h2 {
-            font-size: 32px !important;
-          }
-
-          main {
-            padding: 60px 24px !important;
-          }
-        }
-        @media (max-width: 480px) {
-          h1 { font-size: 36px !important; }
-          h2 { font-size: 28px !important; }
-        }
-      `}</style>
     </div>
   );
 }

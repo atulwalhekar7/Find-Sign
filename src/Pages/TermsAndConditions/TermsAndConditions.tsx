@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import SimpleGetInTouch from "../components/GetInTouch/GetInTouch";
+import SimpleGetInTouch from "../../components/GetInTouch/GetInTouch";
 import SimpleFooter from "../../components/Footer/Footer";
-
-import bannerImg from "../assets/perth-property-investment-strategy.jpg";
+import bannerImg from "../../assets/perth-property-investment-strategy.jpg";
+import "./TermsAndConditions.css";
 
 const TermsSection = ({
   title,
@@ -11,40 +11,11 @@ const TermsSection = ({
   title: string;
   children: React.ReactNode;
 }) => (
-  <section
-    style={{
-      padding: "48px 0",
-      borderBottom: "1px solid var(--bg-tertiary)",
-    }}
-  >
-    <h2
-      tabIndex={0}
-      style={{
-        fontFamily: "'GT Super Display Medium'",
-        fontSize: "44px",
-        fontWeight: 500,
-        color: "var(--text-heading)",
-        lineHeight: "1.2",
-        letterSpacing: "-0.48px",
-        marginBottom: "24px",
-      }}
-    >
+  <section className="policy-section">
+    <h2 className="policy-section-title" tabIndex={0}>
       {title}
     </h2>
-
-    <div
-      style={{
-        fontFamily: "'Söhne', sans-serif",
-        fontSize: "18px",
-        lineHeight: "1.8",
-        color: "var(--text-secondary)",
-        display: "flex",
-        flexDirection: "column",
-        gap: "18px",
-      }}
-    >
-      {children}
-    </div>
+    <div className="policy-section-body">{children}</div>
   </section>
 );
 
@@ -61,58 +32,26 @@ export default function TermsAndConditions() {
   }, []);
 
   return (
-    <div style={{ backgroundColor: "var(--bg-primary)", fontFamily: "'Söhne', sans-serif", color: "var(--text-primary)" }}>
+    <div className="policy-page">
 
       {/* ── Hero ── */}
       <section
-        className="terms-hero-banner"
-        style={{
-          minHeight: "70vh",
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundImage: `url(${bannerImg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          position: "relative",
-          padding: "0 20px",
-        }}
+        className="policy-hero-section terms-hero-banner"
+        style={{ backgroundImage: `url(${bannerImg})` }}
       >
-        <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
-        <div
-          style={{
-            position: "relative",
-            zIndex: 2,
-            textAlign: "center",
-            maxWidth: "900px",
-            margin: "0 auto",
-            padding: "60px 20px",
-          }}
-        >
-          <h1
-            tabIndex={0}
-            style={{
-              fontFamily: "'GT Super Display Medium'",
-              fontSize: "56px",
-              fontWeight: 500,
-              color: "#FFF",
-              lineHeight: "1.1",
-              letterSpacing: "0.02em",
-              margin: 0,
-            }}
-          >
+        <div className="policy-hero-overlay" />
+        <div className="policy-hero-content">
+          <h1 className="policy-hero-title" tabIndex={0}>
             Terms & Conditions
           </h1>
-         
         </div>
       </section>
 
       {/* ── Main Content ── */}
-      <main style={{ maxWidth: "1100px", margin: "0 auto", padding: "80px 40px" }}>
+      <main className="policy-main">
 
         <TermsSection title="1. Introduction">
-          <p tabIndex={0}>These Website Terms and Conditions govern your access to and use of the Find and Sign Buyer Advocate website located at findandsignba.com.au, owned and operated by Nakrani Group Pty Ltd (ABN:29 691 543 914 ) T/A Find and Sign Buyer Advocate, a licensed buyers agency based in Perth, Western Australia.</p>
+          <p tabIndex={0}>These Website Terms and Conditions govern your access to and use of the Find and Sign Buyer Advocate website located at findandsignba.com.au, owned and operated by Nakrani Group Pty Ltd (ABN:29 691 543 914) T/A Find and Sign Buyer Advocate, a licensed buyers agency based in Perth, Western Australia.</p>
           <p tabIndex={0}>By accessing or using this website, you agree to be bound by these Terms and Conditions in full. If you do not agree with any part of these Terms and Conditions, you must not use this website. These Terms and Conditions should be read together with our Privacy Policy and Terms of Use, both of which are available on this website.</p>
           <p tabIndex={0}>These Terms and Conditions are governed by and construed in accordance with the laws of Western Australia and the Commonwealth of Australia, including the Australian Consumer Law as set out in Schedule 2 of the Competition and Consumer Act 2010 (Cth).</p>
         </TermsSection>
@@ -206,20 +145,13 @@ export default function TermsAndConditions() {
         </TermsSection>
 
         <TermsSection title="20. Contact Us">
-          <div
-            style={{
-              background: "var(--bg-secondary)",
-              borderRadius: "16px",
-              padding: "32px",
-              border: "1px solid var(--bg-tertiary)",
-            }}
-          >
+          <div className="policy-contact-box">
             <p tabIndex={0}><strong>Nakrani Group Pty Ltd trading as Find and Sign Buyer Advocate</strong></p>
             <p tabIndex={0}>Email: info@findandsignba.com.au</p>
             <p tabIndex={0}>Website: findandsignba.com.au</p>
             <p tabIndex={0}>Location: Perth, Western Australia</p>
           </div>
-          <p tabIndex={0} style={{ fontSize: "14px", fontStyle: "italic", marginTop: "12px", color: "var(--text-muted)" }}>
+          <p className="policy-disclaimer" tabIndex={0}>
             These Website Terms and Conditions have been prepared as a general guide only and do not constitute legal advice. It is recommended that this document be reviewed by an Australian legal professional before publication.
           </p>
         </TermsSection>
@@ -228,40 +160,6 @@ export default function TermsAndConditions() {
 
       <SimpleGetInTouch />
       <SimpleFooter />
-
-      <style>{`
-        .terms-hero-banner {
-          aspect-ratio: 16 / 7;
-        }
-        @media (max-width: 1024px) {
-          h1 { font-size: 56px !important; }
-          h2 { font-size: 38px !important; }
-        }
-        @media (max-width: 768px) {
-          .terms-hero-banner {
-            aspect-ratio: 4 / 5;
-            min-height: unset;
-          }
-
-          h1 {
-            font-size: 42px !important;
-            line-height: 1.2 !important;
-            letter-spacing: 0.02em !important;
-          }
-
-          h2 {
-            font-size: 32px !important;
-          }
-
-          main {
-            padding: 60px 24px !important;
-          }
-        }
-        @media (max-width: 480px) {
-          h1 { font-size: 36px !important; }
-          h2 { font-size: 28px !important; }
-        }
-      `}</style>
     </div>
   );
 }

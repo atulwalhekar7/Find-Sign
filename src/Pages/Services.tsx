@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import GetInTouch from "../components/GetInTouch";
+import GetInTouch from "../components/GetInTouch/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import AboutSection from "../components/AboutSection";
 import bannerImg from "../assets/service-banner-find-and-sign-buyers-australia.jpg";

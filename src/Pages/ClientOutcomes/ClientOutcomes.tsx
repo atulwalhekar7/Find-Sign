@@ -1,59 +1,60 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import SimpleGetInTouch from "../components/GetInTouch";
-import SimpleFooter from "../components/SimpleFooter";
-import AboutSection from "../components/AboutSection";
-import Image5 from "../components/Image5";
-import Image6 from "../components/Image6";
-import { useTheme } from "../components/ThemeContext";
+import SimpleGetInTouch from "../../components/GetInTouch/GetInTouch";
+import SimpleFooter from "../../components/SimpleFooter";
+import AboutSection from "../../components/AboutSection";
+import Image5 from "../../components/Image5/Image5";
+import Image6 from "../../components/Image6/Image6";
+import { useTheme } from "../../components/ThemeContext";
+import "./ClientOutcomes.css";
 
-import bannerImg from "../assets/buyer-advocate-australia-client-outcomes-banner.jpg";
-import AboutClientOutcomesImg from "../assets/buyer-advocate-australia-client-outcomes-property-results.jpg";
+import bannerImg from "../../assets/buyer-advocate-australia-client-outcomes-banner.jpg";
+import AboutClientOutcomesImg from "../../assets/buyer-advocate-australia-client-outcomes-property-results.jpg";
 
-import id1 from "../assets/Client Outcomes/id1.webp";
-import id2 from "../assets/Client Outcomes/id2.webp";
-import id3 from "../assets/Client Outcomes/id3.webp";
-import id4 from "../assets/Client Outcomes/id4.webp";
-import id5 from "../assets/Client Outcomes/id5.webp";
-import id6 from "../assets/Client Outcomes/id6.webp";
-import id7 from "../assets/Client Outcomes/id7.webp";
-import id8 from "../assets/Client Outcomes/id8.webp";
-import id9 from "../assets/Client Outcomes/id9.webp";
-import id10 from "../assets/Client Outcomes/id10.webp";
-import id11 from "../assets/Client Outcomes/id11.webp";
-import id12 from "../assets/Client Outcomes/id12.webp";
-import id13 from "../assets/Client Outcomes/id13.webp";
-import id14 from "../assets/Client Outcomes/id14.webp";
-import id15 from "../assets/Client Outcomes/id15.webp";
-import id16 from "../assets/Client Outcomes/id16.webp";
-import id17 from "../assets/Client Outcomes/id17.webp";
-import id18 from "../assets/Client Outcomes/id18.webp";
-import id19 from "../assets/Client Outcomes/id19.webp";
-import id20 from "../assets/Client Outcomes/id20.webp";
-import id21 from "../assets/Client Outcomes/id21.webp";
-import id22 from "../assets/Client Outcomes/id22.webp";
-import id23 from "../assets/Client Outcomes/id23.webp";
-import id24 from "../assets/Client Outcomes/id24.webp";
-import id25 from "../assets/Client Outcomes/id25.webp";
-import id26 from "../assets/Client Outcomes/id26.webp";
-import id27 from "../assets/Client Outcomes/id27.webp";
-import id28 from "../assets/Client Outcomes/id28.webp";
-import id29 from "../assets/Client Outcomes/id29.webp";
-import id30 from "../assets/Client Outcomes/id30.webp";
-import id31 from "../assets/Client Outcomes/id31.webp";
-import id32 from "../assets/Client Outcomes/id32.webp";
-import id33 from "../assets/Client Outcomes/id33.webp";
-import id34 from "../assets/Client Outcomes/id34.webp";
-import id35 from "../assets/Client Outcomes/id35.webp";
-import id36 from "../assets/Client Outcomes/id36.webp";
-import id37 from "../assets/Client Outcomes/id37.webp";
-import id38 from "../assets/Client Outcomes/id38.webp";
-import id39 from "../assets/Client Outcomes/id39.webp";
-import ellipseImage from "../assets/Ellipse 1.png";
-import starIcon from "../assets/Union.png";
+import id1 from "../../assets/Client Outcomes/id1.webp";
+import id2 from "../../assets/Client Outcomes/id2.webp";
+import id3 from "../../assets/Client Outcomes/id3.webp";
+import id4 from "../../assets/Client Outcomes/id4.webp";
+import id5 from "../../assets/Client Outcomes/id5.webp";
+import id6 from "../../assets/Client Outcomes/id6.webp";
+import id7 from "../../assets/Client Outcomes/id7.webp";
+import id8 from "../../assets/Client Outcomes/id8.webp";
+import id9 from "../../assets/Client Outcomes/id9.webp";
+import id10 from "../../assets/Client Outcomes/id10.webp";
+import id11 from "../../assets/Client Outcomes/id11.webp";
+import id12 from "../../assets/Client Outcomes/id12.webp";
+import id13 from "../../assets/Client Outcomes/id13.webp";
+import id14 from "../../assets/Client Outcomes/id14.webp";
+import id15 from "../../assets/Client Outcomes/id15.webp";
+import id16 from "../../assets/Client Outcomes/id16.webp";
+import id17 from "../../assets/Client Outcomes/id17.webp";
+import id18 from "../../assets/Client Outcomes/id18.webp";
+import id19 from "../../assets/Client Outcomes/id19.webp";
+import id20 from "../../assets/Client Outcomes/id20.webp";
+import id21 from "../../assets/Client Outcomes/id21.webp";
+import id22 from "../../assets/Client Outcomes/id22.webp";
+import id23 from "../../assets/Client Outcomes/id23.webp";
+import id24 from "../../assets/Client Outcomes/id24.webp";
+import id25 from "../../assets/Client Outcomes/id25.webp";
+import id26 from "../../assets/Client Outcomes/id26.webp";
+import id27 from "../../assets/Client Outcomes/id27.webp";
+import id28 from "../../assets/Client Outcomes/id28.webp";
+import id29 from "../../assets/Client Outcomes/id29.webp";
+import id30 from "../../assets/Client Outcomes/id30.webp";
+import id31 from "../../assets/Client Outcomes/id31.webp";
+import id32 from "../../assets/Client Outcomes/id32.webp";
+import id33 from "../../assets/Client Outcomes/id33.webp";
+import id34 from "../../assets/Client Outcomes/id34.webp";
+import id35 from "../../assets/Client Outcomes/id35.webp";
+import id36 from "../../assets/Client Outcomes/id36.webp";
+import id37 from "../../assets/Client Outcomes/id37.webp";
+import id38 from "../../assets/Client Outcomes/id38.webp";
+import id39 from "../../assets/Client Outcomes/id39.webp";
+import ellipseImage from "../../assets/Ellipse 1.png";
+import starIcon from "../../assets/Union.png";
 
-import roksonImg from "../assets/testomonials/Rokson.png";
-import rinzinWangchukImg from "../assets/testomonials/Rinzin Wangchuk.png";
+import roksonImg from "../../assets/testomonials/Rokson.png";
+import rinzinWangchukImg from "../../assets/testomonials/Rinzin Wangchuk.png";
 
 // ── Theme ─────────────────────────────────────────────────────────────────────
 const THEMES = {
@@ -286,6 +287,7 @@ export default function ClientOutcomes() {
       img.onload = null;
     };
   }, []);
+
   // Outcomes Slider State
   const [outcomesCur, setOutcomesCur]       = useState(0);
   const [outcomesPaused, setOutcomesPaused] = useState(false);
@@ -465,352 +467,63 @@ export default function ClientOutcomes() {
 
   return (
     <>
-      <style>{`
-        *, *::before, *::after { box-sizing: border-box; }
-
-        @keyframes heroFadeIn {
-          from { opacity: 0; transform: translateY(24px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes heartbeatFloat {
-          0%   { transform: translateY(0)    scale(1);    box-shadow: 0 4px 12px rgba(105,228,220,0.3); }
-          14%  { transform: translateY(-3px) scale(1.06); box-shadow: 0 8px 20px rgba(105,228,220,0.4); }
-          28%  { transform: translateY(0)    scale(1); }
-          42%  { transform: translateY(-3px) scale(1.06); box-shadow: 0 8px 20px rgba(105,228,220,0.4); }
-          70%  { transform: translateY(-8px) scale(1); }
-          100% { transform: translateY(0)    scale(1); }
-        }
-
-        .hero-h1 {
-          font-family: "GT Super Display Medium";
-          font-size: 56px;
-          font-weight: 500;
-          color: #FFF;
-          line-height: 1.1;
-letterSpacing: "-0.02em",
-          font-variant-numeric: lining-nums proportional-nums;
-          margin: 0;
-        }
-        .outcomes-h2, .testimonials-h2 {
-          font-family: "GT Super Display Medium";
-          font-size: 42px; font-weight: 500; line-height: 120%;
-          letter-spacing: -0.48px;
-          font-variant-numeric: lining-nums proportional-nums;
-          margin: 0; display: flex; flex-direction: column;
-          align-items: center; gap: 24px;
-        }
-        .outcomes-subtitle, .testimonials-subtitle {
-          font-family: Sohne; font-size: 24px;
-          font-weight: 300; line-height: 36px; margin-top: 24px;
-        }
-
-        /* ══ PROPERTY CARD ══ */
-        .property-card {
-          flex: 0 0 var(--card-flex-basis, 100%);
-          min-width: 0; height: 440px;
-          border: 2px solid ${AQUA}; border-radius: 16px;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-          position: relative; display: flex; flex-direction: column;
-          transition: transform 0.4s cubic-bezier(0.165,0.84,0.44,1), box-shadow 0.4s ease, background 0.3s ease;
-          cursor: pointer; overflow: hidden;
-        }
-        .property-card:hover { transform: translateY(-12px); box-shadow: 0 10px 22px rgba(105,228,220,0.96); }
-        .card-image-wrap { width: 100%; height: 200px; border-radius: 16px 16px 0 0; overflow: hidden; flex-shrink: 0; }
-        .card-image { width: 100%; height: 100%; object-fit: cover; filter: blur(3px) brightness(80%); transition: transform 0.3s ease; display: block; }
-        .property-card:hover .card-image { transform: scale(1.08); }
-        .growth-circle-container {
-          position: absolute; bottom: 185px; right: 1px;
-          width: 130px; height: 130px; border-radius: 50%;
-          background: ${AQUA}; z-index: 10;
-          display: flex; flex-direction: column;
-          align-items: center; justify-content: center; text-align: center;
-          transition: filter 0.3s ease, background 0.3s ease;
-        }
-        .growth-circle-container:hover { animation: heartbeatFloat 4s ease-in-out infinite; }
-        .property-card:hover .growth-circle-container { background: white; filter: brightness(1.1) drop-shadow(0 4px 15px rgba(105,228,220,0.5)); }
-        .growth-label { color: ${RACING_GREEN}; font-family: "SohneBuch"; font-size: 20px; font-weight: 400; line-height: 28px; width: 81px; text-align: center; display: flex; align-items: center; justify-content: center; }
-        .growth-value { color: ${RACING_GREEN}; font-family: "GT Super Display Medium"; font-size: 37px; font-weight: 500; line-height: 40px; letter-spacing: -0.74px; width: 123px; text-align: center; display: flex; align-items: center; justify-content: center; margin-bottom: 4px; }
-        .card-data { padding: 55px 18px 20px; flex: 1; }
-        .card-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; }
-        .row-label { font-family: "SohneBuch"; font-size: 16px; font-weight: 400; }
-        .row-val   { font-family: "SohneBuch"; font-size: 16px; font-weight: 400; margin-left: auto; }
-
-        /* ══ OUTCOMES SECTION ══ */
-        .outcomes-section-wrap { width: 100%; overflow-x: clip; transition: background 0.3s ease; }
-        .outcomes-section { width: 100%; max-width: 1512px; margin: 0 auto; display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 32px; padding: 64px 130px; }
-        .outcomes-head { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 48px; }
-        .outcomes-grid-container { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: ${CARD_GAP}px; padding: 20px 0 40px; }
-        .outcomes-btn-row { grid-column: 1 / -1; display: flex; justify-content: center; margin-top: 8px; }
-        .outcomes-slider-outer { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 40px; align-items: center; overflow: visible; }
-        .outcomes-slider-wrapper { position: relative; width: 100%; overflow: visible; }
-        .outcomes-slider-viewport { width: 100%; overflow: hidden; padding: 20px 0; margin: -20px 0; }
-        .outcomes-slider-track { display: flex; gap: ${CARD_GAP}px; transition: transform 0.55s cubic-bezier(0.77,0,0.18,1); will-change: transform; touch-action: pan-y; }
-        .co-dots { display: flex; gap: 12px; align-items: center; margin-bottom: 24px; }
-        .co-dot { width: 8px; height: 8px; border-radius: 50%; border: none; padding: 0; cursor: pointer; transition: all 0.3s ease; flex-shrink: 0; }
-        .co-dot.active { width: 24px; border-radius: 4px; background: ${RACING_GREEN} !important; }
-
-        /* ══ TESTIMONIALS SECTION ══ */
-        .testimonials-section-wrap { width: 100%; position: relative; transition: background 0.3s ease; }
-        .testimonials-section { width: 100%; max-width: 1512px; margin: 0 auto; display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 32px; padding: 64px 130px; }
-        .testimonials-head { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 48px; }
-        .testimonials-slider-col { grid-column: 1 / -1; position: relative; display: flex; flex-direction: column; align-items: center; gap: 40px; }
-        .testimonials-slider-wrapper { position: relative; width: 100%; }
-        .testimonials-slider-viewport { width: 100%; overflow: hidden; padding: 20px 0; margin: -20px 0; }
-        .testimonials-slider-track { display: flex; gap: ${CARD_GAP}px; transition: transform 0.55s cubic-bezier(0.77,0,0.18,1); will-change: transform; touch-action: pan-y; }
-
-        /* ══ TESTIMONIAL CARD ══ */
-        .testimonial-card { flex-shrink: 0; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; min-height: 407px; height: auto; border: 1px solid ${AQUA}; transition: all 0.5s; }
-        .testimonial-card:hover { transform: translateY(-12px); box-shadow: 0 10px 22px rgba(105,228,220,0.96); }
-        .tc-pill { display: inline-flex; padding: 8px 16px; align-items: center; border-radius: 12px; background: ${AQUA}; color: ${RACING_GREEN}; font-size: 16px; font-weight: 400; font-family: SohneBuch; line-height: 24px; max-width: 100%; white-space: normal; word-break: break-word; align-self: flex-start; margin-bottom: 10px; flex-shrink: 0; }
-        .tc-stars { display: flex; align-items: center; margin-top: 12px; flex-shrink: 0; margin-bottom: 10px; }
-        .tc-body { width: 100%; font-family: SohneBuch; font-size: 16px; font-weight: 400; line-height: 24px; margin-top: 12px; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; flex: 1; }
-        .tc-footer { display: flex; align-items: center; gap: 12px; border-top: 1px solid #f3f4f6; padding-top: 12px; margin-top: auto; flex-shrink: 0; }
-        .avatar-circle { width: 40px; height: 40px; border-radius: 50%; background: #D9D9D9; display: flex; align-items: center; justify-content: center; border: 2px solid white; overflow: hidden; flex-shrink: 0; transition: all 0.3s ease; }
-        .testimonial-card:hover .avatar-circle { box-shadow: 0 4px 15px rgba(105,228,220,0.6); border-color: ${AQUA} !important; transform: scale(1.05); }
-        .tc-name { font-size: 0.875rem; font-weight: 400; margin: 0; font-family: SohneBuch; }
-        .tc-date { font-size: 9px; font-weight: 500; text-transform: uppercase; letter-spacing: 2.88px; margin-top: 2px; font-family: CX80; line-height: 15px; }
-
-        .tc-pill {
-          display: inline-flex;
-          padding: 8px 16px;
-          align-items: center;
-          border-radius: 12px;
-          background: ${AQUA};
-          color: ${RACING_GREEN};
-          font-size: 16px;
-          font-weight: 400;
-          font-family: SohneBuch;
-          line-height: 1.1;
-          text-transform: capitalize;
-          max-width: 100%;
-          white-space: normal;
-          word-break: break-word;
-          overflow: visible;
-          text-overflow: unset;
-          align-self: flex-start;
-          margin-bottom: 10px;
-          flex-shrink: 0;
-        }
-        .tc-stars {
-          display: flex; align-items: center;
-          margin-top: 12px; flex-shrink: 0; margin-bottom: 10px;
-        }
-        .tc-body {
-          width: 100%;
-          color: #000;
-          font-family: SohneBuch;
-          font-size: 16px; font-weight: 400; line-height: 24px;
-          margin-top: 12px;
-          display: -webkit-box;
-          -webkit-line-clamp: 5;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-          flex: 1;
-        }
-        .tc-footer {
-          display: flex; align-items: center; gap: 12px;
-          border-top: 1px solid #f3f4f6;
-          padding-top: 12px; margin-top: auto; flex-shrink: 0;
-        }
-        .avatar-circle {
-          width: 40px; height: 40px;
-          border-radius: 50%; background: #D9D9D9;
-          display: flex; align-items: center; justify-content: center;
-          border: 2px solid white;
-          overflow: hidden; flex-shrink: 0;
-          transition: all 0.3s ease;
-        }
-        .testimonial-card:hover .avatar-circle {
-          box-shadow: 0 4px 15px rgba(105,228,220,0.6);
-          border-color: ${AQUA} !important;
-          transform: scale(1.05);
-        }
-        .tc-name {
-          font-size: 0.875rem; font-weight: 400;
-          color: #111827; margin: 0; font-family: SohneBuch;
-        }
-        .tc-date {
-          font-size: 9px; font-weight: 500; color: #000;
-          text-transform: uppercase; letter-spacing: 2.88px;
-          margin-top: 2px; font-family: CX80; line-height: 15px;
-        }
-
-        /* ══ EXPANDED ALL-REVIEWS GRID ══ */
-        .reviews-all-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: ${CARD_GAP}px;
-          width: 100%;
-        }
-
-        /* ══ DOTS ══ */
-        .t-dots { display: flex; gap: 12px; align-items: center; }
-        .t-dot { width: 8px; height: 8px; border-radius: 50%; border: none; padding: 0; cursor: pointer; transition: all 0.3s ease; flex-shrink: 0; }
-        .t-dot.active { width: 24px; border-radius: 4px; background: ${RACING_GREEN} !important; }
-
-        /* ══ NAV ARROWS ══ */
-        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid rgba(11,215,205,0.96); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; transition: all 0.25s ease; flex-shrink: 0; z-index: 20; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .nav-arrow.prev { left: -60px; }
-        .nav-arrow.next { right: -60px; }
-        .nav-arrow:hover:not(:disabled) {
-          transform: translateY(-50%) scale(1.05);
-          background: ${RACING_GREEN} !important;
-          color: white !important;
-          border-color: ${RACING_GREEN};
-          box-shadow: 0 8px 20px rgba(105, 228, 220, 0.4);
-        }
-        .nav-arrow:disabled { opacity: 0.2; cursor: default; }
-
-        /* ══ VIEW MORE BTN ══ */
-        .view-more-btn { display: flex; height: 48px; padding: 12px 16px; justify-content: center; align-items: center; gap: 10px; border-radius: 8px; border: 1px solid ${AQUA}; font-family: CX80; font-size: 15px; font-weight: 700; line-height: 15px; letter-spacing: 4.8px; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; }
-        .view-more-btn:hover {
-          background: ${AQUA} !important;
-          color: ${RACING_GREEN} !important;
-          transform: translateY(-3px);
-          box-shadow: 0 8px 20px rgba(105, 228, 220, 0.4);
-        }
-
-        @media (max-width: 1199px) {
-          .outcomes-section,
-          .testimonials-section {
-            column-gap: 24px;
-            padding: 48px 48px 64px;
-          }
-          .hero-h1 { font-size: 44px; letter-spacing: -0.02em; }
-          .outcomes-h2,
-  .testimonials-h2 {
-    font-size: 38px;
-    line-height: 48px;
-    letter-spacing: -0.4px;
-  }
-          .section-h3 { font-size: 28px !important; }
-          .outcomes-subtitle,
-          .testimonials-subtitle { font-size: 20px; line-height: 32px; }
-          .outcomes-grid-container { grid-template-columns: repeat(2, 1fr); }
-          .reviews-all-grid        { grid-template-columns: repeat(2, 1fr); }
-          .nav-arrow.prev { left: -44px; }
-          .nav-arrow.next { right: -44px; }
-        }
-        @media (max-width: 767px) {
-          .hero-h1 { font-size: 48px !important; letter-spacing: 2%; line-height: 58px !important; letter-spacing: -0.02em; }
-          .outcomes-h2,
-  .testimonials-h2 {
-    font-size: 38px !important;
-    line-height: 48px !important;
-    letter-spacing: -0.2px;
-  }
-          .outcomes-h2::after,
-          .testimonials-h2::after { width: 100px; }
-          .section-h3 { font-size: 32px; }
-          .outcomes-subtitle,
-          .testimonials-subtitle { font-size: 15px; line-height: 24px; margin-top: 14px; }
-
-          .client-outcomes-hero-banner {
-            aspect-ratio: 4 / 5 !important;
-            min-height: unset !important;
-          }
-
-          .outcomes-section {
-            grid-template-columns: repeat(12, 1fr);
-            column-gap: 16px;
-            padding: 40px 24px 56px 24px;
-          }
-
-          .testimonials-section-wrap { overflow: hidden; }
-          .testimonials-section { grid-template-columns: repeat(12, 1fr); column-gap: 16px; padding: 40px 0 56px 24px; }
-          .outcomes-head { padding-right: 24px; }
-          .testimonials-head { padding-right: 24px; }
-          .outcomes-grid-container { grid-template-columns: 1fr; }
-          .reviews-all-grid { grid-template-columns: 1fr; padding-right: 24px; }
-          .outcomes-slider-viewport { overflow: visible; padding: 0; margin: 0; }
-          .testimonials-slider-viewport { overflow: visible; padding: 12px 0; margin: -12px 0; }
-          .nav-arrow { display: none !important; }
-          .t-dots { padding-right: 24px; }
-          .view-more-btn { margin-right: 24px; }
-          .tc-body { display: block; -webkit-line-clamp: unset; overflow: visible; }
-        }
-        @media (max-width: 480px) {
-          .hero-h1 { font-size: 48px !important; }
-           .outcomes-h2,
-  .testimonials-h2 {
-    font-size: 38px !important;
-    line-height: 48px; /* change this */
-  }
-          .section-h3 { font-size: 28px !important; }
-          .outcomes-subtitle,
-          .testimonials-subtitle { font-size: 14px; line-height: 22px; }
-          .tc-pill { font-size: 12px; padding: 5px 10px; }
-        }
-      `}</style>
-
       <div style={{ backgroundColor: t.pageBg, fontFamily: "Sohne, sans-serif", transition: "background 0.3s ease" }}>
 
         {/* ══ HERO ══ */}
-        <section 
-  className="client-outcomes-hero-banner"
-  style={{
-    minHeight: "60vh",
-    aspectRatio: "16 / 7",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundImage: `url(${bannerImg})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    position: "relative",
-    padding: "0 20px",
-  }}
->
+        <section
+          className="client-outcomes-hero-banner"
+          style={{
+            backgroundImage: `url(${bannerImg})`,
+          }}
+        >
+          {/* SEO fallback image for background */}
+          <img
+            src={bannerImg}
+            alt="Buyer Advocate Australia delivering successful client property outcomes"
+            title="Client Outcomes | Buyer's Agent Australia Success Stories"
+            loading="lazy"
+            decoding="async"
+            width="1920"
+            height="800"
+            style={{
+              position: "absolute",
+              width: "1px",
+              height: "1px",
+              opacity: 0,
+              overflow: "hidden",
+              pointerEvents: "none",
+            }}
+          />
 
-  {/* SEO fallback image for background */}
-  <img
-    src={bannerImg}
-    alt="Buyer Advocate Australia delivering successful client property outcomes"
-    title="Client Outcomes | Buyer’s Agent Australia Success Stories"
-    loading="lazy"
-    decoding="async"
-    width="1920"
-    height="800"
-    style={{
-      position: "absolute",
-      width: "1px",
-      height: "1px",
-      opacity: 0,
-      overflow: "hidden",
-      pointerEvents: "none",
-    }}
-  />
+          <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
 
-  <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
-
-  <div style={{
-    position: "relative",
-    zIndex: 2,
-    textAlign: "center",
-    maxWidth: 900,
-    margin: "0 auto",
-    padding: "60px 20px",
-    borderRadius: 12,
-    animation: "heroFadeIn 0.8s ease both",
-  }}>
-    <h1 className="hero-h1" tabIndex={0}>
-      Client Outcomes
-    </h1>
-  </div>
-
-</section>
+          <div style={{
+            position: "relative",
+            zIndex: 2,
+            textAlign: "center",
+            maxWidth: 900,
+            margin: "0 auto",
+            padding: "60px 20px",
+            borderRadius: 12,
+            animation: "heroFadeIn 0.8s ease both",
+          }}>
+            <h1 className="hero-h1" tabIndex={0}>
+              Client Outcomes
+            </h1>
+          </div>
+        </section>
 
         {/* ══ ABOUT ══ */}
-      <div className="client-outcomes-about">
-  <AboutSection
-  imageSrc={AboutClientOutcomesImg}
-  imageAlt="Buyer Advocate Australia showcasing real client property outcomes and investment growth results"
-  imageTitle="Client Outcomes | Buyer’s Agent Australia Results"
-  heading="About Client Outcomes"
-  body1="These are outcomes we have achieved for our clients. Real properties, real numbers, and measurable growth. When you engage Find and Sign Buyer Advocate, you are not simply purchasing a property; you are entering a strategy built for long-term performance. These examples show what is possible when the right property is identified and secured early."
-  imageStyle={{ height: "250px", width: "auto" }}
-/>
-</div>
+        <div className="client-outcomes-about">
+          <AboutSection
+            imageSrc={AboutClientOutcomesImg}
+            imageAlt="Buyer Advocate Australia showcasing real client property outcomes and investment growth results"
+            imageTitle="Client Outcomes | Buyer's Agent Australia Results"
+            heading="About Client Outcomes"
+            body1="These are outcomes we have achieved for our clients. Real properties, real numbers, and measurable growth. When you engage Find and Sign Buyer Advocate, you are not simply purchasing a property; you are entering a strategy built for long-term performance. These examples show what is possible when the right property is identified and secured early."
+            imageStyle={{ height: "250px", width: "auto" }}
+          />
+        </div>
 
         {/* ══ CLIENT OUTCOMES GRID ══ */}
         <div className="outcomes-section-wrap" style={{ background: t.outcomesBg }}>
@@ -833,7 +546,14 @@ letterSpacing: "-0.02em",
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                   </button>
                   <div className="outcomes-slider-viewport" onMouseEnter={() => setOutcomesPaused(true)} onMouseLeave={() => setOutcomesPaused(false)}>
-                    <div ref={outcomesTrackRef} className="outcomes-slider-track" style={{ transform: `translateX(-${outcomesOffset}px)`, "--card-flex-basis": outcomesCardFlexBasis } as React.CSSProperties} onTouchStart={handleOutcomesTouchStart} onTouchMove={handleOutcomesTouchMove} onTouchEnd={handleOutcomesTouchEnd}>
+                    <div
+                      ref={outcomesTrackRef}
+                      className="outcomes-slider-track"
+                      style={{ transform: `translateX(-${outcomesOffset}px)`, "--card-flex-basis": outcomesCardFlexBasis } as React.CSSProperties}
+                      onTouchStart={handleOutcomesTouchStart}
+                      onTouchMove={handleOutcomesTouchMove}
+                      onTouchEnd={handleOutcomesTouchEnd}
+                    >
                       {outcomesSliderCards.map((card, i) => (
                         <PropertyCard key={card.id} card={card} index={i} t={t} />
                       ))}
@@ -886,7 +606,14 @@ letterSpacing: "-0.02em",
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                     </button>
                     <div className="testimonials-slider-viewport">
-                      <div ref={reviewTrackRef} className="testimonials-slider-track" style={{ transform: `translateX(-${reviewOffset}px)`, "--card-flex-basis": reviewCardFlexBasis } as React.CSSProperties} onTouchStart={handleReviewTouchStart} onTouchMove={handleReviewTouchMove} onTouchEnd={handleReviewTouchEnd}>
+                      <div
+                        ref={reviewTrackRef}
+                        className="testimonials-slider-track"
+                        style={{ transform: `translateX(-${reviewOffset}px)`, "--card-flex-basis": reviewCardFlexBasis } as React.CSSProperties}
+                        onTouchStart={handleReviewTouchStart}
+                        onTouchMove={handleReviewTouchMove}
+                        onTouchEnd={handleReviewTouchEnd}
+                      >
                         {formattedReviews.map((rv, i) => (
                           <TestimonialCard key={i} testimonial={rv} t={t} style={{ flex: `0 0 var(--card-flex-basis)`, minWidth: 0 }} />
                         ))}

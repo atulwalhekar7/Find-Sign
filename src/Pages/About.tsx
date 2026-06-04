@@ -4,7 +4,7 @@ import {  useEffect } from "react";
 import aboutContentImg from "../assets/happy-home-buyers-australia-find-and-sign.jpg";
 import aboutVideo from "../assets/Interview Draft (2).mp4";
 import AboutSection from "../components/AboutSection";
-import SimpleGetInTouch from "../components/GetInTouch";
+import SimpleGetInTouch from "../components/GetInTouch/GetInTouch";
 import SimpleFooter from "../components/SimpleFooter";
 import OurProcess from "../components/OurProcess";
 import Banner from "../assets/About-us-Banner-find-and-sign-buyers-agent-australia.jpg";

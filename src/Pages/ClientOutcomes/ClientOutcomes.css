@@ -1,0 +1,655 @@
+/* ============================================================
+   ClientOutcomes.css
+   Extracted 1-to-1 from the <style> block in ClientOutcomes.tsx
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ── Animations ── */
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heartbeatFloat {
+  0%   { transform: translateY(0)    scale(1);    box-shadow: 0 4px 12px rgba(105,228,220,0.3); }
+  14%  { transform: translateY(-3px) scale(1.06); box-shadow: 0 8px 20px rgba(105,228,220,0.4); }
+  28%  { transform: translateY(0)    scale(1); }
+  42%  { transform: translateY(-3px) scale(1.06); box-shadow: 0 8px 20px rgba(105,228,220,0.4); }
+  70%  { transform: translateY(-8px) scale(1); }
+  100% { transform: translateY(0)    scale(1); }
+}
+
+/* ── Typography ── */
+.hero-h1 {
+  font-family: "GT Super Display Medium";
+  font-size: 56px;
+  font-weight: 500;
+  color: #FFF;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: lining-nums proportional-nums;
+  margin: 0;
+}
+
+.outcomes-h2,
+.testimonials-h2 {
+  font-family: "GT Super Display Medium";
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: -0.48px;
+  font-variant-numeric: lining-nums proportional-nums;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.outcomes-subtitle,
+.testimonials-subtitle {
+  font-family: Sohne;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 36px;
+  margin-top: 24px;
+}
+
+/* ── Client Outcomes Hero Banner ── */
+.client-outcomes-hero-banner {
+  min-height: 60vh;
+  aspect-ratio: 16 / 7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  padding: 0 20px;
+}
+
+/* ── PROPERTY CARD ── */
+.property-card {
+  flex: 0 0 var(--card-flex-basis, 100%);
+  min-width: 0;
+  height: 440px;
+  border: 2px solid #69E4DC;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s cubic-bezier(0.165,0.84,0.44,1), box-shadow 0.4s ease, background 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+.property-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 10px 22px rgba(105,228,220,0.96);
+}
+
+.card-image-wrap {
+  width: 100%;
+  height: 200px;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(3px) brightness(80%);
+  transition: transform 0.3s ease;
+  display: block;
+}
+.property-card:hover .card-image {
+  transform: scale(1.08);
+}
+
+.growth-circle-container {
+  position: absolute;
+  bottom: 185px;
+  right: 1px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: #69E4DC;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: filter 0.3s ease, background 0.3s ease;
+}
+.growth-circle-container:hover {
+  animation: heartbeatFloat 4s ease-in-out infinite;
+}
+.property-card:hover .growth-circle-container {
+  background: white;
+  filter: brightness(1.1) drop-shadow(0 4px 15px rgba(105,228,220,0.5));
+}
+
+.growth-label {
+  color: #073B2F;
+  font-family: "SohneBuch";
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  width: 81px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.growth-value {
+  color: #073B2F;
+  font-family: "GT Super Display Medium";
+  font-size: 37px;
+  font-weight: 500;
+  line-height: 40px;
+  letter-spacing: -0.74px;
+  width: 123px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.card-data {
+  padding: 55px 18px 20px;
+  flex: 1;
+}
+.card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+.row-label {
+  font-family: "SohneBuch";
+  font-size: 16px;
+  font-weight: 400;
+}
+.row-val {
+  font-family: "SohneBuch";
+  font-size: 16px;
+  font-weight: 400;
+  margin-left: auto;
+}
+
+/* ── OUTCOMES SECTION ── */
+.outcomes-section-wrap {
+  width: 100%;
+  overflow-x: clip;
+  transition: background 0.3s ease;
+}
+.outcomes-section {
+  width: 100%;
+  max-width: 1512px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 32px;
+  padding: 64px 130px;
+}
+.outcomes-head {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 48px;
+}
+.outcomes-grid-container {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  padding: 20px 0 40px;
+}
+.outcomes-btn-row {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+.outcomes-slider-outer {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  overflow: visible;
+}
+.outcomes-slider-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+}
+.outcomes-slider-viewport {
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+  margin: -20px 0;
+}
+.outcomes-slider-track {
+  display: flex;
+  gap: 32px;
+  transition: transform 0.55s cubic-bezier(0.77,0,0.18,1);
+  will-change: transform;
+  touch-action: pan-y;
+}
+
+.co-dots {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.co-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+.co-dot.active {
+  width: 24px;
+  border-radius: 4px;
+  background: #073B2F !important;
+}
+
+/* ── TESTIMONIALS SECTION ── */
+.testimonials-section-wrap {
+  width: 100%;
+  position: relative;
+  transition: background 0.3s ease;
+}
+.testimonials-section {
+  width: 100%;
+  max-width: 1512px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 32px;
+  padding: 64px 130px;
+}
+.testimonials-head {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 48px;
+}
+.testimonials-slider-col {
+  grid-column: 1 / -1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+.testimonials-slider-wrapper {
+  position: relative;
+  width: 100%;
+}
+.testimonials-slider-viewport {
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+  margin: -20px 0;
+}
+.testimonials-slider-track {
+  display: flex;
+  gap: 32px;
+  transition: transform 0.55s cubic-bezier(0.77,0,0.18,1);
+  will-change: transform;
+  touch-action: pan-y;
+}
+
+/* ── TESTIMONIAL CARD ── */
+.testimonial-card {
+  flex-shrink: 0;
+  border-radius: 24px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 407px;
+  height: auto;
+  border: 1px solid #69E4DC;
+  transition: all 0.5s;
+}
+.testimonial-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 10px 22px rgba(105,228,220,0.96);
+}
+
+.tc-pill {
+  display: inline-flex;
+  padding: 8px 16px;
+  align-items: center;
+  border-radius: 12px;
+  background: #69E4DC;
+  color: #073B2F;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: SohneBuch;
+  line-height: 1.1;
+  text-transform: capitalize;
+  max-width: 100%;
+  white-space: normal;
+  word-break: break-word;
+  overflow: visible;
+  text-overflow: unset;
+  align-self: flex-start;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.tc-stars {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  flex-shrink: 0;
+  margin-bottom: 10px;
+}
+
+.tc-body {
+  width: 100%;
+  font-family: SohneBuch;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  margin-top: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+
+.tc-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid #f3f4f6;
+  padding-top: 12px;
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
+.avatar-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #D9D9D9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+.testimonial-card:hover .avatar-circle {
+  box-shadow: 0 4px 15px rgba(105,228,220,0.6);
+  border-color: #69E4DC !important;
+  transform: scale(1.05);
+}
+
+.tc-name {
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin: 0;
+  font-family: SohneBuch;
+}
+.tc-date {
+  font-size: 9px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2.88px;
+  margin-top: 2px;
+  font-family: CX80;
+  line-height: 15px;
+}
+
+/* ── EXPANDED ALL-REVIEWS GRID ── */
+.reviews-all-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  width: 100%;
+}
+
+/* ── DOTS (testimonials) ── */
+.t-dots {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.t-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+.t-dot.active {
+  width: 24px;
+  border-radius: 4px;
+  background: #073B2F !important;
+}
+
+/* ── NAV ARROWS ── */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(11,215,205,0.96);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+  z-index: 20;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.nav-arrow.prev { left: -60px; }
+.nav-arrow.next { right: -60px; }
+.nav-arrow:hover:not(:disabled) {
+  transform: translateY(-50%) scale(1.05);
+  background: #073B2F !important;
+  color: white !important;
+  border-color: #073B2F;
+  box-shadow: 0 8px 20px rgba(105,228,220,0.4);
+}
+.nav-arrow:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+/* ── VIEW MORE BTN ── */
+.view-more-btn {
+  display: flex;
+  height: 48px;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  border: 1px solid #69E4DC;
+  font-family: CX80;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 4.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.view-more-btn:hover {
+  background: #69E4DC !important;
+  color: #073B2F !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(105,228,220,0.4);
+}
+
+/* ── CLIENT OUTCOMES ABOUT ── */
+.client-outcomes-about {
+  /* wrapper div — no extra styles in original */
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1199px) {
+  .outcomes-section,
+  .testimonials-section {
+    column-gap: 24px;
+    padding: 48px 48px 64px;
+  }
+  .hero-h1 {
+    font-size: 44px;
+    letter-spacing: -0.02em;
+  }
+  .outcomes-h2,
+  .testimonials-h2 {
+    font-size: 38px;
+    line-height: 48px;
+    letter-spacing: -0.4px;
+  }
+  .section-h3 {
+    font-size: 28px !important;
+  }
+  .outcomes-subtitle,
+  .testimonials-subtitle {
+    font-size: 20px;
+    line-height: 32px;
+  }
+  .outcomes-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .reviews-all-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .nav-arrow.prev { left: -44px; }
+  .nav-arrow.next { right: -44px; }
+}
+
+@media (max-width: 767px) {
+  .hero-h1 {
+    font-size: 48px !important;
+    line-height: 58px !important;
+    letter-spacing: -0.02em;
+  }
+  .outcomes-h2,
+  .testimonials-h2 {
+    font-size: 38px !important;
+    line-height: 48px !important;
+    letter-spacing: -0.2px;
+  }
+  .outcomes-h2::after,
+  .testimonials-h2::after {
+    width: 100px;
+  }
+  .section-h3 {
+    font-size: 32px;
+  }
+  .outcomes-subtitle,
+  .testimonials-subtitle {
+    font-size: 15px;
+    line-height: 24px;
+    margin-top: 14px;
+  }
+  .client-outcomes-hero-banner {
+    aspect-ratio: 4 / 5 !important;
+    min-height: unset !important;
+  }
+  .outcomes-section {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 16px;
+    padding: 40px 24px 56px 24px;
+  }
+  .testimonials-section-wrap {
+    overflow: hidden;
+  }
+  .testimonials-section {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 16px;
+    padding: 40px 0 56px 24px;
+  }
+  .outcomes-head {
+    padding-right: 24px;
+  }
+  .testimonials-head {
+    padding-right: 24px;
+  }
+  .outcomes-grid-container {
+    grid-template-columns: 1fr;
+  }
+  .reviews-all-grid {
+    grid-template-columns: 1fr;
+    padding-right: 24px;
+  }
+  .outcomes-slider-viewport {
+    overflow: visible;
+    padding: 0;
+    margin: 0;
+  }
+  .testimonials-slider-viewport {
+    overflow: visible;
+    padding: 12px 0;
+    margin: -12px 0;
+  }
+  .nav-arrow {
+    display: none !important;
+  }
+  .t-dots {
+    padding-right: 24px;
+  }
+  .view-more-btn {
+    margin-right: 24px;
+  }
+  .tc-body {
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-h1 {
+    font-size: 48px !important;
+  }
+  .outcomes-h2,
+  .testimonials-h2 {
+    font-size: 38px !important;
+    line-height: 48px;
+  }
+  .section-h3 {
+    font-size: 28px !important;
+  }
+  .outcomes-subtitle,
+  .testimonials-subtitle {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .tc-pill {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}

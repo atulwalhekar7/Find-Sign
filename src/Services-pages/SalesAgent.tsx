@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import SimpleFooter from "../components/SimpleFooter";
-import GetInTouch from "../components/GetInTouch";
+import GetInTouch from "../components/GetInTouch/GetInTouch";
 import AboutServiceImg from "../assets/buyer-advocate-perth-australia-property-search.jpg";
 import AboutSection from "../components/AboutSection";
 

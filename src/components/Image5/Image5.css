@@ -1,0 +1,162 @@
+/* Wrapper */
+.image1-wrapper {
+  width: 100%;
+  display: block;
+  line-height: 0;
+  font-size: 0;
+}
+
+/* Hero Section */
+.image1-hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: block;
+  line-height: 0;
+  font-size: 0;
+  margin: 0;
+  padding: 0;
+  aspect-ratio: 16 / 7;
+}
+
+/* Image */
+.image1-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+
+/* Overlay */
+.image5-overlay-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+/* Title */
+.image5-hero-title {
+  color: var(
+    --FS-SALTBUSH,
+    var(--Brand-Foundation-FS-SALTBUSH, #f9f9f9)
+  );
+  text-align: center;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: "GT Super Display Medium";
+  font-style: normal;
+  font-weight: 500;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Prevent dark mode issues */
+[data-theme="dark"] .no-theme {
+  background: transparent !important;
+}
+
+/* MOBILE */
+@media (max-width: 599px) {
+  .image1-hero {
+    aspect-ratio: 4 / 5;
+  }
+
+  .image5-overlay-container {
+    align-items: center !important;
+    padding: 20px;
+    padding-bottom: 0 !important;
+  }
+
+  .image5-hero-title {
+    font-size: 18px !important;
+    line-height: 24px !important;
+    letter-spacing: -0.3px !important;
+    max-width: 320px;
+    white-space: normal;
+  }
+}
+
+/* TABLET */
+@media (min-width: 600px) and (max-width: 1024px) {
+  .image5-hero-title {
+    font-size: 32px !important;
+    line-height: 40px !important;
+    letter-spacing: -0.5px !important;
+    max-width: 100%;
+    white-space: nowrap;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1025px) {
+  .image5-hero-title {
+    font-size: 44px !important;
+    line-height: 54px !important;
+    letter-spacing: -0.88px !important;
+    white-space: nowrap;
+  }
+}
+
+/* Button */
+.book-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  font-family: "CX80";
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 3px;
+  border-radius: 5px;
+  border: 1px solid #69e4dc;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.book-btn:hover {
+  background: rgba(105, 228, 220, 0.15);
+  transform: translateY(-1px);
+}
+
+.book-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke: #fff;
+}
+
+@media (max-width: 600px) {
+  .book-btn {
+    font-size: 10px;
+    letter-spacing: 2px;
+    padding: 8px 12px;
+  }
+
+  .book-btn svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .book-btn {
+    font-size: 11px;
+    letter-spacing: 3px;
+    padding: 10px 14px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .book-btn {
+    font-size: 13px;
+    letter-spacing: 5px;
+    padding: 12px 18px;
+  }
+}
