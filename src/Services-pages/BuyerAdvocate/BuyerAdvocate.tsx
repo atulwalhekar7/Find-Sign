@@ -29,7 +29,6 @@ export default function BuyerAdvocate() {
         imageSrc={AboutServiceImg}
         imageAlt="Perth Buyer Advocate Australia helping clients secure residential and investment properties"
         imageTitle="Buyer Advocate Perth Australia | Find and Sign"
-        imageCaption="Experienced Perth Buyer Advocate Australia providing expert property search, negotiation and acquisition services."
         heading="About Buyer Advocacy"
         subheading="Expert guidance for every step of your property journey."
         body1={`Purchasing a property is one of the most significant financial decisions you will ever make. Our full buyers agent service is designed to ensure that every step of that journey is handled with the expertise, care, and attention it deserves.

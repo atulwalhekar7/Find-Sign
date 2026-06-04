@@ -51,7 +51,6 @@ export default function Advisory() {
         imageSrc={AboutServiceImg}
         imageAlt="Perth mortgage broker helping home buyers secure the right finance solution in Australia"
   imageTitle="Mortgage Broker Perth Australia | Find and Sign"
-  imageCaption="Experienced Perth mortgage broker providing finance guidance and loan solutions for property buyers across Australia."
   heading="About Mortgage Broker"
   subheading="Expert guidance for every step of your property journey."
         body1="Sometimes you do not need a full buyers agent service. You simply need the right information and guidance to move forward with clarity and confidence. Our advisory service is a focused two session consultation designed for buyers who want to take the lead on their own journey but want an experienced advocate in their corner before they do.

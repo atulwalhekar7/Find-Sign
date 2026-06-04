@@ -60,7 +60,6 @@ export default function SalesAgent() {
         imageSrc={AboutServiceImg}
         imageAlt="Perth mortgage broker helping home buyers secure the right finance solution in Australia"
   imageTitle="Mortgage Broker Perth Australia | Find and Sign"
-  imageCaption="Experienced Perth mortgage broker providing finance guidance and loan solutions for property buyers across Australia."
   heading="About Mortgage Broker"
   subheading="Expert guidance for every step of your property journey."
         body1="There will come a time in every property journey when you need to sell, whether that is moving on from your family home, exiting an investment, or repositioning your portfolio. A great sales agent understands how to present your property to the right buyers, price it strategically, and negotiate an outcome that reflects its true value. Having a trusted sales agent in your network before you need one means you are never starting from scratch at a critical moment. We refer only agents whose approach, integrity, and local knowledge we have seen firsthand."
