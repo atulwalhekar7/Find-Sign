@@ -5,11 +5,11 @@ import OurProcessBlog from "../../../Pages/Our-Process-Post2";
 import "./BuyerAgentPerthBlog.css";
 
 // --- Assets ---
-import bannerImg from "../assets/happy-home-buyers-blog2-banner-australia-find-and-sign.jpg";
-import agentImg from "../assets/buyers-agent-perth-guide.jpg";
-import servicesImg from "../assets/perth-property-investment-strategy.jpg";
-import benefitsImg from "../assets/benefits-of-using-a-buyers-agent-perth.jpg";
-import processImg from "../assets/what-is-a-buyers-agent-perth.jpg";
+import bannerImg from "../../../assets/happy-home-buyers-blog2-banner-australia-find-and-sign.jpg";
+import agentImg from "../../../assets/buyers-agent-perth-guide.jpg";
+import servicesImg from "../../../assets/perth-property-investment-strategy.jpg";
+import benefitsImg from "../../../assets/benefits-of-using-a-buyers-agent-perth.jpg";
+import processImg from "../../../assets/what-is-a-buyers-agent-perth.jpg";
 
 const SideBySideSection = ({
   title,

@@ -7,7 +7,7 @@ import Services from "./Pages/Services/Services";
 import ClientOutcomes from "./Pages/ClientOutcomes/ClientOutcomes";
 import Insights from "./Pages/Insights/Insights";
 import Contact from "./Pages/Contact/Contact";
-import BuyerAgentPerthBlog from "./Pages/Blogs/BestSuburbsPerthBlog/BestSuburbsPerthBlog";
+import BuyerAgentPerthBlog from "./Pages/Blogs/BuyerAgentPerthBlog/BuyerAgentPerthBlog";
 import BestSuburbsPerthBlog from "./Pages/Blogs/BestSuburbsPerthBlog/BestSuburbsPerthBlog";
 
 import TermsAndConditions from "./Pages/TermsAndConditions/TermsAndConditions";
