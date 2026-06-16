@@ -11,6 +11,7 @@ import BuyerAgentPerthBlog from "./Pages/Blogs/BuyerAgentPerthBlog/BuyerAgentPer
 import BestSuburbsPerthBlog from "./Pages/Blogs/BestSuburbsPerthBlog/BestSuburbsPerthBlog";
 
 import TermsAndConditions from "./Pages/TermsAndConditions/TermsAndConditions";
+import FindAndSignBuyerAdvocatePage from "./Pages/Find-and-sign-buyer-advocate/Find-and-sign-buyer-advocate";
 
 // ── 8 Service Pages ──
 import BuyerAdvocate      from "./Services-pages/BuyerAdvocate/BuyerAdvocate";
@@ -60,6 +61,9 @@ function App() {
             <Route path="/services/quantity-surveyor"   element={<QuantitySurveyor />}    />
             <Route path="/services/accounting"          element={<Accounting />}          />
 
+            {/* Buyer Advocate (link page) */}
+            <Route path="/Find-and-sign-buyer-advocate" element={<FindAndSignBuyerAdvocatePage />} />
+          
           </Route>
         </Routes>
       </BrowserRouter>
