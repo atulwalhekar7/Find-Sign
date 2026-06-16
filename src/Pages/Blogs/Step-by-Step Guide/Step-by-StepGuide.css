@@ -1,0 +1,365 @@
+/* ── Animations ── */
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(1turn); }
+}
+
+/* ── Video / Banner Loader ── */
+.video-loader-container {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: #073B2F;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.video-loader-container.hidden {
+  opacity: 0;
+}
+
+/* ── Spinner Loader ── */
+.attractive-loader {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(105, 228, 220, 0.2);
+  border-radius: 50%;
+  border-top-color: #69E4DC;
+  animation: spin 1s infinite linear;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+  margin-bottom: 8px;
+}
+
+.attractive-loader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Hero Section ── */
+.buyer-hero-section {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  padding: 0 20px;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  animation: heroFadeIn 0.8s ease both;
+}
+
+.hero-content h1 {
+  font-family: 'GT Super Display Medium';
+  font-size: 56px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.hero-content p {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 300;
+  margin-top: 24px;
+  opacity: 0.9;
+}
+
+/* ── Intro Section ── */
+.intro-section {
+  padding: 60px 0 40px;
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.intro-section p.intro-lead {
+  font-size: 24px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.intro-section p.intro-body {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+/* ── Content Sections (text-only, replacing side-by-side) ── */
+.content-section {
+  padding: 60px 0;
+  border-top: 1px solid var(--bg-tertiary);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.content-section h2 {
+  font-family: 'GT Super Display Medium';
+  font-size: 44px;
+  font-weight: 500;
+  color: var(--text-heading);
+  line-height: 1.2;
+  letter-spacing: -0.48px;
+  margin-bottom: 28px;
+}
+
+.content-section .content-body {
+  font-family: 'Söhne', sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.content-section .content-body p {
+  margin: 0;
+}
+
+.content-section .content-body ul {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+}
+
+.content-section .content-body ul li {
+  line-height: 1.6;
+}
+
+/* ── Info Cards (used in Why You Need section) ── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.info-card {
+  padding: 28px 32px;
+  background-color: var(--bg-secondary);
+  border-radius: 16px;
+  border: 1px solid var(--bg-tertiary);
+}
+
+.info-card h4 {
+  font-family: 'GT Super Display Medium';
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text-heading);
+  margin: 0 0 12px 0;
+}
+
+.info-card p {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ── Why Choose Us (Green Banner) ── */
+.why-choose-section {
+  padding: 60px 40px;
+  background-color: #073B2F;
+  border-radius: 24px;
+  color: #fff;
+  margin: 60px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.why-choose-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.why-choose-inner h2 {
+  font-family: 'GT Super Display Medium';
+  font-size: 44px;
+  border-bottom: 2px solid #ffffff;
+  padding-bottom: 8px;
+  width: fit-content;
+  margin: 0 auto 24px;
+}
+
+.why-choose-inner p {
+  font-size: 20px;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+.why-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.why-tag {
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 100px;
+  font-size: 16px;
+}
+
+/* ── FAQs ── */
+.faq-section {
+  padding: 60px 0;
+  border-top: 1px solid var(--bg-tertiary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.faq-section h2 {
+  font-family: 'GT Super Display Medium';
+  font-size: 44px;
+  color: var(--text-heading);
+  margin-bottom: 40px;
+  text-align: center;
+  border-bottom: 2px solid var(--text-heading);
+  padding-bottom: 8px;
+  width: fit-content;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.faq-card {
+  padding: 32px;
+  background-color: var(--bg-secondary);
+  border-radius: 16px;
+  border: 1px solid var(--bg-tertiary);
+}
+
+.faq-card h4 {
+  font-size: 22px;
+  color: var(--text-heading);
+  margin-bottom: 16px;
+  font-family: 'GT Super Display Medium';
+  font-weight: 500;
+}
+
+.faq-card p {
+  color: var(--text-secondary);
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Final Thoughts / Quote ── */
+.final-thoughts-section {
+  padding: 60px 0;
+  border-top: 1px solid var(--bg-tertiary);
+  background-color: var(--bg-secondary);
+}
+
+.final-thoughts-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 40px;
+}
+
+.final-thoughts-inner .quote-mark {
+  font-size: 60px;
+  color: var(--text-heading);
+  opacity: 0.2;
+  font-family: serif;
+  line-height: 1;
+  display: block;
+}
+
+.final-thoughts-inner blockquote {
+  font-size: 32px;
+  font-style: italic;
+  color: var(--text-heading);
+  font-family: 'GT Super Display Medium';
+  line-height: 1.3;
+  margin-top: -20px;
+}
+
+.final-thoughts-inner p {
+  font-size: 20px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .hero-content h1 { font-size: 44px; line-height: 1.2; }
+  .hero-content p { font-size: 20px; }
+
+  .content-section h2 { font-size: 36px; }
+  .why-choose-inner h2 { font-size: 36px; }
+  .faq-section h2 { font-size: 36px; }
+
+  .card-grid { grid-template-columns: 1fr; }
+
+  .final-thoughts-inner blockquote { font-size: 26px; }
+}
+
+@media (max-width: 600px) {
+  .hero-content h1 { font-size: 32px; }
+  .hero-content p { font-size: 18px; }
+
+  main { padding: 0 20px !important; }
+
+  .intro-section p.intro-lead { font-size: 20px; }
+  .intro-section p.intro-body { font-size: 16px; }
+
+  .content-section { padding: 40px 0; }
+  .content-section h2 { font-size: 28px; }
+  .content-section .content-body { font-size: 16px; }
+
+  .why-choose-section { padding: 40px 20px; }
+  .why-choose-inner h2 { font-size: 28px; }
+  .why-choose-inner p { font-size: 16px; }
+
+  .faq-section h2 { font-size: 28px; }
+  .faq-card { padding: 20px; }
+  .faq-card h4 { font-size: 18px; }
+  .faq-card p { font-size: 16px; }
+
+  .final-thoughts-inner blockquote { font-size: 22px; }
+  .final-thoughts-inner p { font-size: 17px; }
+  .final-thoughts-inner { padding: 0 20px; }
+}

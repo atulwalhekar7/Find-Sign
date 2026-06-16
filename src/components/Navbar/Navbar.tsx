@@ -216,8 +216,11 @@ export default function Navbar() {
                  boxSizing: "border-box",
                  fontFamily: "'SohneBuch'",
                  fontSize: "15px",
-                 color: COLORS.white, // Changed to match desktop view text color
-                 fontWeight: isActive ? 500 : 400,
+ color: isActive
+  ? "#69E4DC"
+  : isDark
+  ? "#ffffff"
+  : COLORS.black,                fontWeight: isActive ? 500 : 400,
                  textDecoration: "none",
                  padding: "10px 12px",
                  borderBottom: "1px solid rgba(27,67,50,0.06)",

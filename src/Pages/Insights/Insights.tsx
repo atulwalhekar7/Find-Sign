@@ -11,6 +11,7 @@ import aboutInsightsImg from "../../assets/perth-buyer-advocate-property-insight
 import bannerImg from "../../assets/buyer-advocate-perth-australia-agent-property.jpg";
 import perthBlogImg from "../../assets/Best Suburbs in Perth for Property.jpg";
 import Blog2 from "../../assets/buyer-agent-perth-australia-find-and-sign.jpg";
+import Blog3 from "../../assets/find-and-sign-buyer-advocate-blog3.png";
 
 // ── Theme ─────────────────────────────────────────────────────────────────────
 const THEMES = {
@@ -76,6 +77,20 @@ const blogPosts = [
       "Learn how a Perth buyers agent can help you find, evaluate and secure the right property while avoiding costly mistakes.",
     path: "/blog/buyers-agent-perth",
   },
+  {
+  title: "Perth Buyers Agent & Advocate WA: Top Agents in Perth",
+  date: "01 June 2026",
+  description:
+    "Top Perth Buyers Agents & Advocates WA. We help you find the right property in Perth's competitive market, including investment properties.",
+  image: Blog3,
+  imageAlt:
+    "Perth buyers agent and advocate helping clients find residential and investment properties in Western Australia",
+  imageTitle:
+    "Perth Buyers Agent & Advocate WA: Top Agents in Perth | Find and Sign",
+  imageCaption:
+    "Discover how experienced Perth buyers agents and advocates can help you secure the right property and investment opportunities in Western Australia's competitive market.",
+  path: "/blog/perth-buyers-agent-advocate-wa",
+},
 ];
 
 // ── Blog Card ─────────────────────────────────────────────────────────────────

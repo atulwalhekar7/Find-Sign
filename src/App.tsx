@@ -9,6 +9,7 @@ import Insights from "./Pages/Insights/Insights";
 import Contact from "./Pages/Contact/Contact";
 import BuyerAgentPerthBlog from "./Pages/Blogs/BuyerAgentPerthBlog/BuyerAgentPerthBlog";
 import BestSuburbsPerthBlog from "./Pages/Blogs/BestSuburbsPerthBlog/BestSuburbsPerthBlog";
+import StepbyStepGuideBlog from "./Pages/Blogs/Step-by-Step Guide/Step-by-StepGuide";
 
 import TermsAndConditions from "./Pages/TermsAndConditions/TermsAndConditions";
 import FindAndSignBuyerAdvocatePage from "./Pages/Find-and-sign-buyer-advocate/Find-and-sign-buyer-advocate";
@@ -48,6 +49,7 @@ function App() {
             <Route path="/contact"         element={<Contact />}        />
             <Route path="/blog/buyers-agent-perth" element={<BuyerAgentPerthBlog />} />
             <Route path="/blog/best-suburbs-perth" element={<BestSuburbsPerthBlog />} />
+            <Route path="/blog/perth-buyers-agent-advocate-wa" element={<StepbyStepGuideBlog />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
 
@@ -62,7 +64,7 @@ function App() {
             <Route path="/services/accounting"          element={<Accounting />}          />
 
             {/* Buyer Advocate (link page) */}
-            <Route path="/Find-and-sign-buyer-advocate" element={<FindAndSignBuyerAdvocatePage />} />
+            <Route path="/niki-nakrani-buyer-advocate" element={<FindAndSignBuyerAdvocatePage />} />
           
           </Route>
         </Routes>

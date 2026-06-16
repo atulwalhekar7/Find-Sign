@@ -7,7 +7,7 @@ import facebookIcon from '../../assets/Find-and-sign/facebook.png';
 import instagramIcon from '../../assets/Find-and-sign/instagram.png';
 import tiktokIcon from '../../assets/Find-and-sign/tiktok.png';
 import reviewIcon from '../../assets/Find-and-sign/review.png';
-import qrImage from '../../assets/Find-and-sign/Find-and-sign-buyer-advocate.png';
+import qrImage from '../../assets/niki-nakrani-buyer-advocate.png';
 
 // Collage background images
 import id1 from '../../assets/benefits-of-using-a-buyers-agent-perth.jpg';
