@@ -18,7 +18,7 @@ const THEMES = {
   },
 };
 
-import bannerImg from "../../assets/buyer-advocate-australia-contact-property-consultation-banner.png";
+import bannerImg from "../../assets/buyer-advocate-agent-perth.png";
 
 export default function Contact() {
   const [isBannerLoading, setIsBannerLoading] = useState(true);

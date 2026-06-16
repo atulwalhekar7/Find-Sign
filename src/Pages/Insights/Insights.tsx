@@ -8,9 +8,9 @@ import { useTheme } from "../../components/ThemeContext";
 import "./Insights.css";
 
 import aboutInsightsImg from "../../assets/perth-buyer-advocate-property-insights.jpg";
-import bannerImg from "../../assets/client-outcomes-banner-find-and-sign-buyers-agent-australia.jpg";
-import perthBlogImg from "../../assets/best-suburbs-perth-property-investment-2026.jpg";
-import Blog2 from "../../assets/happy-home-buyers-blog2-banner-australia-find-and-sign.jpg";
+import bannerImg from "../../assets/buyer-advocate-perth-australia-agent-property.jpg";
+import perthBlogImg from "../../assets/Best Suburbs in Perth for Property.jpg";
+import Blog2 from "../../assets/buyer-agent-perth-australia-find-and-sign.jpg";
 
 // ── Theme ─────────────────────────────────────────────────────────────────────
 const THEMES = {

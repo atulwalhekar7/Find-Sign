@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
-import heroImage from "../../assets/buyer-advocate-australia-property-buying-confidence-home-interior.jpg";
+import heroImage from "../../assets/niki-nikrani-buyer-advocate-perth-australia-property.jpg";
 import "./Image6.css";
 
 const Image1: React.FC = () => {

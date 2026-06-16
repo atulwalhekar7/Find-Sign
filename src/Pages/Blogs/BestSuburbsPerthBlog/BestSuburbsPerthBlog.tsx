@@ -4,7 +4,7 @@ import SimpleFooter from "../../../components/Footer/Footer";
 import "./BestSuburbsPerthBlog.css";
 
 // --- Assets ---
-import bannerImg from "../../../assets/best-suburbs-perth-property-investment-2026.jpg";
+import bannerImg from "../../../assets/Best Suburbs in Perth for Property.jpg";
 import agentImg from "../../../assets/why-perth-is-a-property-investment-hotspot.jpg";
 import servicesImg from "../../../assets/perth-property-investment-strategy.jpg";
 import benefitsImg from "../../../assets/best-perth-suburbs-for-property-investment.png";

@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
-import heroImage from "../../assets/niki-nakrani-buyers-agent-image2-australia-find-and-sign.jpg";
+import heroImage from "../../assets/niki-nakrani-buyers-agent-perth-australia-find-and-sign.jpg";
 import "./Image2.css";
 
 const Image1: React.FC = () => {

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import GetInTouch from "../../components/GetInTouch/GetInTouch";
 import SimpleFooter from "../../components/SimpleFooter";
 import AboutSection from "../../components/AboutSection";
-import bannerImg from "../../assets/service-banner-find-and-sign-buyers-australia.jpg";
+import bannerImg from "../../assets/buyer-advocate-find-and-sign-perth-australia.jpg";
 import AboutServiceImg from "../../assets/perth-buyer-advocate-services-australia.jpg";
 import Image4 from "../../components/Image4/Image4";
 import { useTheme } from "../../components/ThemeContext";

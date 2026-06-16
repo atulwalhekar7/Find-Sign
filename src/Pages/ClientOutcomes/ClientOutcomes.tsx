@@ -8,8 +8,8 @@ import Image6 from "../../components/Image6/Image6";
 import { useTheme } from "../../components/ThemeContext";
 import "./ClientOutcomes.css";
 
-import bannerImg from "../../assets/buyer-advocate-australia-client-outcomes-banner.jpg";
-import AboutClientOutcomesImg from "../../assets/buyer-advocate-australia-client-outcomes-property-results.jpg";
+import bannerImg from "../../assets/buyer-advocate-perth-australia-client-outcomes.jpg";
+import AboutClientOutcomesImg from "../../assets/buyer-advocate-perth-australia-client-outcomes-property.jpg";
 
 import id1 from "../../assets/Client Outcomes/id1.webp";
 import id2 from "../../assets/Client Outcomes/id2.webp";
