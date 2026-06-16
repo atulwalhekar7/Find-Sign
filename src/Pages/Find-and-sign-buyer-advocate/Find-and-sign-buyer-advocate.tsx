@@ -93,11 +93,11 @@ const FindAndSignBaAdvocate = () => {
         minHeight: '100vh',
         width: '100%',
         display: 'flex',
-      flexDirection: 'column',
+        flexDirection: 'column',
         alignItems: 'center',
-      justifyContent: 'flex-start',
+        justifyContent: 'flex-start',
         overflowX: 'hidden',
-      backgroundColor: 'transparent', // Allow fixed background to show through
+        backgroundColor: 'transparent',
         transition: 'background-color 0.5s',
       }}
     >
@@ -107,12 +107,11 @@ const FindAndSignBaAdvocate = () => {
         style={{
           position: 'fixed',
           inset: 0,
-          zIndex: -2, // Moved behind the overlay and navbar
+          zIndex: -2,
           display: 'grid',
           gap: '3px',
           pointerEvents: 'none',
           overflow: 'hidden',
-          marginTop: '50px', // Shift up to align better with content
         }}
       >
         {collageImages.map((src, i) => (
@@ -150,7 +149,7 @@ const FindAndSignBaAdvocate = () => {
         style={{
           position: 'fixed',
           inset: 0,
-          zIndex: -1, // Ensure it stays behind the main content and navbar
+          zIndex: -1,
           backdropFilter: 'blur(1.5px)',
           backgroundColor: dark ? 'rgba(15,25,35,0.75)' : 'rgba(245,240,232,0.65)',
           transition: 'background-color 0.5s',
@@ -159,12 +158,12 @@ const FindAndSignBaAdvocate = () => {
 
       {/* ── QR panel — desktop only ── */}
       <div
+        className="qr-panel"
         style={{
           position: 'fixed',
           bottom: 32,
           right: 32,
           zIndex: 30,
-          display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           padding: '1rem',
@@ -175,7 +174,6 @@ const FindAndSignBaAdvocate = () => {
           boxShadow: '0 8px 32px rgba(0,0,0,0.25)',
           transition: 'all 0.3s',
         }}
-        className="qr-panel" // Add a class for media query control
       >
         <p style={{
           fontSize: 10,
@@ -184,9 +182,7 @@ const FindAndSignBaAdvocate = () => {
           textTransform: 'uppercase',
           marginBottom: 12,
           color: dark ? '#69E4DC' : '#6b7280',
-              fontFamily: 'GT Super Display Medium',
-
-          
+          fontFamily: 'GT Super Display Medium',
         }}>
           View on mobile
         </p>
@@ -195,7 +191,7 @@ const FindAndSignBaAdvocate = () => {
           alt="QR code to open on mobile"
           style={{ width: 120, height: 120, objectFit: 'contain', borderRadius: 12 }}
         />
-        <p style={{ fontSize: 10, marginTop: 8, color: dark ? '#475569' : '#9ca3af',fontFamily: 'Sohne, sans-serif', }}>
+        <p style={{ fontSize: 10, marginTop: 8, color: dark ? '#475569' : '#9ca3af', fontFamily: 'Sohne, sans-serif' }}>
           Scan to open
         </p>
       </div>
@@ -301,8 +297,7 @@ const FindAndSignBaAdvocate = () => {
                 marginBottom: 4,
                 color: dark ? '#f0f8f7' : '#0f172a',
                 transition: 'color 0.5s',
-    fontFamily: 'GT Super Display Medium',
-
+                fontFamily: 'GT Super Display Medium',
               }}
             >
               Find and Sign
@@ -315,7 +310,7 @@ const FindAndSignBaAdvocate = () => {
                 textTransform: 'uppercase',
                 color: dark ? '#7ecfc9' : '#64748b',
                 transition: 'color 0.5s',
-                 fontFamily: "Sohne, sans-serif"
+                fontFamily: "Sohne, sans-serif"
               }}
             >
               Buyer Advocate
@@ -342,7 +337,7 @@ const FindAndSignBaAdvocate = () => {
                 fontWeight: 500,
                 marginBottom: '1.5rem',
                 color: dark ? '#94a3b8' : '#64748b',
-                 fontFamily: "Sohne, sans-serif"
+                fontFamily: "Sohne, sans-serif"
               }}
             >
               Make your home buying experience outstanding
@@ -438,7 +433,7 @@ const FindAndSignBaAdvocate = () => {
             fontWeight: 500,
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
-            color: '#6b7280',
+            color: '#6786c4',
           }}
         >
           © 2026 Find and Sign Buyer Advocate
@@ -455,7 +450,7 @@ const FindAndSignBaAdvocate = () => {
             textTransform: 'uppercase',
             textDecoration: 'underline',
             textUnderlineOffset: 4,
-            color: dark ? '#475569' : '#9ca3af',
+            color: dark ? '#6786c4' : '#6786c4',
             transition: 'color 0.2s',
           }}
         >
@@ -465,20 +460,21 @@ const FindAndSignBaAdvocate = () => {
 
       <style>{`
         .page-container {
-          padding: 100px 1rem 4rem; /* Default for desktop */
+          padding: 100px 1rem 4rem;
         }
 
+        /* QR panel: hidden on mobile & tablet, visible only on desktop */
         .qr-panel {
-          display: none; /* Hidden by default */
+          display: none !important;
         }
 
-        @media (min-width: 1024px) { /* Show QR panel on large screens (desktop) */
+        @media (min-width: 1024px) {
           .qr-panel {
-            display: flex;
+            display: flex !important;
           }
         }
 
-        @media (max-width: 1024px) { /* Tablet styles */
+        @media (max-width: 1024px) {
           .page-container {
             padding: 80px 1rem 4rem;
           }
@@ -501,16 +497,16 @@ const FindAndSignBaAdvocate = () => {
 
         @media (max-width: 480px) {
           .content-column {
-            padding: 0 12px; /* Keep horizontal padding, top padding handled by page-container */
+            padding: 0 12px;
           }
           .main-card {
             border-radius: 2rem !important;
           }
           .card-header {
-            padding: 2rem 1.25rem 1.25rem !important; /* Further reduced for mobile */
+            padding: 2rem 1.25rem 1.25rem !important;
           }
           .page-container {
-            padding: 60px 12px 4rem; /* Further reduced top padding for mobile */
+            padding: 60px 12px 4rem;
           }
           h1 {
             font-size: 1.45rem !important;

@@ -38,6 +38,8 @@ function App() {
     <ThemeProvider>
       <BrowserRouter>
         <Routes>
+                      <Route path="/niki-nakrani-buyer-advocate" element={<FindAndSignBuyerAdvocatePage />} />
+
           <Route element={<MainLayout />}>
 
             {/* ── Existing Routes ── */}
@@ -64,7 +66,6 @@ function App() {
             <Route path="/services/accounting"          element={<Accounting />}          />
 
             {/* Buyer Advocate (link page) */}
-            <Route path="/niki-nakrani-buyer-advocate" element={<FindAndSignBuyerAdvocatePage />} />
           
           </Route>
         </Routes>
