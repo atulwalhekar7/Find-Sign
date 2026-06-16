@@ -49,21 +49,23 @@ const THEMES = {
 
 // ── Blog posts data ───────────────────────────────────────────────────────────
 const blogPosts = [
+ 
+  
   {
-    title: "Best Suburbs in Perth for Property Investment in 2026",
-    date: "01 March 2026",
-    description:
-      "Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement.",
-    image: perthBlogImg,
-    imageAlt:
-      "Best suburbs in Perth for property investment in 2026 analysed by a Perth buyer advocate",
-    imageTitle:
-      "Best Suburbs in Perth for Property Investment 2026 | Find and Sign",
-    imageCaption:
-      "Discover the best Perth suburbs for property investment in 2026 based on growth potential, rental demand and market trends.",
-    path: "/blog/best-suburbs-perth",
-  },
-  {
+  title: "Perth Buyers Agent & Advocate WA: Top Agents in Perth",
+  date: "01 May 2026",
+  description:
+    "Top Perth Buyers Agents & Advocates WA. We help you find the right property in Perth's competitive market, including investment properties.",
+  image: Blog3,
+  imageAlt:
+    "Perth buyers agent and advocate helping clients find residential and investment properties in Western Australia",
+  imageTitle:
+    "Perth Buyers Agent & Advocate WA: Top Agents in Perth | Find and Sign",
+  imageCaption:
+    "Discover how experienced Perth buyers agents and advocates can help you secure the right property and investment opportunities in Western Australia's competitive market.",
+  path: "/blog/perth-buyers-agent-advocate-wa",
+},
+{
     title: "Your Ultimate Guide to Hiring a Buyer's Agent in Perth",
     date: "01 April 2026",
     description:
@@ -77,20 +79,20 @@ const blogPosts = [
       "Learn how a Perth buyers agent can help you find, evaluate and secure the right property while avoiding costly mistakes.",
     path: "/blog/buyers-agent-perth",
   },
-  {
-  title: "Perth Buyers Agent & Advocate WA: Top Agents in Perth",
-  date: "01 June 2026",
-  description:
-    "Top Perth Buyers Agents & Advocates WA. We help you find the right property in Perth's competitive market, including investment properties.",
-  image: Blog3,
-  imageAlt:
-    "Perth buyers agent and advocate helping clients find residential and investment properties in Western Australia",
-  imageTitle:
-    "Perth Buyers Agent & Advocate WA: Top Agents in Perth | Find and Sign",
-  imageCaption:
-    "Discover how experienced Perth buyers agents and advocates can help you secure the right property and investment opportunities in Western Australia's competitive market.",
-  path: "/blog/perth-buyers-agent-advocate-wa",
-},
+   {
+    title: "Best Suburbs in Perth for Property Investment in 2026",
+    date: "01 March 2026",
+    description:
+      "Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement.",
+    image: perthBlogImg,
+    imageAlt:
+      "Best suburbs in Perth for property investment in 2026 analysed by a Perth buyer advocate",
+    imageTitle:
+      "Best Suburbs in Perth for Property Investment 2026 | Find and Sign",
+    imageCaption:
+      "Discover the best Perth suburbs for property investment in 2026 based on growth potential, rental demand and market trends.",
+    path: "/blog/best-suburbs-perth",
+  },
 ];
 
 // ── Blog Card ─────────────────────────────────────────────────────────────────
