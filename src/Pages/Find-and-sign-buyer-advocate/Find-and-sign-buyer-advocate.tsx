@@ -10,14 +10,14 @@ import reviewIcon from '../../assets/Find-and-sign/review.png';
 import qrImage from '../../assets/Find-and-sign/Find-and-sign-buyer-advocate.png';
 
 // Collage background images
-import id1 from '../../assets/Client Outcomes/id1.webp';
-import id2 from '../../assets/Client Outcomes/id2.webp';
-import id3 from '../../assets/Client Outcomes/id3.webp';
-import id4 from '../../assets/Client Outcomes/id4.webp';
-import id5 from '../../assets/Client Outcomes/id5.webp';
-import id6 from '../../assets/Client Outcomes/id6.webp';
-import id7 from '../../assets/Client Outcomes/id7.webp';
-import id8 from '../../assets/Client Outcomes/id8.webp';
+import id1 from '../../assets/benefits-of-using-a-buyers-agent-perth.jpg';
+import id2 from '../../assets/buyer-advocate-agent-perth.png';
+import id3 from '../../assets/niki-nikrani-buyer-advocate-perth-australia.png';
+import id4 from '../../assets/Australia-Find-And-Sign-About-Us.jpg';
+import id5 from '../../assets/find-sign-buyer-advocates-perth.jpg';
+import id6 from '../../assets/what-is-a-buyers-agent-perth.jpg';
+import id7 from '../../assets/best-perth-suburbs-for-property-investment.png';
+import id8 from '../../assets/niki-nikrani-buyer-advocate-perth-australia.jpg';
 
 import { ExternalLink, Sun, Moon } from 'lucide-react';
 
@@ -112,6 +112,7 @@ const FindAndSignBaAdvocate = () => {
           gap: '3px',
           pointerEvents: 'none',
           overflow: 'hidden',
+          marginTop: '50px', // Shift up to align better with content
         }}
       >
         {collageImages.map((src, i) => (
@@ -183,6 +184,9 @@ const FindAndSignBaAdvocate = () => {
           textTransform: 'uppercase',
           marginBottom: 12,
           color: dark ? '#69E4DC' : '#6b7280',
+              fontFamily: 'GT Super Display Medium',
+
+          
         }}>
           View on mobile
         </p>
@@ -191,7 +195,7 @@ const FindAndSignBaAdvocate = () => {
           alt="QR code to open on mobile"
           style={{ width: 120, height: 120, objectFit: 'contain', borderRadius: 12 }}
         />
-        <p style={{ fontSize: 10, marginTop: 8, color: dark ? '#475569' : '#9ca3af' }}>
+        <p style={{ fontSize: 10, marginTop: 8, color: dark ? '#475569' : '#9ca3af',fontFamily: 'Sohne, sans-serif', }}>
           Scan to open
         </p>
       </div>
@@ -297,6 +301,8 @@ const FindAndSignBaAdvocate = () => {
                 marginBottom: 4,
                 color: dark ? '#f0f8f7' : '#0f172a',
                 transition: 'color 0.5s',
+    fontFamily: 'GT Super Display Medium',
+
               }}
             >
               Find and Sign
@@ -309,6 +315,7 @@ const FindAndSignBaAdvocate = () => {
                 textTransform: 'uppercase',
                 color: dark ? '#7ecfc9' : '#64748b',
                 transition: 'color 0.5s',
+                 fontFamily: "Sohne, sans-serif"
               }}
             >
               Buyer Advocate
@@ -335,6 +342,7 @@ const FindAndSignBaAdvocate = () => {
                 fontWeight: 500,
                 marginBottom: '1.5rem',
                 color: dark ? '#94a3b8' : '#64748b',
+                 fontFamily: "Sohne, sans-serif"
               }}
             >
               Make your home buying experience outstanding
@@ -359,6 +367,7 @@ const FindAndSignBaAdvocate = () => {
                     color: dark ? '#e2f0ef' : '#1e293b',
                     transition: 'all 0.22s',
                     cursor: 'pointer',
+                    fontFamily: 'GT Super Display Medium',
                   }}
                   onMouseEnter={e => {
                     const el = e.currentTarget as HTMLAnchorElement;
