@@ -56,6 +56,7 @@ export default function About() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  const [hasStarted, setHasStarted] = useState(false); // tracks if user ever pressed play
   const [, setShowControls] = useState(false);
   const [nikiExpanded, setNikiExpanded] = useState(false);
 
@@ -67,6 +68,7 @@ export default function About() {
       iframe.contentWindow?.postMessage('{"method":"setVolume","value":1}', '*');
       setIsMuted(false);
       setIsPlaying(true);
+      setHasStarted(true); // hide poster once user starts
     } else {
       iframe.contentWindow?.postMessage('{"method":"pause"}', '*');
       setIsPlaying(false);
@@ -135,16 +137,25 @@ Find & Sign we find with confidence you sign with certainty."
           onMouseEnter={() => setShowControls(true)}
           onMouseLeave={() => setShowControls(true)}
         >
-          {/* Vimeo iframe — muted autoplay loop, same visual as old <video> tag */}
+          {/* Vimeo iframe — loads paused, user must press play */}
           <iframe
             ref={iframeRef}
-            src="https://player.vimeo.com/video/1189029882?autoplay=1&muted=1&loop=1&background=1&playsinline=1&api=1"
+            src="https://player.vimeo.com/video/1189029882?autoplay=0&muted=1&loop=1&background=1&playsinline=1&api=1"
             className="video-el"
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
             title="Find and Sign Buyers Agent Australia Introduction Video"
           />
+
+          {/* Poster image — visible until user presses Play */}
+          {!hasStarted && (
+            <img
+              src={aboutContentImg}
+              alt="Find and Sign video preview"
+              className="video-poster"
+            />
+          )}
 
           <div className="video-overlay" />
 
