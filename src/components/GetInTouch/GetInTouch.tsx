@@ -17,6 +17,14 @@ const SERVICES = [
   "Mortgage Broker",
 ];
 
+const BUDGET_RANGES = [
+  "Under $500k",
+  "$500k - $750k",
+  "$750k - $1M",
+  "$1M - $1.5M",
+  "$1.5M+",
+];
+
 interface NakraniContactProps {
   initialService?: string;
   showService?: boolean;
@@ -32,6 +40,8 @@ export default function GetInTouch({
   const [contactMethod, setContactMethod] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [selectedService, setSelectedService] = useState(initialService);
+  const [lookingFor, setLookingFor] = useState("");
+  const [budget, setBudget] = useState("");
   const form = useRef<HTMLFormElement>(null);
   const { theme } = useTheme();
   const isDark = theme === "dark";
@@ -57,6 +67,8 @@ export default function GetInTouch({
             form.current?.reset();
             setContactMethod("");
             setSelectedService(initialService);
+            setLookingFor("");
+            setBudget("");
           },
           (error: any) => {
             setIsSending(false);
@@ -76,6 +88,11 @@ export default function GetInTouch({
 
   // The input-bg color also varies by theme (used in select background)
   const inputBg = isDark ? "#1E1E1E" : "#ffffff";
+
+  const selectArrowStyle = {
+    appearance: "none" as const,
+    background: `${inputBg} url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22${selectArrowColor}%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E') no-repeat right 16px center`,
+  };
 
   return (
     <div className={`contact-page${isDark ? " theme-dark" : ""}`}>
@@ -123,51 +140,122 @@ export default function GetInTouch({
               onSubmit={handleSubmit}
               style={{ width: "100%", display: "flex", flexDirection: "column", gap: "16px" }}
             >
-              <div className="form-group">
-                <label className="contact_label" tabIndex={0}>First name</label>
-                <input name="first_name" className="contact-input" placeholder="e.g. Sarah" required />
+              <div className="form-row">
+                <div className="field-wrap">
+                  <input
+                    id="first_name"
+                    name="first_name"
+                    className="contact-input"
+                    placeholder="e.g. Sarah"
+                    required
+                  />
+                  <label htmlFor="first_name" className="field-label">
+                    First name
+                  </label>
+                </div>
+
+                <div className="field-wrap">
+                  <input
+                    id="last_name"
+                    name="last_name"
+                    className="contact-input"
+                    placeholder="e.g. Smith"
+                    required
+                  />
+                  <label htmlFor="last_name" className="field-label">
+                    Last name
+                  </label>
+                </div>
               </div>
 
               <div className="form-group">
-                <label className="contact_label" tabIndex={0}>Last name</label>
-                <input name="last_name" className="contact-input" placeholder="e.g. Smith" required />
+                <label className="contact_label" tabIndex={0}>What are you looking for?</label>
+                <input type="hidden" name="looking_for" value={lookingFor} />
+                <div className="lookingFor-toggle-group">
+                  <button
+                    type="button"
+                    className={`lookingFor-btn${lookingFor === "Live in" ? " selected" : ""}`}
+                    onClick={() => setLookingFor("Live in")}
+                  >
+                    Live in
+                  </button>
+                  <button
+                    type="button"
+                    className={`lookingFor-btn${lookingFor === "Investment" ? " selected" : ""}`}
+                    onClick={() => setLookingFor("Investment")}
+                  >
+                    Investment
+                  </button>
+                </div>
               </div>
 
-              <div className="form-group">
-                <label className="contact_label" tabIndex={0}>Phone number</label>
-                <input name="phone_number" className="contact-input" placeholder="e.g. 0441 123 123" />
-              </div>
-
-              <div className="form-group">
-                <label className="contact_label" tabIndex={0}>Email</label>
-                <input
-                  name="user_email"
-                  className="contact-input"
-                  type="email"
-                  placeholder="e.g. sarah@gmail.com"
+              <div className="field-wrap">
+                <select
+                  id="budget"
+                  name="budget"
+                  className={`contact-input${budget ? " has-value" : ""}`}
+                  value={budget}
+                  onChange={(e) => setBudget(e.target.value)}
                   required
-                />
+                  style={selectArrowStyle}
+                >
+                  <option value="" disabled>&nbsp;</option>
+                  {BUDGET_RANGES.map((b) => (
+                    <option key={b} value={b}>{b}</option>
+                  ))}
+                </select>
+                <label htmlFor="budget" className="field-label">
+                  What's your budget?
+                </label>
+              </div>
+
+              <div className="form-row">
+                <div className="field-wrap">
+                  <input
+                    id="phone_number"
+                    name="phone_number"
+                    className="contact-input"
+                    placeholder="e.g. 0441 123 123"
+                  />
+                  <label htmlFor="phone_number" className="field-label">
+                    Phone number
+                  </label>
+                </div>
+
+                <div className="field-wrap">
+                  <input
+                    id="user_email"
+                    name="user_email"
+                    className="contact-input"
+                    type="email"
+                    placeholder="e.g. sarah@gmail.com"
+                    required
+                  />
+                  <label htmlFor="user_email" className="field-label">
+                    Email
+                  </label>
+                </div>
               </div>
 
               {showService ? (
-                <div className="form-group">
-                  <label className="contact_label" tabIndex={0}>Service</label>
+                <div className="field-wrap">
                   <select
+                    id="service"
                     name="service"
-                    className="contact-input"
+                    className={`contact-input${selectedService ? " has-value" : ""}`}
                     value={selectedService}
                     onChange={(e) => setSelectedService(e.target.value)}
                     required
-                    style={{
-                      appearance: "none",
-                      background: `${inputBg} url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22${selectArrowColor}%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E') no-repeat right 16px center`,
-                    }}
+                    style={selectArrowStyle}
                   >
-                    <option value="" disabled>Select a service</option>
+                    <option value="" disabled>&nbsp;</option>
                     {SERVICES.map((s) => (
                       <option key={s} value={s}>{s}</option>
                     ))}
                   </select>
+                  <label htmlFor="service" className="field-label">
+                    Service
+                  </label>
                 </div>
               ) : (
                 <input type="hidden" name="service" value={selectedService || "NA"} />
@@ -199,20 +287,23 @@ export default function GetInTouch({
                 </div>
               </div>
 
-              <div className="form-group">
-                <label className="contact_label" tabIndex={0}>Message</label>
+              <div className="field-wrap field-wrap--area">
                 <textarea
+                  id="message"
                   name="message"
                   className="contact-textarea"
-                  placeholder="What are you looking for?"
-                  required
+ placeholder={`What are you looking for?
+What is your suburb?`}                  required
                 />
+                <label htmlFor="message" className="field-label">
+                  Message
+                </label>
               </div>
 
               <button
                 type="submit"
                 className="submit-btn"
-                disabled={!contactMethod || (showService && !selectedService) || isSending}
+                disabled={!contactMethod || !lookingFor || (showService && !selectedService) || isSending}
               >
                 {isSending ? "SENDING..." : "SUBMIT"}
               </button>

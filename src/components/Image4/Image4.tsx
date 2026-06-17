@@ -21,6 +21,7 @@ const Image1: React.FC = () => {
           sx={{
             position: "relative",
             width: "100%",
+              backgroundColor: "#073B2F",
             aspectRatio: {
               xs: "3 / 4",
               sm: "16 / 9",
@@ -46,6 +47,7 @@ const Image1: React.FC = () => {
   decoding="async"           
             sx={{
               position: "absolute",
+                backgroundColor: "#073B2F",
               top: 0,
               left: 0,
               width: "100%",

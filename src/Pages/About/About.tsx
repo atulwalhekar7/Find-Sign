@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import { useTheme } from "../../components/ThemeContext";
 import aboutContentImg from "../../assets/happy-home-buyers-australia-find-and-sign.jpg";
-import aboutVideo from "../../assets/Interview Draft (2).mp4";
 import AboutSection from "../../components/AboutSection";
 import SimpleGetInTouch from "../../components/GetInTouch/GetInTouch";
 import SimpleFooter from "../../components/SimpleFooter";
@@ -54,76 +53,79 @@ export default function About() {
   const { theme } = useTheme();
   const t = THEMES[theme];
 
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [, setShowControls] = useState(false);
   const [nikiExpanded, setNikiExpanded] = useState(false);
 
   const togglePlayPause = () => {
-    const vid = videoRef.current;
-    if (!vid) return;
-    if (vid.paused) {
-      vid.muted = false;
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+    if (!isPlaying) {
+      iframe.contentWindow?.postMessage('{"method":"play"}', '*');
+      iframe.contentWindow?.postMessage('{"method":"setVolume","value":1}', '*');
       setIsMuted(false);
-      vid.play();
       setIsPlaying(true);
     } else {
-      vid.pause();
+      iframe.contentWindow?.postMessage('{"method":"pause"}', '*');
       setIsPlaying(false);
     }
   };
 
   const toggleMute = () => {
-    const vid = videoRef.current;
-    if (!vid) return;
-    vid.muted = !vid.muted;
-    setIsMuted(vid.muted);
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+    if (isMuted) {
+      iframe.contentWindow?.postMessage('{"method":"setVolume","value":1}', '*');
+      setIsMuted(false);
+    } else {
+      iframe.contentWindow?.postMessage('{"method":"setVolume","value":0}', '*');
+      setIsMuted(true);
+    }
   };
 
   return (
     <div style={{ background: t.pageBg, transition: "background 0.3s ease", width: "100%" }}>
+
       {/* SECTION 1 — Hero Banner */}
-     <section className="hero-banner" style={{ backgroundImage: `url(${Banner})` }}>
-  {/* SEO image for background banner */}
-  <img
-    src={Banner}
-    alt="Find and Sign Buyer Advocate Australia team helping clients purchase property with confidence"
-    title="About Find and Sign | Buyer Advocate Australia"
-    loading="lazy"
-    width="1920"
-    height="800"
-    style={{
-      position: "absolute",
-      width: "1px",
-      height: "1px",
-      opacity: 0,
-      overflow: "hidden",
-      pointerEvents: "none",
-    }}
-  />
-
-  <div className="banner-overlay" />
-
-  <div className="hero-box">
-    <h1 className="hero-title" tabIndex={0}>
-      About Us
-    </h1>
-  </div>
-</section>
+      <section className="hero-banner" style={{ backgroundImage: `url(${Banner})` }}>
+        <img
+          src={Banner}
+          alt="Find and Sign Buyer Advocate Australia team helping clients purchase property with confidence"
+          title="About Find and Sign | Buyer Advocate Australia"
+          loading="lazy"
+          width="1920"
+          height="800"
+          style={{
+            position: "absolute",
+            width: "1px",
+            height: "1px",
+            opacity: 0,
+            overflow: "hidden",
+            pointerEvents: "none",
+          }}
+        />
+        <div className="banner-overlay" />
+        <div className="hero-box">
+          <h1 className="hero-title" tabIndex={0}>
+            About Us
+          </h1>
+        </div>
+      </section>
 
       <div style={{ background: t.sectionBg, transition: "background 0.3s ease" }}>
         <AboutSection
-  imageSrc={AboutUsBanner}
-  imageAlt="Experienced Buyers Agent Australia team helping home buyers and property investors secure the right property nationwide"
-  imageTitle="Find and Sign Buyers Agent Australia Team"
-  heading="About Find & Sign"
-  body1="Find & Sign Buyer Advocate was built on the belief that every buyer should secure the right property to build equity, choice and financial freedom.
+          imageSrc={AboutUsBanner}
+          imageAlt="Experienced Buyers Agent Australia team helping home buyers and property investors secure the right property nationwide"
+          imageTitle="Find and Sign Buyers Agent Australia Team"
+          heading="About Find & Sign"
+          body1="Find & Sign Buyer Advocate was built on the belief that every buyer should secure the right property to build equity, choice and financial freedom.
 Founder Niki learnt through experience that the right guidance is critical in securing the outcome. It is identified through local knowledge, experience and direct relationships, then secured before it reaches the wider market.
 We are a boutique buyers' agency operating nationwide, acting exclusively for buyers. Not agents. Not developers we are intentionally selective about the number of clients we take on to give each brief our full attention and expert advice."
-  body2="We assess every opportunity in person by walking the property, the street, and the surrounding area. Decisions are never made from photos or data alone. Because it's about identifying the opportunity and securing it early. The advantage of being first.
+          body2="We assess every opportunity in person by walking the property, the street, and the surrounding area. Decisions are never made from photos or data alone. Because it's about identifying the opportunity and securing it early. The advantage of being first.
 Find & Sign we find with confidence you sign with certainty."
-/>
+        />
       </div>
 
       {/* SECTION 3 — Video */}
@@ -133,19 +135,21 @@ Find & Sign we find with confidence you sign with certainty."
           onMouseEnter={() => setShowControls(true)}
           onMouseLeave={() => setShowControls(true)}
         >
-          <video
-  ref={videoRef}
-  src={aboutVideo}
-  loop
-  muted
-  playsInline
-  preload="metadata"
-  poster={aboutContentImg}
-  className="video-el"
-  title="Find and Sign Buyers Agent Australia Introduction Video"
-/>
+          {/* Vimeo iframe — muted autoplay loop, same visual as old <video> tag */}
+          <iframe
+            ref={iframeRef}
+            src="https://player.vimeo.com/video/1189029882?autoplay=1&muted=1&loop=1&background=1&playsinline=1&api=1"
+            className="video-el"
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+            title="Find and Sign Buyers Agent Australia Introduction Video"
+          />
+
           <div className="video-overlay" />
+
           <div className="video-controls">
+            {/* Play / Pause */}
             <button className="ctrl-btn play-btn" onClick={togglePlayPause} aria-label={isPlaying ? "Pause video" : "Play video"}>
               {isPlaying ? (
                 <svg viewBox="0 0 24 24" fill="white" width="22" height="22">
@@ -158,6 +162,8 @@ Find & Sign we find with confidence you sign with certainty."
                 </svg>
               )}
             </button>
+
+            {/* Mute / Unmute */}
             <button className="ctrl-btn mute-btn" onClick={toggleMute} aria-label={isMuted ? "Unmute audio" : "Mute audio"}>
               {isMuted ? (
                 <svg viewBox="0 0 24 24" fill="white" width="22" height="22">
@@ -181,7 +187,6 @@ Find & Sign we find with confidence you sign with certainty."
       <section className="team-section" style={{ width: "100%", padding: "64px 32px", background: t.teamSectionBg, transition: "background 0.3s ease" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
 
-          {/* Header */}
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: "48px" }}>
             <h2
               tabIndex={0}
@@ -216,7 +221,6 @@ Find & Sign we find with confidence you sign with certainty."
             </p>
           </div>
 
-          {/* Cards Grid */}
           <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "32px" }}>
 
             {/* ── Card: Niki ── */}
@@ -232,21 +236,16 @@ Find & Sign we find with confidence you sign with certainty."
             >
               <div className="team-card-header" style={{ display: "flex", alignItems: "flex-start", gap: "16px", width: "100%" }}>
                 <div className="team-img-wrap" style={{ width: "142px", height: "174px", minWidth: "142px", borderRadius: "20px", overflow: "hidden", flexShrink: 0, background: "#dcdcdc" }}>
-<img
-  src={niki}
-  alt="Niki Nakrani founder of Find and Sign Buyers Agent Australia"
-  title="Niki Nakrani | Buyers Agent Australia Founder"
-  loading="lazy"
-  width="142"
-  height="174"
-  style={{
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    objectPosition: "top center",
-    display: "block"
-  }}
-/>                </div>
+                  <img
+                    src={niki}
+                    alt="Niki Nakrani founder of Find and Sign Buyers Agent Australia"
+                    title="Niki Nakrani | Buyers Agent Australia Founder"
+                    loading="lazy"
+                    width="142"
+                    height="174"
+                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", display: "block" }}
+                  />
+                </div>
                 <div className="team-card-info" style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start", gap: "4px", paddingTop: "4px", flex: 1 }}>
                   <h3 tabIndex={0} className="team-name" style={{ color: t.nameColor, fontFamily: "GT Super Display Medium", fontSize: "32px", fontWeight: 500, lineHeight: "40px", letterSpacing: "-0.64px", margin: 0, transition: "color 0.3s ease" }}>
                     Niki Nakrani
@@ -264,7 +263,6 @@ Find & Sign we find with confidence you sign with certainty."
                 </div>
               </div>
 
-              {/* Bio */}
               <div style={{ alignSelf: "stretch" }}>
                 <span tabIndex={0} className="team-bio" style={{ color: t.bioColor, fontFamily: "Söhne, sans-serif", fontSize: "16px", fontWeight: 400, lineHeight: "24px", margin: 0, transition: "color 0.3s ease" }}>
                   Niki founded Find and Sign Buyer Advocate with a simple belief that every buyer deserves the same advantage he gave himself. Having built his own multi-million dollar property portfolio, he brings firsthand experience to every client engagement. His approach is grounded in data, sharpened by years of on-the-ground market knowledge, and guided by a genuine desire to
@@ -302,21 +300,16 @@ Find & Sign we find with confidence you sign with certainty."
             >
               <div className="team-card-header" style={{ display: "flex", alignItems: "flex-start", gap: "16px", width: "100%" }}>
                 <div className="team-img-wrap" style={{ width: "142px", height: "174px", minWidth: "142px", borderRadius: "20px", overflow: "hidden", flexShrink: 0, background: "#dcdcdc" }}>
-<img
-  src={Bec}
-  alt="Rebecca Client Operations Manager at Find and Sign Buyers Agent Australia"
-  title="Rebecca | Client Operations Manager"
-  loading="lazy"
-  width="142"
-  height="174"
-  style={{
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    objectPosition: "center",
-    display: "block"
-  }}
-/>                </div>
+                  <img
+                    src={Bec}
+                    alt="Rebecca Client Operations Manager at Find and Sign Buyers Agent Australia"
+                    title="Rebecca | Client Operations Manager"
+                    loading="lazy"
+                    width="142"
+                    height="174"
+                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }}
+                  />
+                </div>
                 <div className="team-card-info" style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start", gap: "4px", paddingTop: "4px", flex: 1 }}>
                   <h3 tabIndex={0} className="team-name" style={{ color: t.nameColor, fontFamily: "GT Super Display Medium", fontSize: "32px", fontWeight: 500, lineHeight: "40px", letterSpacing: "-0.64px", margin: 0, transition: "color 0.3s ease" }}>
                     Rebecca
@@ -332,7 +325,6 @@ Find & Sign we find with confidence you sign with certainty."
                 </div>
               </div>
 
-              {/* Bio */}
               <div style={{ alignSelf: "stretch" }}>
                 <span tabIndex={0} className="team-bio" style={{ color: t.bioColor, fontFamily: "Söhne, sans-serif", fontSize: "16px", fontWeight: 400, lineHeight: "24px", margin: 0, transition: "color 0.3s ease" }}>
                   Rebecca keeps every purchase moving with precision and care. Her attention to detail and deep process knowledge means nothing is missed and clients always know exactly where they stand. She has a gift for making the complex feel simple, and takes genuine pride in delivering a seamless experience from start to settlement.

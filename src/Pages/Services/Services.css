@@ -39,6 +39,7 @@
   .services-hero-banner {
     aspect-ratio: 4 / 5 !important;
     min-height: unset !important;
+     background-color: #073b2f;
   }
 
   h1 { font-size: 48px !important; line-height: 58px !important; }

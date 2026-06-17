@@ -31,6 +31,7 @@ const Image1: React.FC = () => {
             fontSize: 0,
             margin: 0,
             padding: 0,
+             backgroundColor: "#073B2F",
           }}
         >
           {/* IMAGE */}
@@ -77,6 +78,7 @@ const Image1: React.FC = () => {
               background: "rgba(0,0,0,0.45)",
               alignItems: { xs: "center", sm: "center" },
               padding: { xs: "20px", md: "40px" },
+              
             }}
           >
             <Box

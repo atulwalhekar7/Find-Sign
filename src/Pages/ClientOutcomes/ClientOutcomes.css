@@ -67,6 +67,8 @@
   background-position: center;
   position: relative;
   padding: 0 20px;
+    background-color: #073B2F;
+
 }
 
 /* ── PROPERTY CARD ── */
@@ -370,7 +372,6 @@
   line-height: 24px;
   margin-top: 12px;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
   flex: 1;
@@ -510,10 +511,7 @@
   box-shadow: 0 8px 20px rgba(105,228,220,0.4);
 }
 
-/* ── CLIENT OUTCOMES ABOUT ── */
-.client-outcomes-about {
-  /* wrapper div — no extra styles in original */
-}
+
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1199px) {
@@ -626,7 +624,6 @@
   }
   .tc-body {
     display: block;
-    -webkit-line-clamp: unset;
     overflow: visible;
   }
 }

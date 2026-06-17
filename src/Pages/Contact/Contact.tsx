@@ -43,6 +43,7 @@ export default function Contact() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+            backgroundColor: "#073B2F",
           backgroundImage: `url(${bannerImg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",

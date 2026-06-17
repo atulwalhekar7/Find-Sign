@@ -348,6 +348,7 @@ export default function Services() {
     position: "relative",
     overflow: "hidden",
     padding: "0 20px",
+      backgroundColor: "#073B2F",
   }}
 >
   <img

@@ -1,5 +1,7 @@
 .image1-wrapper {
   width: 100%;
+    background-color: #073B2F;
+
 }
 
 .image1-hero {
@@ -7,6 +9,8 @@
   width: 100%;
   overflow: hidden;
   aspect-ratio: 16 / 7;
+    background-color: #073B2F;
+
 }
 
 .image1-img {
@@ -14,6 +18,8 @@
   height: 100%;
   object-fit: cover;
   display: block;
+    background-color: #073B2F;
+
 }
 
 .image7-overlay-container {

@@ -4,6 +4,8 @@
   display: block;
   line-height: 0;
   font-size: 0;
+    background-color: #073B2F;
+
 }
 
 /* Hero Section */
@@ -17,6 +19,8 @@
   margin: 0;
   padding: 0;
   aspect-ratio: 16 / 7;
+    background-color: #073B2F;
+
 }
 
 /* Image */
@@ -26,6 +30,8 @@
   object-fit: cover;
   object-position: center 30%;
   display: block;
+    background-color: #073B2F;
+
 }
 
 /* Overlay */

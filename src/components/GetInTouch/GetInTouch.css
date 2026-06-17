@@ -26,6 +26,10 @@
   --dialog-text: #000000;
   --submit-btn-disabled-bg: #cccccc;
   --submit-btn-disabled-color: #666666;
+  --field-border: rgba(7, 59, 47, 0.25);
+  --field-border-focus: #69E4DC;
+  --field-label-default: #757575;
+  --field-label-focus: #073B2F;
 }
 
 /* ── THEME: DARK ── */
@@ -42,6 +46,10 @@
   --dialog-text: #EAE5DF;
   --submit-btn-disabled-bg: rgba(105, 228, 220, 0.1);
   --submit-btn-disabled-color: rgba(255, 255, 255, 0.3);
+  --field-border: rgba(255, 255, 255, 0.25);
+  --field-border-focus: #69E4DC;
+  --field-label-default: #9A9A9A;
+  --field-label-focus: #69E4DC;
 }
 
 /* ── PAGE WRAPPER ── */
@@ -194,6 +202,18 @@
   width: 100%;
 }
 
+/* ── SIDE-BY-SIDE ROW (name fields / phone+email) ── */
+.form-row {
+  display: flex;
+  width: 100%;
+  gap: 16px;
+}
+
+.form-row .field-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
 .contact_label {
   color: var(--label-color);
   font-family: "sohneBuch";
@@ -203,6 +223,34 @@
   transition: color 0.3s ease;
 }
 
+/* =============================================
+   FLOATING-LABEL OUTLINED FIELDS
+   (label sits on the border, lifts on focus/fill)
+   ============================================= */
+
+.field-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.field-label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: left top;
+  font-family: "sohneBuch";
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--field-label-default);
+  background: transparent;
+  padding: 0 6px;
+  pointer-events: none;
+  white-space: nowrap;
+  transition: top 0.18s ease, transform 0.18s ease, color 0.18s ease,
+    background 0.18s ease, font-size 0.18s ease;
+}
+
 .contact-input {
   display: flex;
   height: 52px;
@@ -210,27 +258,36 @@
   padding: 8px 16px;
   align-items: center;
   border-radius: 8px;
-  background: #fff;
-  border: 1px solid transparent;
+  background: var(--input-bg);
+  color: var(--input-text);
+  border: 1px solid var(--field-border);
   font-family: "sohneBuch";
   font-size: 18px;
   outline: none;
   transition: all 0.2s ease;
 }
 
+.contact-input::placeholder {
+  color: transparent;
+}
+
+.contact-input:focus::placeholder {
+  color: var(--placeholder-color);
+}
+
 .contact-input:focus {
-  border-color: #69e4dc;
+  border-color: var(--field-border-focus);
 }
 
 .contact-textarea {
   display: flex;
   width: 100%;
   min-height: 140px;
-  padding: 16px;
+  padding: 24px 16px 16px;
   border-radius: 8px;
   background: var(--input-bg);
   color: var(--input-text);
-  border: 1px solid var(--input-border);
+  border: 1px solid var(--field-border);
   font-family: "Söhne", sans-serif;
   font-size: 18px;
   resize: none;
@@ -239,11 +296,44 @@
 }
 
 .contact-textarea::placeholder {
+  color: transparent;
+}
+
+.contact-textarea:focus::placeholder {
   color: var(--placeholder-color);
 }
 
 .contact-textarea:focus {
-  border-color: #69e4dc;
+  border-color: var(--field-border-focus);
+}
+
+/* Default label position inside the textarea (top-left, not vertically centered) */
+.field-wrap--area .field-label {
+  top: 24px;
+  transform: translateY(0) scale(1);
+}
+
+/* ── FLOAT TRIGGERS: focus, has content, or (for selects) has-value class ──
+   NOTE: :placeholder-shown only applies to <input>/<textarea>. A <select>
+   can never match :placeholder-shown, so :not(:placeholder-shown) is always
+   TRUE for selects — that was the bug causing the budget/service label to
+   float permanently. Selects are scoped separately below so they only float
+   on focus (click) or once a real value is chosen (.has-value). */
+.field-wrap input.contact-input:focus ~ .field-label,
+.field-wrap input.contact-input:not(:placeholder-shown) ~ .field-label,
+.field-wrap select.contact-input:focus ~ .field-label,
+.field-wrap select.contact-input.has-value ~ .field-label,
+.field-wrap .contact-textarea:focus ~ .field-label,
+.field-wrap .contact-textarea:not(:placeholder-shown) ~ .field-label {
+  top: 0;
+  transform: translateY(-50%) scale(0.85);
+  color: var(--field-label-focus);
+  font-weight: 500;
+  background: var(--page-bg);
+}
+
+select.contact-input {
+  cursor: pointer;
 }
 
 .contact-field-row {
@@ -292,6 +382,42 @@
   background: #69E4DC;
   color: #073B2F;
   border-color: #69e4dc;
+}
+
+/* ── "WHAT ARE YOU LOOKING FOR?" TOGGLE (Live in / Investment) ── */
+.lookingFor-toggle-group {
+  display: flex;
+  width: 100%;
+  gap: 12px;
+}
+
+.lookingFor-btn {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 12px 16px;
+  background: var(--input-bg);
+  border-radius: 8px;
+  border: 1px solid var(--field-border);
+  color: var(--label-color);
+  font-family: "sohneBuch";
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lookingFor-btn:hover {
+  border-color: #69E4DC;
+  transform: translateY(-2px);
+}
+
+.lookingFor-btn.selected {
+  background: #69E4DC;
+  color: #073B2F;
+  border-color: #69E4DC;
 }
 
 .submit-btn {
@@ -374,7 +500,8 @@
   }
 
   .contact-input,
-  .contact-textarea {
+  .contact-textarea,
+  .field-label {
     font-size: 16px;
   }
 }
@@ -466,6 +593,10 @@
     width: 100%;
   }
 
+  .field-label {
+    font-size: 16px;
+  }
+
   .toggle-group {
     width: 100%;
     flex-direction: column;
@@ -478,6 +609,15 @@
   .submit-btn {
     height: 50px;
     letter-spacing: 3px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .lookingFor-toggle-group {
+    flex-direction: column;
   }
 }
 
