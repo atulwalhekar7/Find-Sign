@@ -189,24 +189,39 @@ export default function GetInTouch({
                 </div>
               </div>
 
-              <div className="field-wrap">
-                <select
-                  id="budget"
-                  name="budget"
-                  className={`contact-input${budget ? " has-value" : ""}`}
-                  value={budget}
-                  onChange={(e) => setBudget(e.target.value)}
-                  required
-                  style={selectArrowStyle}
-                >
-                  <option value="" disabled>&nbsp;</option>
-                  {BUDGET_RANGES.map((b) => (
-                    <option key={b} value={b}>{b}</option>
-                  ))}
-                </select>
-                <label htmlFor="budget" className="field-label">
-                  What's your budget?
-                </label>
+              <div className="form-row">
+                <div className="field-wrap">
+                  <select
+                    id="budget"
+                    name="budget"
+                    className={`contact-input${budget ? " has-value" : ""}`}
+                    value={budget}
+                    onChange={(e) => setBudget(e.target.value)}
+                    required
+                    style={selectArrowStyle}
+                  >
+                    <option value="" disabled>&nbsp;</option>
+                    {BUDGET_RANGES.map((b) => (
+                      <option key={b} value={b}>{b}</option>
+                    ))}
+                  </select>
+                  <label htmlFor="budget" className="field-label">
+                    What's your budget?
+                  </label>
+                </div>
+
+                <div className="field-wrap">
+                  <input
+                    id="suburb"
+                    name="suburb"
+                    className="contact-input"
+                    placeholder="e.g. Subiaco"
+                    required
+                  />
+                  <label htmlFor="suburb" className="field-label">
+                    Suburb / Postcode
+                  </label>
+                </div>
               </div>
 
               <div className="form-row">
@@ -292,8 +307,8 @@ export default function GetInTouch({
                   id="message"
                   name="message"
                   className="contact-textarea"
- placeholder={`What are you looking for?
-What is your suburb?`}                  required
+                  placeholder="Tell us more about your requirements..."
+                  required
                 />
                 <label htmlFor="message" className="field-label">
                   Message
@@ -303,7 +318,7 @@ What is your suburb?`}                  required
               <button
                 type="submit"
                 className="submit-btn"
-                disabled={!contactMethod || !lookingFor || (showService && !selectedService) || isSending}
+                disabled={!contactMethod || !lookingFor || !budget || (showService && !selectedService) || isSending}
               >
                 {isSending ? "SENDING..." : "SUBMIT"}
               </button>
