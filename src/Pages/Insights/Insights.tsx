@@ -12,6 +12,7 @@ import bannerImg from "../../assets/buyer-advocate-perth-australia-agent-propert
 import perthBlogImg from "../../assets/Best Suburbs in Perth for Property.jpg";
 import Blog2 from "../../assets/buyer-agent-perth-australia-find-and-sign.jpg";
 import Blog3 from "../../assets/find-and-sign-buyer-advocate-blog3.png";
+import Blog4 from "../../assets/juneBlog.jpeg";
 
 // ── Theme ─────────────────────────────────────────────────────────────────────
 const THEMES = {
@@ -50,7 +51,20 @@ const THEMES = {
 // ── Blog posts data ───────────────────────────────────────────────────────────
 const blogPosts = [
  
-  
+  {
+  title: "How Can I Find a Trustworthy Buyers Advocate in Perth?",
+  date: "01 June 2026",
+  description:
+    "Discover how to find a reliable buyer's advocate in Perth with our comprehensive guide. Avoid overpayment and make informed property decisions today.",
+  image: Blog4, // Replace with your actual image variable
+  imageAlt:
+    "Trustworthy buyers advocate in Perth helping property buyers make informed decisions",
+  imageTitle:
+    "How Can I Find a Trustworthy Buyers Advocate in Perth? | Find and Sign",
+  imageCaption:
+    "Learn how to identify a reliable buyers advocate in Perth, access expert guidance, avoid costly mistakes and secure the right property with confidence.",
+  path: "/blog/find-trustworthy-buyers",
+},
   {
   title: "Perth Buyers Agent & Advocate WA: Top Agents in Perth",
   date: "01 May 2026",
