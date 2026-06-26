@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import logo from '../../assets/logo.png';
 import qrImage from '../../assets/niki-nakrani-buyer-advocate.png';
-import logo1 from "../../assets/FS Primary Lockup_Gold.png"
+import logo1 from "../../assets/find-sign-brown-logo.png";
+
 
 import id1 from '../../assets/benefits-of-using-a-buyers-agent-perth.jpg';
 import id2 from '../../assets/buyer-advocate-agent-perth.png';
@@ -86,7 +87,7 @@ icon: (
 ),  },
   {
     name: 'Write a review',
-    url: 'https://www.google.com/maps/place//data=!4m3!3m2!1s0x81920490ca986a8f:0x8eea5b46a5653f4b!12e1?source=g.page.m._&laa=merchant-review-solicitation',
+    url: 'https://search.google.com/local/writereview?placeid=ChIJj2qYypAEkoERSz9lpUZb6o4&source=g.page.m._&laa=merchant-review-solicitation',
    
 icon: (
   <img
@@ -131,7 +132,7 @@ icon: (
 ),  },
   {
     name: 'Tiktok',
-    url: 'https://www.tiktok.com/@find_and_sign',
+    url: 'https://www.tiktok.com/@findandsignba/',
    
 icon: (
   <img
@@ -146,7 +147,7 @@ icon: (
 ),  },
   {
     name: 'LinkedIn',
-    url: '#',
+    url: 'https://www.linkedin.com/in/niki-nakrani-13b269237/',
    
 icon: (
   <img
@@ -351,8 +352,8 @@ const FindAndSignBaAdvocate = () => {
   src={logo}
   alt="Find and Sign logo"
   style={{
-    width: '104px',
-    height: '104px',
+    width: '70px',
+    height: '70px',
     borderRadius: '104px',
     objectFit: 'cover',
     display: 'block',
@@ -392,11 +393,11 @@ const FindAndSignBaAdvocate = () => {
     display: 'flex',
     flexDirection: 'column',
     gap: '10px',
-    paddingLeft: '50px',
-    paddingRight: '50px',
+    paddingLeft: '14%',
+    paddingRight: '14%',
     boxSizing: 'border-box',
   }}
->            {profileLinks.map((link, i) => (
+>          {profileLinks.map((link, i) => (
               <a
                 key={i}
                 href={link.url}
@@ -491,97 +492,73 @@ onMouseLeave={e => {
         </div>
       </div>
 
-      <style>{`
-      @media (min-width: 481px) and (max-width: 768px) {
-  .card {
-    width: 360px !important;
-    padding: 2rem 1rem 1.5rem !important;
+  <style>{`
+  @media (min-width: 481px) and (max-width: 768px) {
+    .card {
+      width: 360px !important;
+    }
+    .icon-badge {
+      width: 28px !important;
+      height: 28px !important;
+      min-width: 28px !important;
+    }
+    .icon-badge img {
+      width: 20px !important;
+      height: 20px !important;
+    }
+    .link-name {
+      font-size: 16px !important;
+      line-height: 22px !important;
+    }
+    .find-sign-title {
+      font-size: 22px !important;
+      line-height: 40px !important;
+    }
   }
-  .pills-wrap {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-    gap: 8px !important;
+  @media (max-width: 480px) {
+    .find-sign-title {
+      font-size: 20px !important;
+      line-height: 32px !important;
+      letter-spacing: -0.4px !important;
+    }
+    .collage-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      grid-template-rows: repeat(4, 1fr) !important;
+    }
+    .logo-medallion {
+      width: 64px !important;
+      height: 64px !important;
+      min-width: 64px !important;
+    }
+    // .logo-medallion-img {
+    //   width: 60px !important;
+    //   height: 60px !important;
+    // }
+    .icon-badge {
+      width: 26px !important;
+      height: 26px !important;
+      min-width: 26px !important;
+    }
+    .icon-badge img {
+      width: 18px !important;
+      height: 18px !important;
+    }
+    .link-name {
+      font-size: 14px !important;
+      line-height: 20px !important;
+    }
   }
-  .pill-link {
-    padding: 4px 14px 4px 12px !important;
-    gap: 10px !important;
+  @media (min-width: 1024px) {
+    .qr-panel { display: flex !important; }
   }
-  .icon-badge {
-    width: 28px !important;
-    height: 28px !important;
-    min-width: 28px !important;
+  @media (max-width: 768px) {
+    .page-wrap {
+      justify-content: flex-start !important;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
   }
-  .icon-badge img {
-    width: 20px !important;
-    height: 20px !important;
-  }
-  .link-name {
-    font-size: 16px !important;
-    line-height: 22px !important;
-    padding-right: 0 !important;
-  }
-  .find-sign-title {
-    font-size: 22px !important;
-    line-height: 40px !important;
-  }
-}
-        @media (max-width: 480px) {
-          .find-sign-title {
-            font-size: 20px !important;
-            line-height: 32px !important;
-            letter-spacing: -0.4px !important;
-          }
-          .collage-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-            grid-template-rows: repeat(4, 1fr) !important;
-          }
-          .card {
-            padding: 2rem 1.1rem 1.5rem !important;
-          }
-          .logo-medallion {
-            width: 64px !important;
-            height: 64px !important;
-            min-width: 64px !important;
-          }
-          .logo-medallion-img {
-            width: 84px !important;
-            height: 84px !important;
-          }
-          .pills-wrap {
-            padding-left: 10px !important;
-            padding-right: 10px !important;
-            gap: 8px !important;
-          }
-          .pill-link {
-            padding: 4px 12px !important;
-            gap: 10px !important;
-          }
-          .icon-badge {
-            width: 26px !important;
-            height: 26px !important;
-            min-width: 26px !important;
-          }
-          .icon-badge img {
-            width: 18px !important;
-            height: 18px !important;
-          }
-          .link-name {
-            font-size: 14px !important;
-            line-height: 20px !important;
-            padding-right: 0 !important;
-          }
-        }
-        @media (min-width: 1024px) {
-          .qr-panel { display: flex !important; }
-        }
-        @media (max-width: 768px) {
-          .page-wrap {
-            justify-content: flex-start !important;
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-          }
-        }
-      `}</style>
+`}</style>
     </div>
   );
 };

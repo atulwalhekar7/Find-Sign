@@ -16,7 +16,7 @@ const socialIcons = [
   { label: "Facebook", img: fbIcon, url: "https://www.facebook.com/nakranipropertybuyers/" },
   { label: "Instagram", img: igIcon, url: "https://www.instagram.com/find_and_sign?igsh=emFwOTZzMjhzcWZj&utm_source=qr" },
   { label: "LinkedIn", img: liIcon, url: "https://www.linkedin.com/in/niki-nakrani-13b269237/" },
-  { label: "Tiktok", img: tiIcon, url: " https://www.tiktok.com/@findandsignba/" },
+  { label: "Tiktok", img: tiIcon, url: "https://www.tiktok.com/@findandsignba/" },
   { label: "Google", img: goIcon, url: "https://www.google.com/search?kgmid=/g/11vyhyd916&hl=en-IN&q=Find+and+Sign+Buyer+Advocate" },
 ];
 
