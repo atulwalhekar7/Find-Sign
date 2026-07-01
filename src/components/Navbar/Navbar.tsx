@@ -16,8 +16,10 @@ const NAV_ITEMS = [
   { label: "About", to: "/about" },
   { label: "Services", to: "/services" },
   { label: "Client Outcomes", to: "/client-outcomes" },
+  { label: "Calculator", to: "/calculator" },
   { label: "Insights", to: "/insights" },
   { label: "Contact", to: "/contact" },
+
 ];
 
 /* ── Animated Sun/Moon toggle icon ── */

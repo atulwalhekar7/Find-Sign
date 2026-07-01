@@ -353,7 +353,7 @@ export default function Services() {
 >
   <img
     src={bannerImg}
-    alt="Perth Buyer Advocate Australia helping home buyers and property investors secure the right property"
+alt="Perth Buyer Advocate Niki Nakrani helping home buyers in Perth, Western Australia"
     title="Perth Buyer Advocate Australia | Find and Sign"
     loading="eager"
     fetchPriority="high"

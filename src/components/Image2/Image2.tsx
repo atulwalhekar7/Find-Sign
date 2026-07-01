@@ -13,7 +13,7 @@ const Image1: React.FC = () => {
           component="img"
           className="no-theme image2-image"
           src={heroImage}
-          alt="Expert property buying guidance and professional advocate services"
+          alt="Property buyer receiving expert guidance from a Perth Buyer Advocate"
           title="Perth Buyer Advocate Australia | Find and Sign"
           loading="eager"
           fetchPriority="high"

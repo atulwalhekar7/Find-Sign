@@ -54,8 +54,8 @@ export default function Contact() {
         {/* SEO fallback image for background */}
         <img
           src={bannerImg}
-          alt="Buyer Advocate Australia contact page for property consultation and enquiries"
-          title="Contact Find and Sign | Buyer’s Agent Australia"
+alt="Perth Buyer Advocate consulting with home buyers before purchasing a property"
+          title="Contact Find and Sign | Buyer’s Agent Perth Australia"
           loading="lazy"
           decoding="async"
           width="1920"

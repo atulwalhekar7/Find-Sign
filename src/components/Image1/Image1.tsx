@@ -13,7 +13,7 @@ const Image1: React.FC = () => {
           component="img"
           className="no-theme image1-image"
           src={heroImage}
-          alt="Professional property buyer advocate services by Niki Nakrani"
+          alt="Commercial property acquisition with a Perth Buyer Advocate"
           title="Perth Buyer Advocate Australia | Find and Sign"
           loading="eager"
           fetchPriority="high"

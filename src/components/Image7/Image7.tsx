@@ -13,7 +13,7 @@ const Image1: React.FC = () => {
           <Box
             component="img"
             src={heroImage}
-            alt="Strategic property buying consultation showing expertise on the ground"
+            alt="Perth Buyer Advocate Niki Nakrani helping home buyers in Perth, Western Australia"
             className="no-theme image1-img"
           />
 

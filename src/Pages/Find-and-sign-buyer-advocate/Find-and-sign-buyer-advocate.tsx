@@ -77,7 +77,7 @@ const profileLinks: ProfileLink[] = [
 icon: (
   <img
     src={googleLogo}
-    alt="Google"
+    alt="Google Business Profile"
     style={{
       width: '24px',
       height: '24px',
@@ -92,7 +92,7 @@ icon: (
 icon: (
   <img
     src={ReviewLogo}
-    alt="Google"
+    alt="Write a Google review for Find and Sign"
     style={{
       width: '24px',
       height: '24px',
@@ -107,7 +107,7 @@ icon: (
 icon: (
   <img
     src={facebookLogo}
-    alt="Google"
+    alt="Facebook page of Find and Sign Buyer Advocate"
     style={{
       width: '24px',
       height: '24px',
@@ -122,7 +122,7 @@ icon: (
 icon: (
   <img
     src={InstagramLogo}
-    alt="Google"
+    alt="Instagram page of Find and Sign Buyer Advocate"
     style={{
       width: '24px',
       height: '24px',
@@ -137,7 +137,7 @@ icon: (
 icon: (
   <img
     src={tiktokImg}
-    alt="Google"
+    alt="TikTok page of Find and Sign Buyer Advocate"
     style={{
       width: '24px',
       height: '24px',
@@ -152,7 +152,7 @@ icon: (
 icon: (
   <img
     src={LinkdinImg}
-    alt="Google"
+    alt="Linkdin page of Find and Sign Buyer Advocate"
     style={{
       width: '24px',
       height: '24px',
@@ -167,7 +167,7 @@ icon: (
 icon: (
   <img
     src={websiteImg}
-    alt="Google"
+    alt="Website of Find and Sign Buyer Advocate"
     style={{
       width: '24px',
       height: '24px',
@@ -350,7 +350,7 @@ const FindAndSignBaAdvocate = () => {
 <img
   className="logo-medallion-img"
   src={logo}
-  alt="Find and Sign logo"
+  alt="Logo of Find and Sign Perth Buyer Advocate"
   style={{
     width: '70px',
     height: '70px',
@@ -478,7 +478,7 @@ onMouseLeave={e => {
             <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
 <img
   src={logo1}
-  alt="Find and Sign"
+alt="Find and Sign Perth Buyer Advocate company logo"
   style={{
     width: '81px',
     height: '30px',

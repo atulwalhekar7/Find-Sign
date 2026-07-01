@@ -7,6 +7,7 @@ import Services from "./Pages/Services/Services";
 import ClientOutcomes from "./Pages/ClientOutcomes/ClientOutcomes";
 import Insights from "./Pages/Insights/Insights";
 import Contact from "./Pages/Contact/Contact";
+import Calculator from "./components/Calculator/Calculator";
 import BuyerAgentPerthBlog from "./Pages/Blogs/BuyerAgentPerthBlog/BuyerAgentPerthBlog";
 import BestSuburbsPerthBlog from "./Pages/Blogs/BestSuburbsPerthBlog/BestSuburbsPerthBlog";
 import StepbyStepGuideBlog from "./Pages/Blogs/Step-by-Step Guide/Step-by-StepGuide";
@@ -50,6 +51,7 @@ function App() {
             <Route path="/client-outcomes" element={<ClientOutcomes />} />
             <Route path="/insights"        element={<Insights />}       />
             <Route path="/contact"         element={<Contact />}        />
+            <Route path="/calculator"      element={<Calculator />}     />
             <Route path="/blog/buyers-agent-perth" element={<BuyerAgentPerthBlog />} />
             <Route path="/blog/best-suburbs-perth" element={<BestSuburbsPerthBlog />} />
             <Route path="/blog/perth-buyers-agent-advocate-wa" element={<StepbyStepGuideBlog />} />

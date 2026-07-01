@@ -1,0 +1,524 @@
+/* ── Wrapper ───────────────────────────────────────────────────────────────
+   Font stack and sizing lifted directly from Insights.css:
+   - "GT Super Display Medium"  → headings / hero-style title / KPI numbers
+   - "CX80BOLD"                 → small caps labels (panel headers, section
+                                    labels) — same family as .blog-card__date
+   - "CX80"                     → buttons (toggle + reset) — same family/
+                                    letter-spacing treatment as .blog-card__btn
+   - "Sohne"                    → body copy, inputs, descriptions
+
+   Colours are supplied at runtime as CSS variables set inline on .pc-wrap
+   from the THEMES object in the TSX file (identical keys/values to
+   Insights.tsx's THEMES), so light/dark switches instantly.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.pc-wrap {
+  font-family: "Sohne";
+  background: var(--pc-page-bg);
+  color: var(--pc-title);
+  padding: 0 0 2rem;
+  border-radius: 10px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ── Header (brand banner — fixed dark green, like the Insights hero) ───── */
+.pc-hdr {
+  background: #073b2f;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-radius: 10px 10px 0 0;
+}
+.pc-hdr-title {
+  font-family: "GT Super Display Medium";
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #fff;
+  font-variant-numeric: lining-nums proportional-nums;
+}
+.pc-hdr-sub {
+  font-family: "Sohne";
+  font-size: 12px;
+  font-weight: 300;
+  color: #eae5df;
+  margin-top: 4px;
+  letter-spacing: 0.02em;
+}
+.pc-logo-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pc-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.pc-logo-text span {
+  font-family: "CX80BOLD";
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.pc-logo-text span:first-child {
+  color: #fff;
+}
+.pc-logo-text span:last-child {
+  color: #69e4dc;
+}
+.pc-hint {
+  background: #0f4d30;
+  padding: 6px 24px;
+  font-family: "Sohne";
+  font-size: 12px;
+  font-weight: 300;
+  color: #9fd9be;
+  letter-spacing: 0.02em;
+}
+
+/* ── Body grid ─────────────────────────────────────────────────────────── */
+.pc-body {
+  padding: 12px 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ── Panels ────────────────────────────────────────────────────────────── */
+.pc-panel {
+  background: var(--pc-card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--pc-card-border);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.pc-ph {
+  background: #073b2f;
+  padding: 9px 14px;
+  font-family: "CX80BOLD";
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.pc-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #69e4dc;
+  flex-shrink: 0;
+}
+.pc-pb {
+  padding: 10px 14px;
+  font-family: "SohneBuch";
+  font-size: 13px;
+}
+
+/* ── Rows / fields ─────────────────────────────────────────────────────── */
+.pc-row {
+  display: grid;
+  grid-template-columns: 1fr 140px;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--pc-card-border);
+  border-bottom-color: color-mix(in srgb, var(--pc-card-border) 25%, transparent);
+}
+.pc-row:last-child {
+  border-bottom: none;
+}
+.pc-row label {
+  font-family: "Sohne";
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--pc-title);
+  line-height: 1.35;
+}
+.pc-row__strong {
+  font-family: "CX80BOLD";
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--pc-title);
+}
+.pc-row__sub {
+  display: block;
+  font-family: "Sohne";
+  font-size: 11px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--pc-desc);
+}
+.pc-row--toggle {
+  margin-top: 6px;
+}
+
+.pc-input,
+.pc-select {
+  width: 140px;
+  padding: 5px 9px;
+  font-family: "SohneBuch";
+  font-size: 13px;
+  font-weight: 400;
+  border: 1px solid var(--pc-input-border);
+  border-radius: 5px;
+  text-align: right;
+  background: var(--pc-input-bg);
+  color: var(--pc-input-text);
+}
+.pc-select {
+  text-align: left;
+}
+.pc-input--left {
+  text-align: left;
+}
+.pc-input:focus,
+.pc-select:focus,
+.pc-edit:focus {
+  outline: none;
+  border-color: #69e4dc;
+  box-shadow: 0 0 0 2px rgba(105, 228, 220, 0.25);
+}
+
+.pc-auto {
+  width: 140px;
+  padding: 5px 9px;
+  font-family: "SohneBuch";
+  font-size: 13px;
+  font-weight: 500;
+  text-align: right;
+  background: var(--pc-auto-bg);
+  border-radius: 5px;
+  border: 1px solid var(--pc-auto-border);
+  color: var(--pc-auto-text);
+}
+
+.pc-total {
+  width: 140px;
+  padding: 6px 9px;
+  font-family: "GT Super Display Medium";
+  font-size: 14px;
+  font-weight: 500;
+  text-align: right;
+  background: var(--pc-total-bg);
+  border-radius: 5px;
+  border: 1.5px solid var(--pc-total-border);
+  color: var(--pc-total-text);
+}
+
+.pc-edit {
+  width: 140px;
+  padding: 5px 9px;
+  font-family: "Sohne";
+  font-size: 13px;
+  font-weight: 600;
+  border: 1.5px solid var(--pc-edit-border);
+  border-radius: 5px;
+  text-align: right;
+  background: var(--pc-edit-bg);
+  color: var(--pc-edit-text);
+}
+
+.pc-stamp-note {
+  font-family: "Sohne";
+  font-size: 11px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--pc-desc);
+  margin: 2px 0 4px;
+}
+
+.pc-loan-note {
+  font-family: "Sohne";
+  font-size: 11px;
+  font-weight: 300;
+  font-style: italic;
+  margin: 2px 0 4px;
+}
+.pc-loan-note--over {
+  color: #ef9f27;
+}
+.pc-loan-note--under {
+  color: var(--pc-auto-text);
+}
+
+.pc-reset-btn {
+  margin-top: 8px;
+  font-family: "CX80";
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--pc-btn-color);
+  background: var(--pc-btn-bg);
+  color: var(--pc-btn-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.pc-reset-btn:hover {
+  background: var(--pc-btn-bg-hover);
+  color: var(--pc-btn-color-hover);
+}
+
+/* ── Repayment toggle (CX80 button family, like .blog-card__btn) ─────────── */
+.pc-toggle-wrap {
+  width: 140px;
+  display: flex;
+  border: 1px solid var(--pc-card-border);
+  border-radius: 7px;
+  overflow: hidden;
+}
+.pc-toggle-wrap button {
+  flex: 1;
+  padding: 6px 4px;
+  font-family: "CX80";
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.pc-toggle-active {
+  background: #073b2f;
+  color: #69e4dc;
+}
+.pc-toggle-inactive {
+  background: transparent;
+  color: var(--pc-desc);
+}
+.pc-toggle-inactive:hover {
+  background: rgba(105, 228, 220, 0.12);
+}
+
+/* ── Repayment result blocks ───────────────────────────────────────────── */
+.pc-repay-block {
+  background: var(--pc-auto-bg);
+  border-radius: 8px;
+  border: 1px solid var(--pc-card-border);
+  padding: 10px 12px;
+  margin-top: 8px;
+}
+.pc-repay-block-title {
+  font-family: "CX80BOLD";
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--pc-card-border);
+  color: var(--pc-heading);
+}
+.pc-repay-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 0;
+}
+.pc-repay-row label {
+  font-family: "Sohne";
+  font-size: 13px;
+  color: var(--pc-title);
+}
+.pc-repay-val {
+  font-family: "GT Super Display Medium";
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px 9px;
+  border-radius: 5px;
+  min-width: 120px;
+  text-align: right;
+  background: var(--pc-card-bg);
+  color: var(--pc-heading);
+  border: 1px solid var(--pc-card-border);
+}
+.pc-repay-note {
+  font-family: "Sohne";
+  font-size: 11px;
+  font-weight: 300;
+  font-style: italic;
+  margin-top: 5px;
+  color: var(--pc-desc);
+}
+
+/* ── Results panel (fixed dark brand surface, like the Insights hero) ────── */
+.pc-results-panel {
+  grid-column: 1 / -1;
+  background: #073b2f;
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+.pc-rt {
+  font-family: "CX80BOLD";
+  font-size: 11px;
+  font-weight: 700;
+  color: #7fc9a8;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pc-rt::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(105, 228, 220, 0.15);
+}
+.pc-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.pc-kpi {
+  background: #0d2419;
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.pc-kl {
+  font-family: "CX80BOLD";
+  font-size: 10px;
+  color: #7fc9a8;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.pc-kv {
+  font-family: "GT Super Display Medium";
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #69e4dc;
+}
+.pc-neg {
+  color: #f09595;
+}
+.pc-rsub {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.pc-rb {
+  background: #0d2419;
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.pc-rbt {
+  font-family: "CX80BOLD";
+  font-size: 10px;
+  color: #7fc9a8;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(105, 228, 220, 0.12);
+}
+.pc-rr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 0;
+  font-family: "Sohne";
+  font-size: 13px;
+  font-weight: 400;
+}
+.pc-rr span:first-child {
+  color: #9abcae;
+}
+.pc-rr span:last-child {
+  color: #fff;
+  font-weight: 500;
+}
+
+/* ── Notes & Disclaimer ────────────────────────────────────────────────── */
+.pc-footer-panels {
+  padding: 6px 16px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.pc-note-panel,
+.pc-disclaimer-panel {
+  background: var(--pc-card-bg);
+  border: 1px solid var(--pc-card-border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.pc-note-panel__title,
+.pc-disclaimer-panel__title {
+  font-family: "CX80BOLD";
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--pc-heading);
+  margin-bottom: 9px;
+}
+.pc-note-panel ul {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pc-note-panel li {
+  font-family: "Sohne";
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--pc-desc);
+  line-height: 1.45;
+}
+.pc-disclaimer-panel p {
+  margin: 0;
+  font-family: "Sohne";
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--pc-desc);
+  line-height: 1.5;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 580px) {
+  .pc-body {
+    grid-template-columns: 1fr;
+  }
+  .pc-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pc-rsub {
+    grid-template-columns: 1fr;
+  }
+  .pc-footer-panels {
+    grid-template-columns: 1fr;
+  }
+  .pc-row {
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+  }
+  .pc-input,
+  .pc-select,
+  .pc-auto,
+  .pc-total,
+  .pc-edit,
+  .pc-toggle-wrap {
+    width: 100%;
+  }
+}

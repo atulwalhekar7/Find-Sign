@@ -94,7 +94,7 @@ export default function About() {
       <section className="hero-banner" style={{ backgroundImage: `url(${Banner})` }}>
         <img
           src={Banner}
-          alt="Find and Sign Buyer Advocate Australia team helping clients purchase property with confidence"
+          alt="Perth Buyer Advocate Niki Nakrani helping home buyers in Perth, Western Australia."
           title="About Find and Sign | Buyer Advocate Australia"
           loading="lazy"
           width="1920"
@@ -119,7 +119,7 @@ export default function About() {
       <div style={{ background: t.sectionBg, transition: "background 0.3s ease" }}>
         <AboutSection
           imageSrc={AboutUsBanner}
-          imageAlt="Experienced Buyers Agent Australia team helping home buyers and property investors secure the right property nationwide"
+          imageAlt="Perth Buyer Advocate Niki Nakrani helping home buyers in Perth, Western Australia."
           imageTitle="Find and Sign Buyers Agent Australia Team"
           heading="About Find & Sign"
           body1="Find & Sign Buyer Advocate was built on the belief that every buyer should secure the right property to build equity, choice and financial freedom.
@@ -152,7 +152,7 @@ Find & Sign we find with confidence you sign with certainty."
           {!hasStarted && (
             <img
               src={aboutContentImg}
-              alt="Find and Sign video preview"
+              alt="Perth Buyer Advocate Niki Nakrani helping home buyers in Perth, Western Australia."
               className="video-poster"
             />
           )}
@@ -249,7 +249,7 @@ Find & Sign we find with confidence you sign with certainty."
                 <div className="team-img-wrap" style={{ width: "142px", height: "174px", minWidth: "142px", borderRadius: "20px", overflow: "hidden", flexShrink: 0, background: "#dcdcdc" }}>
                   <img
                     src={niki}
-                    alt="Niki Nakrani founder of Find and Sign Buyers Agent Australia"
+                    alt="Perth Buyer Advocate Niki Nakrani helping home buyers in Perth, Western Australia."
                     title="Niki Nakrani | Buyers Agent Australia Founder"
                     loading="lazy"
                     width="142"

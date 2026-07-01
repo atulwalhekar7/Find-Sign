@@ -72,7 +72,7 @@ const blogPosts = [
     "Top Perth Buyers Agents & Advocates WA. We help you find the right property in Perth's competitive market, including investment properties.",
   image: Blog3,
   imageAlt:
-    "Perth buyers agent and advocate helping clients find residential and investment properties in Western Australia",
+    "Perth Buyer Advocate helping investors purchase investment properties",
   imageTitle:
     "Perth Buyers Agent & Advocate WA: Top Agents in Perth | Find and Sign",
   imageCaption:

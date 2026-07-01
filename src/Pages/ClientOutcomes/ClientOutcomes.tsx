@@ -479,7 +479,7 @@ export default function ClientOutcomes() {
           {/* SEO fallback image for background */}
           <img
             src={bannerImg}
-            alt="Buyer Advocate Australia delivering successful client property outcomes"
+            alt="Buyer Advocate Perth delivering successful client property outcomes"
             title="Client Outcomes | Buyer's Agent Australia Success Stories"
             loading="lazy"
             decoding="async"
@@ -517,8 +517,8 @@ export default function ClientOutcomes() {
         <div className="client-outcomes-about">
           <AboutSection
             imageSrc={AboutClientOutcomesImg}
-            imageAlt="Buyer Advocate Australia showcasing real client property outcomes and investment growth results"
-            imageTitle="Client Outcomes | Buyer's Agent Australia Results"
+            imageAlt="Perth Buyer Advocate Niki Nakrani helping home buyers in Perth, Western Australia"     
+       imageTitle="Client Outcomes | Buyer's Agent Australia Results"
             heading="About Client Outcomes"
             body1="These are outcomes we have achieved for our clients. Real properties, real numbers, and measurable growth. When you engage Find and Sign Buyer Advocate, you are not simply purchasing a property; you are entering a strategy built for long-term performance. These examples show what is possible when the right property is identified and secured early."
           />
