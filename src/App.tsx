@@ -12,6 +12,7 @@ import BuyerAgentPerthBlog from "./Pages/Blogs/BuyerAgentPerthBlog/BuyerAgentPer
 import BestSuburbsPerthBlog from "./Pages/Blogs/BestSuburbsPerthBlog/BestSuburbsPerthBlog";
 import StepbyStepGuideBlog from "./Pages/Blogs/Step-by-Step Guide/Step-by-StepGuide";
 import FindTrustworthyBuyers from "./Pages/Blogs/FindTrustworthyBuyers/FindTrustworthyBuyers";
+import PerthBuyerAdvocate from "./Pages/Blogs/PerthBuyerAgentBlog/PerthBuyerAgent";
 
 import TermsAndConditions from "./Pages/TermsAndConditions/TermsAndConditions";
 import FindAndSignBuyerAdvocatePage from "./Pages/Find-and-sign-buyer-advocate/Find-and-sign-buyer-advocate";
@@ -56,6 +57,7 @@ function App() {
             <Route path="/blog/best-suburbs-perth" element={<BestSuburbsPerthBlog />} />
             <Route path="/blog/perth-buyers-agent-advocate-wa" element={<StepbyStepGuideBlog />} />
             <Route path="/blog/find-trustworthy-buyers" element={<FindTrustworthyBuyers />} />
+            <Route path="/blog/perth-buyers-advocate" element={<PerthBuyerAdvocate />} /> 
 
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
