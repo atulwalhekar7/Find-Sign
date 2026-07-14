@@ -29,12 +29,17 @@ interface NakraniContactProps {
   initialService?: string;
   showService?: boolean;
   hideInternalHeading?: boolean;
+  // NEW: fired once the EmailJS send succeeds — lets a parent page (e.g. the
+  // calculator) know a lead has actually been captured, so it can unlock
+  // gated features like PDF export.
+  onSubmitSuccess?: () => void;
 }
 
 export default function GetInTouch({
   initialService = "",
   showService = false,
   hideInternalHeading = false,
+  onSubmitSuccess,
 }: NakraniContactProps) {
   const [submitted, setSubmitted] = useState(false);
   const [contactMethod, setContactMethod] = useState("");
@@ -69,6 +74,8 @@ export default function GetInTouch({
             setSelectedService(initialService);
             setLookingFor("");
             setBudget("");
+            // Let the parent know the lead was captured successfully.
+            onSubmitSuccess?.();
           },
           (error: any) => {
             setIsSending(false);
