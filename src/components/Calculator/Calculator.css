@@ -6,8 +6,9 @@
                                     KPI values, results rows)
    - "CX80BOLD"                 → small caps labels (panel headers, section
                                     labels) — same family as .blog-card__date
-   - "CX80"                     → buttons (toggle + reset) — same family/
-                                    letter-spacing treatment as .blog-card__btn
+   - "CX80"                     → buttons (toggle + reset + filter pills +
+                                    export button) — same family/letter-
+                                    spacing treatment as .blog-card__btn
    - "Sohne"                    → body copy, descriptions
 
    Colours are supplied at runtime as CSS variables set inline on .pc-wrap
@@ -22,13 +23,20 @@
   padding: 0 0 2rem;
   border-radius: 10px;
   transition: background 0.3s ease, color 0.3s ease;
+
+  /* ── Shared container ────────────────────────────────────────────────
+     Every section below (heading, pills, export bar, the calculator
+     cards, footer panels) lines its LEFT/RIGHT edges up against these
+     two values instead of each picking its own max-width. That's what
+     keeps the cards on the same "line" as the logo/nav above the page.
+
+     ⚠️ IMPORTANT: --pc-container-max must match your Header/Navbar's own
+     container max-width exactly, or the edges still won't line up.
+     If your header uses a different value, change ONLY this line. ───── */
+  --pc-container-max: 1200px;
+  --pc-container-pad: 48px;
 }
 
-/* ── Hero banner (identical structure/behaviour to Services.tsx's
-   .services-hero-banner: full-bleed photo, dark overlay, centered GT Super
-   Display heading, same loader classes + fade-in keyframe). Most rules live
-   inline on the <section>/<h1> in the TSX — same pattern Services.tsx uses —
-   this class only carries the responsive aspect-ratio override. ───────────── */
 .pc-hero-banner {
   border-radius: 10px 10px 0 0;
 }
@@ -52,7 +60,6 @@
   }
 }
 
-/* ── Legacy header / hint (kept, unused by default — see TSX) ────────────── */
 .pc-hdr {
   background: #073b2f;
   padding: 18px 24px;
@@ -112,27 +119,159 @@
   letter-spacing: 0.02em;
 }
 
-/* ── Body grid ─────────────────────────────────────────────────────────── */
-/* align-items: start is the fix for the accordion "ghost panel" bug — by
-   default a CSS grid row's height is set by its tallest cell, and a
-   stretched sibling then shows a big empty box next to whichever panel is
-   open. Starting each item at the top of its row means a closed panel only
-   ever takes its own (short) height, even if the panel beside it is open. */
+/* ── Filter pills ──────────────────────────────────────────────────────────
+   Aligned to the same shared container as everything else below. Wrap is
+   left disabled on desktop/tablet (all 8 pills fit on one line at the
+   container width) and the phone breakpoint further down converts the
+   row into a swipeable, snap-scrolling strip so it never overflows.
+   ───────────────────────────────────────────────────────────────────────── */
+.pc-filter-bar {
+  display: flex;
+  justify-content: center;
+  /* flex-wrap: wrap; */
+  gap: 10px;
+  padding: 4px var(--pc-container-pad) 22px;
+  max-width: var(--pc-container-max);
+  margin: 0 auto;
+}
+
+.pc-filter-pill {
+  font-family: "CX80";
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1.5px solid var(--pc-card-border);
+  background: transparent;
+  color: var(--pc-title);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+.pc-filter-pill:hover {
+  border-color: #69e4dc;
+  box-shadow: 0 4px 14px rgba(105, 228, 220, 0.25);
+  transform: translateY(-1px);
+}
+.pc-filter-pill--active {
+  background: #073b2f;
+  border-color: #073b2f;
+  color: #69e4dc;
+  box-shadow: 0 4px 16px rgba(7, 59, 47, 0.35);
+}
+.pc-filter-pill--active:hover {
+  transform: none;
+}
+
+.pc-export-bar {
+  display: flex;
+  justify-content: center;
+  padding: 2px var(--pc-container-pad) 22px;
+  max-width: var(--pc-container-max);
+  margin: 0 auto;
+}
+
+/* Wraps the button + the small unlock hint underneath it so both stay
+   centered as a single column. */
+.pc-export-bar__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.pc-export-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "CX80";
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 12px 26px;
+  border-radius: 999px;
+  border: none;
+  background: #073b2f;
+  color: #69e4dc;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.pc-export-btn:hover {
+  background: #69e4dc;
+  color: #073b2f;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(105, 228, 220, 0.35);
+}
+.pc-export-btn svg {
+  flex-shrink: 0;
+}
+
+/* Small caption under the Export button while the lead form hasn't been
+   submitted yet — tells the visitor exactly what unlocks it. */
+.pc-export-hint {
+  font-family: "Sohne";
+  font-size: 11px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--pc-desc);
+  text-align: center;
+  max-width: 320px;
+}
+
+/* Banner that appears (and auto-hides) when someone clicks Export before
+   submitting the form — reinforces what just happened (the scroll-to-form
+   + highlight) with an explicit message. */
+.pc-gate-notice {
+  max-width: 520px;
+  margin: 0 auto 18px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: var(--pc-auto-bg);
+  border: 1px solid var(--pc-auto-border);
+  color: var(--pc-auto-text);
+  font-family: "SohneBuch";
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  animation: pcGateNoticeIn 0.3s ease both;
+}
+
+@keyframes pcGateNoticeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Calculator cards: real 12-column grid ────────────────────────────────
+   Aligned to the shared container (same left/right edge as the logo row).
+   Each .pc-panel spans 6 of 12 columns → two cards per row on desktop,
+   with no leftover dead space because the grid itself now stops at
+   --pc-container-max instead of stretching full-bleed. .pc-results-panel
+   always takes the full 12 columns. Breakpoints further down simply
+   change how many columns a panel spans — the grid stays 12-col always,
+   which is what makes this "12 grid responsive" rather than a couple of
+   ad-hoc column swaps. ───────────────────────────────────────────────── */
 .pc-body {
-  padding: 12px 16px;
+  max-width: var(--pc-container-max);
+  margin: 0 auto;
+  padding: 12px var(--pc-container-pad);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(12, 1fr);
   gap: 12px;
   align-items: start;
 }
 
-/* ── Panels ────────────────────────────────────────────────────────────── */
-/* Radius/border weight match ServiceCard from Services.tsx (16px radius,
-   2px solid cardBorder). Hover uses the same teal-glow shadow as ServiceCard;
-   no vertical lift here (unlike ServiceCard's translateY(-12px)) since these
-   panels hold live form inputs and shifting them under a cursor mid-typing
-   would be disorienting — the glow alone carries the same "picked out" feel. */
 .pc-panel {
+  grid-column: span 6;
   background: var(--pc-card-bg);
   border-radius: 16px;
   overflow: hidden;
@@ -143,9 +282,6 @@
   box-shadow: 0 10px 22px rgba(105, 228, 220, 0.3);
 }
 
-/* Panel header — now a real <button> so it's keyboard accessible and
-   clickable end-to-end. Hover/focus treatment mirrors ServiceCard's lift +
-   teal glow from Services.tsx. */
 .pc-ph {
   width: 100%;
   background: #073b2f;
@@ -162,18 +298,6 @@
   gap: 7px;
   border: none;
   margin: 0;
-  cursor: pointer;
-  text-align: left;
-  transition: background 0.25s ease, transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.3s ease;
-}
-.pc-ph:hover {
-  background: #0b4c3b;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(105, 228, 220, 0.32);
-}
-.pc-ph:focus-visible {
-  outline: 2px solid #69e4dc;
-  outline-offset: -2px;
 }
 .pc-ph-left {
   display: flex;
@@ -188,38 +312,8 @@
   flex-shrink: 0;
 }
 
-/* Right-hand side of the header: the "click to open/close" hint text +
-   the chevron, grouped together so they always sit side by side. */
-.pc-ph-right {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
-}
-.pc-ph-hint {
-  font-family: "Sohne";
-  font-size: 10px;
-  font-weight: 300;
-  letter-spacing: 0.4px;
-  text-transform: none;
-  color: #9fd9be;
-  background: rgba(105, 228, 220, 0.14);
-  padding: 3px 8px;
-  border-radius: 20px;
-  white-space: nowrap;
-}
-
-.pc-chevron {
-  color: #69e4dc;
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
-}
-.pc-chevron--open {
-  transform: rotate(180deg);
-}
-
 .pc-pb {
-  padding: 10px 14px;
+  padding: 10px 30px;
   font-family: "SohneBuch";
   font-size: 13px;
   animation: pcPanelReveal 0.25s ease both;
@@ -236,7 +330,6 @@
   }
 }
 
-/* ── Rows / fields ─────────────────────────────────────────────────────── */
 .pc-row {
   display: grid;
   grid-template-columns: 1fr 140px;
@@ -276,7 +369,6 @@
   margin-top: 6px;
 }
 
-/* Number inputs + dropdown — SohneBuch (only .pc-total keeps GT Super) */
 .pc-input,
 .pc-select {
   width: 140px;
@@ -313,7 +405,6 @@
   box-shadow: 0 0 0 2px rgba(105, 228, 220, 0.25);
 }
 
-/* Auto-calculated (read-only) fields — SohneBuch */
 .pc-auto {
   width: 140px;
   padding: 5px 9px;
@@ -327,7 +418,6 @@
   color: var(--pc-auto-text);
 }
 
-/* Total fields — GT Super Display Medium, unchanged */
 .pc-total {
   width: 140px;
   padding: 6px 9px;
@@ -341,7 +431,6 @@
   color: var(--pc-total-text);
 }
 
-/* Editable override fields (loan amount, reform value) — SohneBuch */
 .pc-edit {
   width: 140px;
   padding: 5px 9px;
@@ -378,7 +467,6 @@
   color: var(--pc-auto-text);
 }
 
-/* ── Buttons (CX80 family, same treatment as Services.tsx OutlineButton) ── */
 .pc-reset-btn {
   margin-top: 8px;
   font-family: "CX80";
@@ -401,7 +489,6 @@
   box-shadow: 0 8px 18px rgba(105, 228, 220, 0.35);
 }
 
-/* ── Repayment toggle (CX80 button family, like .blog-card__btn) ─────────── */
 .pc-toggle-wrap {
   width: 140px;
   display: flex;
@@ -433,7 +520,6 @@
   background: rgba(105, 228, 220, 0.12);
 }
 
-/* ── Repayment result blocks ───────────────────────────────────────────── */
 .pc-repay-block {
   background: var(--pc-auto-bg);
   border-radius: 8px;
@@ -464,7 +550,6 @@
   font-size: 13px;
   color: var(--pc-title);
 }
-/* Repayment values — SohneBuch (not a "total" field) */
 .pc-repay-val {
   font-family: "SohneBuch";
   font-size: 14px;
@@ -486,9 +571,8 @@
   color: var(--pc-desc);
 }
 
-/* ── Results panel (fixed dark brand surface, like the Insights hero) ────── */
 .pc-results-panel {
-  grid-column: 1 / -1;
+  grid-column: span 12;
   background: #073b2f;
   border-radius: 10px;
   padding: 16px 18px;
@@ -535,7 +619,6 @@
   text-transform: uppercase;
   margin-bottom: 5px;
 }
-/* KPI values — SohneBuch (not "total" fields) */
 .pc-kv {
   font-family: "GT Super Display Medium";
   font-size: 20px;
@@ -583,16 +666,16 @@
 .pc-rr span:first-child {
   color: #9abcae;
 }
-/* Results row values — SohneBuch (not "total" fields) */
 .pc-rr span:last-child {
   font-family: "SohneBuch";
   color: #fff;
   font-weight: 500;
 }
 
-/* ── Notes & Disclaimer ────────────────────────────────────────────────── */
 .pc-footer-panels {
-  padding: 6px 16px 0;
+  max-width: var(--pc-container-max);
+  margin: 0 auto;
+  padding: 6px var(--pc-container-pad) 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
@@ -638,7 +721,6 @@
   line-height: 1.5;
 }
 
-/* ── Blog / page heading section ──────────────────────────────────────── */
 .blog-heading-section {
   padding: 80px 20px 50px;
   text-align: center;
@@ -646,7 +728,7 @@
 }
 
 .blog-heading-section h1 {
-  max-width: 1100px;
+  max-width: var(--pc-container-max);
   margin: 0 auto;
   font-family: "GT Super Display Medium";
   font-size: 56px;
@@ -657,6 +739,10 @@
 }
 
 @media (max-width: 900px) {
+  .pc-wrap {
+    --pc-container-pad: 32px;
+  }
+
   .blog-heading-section {
     padding: 70px 20px 40px;
   }
@@ -667,7 +753,30 @@
   }
 }
 
+/* ── Tablet: 12-col grid stays intact — panels just switch from
+   span-6 to span-12 so they stack one per row instead of the grid
+   itself changing shape. Keeps the same shared container/edges. ───────── */
+@media (max-width: 860px) {
+  .pc-panel,
+  .pc-results-panel {
+    grid-column: span 12;
+  }
+  .pc-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pc-rsub {
+    grid-template-columns: 1fr;
+  }
+  .pc-footer-panels {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
+  .pc-wrap {
+    --pc-container-pad: 24px;
+  }
+
   .blog-heading-section {
     padding: 60px 20px 35px;
   }
@@ -675,6 +784,35 @@
   .blog-heading-section h1 {
     font-size: 42px;
     line-height: 1.2;
+  }
+}
+
+/* ── Phones: filter pills switch from a single row to a swipeable,
+   snap-scrolling strip so 8 chips never overflow or stack awkwardly.
+   Scrollbar is hidden cross-browser; native momentum scrolling on iOS. ── */
+@media (max-width: 640px) {
+  .pc-wrap {
+    --pc-container-pad: 16px;
+  }
+
+  .pc-filter-bar {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    scroll-padding-left: 16px;
+    gap: 8px;
+    padding: 4px var(--pc-container-pad) 18px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .pc-filter-bar::-webkit-scrollbar {
+    display: none;
+  }
+  .pc-filter-pill {
+    flex-shrink: 0;
+    scroll-snap-align: start;
   }
 }
 
@@ -690,6 +828,10 @@
 }
 
 @media (max-width: 400px) {
+  .pc-wrap {
+    --pc-container-pad: 14px;
+  }
+
   .blog-heading-section {
     padding: 40px 14px 26px;
   }
@@ -700,7 +842,34 @@
   }
 }
 
-/* ── Responsive (rest of widget) ──────────────────────────────────────── */
+/* ── Get in Touch wrapper + gate-highlight animation ─────────────────────
+   When the visitor clicks "Export as PDF" without having submitted the
+   form yet, we scroll to this wrapper and flash a teal glow around it so
+   it's obvious *why* the page just jumped down here. */
+.pc-get-in-touch-wrap {
+  border-radius: 16px;
+  transition: box-shadow 0.3s ease;
+}
+
+.pc-gate-flash {
+  animation: pcGateFlash 1.6s ease;
+}
+
+@keyframes pcGateFlash {
+  0% {
+    box-shadow: 0 0 0 0 rgba(105, 228, 220, 0);
+  }
+  15% {
+    box-shadow: 0 0 0 6px rgba(105, 228, 220, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 3px rgba(105, 228, 220, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(105, 228, 220, 0);
+  }
+}
+
 @media (max-width: 580px) {
   .pc-hero {
     padding: 44px 18px 40px;
@@ -710,18 +879,6 @@
   }
   .pc-hero-sub {
     font-size: 14px;
-  }
-  .pc-body {
-    grid-template-columns: 1fr;
-  }
-  .pc-kpi-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .pc-rsub {
-    grid-template-columns: 1fr;
-  }
-  .pc-footer-panels {
-    grid-template-columns: 1fr;
   }
   .pc-row {
     grid-template-columns: 1fr;
@@ -735,13 +892,15 @@
   .pc-toggle-wrap {
     width: 100%;
   }
-  .pc-ph-hint {
-    display: none;
+  .pc-filter-pill {
+    padding: 8px 16px;
+    font-size: 11px;
+  }
+  .pc-export-btn {
+    padding: 11px 20px;
+    font-size: 11px;
   }
 
-  /* Lock the font-family explicitly at this breakpoint too — every number
-     field here should stay on SohneBuch (except .pc-total, which stays on
-     GT Super Display Medium), so nothing can silently fall back on mobile. */
   .pc-input,
   .pc-select,
   .pc-input--left,
@@ -755,5 +914,87 @@
   .pc-total,
   .pc-kv {
     font-family: "GT Super Display Medium" !important;
+  }
+}
+
+/* ── Print / Export as PDF ─────────────────────────────────────────────────
+   A broad, universal reset: every element under <body> gets overflow/
+   height/max-height cleared during print, so nothing can clip the content
+   regardless of the outer layout's naming. GetInTouch/Footer/filter-bar/
+   export-bar/gate-notice all stay hidden via .pc-no-print, with a boosted
+   selector specificity so it reliably wins over the "#root > *" reset. ─── */
+@media print {
+  @page {
+    margin: 14mm;
+  }
+
+  html,
+  body {
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  body * {
+    overflow: visible !important;
+    max-height: none !important;
+  }
+
+  #root,
+  #root > *,
+  .pc-wrap,
+  main,
+  .main,
+  .layout,
+  .page,
+  .app,
+  .App {
+    position: static !important;
+    display: block !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  html body .pc-no-print,
+  html body .pc-filter-bar,
+  html body .pc-export-bar,
+  html body .pc-gate-notice,
+  #root .pc-no-print,
+  #root .pc-filter-bar,
+  #root .pc-export-bar,
+  #root .pc-gate-notice {
+    display: none !important;
+  }
+
+  .pc-wrap {
+    background: #fff !important;
+    color: #000 !important;
+    padding: 20px !important;
+  }
+
+  .blog-heading-section {
+    display: block !important;
+    text-align: center;
+    padding-bottom: 20px !important;
+  }
+
+  .pc-body {
+    display: block !important;
+  }
+
+  .pc-panel,
+  .pc-results-panel,
+  .pc-note-panel,
+  .pc-disclaimer-panel,
+  .pc-repay-block {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 20px;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 }
