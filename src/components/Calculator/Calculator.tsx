@@ -167,13 +167,6 @@ const ExportIcon = () => (
   </svg>
 );
 
-const LockIcon = () => (
-  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" strokeWidth="1.8" />
-    <path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-  </svg>
-);
-
 // ── Main component ───────────────────────────────────────────────────────────
 export default function PropertyInvestmentCalculator() {
   const { theme } = useTheme();
@@ -190,6 +183,10 @@ export default function PropertyInvestmentCalculator() {
   const getInTouchRef = useRef<HTMLDivElement>(null);
   const gateNoticeTimer = useRef<number | null>(null);
   const gateFlashTimer = useRef<number | null>(null);
+
+  // Ref to the main printable wrapper — used to clone the visible content
+  // into a new tab when exporting to PDF.
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     try {
@@ -232,47 +229,50 @@ export default function PropertyInvestmentCalculator() {
     gateNoticeTimer.current = window.setTimeout(() => setShowGateNotice(false), 6000);
   };
 
-  // Export-to-PDF flow: print WHATEVER is currently visible — i.e. whichever
-  // filter is active. "ALL" prints every section; a specific filter (e.g.
-  // "Finance") prints only that one section. No more forcing "ALL" before
-  // printing — the active filter is left exactly as the user set it.
-  const [isExporting, setIsExporting] = useState(false);
-
+  // Export-to-PDF flow: open a new tab containing ONLY the visible,
+  // printable content (whichever filter is active — "ALL" exports every
+  // section, a specific filter exports only that one), then trigger print
+  // in that tab. Anything marked pc-no-print (filter bar, export buttons,
+  // Get in Touch form, footer) is stripped from the clone first.
   const handleExportPDF = () => {
-    // Export now runs immediately on click — no more gating behind the
-    // "Get in touch" form submission first.
-    setIsExporting(true);
+    const printWindow = window.open("", "_blank");
+    if (!printWindow || !containerRef.current) return;
+
+    // Pull in the page's stylesheets so the new tab renders identically.
+    const styles = Array.from(document.styleSheets)
+      .map((sheet) => {
+        try {
+          return Array.from(sheet.cssRules)
+            .map((rule) => rule.cssText)
+            .join("\n");
+        } catch {
+          // Cross-origin stylesheets can't be read — skip them.
+          return "";
+        }
+      })
+      .join("\n");
+
+    // Clone the visible content and strip anything marked pc-no-print.
+    const clone = containerRef.current.cloneNode(true) as HTMLElement;
+    clone.querySelectorAll(".pc-no-print").forEach((el) => el.remove());
+
+    printWindow.document.write(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>Property Analyser - Export</title>
+          <style>${styles}</style>
+        </head>
+        <body>${clone.outerHTML}</body>
+      </html>
+    `);
+    printWindow.document.close();
+
+    printWindow.onload = () => {
+      printWindow.focus();
+      printWindow.print();
+    };
   };
-
-  useEffect(() => {
-    if (!isExporting) return;
-
-    // Small delay + double rAF just to make sure any pending re-render has
-    // actually painted before we hand off to window.print().
-    let raf1 = 0;
-    let raf2 = 0;
-    const timer = setTimeout(() => {
-      raf1 = requestAnimationFrame(() => {
-        raf2 = requestAnimationFrame(() => {
-          window.print();
-        });
-      });
-    }, 200);
-
-    return () => {
-      clearTimeout(timer);
-      cancelAnimationFrame(raf1);
-      cancelAnimationFrame(raf2);
-    };
-  }, [isExporting]);
-
-  useEffect(() => {
-    const onAfterPrint = () => {
-      setIsExporting(false);
-    };
-    window.addEventListener("afterprint", onAfterPrint);
-    return () => window.removeEventListener("afterprint", onAfterPrint);
-  }, []);
 
   // A. Property details
   const [address, setAddress] = useState("");
@@ -416,7 +416,7 @@ export default function PropertyInvestmentCalculator() {
 
   return (
     <>
-      <div className={`pc-wrap pc-theme-${theme}`} style={themeVars}>
+      <div ref={containerRef} className={`pc-wrap pc-theme-${theme}`} style={themeVars}>
         <section className="blog-heading-section">
           <h1>Know Before You Sign - Property Analyser</h1>
         </section>
@@ -439,20 +439,14 @@ export default function PropertyInvestmentCalculator() {
         <div className="pc-export-bar pc-no-print">
           <div className="pc-export-bar__inner">
             <button type="button" className="pc-export-btn" onClick={handleExportPDF}>
-              {hasSubmittedForm ? <ExportIcon /> : <LockIcon />}
+              <ExportIcon />
               Export as PDF
             </button>
-            {!hasSubmittedForm ? (
-              <div className="pc-export-hint">
-                Fill in the "Get in touch" form below once to unlock PDF export
-              </div>
-            ) : (
-              <div className="pc-export-hint">
-                {activeFilter === "ALL"
-                  ? "Exports all calculator sections"
-                  : `Exports only the "${FILTERS.find((f) => f.key === activeFilter)?.label}" section`}
-              </div>
-            )}
+            <div className="pc-export-hint">
+              {activeFilter === "ALL"
+                ? "Opens a printable PDF in a new tab"
+                : `Opens a printable PDF of the "${FILTERS.find((f) => f.key === activeFilter)?.label}" section in a new tab`}
+            </div>
           </div>
         </div>
 
@@ -935,16 +929,10 @@ export default function PropertyInvestmentCalculator() {
           <div className="pc-export-bar pc-no-print">
             <div className="pc-export-bar__inner">
               <button type="button" className="pc-export-btn" onClick={handleExportPDF}>
-                {hasSubmittedForm ? <ExportIcon /> : <LockIcon />}
+                <ExportIcon />
                 Export as PDF
               </button>
-              {!hasSubmittedForm ? (
-                <div className="pc-export-hint">
-                  Fill in the "Get in touch" form below once to unlock PDF export
-                </div>
-              ) : (
-                <div className="pc-export-hint">Exports all calculator sections</div>
-              )}
+              <div className="pc-export-hint">Opens a printable PDF in a new tab</div>
             </div>
           </div>
         )}
