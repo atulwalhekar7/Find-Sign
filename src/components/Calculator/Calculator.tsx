@@ -239,10 +239,8 @@ export default function PropertyInvestmentCalculator() {
   const [isExporting, setIsExporting] = useState(false);
 
   const handleExportPDF = () => {
-    if (!hasSubmittedForm) {
-      triggerGate();
-      return;
-    }
+    // Export now runs immediately on click — no more gating behind the
+    // "Get in touch" form submission first.
     setIsExporting(true);
   };
 
