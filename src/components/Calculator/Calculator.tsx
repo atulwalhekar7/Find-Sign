@@ -6,6 +6,13 @@ import SimpleFooter from "../../components/SimpleFooter";
 
 const LEAD_STORAGE_KEY = "pc_lead_captured";
 
+// ── PDF filename ──────────────────────────────────────────────────────────
+// Browsers pull the "Save as PDF" default filename straight from
+// document.title at the moment window.print() runs. We swap the title to
+// this just before printing, then restore whatever it was before.
+const PRINT_SITE_NAME = "Find And Sign Buyer Advocate";
+const PRINT_PAGE_NAME = "Property Analyser";
+
 // ── Theme ─────────────────────────────────────────────────────────────────────
 const THEMES = {
   dark: {
@@ -84,6 +91,17 @@ const FILTERS: { key: FilterKey; label: string }[] = [
 const num = (val: string) => parseFloat(val) || 0;
 const fmtD = (n: number) => (n < 0 ? "-" : "") + "$" + Math.abs(Math.round(n)).toLocaleString();
 const fmtP = (n: number) => n.toFixed(2) + "%";
+
+// Builds the "Save as PDF" default filename from the currently active
+// filter — e.g. "Find And Sign Buyer Advocate - Property Analyser" for ALL,
+// or "Find And Sign Buyer Advocate - Property Analyser - Finance" for a
+// single filtered section.
+function buildPrintTitle(filter: FilterKey) {
+  const base = `${PRINT_SITE_NAME} - ${PRINT_PAGE_NAME}`;
+  if (filter === "ALL") return base;
+  const label = FILTERS.find((f) => f.key === filter)?.label;
+  return label ? `${base} - ${label}` : base;
+}
 
 function calcStampWA(price: number, fhbType: FhbOption) {
   const std = (p: number) => {
@@ -233,19 +251,28 @@ export default function PropertyInvestmentCalculator() {
   };
 
   // Export-to-PDF flow: print WHATEVER is currently visible — i.e. whichever
-  // filter is active. "ALL" prints every section; a specific filter (e.g.
-  // "Finance") prints only that one section. No more forcing "ALL" before
-  // printing — the active filter is left exactly as the user set it.
+  // filter is active, IN THE SAME TAB. "ALL" prints every section; a
+  // specific filter (e.g. "Finance") prints only that one section.
   const [isExporting, setIsExporting] = useState(false);
+  const originalTitleRef = useRef<string | null>(null);
 
   const handleExportPDF = () => {
-    // Export now runs immediately on click — no more gating behind the
-    // "Get in touch" form submission first.
+    // Export runs immediately on click, in this same tab — no new tab,
+    // no gating behind the "Get in touch" form submission first.
     setIsExporting(true);
   };
 
   useEffect(() => {
     if (!isExporting) return;
+
+    // Swap document.title to the desired PDF filename right before
+    // printing — Chrome/Edge/Firefox all use document.title as the
+    // suggested filename in the "Save as PDF" dialog. Stash the original
+    // title so it can be restored once printing finishes.
+    if (originalTitleRef.current === null) {
+      originalTitleRef.current = document.title;
+    }
+    document.title = buildPrintTitle(activeFilter);
 
     // Small delay + double rAF just to make sure any pending re-render has
     // actually painted before we hand off to window.print().
@@ -264,11 +291,18 @@ export default function PropertyInvestmentCalculator() {
       cancelAnimationFrame(raf1);
       cancelAnimationFrame(raf2);
     };
-  }, [isExporting]);
+  }, [isExporting, activeFilter]);
 
   useEffect(() => {
     const onAfterPrint = () => {
       setIsExporting(false);
+
+      // Restore whatever the tab's title was before we hijacked it for the
+      // PDF filename.
+      if (originalTitleRef.current !== null) {
+        document.title = originalTitleRef.current;
+        originalTitleRef.current = null;
+      }
     };
     window.addEventListener("afterprint", onAfterPrint);
     return () => window.removeEventListener("afterprint", onAfterPrint);
