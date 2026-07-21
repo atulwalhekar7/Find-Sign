@@ -770,6 +770,20 @@
   .pc-footer-panels {
     grid-template-columns: 1fr;
   }
+
+  /* Below this breakpoint every panel is already a full-width row
+     (grid-column: span 12 above), so `order` fully controls the visual
+     stacking sequence. This forces alphabetical A→G on tablet/phone only —
+     desktop above 860px has no `order` rules at all, so it keeps its
+     original grouped source order (A, D, B, E, C, F, G) exactly as-is. */
+  .pc-panel--A { order: 1; }
+  .pc-panel--B { order: 2; }
+  .pc-panel--C { order: 3; }
+  .pc-panel--D { order: 4; }
+  .pc-panel--E { order: 5; }
+  .pc-panel--F { order: 6; }
+  .pc-panel--G { order: 7; }
+  .pc-results-panel { order: 8; }
 }
 
 @media (max-width: 768px) {

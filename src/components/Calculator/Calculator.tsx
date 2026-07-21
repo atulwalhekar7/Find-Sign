@@ -92,6 +92,15 @@ const num = (val: string) => parseFloat(val) || 0;
 const fmtD = (n: number) => (n < 0 ? "-" : "") + "$" + Math.abs(Math.round(n)).toLocaleString();
 const fmtP = (n: number) => n.toFixed(2) + "%";
 
+// Controlled numeric inputs on mobile have a well-known bug: onChange runs
+// `num("")` -> 0 the instant a field is cleared, so React immediately
+// re-renders the "0" right back into the box before the user can type a
+// new value — it looks like the "0" is stuck / won't go away. Fix: never
+// feed a literal 0 back into the DOM value; show blank instead, and select
+// the whole field on focus so the first keystroke replaces it outright.
+const numDisplay = (n: number) => (n === 0 ? "" : n);
+const selectOnFocus = (e: React.FocusEvent<HTMLInputElement>) => e.target.select();
+
 // Builds the "Save as PDF" default filename from the currently active
 // filter — e.g. "Find And Sign Buyer Advocate - Property Analyser" for ALL,
 // or "Find And Sign Buyer Advocate - Property Analyser - Finance" for a
@@ -162,7 +171,12 @@ const Section = ({
   title: string;
   children: React.ReactNode;
 }) => (
-  <div className="pc-panel">
+  // `pc-panel--${label}` is a CSS hook only — it lets the mobile
+  // stylesheet reorder sections alphabetically (A→G) using `order`,
+  // without touching DOM order. Desktop is unaffected because the
+  // `order` rules only apply inside the mobile media query, so desktop
+  // keeps the original grouped order (A, D, B, E, C, F, G) exactly as-is.
+  <div className={`pc-panel pc-panel--${label}`}>
     <div className="pc-ph">
       <span className="pc-ph-left">
         <span className="pc-dot" />
@@ -532,6 +546,7 @@ export default function PropertyInvestmentCalculator() {
                   placeholder="-"
                   value={land}
                   onChange={(e) => setLand(e.target.value)}
+                  onFocus={selectOnFocus}
                 />
               </Row>
               <Row label="Year built">
@@ -541,6 +556,7 @@ export default function PropertyInvestmentCalculator() {
                   placeholder="e.g. 2005"
                   value={yearBuilt}
                   onChange={(e) => setYearBuilt(e.target.value)}
+                  onFocus={selectOnFocus}
                 />
               </Row>
             </Section>
@@ -552,8 +568,9 @@ export default function PropertyInvestmentCalculator() {
                 <input
                   type="number"
                   className="pc-input"
-                  value={weeklyRent}
+                  value={numDisplay(weeklyRent)}
                   onChange={(e) => setWeeklyRent(num(e.target.value))}
+                  onFocus={selectOnFocus}
                 />
               </Row>
               <Row label="Annual gross rent ($)">
@@ -566,8 +583,9 @@ export default function PropertyInvestmentCalculator() {
                   max={100}
                   step={0.5}
                   className="pc-input"
-                  value={vacancyRate}
+                  value={numDisplay(vacancyRate)}
                   onChange={(e) => setVacancyRate(num(e.target.value))}
+                  onFocus={selectOnFocus}
                 />
               </Row>
               <Row label="Effective annual rent ($)">
@@ -583,8 +601,9 @@ export default function PropertyInvestmentCalculator() {
                   type="number"
                   step={1000}
                   className="pc-input"
-                  value={purchasePrice}
+                  value={numDisplay(purchasePrice)}
                   onChange={(e) => setPurchasePrice(num(e.target.value))}
+                  onFocus={selectOnFocus}
                 />
               </Row>
               <Row label="First home buyer?">
@@ -602,35 +621,45 @@ export default function PropertyInvestmentCalculator() {
                 <input
                   type="number"
                   className="pc-input"
-                  value={legalBuy}
+                  value={numDisplay(legalBuy)}
                   onChange={(e) => setLegalBuy(num(e.target.value))}
+                  onFocus={selectOnFocus}
                 />
               </Row>
               <Row label="Building &amp; pest ($)">
                 <input
                   type="number"
                   className="pc-input"
-                  value={buildPest}
+                  value={numDisplay(buildPest)}
                   onChange={(e) => setBuildPest(num(e.target.value))}
+                  onFocus={selectOnFocus}
                 />
               </Row>
               <Row label="LMI ($)">
-                <input type="number" className="pc-input" value={lmi} onChange={(e) => setLmi(num(e.target.value))} />
+                <input
+                  type="number"
+                  className="pc-input"
+                  value={numDisplay(lmi)}
+                  onChange={(e) => setLmi(num(e.target.value))}
+                  onFocus={selectOnFocus}
+                />
               </Row>
               <Row label="Buyers agent fee ($)">
                 <input
                   type="number"
                   className="pc-input"
-                  value={agentFee}
+                  value={numDisplay(agentFee)}
                   onChange={(e) => setAgentFee(num(e.target.value))}
+                  onFocus={selectOnFocus}
                 />
               </Row>
               <Row label="Other costs ($)">
                 <input
                   type="number"
                   className="pc-input"
-                  value={otherCosts}
+                  value={numDisplay(otherCosts)}
                   onChange={(e) => setOtherCosts(num(e.target.value))}
+                  onFocus={selectOnFocus}
                 />
               </Row>
               <Row label="Total acquisition ($)">
@@ -646,8 +675,9 @@ export default function PropertyInvestmentCalculator() {
                   type="number"
                   step={0.5}
                   className="pc-input"
-                  value={pmPct}
+                  value={numDisplay(pmPct)}
                   onChange={(e) => setPmPct(num(e.target.value))}
+                  onFocus={selectOnFocus}
                 />
               </Row>
               <Row label="→ PM fee ($)">
@@ -657,64 +687,72 @@ export default function PropertyInvestmentCalculator() {
                 <input
                   type="number"
                   className="pc-input"
-                  value={councilRates}
+                  value={numDisplay(councilRates)}
                   onChange={(e) => setCouncilRates(num(e.target.value))}
+                  onFocus={selectOnFocus}
                 />
               </Row>
               <Row label="Water rates ($)">
                 <input
                   type="number"
                   className="pc-input"
-                  value={waterRates}
+                  value={numDisplay(waterRates)}
                   onChange={(e) => setWaterRates(num(e.target.value))}
+                  onFocus={selectOnFocus}
                 />
               </Row>
               <Row label="Landlord insurance ($)">
                 <input
                   type="number"
                   className="pc-input"
-                  value={llInsurance}
+                  value={numDisplay(llInsurance)}
                   onChange={(e) => setLlInsurance(num(e.target.value))}
+                  onFocus={selectOnFocus}
                 />
               </Row>
               <Row label="Maintenance ($)">
                 <input
                   type="number"
                   className="pc-input"
-                  value={maintenance}
+                  value={numDisplay(maintenance)}
                   onChange={(e) => setMaintenance(num(e.target.value))}
+                  onFocus={selectOnFocus}
                 />
               </Row>
               <Row label="Building insurance ($)">
                 <input
                   type="number"
                   className="pc-input"
-                  value={bldgInsurance}
+                  value={numDisplay(bldgInsurance)}
                   onChange={(e) => setBldgInsurance(num(e.target.value))}
+                  onFocus={selectOnFocus}
                 />
               </Row>
               <Row label="Strata / body corp ($)">
                 <input
                   type="number"
                   className="pc-input"
-                  value={strata}
+                  value={numDisplay(strata)}
                   onChange={(e) => setStrata(num(e.target.value))}
+                  onFocus={selectOnFocus}
                 />
               </Row>
               <Row label="Land tax ($)">
                 <input
                   type="number"
                   className="pc-input"
-                  value={landTax}
+                  value={numDisplay(landTax)}
                   onChange={(e) => setLandTax(num(e.target.value))}
+                  onFocus={selectOnFocus}
                 />
               </Row>
               <Row label="Accounting ($)">
                 <input
                   type="number"
                   className="pc-input"
-                  value={accounting}
+                  value={numDisplay(accounting)}
                   onChange={(e) => setAccounting(num(e.target.value))}
+                  onFocus={selectOnFocus}
                 />
               </Row>
               <Row label="Total expenses ($)">
@@ -733,8 +771,9 @@ export default function PropertyInvestmentCalculator() {
                   type="number"
                   step={1000}
                   className="pc-edit"
-                  value={loanAmt}
+                  value={numDisplay(loanAmt)}
                   onChange={(e) => setLoanAmt(num(e.target.value))}
+                  onFocus={selectOnFocus}
                 />
               </Row>
               <div className={`pc-loan-note pc-loan-note--${loanNoteClass}`}>{loanNoteText}</div>
@@ -752,8 +791,9 @@ export default function PropertyInvestmentCalculator() {
                   type="number"
                   step={0.05}
                   className="pc-input"
-                  value={interestRate}
+                  value={numDisplay(interestRate)}
                   onChange={(e) => setInterestRate(num(e.target.value))}
+                  onFocus={selectOnFocus}
                 />
               </Row>
               <Row label="Loan term (years)" sub="used for P&I calculation">
@@ -762,8 +802,9 @@ export default function PropertyInvestmentCalculator() {
                   min={1}
                   max={40}
                   className="pc-input"
-                  value={loanTerm}
+                  value={numDisplay(loanTerm)}
                   onChange={(e) => setLoanTerm(num(e.target.value))}
+                  onFocus={selectOnFocus}
                 />
               </Row>
 
@@ -856,8 +897,9 @@ export default function PropertyInvestmentCalculator() {
                   type="number"
                   step={0.5}
                   className="pc-input"
-                  value={growthRate}
+                  value={numDisplay(growthRate)}
                   onChange={(e) => setGrowthRate(num(e.target.value))}
+                  onFocus={selectOnFocus}
                 />
               </Row>
               <Row label="Estimated value (auto)">
@@ -868,8 +910,9 @@ export default function PropertyInvestmentCalculator() {
                   type="number"
                   step={1000}
                   className="pc-edit"
-                  value={Math.round(reformValue)}
+                  value={numDisplay(Math.round(reformValue))}
                   onChange={(e) => setReformOverride(num(e.target.value))}
+                  onFocus={selectOnFocus}
                 />
               </Row>
               {reformOverride !== null && (
