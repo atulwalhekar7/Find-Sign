@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
-import heroImage from "../../assets/niki-nikrani-buyer-advocate-perth-australia-property.jpg";
+import heroImage from "../../assets/niki-nakrani-buyer-advocate-perth-australia-property.jpg";
 import "./Image6.css";
 
 const Image1: React.FC = () => {
@@ -14,7 +14,7 @@ const Image1: React.FC = () => {
           className="no-theme image1-image"
           src={heroImage}
           alt="Perth Buyer Advocate Niki Nakrani helping home buyers in Perth, Western Australia"
-          title="Buyer Advocate Australia | Confident Property Buying"
+          title="Perth Buyer Advocate Australia | Confident Property Buying"
           loading="lazy"
           decoding="async"
           width="1920"

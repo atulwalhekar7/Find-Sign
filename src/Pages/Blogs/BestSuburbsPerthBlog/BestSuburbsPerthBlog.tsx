@@ -76,7 +76,7 @@ export default function BestSuburbsPerthBlog() {
         <img
           src={bannerImg}
           alt="Perth buyer advocate sharing property market insights and investment guidance"
-          title="Perth Property Market Insights | Find and Sign"
+          title="Perth Buyer  | Find and Sign"
           loading="eager"
           fetchPriority="high"
           decoding="async"
