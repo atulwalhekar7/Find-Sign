@@ -26,7 +26,7 @@ import SettlementAgent    from "./Services-pages/SettlementAgent/SettlementAgent
 import BuildingInspection from "./Services-pages/BuildingInspection/BuildingInspection";
 import SalesAgent         from "./Services-pages/SalesAgent/SalesAgent";
 import QuantitySurveyor   from "./Services-pages/QuantitySurveyor/QuantitySurveyor";
-import Accounting         from "./Services-pages/Accounting/Accounting";
+import MortageBroker         from "./Services-pages/Accounting/MortageBroker";
 import PrivacyPolicy from "./Pages/Privacy-Policy/Privacy-Policy";
 import "./index.css";
 
@@ -72,7 +72,7 @@ function App() {
             <Route path="/services/building-inspection" element={<BuildingInspection />}  />
             <Route path="/services/sales-agent"         element={<SalesAgent />}          />
             <Route path="/services/quantity-surveyor"   element={<QuantitySurveyor />}    />
-            <Route path="/services/accounting"          element={<Accounting />}          />
+            <Route path="/services/mortgage-broker"     element={<MortageBroker />}       />
 
             {/* Buyer Advocate (link page) */}
           

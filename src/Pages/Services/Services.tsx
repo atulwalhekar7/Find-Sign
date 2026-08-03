@@ -425,7 +425,7 @@ letterSpacing: "-0.02em",
         imageSrc={AboutServiceImg}
  imageAlt="Perth Buyer Advocate Australia helping clients secure residential and investment properties"
   imageTitle="Buyer Advocate Perth Australia | Find and Sign"
-  heading="About Buyer Advocacy"
+  heading="About Services"
   subheading="Expert guidance for every step of your property journey."        body1="Find and Sign Buyer Advocate is a boutique buyers agency based in Perth, representing buyers exclusively, whether you are purchasing the home you want to live in or building the portfolio you have always planned for.
 We take on a select number of clients at any one time. Not because we have to, but because we believe a purchase of this size deserves our full attention."
         body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
@@ -566,7 +566,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
           {/* Row 1: 3 affiliated cards */}
           <div className="grid-12" style={{ marginBottom: "86px" }}>
             <div className="col-4 col-md-6 col-sm-12">
-              <OtherServiceCard title="Mortgage Broker" body={body3} hasButton delay={0} onBookCall={() => navigate("/services/accounting")} theme={theme} />
+              <OtherServiceCard title="Mortgage Broker" body={body3} hasButton delay={0} onBookCall={() => navigate("/services/mortgage-broker")} theme={theme} />
             </div>
             <div className="col-4 col-md-6 col-sm-12">
               <OtherServiceCard title="Settlement Agent" body={body4} hasButton delay={0.1} onBookCall={handleBookCall} theme={theme} />

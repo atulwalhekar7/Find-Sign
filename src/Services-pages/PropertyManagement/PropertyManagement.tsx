@@ -58,9 +58,9 @@ export default function PropertyManagement() {
       {/* ── About ── */}
       <AboutSection
         imageSrc={AboutServiceImg}
-       imageAlt="Perth mortgage broker helping home buyers secure the right finance solution in Australia"
-  imageTitle="Mortgage Broker Perth Australia | Find and Sign"
-  heading="About Mortgage Broker"
+       imageAlt="Perth property manager helping landlords manage their rental properties in Australia"
+  imageTitle="Property Management Perth Australia | Find and Sign"
+  heading="About Property Management"
   subheading="Expert guidance for every step of your property journey."
         body1="Once your investment is secured, the work of protecting and growing it begins. A property manager acts as the professional link between you and your tenants, handling everything from tenant screening and lease agreements to rent collection, maintenance coordination, and routine inspections. A great property manager does not just keep your property occupied, they keep it performing. They understand the local rental market, know how to retain quality tenants, and ensure your investment is looked after with the same care and attention you would give it yourself. Choosing the right property manager from the outset sets the tone for your entire investment experience."
 //         body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.

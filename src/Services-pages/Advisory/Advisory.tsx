@@ -49,9 +49,9 @@ export default function Advisory() {
       {/* About */}
       <AboutSection
         imageSrc={AboutServiceImg}
-        imageAlt="Perth mortgage broker helping home buyers secure the right finance solution in Australia"
-  imageTitle="Mortgage Broker Perth Australia | Find and Sign"
-  heading="About Mortgage Broker"
+        imageAlt="Perth advisory helping home buyers navigate the property purchasing process in Australia"
+  imageTitle="Advisory Perth Australia | Find and Sign"
+  heading="About Advisory"
   subheading="Expert guidance for every step of your property journey."
         body1="Sometimes you do not need a full buyers agent service. You simply need the right information and guidance to move forward with clarity and confidence. Our advisory service is a focused two session consultation designed for buyers who want to take the lead on their own journey but want an experienced advocate in their corner before they do.
 In each session we walk you through the property purchasing process with precision and transparency, share our firsthand market knowledge, and give you honest practical feedback on where you currently stand and how to move forward. You will leave with a clear understanding of what to look for, where the risks and opportunities sit, and exactly what steps to take next."
