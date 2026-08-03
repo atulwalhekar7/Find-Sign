@@ -118,7 +118,7 @@ export default function ChooseRightBuyer() {
         <div className="hero-content">
           <div className={`attractive-loader${!isBannerLoading ? " hidden" : ""}`} aria-hidden="true" />
           <h1>How to Choose the Right Buyer&rsquo;s Agent in Perth: 10 Questions Every Buyer Should Ask</h1>
-          <p tabIndex={0}>Your trusted Perth Buyer&apos;s Agent &amp; Advocate</p>
+          <p tabIndex={0}>Your trusted Perth buyer advocate</p>
         </div>
       </section>
 
@@ -139,7 +139,7 @@ export default function ChooseRightBuyer() {
           <h2 tabIndex={0}>Why Choosing the Right Buyer&rsquo;s Agent in Perth Matters</h2>
           <div className="content-body">
             <p tabIndex={0}>
-              A buyer&rsquo;s agent works exclusively for the buyer, unlike a selling agent who represents the seller. Their role is to understand your goals, search for suitable properties, carry out due diligence, negotiate the purchase price, and guide you through every stage of the transaction.
+              A buyer&rsquo;s agent works exclusively for the buyer, unlike a <a href="https://findandsignba.com.au/services/sales-agent" style={{ color: "var(--primary-color, #0066cc)", textDecoration: "underline" }}>sales agent</a> who represents the seller. Their role is to understand your goals, search for suitable properties, carry out due diligence, negotiate the purchase price, and guide you through every stage of the transaction.
             </p>
             <p tabIndex={0}>
               Choosing an experienced buyer&rsquo;s agent in Perth means gaining access to local market insights, professional negotiation skills, and opportunities that may not be available to the general public. With the right expert on your side, you can buy with confidence while avoiding costly mistakes.
@@ -150,7 +150,7 @@ export default function ChooseRightBuyer() {
               An exceptional buyer&rsquo;s agent is more than someone who finds properties. They take the time to understand your lifestyle, financial situation, and long-term objectives. They provide honest advice, conduct detailed research, and negotiate solely in your best interests.
             </p>
             <p tabIndex={0}>
-              Rather than rushing you into a purchase, a trusted buyer&rsquo;s advocate helps you make informed decisions based on facts, market knowledge, and careful planning.
+              Rather than rushing you into a purchase, a trusted <a href="https://findandsignba.com.au/" style={{ color: "var(--primary-color, #0066cc)", textDecoration: "underline" }}>Perth buyer advocate</a> helps you make informed decisions based on facts, market knowledge, and careful planning. This often involves collaborating with specialized partners such as a <a href="https://findandsignba.com.au/services/quantity-surveyor" style={{ color: "var(--primary-color, #0066cc)", textDecoration: "underline" }}>quantity surveyor</a> to evaluate property depreciation and construction costs accurately.
             </p>
           </div>
         </section>

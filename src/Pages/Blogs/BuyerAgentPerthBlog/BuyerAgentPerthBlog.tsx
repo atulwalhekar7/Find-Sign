@@ -54,7 +54,7 @@ export default function BuyerAgentPerthBlog() {
     if (metaDescription) {
       metaDescription.setAttribute(
         "content",
-        "Discover how a buyer's agent in Perth helps you secure the right property, save money, and access off-market deals. Expert guide for buyers & investors."
+        "Discover how a Perth buyer advocate helps you secure the right property, save money, and access off-market deals. Expert guide for buyers & investors."
       );
     }
 
@@ -93,7 +93,7 @@ export default function BuyerAgentPerthBlog() {
             Buying property in Perth is one of the biggest financial decisions you'll ever make. Whether you're a first-home buyer, upgrading your family home, or building an investment portfolio, the process can feel overwhelming.
           </p>
           <p tabIndex={0} className="intro-body">
-            From searching listings and attending inspections to negotiating prices and bidding at auctions, there's a lot to manage. That's where a buyer's agent in Perth becomes your greatest asset. At Find and Sign Buyer Advocate, we specialise in helping property buyers and investors make confident, strategic decisions—while saving time, stress, and money.
+            From searching listings and attending inspections to negotiating prices and bidding at auctions, there's a lot to manage. That's where a <a href="https://findandsignba.com.au/" style={{ color: "var(--primary-color, #0066cc)", textDecoration: "underline" }}>Perth buyer advocate</a> becomes your greatest asset. At Find and Sign Buyer Advocate, we specialise in helping property buyers and investors make confident, strategic decisions—while saving time, stress, and money.
           </p>
         </section>
 
@@ -130,8 +130,8 @@ export default function BuyerAgentPerthBlog() {
           content={
             <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
               <p tabIndex={0}><strong>First Home Buyers:</strong> Simplify the entry into the market and avoid costly first-timer mistakes.</p>
-              <p tabIndex={0}><strong>Property Investors:</strong> Leverage data-driven strategies to identify high-growth suburbs and maximise returns.</p>
-              <p tabIndex={0}><strong>Busy Professionals:</strong> Save time while we manage inspections, research, and negotiations for you.</p>
+              <p tabIndex={0}><strong>Property Investors:</strong> Leverage data-driven strategies to identify high-growth suburbs, supported by specialist <a href="https://findandsignba.com.au/services/accounting" style={{ color: "var(--primary-color, #0066cc)", textDecoration: "underline" }}>property accounting</a> advice.</p>
+              <p tabIndex={0}><strong>Busy Professionals:</strong> Save time while we manage inspections, research, and negotiations alongside your chosen <a href="https://findandsignba.com.au/services/settlement-agent" style={{ color: "var(--primary-color, #0066cc)", textDecoration: "underline" }}>settlement agent</a>.</p>
               <p tabIndex={0}><strong>Interstate &amp; Overseas Buyers:</strong> Secure Perth property with local expertise without being physically present.</p>
             </div>
           }

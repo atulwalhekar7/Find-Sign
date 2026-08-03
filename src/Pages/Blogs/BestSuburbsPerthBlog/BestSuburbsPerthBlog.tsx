@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import SimpleGetInTouch from "../../../components/GetInTouch/GetInTouch";
 import SimpleFooter from "../../../components/Footer/Footer";
 import "./BestSuburbsPerthBlog.css";
@@ -117,7 +118,13 @@ export default function BestSuburbsPerthBlog() {
             <>
               <p>Perth has quickly become one of Australia's most attractive cities for property investors. With relatively affordable entry prices, strong rental demand, and growing population trends, it offers a unique opportunity for both new and experienced investors.</p>
               <p className="mt-20"><strong>However, success in property investment comes down to one critical factor—choosing the right suburb.</strong></p>
-              <p className="mt-15">If you're working with a find and sign buyer advocate in Perth, selecting high-growth areas becomes significantly easier and more strategic.</p>
+              <p className="mt-15">
+                If you're working with a{" "}
+                <Link to="/services/buyer-advocate" className="kw-link">
+                  Perth buyer advocate
+                </Link>
+                , selecting high-growth areas becomes significantly easier and more strategic.
+              </p>
             </>
           }
         />
@@ -215,7 +222,13 @@ export default function BestSuburbsPerthBlog() {
                 <li><strong>For Long-Term Investment:</strong> Choose areas with planned infrastructure and population growth.</li>
               </ul>
               <p className="mt-20">
-                <strong>Working with a buyer agent Perth ensures your strategy aligns with the right suburb selection.</strong>
+                <strong>
+                  Working with a{" "}
+                  <Link to="/" className="kw-link">
+                    Perth buyer advocate
+                  </Link>{" "}
+                  ensures your strategy aligns with the right suburb selection.
+                </strong>
               </p>
             </>
           }
@@ -258,6 +271,13 @@ export default function BestSuburbsPerthBlog() {
           content={
             <>
               <p>Finding the right suburb requires deep market knowledge and research.</p>
+              <p className="mt-15">
+                A dedicated{" "}
+                <Link to="/services/buyer-advocate" className="kw-link">
+                  Perth buyer advocate
+                </Link>{" "}
+                brings local expertise and data-driven insight to every stage of your investment journey.
+              </p>
               <p className="mt-20"><strong>At Find and Sign, we help you:</strong></p>
               <ul className="content-list content-list-mt">
                 <li>Identify high-growth suburbs</li>
@@ -296,7 +316,11 @@ export default function BestSuburbsPerthBlog() {
           <div className="final-thoughts-inner">
             <h2 tabIndex={0} className="final-thoughts-heading">Final Thoughts</h2>
             <p tabIndex={0} className="final-thoughts-body">
-              Perth offers incredible opportunities for property investors—but only if you choose the right suburb. Whether you're looking for capital growth, rental income, or long-term wealth, suburb selection is the key to success. Working with a trusted find and sign buyer advocate in Perth ensures you invest with confidence and clarity.
+              Perth offers incredible opportunities for property investors—but only if you choose the right suburb. Whether you're looking for capital growth, rental income, or long-term wealth, suburb selection is the key to success. Working with a trusted{" "}
+              <Link to="/" className="kw-link">
+                Perth buyer advocate
+              </Link>{" "}
+              ensures you invest with confidence and clarity.
             </p>
           </div>
         </section>

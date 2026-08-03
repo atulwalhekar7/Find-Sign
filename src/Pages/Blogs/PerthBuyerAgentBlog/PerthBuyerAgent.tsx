@@ -56,7 +56,7 @@ export default function AvoidOverpaymentBlog() {
             Buying a dream home or an investment property in Perth should be an exciting milestone. However, the fast-moving Perth property market can make it feel like a second full-time job. Between endless home opens and the pressure of &ldquo;making the right offer,&rdquo; many home buyers feel overwhelmed.
           </p>
           <p tabIndex={0} className="intro-body">
-            If you are tired of dealing with sales agents, you aren&rsquo;t alone. This is why more people are working with a buyer&rsquo;s agent in Perth to level the playing field.
+            If you are tired of dealing with sales agents, you aren&rsquo;t alone. This is why more people are working with a <a href="https://findandsignba.com.au/" style={{ color: "var(--primary-color, #0066cc)", textDecoration: "underline" }}>perth buyer agent</a> to level the playing field.
           </p>
         </section>
 
@@ -65,7 +65,7 @@ export default function AvoidOverpaymentBlog() {
           <h2 tabIndex={0}>Understanding the Role of a Buyer&rsquo;s Agent in Perth</h2>
           <div className="content-body">
             <p tabIndex={0}>
-              If you have been searching for a home or an investment property in Perth, you have likely spent hours talking to real estate agents at home opens. It is important to realize that those agents are working for the seller, not for you. This is where a buyer&rsquo;s agent in Perth&mdash;also known as a buyer&rsquo;s advocate&mdash;changes the dynamic of the buying process.
+              If you have been searching for a home or an investment property in Perth, you have likely spent hours talking to real estate agents at home opens. It is important to realize that those agents are working for the seller, not for you. This is where a <a href="https://findandsignba.com.au/" style={{ color: "var(--primary-color, #0066cc)", textDecoration: "underline" }}>perth buyer agent</a>&mdash;also known as a buyer&rsquo;s advocate&mdash;changes the dynamic of the buying process.
             </p>
             <p tabIndex={0}>
               A buyer&rsquo;s agent is a licensed real estate agent whose only job is to represent your best interests. They act as your professional partner, taking the stress out of the Perth real estate market by handling everything from finding the right property to managing the final paperwork. Essentially, they ensure you don&rsquo;t have to navigate the property world alone.
@@ -99,33 +99,6 @@ export default function AvoidOverpaymentBlog() {
           </div>
         </section>
 
-        {/* ── Case Study / Real Example ── */}
-        {/* <section className="content-section">
-          <h2 tabIndex={0}>A Real Example: How an Expert Buyer&rsquo;s Agent Helps</h2>
-          <div className="case-study-card">
-            <span className="case-study-eyebrow">Case Profile</span>
-            <h4 tabIndex={0}>How a Perth buyer&rsquo;s agent changes the buying process for Sarah</h4>
-            <p tabIndex={0}>
-              Sarah is a busy nurse looking to buy a home in the northern suburbs of Perth, WA. She has been searching the real estate market for six months. Every time she finds a house, it is sold before she can even visit.
-            </p>
-            
-            <ol className="structured-steps-list" style={{ paddingLeft: "20px", margin: "20px 0" }}>
-              <li tabIndex={0} style={{ marginBottom: "12px" }}>
-                <strong>The Strategy:</strong> Instead of Sarah scrolling at midnight, her experienced buyer&rsquo;s agent defines her goals and budget.
-              </li>
-              <li tabIndex={0} style={{ marginBottom: "12px" }}>
-                <strong>The Search:</strong> The agent uses an extensive agent network to find off-market properties Perth locals never see online. Sarah finds the perfect property before it is even advertised.
-              </li>
-              <li tabIndex={0} style={{ marginBottom: "12px" }}>
-                <strong>The Due Diligence:</strong> The agent researches the area and checks for &ldquo;red flags.&rdquo; This ensures she is buying the right property at the best price.
-              </li>
-              <li tabIndex={0} style={{ marginBottom: "12px" }}>
-                <strong>The Win:</strong> The agent handles the high-pressure negotiation. They know the selling agent&rsquo;s tactics and secure the home for much less than Sarah expected.
-              </li>
-            </ol>
-          </div>
-        </section> */}
-
         {/* ── Key Services ── */}
         <section className="why-choose-section">
           <div className="why-choose-inner">
@@ -144,7 +117,7 @@ export default function AvoidOverpaymentBlog() {
               </div>
               <div className="service-card">
                 <h4 tabIndex={0}>Due Diligence and Inspections</h4>
-                <p tabIndex={0}>We thoroughly check the details and property history so you don&rsquo;t buy a &ldquo;lemon.&rdquo;</p>
+                <p tabIndex={0}>We thoroughly check the details and property history so you don&rsquo;t buy a &ldquo;lemon,&rdquo; supported by specialist <a href="https://findandsignba.com.au/services/building-inspection" style={{ color: "var(--primary-color, #0066cc)", textDecoration: "underline" }}>building inspection</a> evaluations.</p>
               </div>
               <div className="service-card">
                 <h4 tabIndex={0}>Auction Bidding Services Perth</h4>
@@ -152,7 +125,7 @@ export default function AvoidOverpaymentBlog() {
               </div>
               <div className="service-card">
                 <h4 tabIndex={0}>Property Investment Advisory</h4>
-                <p tabIndex={0}>Helping you safely invest in the Perth property market for sustainable, long-term growth.</p>
+                <p tabIndex={0}>Helping you safely invest in the Perth property market for sustainable, long-term growth, complemented by expert <a href="https://findandsignba.com.au/services/property-management" style={{ color: "var(--primary-color, #0066cc)", textDecoration: "underline" }}>property management</a> insights.</p>
               </div>
             </div>
           </div>
@@ -197,8 +170,6 @@ export default function AvoidOverpaymentBlog() {
           </div>
         </section>
 
-        {/* ── Final Thoughts ── */}
-       
         {/* ── FAQs ── */}
         <section className="faq-section">
           <h2 tabIndex={0}>Frequently Asked Questions</h2>
