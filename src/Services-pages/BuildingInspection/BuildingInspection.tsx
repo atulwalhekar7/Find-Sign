@@ -4,6 +4,7 @@ import GetInTouch from "../../components/GetInTouch/GetInTouch";
 import AboutServiceImg from "../../assets/buyer-advocate-perth-australia-property-search.jpg";
 import AboutSection from "../../components/AboutSection";
 import "./BuildingInspection.css";
+import SEO from "../../components/SEO";
 
 export default function BuildingInspection() {
   useEffect(() => {
@@ -11,6 +12,12 @@ export default function BuildingInspection() {
   }, []);
 
   return (
+    <>
+
+    <SEO
+  title="Building Inspection Perth | Property Inspection Services | Find & Sign"
+  description="Get professional building inspection services in Perth with Find & Sign. Identify property issues, assess condition, and make informed buying decisions with expert inspection support."
+/>
     <div style={{ background: "#fff", margin: 0, padding: 0, color: "#111" }}>
 
       {/* ── Hero ── */}
@@ -70,5 +77,6 @@ export default function BuildingInspection() {
       <GetInTouch initialService="Building Inspection" showService={true} />
       <SimpleFooter />
     </div>
+    </>
   );
 }

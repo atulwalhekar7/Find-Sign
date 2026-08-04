@@ -3,6 +3,7 @@ import SimpleGetInTouch from "../../../components/GetInTouch/GetInTouch";
 import SimpleFooter from "../../../components/Footer/Footer";
 import OurProcessBlog from "../../../Pages/Our-Process-Post2";
 import "./FindTrustworthyBuyers.css";
+import SEO from "../../../components/SEO";
 
 // --- Assets ---
 import bannerImg from "../../../assets/juneBlog.jpeg";
@@ -31,6 +32,12 @@ export default function AvoidOverpaymentBlog() {
   }, []);
 
   return (
+    <>
+
+    <SEO
+  title="How to Find a Buyer Advocate Perth | Avoid Overpaying for Property"
+  description="Learn how to find a trustworthy buyer advocate in Perth and avoid overpaying for property. Discover key tips to choose the right Perth buyer advocate for expert guidance and negotiation support."
+/>
     <div>
 
       {/* ── Hero ── */}
@@ -280,5 +287,6 @@ export default function AvoidOverpaymentBlog() {
       <SimpleGetInTouch />
       <SimpleFooter />
     </div>
+    </>
   );
 }

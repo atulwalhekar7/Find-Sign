@@ -17,6 +17,7 @@ import igIcon from "../../assets/icon/Instagram.svg";
 import liIcon from "../../assets/icon/LinkedIn.svg";
 import tiIcon from "../../assets/icon/Tiktok.svg";
 import goIcon from "../../assets/icon/Google.svg";
+import SEO from "../../components/SEO";
 
 const THEMES = {
   dark: {
@@ -88,6 +89,12 @@ export default function About() {
   };
 
   return (
+    <>
+
+     <SEO
+      title="About Us | Buyer Advocate Perth | Find & Sign"
+      description="Learn about Find & Sign Buyer Advocate, a trusted Perth Buyer Advocate helping home buyers and property investors secure the right property with expert advice and negotiation."
+         />
     <div style={{ background: t.pageBg, transition: "background 0.3s ease", width: "100%" }}>
 
       {/* SECTION 1 — Hero Banner */}
@@ -362,5 +369,6 @@ Find & Sign we find with confidence you sign with certainty."
       <SimpleGetInTouch />
       <SimpleFooter />
     </div>
+    </>
   );
 }

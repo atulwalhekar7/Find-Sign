@@ -4,6 +4,7 @@ import GetInTouch from "../../components/GetInTouch/GetInTouch";
 import AboutServiceImg from "../../assets/buyer-advocate-perth-australia-property-search.jpg";
 import AboutSection from "../../components/AboutSection";
 import "./QuantitySurveyor.css";
+import SEO from "../../components/SEO";
 
 export default function QuantitySurveyor() {
   useEffect(() => {
@@ -11,6 +12,12 @@ export default function QuantitySurveyor() {
   }, []);
 
   return (
+    <>
+
+    <SEO
+  title="Quantity Surveyor Perth | Property Tax & Accounting Services | Find & Sign"
+  description="Find & Sign connects property buyers and investors with expert quantity surveyor and accounting services in Perth. Get support with property depreciation, tax benefits, and financial planning."
+/>
     <div style={{ background: "#fff", margin: 0, padding: 0, color: "#111" }}>
 
       {/* ── Hero ── */}
@@ -70,5 +77,6 @@ export default function QuantitySurveyor() {
       <GetInTouch initialService="Accounting / Quantity Surveyor" showService={true} />
       <SimpleFooter />
     </div>
+    </>
   );
 }

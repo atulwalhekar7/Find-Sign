@@ -11,7 +11,7 @@ export default function FindAndSignBlog() {
   const [isBannerLoading, setIsBannerLoading] = useState(true);
 
   useEffect(() => {
-    document.title = "Perth Buyers Agent & Advocate WA: Top Agents in Perth";
+    document.title = "Find & Sign a Buyer Advocate in Perth: Step-by-Step Guide";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute(
@@ -31,6 +31,8 @@ export default function FindAndSignBlog() {
   }, []);
 
   return (
+    <>
+   
     <div>
 
       {/* ── Hero ── */}
@@ -199,5 +201,6 @@ export default function FindAndSignBlog() {
       <SimpleGetInTouch />
       <SimpleFooter />
     </div>
+    </>
   );
 }

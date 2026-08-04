@@ -50,7 +50,7 @@ export default function BestSuburbsPerthBlog() {
   const [isBannerLoading, setIsBannerLoading] = useState(true);
 
   useEffect(() => {
-    document.title = "Best Suburbs in Perth for Property Investment 2026";
+    document.title = "Your Ultimate Guide to Hiring a Buyer's Agent in Perth | Buyer Advocate Perth";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute(
@@ -70,6 +70,8 @@ export default function BestSuburbsPerthBlog() {
   }, []);
 
   return (
+    <>
+  
     <div className="blog-page-root">
 
       {/* ── Hero ── */}
@@ -363,5 +365,6 @@ export default function BestSuburbsPerthBlog() {
       <SimpleGetInTouch />
       <SimpleFooter />
     </div>
+    </>
   );
 }

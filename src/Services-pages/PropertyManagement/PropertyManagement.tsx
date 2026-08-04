@@ -4,6 +4,7 @@ import GetInTouch from "../../components/GetInTouch/GetInTouch";
 import AboutServiceImg from "../../assets/buyer-advocate-perth-australia-property-search.jpg";
 import AboutSection from "../../components/AboutSection";
 import "./PropertyManagement.css";
+import SEO from "../../components/SEO";
 
 export default function PropertyManagement() {
   useEffect(() => {
@@ -11,6 +12,11 @@ export default function PropertyManagement() {
   }, []);
 
   return (
+    <>
+    <SEO
+  title="Property Management Perth | Find & Sign"
+  description="Find & Sign provides professional property management services in Perth, helping property owners manage rentals, maximise returns, and maintain successful property investments."
+/>
     <div style={{ background: "#fff", margin: 0, padding: 0, color: "#111" }}>
 
       {/* ── Hero ── */}
@@ -70,5 +76,6 @@ export default function PropertyManagement() {
       <GetInTouch initialService="Property Management" showService={true} />
       <SimpleFooter />
     </div>
+    </>
   );
 }

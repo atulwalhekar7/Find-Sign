@@ -4,6 +4,7 @@ import SimpleFooter from "../../components/SimpleFooter";
 import GetInTouch from "../../components/GetInTouch/GetInTouch";
 import AboutServiceImg from "../../assets/buyer-advocate-perth-australia-property-search.jpg";
 import "./BuyerAdvocate.css";
+import SEO from "../../components/SEO";
 
 export default function BuyerAdvocate() {
   useEffect(() => {
@@ -11,6 +12,12 @@ export default function BuyerAdvocate() {
   }, []);
 
   return (
+    <>
+    
+    <SEO
+  title="Buyer Advocacy Services Perth | Expert Buyer Agent | Find & Sign"
+  description="Find & Sign provides expert buyer advocacy services in Perth, helping clients search, negotiate, and secure the right property with professional guidance and market expertise."
+/>
     <div className="buyer-advocate-page">
       {/* Hero */}
       <section className="buyer-advocate-hero">
@@ -41,5 +48,6 @@ From the first conversation to settlement day and beyond, we are by your side ev
       <GetInTouch initialService="Buyer Advocate" showService={true} />
       <SimpleFooter />
     </div>
+    </>
   );
 }

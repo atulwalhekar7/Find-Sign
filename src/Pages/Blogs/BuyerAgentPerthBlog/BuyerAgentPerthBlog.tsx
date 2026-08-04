@@ -10,6 +10,7 @@ import agentImg from "../../../assets/buyers-agent-perth-guide.jpg";
 import servicesImg from "../../../assets/perth-property-investment-strategy.jpg";
 import benefitsImg from "../../../assets/benefits-of-using-a-buyers-agent-perth.jpg";
 import processImg from "../../../assets/what-is-a-buyers-agent-perth.jpg";
+import SEO from "../../../components/SEO";
 
 const SideBySideSection = ({
   title,
@@ -69,6 +70,12 @@ export default function BuyerAgentPerthBlog() {
   }, []);
 
   return (
+    <>
+
+    <SEO
+  title="What Does a Buyer Agent in Perth Do? | Buyer Advocate Perth Guide"
+  description="Learn what a Perth buyer advocate does and how a buyer agent in Perth helps with property search, negotiations, and securing the right home or investment. A simple guide for buyers."
+/>
     <div>
 
       {/* ── Hero ── */}
@@ -240,5 +247,6 @@ export default function BuyerAgentPerthBlog() {
       <SimpleGetInTouch />
       <SimpleFooter />
     </div>
+    </>
   );
 }

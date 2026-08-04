@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import GetInTouch from "../../components/GetInTouch/GetInTouch";
 import SimpleFooter from "../../components/Footer/Footer";
 import { useTheme } from "../../components/ThemeContext";
+import SEO from "../../components/SEO";
 
 import "./Contact.css";
 
@@ -36,6 +37,10 @@ export default function Contact() {
 
   return (
     <>
+    <SEO
+  title="Contact Buyer Advocate Perth | Find & Sign Property Experts"
+  description="Get in touch with Find & Sign, trusted buyer advocates in Perth. Discuss your property goals and receive expert support to find, negotiate, and secure the right property."
+/>
       <section
         className="contact-hero-banner"
         style={{

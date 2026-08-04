@@ -4,6 +4,7 @@ import GetInTouch from "../../components/GetInTouch/GetInTouch";
 import AboutServiceImg from "../../assets/buyer-advocate-perth-australia-property-search.jpg";
 import AboutSection from "../../components/AboutSection";
 import "./SalesAgent.css";
+import SEO from "../../components/SEO";
 
 export default function SalesAgent() {
   useEffect(() => {
@@ -11,6 +12,11 @@ export default function SalesAgent() {
   }, []);
 
   return (
+    <>
+    <SEO
+  title="Property Sales Agent Perth | Real Estate Selling Experts | Find & Sign"
+  description="Work with experienced property sales agents in Perth through Find & Sign. Get professional support with property marketing, negotiations, and achieving successful sales outcomes."
+/>
     <div style={{ background: "#fff", margin: 0, padding: 0, color: "#111" }}>
 
       {/* ── Hero ── */}
@@ -70,5 +76,6 @@ export default function SalesAgent() {
       <GetInTouch initialService="Sales Agent" showService={true} />
       <SimpleFooter />
     </div>
+    </>
   );
 }

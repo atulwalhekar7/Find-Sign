@@ -3,6 +3,7 @@ import { useTheme } from "../../components/ThemeContext";
 import "./Calculator.css";
 import SimpleGetInTouch from "../../components/GetInTouch/GetInTouch";
 import SimpleFooter from "../../components/SimpleFooter";
+import SEO from "../../components/SEO";
 
 const LEAD_STORAGE_KEY = "pc_lead_captured";
 
@@ -449,6 +450,11 @@ export default function PropertyInvestmentCalculator() {
 
   return (
     <>
+    
+    <SEO
+  title="Buyer Advocate Calculator Perth | Property Buying Cost Estimator | Find & Sign"
+  description="Use the Find & Sign Buyer Advocate calculator to estimate property buying costs, fees, and potential savings in Perth. Plan your property purchase with expert buyer advocacy insights."
+/>
       <div className={`pc-wrap pc-theme-${theme}`} style={themeVars}>
         <section className="blog-heading-section">
           <h1>Know Before You Sign - Property Analyser

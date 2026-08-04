@@ -5,6 +5,7 @@ import GetInTouch from "../../components/GetInTouch/GetInTouch";
 import AboutServiceImg from "../../assets/buyer-advocate-perth-australia-property-search.jpg";
 import AboutSection from "../../components/AboutSection";
 import "./SettlementAgent.css";
+import SEO from "../../components/SEO";
 
 export default function SettlementAgent() {
   useEffect(() => {
@@ -12,6 +13,11 @@ export default function SettlementAgent() {
   }, []);
 
   return (
+    <>
+    <SEO
+  title="Settlement Agent Perth | Property Settlement Services | Find & Sign"
+  description="Find & Sign provides trusted settlement agent services in Perth to help buyers complete property transactions smoothly. Get expert support with contracts, paperwork, and settlement processes."
+/>
     <div style={{ background: "#fff", margin: 0, padding: 0, color: "#111" }}>
 
       {/* ── Hero ── */}
@@ -71,5 +77,6 @@ export default function SettlementAgent() {
       <GetInTouch initialService="Settlement Agent" showService={true} />
       <SimpleFooter />
     </div>
+    </>
   );
 }

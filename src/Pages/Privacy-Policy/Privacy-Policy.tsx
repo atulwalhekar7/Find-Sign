@@ -32,6 +32,8 @@ export default function PrivacyPolicy() {
   }, []);
 
   return (
+    <>
+  
     <div className="policy-page">
 
       {/* ── Hero ── */}
@@ -154,5 +156,6 @@ export default function PrivacyPolicy() {
       <SimpleGetInTouch />
       <SimpleFooter />
     </div>
+    </>
   );
 }

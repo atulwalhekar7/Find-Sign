@@ -7,6 +7,7 @@ import "./ChooseRightBuyer.css";
 // --- Assets ---
 // Replace with the actual banner image for this blog post
 import bannerImg from "../../../assets/Blog6.jpeg";
+import SEO from "../../../components/SEO";
 
 export default function ChooseRightBuyer() {
   const [isBannerLoading, setIsBannerLoading] = useState(true);
@@ -107,6 +108,12 @@ export default function ChooseRightBuyer() {
   ];
 
   return (
+    <>
+
+    <SEO
+  title="How to Choose a Buyer’s Agent in Perth | 10 Questions to Ask"
+  description="Learn how to choose the right buyer’s agent in Perth with 10 essential questions every buyer should ask. Find expert tips to evaluate experience, fees, strategy, and property buying support."
+/>
     <div>
       {/* ── Hero ── */}
       <section
@@ -234,5 +241,6 @@ export default function ChooseRightBuyer() {
       <SimpleGetInTouch />
       <SimpleFooter />
     </div>
+    </>
   );
 }

@@ -6,6 +6,8 @@ import AboutSection from "../../components/AboutSection";
 import Image7 from "../../components/Image7/Image7";
 import { useTheme } from "../../components/ThemeContext";
 import "./Insights.css";
+import SEO from "../../components/SEO";
+
 
 import aboutInsightsImg from "../../assets/perth-buyer-advocate-property-insights.jpg";
 import bannerImg from "../../assets/buyer-advocate-perth-australia-agent-property.jpg";
@@ -229,6 +231,12 @@ export default function Insights() {
   }, []);
 
   return (
+    <>
+    
+    <SEO
+  title="Property Insights Perth | Buyer Advocate Tips & Market Updates | Find & Sign"
+  description="Explore expert property insights, market updates, buyer tips, and strategies from Find & Sign Buyer Advocate. Stay informed to make smarter property decisions in Perth."
+/>
     <div
       className="insights-page"
       style={{ backgroundColor: t.pageBg }}
@@ -303,5 +311,7 @@ export default function Insights() {
       <SimpleFooter />
 
     </div>
+
+    </>
   );
 }

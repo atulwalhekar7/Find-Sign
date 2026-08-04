@@ -8,6 +8,7 @@ import AboutServiceImg from "../../assets/perth-buyer-advocate-services-australi
 import Image4 from "../../components/Image4/Image4";
 import { useTheme } from "../../components/ThemeContext";
 import "./Services.css";
+import SEO from "../../components/SEO";
 
 // ── Theme ─────────────────────────────────────────────────────────────────────
 const THEMES = {
@@ -334,6 +335,13 @@ export default function Services() {
   const body8 = "Whether you are selling before you buy or planning an exit strategy on an investment, having a trusted sales agent in your network means you are never starting from scratch when it matters most.";
 
   return (
+
+    <>
+
+      <SEO
+        title="Buyer Advocate Perth Services | Property Search & Negotiation | Find & Sign"
+        description="Find & Sign provides professional Buyer Advocate services in Perth, helping buyers with property search, due diligence, negotiation, and expert advice to make confident property decisions."
+      />
     <div style={{ color: t.subTextColor, background: t.pageBg, margin: 0, padding: 0, transition: "background 0.3s ease, color 0.3s ease" }}>
 
       {/* ── SECTION 1: Hero ─────────────────────────────────────────────── */}
@@ -646,5 +654,6 @@ From the first conversation to settlement and beyond, we are in your corner. You
       <SimpleFooter />
 
     </div>
+    </>
   );
 }

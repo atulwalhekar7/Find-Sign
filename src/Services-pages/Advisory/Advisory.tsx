@@ -5,6 +5,7 @@ import GetInTouch from "../../components/GetInTouch//GetInTouch";
 import AboutServiceImg from "../../assets/buyer-advocate-perth-australia-property-search.jpg";
 import AboutSection from "../../components/AboutSection";
 import "./Advisory.css";
+import SEO from "../../components/SEO";
 
 export default function Advisory() {
   useEffect(() => {
@@ -12,6 +13,11 @@ export default function Advisory() {
   }, []);
 
   return (
+    <>
+    <SEO
+  title="Property Advisory Services Perth | Expert Property Advice | Find & Sign"
+  description="Get expert property advisory services in Perth from Find & Sign. Receive personalised guidance, market insights, and strategic advice to make confident property decisions."
+/>
     <div style={{ background: "#fff", margin: 0, padding: 0, color: "#111" }}>
 
       {/* Hero */}
@@ -61,5 +67,6 @@ In each session we walk you through the property purchasing process with precisi
       <GetInTouch initialService="Advisory" showService={true} />
       <SimpleFooter />
     </div>
+    </>
   );
 }
