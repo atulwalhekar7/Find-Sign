@@ -167,16 +167,20 @@ const Auto = ({ id, value }: { id?: string; value: string }) => (
 const Section = ({
   label,
   title,
+  solo,
   children,
 }: {
   label: string;
   title: string;
+  solo?: boolean;
   children: React.ReactNode;
 }) => (
-  // `pc-panel--${label}` is kept as a CSS hook — used for mobile ordering
-  // (via flex `order`) once the two-column wrapper is flattened with
-  // `display: contents` at the small-screen breakpoint.
-  <div className={`pc-panel pc-panel--${label}`}>
+  // `pc-panel--${label}` drives the CSS-grid row/column placement (see
+  // Calculator.css) so cards that sit "in the same row" (e.g. A↔D,
+  // B↔E, C↔F) always match height automatically. `pc-panel--solo` is
+  // added whenever a single section is filtered — it makes that lone
+  // card span the full width instead of being pinned to one column.
+  <div className={`pc-panel pc-panel--${label}${solo ? " pc-panel--solo" : ""}`}>
     <div className="pc-ph">
       <span className="pc-ph-left">
         <span className="pc-dot" />
@@ -447,6 +451,7 @@ export default function PropertyInvestmentCalculator() {
   } as React.CSSProperties;
 
   const showSection = (key: SectionKey) => activeFilter === "ALL" || activeFilter === key;
+  const isSolo = activeFilter !== "ALL";
 
   return (
     <>
@@ -503,398 +508,402 @@ export default function PropertyInvestmentCalculator() {
         )}
 
         <div className="pc-body">
-          {/* ── Masonry-style two-column layout ─────────────────────────────
-              Each column stacks its own cards independently (own height),
-              so a short card is never held back by a tall neighbour in the
-              other column — no more vertical white gap before the next
-              card. Reading order is preserved: left column = A, C, E;
-              right column = B, D, F (same as the old A|B, C|D, E|F rows).
-              On small screens `.pc-col` collapses via `display: contents`
-              and the panels re-flow into a single A→B→C→D→E→F column using
-              flex `order` (see CSS). ─────────────────────────────────── */}
+          {/* ── CSS-grid layout: 2 columns × 3 rows ─────────────────────────
+              Each panel is placed into an explicit grid cell purely via its
+              `pc-panel--X` class (see Calculator.css):
+                row 1: A | D
+                row 2: B | E
+                row 3: C | F
+              Because it's a real grid (not two independent flex columns),
+              a row's height is automatically the taller of its two cards,
+              and `align-items: stretch` makes BOTH cards in that row fill
+              it — so A/D, B/E and C/F always match height.
+
+              When a single section is filtered, that lone panel gets the
+              `pc-panel--solo` class and spans the full width instead of
+              being pinned to one column.
+
+              On small screens the grid collapses to a single column and
+              panels simply flow in DOM order (A→B→C→D→E→F). ───────────── */}
           <div className="pc-cols">
-            <div className="pc-col pc-col-left">
-              {showSection("A") && (
-                <Section label="A" title="Property details">
-                  <Row label="Street address">
-                    <input
-                      type="text"
-                      className="pc-input pc-input--left"
-                      placeholder="e.g. 12 Palm St"
-                      value={address}
-                      onChange={(e) => setAddress(e.target.value)}
-                    />
-                  </Row>
-                  <Row label="Property type">
-                    <select className="pc-select" value={propType} onChange={(e) => setPropType(e.target.value)}>
-                      <option>House</option>
-                      <option>Unit</option>
-                      <option>Townhouse</option>
-                      <option>Land</option>
-                    </select>
-                  </Row>
-                  <Row label="Bed / Bath / Car">
-                    <input
-                      type="text"
-                      className="pc-input pc-input--left"
-                      placeholder="3 / 2 / 1"
-                      value={bbc}
-                      onChange={(e) => setBbc(e.target.value)}
-                    />
-                  </Row>
-                  <Row label="Land area (m²)">
-                    <input
-                      type="number"
-                      className="pc-input"
-                      placeholder="-"
-                      value={land}
-                      onChange={(e) => setLand(e.target.value)}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
-                  <Row label="Year built">
-                    <input
-                      type="number"
-                      className="pc-input"
-                      placeholder="e.g. 2005"
-                      value={yearBuilt}
-                      onChange={(e) => setYearBuilt(e.target.value)}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
-                </Section>
-              )}
+            {showSection("A") && (
+              <Section label="A" title="Property details" solo={isSolo}>
+                <Row label="Street address">
+                  <input
+                    type="text"
+                    className="pc-input pc-input--left"
+                    placeholder="e.g. 12 Palm St"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                  />
+                </Row>
+                <Row label="Property type">
+                  <select className="pc-select" value={propType} onChange={(e) => setPropType(e.target.value)}>
+                    <option>House</option>
+                    <option>Unit</option>
+                    <option>Townhouse</option>
+                    <option>Land</option>
+                  </select>
+                </Row>
+                <Row label="Bed / Bath / Car">
+                  <input
+                    type="text"
+                    className="pc-input pc-input--left"
+                    placeholder="3 / 2 / 1"
+                    value={bbc}
+                    onChange={(e) => setBbc(e.target.value)}
+                  />
+                </Row>
+                <Row label="Land area (m²)">
+                  <input
+                    type="number"
+                    className="pc-input"
+                    placeholder="-"
+                    value={land}
+                    onChange={(e) => setLand(e.target.value)}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+                <Row label="Year built">
+                  <input
+                    type="number"
+                    className="pc-input"
+                    placeholder="e.g. 2005"
+                    value={yearBuilt}
+                    onChange={(e) => setYearBuilt(e.target.value)}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+              </Section>
+            )}
 
-              {showSection("C") && (
-                <Section label="C" title="Finance">
-                  <Row label="Total acquisition (ref)">
-                    <Auto value={fmtD(totalAcq)} />
-                  </Row>
-                  <Row label="Loan amount ($)" sub="editable — can exceed purchase price">
-                    <input
-                      type="number"
-                      step={1000}
-                      className="pc-edit"
-                      value={numDisplay(loanAmt)}
-                      onChange={(e) => setLoanAmt(num(e.target.value))}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
-                  <div className={`pc-loan-note pc-loan-note--${loanNoteClass}`}>{loanNoteText}</div>
-                  <Row label="LVR — vs purchase price (%)">
-                    <Auto value={fmtP(lvr)} />
-                  </Row>
-                  <Row label="LVR — vs total acquisition (%)">
-                    <Auto value={fmtP(lvrTotal)} />
-                  </Row>
-                  <Row label="Cash required ($)">
-                    <Auto value={cashRequired >= 0 ? fmtD(cashRequired) : "$0 (loan covers all costs)"} />
-                  </Row>
-                  <Row label="Interest rate (p.a. %)">
-                    <input
-                      type="number"
-                      step={0.05}
-                      className="pc-input"
-                      value={numDisplay(interestRate)}
-                      onChange={(e) => setInterestRate(num(e.target.value))}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
-                  <Row label="Loan term (years)" sub="used for P&I calculation">
-                    <input
-                      type="number"
-                      min={1}
-                      max={40}
-                      className="pc-input"
-                      value={numDisplay(loanTerm)}
-                      onChange={(e) => setLoanTerm(num(e.target.value))}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
+            {showSection("B") && (
+              <Section label="B" title="Purchase costs" solo={isSolo}>
+                <Row label="Purchase price ($)">
+                  <input
+                    type="number"
+                    step={1000}
+                    className="pc-input"
+                    value={numDisplay(purchasePrice)}
+                    onChange={(e) => setPurchasePrice(num(e.target.value))}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+                <Row label="First home buyer?">
+                  <select className="pc-select" value={fhb} onChange={(e) => setFhb(e.target.value as FhbOption)}>
+                    <option value="N">No</option>
+                    <option value="metro">Yes — Metro/Peel</option>
+                    <option value="regional">Yes — Regional WA</option>
+                  </select>
+                </Row>
+                <Row label="Stamp duty — WA (auto)">
+                  <Auto value={fmtD(stampDuty)} />
+                </Row>
+                <div className="pc-stamp-note">{stampResult.note}</div>
+                <Row label="Legal / conveyancing ($)">
+                  <input
+                    type="number"
+                    className="pc-input"
+                    value={numDisplay(legalBuy)}
+                    onChange={(e) => setLegalBuy(num(e.target.value))}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+                <Row label="Building &amp; pest ($)">
+                  <input
+                    type="number"
+                    className="pc-input"
+                    value={numDisplay(buildPest)}
+                    onChange={(e) => setBuildPest(num(e.target.value))}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+                <Row label="LMI ($)">
+                  <input
+                    type="number"
+                    className="pc-input"
+                    value={numDisplay(lmi)}
+                    onChange={(e) => setLmi(num(e.target.value))}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+                <Row label="Buyers agent fee ($)">
+                  <input
+                    type="number"
+                    className="pc-input"
+                    value={numDisplay(agentFee)}
+                    onChange={(e) => setAgentFee(num(e.target.value))}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+                <Row label="Other costs ($)">
+                  <input
+                    type="number"
+                    className="pc-input"
+                    value={numDisplay(otherCosts)}
+                    onChange={(e) => setOtherCosts(num(e.target.value))}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+                <Row label="Total acquisition ($)">
+                  <div className="pc-total">{fmtD(totalAcq)}</div>
+                </Row>
+              </Section>
+            )}
 
-                  <div className="pc-row pc-row--toggle">
-                    <label className="pc-row__strong">Repayment type</label>
-                    <div className="pc-toggle-wrap">
-                      <button
-                        className={mode === "IO" ? "pc-toggle-active" : "pc-toggle-inactive"}
-                        onClick={() => setMode("IO")}
-                        type="button"
-                      >
-                        IO
-                      </button>
-                      <button
-                        className={mode === "PI" ? "pc-toggle-active" : "pc-toggle-inactive"}
-                        onClick={() => setMode("PI")}
-                        type="button"
-                      >
-                        P&amp;I
-                      </button>
-                      <button
-                        className={mode === "BOTH" ? "pc-toggle-active" : "pc-toggle-inactive"}
-                        onClick={() => setMode("BOTH")}
-                        type="button"
-                      >
-                        Both
-                      </button>
-                    </div>
+            {showSection("C") && (
+              <Section label="C" title="Finance" solo={isSolo}>
+                <Row label="Total acquisition (ref)">
+                  <Auto value={fmtD(totalAcq)} />
+                </Row>
+                <Row label="Loan amount ($)" sub="editable — can exceed purchase price">
+                  <input
+                    type="number"
+                    step={1000}
+                    className="pc-edit"
+                    value={numDisplay(loanAmt)}
+                    onChange={(e) => setLoanAmt(num(e.target.value))}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+                <div className={`pc-loan-note pc-loan-note--${loanNoteClass}`}>{loanNoteText}</div>
+                <Row label="LVR — vs purchase price (%)">
+                  <Auto value={fmtP(lvr)} />
+                </Row>
+                <Row label="LVR — vs total acquisition (%)">
+                  <Auto value={fmtP(lvrTotal)} />
+                </Row>
+                <Row label="Cash required ($)">
+                  <Auto value={cashRequired >= 0 ? fmtD(cashRequired) : "$0 (loan covers all costs)"} />
+                </Row>
+                <Row label="Interest rate (p.a. %)">
+                  <input
+                    type="number"
+                    step={0.05}
+                    className="pc-input"
+                    value={numDisplay(interestRate)}
+                    onChange={(e) => setInterestRate(num(e.target.value))}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+                <Row label="Loan term (years)" sub="used for P&I calculation">
+                  <input
+                    type="number"
+                    min={1}
+                    max={40}
+                    className="pc-input"
+                    value={numDisplay(loanTerm)}
+                    onChange={(e) => setLoanTerm(num(e.target.value))}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+
+                <div className="pc-row pc-row--toggle">
+                  <label className="pc-row__strong">Repayment type</label>
+                  <div className="pc-toggle-wrap">
+                    <button
+                      className={mode === "IO" ? "pc-toggle-active" : "pc-toggle-inactive"}
+                      onClick={() => setMode("IO")}
+                      type="button"
+                    >
+                      IO
+                    </button>
+                    <button
+                      className={mode === "PI" ? "pc-toggle-active" : "pc-toggle-inactive"}
+                      onClick={() => setMode("PI")}
+                      type="button"
+                    >
+                      P&amp;I
+                    </button>
+                    <button
+                      className={mode === "BOTH" ? "pc-toggle-active" : "pc-toggle-inactive"}
+                      onClick={() => setMode("BOTH")}
+                      type="button"
+                    >
+                      Both
+                    </button>
                   </div>
+                </div>
 
-                  {(mode === "IO" || mode === "BOTH") && (
-                    <div className="pc-repay-block">
-                      <div className="pc-repay-block-title">Interest only (IO)</div>
-                      <div className="pc-repay-row">
-                        <label>Monthly repayment ($)</label>
-                        <div className="pc-repay-val">{fmtD(ioMonthly)}</div>
-                      </div>
-                      <div className="pc-repay-row">
-                        <label>Annual repayment ($)</label>
-                        <div className="pc-repay-val">{fmtD(ioAnnual)}</div>
-                      </div>
-                      <div className="pc-repay-note">Principal unchanged — interest charged on full loan amount</div>
+                {(mode === "IO" || mode === "BOTH") && (
+                  <div className="pc-repay-block">
+                    <div className="pc-repay-block-title">Interest only (IO)</div>
+                    <div className="pc-repay-row">
+                      <label>Monthly repayment ($)</label>
+                      <div className="pc-repay-val">{fmtD(ioMonthly)}</div>
                     </div>
-                  )}
-
-                  {(mode === "PI" || mode === "BOTH") && (
-                    <div className="pc-repay-block">
-                      <div className="pc-repay-block-title">Principal &amp; interest (P&amp;I)</div>
-                      <div className="pc-repay-row">
-                        <label>Monthly repayment ($)</label>
-                        <div className="pc-repay-val">{fmtD(piMonthly)}</div>
-                      </div>
-                      <div className="pc-repay-row">
-                        <label>Annual repayment ($)</label>
-                        <div className="pc-repay-val">{fmtD(piAnnual)}</div>
-                      </div>
-                      <div className="pc-repay-note">Loan fully repaid over {loanTerm} years</div>
+                    <div className="pc-repay-row">
+                      <label>Annual repayment ($)</label>
+                      <div className="pc-repay-val">{fmtD(ioAnnual)}</div>
                     </div>
-                  )}
-                </Section>
-              )}
+                    <div className="pc-repay-note">Principal unchanged — interest charged on full loan amount</div>
+                  </div>
+                )}
 
-              {showSection("E") && (
-                <Section label="E" title="Operating expenses (annual)">
-                  <Row label="PM fee (%)">
-                    <input
-                      type="number"
-                      step={0.5}
-                      className="pc-input"
-                      value={numDisplay(pmPct)}
-                      onChange={(e) => setPmPct(num(e.target.value))}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
-                  <Row label="→ PM fee ($)">
-                    <Auto value={fmtD(pmFee)} />
-                  </Row>
-                  <Row label="Council rates ($)">
-                    <input
-                      type="number"
-                      className="pc-input"
-                      value={numDisplay(councilRates)}
-                      onChange={(e) => setCouncilRates(num(e.target.value))}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
-                  <Row label="Water rates ($)">
-                    <input
-                      type="number"
-                      className="pc-input"
-                      value={numDisplay(waterRates)}
-                      onChange={(e) => setWaterRates(num(e.target.value))}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
-                  <Row label="Landlord insurance ($)">
-                    <input
-                      type="number"
-                      className="pc-input"
-                      value={numDisplay(llInsurance)}
-                      onChange={(e) => setLlInsurance(num(e.target.value))}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
-                  <Row label="Maintenance ($)">
-                    <input
-                      type="number"
-                      className="pc-input"
-                      value={numDisplay(maintenance)}
-                      onChange={(e) => setMaintenance(num(e.target.value))}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
-                  <Row label="Building insurance ($)">
-                    <input
-                      type="number"
-                      className="pc-input"
-                      value={numDisplay(bldgInsurance)}
-                      onChange={(e) => setBldgInsurance(num(e.target.value))}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
-                  <Row label="Strata / body corp ($)">
-                    <input
-                      type="number"
-                      className="pc-input"
-                      value={numDisplay(strata)}
-                      onChange={(e) => setStrata(num(e.target.value))}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
-                  <Row label="Land tax ($)">
-                    <input
-                      type="number"
-                      className="pc-input"
-                      value={numDisplay(landTax)}
-                      onChange={(e) => setLandTax(num(e.target.value))}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
-                  <Row label="Accounting ($)">
-                    <input
-                      type="number"
-                      className="pc-input"
-                      value={numDisplay(accounting)}
-                      onChange={(e) => setAccounting(num(e.target.value))}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
-                  <Row label="Total expenses ($)">
-                    <div className="pc-total">{fmtD(totalExp)}</div>
-                  </Row>
-                </Section>
-              )}
-            </div>
+                {(mode === "PI" || mode === "BOTH") && (
+                  <div className="pc-repay-block">
+                    <div className="pc-repay-block-title">Principal &amp; interest (P&amp;I)</div>
+                    <div className="pc-repay-row">
+                      <label>Monthly repayment ($)</label>
+                      <div className="pc-repay-val">{fmtD(piMonthly)}</div>
+                    </div>
+                    <div className="pc-repay-row">
+                      <label>Annual repayment ($)</label>
+                      <div className="pc-repay-val">{fmtD(piAnnual)}</div>
+                    </div>
+                    <div className="pc-repay-note">Loan fully repaid over {loanTerm} years</div>
+                  </div>
+                )}
+              </Section>
+            )}
 
-            <div className="pc-col pc-col-right">
-              {showSection("B") && (
-                <Section label="B" title="Purchase costs">
-                  <Row label="Purchase price ($)">
-                    <input
-                      type="number"
-                      step={1000}
-                      className="pc-input"
-                      value={numDisplay(purchasePrice)}
-                      onChange={(e) => setPurchasePrice(num(e.target.value))}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
-                  <Row label="First home buyer?">
-                    <select className="pc-select" value={fhb} onChange={(e) => setFhb(e.target.value as FhbOption)}>
-                      <option value="N">No</option>
-                      <option value="metro">Yes — Metro/Peel</option>
-                      <option value="regional">Yes — Regional WA</option>
-                    </select>
-                  </Row>
-                  <Row label="Stamp duty — WA (auto)">
-                    <Auto value={fmtD(stampDuty)} />
-                  </Row>
-                  <div className="pc-stamp-note">{stampResult.note}</div>
-                  <Row label="Legal / conveyancing ($)">
-                    <input
-                      type="number"
-                      className="pc-input"
-                      value={numDisplay(legalBuy)}
-                      onChange={(e) => setLegalBuy(num(e.target.value))}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
-                  <Row label="Building &amp; pest ($)">
-                    <input
-                      type="number"
-                      className="pc-input"
-                      value={numDisplay(buildPest)}
-                      onChange={(e) => setBuildPest(num(e.target.value))}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
-                  <Row label="LMI ($)">
-                    <input
-                      type="number"
-                      className="pc-input"
-                      value={numDisplay(lmi)}
-                      onChange={(e) => setLmi(num(e.target.value))}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
-                  <Row label="Buyers agent fee ($)">
-                    <input
-                      type="number"
-                      className="pc-input"
-                      value={numDisplay(agentFee)}
-                      onChange={(e) => setAgentFee(num(e.target.value))}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
-                  <Row label="Other costs ($)">
-                    <input
-                      type="number"
-                      className="pc-input"
-                      value={numDisplay(otherCosts)}
-                      onChange={(e) => setOtherCosts(num(e.target.value))}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
-                  <Row label="Total acquisition ($)">
-                    <div className="pc-total">{fmtD(totalAcq)}</div>
-                  </Row>
-                </Section>
-              )}
+            {showSection("D") && (
+              <Section label="D" title="Rental income" solo={isSolo}>
+                <Row label="Weekly rent ($)">
+                  <input
+                    type="number"
+                    className="pc-input"
+                    value={numDisplay(weeklyRent)}
+                    onChange={(e) => setWeeklyRent(num(e.target.value))}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+                <Row label="Annual gross rent ($)">
+                  <Auto value={fmtD(annualRent)} />
+                </Row>
+                <Row label="Vacancy rate (%)">
+                  <input
+                    type="number"
+                    min={0}
+                    max={100}
+                    step={0.5}
+                    className="pc-input"
+                    value={numDisplay(vacancyRate)}
+                    onChange={(e) => setVacancyRate(num(e.target.value))}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+                <Row label="Effective annual rent ($)">
+                  <Auto value={fmtD(effectiveRent)} />
+                </Row>
+              </Section>
+            )}
 
-              {showSection("D") && (
-                <Section label="D" title="Rental income">
-                  <Row label="Weekly rent ($)">
-                    <input
-                      type="number"
-                      className="pc-input"
-                      value={numDisplay(weeklyRent)}
-                      onChange={(e) => setWeeklyRent(num(e.target.value))}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
-                  <Row label="Annual gross rent ($)">
-                    <Auto value={fmtD(annualRent)} />
-                  </Row>
-                  <Row label="Vacancy rate (%)">
-                    <input
-                      type="number"
-                      min={0}
-                      max={100}
-                      step={0.5}
-                      className="pc-input"
-                      value={numDisplay(vacancyRate)}
-                      onChange={(e) => setVacancyRate(num(e.target.value))}
-                      onFocus={selectOnFocus}
-                    />
-                  </Row>
-                  <Row label="Effective annual rent ($)">
-                    <Auto value={fmtD(effectiveRent)} />
-                  </Row>
-                </Section>
-              )}
+            {showSection("E") && (
+              <Section label="E" title="Operating expenses (annual)" solo={isSolo}>
+                <Row label="PM fee (%)">
+                  <input
+                    type="number"
+                    step={0.5}
+                    className="pc-input"
+                    value={numDisplay(pmPct)}
+                    onChange={(e) => setPmPct(num(e.target.value))}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+                <Row label="→ PM fee ($)">
+                  <Auto value={fmtD(pmFee)} />
+                </Row>
+                <Row label="Council rates ($)">
+                  <input
+                    type="number"
+                    className="pc-input"
+                    value={numDisplay(councilRates)}
+                    onChange={(e) => setCouncilRates(num(e.target.value))}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+                <Row label="Water rates ($)">
+                  <input
+                    type="number"
+                    className="pc-input"
+                    value={numDisplay(waterRates)}
+                    onChange={(e) => setWaterRates(num(e.target.value))}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+                <Row label="Landlord insurance ($)">
+                  <input
+                    type="number"
+                    className="pc-input"
+                    value={numDisplay(llInsurance)}
+                    onChange={(e) => setLlInsurance(num(e.target.value))}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+                <Row label="Maintenance ($)">
+                  <input
+                    type="number"
+                    className="pc-input"
+                    value={numDisplay(maintenance)}
+                    onChange={(e) => setMaintenance(num(e.target.value))}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+                <Row label="Building insurance ($)">
+                  <input
+                    type="number"
+                    className="pc-input"
+                    value={numDisplay(bldgInsurance)}
+                    onChange={(e) => setBldgInsurance(num(e.target.value))}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+                <Row label="Strata / body corp ($)">
+                  <input
+                    type="number"
+                    className="pc-input"
+                    value={numDisplay(strata)}
+                    onChange={(e) => setStrata(num(e.target.value))}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+                <Row label="Land tax ($)">
+                  <input
+                    type="number"
+                    className="pc-input"
+                    value={numDisplay(landTax)}
+                    onChange={(e) => setLandTax(num(e.target.value))}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+                <Row label="Accounting ($)">
+                  <input
+                    type="number"
+                    className="pc-input"
+                    value={numDisplay(accounting)}
+                    onChange={(e) => setAccounting(num(e.target.value))}
+                    onFocus={selectOnFocus}
+                  />
+                </Row>
+                <Row label="Total expenses ($)">
+                  <div className="pc-total">{fmtD(totalExp)}</div>
+                </Row>
+              </Section>
+            )}
 
-              {showSection("F") && (
-                <Section label="F" title="Yields & returns">
-                  <Row label="Gross yield (%)">
-                    <Auto value={fmtP(grossYield)} />
-                  </Row>
-                  <Row label="Net yield (%)">
-                    <Auto value={fmtP(netYield)} />
-                  </Row>
-                  <Row label="Net operating income ($)">
-                    <Auto value={fmtD(noi)} />
-                  </Row>
-                  <Row label="Annual cash flow" sub={cfLabel}>
-                    <Auto value={fmtD(annualCF)} />
-                  </Row>
-                  <Row label="Weekly cash flow ($)">
-                    <Auto value={fmtD(weeklyCF)} />
-                  </Row>
-                  <Row label="Cash-on-cash return (%)">
-                    <Auto value={fmtP(cocReturn)} />
-                  </Row>
-                </Section>
-              )}
-            </div>
+            {showSection("F") && (
+              <Section label="F" title="Yields & returns" solo={isSolo}>
+                <Row label="Gross yield (%)">
+                  <Auto value={fmtP(grossYield)} />
+                </Row>
+                <Row label="Net yield (%)">
+                  <Auto value={fmtP(netYield)} />
+                </Row>
+                <Row label="Net operating income ($)">
+                  <Auto value={fmtD(noi)} />
+                </Row>
+                <Row label="Annual cash flow" sub={cfLabel}>
+                  <Auto value={fmtD(annualCF)} />
+                </Row>
+                <Row label="Weekly cash flow ($)">
+                  <Auto value={fmtD(weeklyCF)} />
+                </Row>
+                <Row label="Cash-on-cash return (%)">
+                  <Auto value={fmtP(cocReturn)} />
+                </Row>
+              </Section>
+            )}
           </div>
 
           <div className="pc-results-panel">
