@@ -254,31 +254,33 @@
   }
 }
 
-/* ── Calculator cards: two independent flex columns (masonry-style) ──────
+/* ── Calculator cards: CSS grid, 2 columns × 3 rows ──────────────────────
    Aligned to the shared container (same left/right edge as the logo row).
 
-   Why flex-columns instead of a 12-col CSS grid: in a grid, A|B share one
-   "row" and C|D share the next — so the row height is always the TALLER
-   of the two cards, which leaves a white gap under the shorter card
-   before the next row starts. Splitting into two independent flex
-   columns (left: A, C, E — right: B, D, F) means each column stacks
-   purely by its own cards' heights, so the next card always starts
-   directly under the previous one in that column — no shared-row gap.
+   This used to be two independent flex columns ("masonry-style"), where
+   each column stacked purely by its own cards' heights — which meant a
+   short card in one column never matched the height of its neighbour in
+   the other column (cards "in the same row" could be very different
+   heights). Switched to a real CSS grid instead:
 
-   Reading order is unchanged: A, B, C, D, E, F (left col top→bottom is
-   A→C→E, right col top→bottom is B→D→F — same visual pairing as before:
-   row 1 = A/B, row 2 = C/D, row 3 = E/F).
+     row 1: A | D
+     row 2: B | E
+     row 3: C | F
 
-   .pc-results-panel sits below both columns, full width, as before.
+   because a grid row's height is automatically the TALLEST of its cells,
+   and grid's default `align-items: stretch` makes every cell in that row
+   fill that height — so A/D, B/E and C/F now always match.
 
-   Two columns are used ONLY on real desktop widths (>1024px). Below
-   that — tablets AND phones alike — `.pc-col` collapses with
-   `display: contents` so its panels become direct flex items of
-   `.pc-cols`, which switches to a single vertical column. This is what
-   keeps card width IDENTICAL between tablet and phone — both simply get
-   one full-width column; only desktop gets the two-column split. The
-   panels re-flow into the correct A→B→C→D→E→F order purely via flex
-   `order` on `.pc-panel--X`. ────────── */
+   Placement is driven purely by each panel's `pc-panel--X` class (below),
+   so panels can be direct children of `.pc-cols` in any DOM order — DOM
+   order here is kept as A,B,C,D,E,F for a sane reading/print order.
+
+   Single-filter mode: the one visible panel gets `pc-panel--solo` (see
+   TSX), which makes it span the full grid width instead of being pinned
+   to one column — no more "empty column" problem.
+
+   Below 1024px the grid collapses to a single column and panels simply
+   flow in DOM order (A→B→C→D→E→F) — see the media query further down. ── */
 .pc-body {
   max-width: var(--pc-container-max);
   margin: 0 auto;
@@ -289,17 +291,10 @@
 }
 
 .pc-cols {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
-  align-items: flex-start;
-}
-
-.pc-col {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  align-items: stretch;
 }
 
 .pc-panel {
@@ -309,9 +304,29 @@
   border: 2px solid var(--pc-card-border);
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.4s ease;
   width: 100%;
+  /* Stack header + body vertically and let the body grow so the card's
+     visible box always fills whatever height the grid row stretched it
+     to (rather than just leaving whitespace at the bottom). */
+  display: flex;
+  flex-direction: column;
 }
 .pc-panel:hover {
   box-shadow: 0 10px 22px rgba(105, 228, 220, 0.3);
+}
+
+/* Explicit grid placement — this is what makes A↔D, B↔E, C↔F share a row. */
+.pc-panel--A { grid-column: 1; grid-row: 1; }
+.pc-panel--B { grid-column: 1; grid-row: 2; }
+.pc-panel--C { grid-column: 1; grid-row: 3; }
+.pc-panel--D { grid-column: 2; grid-row: 1; }
+.pc-panel--E { grid-column: 2; grid-row: 2; }
+.pc-panel--F { grid-column: 2; grid-row: 3; }
+
+/* Single-filter mode: the lone visible panel spans full width instead of
+   sitting in one column with an empty column next to it. */
+.pc-panel--solo {
+  grid-column: 1 / -1;
+  grid-row: auto;
 }
 
 .pc-ph {
@@ -335,6 +350,7 @@
   gap: 7px;
   border: none;
   margin: 0;
+  flex-shrink: 0;
 }
 .pc-ph-left {
   display: flex;
@@ -354,6 +370,7 @@
   font-family: "SohneBuch";
   font-size: 13px;
   animation: pcPanelReveal 0.25s ease both;
+  flex: 1;
 }
 
 @keyframes pcPanelReveal {
@@ -795,28 +812,34 @@
 }
 
 /* ── Tablet AND phone: single column, correct A→B→C→D→E→F order ──────────
-   `.pc-col` collapses via `display: contents` — this removes its own box
-   from layout entirely, so its children (the panels) become direct flex
-   items of `.pc-cols` instead. `.pc-cols` switches to a single vertical
-   column, and `order` on each `.pc-panel--X` puts them back into plain
-   reading order (A,B,C,D,E,F) even though in the markup they're grouped
-   as A,C,E then B,D,F.
+   The grid collapses to one column and every panel's explicit placement
+   is reset to `grid-column: 1; grid-row: auto;` — this makes them flow
+   in plain DOM order, which is already A,B,C,D,E,F in the TSX, so no
+   `order` juggling is needed here.
 
    Breakpoint raised to 1024px (was 860px) so real tablets (iPad portrait
    768px AND landscape 1024px) get the exact same single, full-width
    column as phones — this is what keeps card width IDENTICAL across
    tablet and mobile. Only true desktop widths (>1024px) keep the
-   two-column masonry layout.
+   two-column grid layout (and therefore the row-height matching).
 
    Row inputs also switch to full width here (moved up from the old
    580px-only rule) so the fixed 140px input box never gets squeezed
    against a shrinking label on tablet widths. ───────────────────────── */
 @media (max-width: 1024px) {
   .pc-cols {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
-  .pc-col {
-    display: contents;
+
+  .pc-panel--A,
+  .pc-panel--B,
+  .pc-panel--C,
+  .pc-panel--D,
+  .pc-panel--E,
+  .pc-panel--F,
+  .pc-panel--solo {
+    grid-column: 1;
+    grid-row: auto;
   }
 
   .pc-kpi-grid {
@@ -828,13 +851,6 @@
   .pc-footer-panels {
     grid-template-columns: 1fr;
   }
-
-  .pc-panel--A { order: 1; }
-  .pc-panel--B { order: 2; }
-  .pc-panel--C { order: 3; }
-  .pc-panel--D { order: 4; }
-  .pc-panel--E { order: 5; }
-  .pc-panel--F { order: 6; }
 
   .pc-row {
     grid-template-columns: 1fr;
@@ -993,9 +1009,10 @@
    regardless of the outer layout's naming. GetInTouch/Footer/filter-bar/
    export-bar/gate-notice all stay hidden via .pc-no-print, with a boosted
    selector specificity so it reliably wins over the "#root > *" reset.
-   `.pc-cols` also collapses to a plain block so print keeps everything in
-   simple A→B→C→D→E→F reading order (same trick as the tablet/mobile
-   breakpoint, just always-on for print regardless of screen width). ────── */
+   `.pc-cols` collapses to a plain block for print so everything reads in
+   simple A→B→C→D→E→F order regardless of the on-screen grid placement
+   (DOM order is already A,B,C,D,E,F, so a plain block flow is enough —
+   no need to re-apply the grid placement rules here). ────────────────── */
 @media print {
   @page {
     margin: 14mm;
@@ -1059,16 +1076,16 @@
   .pc-cols {
     display: block !important;
   }
-  .pc-col {
-    display: contents !important;
+  .pc-panel--A,
+  .pc-panel--B,
+  .pc-panel--C,
+  .pc-panel--D,
+  .pc-panel--E,
+  .pc-panel--F,
+  .pc-panel--solo {
+    grid-column: auto;
+    grid-row: auto;
   }
-
-  .pc-panel--A { order: 1; }
-  .pc-panel--B { order: 2; }
-  .pc-panel--C { order: 3; }
-  .pc-panel--D { order: 4; }
-  .pc-panel--E { order: 5; }
-  .pc-panel--F { order: 6; }
 
   .pc-panel,
   .pc-results-panel,

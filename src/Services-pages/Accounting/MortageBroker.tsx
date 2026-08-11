@@ -4,6 +4,7 @@ import GetInTouch from "../../components/GetInTouch/GetInTouch";
 import AboutServiceImg from "../../assets/buyer-advocate-perth-australia-property-search.jpg";
 import AboutSection from "../../components/AboutSection";
 import "./Accounting.css";
+import SEO from "../../components/SEO";
 
 export default function Accounting() {
   useEffect(() => {
@@ -11,6 +12,12 @@ export default function Accounting() {
   }, []);
 
   return (
+    <>
+    
+    <SEO
+  title="Mortgage Broker Perth | Home Loan Experts | Find & Sign"
+  description="Find & Sign connects you with trusted mortgage broker services in Perth. Get expert guidance on home loans, financing options, and securing the right mortgage for your property goals."
+/>
     <div
       style={{
         background: "var(--bg-primary)",
@@ -65,5 +72,6 @@ export default function Accounting() {
 
       <SimpleFooter />
     </div>
+    </>
   );
 }

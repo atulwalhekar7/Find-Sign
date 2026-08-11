@@ -7,6 +7,7 @@ import Image5 from "../../components/Image5/Image5";
 import Image6 from "../../components/Image6/Image6";
 import { useTheme } from "../../components/ThemeContext";
 import "./ClientOutcomes.css";
+import SEO from "../../components/SEO";
 
 import bannerImg from "../../assets/buyer-advocate-perth-australia-client-outcomes.jpg";
 import AboutClientOutcomesImg from "../../assets/buyer-advocate-perth-australia-client-outcomes-property.jpg";
@@ -467,6 +468,11 @@ export default function ClientOutcomes() {
 
   return (
     <>
+
+    <SEO
+  title="Client Outcomes | Buyer Advocate Perth Success Stories | Find & Sign"
+  description="Explore real client outcomes achieved by Find & Sign Buyer Advocate in Perth. Discover successful property purchases, investment results, and how expert buyer advocacy helps clients secure the right properties."
+/>
       <div style={{ backgroundColor: t.pageBg, fontFamily: "Sohne, sans-serif", transition: "background 0.3s ease" }}>
 
         {/* ══ HERO ══ */}

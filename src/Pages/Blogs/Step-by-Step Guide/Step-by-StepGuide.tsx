@@ -11,7 +11,7 @@ export default function FindAndSignBlog() {
   const [isBannerLoading, setIsBannerLoading] = useState(true);
 
   useEffect(() => {
-    document.title = "Perth Buyers Agent & Advocate WA: Top Agents in Perth";
+    document.title = "Find & Sign a Buyer Advocate in Perth: Step-by-Step Guide";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute(
@@ -31,6 +31,8 @@ export default function FindAndSignBlog() {
   }, []);
 
   return (
+    <>
+   
     <div>
 
       {/* ── Hero ── */}
@@ -64,7 +66,7 @@ export default function FindAndSignBlog() {
           <h2 tabIndex={0}>What Does a Buyer's Agent in Perth Actually Do?</h2>
           <div className="content-body">
             <p tabIndex={0}>
-              Think of a Perth buyer's agent as your personal talent scout and negotiator. While a selling agent works for the seller to get the highest price, a buyer's advocate works exclusively for you.
+              Think of a <a href="https://findandsignba.com.au/" style={{ color: "var(--primary-color, #0066cc)", textDecoration: "underline" }}>Perth Buyer's Agent</a>  as your personal talent scout and negotiator. While a selling agent works for the seller to get the highest price, a buyer's advocate works exclusively for you.
             </p>
             <p tabIndex={0}>
               From the initial search to the moment you collect the keys, they handle the entire process:
@@ -111,7 +113,7 @@ export default function FindAndSignBlog() {
               Off-market properties are homes available for sale that aren't advertised to the general public. Sellers often prefer this approach for privacy.
             </p>
             <p tabIndex={0}>
-              Because a buyer's agent in Perth has deep industry ties, they get "first look" at these opportunities. This allows you to purchase without competing against hundreds of other buyers—helping you secure the best possible outcome.
+              Because a <a href="https://findandsignba.com.au/" style={{ color: "var(--primary-color, #0066cc)", textDecoration: "underline" }}>buyer's agent in Perth</a> has deep industry ties, they get "first look" at these opportunities. This allows you to purchase without competing against hundreds of other buyers—helping you secure the best possible outcome.
             </p>
             <ul>
               <li tabIndex={0}>Exclusive access before public listing</li>
@@ -199,5 +201,6 @@ export default function FindAndSignBlog() {
       <SimpleGetInTouch />
       <SimpleFooter />
     </div>
+    </>
   );
 }

@@ -8,6 +8,7 @@ import AboutServiceImg from "../../assets/perth-buyer-advocate-services-australi
 import Image4 from "../../components/Image4/Image4";
 import { useTheme } from "../../components/ThemeContext";
 import "./Services.css";
+import SEO from "../../components/SEO";
 
 // ── Theme ─────────────────────────────────────────────────────────────────────
 const THEMES = {
@@ -334,6 +335,13 @@ export default function Services() {
   const body8 = "Whether you are selling before you buy or planning an exit strategy on an investment, having a trusted sales agent in your network means you are never starting from scratch when it matters most.";
 
   return (
+
+    <>
+
+      <SEO
+        title="Buyer Advocate Perth Services | Property Search & Negotiation | Find & Sign"
+        description="Find & Sign provides professional Buyer Advocate services in Perth, helping buyers with property search, due diligence, negotiation, and expert advice to make confident property decisions."
+      />
     <div style={{ color: t.subTextColor, background: t.pageBg, margin: 0, padding: 0, transition: "background 0.3s ease, color 0.3s ease" }}>
 
       {/* ── SECTION 1: Hero ─────────────────────────────────────────────── */}
@@ -425,7 +433,7 @@ letterSpacing: "-0.02em",
         imageSrc={AboutServiceImg}
  imageAlt="Perth Buyer Advocate Australia helping clients secure residential and investment properties"
   imageTitle="Buyer Advocate Perth Australia | Find and Sign"
-  heading="About Buyer Advocacy"
+  heading="About Services"
   subheading="Expert guidance for every step of your property journey."        body1="Find and Sign Buyer Advocate is a boutique buyers agency based in Perth, representing buyers exclusively, whether you are purchasing the home you want to live in or building the portfolio you have always planned for.
 We take on a select number of clients at any one time. Not because we have to, but because we believe a purchase of this size deserves our full attention."
         body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
@@ -566,7 +574,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
           {/* Row 1: 3 affiliated cards */}
           <div className="grid-12" style={{ marginBottom: "86px" }}>
             <div className="col-4 col-md-6 col-sm-12">
-              <OtherServiceCard title="Mortgage Broker" body={body3} hasButton delay={0} onBookCall={() => navigate("/services/accounting")} theme={theme} />
+              <OtherServiceCard title="Mortgage Broker" body={body3} hasButton delay={0} onBookCall={() => navigate("/services/mortgage-broker")} theme={theme} />
             </div>
             <div className="col-4 col-md-6 col-sm-12">
               <OtherServiceCard title="Settlement Agent" body={body4} hasButton delay={0.1} onBookCall={handleBookCall} theme={theme} />
@@ -646,5 +654,6 @@ From the first conversation to settlement and beyond, we are in your corner. You
       <SimpleFooter />
 
     </div>
+    </>
   );
 }

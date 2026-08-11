@@ -126,7 +126,7 @@ export default function Navbar() {
           <NavLink to="/" style={{ display: "flex", alignItems: "center" }}>
             <img
               src={logo}
-              alt="Find & Sign Buyer Advocate Logo"
+              alt="Find & Sign Perth Buyer Advocate Logo"
               className="nav-logo"
             />
           </NavLink>

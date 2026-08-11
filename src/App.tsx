@@ -13,6 +13,7 @@ import BestSuburbsPerthBlog from "./Pages/Blogs/BestSuburbsPerthBlog/BestSuburbs
 import StepbyStepGuideBlog from "./Pages/Blogs/Step-by-Step Guide/Step-by-StepGuide";
 import FindTrustworthyBuyers from "./Pages/Blogs/FindTrustworthyBuyers/FindTrustworthyBuyers";
 import PerthBuyerAdvocate from "./Pages/Blogs/PerthBuyerAgentBlog/PerthBuyerAgent";
+import ChooseRightBuyer from "./Pages/Blogs/ChooseRightBuyer/ChooseRightBuyer";
 
 import TermsAndConditions from "./Pages/TermsAndConditions/TermsAndConditions";
 import FindAndSignBuyerAdvocatePage from "./Pages/Find-and-sign-buyer-advocate/Find-and-sign-buyer-advocate";
@@ -25,7 +26,7 @@ import SettlementAgent    from "./Services-pages/SettlementAgent/SettlementAgent
 import BuildingInspection from "./Services-pages/BuildingInspection/BuildingInspection";
 import SalesAgent         from "./Services-pages/SalesAgent/SalesAgent";
 import QuantitySurveyor   from "./Services-pages/QuantitySurveyor/QuantitySurveyor";
-import Accounting         from "./Services-pages/Accounting/Accounting";
+import MortageBroker         from "./Services-pages/Accounting/MortageBroker";
 import PrivacyPolicy from "./Pages/Privacy-Policy/Privacy-Policy";
 import "./index.css";
 
@@ -58,6 +59,7 @@ function App() {
             <Route path="/blog/perth-buyers-agent-advocate-wa" element={<StepbyStepGuideBlog />} />
             <Route path="/blog/find-trustworthy-buyers" element={<FindTrustworthyBuyers />} />
             <Route path="/blog/perth-buyers-advocate" element={<PerthBuyerAdvocate />} /> 
+            <Route path="/blog/how-to-choose-right-buyers-agent-perth" element={<ChooseRightBuyer />} />
 
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
@@ -70,7 +72,7 @@ function App() {
             <Route path="/services/building-inspection" element={<BuildingInspection />}  />
             <Route path="/services/sales-agent"         element={<SalesAgent />}          />
             <Route path="/services/quantity-surveyor"   element={<QuantitySurveyor />}    />
-            <Route path="/services/accounting"          element={<Accounting />}          />
+            <Route path="/services/mortgage-broker"     element={<MortageBroker />}       />
 
             {/* Buyer Advocate (link page) */}
           

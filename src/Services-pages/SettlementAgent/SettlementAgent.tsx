@@ -5,6 +5,7 @@ import GetInTouch from "../../components/GetInTouch/GetInTouch";
 import AboutServiceImg from "../../assets/buyer-advocate-perth-australia-property-search.jpg";
 import AboutSection from "../../components/AboutSection";
 import "./SettlementAgent.css";
+import SEO from "../../components/SEO";
 
 export default function SettlementAgent() {
   useEffect(() => {
@@ -12,6 +13,11 @@ export default function SettlementAgent() {
   }, []);
 
   return (
+    <>
+    <SEO
+  title="Settlement Agent Perth | Property Settlement Services | Find & Sign"
+  description="Find & Sign provides trusted settlement agent services in Perth to help buyers complete property transactions smoothly. Get expert support with contracts, paperwork, and settlement processes."
+/>
     <div style={{ background: "#fff", margin: 0, padding: 0, color: "#111" }}>
 
       {/* ── Hero ── */}
@@ -59,9 +65,9 @@ export default function SettlementAgent() {
       {/* ── About ── */}
      <AboutSection
         imageSrc={AboutServiceImg}
-        imageAlt="Perth mortgage broker helping home buyers secure the right finance solution in Australia"
-  imageTitle="Mortgage Broker Perth Australia | Find and Sign"
-  heading="About Mortgage Broker"
+        imageAlt="Perth settlement agent helping home buyers navigate the property transfer process in Australia"
+  imageTitle="Settlement Agent Perth Australia | Find and Sign"
+  heading="About Settlement Agent"
   subheading="Expert guidance for every step of your property journey."
         body1="A settlement agent, also known as a conveyancer, is the professional responsible for managing the legal transfer of a property from the seller to you. They prepare and review all necessary documentation, liaise with the seller's representatives, coordinate with your lender, and ensure every condition of the contract is met before settlement day. It is a role that requires precision and attention to detail, and the right settlement agent ensures the entire process moves smoothly, on time, and without complication. This is not a step to cut corners on."
 //         body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
@@ -71,5 +77,6 @@ export default function SettlementAgent() {
       <GetInTouch initialService="Settlement Agent" showService={true} />
       <SimpleFooter />
     </div>
+    </>
   );
 }

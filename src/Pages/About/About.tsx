@@ -6,7 +6,7 @@ import SimpleGetInTouch from "../../components/GetInTouch/GetInTouch";
 import SimpleFooter from "../../components/SimpleFooter";
 import OurProcess from "../../components/OurProcess/OurProcess";
 import Banner from "../../assets/find-sign-buyer-advocates-perth.jpg";
-import AboutUsBanner from "../../assets/niki-nikrani-buyer-advocate-perth-australia.png";
+import AboutUsBanner from "../../assets/niki-nakrani-buyer-advocate-perth-australia.png";
 import Bec from "../../assets/Rebecca-buyers-agent-australia-find-and-sign.png";
 import niki from "../../assets/niki-nakrani-buyers-agent-australia-find-and-sign.png";
 import "./About.css";
@@ -17,6 +17,7 @@ import igIcon from "../../assets/icon/Instagram.svg";
 import liIcon from "../../assets/icon/LinkedIn.svg";
 import tiIcon from "../../assets/icon/Tiktok.svg";
 import goIcon from "../../assets/icon/Google.svg";
+import SEO from "../../components/SEO";
 
 const THEMES = {
   dark: {
@@ -88,6 +89,12 @@ export default function About() {
   };
 
   return (
+    <>
+
+     <SEO
+      title="About Us | Buyer Advocate Perth | Find & Sign"
+      description="Learn about Find & Sign Buyer Advocate, a trusted Perth Buyer Advocate helping home buyers and property investors secure the right property with expert advice and negotiation."
+         />
     <div style={{ background: t.pageBg, transition: "background 0.3s ease", width: "100%" }}>
 
       {/* SECTION 1 — Hero Banner */}
@@ -95,7 +102,7 @@ export default function About() {
         <img
           src={Banner}
           alt="Perth Buyer Advocate Niki Nakrani helping home buyers in Perth, Western Australia."
-          title="About Find and Sign | Buyer Advocate Australia"
+          title="About Find and Sign | Perth Buyer Advocate Australia"
           loading="lazy"
           width="1920"
           height="800"
@@ -250,7 +257,7 @@ Find & Sign we find with confidence you sign with certainty."
                   <img
                     src={niki}
                     alt="Perth Buyer Advocate Niki Nakrani helping home buyers in Perth, Western Australia."
-                    title="Niki Nakrani | Buyers Agent Australia Founder"
+                    title="Niki Nakrani | Perth Buyers Agent Australia Founder"
                     loading="lazy"
                     width="142"
                     height="174"
@@ -313,7 +320,7 @@ Find & Sign we find with confidence you sign with certainty."
                 <div className="team-img-wrap" style={{ width: "142px", height: "174px", minWidth: "142px", borderRadius: "20px", overflow: "hidden", flexShrink: 0, background: "#dcdcdc" }}>
                   <img
                     src={Bec}
-                    alt="Rebecca Client Operations Manager at Find and Sign Buyers Agent Australia"
+                    alt="Rebecca Client Operations Manager at Find and Sign Perth Buyers Agent Australia"
                     title="Rebecca | Client Operations Manager"
                     loading="lazy"
                     width="142"
@@ -362,5 +369,6 @@ Find & Sign we find with confidence you sign with certainty."
       <SimpleGetInTouch />
       <SimpleFooter />
     </div>
+    </>
   );
 }

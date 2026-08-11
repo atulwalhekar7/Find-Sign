@@ -6,12 +6,12 @@ import logo1 from "../../assets/find-sign-brown-logo.png";
 
 import id1 from '../../assets/benefits-of-using-a-buyers-agent-perth.jpg';
 import id2 from '../../assets/buyer-advocate-agent-perth.png';
-import id3 from '../../assets/niki-nikrani-buyer-advocate-perth-australia.png';
+import id3 from '../../assets/niki-nakrani-buyer-advocate-perth-australia.png';
 import id4 from '../../assets/Australia-Find-And-Sign-About-Us.jpg';
 import id5 from '../../assets/find-sign-buyer-advocates-perth.jpg';
 import id6 from '../../assets/what-is-a-buyers-agent-perth.jpg';
 import id7 from '../../assets/best-perth-suburbs-for-property-investment.png';
-import id8 from '../../assets/niki-nikrani-buyer-advocate-perth-australia.jpg';
+import id8 from '../../assets/niki-nakrani-buyer-advocate-perth-australia.jpg';
 import shareIcon from '../../assets/share.png';
 
 

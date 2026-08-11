@@ -6,6 +6,8 @@ import AboutSection from "../../components/AboutSection";
 import Image7 from "../../components/Image7/Image7";
 import { useTheme } from "../../components/ThemeContext";
 import "./Insights.css";
+import SEO from "../../components/SEO";
+
 
 import aboutInsightsImg from "../../assets/perth-buyer-advocate-property-insights.jpg";
 import bannerImg from "../../assets/buyer-advocate-perth-australia-agent-property.jpg";
@@ -14,6 +16,7 @@ import Blog2 from "../../assets/buyer-agent-perth-australia-find-and-sign.jpg";
 import Blog3 from "../../assets/find-and-sign-buyer-advocate-blog3.png";
 import Blog4 from "../../assets/juneBlog.jpeg";
 import Blog5 from "../../assets/Blog5.jpg";
+import Blog6 from "../../assets/Blog6.jpeg";
 
 // ── Theme ─────────────────────────────────────────────────────────────────────
 const THEMES = {
@@ -51,6 +54,20 @@ const THEMES = {
 
 // ── Blog posts data ───────────────────────────────────────────────────────────
 const blogPosts = [
+  {
+  title: "How to Choose the Right Buyer’s Agent in Perth: 10 Questions Every Buyer Should Ask",
+  date: "01 August 2026",
+  description:
+    "Learn how to choose the right buyer’s agent in Perth with this complete guide. Discover the key questions to ask, compare services, and find the best buyer advocate in Perth to help you buy with confidence.",
+  image: Blog6,
+  imageAlt:
+    "Professional buyer's agent in Perth discussing property options with home buyers",
+  imageTitle:
+    "How to Choose the Right Buyer’s Agent in Perth | Find & Sign",
+  imageCaption:
+    "A trusted buyer's agent in Perth helping clients compare properties, negotiate confidently, and make informed purchasing decisions in the Perth property market.",
+  path: "/blog/how-to-choose-right-buyers-agent-perth",
+},
  {
   title: "What Does a Buyer Agent in Perth Actually Do? (A Simple Guide)",
   date: "01 July 2026",
@@ -214,6 +231,12 @@ export default function Insights() {
   }, []);
 
   return (
+    <>
+    
+    <SEO
+  title="Property Insights Perth | Buyer Advocate Tips & Market Updates | Find & Sign"
+  description="Explore expert property insights, market updates, buyer tips, and strategies from Find & Sign Buyer Advocate. Stay informed to make smarter property decisions in Perth."
+/>
     <div
       className="insights-page"
       style={{ backgroundColor: t.pageBg }}
@@ -288,5 +311,7 @@ export default function Insights() {
       <SimpleFooter />
 
     </div>
+
+    </>
   );
 }
