@@ -514,7 +514,7 @@ export default function ClientOutcomes() {
             animation: "heroFadeIn 0.8s ease both",
           }}>
             <h1 className="hero-h1" tabIndex={0}>
-              Client Outcomes
+Successful Property Outcomes with a Trusted Perth Buyer Advocate
             </h1>
           </div>
         </section>
@@ -526,8 +526,11 @@ export default function ClientOutcomes() {
             imageAlt="Perth Buyer Advocate Niki Nakrani helping home buyers in Perth, Western Australia"     
        imageTitle="Client Outcomes | Buyer's Agent Australia Results"
             heading="About Client Outcomes"
-            body1="These are outcomes we have achieved for our clients. Real properties, real numbers, and measurable growth. When you engage Find and Sign Buyer Advocate, you are not simply purchasing a property; you are entering a strategy built for long-term performance. These examples show what is possible when the right property is identified and secured early."
-          />
+body1="These are the results we have achieved for our clients through strategic property buying. Real properties, real numbers, and measurable growth.
+
+When you work with Find & Sign Buyer Advocate, you are not simply purchasing a property; you are following a tailored strategy with a trusted Perth buyer advocate focused on long-term success.
+
+These examples demonstrate what is possible when the right property opportunities are identified, carefully assessed, and secured at the right time."          />
         </div>
 
         {/* ══ CLIENT OUTCOMES GRID ══ */}

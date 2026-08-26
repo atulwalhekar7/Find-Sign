@@ -424,7 +424,7 @@ letterSpacing: "-0.02em",
               margin: 0,
             }}
           >
-            Services
+Buyer Advocate Perth Services for Confident Property Decisions
           </h1>
         </div>
       </section>
@@ -434,13 +434,16 @@ letterSpacing: "-0.02em",
  imageAlt="Perth Buyer Advocate Australia helping clients secure residential and investment properties"
   imageTitle="Buyer Advocate Perth Australia | Find and Sign"
   heading="About Services"
-  subheading="Expert guidance for every step of your property journey."        body1="Find and Sign Buyer Advocate is a boutique buyers agency based in Perth, representing buyers exclusively, whether you are purchasing the home you want to live in or building the portfolio you have always planned for.
-We take on a select number of clients at any one time. Not because we have to, but because we believe a purchase of this size deserves our full attention."
-        body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
-From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market."
-      />
+  subheading="Expert guidance for every step of your property journey."      
+   body1="Find & Sign Buyer Advocate is a boutique Perth buyer agent agency representing buyers exclusively, whether you are purchasing your dream home or building a property investment portfolio for the future.
 
-      {/* ── SECTION 3: Our Services ──────────────────────────────────────── */}
+We work with a select number of clients at any one time because every property purchase deserves dedicated attention, personalised advice, and expert guidance."
+
+body2="Our approach is simple. We understand your goals, assess your requirements, and conduct a targeted property search to identify the right opportunities. Our recommendations are guided by market data, local knowledge, and strong industry relationships, ensuring every decision aligns with your property goals.
+
+From the initial consultation through to settlement and beyond, we provide complete support throughout your buying journey. We are your trusted advisor, your advocate, and your advantage in the Perth property market — helping you make confident decisions and secure the right property."
+    />
+       {/* ── SECTION 3: Our Services ──────────────────────────────────────── */}
       <section
         className="services-section"
         style={{

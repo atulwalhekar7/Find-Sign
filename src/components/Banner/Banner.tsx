@@ -135,7 +135,8 @@ export default function App() {
           <div className="content-wrap">
             <div className={`attractive-loader ${!isVideoLoading ? "hidden" : ""}`} aria-hidden="true" />
             <h1 className="hero-title" tabIndex={0}>
-              The advantage of being first.
+             The Advantage of Choosing a Trusted Buyer Advocate in Perth
+
             </h1>
 
             <button className="watch-btn" onClick={openVideo} aria-label="Watch the introductory video">

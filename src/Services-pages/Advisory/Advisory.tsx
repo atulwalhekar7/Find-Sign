@@ -59,10 +59,12 @@ export default function Advisory() {
   imageTitle="Advisory Perth Australia | Find and Sign"
   heading="About Advisory"
   subheading="Expert guidance for every step of your property journey."
-        body1="Sometimes you do not need a full buyers agent service. You simply need the right information and guidance to move forward with clarity and confidence. Our advisory service is a focused two session consultation designed for buyers who want to take the lead on their own journey but want an experienced advocate in their corner before they do.
-In each session we walk you through the property purchasing process with precision and transparency, share our firsthand market knowledge, and give you honest practical feedback on where you currently stand and how to move forward. You will leave with a clear understanding of what to look for, where the risks and opportunities sit, and exactly what steps to take next."
-        body2="Every session is tailored to your specific situation, your goals, and your timeline. For those who prefer to stay hands on, our advisory service gives you the knowledge and tools to do exactly that, without ever feeling like you are navigating it alone."
-      />
+       body1="Sometimes you do not need a full buyer advocacy service. You simply need the right information and expert guidance to make confident property decisions. Our advisory service provides focused consultation for buyers who want to manage their own property journey while having a trusted Perth buyer agent supporting them along the way.
+
+During each session, we guide you through the property buying process with transparency, share our local market knowledge, and provide practical advice on your current position and next steps. You will gain a clearer understanding of what to look for, where opportunities exist, and how to avoid potential risks when purchasing a property."
+
+body2="Every advisory session is tailored to your situation, property goals, and timeline. For buyers who prefer to stay hands-on, our buyer advocate Perth advisory service provides the knowledge, strategy, and confidence needed to navigate the market successfully."
+ />
 
       <GetInTouch initialService="Advisory" showService={true} />
       <SimpleFooter />
