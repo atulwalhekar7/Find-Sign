@@ -640,8 +640,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
                   transition: "color 0.3s ease",
                 }}
               >
-                The affiliated services listed on this page are independent businesses and professionals that Find and Sign Buyer Advocate has developed relationships with over time. While we may refer or introduce these services, we do so based on our genuine belief in the quality of their work. Please note that Find and Sign Buyer Advocate may receive a commission or referral fee in some instances. We are not responsible for the advice, outcomes, or conduct of any third party service provider. All decisions regarding the engagement of any affiliated service remain entirely at your discretion.
-              </p>
+The affiliated services listed on this page are independent businesses and professionals that Find and Sign, as a Buyer’s Advocate and Buyer’s Agent, has developed relationships with over time. While we may refer or introduce these services, we do so based on our genuine belief in the quality of their work. Please note that Find and Sign, as a Buyer’s Advocate and Buyer’s Agent, may receive a commission or referral fee in some instances. We are not responsible for the advice, outcomes, or conduct of any third party service provider. All decisions regarding the engagement of any affiliated service remain entirely at your discretion.              </p>
             </div>
           </FadeUp>
         </div>

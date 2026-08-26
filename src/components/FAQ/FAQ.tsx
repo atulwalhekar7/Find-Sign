@@ -9,50 +9,57 @@ interface FAQItem {
 }
 
 const faqs: FAQItem[] = [
+
   {
     id: 1,
-    question: "What is a buyer's advocate?",
+    question: "What is a buyer's advocate and buyer's agent?",
     answer:
       "A buyer's advocate (also called a buyer's agent) is a licensed professional who represents the buyer exclusively in a property transaction not the seller. We search, evaluate, and negotiate on your behalf, using our market knowledge to get you the right property at the right price.",
   },
- {
-  id: 2,
-  question: "Why use a buyer's advocate instead of searching independently?",
-  answer:
-    "The property market isn't a level playing field and going it alone often proves it. While you're scrolling through listings, experienced buyers may already be under contract on off-market properties you never even saw. And when you're negotiating, the selling agent is working for the vendor not for you.\n\nA buyer's advocate changes that dynamic. You get better access, sharper negotiation, less guesswork, and a professional in your corner who has done this hundreds of times before.",
-},
+
+  {
+    id: 2,
+    question: "Why use a buyer's advocate and buyer's agent instead of searching independently?",
+    answer:
+      "The property market isn't a level playing field and going it alone often proves it. While you're scrolling through listings, experienced buyers may already be under contract on off-market properties you never even saw. And when you're negotiating, the selling agent is working for the vendor not for you.\n\nA buyer's advocate changes that dynamic. You get better access, sharper negotiation, less guesswork, and a professional in your corner who has done this hundreds of times before.",
+  },
+
   {
     id: 3,
     question: "What challenges do buyers face in today's market?",
     answer:
       "Today's property market moves fast. Limited stock, competitive bidding, and off-market deals make it difficult for buyers without industry access. We cut through the noise, providing you with verified opportunities before they reach the open market.",
   },
+
   {
     id: 4,
-    question: "What does a buyer's advocate actually do?",
+    question: "What does a buyer's advocate and buyer's agent actually do?",
     answer:
       "We manage the full buying process from understanding your brief and sourcing properties to inspecting, evaluating, negotiating, and coordinating settlement. You get expert support at every stage with someone always working in your interest.",
   },
+
   {
     id: 5,
     question: "Do you inspect every property before recommending it?",
     answer:
       "Yes. Every property we recommend has been physically inspected and assessed against your specific criteria. We don't send you listings we send you properties we'd be confident recommending to a friend.",
   },
+
   {
     id: 6,
     question: "Where should I invest?",
     answer:
       "Location selection depends on your strategy, budget, and timeline. We focus on areas with strong fundamentals limited supply, infrastructure investment, growing rental demand, and proximity to key amenities. We'll guide you based on your goals.",
   },
+
   {
     id: 7,
-    question: "How much does a buyer's advocate cost?",
+    question: "How much does a buyer's advocate and buyer's agent cost?",
     answer:
       "Our fees are transparent and agreed upfront. We typically charge a flat engagement fee plus a success fee on settlement. Many clients find the savings we achieve in negotiation more than offset our fee meaning we often pay for ourselves.",
   },
-];
 
+];
 export default function FindSignFAQ() {
   const [activeId, setActiveId] = useState<number | null>(null);
 
