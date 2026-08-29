@@ -132,7 +132,7 @@ Meet Your Trusted Perth Buyer's Advocate          </h1>
 
 Founder Niki learnt through experience that the right guidance is critical in securing the outcome. It is identified through local knowledge, experience and direct relationships, then secured before it reaches the wider market.
 
-We are a boutique buyers' agency and buyer's agent operating nationwide, acting exclusively for buyers. Not agents. Not developers we are intentionally selective about the number of clients we take on to give each brief our full attention and expert advice."
+We are a boutique buyer's agency and buyer's agent operating nationwide, acting exclusively for buyers. Not agents. Not developers we are intentionally selective about the number of clients we take on to give each brief our full attention and expert advice."
 
 body2="We assess every opportunity in person by walking the property, the street, and the surrounding area. Decisions are never made from photos or data alone. Because it's about identifying the opportunity and securing it early. The advantage of being first.
 
