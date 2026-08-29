@@ -189,7 +189,7 @@ How Our Perth Buyer Advocate Process Works
               transition: "opacity 0.8s ease 0.15s, transform 0.8s ease 0.15s",
             }}
           >
-A structured buyer advocacy process designed to help you find, secure and purchase the right property with confidence.
+A structured buyer's agent process designed to help you find, secure and purchase the right property with confidence.
           </p>
         </div>
 

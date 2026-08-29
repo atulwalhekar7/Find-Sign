@@ -135,7 +135,7 @@ export default function App() {
           <div className="content-wrap">
             <div className={`attractive-loader ${!isVideoLoading ? "hidden" : ""}`} aria-hidden="true" />
             <h1 className="hero-title" tabIndex={0}>
-             The Advantage of Choosing a Trusted Buyer Advocate in Perth
+             The Advantage of Choosing a Trusted Buyer's Advocate in Perth
 
             </h1>
 
@@ -150,7 +150,7 @@ export default function App() {
 
         <section className="hero-bottom">
           <p className="description" tabIndex={0}>
-            Find &amp; Sign is a property buyer's advocate and Buyer's Agents. We represent clients Australia-wide,
+            Find &amp; Sign is a property buyer's advocate (Buyer's agent). We represent clients Australia-wide,
             identifying the right properties and securing them before they reach the wider market.
           </p>
           <button

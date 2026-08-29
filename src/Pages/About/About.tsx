@@ -118,7 +118,7 @@ export default function About() {
         <div className="banner-overlay" />
         <div className="hero-box">
           <h1 className="hero-title" tabIndex={0}>
-Meet Your Trusted Perth Buyer Advocate          </h1>
+Meet Your Trusted Perth Buyer's Advocate          </h1>
         </div>
       </section>
 

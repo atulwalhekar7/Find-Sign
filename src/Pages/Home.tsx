@@ -16,7 +16,7 @@ export default function Home() {
     <>
     <SEO
   title="Perth Buyer Advocate | Trusted Buyer Advocate Perth | Find & Sign"
-  description="Work with a trusted Perth Buyer Advocate to find, negotiate and secure the right property. Find & Sign Buyer Advocate Perth provides expert guidance, market insights and access to quality opportunities."
+  description="Work with a trusted Perth Buyer's Advocate to find, negotiate and secure the right property. Find & Sign Buyer Advocate Perth provides expert guidance, market insights and access to quality opportunities."
 />
       <HeroBanner />
 <OurProcess />

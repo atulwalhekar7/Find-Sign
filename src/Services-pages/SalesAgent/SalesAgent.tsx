@@ -15,7 +15,7 @@ export default function SalesAgent() {
     <>
     <SEO
   title="Property Sales Agent Perth | Real Estate Selling Experts | Find & Sign"
-  description="Work with experienced property sales agents in Perth through Find & Sign. Get professional support with property marketing, negotiations, and achieving successful sales outcomes."
+  description="Work with experienced property sales agent in Perth through Find & Sign. Get professional support with property marketing, negotiations, and achieving successful sales outcomes."
 />
     <div style={{ background: "#fff", margin: 0, padding: 0, color: "#111" }}>
 
@@ -70,7 +70,7 @@ export default function SalesAgent() {
   subheading="Expert guidance for every step of your property journey."
 body1="There will come a time in every property journey when selling becomes the next step, whether you are moving homes, exiting an investment, or repositioning your property portfolio.
 
-A trusted buyer advocate Perth understands the importance of having the right professionals around you and can help connect you with experienced sales agents who know how to position your property, attract the right buyers, and achieve the best possible outcome.
+A trusted buyer advocate Perth understands the importance of having the right professionals around you and can help connect you with experienced sales agent who know how to position your property, attract the right buyers, and achieve the best possible outcome.
 
 Having a reliable property network in place before you need it ensures you are prepared when the time comes. We recommend only professionals whose approach, integrity, and local market knowledge we have experienced firsthand."//         body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
 // From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market."

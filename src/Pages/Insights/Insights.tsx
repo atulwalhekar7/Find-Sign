@@ -263,7 +263,7 @@ export default function Insights() {
             aria-hidden="true"
           />
           <h1 tabIndex={0} className="page-hero-banner__title">
-Perth Property Insights from Your Trusted Buyer Advocate
+Perth Property Insights from Your Trusted Buyer's Advocate
           </h1>
         </div>
       </section>
@@ -274,7 +274,7 @@ Perth Property Insights from Your Trusted Buyer Advocate
         imageAlt="Perth buyer advocate sharing property market insights and buying guidance"
         imageTitle="Perth Property Insights | Find and Sign Buyer Advocate"
         heading="About Find & Sign"
-        body1="These are property insights developed from our experience in the market. Real observations, expert perspectives, and practical guidance from a trusted Perth buyer advocate.
+        body1="These are property insights developed from our experience in the market. Real observations, expert perspectives, and practical guidance from a trusted Perth buyer's advocate.
 When you engage with Find & Sign Buyer Advocate, you gain access to market knowledge, local expertise, and strategies designed to help you understand opportunities, navigate the buying process, and make confident property decisions."
       />
 

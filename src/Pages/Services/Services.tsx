@@ -424,7 +424,7 @@ letterSpacing: "-0.02em",
               margin: 0,
             }}
           >
-Buyer Advocate Perth Services for Confident Property Decisions
+Buyer's Advocate Perth Services for Confident Property Decisions
           </h1>
         </div>
       </section>
@@ -435,7 +435,7 @@ Buyer Advocate Perth Services for Confident Property Decisions
   imageTitle="Buyer Advocate Perth Australia | Find and Sign"
   heading="About Services"
   subheading="Expert guidance for every step of your property journey."      
-   body1="Find & Sign Buyer Advocate is a boutique Perth buyer agent agency representing buyers exclusively, whether you are purchasing your dream home or building a property investment portfolio for the future.
+   body1="Find & Sign Buyer Advocate is a boutique Perth buyer's agent agency representing buyers exclusively, whether you are purchasing your dream home or building a property investment portfolio for the future.
 
 We work with a select number of clients at any one time because every property purchase deserves dedicated attention, personalised advice, and expert guidance."
 

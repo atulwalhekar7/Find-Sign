@@ -514,7 +514,7 @@ export default function ClientOutcomes() {
             animation: "heroFadeIn 0.8s ease both",
           }}>
             <h1 className="hero-h1" tabIndex={0}>
-Successful Property Outcomes with a Trusted Perth Buyer Advocate
+Successful Property Outcomes with a Trusted Perth Buyer's Advocate
             </h1>
           </div>
         </section>
@@ -528,7 +528,7 @@ Successful Property Outcomes with a Trusted Perth Buyer Advocate
             heading="About Client Outcomes"
 body1="These are the results we have achieved for our clients through strategic property buying. Real properties, real numbers, and measurable growth.
 
-When you work with Find & Sign Buyer Advocate, you are not simply purchasing a property; you are following a tailored strategy with a trusted Perth buyer advocate focused on long-term success.
+When you work with Find & Sign Buyer Advocate, you are not simply purchasing a property; you are following a tailored strategy with a trusted Perth buyer's advocate focused on long-term success.
 
 These examples demonstrate what is possible when the right property opportunities are identified, carefully assessed, and secured at the right time."          />
         </div>

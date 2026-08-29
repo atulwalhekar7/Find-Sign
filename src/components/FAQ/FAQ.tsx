@@ -26,7 +26,7 @@ const faqs: FAQItem[] = [
 
   {
     id: 3,
-    question: "What challenges do property buyers face in the Perth market?",
+    question: "What challenges do property buyer's face in the Perth market?",
     answer:
       "The Perth property market moves quickly, with limited stock, competitive bidding and off-market opportunities creating challenges for buyers. A trusted Perth buyer agent helps you navigate the market by identifying verified property opportunities and providing access to suitable properties before they reach the wider market.",
   },
@@ -75,7 +75,7 @@ export default function FindSignFAQ() {
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <h2 className="faq-title" tabIndex={0}>FAQs</h2>
               <p className="faq-subtitle" tabIndex={0}>
-                Answers to common questions about buyers agents and how they work.
+                Answers to common questions about buyer's agent and how they work.
               </p>
             </Box>
 
