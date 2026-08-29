@@ -59,7 +59,7 @@ export default function Advisory() {
   imageTitle="Advisory Perth Australia | Find and Sign"
   heading="About Advisory"
   subheading="Expert guidance for every step of your property journey."
-       body1="Sometimes you do not need a full buyer advocacy service. You simply need the right information and expert guidance to make confident property decisions. Our advisory service provides focused consultation for buyers who want to manage their own property journey while having a trusted Perth buyer agent supporting them along the way.
+       body1="Sometimes you do not need a full buyer advocacy service. You simply need the right information and expert guidance to make confident property decisions. Our advisory service provides focused consultation for buyers who want to manage their own property journey while having a trusted Perth buyer's agent supporting them along the way.
 
 During each session, we guide you through the property buying process with transparency, share our local market knowledge, and provide practical advice on your current position and next steps. You will gain a clearer understanding of what to look for, where opportunities exist, and how to avoid potential risks when purchasing a property."
 

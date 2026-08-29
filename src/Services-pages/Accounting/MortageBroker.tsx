@@ -61,7 +61,7 @@ export default function Accounting() {
   imageTitle="Mortgage Broker Perth Australia | Find and Sign"
   heading="About Mortgage Broker"
   subheading="Expert guidance for every step of your property journey."
-body1="Before making the right property decision, having the right finance structure in place is essential. A trusted Perth buyer agent works alongside experienced finance professionals to help ensure you are prepared, understand your options, and are positioned correctly from the beginning of your property buying journey."        />
+body1="Before making the right property decision, having the right finance structure in place is essential. A trusted Perth buyer's agent works alongside experienced finance professionals to help ensure you are prepared, understand your options, and are positioned correctly from the beginning of your property buying journey."        />
       </div>
 
       {/* ── Get In Touch ── */}

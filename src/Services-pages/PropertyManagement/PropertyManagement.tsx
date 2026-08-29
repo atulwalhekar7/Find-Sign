@@ -70,7 +70,7 @@ export default function PropertyManagement() {
   subheading="Expert guidance for every step of your property journey."
 body1="Once your investment property is secured, protecting and maximising its performance becomes the next priority. A trusted property manager provides professional support by managing tenant selection, lease agreements, rent collection, maintenance coordination, and routine inspections.
 
-With guidance from a trusted buyer advocate Perth, you can connect with the right professionals to help safeguard your investment. A great property manager understands the local rental market, retains quality tenants, and ensures your property is managed with the care and attention it deserves.
+With guidance from a trusted buyer's advocate Perth, you can connect with the right professionals to help safeguard your investment. A great property manager understands the local rental market, retains quality tenants, and ensures your property is managed with the care and attention it deserves.
 
 Choosing the right property management support from the beginning helps create a stronger and more successful investment experience."//         body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
 // From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market."

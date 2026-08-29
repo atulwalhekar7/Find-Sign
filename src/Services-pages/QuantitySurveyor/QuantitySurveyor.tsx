@@ -71,7 +71,7 @@ export default function QuantitySurveyor() {
   subheading="Expert guidance for every step of your property journey."
 body1="Two of the most overlooked yet valuable members of your property investment team. A quantity surveyor prepares a detailed depreciation schedule, identifying eligible assets and deductions that can help maximise the financial benefits of your investment over time.
 
-A trusted Perth buyer agent can help connect you with the right professionals to ensure your property strategy is structured effectively from the beginning. Your accountant then works with this information to optimise your financial position, from ownership structure to available deductions.
+A trusted Perth buyer's agent can help connect you with the right professionals to ensure your property strategy is structured effectively from the beginning. Your accountant then works with this information to optimise your financial position, from ownership structure to available deductions.
 
 Involving these experts early, ideally before purchasing, can make a significant difference to your long-term investment outcomes."//         body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
 // From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market."
