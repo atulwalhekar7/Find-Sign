@@ -68,7 +68,8 @@ export default function SalesAgent() {
   imageTitle="Sales Agent Perth Australia | Find and Sign"
   heading="About Sales Agent"
   subheading="Expert guidance for every step of your property journey."
-        body1="There will come a time in every property journey when you need to sell, whether that is moving on from your family home, exiting an investment, or repositioning your portfolio. A great sales agent understands how to present your property to the right buyers, price it strategically, and negotiate an outcome that reflects its true value. Having a trusted sales agent in your network before you need one means you are never starting from scratch at a critical moment. We refer only agents whose approach, integrity, and local knowledge we have seen firsthand."
+        body1="At some point in every property journey, selling becomes the next step, whether you are moving homes, exiting an investment or repositioning your property portfolio.
+Having a reliable property network in place before you need it ensures you are prepared when the time comes. We recommend only professionals whose approach, integrity and local market knowledge we have experienced firsthand."
 //         body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
 // From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market."
       />

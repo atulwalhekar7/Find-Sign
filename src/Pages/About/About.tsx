@@ -118,7 +118,8 @@ export default function About() {
         <div className="banner-overlay" />
         <div className="hero-box">
           <h1 className="hero-title" tabIndex={0}>
-            About Us
+          Meet your trusted Perth buyer’s agent for smarter property decisions
+
           </h1>
         </div>
       </section>
@@ -129,16 +130,16 @@ export default function About() {
           imageAlt="Perth Buyer Advocate Niki Nakrani helping home buyers in Perth, Western Australia."
           imageTitle="Find and Sign Buyers Agent Australia Team"
           heading="About Find & Sign"
-         body1="Find & Sign Buyer Advocate was built on the belief that every buyer should secure the right property to build equity, choice and financial freedom.
+        body1="Find & Sign Buyer Advocate was built on the belief that every buyer deserves the right guidance to secure the right property, build equity and create long-term financial freedom.
 
-Founder Niki learnt through experience that the right guidance is critical in securing the outcome. It is identified through local knowledge, experience and direct relationships, then secured before it reaches the wider market.
+Founder Niki understands through experience that having the right guidance by your side can make all the difference. With strong local knowledge, market experience and direct property relationships, we identify valuable opportunities and help buyers secure properties before they reach the wider market.
 
-We are a boutique buyers' agency and buyer's agent operating nationwide, acting exclusively for buyers. Not agents. Not developers we are intentionally selective about the number of clients we take on to give each brief our full attention and expert advice."
+We are a boutique buyer’s agency operating nationwide, representing buyers exclusively. We don’t represent sellers or developers—we work solely in the buyer’s best interest. By limiting the number of clients we support, we give every buyer dedicated attention, considered advice and a personalised property-buying strategy."
 
-body2="We assess every opportunity in person by walking the property, the street, and the surrounding area. Decisions are never made from photos or data alone. Because it's about identifying the opportunity and securing it early. The advantage of being first.
+body2="We carefully assess every opportunity in person by inspecting the property, the street and the surrounding area. Our approach goes beyond photos and data, helping buyers understand the property in its wider context, uncover genuine opportunities and make confident property decisions.
 
-Find & Sign we find with confidence you sign with certainty."
-        />
+Find & Sign. We find with confidence. You sign with certainty."
+ />
       </div>
 
       {/* SECTION 3 — Video */}
