@@ -431,6 +431,21 @@ letterSpacing: "-0.02em",
 Services
 
           </h1>
+            <p
+            className="hero-subtitle"
+            tabIndex={0}
+            style={{
+              fontFamily: "Sohne",
+              fontSize: "24px",
+              fontWeight: 300,
+              lineHeight: "36px",
+              color: "#ffffff",
+              margin: "24px 0 0",
+              textAlign: "center",
+            }}
+          >
+Buyer’s agent services for confident property decisions
+          </p>
         </div>
       </section>
 
@@ -438,7 +453,7 @@ Services
         imageSrc={AboutServiceImg}
  imageAlt="Perth Buyer Advocate Australia helping clients secure residential and investment properties"
   imageTitle="Buyer Advocate Perth Australia | Find and Sign"
-  heading="Buyer’s agent services for confident property decisions"
+  heading="About Services"
   subheading="Expert guidance for every step of your property journey."   
      body1="Find & Sign Buyer Advocate is a boutique Perth buyer’s agency representing buyers exclusively, whether you are purchasing your dream home or building a property investment portfolio for the future.
 
@@ -483,7 +498,7 @@ From the initial consultation through to settlement and beyond, we provide compl
                   transition: "color 0.3s ease",
                 }}
               >
-                Our Services
+Buyer’s agent services for confident property decisions
                 <div style={{ width: "160px", height: "1px", background: t.dividerColor, transition: "background 0.3s ease" }} />
               </h2>
               <p

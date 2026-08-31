@@ -118,9 +118,24 @@ export default function About() {
         <div className="banner-overlay" />
         <div className="hero-box">
           <h1 className="hero-title" tabIndex={0}>
-          Meet your trusted Perth buyer’s agent for smarter property decisions
+About Us
 
           </h1>
+          <p
+            className="hero-subtitle"
+            tabIndex={0}
+            style={{
+              fontFamily: "Sohne",
+              fontSize: "24px",
+              fontWeight: 300,
+              lineHeight: "36px",
+              color: "#ffffff",
+              margin: "24px 0 0",
+              textAlign: "center",
+            }}
+          >
+            Meet your trusted Perth buyer’s agent for smarter property decisions
+          </p>
         </div>
       </section>
 
