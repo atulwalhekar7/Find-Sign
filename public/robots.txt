@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://findandsignba.com.au/sitemap.xml
+Image Sitemap: https://findandsignba.com.au/image-sitemap.xml
