@@ -17,6 +17,7 @@ import Blog3 from "../../assets/find-and-sign-buyer-advocate-blog3.png";
 import Blog4 from "../../assets/juneBlog.jpeg";
 import Blog5 from "../../assets/Blog5.jpg";
 import Blog6 from "../../assets/Blog6.jpeg";
+import Blog7 from "../../assets/Blog7.png";
 
 // ── Theme ─────────────────────────────────────────────────────────────────────
 const THEMES = {
@@ -54,6 +55,20 @@ const THEMES = {
 
 // ── Blog posts data ───────────────────────────────────────────────────────────
 const blogPosts = [
+  {
+  title: "The Hidden Costs of Buying Property in Western Australia",
+  date: "01 September 2026",
+  description:
+    "Learn about the hidden costs of buying property in Western Australia and how a Perth buyer’s agent can help you plan, negotiate and buy with confidence.",
+  image: Blog7,
+  imageAlt:
+    "Perth buyer's agent reviewing property costs and budget with a client",
+  imageTitle:
+    "Hidden Costs of Buying Property in Western Australia | Find & Sign",
+  imageCaption:
+    "A Perth buyer's agent helping clients plan for transfer duty, inspections, loan fees, and other hidden costs of buying property in Western Australia.",
+  path: "/blog/hidden-costs-buying-property-western-australia",
+},
   {
   title: "How to Choose the Right Buyer’s Agent in Perth: 10 Questions Every Buyer Should Ask",
   date: "01 August 2026",
