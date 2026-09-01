@@ -129,10 +129,11 @@ export default function About() {
           imageAlt="Perth Buyer Advocate Niki Nakrani helping home buyers in Perth, Western Australia."
           imageTitle="Find and Sign Buyers Agent Australia Team"
           heading="About Find & Sign"
-          body1="Find & Sign Buyer Advocate was built on the belief that every buyer should secure the right property to build equity, choice and financial freedom.
-Founder Niki learnt through experience that the right guidance is critical in securing the outcome. It is identified through local knowledge, experience and direct relationships, then secured before it reaches the wider market.
+          body1="Find & Sign Buyer Advocate was built on the belief that every buyer deserves the right guidance to secure the right property, build equity and achieve long-term financial freedom.
+Founder Niki understands through experience that having the right guidance by your side is critical to achieving the best outcome. With strong local knowledge, market experience and direct property relationships, we identify valuable opportunities and help buyers secure properties before they reach the wider market.
 We are a boutique buyers' agency operating nationwide, acting exclusively for buyers. Not agents. Not developers we are intentionally selective about the number of clients we take on to give each brief our full attention and expert advice."
-          body2="We assess every opportunity in person by walking the property, the street, and the surrounding area. Decisions are never made from photos or data alone. Because it's about identifying the opportunity and securing it early. The advantage of being first.
+          body2="We carefully assess every opportunity in person by inspecting the property, the street and the surrounding area. Our approach goes beyond photos and data, helping buyers uncover genuine opportunities and make confident property decisions.
+
 Find & Sign we find with confidence you sign with certainty."
         />
       </div>

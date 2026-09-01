@@ -326,7 +326,7 @@ export default function Services() {
   };
 
   const body1 = "This is our complete service for buyers who want the right property secured from the very first search through to settlement.  We manage the process on your behalf, with clear guidance at each stage so you understand what's happening, what to expect, and where the opportunity lies.  You're involved at every key moment, with decisions made together and no uncertainty around what comes next.  Every engagement is tailored to your situation, your goals and your timeline.";
-  const body2 = "Sometimes you don't need someone to manage the entire process. You want the right guidance to make informed decisions from the first search through to securing a property. We guide you with clear advice at each stage so you understand what's happening, what to consider, and where risks and opportunities sit. You're supported throughout, with decisions made together and no uncertainty around what comes next. Every engagement is tailored to your situation, your goals and your timeline.";
+  const body2 = "Sometimes you don’t need someone to manage the entire property buying process. You need the right guidance to make informed decisions from the initial search through to securing the right property.Our advisory service provides clear advice and strategic support at every stage, helping you understand what to consider, identify potential risks and recognise valuable opportunities in the market.You remain in control while we support you with market insights, local knowledge and a clear buying strategy. Every engagement is tailored to your individual situation, property goals and timeline.";
   const body3 = "Before the right money is in the right place, nothing else can move. A great mortgage broker cuts through the noise, secures the right finance structure for your situation, and ensures you are set up correctly from the very beginning of your purchase journey.";
   const body4 = "The legal side of purchasing a property involves more moving parts than most people realise. A skilled settlement agent ensures your contracts are handled correctly, your deadlines are met, and your purchase is transferred smoothly and securely.";
   const body5 = "Never skip this step. A thorough building inspection gives you an honest picture of the property's condition before you commit, protecting you from costly surprises down the track.";
@@ -590,7 +590,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
               <OtherServiceCard title="Property Management" body={body6} hasButton delay={0} onBookCall={handleBookCall} theme={theme} />
             </div>
             <div className="col-4 col-md-6 col-sm-12">
-              <OtherServiceCard title="Accounting / Quantity Surveyor" body={body7} hasButton delay={0.1} onBookCall={() => navigate("/services/quantity-surveyor")} theme={theme} />
+              <OtherServiceCard title="Accounting and quantity surveyor" body={body7} hasButton delay={0.1} onBookCall={() => navigate("/services/quantity-surveyor")} theme={theme} />
             </div>
             <div className="col-4 col-md-6 col-sm-12">
               <OtherServiceCard title="Sales Agent" body={body8} hasButton delay={0.2} onBookCall={handleBookCall} theme={theme} />
