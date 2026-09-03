@@ -330,7 +330,7 @@ const body1 = `Our complete buyer’s agent service is designed for buyers who w
 You will understand what is happening, what to expect and where the best opportunities exist. You remain involved at every key decision point, with strategies developed together and complete clarity throughout the property-buying journey.
 
 Every engagement is customised around your unique situation, property goals and timeline, ensuring a personalised approach to finding and securing the right property with confidence.`;
-const body2 = "Sometimes you don't need someone to manage the entire process. You want the right guidance to make informed decisions from the first search through to securing a property. Our advisory service provides clear advice and strategic support at every stage, helping you understand what to consider, identify potential risks and recognise valuable opportunities in the market.You remain in control while we support you with market insights, local knowledge and a clear buying strategy. Every engagement is tailored to your individual situation, property goals and timeline.";
+const body2 = "Sometimes you don’t need someone to manage the entire property buying process. You need the right guidance to make informed decisions from the initial search through to securing the right property. Our advisory service provides clear advice and strategic support at every stage, helping you understand what to consider, identify potential risks and recognise valuable opportunities in the market.You remain in control while we support you with market insights, local knowledge and a clear buying strategy. Every engagement is tailored to your individual situation, property goals and timeline.";
   const body3 = "Before making the right property decision, you need the right financial foundation. We work alongside experienced finance professionals to help ensure you are prepared, understand your options and are positioned correctly from the beginning of your property buying journey.";
   const body4 = "The legal side of purchasing a property involves many important details that require careful attention. We work alongside experienced settlement professionals to ensure contracts are handled correctly, deadlines are managed and your property purchase progresses smoothly and securely.";
   const body5 = "Never skip this step. A thorough building inspection gives you a clear picture of the property’s condition before you commit, helping you make an informed decision and avoid costly surprises throughout your property purchase journey.";
@@ -498,7 +498,7 @@ From the initial consultation through to settlement and beyond, we provide compl
                   transition: "color 0.3s ease",
                 }}
               >
-Buyer’s agent services for confident property decisions
+Our services
                 <div style={{ width: "160px", height: "1px", background: t.dividerColor, transition: "background 0.3s ease" }} />
               </h2>
               <p
@@ -613,7 +613,7 @@ Buyer’s agent services for confident property decisions
               <OtherServiceCard title="Property Management" body={body6} hasButton delay={0} onBookCall={handleBookCall} theme={theme} />
             </div>
             <div className="col-4 col-md-6 col-sm-12">
-              <OtherServiceCard title="Accounting / Quantity Surveyor" body={body7} hasButton delay={0.1} onBookCall={() => navigate("/services/quantity-surveyor")} theme={theme} />
+              <OtherServiceCard title="Accounting and quantity surveyor" body={body7} hasButton delay={0.1} onBookCall={() => navigate("/services/quantity-surveyor")} theme={theme} />
             </div>
             <div className="col-4 col-md-6 col-sm-12">
               <OtherServiceCard title="Sales Agent" body={body8} hasButton delay={0.2} onBookCall={handleBookCall} theme={theme} />

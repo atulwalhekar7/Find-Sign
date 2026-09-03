@@ -57,7 +57,7 @@ export default function QuantitySurveyor() {
               margin: 0,
             }}
           >
-            Accounting / Quantity Surveyor
+Accounting and quantity surveyor
           </h1>
         </div>
       </section>
@@ -67,7 +67,7 @@ export default function QuantitySurveyor() {
         imageSrc={AboutServiceImg}
         imageAlt="Perth quantity surveyor helping property owners maximize their tax deductions in Australia"
   imageTitle="Quantity Surveyor Perth Australia | Find and Sign"
-  heading="About Accounting / Quantity Surveyor"
+  heading="About Accounting and quantity surveyor"
   subheading="Expert guidance for every step of your property journey."
         body1="An accountant and quantity surveyor are valuable members of your property investment team. A quantity surveyor prepares a detailed depreciation schedule, identifying eligible assets and deductions that can help maximise the financial benefits of your investment over time.
 Your accountant can then use this information to help optimise your financial position, from ownership structure to available deductions. Involving these experts early, ideally before purchasing, can make a significant difference to your long-term investment outcomes."

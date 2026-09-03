@@ -145,13 +145,13 @@ About Us
           imageAlt="Perth Buyer Advocate Niki Nakrani helping home buyers in Perth, Western Australia."
           imageTitle="Find and Sign Buyers Agent Australia Team"
           heading="About Find & Sign"
-        body1="Find & Sign Buyer Advocate was built on the belief that every buyer deserves the right guidance to secure the right property, build equity and create long-term financial freedom.
+        body1="Find & Sign Buyer Advocate was built on the belief that every buyer deserves the right guidance to secure the right property, build equity and achieve long-term financial freedom.
 
-Founder Niki understands through experience that having the right guidance by your side can make all the difference. With strong local knowledge, market experience and direct property relationships, we identify valuable opportunities and help buyers secure properties before they reach the wider market.
+Founder Niki understands through experience that having the right guidance by your side is critical to achieving the best outcome. With strong local knowledge, market experience and direct property relationships, we identify valuable opportunities and help buyers secure properties before they reach the wider market.
 
 We are a boutique buyer’s agency operating nationwide, representing buyers exclusively. We don’t represent sellers or developers—we work solely in the buyer’s best interest. By limiting the number of clients we support, we give every buyer dedicated attention, considered advice and a personalised property-buying strategy."
 
-body2="We carefully assess every opportunity in person by inspecting the property, the street and the surrounding area. Our approach goes beyond photos and data, helping buyers understand the property in its wider context, uncover genuine opportunities and make confident property decisions.
+body2="We carefully assess every opportunity in person by inspecting the property, the street and the surrounding area. Our approach goes beyond photos and data, helping buyers uncover genuine opportunities and make confident property decisions.
 
 Find & Sign. We find with confidence. You sign with certainty."
  />
