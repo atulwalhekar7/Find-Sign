@@ -9,50 +9,57 @@ interface FAQItem {
 }
 
 const faqs: FAQItem[] = [
+
   {
     id: 1,
-    question: "What is a buyer's advocate?",
+    question: "What does a buyer’s agent in Perth do?",
     answer:
-      "A buyer's advocate (also called a buyer's agent) is a licensed professional who represents the buyer exclusively in a property transaction not the seller. We search, evaluate, and negotiate on your behalf, using our market knowledge to get you the right property at the right price.",
+      "A buyer’s agent in Perth represents buyers exclusively in property transactions, not sellers. We search, evaluate and negotiate on your behalf, using local market knowledge to help you secure the right property at the right price.",
   },
- {
-  id: 2,
-  question: "Why use a buyer's advocate instead of searching independently?",
-  answer:
-    "The property market isn't a level playing field and going it alone often proves it. While you're scrolling through listings, experienced buyers may already be under contract on off-market properties you never even saw. And when you're negotiating, the selling agent is working for the vendor not for you.\n\nA buyer's advocate changes that dynamic. You get better access, sharper negotiation, less guesswork, and a professional in your corner who has done this hundreds of times before.",
-},
+
+  {
+    id: 2,
+    question: "Why should I use a Perth buyer’s agent instead of buying on my own?",
+    answer:
+      "The Perth property market isn’t always a level playing field, and buying alone can be challenging. While you’re searching through listings, experienced buyers may already be securing off-market opportunities before they reach the wider market. A Perth buyer’s agent changes this dynamic by providing better access, sharper negotiation and someone in your corner throughout the buying process.",
+  },
+
   {
     id: 3,
-    question: "What challenges do buyers face in today's market?",
+    question: "What challenges do property buyers face in the Perth market?",
     answer:
-      "Today's property market moves fast. Limited stock, competitive bidding, and off-market deals make it difficult for buyers without industry access. We cut through the noise, providing you with verified opportunities before they reach the open market.",
+      "The Perth property market moves quickly, with limited stock, competitive bidding and off-market opportunities creating challenges for buyers. We cut through the noise by identifying verified property opportunities and providing access to suitable properties before they reach the wider market.",
   },
+
   {
     id: 4,
-    question: "What does a buyer's advocate actually do?",
+    question: "How does a buyer’s agent in Perth help secure the right property?",
     answer:
-      "We manage the full buying process from understanding your brief and sourcing properties to inspecting, evaluating, negotiating, and coordinating settlement. You get expert support at every stage with someone always working in your interest.",
+      "A buyer’s agent in Perth manages the complete property buying process, from understanding your goals and sourcing suitable properties to inspections, evaluation, negotiation and settlement coordination. You have someone representing your best interests at every stage.",
   },
+
   {
     id: 5,
     question: "Do you inspect every property before recommending it?",
     answer:
-      "Yes. Every property we recommend has been physically inspected and assessed against your specific criteria. We don't send you listings we send you properties we'd be confident recommending to a friend.",
+      "Yes. We physically inspect every property we recommend and assess it against your specific requirements. We don’t simply send you listings; we send you properties we’d be confident recommending to a friend.",
   },
+
   {
     id: 6,
-    question: "Where should I invest?",
+    question: "Where should I invest in Perth?",
     answer:
-      "Location selection depends on your strategy, budget, and timeline. We focus on areas with strong fundamentals limited supply, infrastructure investment, growing rental demand, and proximity to key amenities. We'll guide you based on your goals.",
+      "Choosing the right location depends on your investment strategy, budget and long-term goals. We analyse areas with strong fundamentals, including limited supply, infrastructure growth, rental demand and access to key amenities. We provide tailored guidance to help you identify property opportunities aligned with your objectives.",
   },
+
   {
     id: 7,
-    question: "How much does a buyer's advocate cost?",
+    question: "How much does a buyer’s agent in Perth cost?",
     answer:
-      "Our fees are transparent and agreed upfront. We typically charge a flat engagement fee plus a success fee on settlement. Many clients find the savings we achieve in negotiation more than offset our fee meaning we often pay for ourselves.",
+      "Our buyer’s agent fees are transparent and agreed upfront. We typically charge a flat engagement fee plus a success fee at settlement. Through careful property selection and negotiation, many clients find the savings we achieve help offset our fee.",
   },
-];
 
+];
 export default function FindSignFAQ() {
   const [activeId, setActiveId] = useState<number | null>(null);
 
@@ -66,7 +73,7 @@ export default function FindSignFAQ() {
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
             
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <h2 className="faq-title" tabIndex={0}>FAQs</h2>
+              <h2 className="faq-title" tabIndex={0}>Frequently asked questions</h2>
               <p className="faq-subtitle" tabIndex={0}>
                 Answers to common questions about buyers agents and how they work.
               </p>

@@ -26,8 +26,7 @@ export default function BuyerAdvocate() {
             tabIndex={0}
             className="buyer-advocate-title"
           >
-            Buyer Advocacy
-          </h1>
+Buyer’s agent service          </h1>
         </div>
       </section>
 
@@ -36,14 +35,14 @@ export default function BuyerAdvocate() {
         imageSrc={AboutServiceImg}
         imageAlt="Perth Buyer Advocate Australia helping clients secure residential and investment properties"
         imageTitle="Buyer Advocate Perth Australia | Find and Sign"
-        heading="About Buyer Advocacy"
+        heading="About Buyer’s agent service"
         subheading="Expert guidance for every step of your property journey."
-        body1={`Purchasing a property is one of the most significant financial decisions you will ever make. Our full buyers agent service is designed to ensure that every step of that journey is handled with the expertise, care, and attention it deserves.
-From the moment we begin working together, we take on the entire process on your behalf. We get to know your goals, your non-negotiables, and your timeline, and we build a strategy around them. We search both on-market listings and our off-market network, and every property we consider is physically inspected by us before it ever reaches you. We will never recommend a property we have not walked through ourselves. That is a standard we hold on every single engagement.`}
-        body2={`Once the right property is identified, we manage all due diligence, coordinate building inspections and necessary reports, and negotiate the price and contract terms firmly in your favour. You are kept informed and involved at every touch point, without ever being burdened by the complexity of the process.
-Our full service is deeply personal. No two clients are the same and neither is our approach. Every engagement is tailored to your specific situation, your goals, and your timeline. You are not just another transaction to us. You are someone we are genuinely invested in seeing succeed.
-From the first conversation to settlement day and beyond, we are by your side every step of the way.`}
-      />
+      body1={`Purchasing a property is one of the most significant financial decisions you will make. Our full Perth buyer’s agent service provides a personalised strategy and complete support at every stage of your property buying journey.
+From the initial consultation, we understand your goals, requirements and timeline to create a tailored buying strategy. We search both on-market opportunities and our off-market network, and personally inspect every property before recommending it. We believe informed decisions come from experience, local knowledge and physically understanding the property and its surroundings.`}
+
+body2={`Once we identify the right property, we manage due diligence, coordinate building inspections and reports, and negotiate price and contract terms to secure the best possible outcome. You remain informed and involved at every stage while we handle the complexity of the process on your behalf.
+Our full buyer’s agent service is personalised to your unique circumstances, property goals and timeline. At Find & Sign Buyer Advocate, you are not just another transaction—you receive dedicated support from a team committed to helping you make confident property decisions.
+From the first conversation through to settlement and beyond, we are with you every step of the way.`}  />
 
       <GetInTouch initialService="Buyer Advocate" showService={true} />
       <SimpleFooter />

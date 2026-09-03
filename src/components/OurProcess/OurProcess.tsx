@@ -13,32 +13,32 @@ const steps: Step[] = [
   {
     id: 1,
     title: "Initial Consultation",
-    description: "Defining your goals and budget.",
+    description: "Understanding your property goals, budget and buying requirements.",
   },
   {
     id: 2,
     title: "Find & Inspect",
-    description: "Identifying and inspecting suitable properties.",
+    description: "Identifying, researching and inspecting suitable on- and off-market properties.",
   },
   {
     id: 3,
     title: "Due Diligence",
-    description: "Evaluating value and growth potential.",
+    description: "Assessing property value, risks and long-term growth potential.",
   },
   {
     id: 4,
     title: "Negotiation",
-    description: "Securing the best possible price.",
+    description: "Negotiating strategically to secure the best possible price.",
   },
   {
     id: 5,
     title: "Secure and Sign",
-    description: "Guiding the process and connecting you with trusted partners.",
+    description: "Guiding the purchase process and connecting you with trusted professionals.",
   },
   {
     id: 6,
     title: "Settlement",
-    description: "Supporting you through to ownership.",
+    description: "Supporting you through settlement and the final transfer of ownership.",
   },
 ];
 
@@ -177,7 +177,7 @@ export default function OurProcess({ visible = true }: { visible?: boolean }) {
               transition: "opacity 0.8s ease, transform 0.8s cubic-bezier(0.22,1,0.36,1)",
             }}
           >
-            How the Buying Process Works
+            How our buyer’s agent service works
             <div className="op-title-underline" />
           </h2>
           <p
@@ -189,7 +189,7 @@ export default function OurProcess({ visible = true }: { visible?: boolean }) {
               transition: "opacity 0.8s ease 0.15s, transform 0.8s ease 0.15s",
             }}
           >
-            A structured approach to finding, securing and signing the right property.
+A structured approach to finding, securing and purchasing the right property with confidence.
           </p>
         </div>
 

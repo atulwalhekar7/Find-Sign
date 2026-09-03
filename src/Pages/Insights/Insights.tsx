@@ -280,6 +280,20 @@ export default function Insights() {
           <h1 tabIndex={0} className="page-hero-banner__title">
             Insights
           </h1>
+          <p
+            tabIndex={0}
+            style={{
+              fontFamily: "Sohne",
+              fontSize: "24px",
+              fontWeight: 300,
+              lineHeight: "36px",
+              color: "#FFF",
+              margin: "24px 0 0",
+              textAlign: "center",
+            }}
+          >
+            Perth property insights from your buyer’s agent
+          </p>
         </div>
       </section>
 
@@ -289,8 +303,7 @@ export default function Insights() {
         imageAlt="Perth buyer advocate sharing property market insights and buying guidance"
         imageTitle="Perth Property Insights | Find and Sign Buyer Advocate"
         heading="About Find & Sign"
-        body1="These are insights drawn from our experience in the market. Real observations, informed perspectives, and practical guidance. When you engage with Find and Sign Buyer Advocate, you are gaining access to knowledge built through direct involvement and on-the-ground expertise. These articles are designed to help you understand the process, assess opportunities, and make more informed decisions."
-      />
+body1="These insights come from our experience in the market. Real observations, considered perspectives and practical guidance from a Perth buyer’s agent. When you engage with Find & Sign Buyer Advocate, you gain access to market knowledge, local expertise and strategies designed to help you understand opportunities, navigate the buying process and make confident property decisions."      />
 
       {/* ── SECTION 3: Blogs ──────────────────────────────────────────────── */}
       <section className="blogs-container">

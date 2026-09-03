@@ -67,7 +67,7 @@ function App() {
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
 
             {/* ── 8 Service Pages ── */}
-            <Route path="/services/buyer-advocate"      element={<BuyerAdvocate />}      />
+            <Route path="/services/buyer’s-agent-service"      element={<BuyerAdvocate />}      />
             <Route path="/services/advisory"            element={<Advisory />}            />
             <Route path="/services/property-management" element={<PropertyManagement />}  />
             <Route path="/services/settlement-agent"    element={<SettlementAgent />}     />

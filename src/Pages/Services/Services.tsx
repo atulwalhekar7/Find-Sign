@@ -325,14 +325,18 @@ export default function Services() {
     navigate(`/services/${slug}`);
   };
 
-  const body1 = "This is our complete service for buyers who want the right property secured from the very first search through to settlement.  We manage the process on your behalf, with clear guidance at each stage so you understand what's happening, what to expect, and where the opportunity lies.  You're involved at every key moment, with decisions made together and no uncertainty around what comes next.  Every engagement is tailored to your situation, your goals and your timeline.";
-  const body2 = "Sometimes you don’t need someone to manage the entire property buying process. You need the right guidance to make informed decisions from the initial search through to securing the right property.Our advisory service provides clear advice and strategic support at every stage, helping you understand what to consider, identify potential risks and recognise valuable opportunities in the market.You remain in control while we support you with market insights, local knowledge and a clear buying strategy. Every engagement is tailored to your individual situation, property goals and timeline.";
-  const body3 = "Before the right money is in the right place, nothing else can move. A great mortgage broker cuts through the noise, secures the right finance structure for your situation, and ensures you are set up correctly from the very beginning of your purchase journey.";
-  const body4 = "The legal side of purchasing a property involves more moving parts than most people realise. A skilled settlement agent ensures your contracts are handled correctly, your deadlines are met, and your purchase is transferred smoothly and securely.";
-  const body5 = "Never skip this step. A thorough building inspection gives you an honest picture of the property's condition before you commit, protecting you from costly surprises down the track.";
-  const body6 = "Once you have secured your investment, you need someone who will look after it as carefully as you do. A great property manager protects your asset, manages your tenants, and keeps your investment performing.";
-  const body7 = "Two of the most overlooked yet most valuable members of your investment team. The right accountant and quantity surveyor ensure your structure is correct, your depreciation is maximised, and every financial entitlement available to you is working in your favour.";
-  const body8 = "Whether you are selling before you buy or planning an exit strategy on an investment, having a trusted sales agent in your network means you are never starting from scratch when it matters most.";
+const body1 = `Our complete buyer’s agent service is designed for buyers who want to secure the right property from the initial search through to settlement. We manage the entire buying process on your behalf, providing clear guidance and strategic support at every stage.
+
+You will understand what is happening, what to expect and where the best opportunities exist. You remain involved at every key decision point, with strategies developed together and complete clarity throughout the property-buying journey.
+
+Every engagement is customised around your unique situation, property goals and timeline, ensuring a personalised approach to finding and securing the right property with confidence.`;
+const body2 = "Sometimes you don’t need someone to manage the entire property buying process. You need the right guidance to make informed decisions from the initial search through to securing the right property. Our advisory service provides clear advice and strategic support at every stage, helping you understand what to consider, identify potential risks and recognise valuable opportunities in the market.You remain in control while we support you with market insights, local knowledge and a clear buying strategy. Every engagement is tailored to your individual situation, property goals and timeline.";
+  const body3 = "Before making the right property decision, you need the right financial foundation. We work alongside experienced finance professionals to help ensure you are prepared, understand your options and are positioned correctly from the beginning of your property buying journey.";
+  const body4 = "The legal side of purchasing a property involves many important details that require careful attention. We work alongside experienced settlement professionals to ensure contracts are handled correctly, deadlines are managed and your property purchase progresses smoothly and securely.";
+  const body5 = "Never skip this step. A thorough building inspection gives you a clear picture of the property’s condition before you commit, helping you make an informed decision and avoid costly surprises throughout your property purchase journey.";
+  const body6 = "Once you have secured your investment, you need the right support to protect and manage your property. We can help connect you with reliable property management solutions that protect your asset, support your tenants and help keep your investment performing for the long term.";
+  const body7 = "An accountant and quantity surveyor are valuable members of your property investment team. They can help ensure your investment structure is effective, depreciation opportunities are maximised and available financial benefits are considered.";
+  const body8 = "Whether you are selling before you buy or planning your next investment move, having a strong property network can ensure you have the right guidance and connections when it matters most. We can help connect you with experienced professionals when the time comes.";
 
   return (
 
@@ -424,8 +428,24 @@ letterSpacing: "-0.02em",
               margin: 0,
             }}
           >
-            Services
+Services
+
           </h1>
+            <p
+            className="hero-subtitle"
+            tabIndex={0}
+            style={{
+              fontFamily: "Sohne",
+              fontSize: "24px",
+              fontWeight: 300,
+              lineHeight: "36px",
+              color: "#ffffff",
+              margin: "24px 0 0",
+              textAlign: "center",
+            }}
+          >
+Buyer’s agent services for confident property decisions
+          </p>
         </div>
       </section>
 
@@ -434,11 +454,14 @@ letterSpacing: "-0.02em",
  imageAlt="Perth Buyer Advocate Australia helping clients secure residential and investment properties"
   imageTitle="Buyer Advocate Perth Australia | Find and Sign"
   heading="About Services"
-  subheading="Expert guidance for every step of your property journey."        body1="Find and Sign Buyer Advocate is a boutique buyers agency based in Perth, representing buyers exclusively, whether you are purchasing the home you want to live in or building the portfolio you have always planned for.
-We take on a select number of clients at any one time. Not because we have to, but because we believe a purchase of this size deserves our full attention."
-        body2="Our approach is simple. We assess your situation, search with purpose, and lean into our relationships to find the right property for you. Data drives our recommendations, but your specific goals shape every decision. The result is a process that feels seamless, a strategy built around you, and an outcome set up for long-term success.
-From the first conversation to settlement and beyond, we are in your corner. Your sounding board. Your advocate. Your edge in the market."
-      />
+  subheading="Expert guidance for every step of your property journey."   
+     body1="Find & Sign Buyer Advocate is a boutique Perth buyer’s agency representing buyers exclusively, whether you are purchasing your dream home or building a property investment portfolio for the future.
+
+We work with a select number of clients at any one time because every property purchase deserves dedicated attention, personalised advice and considered guidance."
+
+body2="Our approach is simple. We understand your goals, assess your requirements and conduct a targeted property search to identify the right opportunities. Our recommendations are guided by market data, local knowledge and strong industry relationships, ensuring every decision aligns with your property goals.
+
+From the initial consultation through to settlement and beyond, we provide complete support throughout your buying journey. We are your adviser, your support and your advantage in the Perth property market—helping you make confident decisions and secure the right property." />
 
       {/* ── SECTION 3: Our Services ──────────────────────────────────────── */}
       <section
@@ -475,7 +498,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
                   transition: "color 0.3s ease",
                 }}
               >
-                Our Services
+Our services
                 <div style={{ width: "160px", height: "1px", background: t.dividerColor, transition: "background 0.3s ease" }} />
               </h2>
               <p
@@ -500,7 +523,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
           {/* Top row: Buyer Advocate + Advisory */}
           <div className="top-grid grid-12">
             <div className="col-6 col-sm-12">
-              <ServiceCard title="Buyer Advocate" body={body1} hasButton delay={0} onBookCall={handleBookCall} theme={theme} />
+              <ServiceCard title="Buyer’s agent service" body={body1} hasButton delay={0} onBookCall={handleBookCall} theme={theme} />
             </div>
             <div className="col-6 col-sm-12">
               <ServiceCard title="Advisory" body={body2} hasButton delay={0.12} onBookCall={handleBookCall} theme={theme} />
@@ -640,8 +663,7 @@ From the first conversation to settlement and beyond, we are in your corner. You
                   transition: "color 0.3s ease",
                 }}
               >
-                The affiliated services listed on this page are independent businesses and professionals that Find and Sign Buyer Advocate has developed relationships with over time. While we may refer or introduce these services, we do so based on our genuine belief in the quality of their work. Please note that Find and Sign Buyer Advocate may receive a commission or referral fee in some instances. We are not responsible for the advice, outcomes, or conduct of any third party service provider. All decisions regarding the engagement of any affiliated service remain entirely at your discretion.
-              </p>
+The affiliated services listed on this page are independent businesses and professionals that Find and Sign, as a Buyer’s Advocate and Buyer’s Agent, has developed relationships with over time. While we may refer or introduce these services, we do so based on our genuine belief in the quality of their work. Please note that Find and Sign, as a Buyer’s Advocate and Buyer’s Agent, may receive a commission or referral fee in some instances. We are not responsible for the advice, outcomes, or conduct of any third party service provider. All decisions regarding the engagement of any affiliated service remain entirely at your discretion.              </p>
             </div>
           </FadeUp>
         </div>
