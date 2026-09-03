@@ -65,7 +65,7 @@ export default function SettlementAgent() {
       {/* ── About ── */}
      <AboutSection
         imageSrc={AboutServiceImg}
-        imageAlt="Perth settlement agent helping home buyers navigate the property transfer process in Australia"
+imageAlt="Perth buyer agent helping home buyers navigate the property settlement and transfer process in Australia"
   imageTitle="Settlement Agent Perth Australia | Find and Sign"
   heading="About Settlement Agent"
   subheading="Expert guidance for every step of your property journey."

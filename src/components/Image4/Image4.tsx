@@ -40,8 +40,8 @@ const Image1: React.FC = () => {
             component="img"
  className="no-theme"
   src={heroImage}
-  alt="Perth Buyer Advocate Australia helping home buyers and property investors secure the right property"
-  title="Perth Buyer Advocate Australia | Find and Sign"
+  alt="Buyers Agent Perth | Perth Buyer Agent Australia helping home buyers and property investors secure the right property"
+  title="Perth Buyer Agent Australia | Find and Sign"
   loading="eager"
   fetchPriority="high"
   decoding="async"           

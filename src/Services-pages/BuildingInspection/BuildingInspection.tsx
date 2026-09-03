@@ -65,7 +65,7 @@ export default function BuildingInspection() {
       {/* ── About ── */}
       <AboutSection
         imageSrc={AboutServiceImg}
-         imageAlt="Perth building inspection expert helping home buyers identify potential issues in Australia"
+imageAlt="Perth buyer agent and building inspection expert helping home buyers identify potential property issues in Australia"
   imageTitle="Building Inspection Perth Australia | Find and Sign"
   heading="About Building Inspection"
   subheading="Expert guidance for every step of your property journey."

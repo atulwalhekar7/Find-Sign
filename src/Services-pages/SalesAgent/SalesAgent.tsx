@@ -64,7 +64,7 @@ export default function SalesAgent() {
       {/* ── About ── */}
       <AboutSection
         imageSrc={AboutServiceImg}
-        imageAlt="Perth sales agent helping home sellers navigate the property selling process in Australia"
+imageAlt="Perth buyer agent helping home sellers navigate the property selling process in Australia"
   imageTitle="Sales Agent Perth Australia | Find and Sign"
   heading="About Sales Agent"
   subheading="Expert guidance for every step of your property journey."

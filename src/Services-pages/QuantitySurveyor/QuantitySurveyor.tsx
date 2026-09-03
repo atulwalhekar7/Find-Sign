@@ -65,7 +65,7 @@ Accounting and quantity surveyor
       {/* ── About ── */}
       <AboutSection
         imageSrc={AboutServiceImg}
-        imageAlt="Perth quantity surveyor helping property owners maximize their tax deductions in Australia"
+imageAlt="Perth buyer agent helping property owners understand quantity surveying and maximize tax deductions in Australia"
   imageTitle="Quantity Surveyor Perth Australia | Find and Sign"
   heading="About Accounting and quantity surveyor"
   subheading="Expert guidance for every step of your property journey."

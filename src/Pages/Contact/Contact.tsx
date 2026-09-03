@@ -59,7 +59,7 @@ export default function Contact() {
         {/* SEO fallback image for background */}
         <img
           src={bannerImg}
-alt="Perth Buyer Advocate consulting with home buyers before purchasing a property"
+alt="First Home Buyers Agents Perth - Buyers Agents Perth | Expert Property Buyers in Perth"
           title="Contact Find and Sign | Buyer’s Agent Perth Australia"
           loading="lazy"
           decoding="async"

@@ -101,8 +101,8 @@ export default function About() {
       <section className="hero-banner" style={{ backgroundImage: `url(${Banner})` }}>
         <img
           src={Banner}
-          alt="Perth Buyer Advocate Niki Nakrani helping home buyers in Perth, Western Australia."
-          title="About Find and Sign | Perth Buyer Advocate Australia"
+          alt="Buyers Agent Perth | Perth Buyer Agent Niki Nakrani helping home buyers in Perth, Western Australia."
+          title="About Find and Sign | Perth Buyer Agent Australia"
           loading="lazy"
           width="1920"
           height="800"
@@ -142,7 +142,7 @@ About Us
       <div style={{ background: t.sectionBg, transition: "background 0.3s ease" }}>
         <AboutSection
           imageSrc={AboutUsBanner}
-          imageAlt="Perth Buyer Advocate Niki Nakrani helping home buyers in Perth, Western Australia."
+          imageAlt="Perth Buyer Agent Niki Nakrani helping home buyers in Perth, Western Australia."
           imageTitle="Find and Sign Buyers Agent Australia Team"
           heading="About Find & Sign"
         body1="Find & Sign Buyer Advocate was built on the belief that every buyer deserves the right guidance to secure the right property, build equity and achieve long-term financial freedom.
@@ -276,7 +276,7 @@ Find & Sign. We find with confidence. You sign with certainty."
                 <div className="team-img-wrap" style={{ width: "142px", height: "174px", minWidth: "142px", borderRadius: "20px", overflow: "hidden", flexShrink: 0, background: "#dcdcdc" }}>
                   <img
                     src={niki}
-                    alt="Perth Buyer Advocate Niki Nakrani helping home buyers in Perth, Western Australia."
+                    alt="The Best Buyers Agents in Perth, Western Australia Niki Nakrani helping home buyers in Perth, Western Australia."
                     title="Niki Nakrani | Perth Buyers Agent Australia Founder"
                     loading="lazy"
                     width="142"

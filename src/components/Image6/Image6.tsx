@@ -13,8 +13,8 @@ const Image1: React.FC = () => {
           component="img"
           className="no-theme image1-image"
           src={heroImage}
-          alt="Perth Buyer Advocate Niki Nakrani helping home buyers in Perth, Western Australia"
-          title="Perth Buyer Advocate Australia | Confident Property Buying"
+          alt="Buyers Agent Perth | Perth Buyer Agent Niki Nakrani helping home buyers in Perth, Western Australia"
+          title="Perth Buyer Agent Australia | Confident Property Buying"
           loading="lazy"
           decoding="async"
           width="1920"

@@ -64,7 +64,7 @@ export default function PropertyManagement() {
       {/* ── About ── */}
       <AboutSection
         imageSrc={AboutServiceImg}
-       imageAlt="Perth property manager helping landlords manage their rental properties in Australia"
+imageAlt="Perth buyer agent helping landlords manage rental properties and make informed property investment decisions in Australia"
   imageTitle="Property Management Perth Australia | Find and Sign"
   heading="About Property Management"
   subheading="Expert guidance for every step of your property journey."

@@ -13,8 +13,8 @@ const Image1: React.FC = () => {
           component="img"
           className="no-theme image1-image"
           src={heroImage}
-          alt="Commercial property acquisition with a Perth Buyer Advocate"
-          title="Perth Buyer Advocate Australia | Find and Sign"
+          alt="Buyers Agent Perth | Commercial property acquisition with a Perth Buyer Agent"
+          title="Perth Buyer Agent Australia | Find and Sign"
           loading="eager"
           fetchPriority="high"
           decoding="async"

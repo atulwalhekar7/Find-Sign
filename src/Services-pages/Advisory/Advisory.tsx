@@ -55,7 +55,7 @@ export default function Advisory() {
       {/* About */}
       <AboutSection
         imageSrc={AboutServiceImg}
-        imageAlt="Perth advisory helping home buyers navigate the property purchasing process in Australia"
+imageAlt="Perth buyer agent helping home buyers navigate the property purchasing process in Australia"
   imageTitle="Advisory Perth Australia | Find and Sign"
   heading="About Advisory"
   subheading="Expert guidance for every step of your property journey."

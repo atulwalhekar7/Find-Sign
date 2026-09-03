@@ -33,8 +33,8 @@ Buyer’s agent service          </h1>
       {/* About Section */}
       <AboutSection
         imageSrc={AboutServiceImg}
-        imageAlt="Perth Buyer Advocate Australia helping clients secure residential and investment properties"
-        imageTitle="Buyer Advocate Perth Australia | Find and Sign"
+        imageAlt="Perth Buyer Agent Australia helping clients secure residential and investment properties"
+        imageTitle="Buyer Agent Perth Australia | Find and Sign"
         heading="About Buyer’s agent service"
         subheading="Expert guidance for every step of your property journey."
       body1={`Purchasing a property is one of the most significant financial decisions you will make. Our full Perth buyer’s agent service provides a personalised strategy and complete support at every stage of your property buying journey.

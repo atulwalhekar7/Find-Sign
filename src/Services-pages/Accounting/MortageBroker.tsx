@@ -57,7 +57,7 @@ export default function Accounting() {
       >
         <AboutSection
           imageSrc={AboutServiceImg}
-           imageAlt="Perth mortgage broker helping home buyers secure the right finance solution in Australia"
+imageAlt="Perth buyer agent and mortgage broker helping home buyers secure the right property and finance solution in Australia"
   imageTitle="Mortgage Broker Perth Australia | Find and Sign"
   heading="About Mortgage Broker"
   subheading="Expert guidance for every step of your property journey."

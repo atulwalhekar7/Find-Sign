@@ -365,8 +365,8 @@ const body2 = "Sometimes you don’t need someone to manage the entire property 
 >
   <img
     src={bannerImg}
-alt="Perth Buyer Advocate Niki Nakrani helping home buyers in Perth, Western Australia"
-    title="Perth Buyer Advocate Australia | Find and Sign"
+alt="Buyers Agent Perth | Independent Buyers Agent Perth | Perth Buyer Agent Niki Nakrani helping home buyers in Perth, Western Australia"
+    title="Perth Buyer Agent Australia | Find and Sign"
     loading="eager"
     fetchPriority="high"
     decoding="async"
@@ -451,8 +451,8 @@ Buyer’s agent services for confident property decisions
 
       <AboutSection
         imageSrc={AboutServiceImg}
- imageAlt="Perth Buyer Advocate Australia helping clients secure residential and investment properties"
-  imageTitle="Buyer Advocate Perth Australia | Find and Sign"
+ imageAlt="Buyer's Agent Perth WA | Investment & Home Buying Perth Buyer Agent Australia helping clients secure residential and investment properties"
+  imageTitle="Buyer Agent Perth Australia | Find and Sign"
   heading="About Services"
   subheading="Expert guidance for every step of your property journey."   
      body1="Find & Sign Buyer Advocate is a boutique Perth buyer’s agency representing buyers exclusively, whether you are purchasing your dream home or building a property investment portfolio for the future.

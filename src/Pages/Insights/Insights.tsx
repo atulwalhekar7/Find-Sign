@@ -101,14 +101,14 @@ const blogPosts = [
   title: "How Can I Find a Trustworthy Buyers Advocate in Perth?",
   date: "01 June 2026",
   description:
-    "Discover how to find a reliable buyer's advocate in Perth with our comprehensive guide. Avoid overpayment and make informed property decisions today.",
+    "Discover how to find a reliable buyer's Agent in Perth with our comprehensive guide. Avoid overpayment and make informed property decisions today.",
   image: Blog4,
   imageAlt:
     "Trustworthy buyers advocate in Perth helping property buyers make informed decisions",
   imageTitle:
-    "How Can I Find a Trustworthy Buyers Advocate in Perth? | Find and Sign",
+    "How Can I Find a Trustworthy Buyers Agent in Perth? | Find and Sign",
   imageCaption:
-    "Learn how to identify a reliable buyers advocate in Perth, access expert guidance, avoid costly mistakes and secure the right property with confidence.",
+    "Learn how to identify a reliable buyers agent in Perth, access expert guidance, avoid costly mistakes and secure the right property with confidence.",
   path: "/blog/find-trustworthy-buyers",
 },
   {
@@ -261,7 +261,7 @@ export default function Insights() {
       <section className="page-hero-banner">
         <img
           src={bannerImg}
-          alt="Perth mortgage broker helping home buyers secure the right finance solution in Australia"
+          alt="Perth Real Estate & Mortgage Guide for Interstate Home Buyers | You&Me Personalised Property Services"
           title="Mortgage Broker Perth Australia | Find and Sign"
           loading="eager"
           fetchPriority="high"
@@ -300,8 +300,8 @@ export default function Insights() {
       {/* ── SECTION 2: About ──────────────────────────────────────────────── */}
       <AboutSection
         imageSrc={aboutInsightsImg}
-        imageAlt="Perth buyer advocate sharing property market insights and buying guidance"
-        imageTitle="Perth Property Insights | Find and Sign Buyer Advocate"
+        imageAlt="Perth buyer Agent sharing property market insights and buying guidance"
+        imageTitle="Perth Property Insights | Find and Sign Buyer Agent"
         heading="About Find & Sign"
 body1="These insights come from our experience in the market. Real observations, considered perspectives and practical guidance from a Perth buyer’s agent. When you engage with Find & Sign Buyer Advocate, you gain access to market knowledge, local expertise and strategies designed to help you understand opportunities, navigate the buying process and make confident property decisions."      />
 
