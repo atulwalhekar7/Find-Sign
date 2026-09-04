@@ -539,8 +539,11 @@ Client Outcomes
             imageSrc={AboutClientOutcomesImg}
             imageAlt="Perth Buyer's Agent Niki Nakrani helping home buyers in Perth, Western Australia"     
        imageTitle="Client Outcomes | Buyer's Agent Australia Results"
-            heading="About Client Outcomes"
-body1="These are outcomes we have achieved for our clients through strategic property buying. Real properties, real numbers and measurable growth. When you work with Find & Sign Buyer Advocate, you are not simply purchasing a property; you are following a tailored strategy built for long-term success. These examples demonstrate what is possible when the right property opportunities are identified, carefully assessed and secured at the right time."          />
+            heading="About Our Client Outcomes"
+body1="These are outcomes we have achieved for our clients through strategic property buying.  As a Perth buyer’s agent, we identify, assess and secure the right property opportunities for our clients.
+When you work with Find & Sign Buyer Advocate, you are not simply purchasing a property; you are following a tailored strategy built for long-term success.
+These examples demonstrate what is possible when the right property opportunities are identified, carefully assessed and secured at the right time. 
+"          />
         </div>
 
         {/* ══ CLIENT OUTCOMES GRID ══ */}
@@ -548,10 +551,10 @@ body1="These are outcomes we have achieved for our clients through strategic pro
           <div ref={outcomesSectionRef} id="outcomes" className="outcomes-section">
             <div className="outcomes-head">
               <h2 className="outcomes-h2" tabIndex={0} style={{ color: t.headingColor }}>
-                Client Outcomes
+                Perth Buyer’s Agent Client Outcomes
                 <div style={{ width: "160px", height: "1px", background: t.dividerColor }} />
               </h2>
-              <p className="outcomes-subtitle" tabIndex={0} style={{ color: t.subtitleColor }}>Explore more about client outcomes.</p>
+              <p className="outcomes-subtitle" tabIndex={0} style={{ color: t.subtitleColor }}>Explore property outcomes secured for our clients.</p>
             </div>
 
             {!showAllCards ? (
@@ -607,10 +610,10 @@ body1="These are outcomes we have achieved for our clients through strategic pro
           <section ref={testimonialsSectionRef} id="testimonials" className="testimonials-section">
             <div className="testimonials-head">
               <h2 className="testimonials-h2" tabIndex={0} style={{ color: t.headingColor }}>
-                What Clients Say
+                What Our Clients Say
                 <div style={{ width: "160px", height: "1px", background: t.dividerColor }} />
               </h2>
-              <p className="testimonials-subtitle" tabIndex={0} style={{ color: t.subtitleColor }}>In their own words, following their experience with Find &amp; Sign.</p>
+              <p className="testimonials-subtitle" tabIndex={0} style={{ color: t.subtitleColor }}>In their own words, following their experience with our buyer’s agent service.</p>
             </div>
 
             <div className="testimonials-slider-col">

@@ -461,10 +461,24 @@ export default function PropertyInvestmentCalculator() {
   description="Use the Find & Sign Buyer Advocate calculator to estimate property buying costs, fees, and potential savings in Perth. Plan your property purchase with expert buyer advocacy insights."
 />
       <div className={`pc-wrap pc-theme-${theme}`} style={themeVars}>
-        <section className="blog-heading-section">
-          <h1>Know Before You Sign - Property Analyser
-</h1>
-        </section>
+       <section className="blog-heading-section">
+  <h1>Know Before You Sign - Property Analyser</h1>
+
+  <p
+  tabIndex={0}
+  style={{
+    fontFamily: "Sohne",
+    fontSize: "24px",
+    fontWeight: 300,
+    lineHeight: "36px",
+    color: "var(--pc-subtitle)",
+    margin: "24px 0 0",
+    textAlign: "center",
+  }}
+>
+  Find & Sign's Know Before You Sign Property Analyser helps you assess the numbers before making a decision. Developed from our experience as a Perth buyer's agent, it brings purchase costs, finance, rental income, expenses and returns together in one place.
+</p>
+</section>
 
         <div className="pc-filter-bar pc-no-print" role="tablist" aria-label="Filter calculator sections">
           {FILTERS.map((f) => (

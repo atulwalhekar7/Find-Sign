@@ -461,7 +461,7 @@ We work with a select number of clients at any one time because every property p
 
 body2="Our approach is simple. We understand your goals, assess your requirements and conduct a targeted property search to identify the right opportunities. Our recommendations are guided by market data, local knowledge and strong industry relationships, ensuring every decision aligns with your property goals.
 
-From the initial consultation through to settlement and beyond, we provide complete support throughout your buying journey. We are your adviser, your support and your advantage in the Perth property market—helping you make confident decisions and secure the right property." />
+From the initial consultation through to settlement and beyond, we provide complete support throughout your buying journey. We are your adviser, your support and your advantage in the Perth property market, helping you make confident decisions and secure the right property." />
 
       {/* ── SECTION 3: Our Services ──────────────────────────────────────── */}
       <section

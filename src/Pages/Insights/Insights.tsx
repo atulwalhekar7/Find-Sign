@@ -292,7 +292,7 @@ export default function Insights() {
               textAlign: "center",
             }}
           >
-            Perth property insights from your buyer’s agent
+            Perth property insights from your Perth buyer’s agent
           </p>
         </div>
       </section>
@@ -302,7 +302,7 @@ export default function Insights() {
         imageSrc={aboutInsightsImg}
         imageAlt="Perth buyer Agent sharing property market insights and buying guidance"
         imageTitle="Perth Property Insights | Find and Sign Buyer Agent"
-        heading="About Find & Sign"
+        heading="About Find & Sign Buyer Advocate"
 body1="These insights come from our experience in the market. Real observations, considered perspectives and practical guidance from a Perth buyer’s agent. When you engage with Find & Sign Buyer Advocate, you gain access to market knowledge, local expertise and strategies designed to help you understand opportunities, navigate the buying process and make confident property decisions."      />
 
       {/* ── SECTION 3: Blogs ──────────────────────────────────────────────── */}
@@ -312,7 +312,7 @@ body1="These insights come from our experience in the market. Real observations,
           className="blogs-container__heading"
           style={{ color: t.headingColor }}
         >
-          Blogs
+          Property market insights
           <div
             className="blogs-container__divider"
             style={{ background: t.dividerColor }}
@@ -324,7 +324,7 @@ body1="These insights come from our experience in the market. Real observations,
           className="blogs-container__subtitle"
           style={{ color: t.subtitleColor }}
         >
-          Industry insights, Australia-wide expertise and more.
+          Australia-wide expertise and more.
         </p>
 
         <div className="blogs-list">

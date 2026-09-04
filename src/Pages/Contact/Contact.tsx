@@ -80,7 +80,21 @@ alt="First Home Buyers Agents Perth - Buyers Agents Perth | Expert Property Buye
 
         {/* Content */}
         <div className="contact-hero-content">
-          <h1 tabIndex={0}>Contact Us</h1>
+          <h1 tabIndex={0}>Contact Your Perth Buyer’s Agent</h1>
+           <p
+            tabIndex={0}
+            style={{
+              fontFamily: "Sohne",
+              fontSize: "24px",
+              fontWeight: 300,
+              lineHeight: "36px",
+              color: "#FFF",
+              margin: "24px 0 0",
+              textAlign: "center",
+            }}
+          >
+            Looking to buy in Perth or Western Australia? Tell us what you're looking for, and our buyer’s agent will come back with next steps.
+          </p>
         </div>
       </section>
 
